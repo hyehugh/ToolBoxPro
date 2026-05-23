@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { tools } from "@/lib/tools/data";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -11,17 +12,17 @@ export default function AboutPage() {
       <h1 className="text-3xl font-bold mb-6">About ToolboxPro</h1>
       <div className="space-y-4 text-muted-foreground leading-relaxed">
         <p>
-          ToolboxPro is a free online toolbox offering 100+ utilities for 
-          developers, designers, writers, and everyday users. Our mission is 
+          ToolboxPro is a free online toolbox offering {tools.length}+ utilities for
+          developers, designers, writers, and everyday users. Our mission is
           simple: provide fast, reliable tools that respect your privacy.
         </p>
         <p>
-          Unlike many online tools, we process everything directly in your 
-          browser using WebAssembly. Your files never leave your device. No 
+          Unlike many online tools, we process everything directly in your
+          browser using WebAssembly. Your files never leave your device. No
           servers, no cloud, no data leaks.
         </p>
         <p>
-          Built by developers for developers and anyone who needs a quick 
+          Built by developers for developers and anyone who needs a quick
           tool without the hassle of signups, limits, or watermarks.
         </p>
         <h2 className="text-xl font-bold text-foreground mt-8">Our Principles</h2>
