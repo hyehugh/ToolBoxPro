@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { tools } from "@/lib/tools/data";
 
-// Top tools by expected popularity — manually curated based on typical usage
 const popularSlugs = new Set([
   "json-formatter",
   "base64-encode-decode",
@@ -16,38 +15,39 @@ const popularSlugs = new Set([
   "pdf-merger",
   "qr-code-generator",
   "word-counter",
-  "case-converter",
-  "html-entity-converter",
-  "css-minifier",
   "timestamp-converter",
   "number-base-converter",
   "temperature-converter",
-  "weight-converter",
+  "css-minifier",
+  "case-converter",
 ]);
 
 const popularTools = tools.filter((t) => popularSlugs.has(t.slug));
 
 export function PopularTools() {
   return (
-    <section className="mb-10">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">🔥 Popular Tools</h2>
+    <section className="relative mb-12 -mx-4 px-4 py-8 rounded-2xl bg-gradient-to-b from-[#f5ece4]/60 dark:from-[#2a2422]/40 to-transparent">
+      <div className="flex items-center justify-between mb-5">
+        <h2 className="text-lg font-bold flex items-center gap-2">
+          <span className="text-lg">🔥</span>
+          Popular Now
+        </h2>
         <Link
           href="/tools"
           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
-          View all →
+          View all &rarr;
         </Link>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+      <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin -mx-1 px-1">
         {popularTools.map((tool) => (
           <Link
             key={tool.slug}
             href={`/tools/${tool.slug}`}
-            className="flex flex-col items-center gap-1.5 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 text-center"
+            className="flex items-center gap-2.5 shrink-0 px-4 py-2.5 rounded-xl border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200"
           >
-            <span className="text-xl font-mono">{tool.icon}</span>
-            <span className="text-xs font-medium leading-tight">{tool.name}</span>
+            <span className="text-base font-mono">{tool.icon}</span>
+            <span className="text-xs font-medium whitespace-nowrap">{tool.name}</span>
           </Link>
         ))}
       </div>
