@@ -9,7 +9,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="py-16 md:py-24 text-center relative">
         {/* Warm ambient background */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] to-transparent rounded-3xl mx-4" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] dark:from-[#2a2422] to-transparent rounded-3xl mx-4" />
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
           Free Online Tools.
           <br />
