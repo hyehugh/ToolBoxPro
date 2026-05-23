@@ -60,6 +60,23 @@ import { PdfSplitterTool } from "./_components/pdf-splitter";
 import { PdfRotatorTool } from "./_components/pdf-rotator";
 import { PdfPageRemoverTool } from "./_components/pdf-page-remover";
 import { PdfProtectorTool } from "./_components/pdf-protector";
+// New image tools
+import { ImageCropperTool } from "./_components/image-cropper";
+import { ImageResizerTool } from "./_components/image-resizer";
+import { ImageFiltersTool } from "./_components/image-filters";
+import { ColorPickerTool } from "./_components/color-picker";
+import { GifMakerTool } from "./_components/gif-maker";
+// New text tools
+import { EmojiRemoverTool } from "./_components/emoji-remover";
+import { UnicodeDetectorTool } from "./_components/unicode-detector";
+import { CaesarCipherTool } from "./_components/caesar-cipher";
+// New dev tools
+import { JsonDiffTool } from "./_components/json-diff";
+import { HttpStatusCodesTool } from "./_components/http-status-codes";
+import { MarkdownToHtmlTool } from "./_components/markdown-to-html";
+// New conversion tools
+import { TimezoneConverterTool } from "./_components/timezone-converter";
+import { BinaryToTextTool } from "./_components/binary-to-text";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -137,6 +154,19 @@ function getToolComponent(slug: string) {
     "pdf-rotator": PdfRotatorTool,
     "pdf-page-remover": PdfPageRemoverTool,
     "pdf-protector": PdfProtectorTool,
+    "image-cropper": ImageCropperTool,
+    "image-resizer": ImageResizerTool,
+    "image-filters": ImageFiltersTool,
+    "color-picker": ColorPickerTool,
+    "gif-maker": GifMakerTool,
+    "emoji-remover": EmojiRemoverTool,
+    "unicode-detector": UnicodeDetectorTool,
+    "caesar-cipher": CaesarCipherTool,
+    "json-diff": JsonDiffTool,
+    "http-status-codes": HttpStatusCodesTool,
+    "markdown-to-html": MarkdownToHtmlTool,
+    "timezone-converter": TimezoneConverterTool,
+    "binary-to-text": BinaryToTextTool,
   };
   return components[slug];
 }
