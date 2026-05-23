@@ -734,7 +734,7 @@ export const tools: Tool[] = [
     name: "Audio Cutter",
     description: "Trim and cut audio files with waveform preview",
     category: "audio",
-    icon: "🎵",
+    icon: "🎧",
     searchKeywords: "audio cutter trim mp3 wav online",
   },
   {
@@ -742,7 +742,7 @@ export const tools: Tool[] = [
     name: "Audio Merger",
     description: "Combine multiple audio files into one track",
     category: "audio",
-    icon: "🎶",
+    icon: "🎤",
     searchKeywords: "audio merger join combine mp3 online",
   },
   {
@@ -858,7 +858,7 @@ export const categories = [
   { id: "text" as const, name: "Text Tools", icon: "✍️" },
   { id: "image" as const, name: "Image Tools", icon: "🖼️" },
   { id: "pdf" as const, name: "PDF Tools", icon: "📄" },
-  { id: "audio" as const, name: "Audio Tools", icon: "🎵" },
+  { id: "audio" as const, name: "Audio Tools", icon: "🎧" },
   { id: "network" as const, name: "Network Tools", icon: "🌐" },
   { id: "conversion" as const, name: "Unit Converters", icon: "📐" },
   { id: "utilities" as const, name: "Utilities", icon: "🧰" },
