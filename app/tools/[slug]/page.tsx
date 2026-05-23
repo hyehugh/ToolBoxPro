@@ -94,6 +94,24 @@ import { ColorPaletteTool } from "./_components/color-palette";
 // New conversion tools
 import { TimezoneConverterTool } from "./_components/timezone-converter";
 import { BinaryToTextTool } from "./_components/binary-to-text";
+// Audio tools
+import { AudioCutterTool } from "./_components/audio-cutter";
+import { AudioMergerTool } from "./_components/audio-merger";
+import { AudioConverterTool } from "./_components/audio-converter";
+// Network tools
+import { SslCheckerTool } from "./_components/ssl-checker";
+import { DnsLookupTool } from "./_components/dns-lookup";
+import { WhoisLookupTool } from "./_components/whois-lookup";
+// More tools
+import { SvgToPngTool } from "./_components/svg-to-png";
+import { DaysBetweenTool } from "./_components/days-between";
+import { PasswordStrengthTool } from "./_components/password-strength";
+import { BarcodeGeneratorTool } from "./_components/barcode-generator";
+import { AspectRatioCalculatorTool } from "./_components/aspect-ratio-calculator";
+import { QrReaderTool } from "./_components/qr-reader";
+import { ColorBlindnessSimulatorTool } from "./_components/color-blindness-simulator";
+import { OnlineNotepadTool } from "./_components/online-notepad";
+import { TextStatisticsTool } from "./_components/text-statistics";
 // Everyday tools
 import { RomanNumeralTool } from "./_components/roman-numeral";
 import { PercentageCalculatorTool } from "./_components/percentage-calculator";
@@ -215,6 +233,21 @@ function getToolComponent(slug: string) {
     "json-to-typescript": JsonToTypescriptTool,
     "html-to-jsx": HtmlToJsxTool,
     "color-palette": ColorPaletteTool,
+    "audio-cutter": AudioCutterTool,
+    "audio-merger": AudioMergerTool,
+    "audio-converter": AudioConverterTool,
+    "ssl-checker": SslCheckerTool,
+    "dns-lookup": DnsLookupTool,
+    "whois-lookup": WhoisLookupTool,
+    "svg-to-png": SvgToPngTool,
+    "days-between": DaysBetweenTool,
+    "password-strength": PasswordStrengthTool,
+    "barcode-generator": BarcodeGeneratorTool,
+    "aspect-ratio-calculator": AspectRatioCalculatorTool,
+    "qr-reader": QrReaderTool,
+    "color-blindness-simulator": ColorBlindnessSimulatorTool,
+    "online-notepad": OnlineNotepadTool,
+    "text-statistics": TextStatisticsTool,
   };
   return components[slug];
 }
