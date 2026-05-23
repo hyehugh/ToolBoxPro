@@ -160,7 +160,7 @@ The process is straightforward: the input bytes are concatenated into a single b
 | Key Requirement | None (anyone can decode) | None (anyone can decode) |
 | Use Case | Transmission over text-safe protocols | Restoring original binary data |
 
-You can experiment with encoding and decoding any string or file at [/tools/base64](/tools/base64) — a handy online tool that shows both the encode and decode results side by side.
+You can experiment with encoding and decoding any string or file at [/tools/base64-encode-decode](/tools/base64-encode-decode) — a handy online tool that shows both the encode and decode results side by side.
 
 ### Encoding vs. Encryption: A Critical Distinction
 
@@ -199,7 +199,7 @@ Base64 has clear strengths and equally clear limitations. Here's a pragmatic gui
 - **File uploads over modern APIs.** Most REST APIs and file upload endpoints support raw binary (multipart/form-data). Base64-encoding a file just adds overhead for no benefit.
 - **When you need the smallest possible output.** Consider Base32 or Base62 if character set constraints exist, or hexadecimal for human readability (at 2x overhead vs Base64's 1.33x).
 
-The practical takeaway: Base64 is a data transport tool, not a security one. Use it when you need to fit binary data into a text pipeline, and skip it otherwise. Try encoding your own test data at [/tools/base64](/tools/base64) to see the overhead in action and get comfortable with the output format.
+The practical takeaway: Base64 is a data transport tool, not a security one. Use it when you need to fit binary data into a text pipeline, and skip it otherwise. Try encoding your own test data at [/tools/base64-encode-decode](/tools/base64-encode-decode) to see the overhead in action and get comfortable with the output format.
 
 ### Common Pitfalls and Best Practices
 
@@ -228,7 +228,7 @@ A: Yes, but it's usually pointless. The Base64 alphabet uses only 6 bits per cha
 A: Base64URL replaces + with - and / with _, and omits padding characters (=). This makes it safe for use in URLs and filenames without percent-encoding. Many modern APIs use Base64URL for tokens.
 
 **Q: How do I decode Base64 data in my browser?**  
-A: You can use the built-in \`atob()\` function in JavaScript, or visit [/tools/base64](/tools/base64) to decode any Base64 string instantly without writing code.
+A: You can use the built-in \`atob()\` function in JavaScript, or visit [/tools/base64-encode-decode](/tools/base64-encode-decode) to decode any Base64 string instantly without writing code.
 
 **Q: Is Base64 the most efficient binary-to-text encoding?**  
 A: No. Base64's efficiency is 75% (6 bits per byte). Base85 (Ascii85) achieves 80% efficiency, and Base122 reaches 87.5%. Base64 is the most widely supported and standardised, making it the default choice for interoperability.
@@ -457,7 +457,7 @@ The fundamental distinction in image compression comes down to one question: can
 | Typical file size | Medium | Small |
 | Re-editable? | Yes, no generational loss | No, quality degrades on re-save |
 
-You can test the visual difference between compression levels yourself at [/tools/image-compress](/tools/image-compress) — upload any image and see side-by-side comparisons at different quality settings.
+You can test the visual difference between compression levels yourself at [/tools/image-compressor](/tools/image-compressor) — upload any image and see side-by-side comparisons at different quality settings.
 
 ### Image Format Guide: Choosing the Right Tool for the Job
 
@@ -485,7 +485,7 @@ Theory is useful, but here's what actually works in production. These techniques
 
 **1. Choose the right format first.** This single decision has more impact than any other optimization. Run a library like \`squoosh\` or \`sharp\` to compare JPEG, WebP, and AVIF outputs for each image at equivalent visual quality. For a hero image on a product page, the difference between an unoptimized PNG (800 KB) and an optimized WebP (45 KB) is a 17x reduction.
 
-**2. Set optimal quality levels.** Don't blindly use "80" for JPEG quality or "100" for everything. For JPEG, quality 70-80 is typically visually lossless for photographs. For WebP, quality 75-85 is the sweet spot. Anything above 95 is usually wasteful. Use a tool like [/tools/image-compress](/tools/image-compress) to find the lowest quality setting where you can't see the difference.
+**2. Set optimal quality levels.** Don't blindly use "80" for JPEG quality or "100" for everything. For JPEG, quality 70-80 is typically visually lossless for photographs. For WebP, quality 75-85 is the sweet spot. Anything above 95 is usually wasteful. Use a tool like [/tools/image-compressor](/tools/image-compressor) to find the lowest quality setting where you can't see the difference.
 
 **3. Resize to display dimensions.** Serving a 4000×3000 pixel image for a 300×200 pixel thumbnail wastes enormous bandwidth. Always downsample images to their display size (or 2x for Retina displays). This is often more impactful than compression itself — a properly sized image can be 95% smaller than the original full-resolution version.
 
@@ -520,7 +520,7 @@ A: WebP is the safest default — excellent compression, broad browser support (
 A: Yes. Every time you save a JPEG, the image is re-compressed and loses additional data (generational loss). Always keep an uncompressed master copy (PNG, TIFF, or raw) and only generate the final JPEG at the end of your workflow.
 
 **Q: How much can I compress an image before it looks bad?**  
-A: It depends on the content. Photographs can often be compressed to 60-70% (JPEG quality 70) with no visible difference. Images with text, sharp edges, or gradients (like charts) show artifacts much sooner. Test compression levels at [/tools/image-compress](/tools/image-compress).
+A: It depends on the content. Photographs can often be compressed to 60-70% (JPEG quality 70) with no visible difference. Images with text, sharp edges, or gradients (like charts) show artifacts much sooner. Test compression levels at [/tools/image-compressor](/tools/image-compressor).
 
 **Q: Is it worth converting all old JPEGs to WebP?**  
 A: If the images are served frequently (hero images, product photos), converting to WebP typically saves 25-40% in file size. For rarely accessed images, the conversion cost may not be worth it. Prioritize images that appear above the fold and on high-traffic pages.
@@ -782,7 +782,7 @@ The encoding scheme replaces unsafe ASCII characters with a percent sign (%) fol
 | / | 47 (0x2F) | %2F | Path segments |
 | % | 37 (0x25) | %25 | Encoding the percent sign itself |
 
-You can encode or decode any string at [/tools/url-encoding](/tools/url-encoding) — a fast online tool that handles edge cases like Unicode characters and mixed encoding.
+You can encode or decode any string at [/tools/url-encoder-decoder](/tools/url-encoder-decoder) — a fast online tool that handles edge cases like Unicode characters and mixed encoding.
 
 ### Reserved Characters vs. Unreserved Characters
 
@@ -846,7 +846,7 @@ Even experienced developers run into URL encoding issues. Here are the most freq
 
 **Inconsistent encoding between client and server.** If your frontend sends data URL-encoded one way and the backend expects another (e.g., + vs %20 for spaces), requests can silently fail. Always check both ends agree on the encoding scheme.
 
-For quick debugging, use [/tools/url-encoding](/tools/url-encoding) to paste a problematic URL and see exactly how each character is encoded. You can toggle between encode and decode modes to trace where double encoding or missing encoding is occurring.
+For quick debugging, use [/tools/url-encoder-decoder](/tools/url-encoder-decoder) to paste a problematic URL and see exactly how each character is encoded. You can toggle between encode and decode modes to trace where double encoding or missing encoding is occurring.
 
 ## FAQ
 
@@ -869,7 +869,7 @@ A: Yes. URLs with readable words are preferred over encoded strings. For example
 A: The URL may be parsed incorrectly. A value containing & would be interpreted as a new parameter, a # would cut off the rest of the URL, and a space could cause the HTTP request to fail entirely. Always encode user-provided values.
 
 **Q: Can I test URL encoding without writing code?**  
-A: Absolutely. Use [/tools/url-encoding](/tools/url-encoding) to instantly encode or decode any URL string. It's a quick way to verify what your application is sending or receiving without firing up a debugger.
+A: Absolutely. Use [/tools/url-encoder-decoder](/tools/url-encoder-decoder) to instantly encode or decode any URL string. It's a quick way to verify what your application is sending or receiving without firing up a debugger.
 `,
   },
   {
@@ -3592,7 +3592,7 @@ Server doesn't send intermediate certificates. Some browsers and mobile devices 
     toolSlug: "dns-lookup",
     content: `## What is DNS?
 
-The Domain Name System (DNS) is the phonebook of the internet. When you type \`example.com\` into your browser, DNS translates that human-readable name into a machine-readable IP address like \`93.184.216.34\$.
+The Domain Name System (DNS) is the phonebook of the internet. When you type \`example.com\` into your browser, DNS translates that human-readable name into a machine-readable IP address like \`93.184.216.34\`.
 
 Without DNS, you'd need to memorize IP addresses for every website you visit. DNS works silently in the background, typically in milliseconds.
 
