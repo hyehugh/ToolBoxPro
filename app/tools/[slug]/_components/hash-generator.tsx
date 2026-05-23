@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-type HashAlgo = "SHA-256" | "SHA-384" | "SHA-512" | "MD5";
+type HashAlgo = "SHA-256" | "SHA-384" | "SHA-512";
 
 export function HashGeneratorTool() {
   const [input, setInput] = useState("");
@@ -14,35 +14,6 @@ export function HashGeneratorTool() {
   const generate = async () => {
     if (!input) return;
     setLoading(true);
-
-    // MD5 polyfill (simple implementation)
-    if (algo === "MD5") {
-      // Simple MD5 using a well-known algorithm
-      const md5 = (str: string) => {
-        const md5cycle = (x: number[], k: number[]) => {
-          let a = x[0], b = x[1], c = x[2], d = x[3];
-          // Simple MD5 rounds - using basic structure
-          const F = (x: number, y: number, z: number) => (x & y) | (~x & z);
-          const G = (x: number, y: number, z: number) => (x & z) | (y & ~z);
-          const H = (x: number, y: number, z: number) => x ^ y ^ z;
-          const I = (x: number, y: number, z: number) => y ^ (x | ~z);
-          const add32 = (a: number, b: number) => (a + b) & 0xffffffff;
-          
-          const r = (a: number, b: number, c: number, d: number, k: number, s: number, t: number, f: (x: number, y: number, z: number) => number): number => {
-            return add32((a + f(b, c, d) + k + t) << s | (a + f(b, c, d) + k + t) >>> (32 - s), b);
-          };
-          
-          // Simplified - use Web Crypto where available
-          return x;
-        };
-        return str; // Fallback
-      };
-      setOutput(md5(input));
-      setLoading(false);
-      return;
-    }
-
-    // Web Crypto API for SHA
     try {
       const encoder = new TextEncoder();
       const data = encoder.encode(input);
@@ -65,7 +36,7 @@ export function HashGeneratorTool() {
         className="w-full h-24 p-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
       />
       <div className="flex flex-wrap gap-2">
-        {(["SHA-256", "SHA-384", "SHA-512", "MD5"] as HashAlgo[]).map((a) => (
+        {(["SHA-256", "SHA-384", "SHA-512"] as HashAlgo[]).map((a) => (
           <Button key={a} variant={algo === a ? "default" : "outline"} size="sm" onClick={() => setAlgo(a)}>
             {a}
           </Button>
@@ -77,7 +48,10 @@ export function HashGeneratorTool() {
       {output && (
         <div className="space-y-2">
           <div className="p-3 rounded-md border bg-muted font-mono text-xs break-all">{output}</div>
-          <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>Copy</Button>
+          <div className="flex gap-2">
+            <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>Copy</Button>
+            <span className="text-xs text-muted-foreground self-center">{algo} · {output.length / 2} bytes</span>
+          </div>
         </div>
       )}
     </div>

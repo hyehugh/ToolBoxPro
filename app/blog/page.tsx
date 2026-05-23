@@ -3,7 +3,7 @@ import { blogPosts } from "@/lib/blog/data";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog — ToolboxPro Tips & Tutorials",
+  title: "Blog",
   description: "Learn how to use online tools effectively. Tutorials, guides, and tips for developers, designers, and everyday users.",
 };
 
