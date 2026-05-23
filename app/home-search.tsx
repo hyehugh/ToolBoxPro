@@ -34,6 +34,7 @@ export default function HomeSearch() {
         value={query}
         onChange={(e) => { setQuery(e.target.value); setShowResults(true); }}
         onFocus={() => setShowResults(true)}
+        onKeyDown={(e) => { if (e.key === "Escape") setShowResults(false); }}
         className="w-full h-12 pl-4 pr-10 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
         autoComplete="off"
       />

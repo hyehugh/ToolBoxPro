@@ -30,7 +30,7 @@ export default function HomePage() {
             <Link
               key={cat.id}
               href={`/tools?category=${cat.id}`}
-              className="flex flex-col items-center gap-2 p-6 rounded-lg border bg-card card-shadow hover:bg-accent transition-all duration-200"
+              className="flex flex-col items-center gap-2 p-6 rounded-lg border bg-card card-shadow hover:bg-accent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span className="text-3xl">{cat.icon}</span>
               <span className="font-medium text-sm text-center">{cat.name}</span>
@@ -50,7 +50,7 @@ export default function HomePage() {
             <Link
               key={tool.slug}
               href={`/tools/${tool.slug}`}
-              className="flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200"
+              className="flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span className="text-xl mt-1 font-mono">{tool.icon}</span>
               <div>
@@ -77,7 +77,7 @@ export default function HomePage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200"
+              className="p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <p className="text-xs text-muted-foreground mb-1">
                 {post.category} &middot; {post.readTime}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#faf5f0"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#grad)" opacity="0.3"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5c8f7a"/>
+      <stop offset="100%" stop-color="#f5ece4"/>
+    </linearGradient>
+  </defs>
+  <rect x="60" y="60" width="180" height="180" rx="24" fill="#5c8f7a"/>
+  <text x="150" y="188" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="96" font-weight="bold">T</text>
+  <text x="280" y="150" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#2c2420">ToolboxPro</text>
+  <text x="280" y="210" font-family="Arial, sans-serif" font-size="28" fill="#8c7c70">100+ Free Online Tools. Privacy First.</text>
+  <text x="280" y="260" font-family="Arial, sans-serif" font-size="22" fill="#8c7c70">Format JSON · Compress Images · Merge PDFs · QR Codes · More</text>
+  <!-- Decorative dots -->
+  <circle cx="1050" cy="480" r="60" fill="#5c8f7a" opacity="0.15"/>
+  <circle cx="950" cy="140" r="40" fill="#5c8f7a" opacity="0.1"/>
+  <circle cx="1120" cy="200" r="25" fill="#5c8f7a" opacity="0.08"/>
+</svg>

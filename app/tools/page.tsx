@@ -1,5 +1,6 @@
-import { tools, categories, getToolsByCategory } from "@/lib/tools/data";
-import Link from "next/link";
+import { tools, categories } from "@/lib/tools/data";
+import { Suspense } from "react";
+import ToolsFilter from "./tools-filter";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,79 +8,27 @@ export const metadata: Metadata = {
   description: "Browse all free online tools: developer tools, PDF tools, image tools, text tools, and conversion tools.",
 };
 
-interface Props {
-  searchParams: Promise<{ category?: string }>;
-}
-
-export default async function ToolsPage({ searchParams }: Props) {
-  const { category } = await searchParams;
-  const selectedCategory = category || null;
-  const filteredTools = selectedCategory
-    ? getToolsByCategory(selectedCategory)
-    : tools;
-
+export default function ToolsPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="text-3xl font-bold mb-2">
-        {selectedCategory
-          ? `${categories.find((c) => c.id === selectedCategory)?.name || "All"}`
-          : "All Tools"}
-      </h1>
+      <h1 className="text-3xl font-bold mb-2">All Tools</h1>
       <p className="text-muted-foreground mb-8">
-        {filteredTools.length} free online tools. No signup required.
+        {tools.length} free online tools. No signup required.
       </p>
 
-      {/* Category filter */}
-      <div className="flex flex-wrap gap-2 mb-8">
-        <Link
-          href="/tools"
-          className={`px-4 py-1.5 rounded-full text-sm border transition-colors ${
-            !selectedCategory
-              ? "bg-primary text-primary-foreground border-primary"
-              : "bg-background border-input hover:bg-accent"
-          }`}
-        >
-          All
-        </Link>
-        {categories.map((cat) => (
-          <Link
-            key={cat.id}
-            href={`/tools?category=${cat.id}`}
-            className={`px-4 py-1.5 rounded-full text-sm border transition-colors ${
-              selectedCategory === cat.id
-                ? "bg-primary text-primary-foreground border-primary"
-                : "bg-background border-input hover:bg-accent"
-            }`}
-          >
-            {cat.name}
-          </Link>
-        ))}
-      </div>
+      <Suspense fallback={<ToolsGridSkeleton />}>
+        <ToolsFilter tools={tools} categories={categories} />
+      </Suspense>
+    </div>
+  );
+}
 
-      {/* Tool grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredTools.map((tool) => (
-          <Link
-            key={tool.slug}
-            href={`/tools/${tool.slug}`}
-            className="flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200"
-          >
-            <span className="text-xl mt-1 font-mono">{tool.icon}</span>
-            <div>
-              <h3 className="font-medium">{tool.name}</h3>
-              <p className="text-sm text-muted-foreground">
-                {tool.description}
-              </p>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {filteredTools.length === 0 && (
-        <p className="text-center text-muted-foreground py-12">
-          No tools found in this category.
-        </p>
-      )}
+function ToolsGridSkeleton() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div key={i} className="h-24 rounded-lg bg-muted animate-pulse" />
+      ))}
     </div>
   );
 }

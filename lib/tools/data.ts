@@ -7,6 +7,12 @@ export interface Tool {
   searchKeywords: string;
 }
 
+export interface Category {
+  id: string;
+  name: string;
+  icon: string;
+}
+
 export const tools: Tool[] = [
   // === Developer Tools (10) ===
   {
