@@ -16,7 +16,7 @@ export default function BlogPage() {
       </p>
       <div className="space-y-6">
         {blogPosts.map((post) => (
-          <article key={post.slug} className="p-6 rounded-lg border bg-card hover:bg-accent transition-colors">
+          <article key={post.slug} className="p-6 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200">
             <Link href={`/blog/${post.slug}`} className="block">
               <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
                 <span>{post.category}</span>

@@ -3,48 +3,48 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background: #ffffff;
-  --color-foreground: #0f172a;
+  --color-background: #faf5f0;
+  --color-foreground: #2c2420;
   --color-card: #ffffff;
-  --color-card-foreground: #0f172a;
+  --color-card-foreground: #2c2420;
   --color-popover: #ffffff;
-  --color-popover-foreground: #0f172a;
-  --color-primary: #2563eb;
+  --color-popover-foreground: #2c2420;
+  --color-primary: #5c8f7a;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #f1f5f9;
-  --color-secondary-foreground: #0f172a;
-  --color-muted: #f1f5f9;
-  --color-muted-foreground: #64748b;
-  --color-accent: #f1f5f9;
-  --color-accent-foreground: #0f172a;
-  --color-destructive: #ef4444;
+  --color-secondary: #f5ece4;
+  --color-secondary-foreground: #2c2420;
+  --color-muted: #f5ece4;
+  --color-muted-foreground: #8c7c70;
+  --color-accent: #efe4da;
+  --color-accent-foreground: #2c2420;
+  --color-destructive: #c95e5e;
   --color-destructive-foreground: #ffffff;
-  --color-border: #e2e8f0;
-  --color-input: #e2e8f0;
-  --color-ring: #2563eb;
-  --radius: 0.5rem;
+  --color-border: #e0d4c8;
+  --color-input: #e0d4c8;
+  --color-ring: #5c8f7a;
+  --radius: 0.75rem;
 }
 
 .dark {
-  --color-background: #0f172a;
-  --color-foreground: #f1f5f9;
-  --color-card: #1e293b;
-  --color-card-foreground: #f1f5f9;
-  --color-popover: #1e293b;
-  --color-popover-foreground: #f1f5f9;
-  --color-primary: #3b82f6;
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #1e293b;
-  --color-secondary-foreground: #f1f5f9;
-  --color-muted: #1e293b;
-  --color-muted-foreground: #94a3b8;
-  --color-accent: #1e293b;
-  --color-accent-foreground: #f1f5f9;
-  --color-destructive: #f87171;
-  --color-destructive-foreground: #ffffff;
-  --color-border: #334155;
-  --color-input: #334155;
-  --color-ring: #3b82f6;
+  --color-background: #1c1816;
+  --color-foreground: #f0e8e0;
+  --color-card: #2a2422;
+  --color-card-foreground: #f0e8e0;
+  --color-popover: #2a2422;
+  --color-popover-foreground: #f0e8e0;
+  --color-primary: #7eab95;
+  --color-primary-foreground: #1c1816;
+  --color-secondary: #332c28;
+  --color-secondary-foreground: #f0e8e0;
+  --color-muted: #332c28;
+  --color-muted-foreground: #9a8a7e;
+  --color-accent: #332c28;
+  --color-accent-foreground: #f0e8e0;
+  --color-destructive: #d47e7e;
+  --color-destructive-foreground: #1c1816;
+  --color-border: #3d3530;
+  --color-input: #3d3530;
+  --color-ring: #7eab95;
 }
 
 @layer base {
@@ -54,6 +54,20 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Soft card shadow (Halo Product style) */
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(44, 36, 32, 0.06), 0 4px 12px rgba(44, 36, 32, 0.04);
+}
+.card-shadow-hover:hover {
+  box-shadow: 0 4px 12px rgba(44, 36, 32, 0.08), 0 8px 24px rgba(44, 36, 32, 0.06);
+}
+.dark .card-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.dark .card-shadow-hover:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* Custom scrollbar */

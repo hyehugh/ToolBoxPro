@@ -291,7 +291,7 @@ export default async function ToolPage({ params }: Props) {
               <Link
                 key={t.slug}
                 href={`/tools/${t.slug}`}
-                className="p-3 rounded-lg border bg-card hover:bg-accent transition-colors text-sm"
+                className="p-3 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 text-sm"
               >
                 <span className="font-medium">{t.name}</span>
               </Link>

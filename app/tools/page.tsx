@@ -62,7 +62,7 @@ export default async function ToolsPage({ searchParams }: Props) {
           <Link
             key={tool.slug}
             href={`/tools/${tool.slug}`}
-            className="flex items-start gap-4 p-4 rounded-lg border bg-card hover:bg-accent transition-colors"
+            className="flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200"
           >
             <span className="text-xl mt-1 font-mono">{tool.icon}</span>
             <div>

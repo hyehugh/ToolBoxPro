@@ -11,7 +11,7 @@ interface ToolWidgetProps {
 
 export function ToolWidget({ title, children, className }: ToolWidgetProps) {
   return (
-    <div className={cn("rounded-lg border bg-card p-6", className)}>
+    <div className={cn("rounded-lg border bg-card p-6 card-shadow", className)}>
       <div className="flex items-center gap-2 mb-4">
         <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

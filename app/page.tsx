@@ -7,7 +7,9 @@ export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl px-4">
       {/* Hero */}
-      <section className="py-16 md:py-24 text-center">
+      <section className="py-16 md:py-24 text-center relative">
+        {/* Warm ambient background */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] to-transparent rounded-3xl mx-4" />
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
           Free Online Tools.
           <br />
@@ -28,7 +30,7 @@ export default function HomePage() {
             <Link
               key={cat.id}
               href={`/tools?category=${cat.id}`}
-              className="flex flex-col items-center gap-2 p-6 rounded-lg border bg-card hover:bg-accent transition-colors"
+              className="flex flex-col items-center gap-2 p-6 rounded-lg border bg-card card-shadow hover:bg-accent transition-all duration-200"
             >
               <span className="text-3xl">{cat.icon}</span>
               <span className="font-medium text-sm text-center">{cat.name}</span>
@@ -48,7 +50,7 @@ export default function HomePage() {
             <Link
               key={tool.slug}
               href={`/tools/${tool.slug}`}
-              className="flex items-start gap-4 p-4 rounded-lg border bg-card hover:bg-accent transition-colors"
+              className="flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200"
             >
               <span className="text-xl mt-1 font-mono">{tool.icon}</span>
               <div>
@@ -75,7 +77,7 @@ export default function HomePage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="p-4 rounded-lg border bg-card hover:bg-accent transition-colors"
+              className="p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200"
             >
               <p className="text-xs text-muted-foreground mb-1">
                 {post.category} &middot; {post.readTime}
@@ -101,7 +103,7 @@ export default function HomePage() {
           ].map((item) => (
             <div
               key={item.title}
-              className="text-center p-6 rounded-lg border bg-card"
+              className="text-center p-6 rounded-lg border bg-card card-shadow"
             >
               <h3 className="font-bold text-lg">{item.title}</h3>
               <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
