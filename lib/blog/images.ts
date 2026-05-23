@@ -15,6 +15,7 @@ export const blogImages: BlogImage[] = [
   { blog: "word-counter-character-count", toolSlug: "word-counter", image: "/blog/word-counter.png" },
   { blog: "url-encoding-101", toolSlug: "url-encoder-decoder", image: "/blog/url-encoder-decoder.png" },
   { blog: "best-free-developer-tools-2026", toolSlug: "image-converter", image: "/blog/image-converter.png" },
+  { blog: "image-format-guide-jpg-png-webp", toolSlug: "image-converter", image: "/blog/image-converter.png" },
   { blog: "uuid-generator", toolSlug: "uuid-generator", image: "/blog/uuid-generator.png" },
   { blog: "timestamp-converter", toolSlug: "timestamp-converter", image: "/blog/timestamp-converter.png" },
   { blog: "number-base-converter", toolSlug: "number-base-converter", image: "/blog/number-base-converter.png" },

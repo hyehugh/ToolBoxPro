@@ -21,7 +21,7 @@ export default function BlogPage() {
           return (
             <article key={post.slug} className="rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 overflow-hidden">
               <Link href={`/blog/${post.slug}`} className="block">
-                {img && (
+                {img ? (
                   <div className="aspect-video bg-muted overflow-hidden">
                     <img
                       src={img}
@@ -29,6 +29,10 @@ export default function BlogPage() {
                       className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-300"
                       loading="lazy"
                     />
+                  </div>
+                ) : (
+                  <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary flex items-center justify-center">
+                    <span className="text-4xl opacity-30">📝</span>
                   </div>
                 )}
                 <div className="p-4">
