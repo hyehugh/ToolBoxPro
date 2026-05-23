@@ -11,26 +11,21 @@ const cardHover =
 
 export default function HomePage() {
   return (
-    <div>
-      {/* Hero — full-width background */}
-      <section className="py-16 md:py-24 text-center relative">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] dark:from-[#2a2422] to-transparent" />
-        <div className="mx-auto max-w-6xl px-4">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Free Online Tools.
-            <br />
-            <span className="text-primary">Privacy First.</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-            {tools.length}+ tools for developers, designers, and everyday tasks.
-            No signup. No upload. Files stay on your device.
-          </p>
-          <HomeSearch />
-        </div>
+    <div className="mx-auto max-w-6xl px-4">
+      {/* Hero */}
+      <section className="relative py-16 md:py-20 mb-8 text-center">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] dark:from-[#2a2422] to-transparent rounded-3xl" />
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          Free Online Tools.
+          <br />
+          <span className="text-primary">Privacy First.</span>
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
+          {tools.length}+ tools for developers, designers, and everyday tasks.
+          No signup. No upload. Files stay on your device.
+        </p>
+        <HomeSearch />
       </section>
-
-      {/* Content — constrained width */}
-      <div className="mx-auto max-w-6xl px-4">
 
       {/* Trending tools */}
       <PopularTools />
@@ -154,7 +149,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-    </div>
     </div>
   );
 }
