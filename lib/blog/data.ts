@@ -64,6 +64,15 @@ Always validate your JSON before committing. Our tool has a dedicated **Validate
 | Extra bracket | \`{"a": 1}}\` | Remove the extra closing bracket |
 | Single quotes | \`{'a': 1}\` | Use double quotes for JSON strings |
 
+
+### Why Format JSON?
+
+Formatted JSON lets you spot errors instantly, understand nested API responses, and share clean code in documentation. Minified JSON is unreadable -- formatting adds indentation and line breaks.
+
+### JSON vs XML vs YAML
+
+JSON uses {} and [] syntax, is browser-native, and has small file size. XML uses verbose tags and supports comments but is larger. YAML uses indentation and is great for config files but needs a parser in browsers.
+
 ## FAQ
 
 **Is online JSON formatting safe?** Yes — ToolboxPro processes everything in your browser. Your data never leaves your device.
@@ -126,6 +135,36 @@ btoa("Hello World"); // "SGVsbG8gV29ybGQ="
 // Decode
 atob("SGVsbG8gV29ybGQ="); // "Hello World"
 \`\`\`
+
+
+### How Base64 Works
+
+Base64 splits binary data into 6-bit groups and maps each to a printable character. The result is a text string that can safely travel through any text-based system.
+
+### Encoding vs Encryption
+
+Encoding is NOT encryption. Anyone can decode Base64 instantly. Use encryption (AES, RSA) when you need security, not Base64.
+
+### The 33% Size Cost
+
+| Original | Base64 | Overhead |
+|----------|--------|----------|
+| 100 KB | ~133 KB | ~33 KB |
+| 1 MB | ~1.33 MB | ~333 KB |
+| 10 MB | ~13.3 MB | ~3.3 MB |
+
+Only use Base64 for small data. For large files, find alternative transmission methods.
+
+
+### When to Use Base64
+
+Base64 shows up everywhere in web development. Email attachments use it in MIME encoding. Data URIs embed small images directly in HTML. API authentication tokens often use Base64 encoding. JWT tokens use a URL-safe variant called Base64URL.
+
+### Base64 in Practice
+
+In JavaScript, use btoa() to encode and atob() to decode strings. For Unicode text, first encode to UTF-8 bytes, then apply Base64. Our Base64 Encoder/Decoder handles all encoding automatically including Unicode support.
+
+
 
 ## FAQ
 
@@ -197,6 +236,23 @@ https?://[\\\\w./-]+
 \\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}
 \`\`\`
 
+
+### Common Patterns
+
+| Pattern | Matches |
+|---------|---------|
+| \\d{3}-\\d{4} | Phone: 555-1234 |
+| \\w+@\\w+\\.\\w+ | Email: user@site.com |
+| https?://\\S+ | URL: https://example.com |
+
+### Regex Flags
+
+g = global (find all matches), i = case-insensitive, m = multiline mode
+
+### Greedy vs Lazy
+
+Quantifiers like + and * are greedy by default (match as much as possible). Adding ? makes them lazy (match the shortest possible string).
+
 ## FAQ
 
 **What do the flags (g, i, m) mean?** \`g\` = global (find all matches), \`i\` = case-insensitive, \`m\` = multiline mode.
@@ -259,6 +315,48 @@ HEX to RGB:
 - Convert each from hex to decimal: 255, 87, 51
 - Result: \`rgb(255, 87, 51)\`
 
+
+### Quick Color Reference
+
+| Color | HEX | RGB | HSL |
+|-------|-----|-----|-----|
+| Red | #FF0000 | rgb(255,0,0) | hsl(0,100%,50%) |
+| Green | #00FF00 | rgb(0,255,0) | hsl(120,100%,50%) |
+| Blue | #0000FF | rgb(0,0,255) | hsl(240,100%,50%) |
+| White | #FFFFFF | rgb(255,255,255) | hsl(0,0%,100%) |
+| Black | #000000 | rgb(0,0,0) | hsl(0,0%,0%) |
+
+### When to Use Each Format
+
+HEX is best for CSS stylesheets. RGB is ideal for canvas operations and image processing. HSL shines for color manipulation and UI theming because you can adjust lightness independently.
+
+### Why Color Conversion Matters
+
+Web developers and designers constantly convert between color formats. CSS accepts HEX, RGB, and HSL values, but design tools like Figma and Photoshop may export in different formats. Understanding conversion ensures colors remain consistent across your workflow.
+
+### The Relationship Between Formats
+
+HEX, RGB, and HSL all describe the same colors in different ways. HEX uses hexadecimal pairs (00-FF) for each channel. RGB uses decimal values (0-255). HSL separates color into hue (0-360 degrees), saturation (0-100%), and lightness (0-100%), making it intuitive for creating color schemes.
+
+### Quick Conversion Reference
+
+| Color Name | HEX | RGB | HSL |
+|-----------|-----|-----|-----|
+| Red | #FF0000 | rgb(255,0,0) | hsl(0,100%,50%) |
+| Orange | #FFA500 | rgb(255,165,0) | hsl(39,100%,50%) |
+| Yellow | #FFFF00 | rgb(255,255,0) | hsl(60,100%,50%) |
+| Green | #008000 | rgb(0,128,0) | hsl(120,100%,25%) |
+| Blue | #0000FF | rgb(0,0,255) | hsl(240,100%,50%) |
+| Purple | #800080 | rgb(128,0,128) | hsl(300,100%,25%) |
+| White | #FFFFFF | rgb(255,255,255) | hsl(0,0%,100%) |
+| Black | #000000 | rgb(0,0,0) | hsl(0,0%,0%) |
+
+### Alpha Channels
+
+All formats support transparency through alpha channels: RGBA (rgb(255,0,0,0.5)), HEX with 8 digits (#FF000080), and HSLA (hsla(0,100%,50%,0.5)).
+
+
+
 ## FAQ
 
 **What's the difference between HEX and RGB?** They represent the same colors differently. HEX is base-16; RGB is decimal. Both describe amounts of red, green, and blue.
@@ -310,6 +408,37 @@ With most images, you can reduce file size by 80% while retaining 95% of visual 
 3. **Remove EXIF data** — metadata adds kilobytes with no visual benefit
 4. **Batch process** — compress multiple images at once
 
+
+### Lossy vs Lossless
+
+Lossless preserves 100% quality with 10-40% size reduction (best for screenshots, logos). Lossy reduces size by 50-90% with some quality loss (best for photos, web graphics).
+
+### Format Guide
+
+| Use Case | Best Format |
+|----------|-------------|
+| Website photos | WebP |
+| Print photos | JPEG (max quality) |
+| Logo with text | PNG |
+| Screenshots | PNG |
+| App icons | PNG |
+| Email attachments | JPEG
+
+
+### Understanding Image Compression Algorithms
+
+Image compression works by removing redundant data while preserving visual quality. Lossless compression (PNG, GIF) eliminates redundant pixel data without changing the image at all. Lossy compression (JPEG, WebP with quality loss) removes details the human eye is less sensitive to, achieving much smaller file sizes.
+
+### Choosing the Right Format
+
+JPEG remains the universal standard for photographs due to its broad compatibility. PNG is essential when you need transparency or pixel-perfect reproduction of text and logos. WebP offers the best of both worlds with 25-35% smaller files than JPEG and support for transparency and animation.
+
+### Batch Processing Tips
+
+When compressing multiple images, process them one at a time for best results. Start with the largest images first — they offer the biggest size savings. Compare compressed and original side by side to ensure quality is acceptable.
+
+
+
 ## FAQ
 
 **Does compression affect image quality?** Lossy compression reduces quality proportionally to the compression level. At 80% quality, the difference is barely visible but file size drops dramatically.
@@ -349,6 +478,39 @@ Most PDF tools limit you to 2-3 merges per day or add watermarks. Not here.
 - **No signup** — just use it
 - **Privacy first** — files are processed in your browser using WASM
 - **Drag to reorder** — arrange pages in any order before merging
+
+
+### Why Merge PDFs?
+
+- Combine scanned documents into one file
+- Merge monthly invoices for accounting
+- Join report sections with supporting docs
+- Combine e-book chapters or portfolio pieces
+
+### Tips for a Smooth Merge
+
+1. Check page order before merging
+2. Similar page sizes work best
+3. For files over 50MB, try merging in smaller batches
+
+### Common PDF Merging Scenarios
+
+Professionals merge PDFs in many situations: combining scanned contract pages into a single document, joining monthly invoices for tax filing, assembling presentation slides with supporting handouts, and creating e-book compilations from individual chapters.
+
+### What Gets Preserved During Merging
+
+Our PDF merger preserves all original content: fonts, images, vector graphics, page sizes, and internal links. You can merge PDFs with different page orientations (portrait and landscape) without issues.
+
+### Step-by-Step Guide
+
+1. Open our free online PDF Merger
+2. Upload your PDF files in the desired order
+3. Click "Merge" and wait a few seconds
+4. Download your combined PDF document
+
+All processing happens in your browser. Your documents never leave your device.
+
+
 
 ## FAQ
 
@@ -398,6 +560,38 @@ QR codes are everywhere — restaurant menus, business cards, product packaging,
 - **Error correction**: Higher levels allow logos in the center
 - **Size**: 512px is best for print, 256px for digital
 
+
+### QR Code Types at a Glance
+
+| Type | Best For | Max Data |
+|------|----------|----------|
+| URL | Website links | 4,296 chars |
+| Text | Short messages | 4,296 chars |
+| Email | Pre-filled email | 4,296 chars |
+| WiFi | Network login | Limited |
+| vCard | Contact sharing | Limited |
+
+### How to Scan
+
+iPhone: Open Camera app and point at the code. Android: Use Google Lens. Desktop: Use our QR Code Reader tool.
+
+### What Are QR Codes?
+
+QR (Quick Response) codes store information in a grid of black and white squares. Unlike traditional barcodes that store data in one dimension, QR codes use both horizontal and vertical patterns, allowing them to hold significantly more data.
+
+### QR Code Error Correction
+
+QR codes include error correction that allows them to be read even when partially damaged or obscured. There are four levels: L (7% recovery), M (15%), Q (25%), and H (30%). Higher correction levels create denser codes but improve scanning reliability.
+
+### Best Practices for QR Codes
+
+- Use high contrast colors (dark on light background)
+- Maintain a quiet zone (white border) around the code
+- Test with multiple scanning apps before printing
+- For business cards, use vCard format for auto-save
+
+
+
 ## FAQ
 
 **Can I add a logo to a QR code?** Yes — use higher error correction (H or Q) to make room for a center logo without breaking the scan.
@@ -434,6 +628,28 @@ Every platform has limits. Twitter: 280 characters. SEO meta descriptions: 160 c
 2. Type or paste your text
 3. See real-time statistics as you type
 4. No button to click — it updates instantly
+
+
+### Why These Metrics Matter
+
+Word count is essential for writers meeting article length requirements, students adhering to essay limits, and professionals crafting concise reports. Character count matters for social media platforms (Twitter's 280 chars, SMS's 160 chars). Reading time helps readers know how long an article will take to consume.
+
+### Tips for Staying Within Limits
+
+- Twitter/X: Keep tweets under 280 characters
+- SMS messages: 160 characters per segment
+- SEO meta descriptions: 150-160 characters
+- Blog posts: 1,500-2,500 words for SEO ranking
+
+### Word Count in Professional Writing
+
+Professional writers, editors, and content managers rely on word count statistics daily. Blog posts typically need 1,500-2,500 words for SEO ranking. Academic essays have strict word limits. Social media platforms enforce character caps. Knowing your word count helps you tailor content to each platform's requirements.
+
+### Beyond Basic Word Count
+
+Advanced text analysis goes beyond simple word counting. Our tool also tracks unique words, average word length, and readability scores. These metrics help you spot overused words, improve sentence variety, and ensure your writing is accessible to your target audience.
+
+
 
 ## FAQ
 
@@ -503,6 +719,38 @@ encodeURIComponent("cats & dogs");  // "cats%20%26%20dogs"
 decodeURIComponent("cats%20%26%20dogs");  // "cats & dogs"
 \`\`\`
 
+
+### Common Encoded Characters
+
+| Character | Encoded | Why |
+|-----------|---------|-----|
+| Space | %20 | Not allowed in URLs |
+| # | %23 | Fragment identifier |
+| & | %26 | Query separator |
+| = | %3D | Key-value separator |
+| / | %2F | Path separator |
+
+### URL Encoding in Code
+
+JavaScript: encodeURIComponent() -- Python: urllib.parse.quote() -- PHP: urlencode()
+
+Common mistake: double encoding (%2520 instead of %20). Never encode an already encoded string.
+
+
+### Why URL Encoding Exists
+
+URLs have strict character rules defined in RFC 3986. Only letters, digits, and a few special characters (-._~) are allowed unencoded. All other characters must be percent-encoded. This ensures URLs work consistently across browsers, servers, and network infrastructure worldwide.
+
+### Real-World Examples
+
+Query parameters in API calls often contain spaces, special characters, or Unicode text that must be encoded. For example, a search for "coffee & tea" becomes "coffee%20%26%20tea" in a URL. Our URL Encoder/Decoder handles all these cases automatically.
+
+### Common Pitfalls
+
+The most common mistake is double-encoding. If a URL already has encoded characters (%20 for spaces) and you encode it again, you get %2520. Always check whether input has already been encoded before applying another round of encoding.
+
+
+
 ## FAQ
 
 **When should I use encodeURI vs encodeURIComponent?** Use \`encodeURIComponent\` for query parameter values. Use \`encodeURI\` for full URLs (it doesn't encode \`/\`, \`?\`, \`#\`, \`&\`).
@@ -567,7 +815,40 @@ Writing documentation? A [word counter](/tools/word-counter) tracks word count, 
 - **No installation** — works in any browser
 - **Always updated** — no version management
 - **Cross-platform** — Mac, Windows, Linux, mobile
-- **Privacy first** — our tools process data on your device`,
+- **Privacy first** — our tools process data on your device
+
+### What Makes a Great Developer Tool?
+
+The best tools share three qualities: they solve a real problem, work instantly without setup, and respect your privacy.
+
+### Tool Categories
+
+Our roundup covers JSON formatting, regex testing, Base64 encoding, color conversion, URL encoding, image compression, image conversion, PDF merging, QR generation, word counting, and more.
+
+Each tool processes data entirely in your browser -- nothing is uploaded to any server.
+
+
+### What Makes a Developer Tool Essential
+
+The best developer tools share three qualities: they solve a real, recurring problem; they work instantly without downloading or installing; and they respect the user's privacy and data.
+
+### Our Top Picks at a Glance
+
+| Tool | Best For | Key Feature |
+|------|----------|-------------|
+| JSON Formatter | Debugging APIs | Tree view + validation |
+| Regex Tester | Pattern matching | Real-time highlighting |
+| Base64 Encoder | Data encoding | File and text support |
+| Color Converter | Design work | HEX/RGB/HSL |
+| Image Compressor | Web performance | Quality slider |
+| PDF Merger | Document management | Combine multiple files |
+| QR Generator | Marketing | WiFi, vCard, URL modes |
+| Word Counter | Writing | Reading time estimate |
+
+All tools process data in your browser. Nothing is uploaded to any server.
+
+
+`,
   },
   {
     slug: "image-format-guide-jpg-png-webp",
@@ -629,6 +910,36 @@ Choosing the wrong image format costs you in file size, quality, or compatibilit
 ## How to Convert
 
 Use our free [Image Converter](/tools/image-converter) to convert between any formats instantly. Supports batch conversion — upload multiple files, choose your target format, download them all.
+
+
+### Quick Format Comparison
+
+JPEG: Lossy, no transparency, universal support, best for photos. PNG: Lossless, supports transparency, best for graphics and UI. WebP: Supports both lossy and lossless, smaller files, 96% browser support. GIF: Limited to 256 colors, supports animation.
+
+### WebP vs AVIF
+
+WebP is 25-35% smaller than JPEG with 96% browser support. AVIF is 50% smaller but has ~80% support and slower encoding.
+
+### Best Format by Use Case
+
+Photos: WebP or JPEG. Logos/screenshots: PNG. Animated: WebP or GIF. Print: JPEG (max quality).
+
+
+### Detailed Format Breakdown
+
+| Format | Compression | Transparency | Animation | Colors | Best For |
+|--------|------------|-------------|-----------|--------|----------|
+| JPEG | Lossy | No | No | 16.7M | Photos, complex images |
+| PNG | Lossless | Yes | No | 16.7M | Screenshots, logos, UI |
+| WebP | Both | Yes | Yes | 16.7M | Web images |
+| GIF | Lossless | 1-bit | Yes | 256 | Simple animations |
+| AVIF | Both | Yes | Yes | 12-bit | Next-gen web images |
+
+### Migration Guide
+
+If you are still using JPEG and PNG for everything, consider switching to WebP for web use. WebP files are 25-35% smaller than JPEG at equivalent quality and support transparency like PNG. Most modern CMS platforms and image CDNs support automatic WebP conversion.
+
+
 
 ## FAQ
 
