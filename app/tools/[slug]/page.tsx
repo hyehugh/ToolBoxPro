@@ -3,16 +3,16 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ToolWidget } from "@/components/tools/tool-widget";
-import { JsonFormatterTool } from "./json-formatter";
-import { Base64Tool } from "./base64";
-import { RegexTesterTool } from "./regex-tester";
-import { ColorConverterTool } from "./color-converter";
-import { UrlEncoderTool } from "./url-encoder";
-import { ImageCompressorTool } from "./image-compressor";
-import { ImageConverterTool } from "./image-converter";
-import { PdfMergerTool } from "./pdf-merger";
-import { QrGeneratorTool } from "./qr-generator";
-import { WordCounterTool } from "./word-counter";
+import { JsonFormatterTool } from "./_components/json-formatter";
+import { Base64Tool } from "./_components/base64";
+import { RegexTesterTool } from "./_components/regex-tester";
+import { ColorConverterTool } from "./_components/color-converter";
+import { UrlEncoderTool } from "./_components/url-encoder";
+import { ImageCompressorTool } from "./_components/image-compressor";
+import { ImageConverterTool } from "./_components/image-converter";
+import { PdfMergerTool } from "./_components/pdf-merger";
+import { QrGeneratorTool } from "./_components/qr-generator";
+import { WordCounterTool } from "./_components/word-counter";
 
 interface Props {
   params: Promise<{ slug: string }>;
