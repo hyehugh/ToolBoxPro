@@ -173,7 +173,7 @@ export function ColorPickerTool() {
           <p className="text-xs text-muted-foreground">
             Click a pixel on the image above
           </p>
-        </>
+        </div>
       )}
 
       {color && (

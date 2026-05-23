@@ -52,16 +52,41 @@ export function UnicodeDetectorTool() {
 
   const handleDetect = () => {
     const results: CharInfo[] = [];
-    // Use Array.from to properly handle surrogate pairs
     for (const ch of Array.from(input)) {
       const code = ch.codePointAt(0)!;
-      const cat = getCategory(
-        ch.normalize ? ch : ch
-      );
+      const cat = (() => {
+        if (code >= 0x4E00 && code <= 0x9FFF) return "CJK Ideograph";
+        if (code >= 0x3040 && code <= 0x309F) return "Hiragana";
+        if (code >= 0x30A0 && code <= 0x30FF) return "Katakana";
+        if (code >= 0xAC00 && code <= 0xD7AF) return "Hangul";
+        if (code >= 0x0600 && code <= 0x06FF) return "Arabic";
+        if (code >= 0x0400 && code <= 0x04FF) return "Cyrillic";
+        if (code >= 0x1F600 && code <= 0x1F64F) return "Emoticon";
+        if (code >= 0x1F300 && code <= 0x1F5FF) return "Misc Symbol";
+        if (code >= 0x2600 && code <= 0x26FF) return "Misc Symbol";
+        if (code >= 0x2700 && code <= 0x27BF) return "Dingbat";
+        if (code >= 0x2190 && code <= 0x21FF) return "Arrow";
+        if (code >= 0x2000 && code <= 0x206F) return "General Punctuation";
+        if (code >= 0x0080 && code <= 0x00FF) return "Latin-1 Supplement";
+        if (code >= 0x0100 && code <= 0x024F) return "Latin Extended";
+        if (code >= 0x0370 && code <= 0x03FF) return "Greek";
+        if (code >= 0xFB00 && code <= 0xFB4F) return "Alphabetic Presentation";
+        if (code >= 0xFE00 && code <= 0xFE0F) return "Variation Selector";
+        if (code >= 0xFE20 && code <= 0xFE2F) return "Combining Half Marks";
+        if (code >= 0x00C0 && code <= 0x00D6) return "Latin (accented)";
+        if (code >= 0x00D8 && code <= 0x00F6) return "Latin (accented)";
+        if (code >= 0x00F8 && code <= 0x00FF) return "Latin (accented)";
+        if (code >= 0x20 && code <= 0x7E) return "Basic Latin (ASCII)";
+        if (code === 0x20) return "Space";
+        if (code === 0x09) return "Tab";
+        if (code === 0x0A) return "Line Feed";
+        if (code === 0x0D) return "Carriage Return";
+        return "Other";
+      })();
       results.push({
         char: ch,
         codepoint: `U+${code.toString(16).toUpperCase().padStart(4, '0')}`,
-        category: getCategoryDisplay(getCharCategory(ch)),
+        category: cat,
         name: getCharName(code),
       });
     }
