@@ -66,6 +66,14 @@ import { ImageResizerTool } from "./_components/image-resizer";
 import { ImageFiltersTool } from "./_components/image-filters";
 import { ColorPickerTool } from "./_components/color-picker";
 import { GifMakerTool } from "./_components/gif-maker";
+// More image tools
+import { ImageWatermarkTool } from "./_components/image-watermark";
+import { ImageMergeTool } from "./_components/image-merge";
+import { ImageSplitterTool } from "./_components/image-splitter";
+import { ImageFlipTool } from "./_components/image-flip";
+import { ImageBorderTool } from "./_components/image-border";
+import { MemeGeneratorTool } from "./_components/meme-generator";
+import { ImageToSketchTool } from "./_components/image-to-sketch";
 // New text tools
 import { EmojiRemoverTool } from "./_components/emoji-remover";
 import { UnicodeDetectorTool } from "./_components/unicode-detector";
@@ -159,6 +167,13 @@ function getToolComponent(slug: string) {
     "image-filters": ImageFiltersTool,
     "color-picker": ColorPickerTool,
     "gif-maker": GifMakerTool,
+    "image-watermark": ImageWatermarkTool,
+    "image-merge": ImageMergeTool,
+    "image-splitter": ImageSplitterTool,
+    "image-flip": ImageFlipTool,
+    "image-border": ImageBorderTool,
+    "meme-generator": MemeGeneratorTool,
+    "image-to-sketch": ImageToSketchTool,
     "emoji-remover": EmojiRemoverTool,
     "unicode-detector": UnicodeDetectorTool,
     "caesar-cipher": CaesarCipherTool,
