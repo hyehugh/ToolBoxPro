@@ -8,6 +8,7 @@ export interface Tool {
 }
 
 export const tools: Tool[] = [
+  // === Developer Tools (10) ===
   {
     slug: "json-formatter",
     name: "JSON Formatter & Validator",
@@ -49,6 +50,47 @@ export const tools: Tool[] = [
     searchKeywords: "url encoder url decoder percent encoding",
   },
   {
+    slug: "uuid-generator",
+    name: "UUID Generator",
+    description: "Generate random UUIDs v4 for unique identifiers",
+    category: "developer",
+    icon: "ID",
+    searchKeywords: "uuid generator guid generator unique id",
+  },
+  {
+    slug: "password-generator",
+    name: "Password Generator",
+    description: "Create strong, secure passwords with custom options",
+    category: "developer",
+    icon: "🔑",
+    searchKeywords: "password generator strong password random password",
+  },
+  {
+    slug: "hash-generator",
+    name: "Hash Generator",
+    description: "Generate MD5, SHA-1, SHA-256, SHA-512 hashes",
+    category: "developer",
+    icon: "#H",
+    searchKeywords: "hash generator md5 sha256 sha1 sha512 hash online",
+  },
+  {
+    slug: "timestamp-converter",
+    name: "Timestamp Converter",
+    description: "Convert between Unix timestamps and human-readable dates",
+    category: "developer",
+    icon: "⏱",
+    searchKeywords: "timestamp converter unix timestamp epoch converter",
+  },
+  {
+    slug: "number-base-converter",
+    name: "Number Base Converter",
+    description: "Convert between binary, octal, decimal, and hexadecimal",
+    category: "developer",
+    icon: "0x",
+    searchKeywords: "binary converter hex converter decimal octal base converter",
+  },
+  // === Image Tools (3) ===
+  {
     slug: "image-compressor",
     name: "Image Compressor",
     description: "Compress images without losing quality",
@@ -64,6 +106,7 @@ export const tools: Tool[] = [
     icon: "↔",
     searchKeywords: "image converter jpg to png png to webp",
   },
+  // === PDF Tools (1) ===
   {
     slug: "pdf-merger",
     name: "PDF Merger",
@@ -72,6 +115,40 @@ export const tools: Tool[] = [
     icon: "📄",
     searchKeywords: "pdf merger combine pdf merge pdf files",
   },
+  // === Text Tools (4) ===
+  {
+    slug: "word-counter",
+    name: "Word & Character Counter",
+    description: "Count words, characters, sentences, and reading time",
+    category: "text",
+    icon: "Wc",
+    searchKeywords: "word counter character counter word count",
+  },
+  {
+    slug: "case-converter",
+    name: "Text Case Converter",
+    description: "Convert text between UPPER, lower, Title, camelCase and more",
+    category: "text",
+    icon: "Aa",
+    searchKeywords: "case converter uppercase lowercase title case camel case",
+  },
+  {
+    slug: "lorem-ipsum-generator",
+    name: "Lorem Ipsum Generator",
+    description: "Generate placeholder text for mockups and designs",
+    category: "text",
+    icon: "¶",
+    searchKeywords: "lorem ipsum generator placeholder text dummy text",
+  },
+  {
+    slug: "text-diff-checker",
+    name: "Text Diff Checker",
+    description: "Compare two texts and highlight the differences",
+    category: "text",
+    icon: "±",
+    searchKeywords: "text diff checker compare text difference online",
+  },
+  // === Conversion Tools (2) ===
   {
     slug: "qr-code-generator",
     name: "QR Code Generator",
@@ -81,12 +158,12 @@ export const tools: Tool[] = [
     searchKeywords: "qr code generator create qr code qr maker",
   },
   {
-    slug: "word-counter",
-    name: "Word & Character Counter",
-    description: "Count words, characters, sentences, and reading time",
-    category: "text",
-    icon: "Wc",
-    searchKeywords: "word counter character counter word count",
+    slug: "html-entity-converter",
+    name: "HTML Entity Converter",
+    description: "Encode and decode HTML entities like &amp; and &lt;",
+    category: "conversion",
+    icon: "&lt;",
+    searchKeywords: "html entity encoder html entity decoder html escape",
   },
 ];
 
@@ -94,7 +171,7 @@ export const categories = [
   { id: "developer" as const, name: "Developer Tools", icon: "⌨️" },
   { id: "pdf" as const, name: "PDF Tools", icon: "📄" },
   { id: "image" as const, name: "Image Tools", icon: "🖼️" },
-  { id: "text" as const, name: "Text & AI", icon: "✍️" },
+  { id: "text" as const, name: "Text Tools", icon: "✍️" },
   { id: "conversion" as const, name: "Conversion", icon: "🔄" },
 ];
 

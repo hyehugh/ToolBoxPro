@@ -13,6 +13,15 @@ import { ImageConverterTool } from "./_components/image-converter";
 import { PdfMergerTool } from "./_components/pdf-merger";
 import { QrGeneratorTool } from "./_components/qr-generator";
 import { WordCounterTool } from "./_components/word-counter";
+import { UuidGeneratorTool } from "./_components/uuid-generator";
+import { PasswordGeneratorTool } from "./_components/password-generator";
+import { HashGeneratorTool } from "./_components/hash-generator";
+import { TimestampConverterTool } from "./_components/timestamp-converter";
+import { NumberBaseConverterTool } from "./_components/number-base-converter";
+import { CaseConverterTool } from "./_components/case-converter";
+import { LoremIpsumGeneratorTool } from "./_components/lorem-ipsum-generator";
+import { TextDiffCheckerTool } from "./_components/text-diff-checker";
+import { HtmlEntityConverterTool } from "./_components/html-entity-converter";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -48,6 +57,15 @@ function getToolComponent(slug: string) {
     "pdf-merger": PdfMergerTool,
     "qr-code-generator": QrGeneratorTool,
     "word-counter": WordCounterTool,
+    "uuid-generator": UuidGeneratorTool,
+    "password-generator": PasswordGeneratorTool,
+    "hash-generator": HashGeneratorTool,
+    "timestamp-converter": TimestampConverterTool,
+    "number-base-converter": NumberBaseConverterTool,
+    "case-converter": CaseConverterTool,
+    "lorem-ipsum-generator": LoremIpsumGeneratorTool,
+    "text-diff-checker": TextDiffCheckerTool,
+    "html-entity-converter": HtmlEntityConverterTool,
   };
   return components[slug];
 }
