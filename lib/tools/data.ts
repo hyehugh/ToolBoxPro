@@ -432,14 +432,6 @@ export const tools: Tool[] = [
     icon: "🗑",
     searchKeywords: "pdf page remover delete pdf pages online",
   },
-  {
-    slug: "pdf-protector",
-    name: "PDF Protector",
-    description: "Add password protection to secure your PDF files",
-    category: "pdf",
-    icon: "🔒",
-    searchKeywords: "pdf protector password protect pdf online",
-  },
   // === NEW Image Tools (5) ===
   {
     slug: "image-cropper",
@@ -753,15 +745,7 @@ export const tools: Tool[] = [
     icon: "🔊",
     searchKeywords: "audio converter wav mp3 sample rate online",
   },
-  // === Network Tools (2) ===
-  {
-    slug: "ssl-checker",
-    name: "SSL Checker",
-    description: "Check website SSL status and response headers",
-    category: "network",
-    icon: "🔒",
-    searchKeywords: "ssl checker https certificate status online",
-  },
+  // === Network Tools (1) ===
   {
     slug: "dns-lookup",
     name: "DNS Lookup",

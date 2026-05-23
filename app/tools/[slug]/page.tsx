@@ -60,7 +60,6 @@ import { ImageToPdfTool } from "./_components/image-to-pdf";
 import { PdfSplitterTool } from "./_components/pdf-splitter";
 import { PdfRotatorTool } from "./_components/pdf-rotator";
 import { PdfPageRemoverTool } from "./_components/pdf-page-remover";
-import { PdfProtectorTool } from "./_components/pdf-protector";
 // New image tools
 import { ImageCropperTool } from "./_components/image-cropper";
 import { ImageResizerTool } from "./_components/image-resizer";
@@ -100,7 +99,6 @@ import { AudioCutterTool } from "./_components/audio-cutter";
 import { AudioMergerTool } from "./_components/audio-merger";
 import { AudioConverterTool } from "./_components/audio-converter";
 // Network tools
-import { SslCheckerTool } from "./_components/ssl-checker";
 import { DnsLookupTool } from "./_components/dns-lookup";
 import { WhoisLookupTool } from "./_components/whois-lookup";
 // More tools
@@ -198,7 +196,6 @@ function getToolComponent(slug: string) {
     "pdf-splitter": PdfSplitterTool,
     "pdf-rotator": PdfRotatorTool,
     "pdf-page-remover": PdfPageRemoverTool,
-    "pdf-protector": PdfProtectorTool,
     "image-cropper": ImageCropperTool,
     "image-resizer": ImageResizerTool,
     "image-filters": ImageFiltersTool,
@@ -237,7 +234,6 @@ function getToolComponent(slug: string) {
     "audio-cutter": AudioCutterTool,
     "audio-merger": AudioMergerTool,
     "audio-converter": AudioConverterTool,
-    "ssl-checker": SslCheckerTool,
     "dns-lookup": DnsLookupTool,
     "whois-lookup": WhoisLookupTool,
     "svg-to-png": SvgToPngTool,
