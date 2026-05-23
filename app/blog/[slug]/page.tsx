@@ -1,4 +1,5 @@
 import { blogPosts } from "@/lib/blog/data";
+import { getBlogImage } from "@/lib/blog/images";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -196,6 +197,17 @@ export default async function BlogPostPage({ params }: Props) {
             {post.description}
           </p>
         </header>
+
+        {getBlogImage(slug) && (
+          <div className="mb-8 rounded-xl overflow-hidden border border-border card-shadow">
+            <img
+              src={getBlogImage(slug)!}
+              alt={`${post.title} — ToolboxPro screenshot`}
+              className="w-full h-auto"
+              loading="lazy"
+            />
+          </div>
+        )}
 
         <div className="prose-custom">
           {renderMarkdown(post.content)}

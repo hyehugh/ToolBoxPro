@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { tools, categories } from "@/lib/tools/data";
 import { blogPosts } from "@/lib/blog/data";
+import { getBlogImage } from "@/lib/blog/images";
 import HomeSearch from "./home-search";
 
 export default function HomePage() {
@@ -73,21 +74,36 @@ export default function HomePage() {
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {blogPosts.slice(0, 3).map((post) => (
+          {blogPosts.slice(0, 3).map((post) => {
+            const img = getBlogImage(post.slug);
+            return (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring overflow-hidden"
             >
-              <p className="text-xs text-muted-foreground mb-1">
-                {post.category} &middot; {post.readTime}
-              </p>
-              <h3 className="font-medium mb-1">{post.title}</h3>
-              <p className="text-sm text-muted-foreground line-clamp-2">
-                {post.description}
-              </p>
+              {img && (
+                <div className="aspect-video bg-muted overflow-hidden">
+                  <img
+                    src={img}
+                    alt={post.title}
+                    className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div className="p-4">
+                <p className="text-xs text-muted-foreground mb-1">
+                  {post.category} &middot; {post.readTime}
+                </p>
+                <h3 className="font-medium mb-1">{post.title}</h3>
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {post.description}
+                </p>
+              </div>
             </Link>
-          ))}
+          );
+          })}
         </div>
       </section>
 
