@@ -24,6 +24,7 @@ export default function HomePage() {
         <HomeSearch />
       </section>
 
+      {/* Popular Tools */}
       <PopularTools />
 
       {/* Category Grid */}
