@@ -54,6 +54,12 @@ import { AreaConverterTool } from "./_components/area-converter";
 import { RandomNumberGeneratorTool } from "./_components/random-number-generator";
 // New image tools
 import { ImageToBase64Tool } from "./_components/image-to-base64";
+// New PDF tools
+import { ImageToPdfTool } from "./_components/image-to-pdf";
+import { PdfSplitterTool } from "./_components/pdf-splitter";
+import { PdfRotatorTool } from "./_components/pdf-rotator";
+import { PdfPageRemoverTool } from "./_components/pdf-page-remover";
+import { PdfProtectorTool } from "./_components/pdf-protector";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -126,6 +132,11 @@ function getToolComponent(slug: string) {
     "area-converter": AreaConverterTool,
     "random-number-generator": RandomNumberGeneratorTool,
     "image-to-base64": ImageToBase64Tool,
+    "image-to-pdf": ImageToPdfTool,
+    "pdf-splitter": PdfSplitterTool,
+    "pdf-rotator": PdfRotatorTool,
+    "pdf-page-remover": PdfPageRemoverTool,
+    "pdf-protector": PdfProtectorTool,
   };
   return components[slug];
 }

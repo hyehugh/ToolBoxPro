@@ -393,6 +393,47 @@ export const tools: Tool[] = [
     icon: "🎲",
     searchKeywords: "random number generator random number online",
   },
+  // === PDF Tools (5 new) ===
+  {
+    slug: "image-to-pdf",
+    name: "Image to PDF",
+    description: "Convert images (JPG, PNG) into a single PDF document",
+    category: "pdf",
+    icon: "🖼➔📄",
+    searchKeywords: "image to pdf jpg to pdf png to pdf converter",
+  },
+  {
+    slug: "pdf-splitter",
+    name: "PDF Splitter",
+    description: "Split PDF by page ranges or extract specific pages",
+    category: "pdf",
+    icon: "✂️",
+    searchKeywords: "pdf splitter split pdf extract pages online",
+  },
+  {
+    slug: "pdf-rotator",
+    name: "PDF Rotator",
+    description: "Rotate PDF pages by 90, 180, or 270 degrees",
+    category: "pdf",
+    icon: "🔄",
+    searchKeywords: "pdf rotator rotate pdf pages online",
+  },
+  {
+    slug: "pdf-page-remover",
+    name: "PDF Page Remover",
+    description: "Remove unwanted pages from your PDF documents",
+    category: "pdf",
+    icon: "🗑",
+    searchKeywords: "pdf page remover delete pdf pages online",
+  },
+  {
+    slug: "pdf-protector",
+    name: "PDF Protector",
+    description: "Add password protection to secure your PDF files",
+    category: "pdf",
+    icon: "🔒",
+    searchKeywords: "pdf protector password protect pdf online",
+  },
 ];
 
 export const categories = [
