@@ -132,19 +132,40 @@ function processInline(text: string): string {
   // Inline code: `text`
   result = result.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-  // Links: [text](url)
+  // Links: [text](url) — only allow safe protocols
   result = result.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+    (_, text, url) => {
+      const safeUrl = sanitizeUrl(url);
+      return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+    }
   );
 
-  // Images: ![alt](url)
+  // Images: ![alt](url) — only allow safe protocols
   result = result.replace(
     /!\[([^\]]*)\]\(([^)]+)\)/g,
-    '<img src="$2" alt="$1" />'
+    (_, alt, url) => {
+      const safeUrl = sanitizeUrl(url);
+      return `<img src="${safeUrl}" alt="${alt}" />`;
+    }
   );
 
   return result;
+}
+
+function sanitizeUrl(url: string): string {
+  const allowedProtocols = ['http:', 'https:', 'mailto:', '#'];
+  try {
+    const parsed = new URL(url, 'https://safe.local');
+    if (!allowedProtocols.includes(parsed.protocol)) {
+      return '#';
+    }
+    return url;
+  } catch {
+    // Relative URLs or invalid URLs — allow through (# is handled above)
+    if (url.startsWith('/') || url.startsWith('#')) return url;
+    return '#';
+  }
 }
 
 export function MarkdownToHtmlTool() {

@@ -41,9 +41,13 @@ export function WhoisLookupTool() {
     setError('');
     setData(null);
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
       const res = await fetch(
-        `https://api.dev-tools.maxy.sh/v1/whois?domain=${encodeURIComponent(cleanDomain)}`
+        `https://api.dev-tools.maxy.sh/v1/whois?domain=${encodeURIComponent(cleanDomain)}`,
+        { signal: controller.signal }
       );
 
       if (!res.ok) {
@@ -53,12 +57,17 @@ export function WhoisLookupTool() {
       const json = await res.json();
       setData(json);
     } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : 'Failed to lookup WHOIS information. Check the domain and try again.'
-      );
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        setError('WHOIS lookup timed out after 15 seconds. Please try again.');
+      } else {
+        setError(
+          err instanceof Error
+            ? err.message
+            : 'Failed to lookup WHOIS information. Check the domain and try again.'
+        );
+      }
     } finally {
+      clearTimeout(timeoutId);
       setLoading(false);
     }
   }, [domain]);

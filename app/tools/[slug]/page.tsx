@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ToolWidget } from "@/components/tools/tool-widget";
+import { ErrorBoundary } from "@/components/error-boundary";
 import { JsonFormatterTool } from "./_components/json-formatter";
 import { Base64Tool } from "./_components/base64";
 import { RegexTesterTool } from "./_components/regex-tester";
@@ -278,9 +279,11 @@ export default async function ToolPage({ params }: Props) {
       <h1 className="text-3xl font-bold mb-2">{tool.name}</h1>
       <p className="text-muted-foreground mb-8">{tool.description}</p>
 
-      <ToolWidget title={tool.name}>
-        {ToolComponent ? <ToolComponent /> : <p className="text-muted-foreground">Tool coming soon...</p>}
-      </ToolWidget>
+      <ErrorBoundary>
+        <ToolWidget title={tool.name}>
+          {ToolComponent ? <ToolComponent /> : <p className="text-muted-foreground">Tool coming soon...</p>}
+        </ToolWidget>
+      </ErrorBoundary>
 
       {/* Related tools */}
       {related.length > 0 && (

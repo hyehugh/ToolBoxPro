@@ -149,8 +149,20 @@ function renderMarkdown(md: string) {
       const text = line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
         .replace(/`(.+?)`/g, "<code class='bg-muted px-1 rounded text-sm'>$1</code>");
       
-      // Check for link pattern [text](/path)
-      const withLinks = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-primary hover:underline">$1</a>');
+      // Check for link pattern [text](/path) — sanitize URL to prevent javascript: XSS
+      const sanitizeUrl = (url: string): string => {
+        const lower = url.toLowerCase().trim();
+        if (lower.startsWith('http://') || lower.startsWith('https://') || lower.startsWith('mailto:') || lower.startsWith('#')) {
+          return url;
+        }
+        if (url.startsWith('/')) {
+          return url;
+        }
+        return '#';
+      };
+      const withLinks = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match: string, text: string, url: string) => {
+        return `<a href="${sanitizeUrl(url)}" class="text-primary hover:underline">${text}</a>`;
+      });
       
       elements.push(
         <p key={i} className="text-muted-foreground mb-4" dangerouslySetInnerHTML={{ __html: withLinks }} />

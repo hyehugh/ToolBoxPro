@@ -31,13 +31,16 @@ export function DnsLookupTool() {
     setError('');
     setResult(null);
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
     const allRecords: DnsRecord[] = [];
     let hasError = false;
 
     for (const type of RECORD_TYPES) {
       try {
         const url = `https://dns.google/resolve?name=${encodeURIComponent(domainName)}&type=${type}`;
-        const response = await fetch(url);
+        const response = await fetch(url, { signal: controller.signal });
         const data = await response.json();
 
         if (data.Status === 0 && data.Answer) {
@@ -58,13 +61,19 @@ export function DnsLookupTool() {
             });
           }
         }
-      } catch {
+      } catch (e) {
+        if ((e as Error).name === 'AbortError') {
+          hasError = true;
+          break;
+        }
         hasError = true;
       }
     }
 
+    clearTimeout(timeoutId);
+
     if (allRecords.length === 0 && hasError) {
-      setError('Failed to fetch DNS records. Check the domain name.');
+      setError('DNS lookup timed out or failed. Check the domain name and try again.');
     }
 
     setResult({

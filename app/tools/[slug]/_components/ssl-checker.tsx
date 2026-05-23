@@ -37,10 +37,14 @@ export function SslCheckerTool() {
 
     const startTime = performance.now();
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
       const response = await fetch(targetUrl, {
         method: 'GET',
         mode: 'cors',
+        signal: controller.signal,
       });
 
       const endTime = performance.now();
@@ -62,12 +66,17 @@ export function SslCheckerTool() {
         timing: Math.round(endTime - startTime),
       });
     } catch (err) {
-      setError(
-        err instanceof TypeError
-          ? 'Network error. Check the URL or CORS policy may block the request.'
-          : 'Failed to fetch URL.'
-      );
+      if ((err as Error).name === 'AbortError') {
+        setError('Request timed out. The server did not respond within 15 seconds.');
+      } else {
+        setError(
+          err instanceof TypeError
+            ? 'Network error. Check the URL or CORS policy may block the request.'
+            : 'Failed to fetch URL.'
+        );
+      }
     }
+    clearTimeout(timeoutId);
     setLoading(false);
   };
 
