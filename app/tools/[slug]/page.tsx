@@ -74,6 +74,9 @@ import { ImageFlipTool } from "./_components/image-flip";
 import { ImageBorderTool } from "./_components/image-border";
 import { MemeGeneratorTool } from "./_components/meme-generator";
 import { ImageToSketchTool } from "./_components/image-to-sketch";
+// More image tools
+import { ImageInvertTool } from "./_components/image-invert";
+import { ImageCollageTool } from "./_components/image-collage";
 // New text tools
 import { EmojiRemoverTool } from "./_components/emoji-remover";
 import { UnicodeDetectorTool } from "./_components/unicode-detector";
@@ -82,9 +85,24 @@ import { CaesarCipherTool } from "./_components/caesar-cipher";
 import { JsonDiffTool } from "./_components/json-diff";
 import { HttpStatusCodesTool } from "./_components/http-status-codes";
 import { MarkdownToHtmlTool } from "./_components/markdown-to-html";
+// More dev tools
+import { CssGradientTool } from "./_components/css-gradient";
+import { CssShadowTool } from "./_components/css-shadow";
+import { JsonToTypescriptTool } from "./_components/json-to-typescript";
+import { HtmlToJsxTool } from "./_components/html-to-jsx";
+import { ColorPaletteTool } from "./_components/color-palette";
 // New conversion tools
 import { TimezoneConverterTool } from "./_components/timezone-converter";
 import { BinaryToTextTool } from "./_components/binary-to-text";
+// Everyday tools
+import { RomanNumeralTool } from "./_components/roman-numeral";
+import { PercentageCalculatorTool } from "./_components/percentage-calculator";
+import { TipCalculatorTool } from "./_components/tip-calculator";
+import { AgeCalculatorTool } from "./_components/age-calculator";
+import { BmiCalculatorTool } from "./_components/bmi-calculator";
+import { CountdownTimerTool } from "./_components/countdown-timer";
+import { DiceRollerTool } from "./_components/dice-roller";
+import { DecisionMakerTool } from "./_components/decision-maker";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -174,6 +192,8 @@ function getToolComponent(slug: string) {
     "image-border": ImageBorderTool,
     "meme-generator": MemeGeneratorTool,
     "image-to-sketch": ImageToSketchTool,
+    "image-invert": ImageInvertTool,
+    "image-collage": ImageCollageTool,
     "emoji-remover": EmojiRemoverTool,
     "unicode-detector": UnicodeDetectorTool,
     "caesar-cipher": CaesarCipherTool,
@@ -182,6 +202,19 @@ function getToolComponent(slug: string) {
     "markdown-to-html": MarkdownToHtmlTool,
     "timezone-converter": TimezoneConverterTool,
     "binary-to-text": BinaryToTextTool,
+    "roman-numeral": RomanNumeralTool,
+    "percentage-calculator": PercentageCalculatorTool,
+    "tip-calculator": TipCalculatorTool,
+    "age-calculator": AgeCalculatorTool,
+    "bmi-calculator": BmiCalculatorTool,
+    "countdown-timer": CountdownTimerTool,
+    "dice-roller": DiceRollerTool,
+    "decision-maker": DecisionMakerTool,
+    "css-gradient": CssGradientTool,
+    "css-shadow": CssShadowTool,
+    "json-to-typescript": JsonToTypescriptTool,
+    "html-to-jsx": HtmlToJsxTool,
+    "color-palette": ColorPaletteTool,
   };
   return components[slug];
 }
