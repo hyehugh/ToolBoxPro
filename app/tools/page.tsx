@@ -22,7 +22,7 @@ export default async function ToolsPage({ searchParams }: Props) {
     <div className="mx-auto max-w-6xl px-4 py-8">
       <h1 className="text-3xl font-bold mb-2">
         {selectedCategory
-          ? `${categories.find((c) => c.id === selectedCategory)?.name || "All"} Tools`
+          ? `${categories.find((c) => c.id === selectedCategory)?.name || "All"}`
           : "All Tools"}
       </h1>
       <p className="text-muted-foreground mb-8">
@@ -33,7 +33,7 @@ export default async function ToolsPage({ searchParams }: Props) {
       <div className="flex flex-wrap gap-2 mb-8">
         <Link
           href="/tools"
-          className={`px-3 py-1.5 rounded-full text-sm border transition-colors ${
+          className={`px-4 py-1.5 rounded-full text-sm border transition-colors ${
             !selectedCategory
               ? "bg-primary text-primary-foreground border-primary"
               : "bg-background border-input hover:bg-accent"
@@ -45,13 +45,13 @@ export default async function ToolsPage({ searchParams }: Props) {
           <Link
             key={cat.id}
             href={`/tools?category=${cat.id}`}
-            className={`px-3 py-1.5 rounded-full text-sm border transition-colors ${
+            className={`px-4 py-1.5 rounded-full text-sm border transition-colors ${
               selectedCategory === cat.id
                 ? "bg-primary text-primary-foreground border-primary"
                 : "bg-background border-input hover:bg-accent"
             }`}
           >
-            {cat.icon} {cat.name}
+            {cat.name}
           </Link>
         ))}
       </div>
