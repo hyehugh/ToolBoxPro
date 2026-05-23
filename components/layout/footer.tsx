@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { tools } from "@/lib/tools/data";
+import { FooterThemeToggle } from "./footer-theme-toggle";
 
 export function Footer() {
   const featuredTools = tools.slice(0, 5);
@@ -51,8 +52,9 @@ export function Footer() {
             </p>
           </div>
         </div>
-        <div className="mt-8 pt-6 border-t text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} ToolboxPro. All rights reserved.
+        <div className="mt-8 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} ToolboxPro. All rights reserved.</p>
+          <FooterThemeToggle />
         </div>
       </div>
     </footer>

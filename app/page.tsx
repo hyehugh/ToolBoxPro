@@ -3,6 +3,7 @@ import { tools, categories } from "@/lib/tools/data";
 import { blogPosts } from "@/lib/blog/data";
 import { getBlogImage } from "@/lib/blog/images";
 import HomeSearch from "./home-search";
+import { PopularTools } from "./popular-tools";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,9 @@ export default function HomePage() {
         </p>
         <HomeSearch />
       </section>
+
+      {/* Popular Tools */}
+      <PopularTools />
 
       {/* Category Grid */}
       <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">

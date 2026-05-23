@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ToolWidget } from "@/components/tools/tool-widget";
 import { ErrorBoundary } from "@/components/error-boundary";
+import { blogPosts } from "@/lib/blog/data";
 import { JsonFormatterTool } from "./_components/json-formatter";
 import { Base64Tool } from "./_components/base64";
 import { RegexTesterTool } from "./_components/regex-tester";
@@ -258,6 +259,7 @@ export default async function ToolPage({ params }: Props) {
   const related = tools
     .filter((t) => t.category === tool.category && t.slug !== tool.slug)
     .slice(0, 4);
+  const relatedPosts = blogPosts.filter((p) => p.toolSlug === slug).slice(0, 3);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
@@ -293,6 +295,33 @@ export default async function ToolPage({ params }: Props) {
                 className="p-3 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 text-sm"
               >
                 <span className="font-medium">{t.name}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {relatedPosts.length > 0 && (
+        <section className="mt-10">
+          <h2 className="text-xl font-bold mb-4">Related Guides</h2>
+          <div className="space-y-3">
+            {relatedPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="block p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200"
+              >
+                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
+                  <span>{post.category}</span>
+                  <span>·</span>
+                  <span>{post.readTime}</span>
+                </div>
+                <h3 className="font-medium text-sm hover:text-primary transition-colors">
+                  {post.title}
+                </h3>
+                <p className="text-xs text-muted-foreground mt-1 line-clamp-1">
+                  {post.description}
+                </p>
               </Link>
             ))}
           </div>
