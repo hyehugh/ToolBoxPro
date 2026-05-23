@@ -9,10 +9,13 @@ import { cn } from "@/lib/utils";
 
 const categories = [
   { name: "Developer", href: "/tools?category=developer" },
-  { name: "PDF", href: "/tools?category=pdf" },
-  { name: "Image", href: "/tools?category=image" },
   { name: "Text", href: "/tools?category=text" },
-  { name: "Conversion", href: "/tools?category=conversion" },
+  { name: "Image", href: "/tools?category=image" },
+  { name: "PDF", href: "/tools?category=pdf" },
+  { name: "Audio", href: "/tools?category=audio" },
+  { name: "Network", href: "/tools?category=network" },
+  { name: "Converters", href: "/tools?category=conversion" },
+  { name: "Utilities", href: "/tools?category=utilities" },
 ];
 
 export function Header() {
