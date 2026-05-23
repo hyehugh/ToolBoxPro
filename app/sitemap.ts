@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { tools } from "@/lib/tools/data";
 import { blogPosts } from "@/lib/blog/data";
 
-const baseUrl = "https://trytoolboxpro.com";
+const baseUrl = "https://tool-box-pro.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
