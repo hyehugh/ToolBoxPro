@@ -29,11 +29,11 @@ export const metadata: Metadata = {
     description:
       "100+ free online tools. No signup. Files stay on your device.",
     type: "website",
-    url: "https://trytoolboxpro.com",
+    url: "https://tool-box-pro-ruby.vercel.app",
     siteName: "ToolboxPro",
     images: [
       {
-        url: "https://trytoolboxpro.com/og-default.svg",
+        url: "https://tool-box-pro-ruby.vercel.app/og-default.svg",
         width: 1200,
         height: 630,
         alt: "ToolboxPro — 100+ Free Online Tools",
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
         "@context": "https://schema.org",
         "@type": "WebSite",
         name: "ToolboxPro",
-        url: "https://trytoolboxpro.com",
+        url: "https://tool-box-pro-ruby.vercel.app",
         description:
           "100+ free online tools for developers, designers, and everyday tasks. No signup required.",
         potentialAction: {
           "@type": "SearchAction",
           target:
-            "https://trytoolboxpro.com/tools?q={search_term_string}",
+            "https://tool-box-pro-ruby.vercel.app/tools?q={search_term_string}",
           "query-input": "required name=search_term_string",
         },
       },
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         "@context": "https://schema.org",
         "@type": "Organization",
         name: "ToolboxPro",
-        url: "https://trytoolboxpro.com",
+        url: "https://tool-box-pro-ruby.vercel.app",
         contactPoint: {
           "@type": "ContactPoint",
           email: "hyehugh520@gmail.com",
