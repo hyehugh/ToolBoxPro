@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { tools, categories } from "@/lib/tools/data";
+import { blogPosts } from "@/lib/blog/data";
+import HomeSearch from "./home-search";
 
 export default function HomePage() {
   return (
@@ -12,35 +14,30 @@ export default function HomePage() {
           <span className="text-primary">Privacy First.</span>
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-          100+ tools for developers, designers, and everyday tasks. 
+          {tools.length}+ tools for developers, designers, and everyday tasks.
           No signup. No upload. Files stay on your device.
         </p>
-        <div className="relative max-w-md mx-auto">
-          <input
-            type="search"
-            placeholder="Search any tool..."
-            className="w-full h-12 pl-4 pr-10 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-            id="tool-search"
-            autoComplete="off"
-          />
-        </div>
+        <HomeSearch />
       </section>
 
       {/* Category Grid */}
       <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-        {categories.map((cat) => (
-          <Link
-            key={cat.id}
-            href={`/tools?category=${cat.id}`}
-            className="flex flex-col items-center gap-2 p-6 rounded-lg border bg-card hover:bg-accent transition-colors"
-          >
-            <span className="text-3xl">{cat.icon}</span>
-            <span className="font-medium text-sm text-center">{cat.name}</span>
-            <span className="text-xs text-muted-foreground">
-              {tools.filter((t) => t.category === cat.id).length} tools
-            </span>
-          </Link>
-        ))}
+        {categories.map((cat) => {
+          const count = tools.filter((t) => t.category === cat.id).length;
+          return (
+            <Link
+              key={cat.id}
+              href={`/tools?category=${cat.id}`}
+              className="flex flex-col items-center gap-2 p-6 rounded-lg border bg-card hover:bg-accent transition-colors"
+            >
+              <span className="text-3xl">{cat.icon}</span>
+              <span className="font-medium text-sm text-center">{cat.name}</span>
+              <span className="text-xs text-muted-foreground">
+                {count} tool{count !== 1 ? "s" : ""}
+              </span>
+            </Link>
+          );
+        })}
       </section>
 
       {/* All Tools Grid */}
@@ -60,6 +57,33 @@ export default function HomePage() {
                   {tool.description}
                 </p>
               </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Latest Blog */}
+      <section className="mb-16">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold">Latest from Blog</h2>
+          <Link href="/blog" className="text-sm text-primary hover:underline">
+            View all &rarr;
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {blogPosts.slice(0, 3).map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="p-4 rounded-lg border bg-card hover:bg-accent transition-colors"
+            >
+              <p className="text-xs text-muted-foreground mb-1">
+                {post.category} &middot; {post.readTime}
+              </p>
+              <h3 className="font-medium mb-1">{post.title}</h3>
+              <p className="text-sm text-muted-foreground line-clamp-2">
+                {post.description}
+              </p>
             </Link>
           ))}
         </div>

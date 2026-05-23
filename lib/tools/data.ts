@@ -148,6 +148,14 @@ export const tools: Tool[] = [
     icon: "±",
     searchKeywords: "text diff checker compare text difference online",
   },
+  {
+    slug: "text-repeater",
+    name: "Text Repeater",
+    description: "Repeat text multiple times with custom separators",
+    category: "text",
+    icon: "↻",
+    searchKeywords: "text repeater repeat text multiple times string generator",
+  },
   // === Conversion Tools (2) ===
   {
     slug: "qr-code-generator",

@@ -22,6 +22,7 @@ import { CaseConverterTool } from "./_components/case-converter";
 import { LoremIpsumGeneratorTool } from "./_components/lorem-ipsum-generator";
 import { TextDiffCheckerTool } from "./_components/text-diff-checker";
 import { HtmlEntityConverterTool } from "./_components/html-entity-converter";
+import { TextRepeaterTool } from "./_components/text-repeater";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -66,6 +67,7 @@ function getToolComponent(slug: string) {
     "lorem-ipsum-generator": LoremIpsumGeneratorTool,
     "text-diff-checker": TextDiffCheckerTool,
     "html-entity-converter": HtmlEntityConverterTool,
+    "text-repeater": TextRepeaterTool,
   };
   return components[slug];
 }
