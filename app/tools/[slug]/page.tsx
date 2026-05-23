@@ -23,6 +23,37 @@ import { LoremIpsumGeneratorTool } from "./_components/lorem-ipsum-generator";
 import { TextDiffCheckerTool } from "./_components/text-diff-checker";
 import { HtmlEntityConverterTool } from "./_components/html-entity-converter";
 import { TextRepeaterTool } from "./_components/text-repeater";
+// New developer tools
+import { CssMinifierTool } from "./_components/css-minifier";
+import { SqlFormatterTool } from "./_components/sql-formatter";
+import { JsonToYamlTool } from "./_components/json-to-yaml";
+import { StringEscaperTool } from "./_components/string-escaper";
+import { HtmlTagStripperTool } from "./_components/html-tag-stripper";
+import { JwtDecoderTool } from "./_components/jwt-decoder";
+import { CronParserTool } from "./_components/cron-parser";
+import { TextToBinaryTool } from "./_components/text-to-binary";
+import { HtmlPreviewTool } from "./_components/html-preview";
+import { CsvViewerTool } from "./_components/csv-viewer";
+import { IpCalculatorTool } from "./_components/ip-calculator";
+import { JwtGeneratorTool } from "./_components/jwt-generator";
+// New text tools
+import { TextToSlugTool } from "./_components/text-to-slug";
+import { TextSorterTool } from "./_components/text-sorter";
+import { TextDeduplicatorTool } from "./_components/text-deduplicator";
+import { TextReverserTool } from "./_components/text-reverser";
+import { RandomStringGeneratorTool } from "./_components/random-string-generator";
+import { PalindromeCheckerTool } from "./_components/palindrome-checker";
+import { MorseCodeConverterTool } from "./_components/morse-code-converter";
+// New conversion tools
+import { TemperatureConverterTool } from "./_components/temperature-converter";
+import { WeightConverterTool } from "./_components/weight-converter";
+import { LengthConverterTool } from "./_components/length-converter";
+import { DataSizeConverterTool } from "./_components/data-size-converter";
+import { SpeedConverterTool } from "./_components/speed-converter";
+import { AreaConverterTool } from "./_components/area-converter";
+import { RandomNumberGeneratorTool } from "./_components/random-number-generator";
+// New image tools
+import { ImageToBase64Tool } from "./_components/image-to-base64";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -68,6 +99,33 @@ function getToolComponent(slug: string) {
     "text-diff-checker": TextDiffCheckerTool,
     "html-entity-converter": HtmlEntityConverterTool,
     "text-repeater": TextRepeaterTool,
+    "css-minifier": CssMinifierTool,
+    "sql-formatter": SqlFormatterTool,
+    "json-to-yaml": JsonToYamlTool,
+    "string-escaper": StringEscaperTool,
+    "html-tag-stripper": HtmlTagStripperTool,
+    "jwt-decoder": JwtDecoderTool,
+    "cron-parser": CronParserTool,
+    "text-to-binary": TextToBinaryTool,
+    "html-preview": HtmlPreviewTool,
+    "csv-viewer": CsvViewerTool,
+    "ip-calculator": IpCalculatorTool,
+    "jwt-generator": JwtGeneratorTool,
+    "text-to-slug": TextToSlugTool,
+    "text-sorter": TextSorterTool,
+    "text-deduplicator": TextDeduplicatorTool,
+    "text-reverser": TextReverserTool,
+    "random-string-generator": RandomStringGeneratorTool,
+    "palindrome-checker": PalindromeCheckerTool,
+    "morse-code-converter": MorseCodeConverterTool,
+    "temperature-converter": TemperatureConverterTool,
+    "weight-converter": WeightConverterTool,
+    "length-converter": LengthConverterTool,
+    "data-size-converter": DataSizeConverterTool,
+    "speed-converter": SpeedConverterTool,
+    "area-converter": AreaConverterTool,
+    "random-number-generator": RandomNumberGeneratorTool,
+    "image-to-base64": ImageToBase64Tool,
   };
   return components[slug];
 }
