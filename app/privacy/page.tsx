@@ -53,7 +53,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-lg font-bold text-foreground mt-6">5. Contact</h2>
         <p>
-          For privacy-related questions, contact us at privacy@toolboxpro.com.
+          For privacy-related questions, contact us at hyehugh520@gmail.com.
         </p>
       </div>
     </div>

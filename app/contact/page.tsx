@@ -20,10 +20,10 @@ export default function ContactPage() {
             For questions, suggestions, or feedback about our tools
           </p>
           <a
-            href="mailto:hello@toolboxpro.vercel.app"
+            href="mailto:hyehugh520@gmail.com"
             className="text-sm text-primary hover:underline mt-1 block"
           >
-            hello@toolboxpro.vercel.app
+            hyehugh520@gmail.com
           </a>
         </div>
         <div className="p-4 rounded-lg border bg-card">
@@ -32,10 +32,10 @@ export default function ContactPage() {
             Found something not working? Let us know which tool and what happened
           </p>
           <a
-            href="mailto:bugs@toolboxpro.vercel.app"
+            href="mailto:hyehugh520@gmail.com"
             className="text-sm text-primary hover:underline mt-1 block"
           >
-            bugs@toolboxpro.vercel.app
+            hyehugh520@gmail.com
           </a>
         </div>
         <div className="p-4 rounded-lg border bg-card">
@@ -44,10 +44,10 @@ export default function ContactPage() {
             Interested in advertising on ToolboxPro or partnership opportunities
           </p>
           <a
-            href="mailto:ads@toolboxpro.vercel.app"
+            href="mailto:hyehugh520@gmail.com"
             className="text-sm text-primary hover:underline mt-1 block"
           >
-            ads@toolboxpro.vercel.app
+            hyehugh520@gmail.com
           </a>
         </div>
       </div>
