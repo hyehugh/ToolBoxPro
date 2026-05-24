@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 
-type ModelStatus = "idle" | "downloading" | "ready" | "error";
+type ModelStatus = "idle" | "downloading" | "compiling" | "ready" | "error";
 
 const MODEL_HOSTS = [
   "https://huggingface.co/",
@@ -40,7 +40,11 @@ export function TextSummarizerTool() {
             device: "wasm",
             progress_callback: (p: any) => {
               if (p?.status === "progress_total" && p?.progress !== undefined) {
-                setProgress(Math.min(Math.round(p.progress), 100));
+                const val = Math.min(Math.round(p.progress), 100);
+                setProgress(val);
+                if (val >= 100) {
+                  setModelStatus("compiling");
+                }
               }
             },
           } as any
@@ -118,9 +122,9 @@ export function TextSummarizerTool() {
           <button onClick={() => { setText(""); setSummary(""); }}
             className="px-3 py-1.5 rounded-md text-xs border border-input hover:bg-accent transition-colors" disabled={!text}>Clear</button>
           <button onClick={summarize}
-            disabled={wordCount < 10 || loading || modelStatus === "downloading"}
+              disabled={wordCount < 10 || loading || modelStatus === "downloading" || modelStatus === "compiling"}
             className="px-4 py-1.5 rounded-md text-xs font-medium bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50">
-            {modelStatus === "downloading" ? `Downloading... ${progress}%` : loading ? "Summarizing..." : "Summarize ✨"}
+             {modelStatus === "downloading" ? `Downloading... ${progress}%` : modelStatus === "compiling" ? "Initializing..." : loading ? "Summarizing..." : "Summarize ✨"}
           </button>
         </div>
       </div>
@@ -133,6 +137,19 @@ export function TextSummarizerTool() {
           </div>
           <p className="text-xs text-muted-foreground mt-1">{progress}%</p>
           {errorMsg && <p className="text-xs text-amber-600 mt-1">{errorMsg}</p>}
+        </div>
+      )}
+
+      {modelStatus === "compiling" && (
+        <div className="p-4 rounded-md border bg-card">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
+            <p className="text-xs text-muted-foreground font-medium">Initializing AI model...</p>
+          </div>
+          <p className="text-xs text-muted-foreground">Compiling neural network for your browser. This may take a few seconds.</p>
+          <div className="w-full bg-secondary rounded-full h-2 mt-2">
+            <div className="bg-primary h-2 rounded-full animate-pulse" style={{ width: "100%" }} />
+          </div>
         </div>
       )}
 
