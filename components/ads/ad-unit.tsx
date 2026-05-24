@@ -16,6 +16,9 @@ export function AdUnit({ slot, format = "auto", className = "" }: AdUnitProps) {
     if (initialized.current) return;
     initialized.current = true;
 
+    const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+    if (!clientId || clientId === "ca-pub-0000000000000000") return; // Not configured yet
+
     try {
       // Load AdSense script if not already loaded
       if (!(window as any).adsbygoogle) {
@@ -23,7 +26,7 @@ export function AdUnit({ slot, format = "auto", className = "" }: AdUnitProps) {
         script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
         script.async = true;
         script.crossOrigin = "anonymous";
-        script.setAttribute("data-ad-client", "ca-pub-XXXXXXXXXXXXXX");
+        script.setAttribute("data-ad-client", clientId);
         document.head.appendChild(script);
       }
 
@@ -41,13 +44,16 @@ export function AdUnit({ slot, format = "auto", className = "" }: AdUnitProps) {
     }
   }, []);
 
+  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+  if (!clientId || clientId === "ca-pub-0000000000000000") return null;
+
   return (
     <div className={`ad-container my-6 ${className}`} ref={adRef}>
       <p className="text-xs text-muted-foreground mb-1 text-center">Sponsored</p>
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
-        data-ad-client="ca-pub-XXXXXXXXXXXXXX"
+        data-ad-client={clientId}
         data-ad-slot={slot}
         data-ad-format={format}
         data-full-width-responsive="true"

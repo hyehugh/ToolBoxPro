@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://tool-box-pro-ruby.vercel.app/sitemap.xml",
+    sitemap: "https://trytoolboxpro.com/sitemap.xml",
   };
 }
