@@ -31,7 +31,6 @@ export function GrammarCheckerTool() {
         env.allowLocalModels = false;
         env.allowRemoteModels = true;
 
-        // Use quantized model (q4) to reduce download from ~800MB to ~200MB
         pipelineRef.current = await pipeline(
           "text2text-generation",
           "Xenova/t5-base-grammar-correction",
@@ -39,8 +38,12 @@ export function GrammarCheckerTool() {
             dtype: "q4",
             device: "wasm",
             progress_callback: (p: any) => {
-              if (p?.status === "download" && p?.total > 0) {
+              // Status can be "progress" or "download" — check for loaded/total
+              if (p?.total > 0) {
                 setProgress(Math.round((p.loaded / p.total) * 100));
+              } else if (p?.progress !== undefined) {
+                // Some callbacks provide progress as a ratio
+                setProgress(Math.round(p.progress));
               }
             },
           } as any
@@ -55,7 +58,7 @@ export function GrammarCheckerTool() {
           setErrorMsg(`Trying mirror ${i + 2}/${MODEL_HOSTS.length}...`);
         } else {
           setModelStatus("error");
-          setErrorMsg(`Failed to load AI model. ${e?.message?.slice(0, 100) || ""}`);
+          setErrorMsg(`Failed: ${e?.message?.slice(0, 200) || "Unknown error"}`);
         }
       }
     }
@@ -93,7 +96,7 @@ export function GrammarCheckerTool() {
       }
       setResult({ corrected: correctedText, errorCount: totalErrors, changes });
     } catch (e: any) {
-      setErrorMsg(`Error: ${e?.message?.slice(0, 100) || "Unknown error"}`);
+      setErrorMsg(`Error: ${e?.message?.slice(0, 200) || "Unknown"}`);
     }
     setLoading(false);
   }, [text, modelStatus, loadModel]);
@@ -125,7 +128,7 @@ export function GrammarCheckerTool() {
 
       {modelStatus === "downloading" && (
         <div className="p-4 rounded-md border bg-card">
-          <p className="text-xs text-muted-foreground mb-2">Downloading AI model (~200MB, quantized). First load only.</p>
+          <p className="text-xs text-muted-foreground mb-2">Downloading AI model (~310MB, quantized). First load only.</p>
           <div className="w-full bg-secondary rounded-full h-2">
             <div className="bg-primary h-2 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>

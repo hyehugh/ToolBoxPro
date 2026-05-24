@@ -32,7 +32,6 @@ export function TextSummarizerTool() {
         env.allowLocalModels = false;
         env.allowRemoteModels = true;
 
-        // Use quantized model (q4) to reduce download from ~300MB to ~75MB
         pipelineRef.current = await pipeline(
           "summarization",
           "Xenova/t5-small",
@@ -40,8 +39,10 @@ export function TextSummarizerTool() {
             dtype: "q4",
             device: "wasm",
             progress_callback: (p: any) => {
-              if (p?.status === "download" && p?.total > 0) {
+              if (p?.total > 0) {
                 setProgress(Math.round((p.loaded / p.total) * 100));
+              } else if (p?.progress !== undefined) {
+                setProgress(Math.round(p.progress));
               }
             },
           } as any
@@ -56,7 +57,7 @@ export function TextSummarizerTool() {
           setErrorMsg(`Trying mirror ${i + 2}/${MODEL_HOSTS.length}...`);
         } else {
           setModelStatus("error");
-          setErrorMsg(`Failed to load AI model. ${e?.message?.slice(0, 100) || ""}`);
+          setErrorMsg(`Failed: ${e?.message?.slice(0, 200) || "Unknown"}`);
         }
       }
     }
@@ -84,7 +85,7 @@ export function TextSummarizerTool() {
       });
       setSummary(output[0]?.summary_text?.trim() || "Could not generate summary.");
     } catch (e: any) {
-      setErrorMsg(`Error: ${e?.message?.slice(0, 100) || ""}`);
+      setErrorMsg(`Error: ${e?.message?.slice(0, 200) || "Unknown"}`);
     }
     setLoading(false);
   }, [text, ratio, modelStatus, loadModel]);
