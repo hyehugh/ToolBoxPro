@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import { pipelineCache } from "./model-cache";
 
 type ModelStatus = "idle" | "downloading" | "compiling" | "ready" | "error";
 
@@ -21,8 +22,15 @@ export function TextSummarizerTool() {
   const pipelineRef = useRef<any>(null);
   const hostIndexRef = useRef(0);
   const speedRef = useRef({ bytes: 0, time: 0, samples: [] as number[], lastDisplay: 0 });
+  const CACHE_KEY = "text-summarizer";
 
   const loadModel = useCallback(async () => {
+    if (pipelineCache.has(CACHE_KEY)) {
+      pipelineRef.current = pipelineCache.get(CACHE_KEY)!;
+      setModelStatus("ready");
+      return;
+    }
+
     setModelStatus("downloading");
     setProgress(0);
     setSpeed("");
@@ -68,6 +76,7 @@ export function TextSummarizerTool() {
           } as any
         );
         setModelStatus("ready");
+        pipelineCache.set(CACHE_KEY, pipelineRef.current);
         hostIndexRef.current = i;
         return;
       } catch (e: any) {
