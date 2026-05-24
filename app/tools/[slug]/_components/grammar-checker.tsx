@@ -31,7 +31,15 @@ export function GrammarCheckerTool() {
       return;
     }
 
-    setModelStatus("downloading");
+    // Check localStorage flag: if downloaded before, skip "Downloading" UI
+    const isCached = localStorage.getItem("hf_model_grammar") === "1";
+
+    if (!isCached) {
+      setModelStatus("downloading");
+    } else {
+      // Already cached in browser Cache API — go straight to compiling
+      setModelStatus("compiling");
+    }
     setProgress(0);
     setSpeed("");
     setErrorMsg("");
@@ -83,6 +91,7 @@ export function GrammarCheckerTool() {
         );
         setModelStatus("ready");
         pipelineCache.set(CACHE_KEY, pipelineRef.current);
+        localStorage.setItem("hf_model_grammar", "1");
         hostIndexRef.current = i;
         return;
       } catch (e: any) {

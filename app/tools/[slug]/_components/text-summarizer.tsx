@@ -31,7 +31,13 @@ export function TextSummarizerTool() {
       return;
     }
 
-    setModelStatus("downloading");
+    const isCached = localStorage.getItem("hf_model_summarizer") === "1";
+
+    if (!isCached) {
+      setModelStatus("downloading");
+    } else {
+      setModelStatus("compiling");
+    }
     setProgress(0);
     setSpeed("");
     setErrorMsg("");
@@ -77,6 +83,7 @@ export function TextSummarizerTool() {
         );
         setModelStatus("ready");
         pipelineCache.set(CACHE_KEY, pipelineRef.current);
+        localStorage.setItem("hf_model_summarizer", "1");
         hostIndexRef.current = i;
         return;
       } catch (e: any) {
