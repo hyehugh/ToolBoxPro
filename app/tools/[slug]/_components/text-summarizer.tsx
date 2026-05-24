@@ -105,6 +105,9 @@ export function TextSummarizerTool() {
     setLoading(true);
     setSummary("");
 
+    // Yield to React to render UI before blocking on inference
+    await new Promise((r) => setTimeout(r, 0));
+
     if (!pipelineRef.current) await loadModel();
     if (!pipelineRef.current) { setLoading(false); return; }
 

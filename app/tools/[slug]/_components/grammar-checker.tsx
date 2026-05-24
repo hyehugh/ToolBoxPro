@@ -112,6 +112,9 @@ export function GrammarCheckerTool() {
     setLoading(true);
     setResult(null);
 
+    // Yield to React to render "Checking..." before blocking on inference
+    await new Promise((r) => setTimeout(r, 0));
+
     if (!pipelineRef.current) await loadModel();
     if (!pipelineRef.current) { setLoading(false); return; }
 
