@@ -10,7 +10,12 @@ const MODEL_HOSTS = [
   "https://hf-mirror.com/",
 ];
 
-const LANGUAGES = [
+interface Lang {
+  code: string;
+  name: string;
+}
+
+const LANGUAGES: Lang[] = [
   { code: "English", name: "English" },
   { code: "Chinese", name: "中文" },
   { code: "Spanish", name: "Español" },
@@ -22,6 +27,9 @@ const LANGUAGES = [
   { code: "Arabic", name: "العربية" },
   { code: "Portuguese", name: "Português" },
 ];
+
+// Share model cache with summarizer — same model!
+const CACHE_KEY = "text-summarizer";
 
 export function TextTranslatorTool() {
   const [text, setText] = useState("");
@@ -36,16 +44,17 @@ export function TextTranslatorTool() {
   const pipelineRef = useRef<any>(null);
   const hostIndexRef = useRef(0);
   const speedRef = useRef({ bytes: 0, time: 0, samples: [] as number[], lastDisplay: 0 });
-  const CACHE_KEY = "text-translator";
 
   const loadModel = useCallback(async () => {
+    // Check module-level cache (may have been loaded by Summarizer already)
     if (pipelineCache.has(CACHE_KEY)) {
       pipelineRef.current = pipelineCache.get(CACHE_KEY)!;
       setModelStatus("ready");
       return;
     }
 
-    const isCached = localStorage.getItem("hf_model_translator") === "1";
+    // Check if model was downloaded before
+    const isCached = localStorage.getItem("hf_model_summarizer") === "1";
     if (!isCached) {
       setModelStatus("downloading");
     } else {
@@ -62,6 +71,7 @@ export function TextTranslatorTool() {
         env.allowLocalModels = false;
         env.allowRemoteModels = true;
 
+        // Use same model as Summarizer — t5-small (75MB q4)
         pipelineRef.current = await pipeline(
           "text2text-generation",
           "Xenova/t5-small",
@@ -96,7 +106,7 @@ export function TextTranslatorTool() {
         );
         setModelStatus("ready");
         pipelineCache.set(CACHE_KEY, pipelineRef.current);
-        localStorage.setItem("hf_model_translator", "1");
+        localStorage.setItem("hf_model_summarizer", "1");
         hostIndexRef.current = i;
         return;
       } catch (e: any) {
@@ -117,6 +127,7 @@ export function TextTranslatorTool() {
     if (!clean || modelStatus === "downloading") return;
     setLoading(true);
     setTranslation("");
+    setErrorMsg("");
 
     await new Promise((r) => setTimeout(r, 0));
 
@@ -124,28 +135,57 @@ export function TextTranslatorTool() {
     if (!pipelineRef.current) { setLoading(false); return; }
 
     try {
+      // T5 translation prompt format
       const prompt = `translate ${sourceLang} to ${targetLang}: ${clean}`;
-      const maxNewTokens = Math.min(256, Math.round(clean.split(" ").length * 2 + 10));
+      const maxTokens = Math.max(30, Math.min(256, Math.round(clean.split(" ").length * 2)));
+
       const output = await pipelineRef.current(prompt, {
-        max_new_tokens: maxNewTokens,
-        temperature: 0.1,
+        max_new_tokens: maxTokens,
+        temperature: 0.0,
         do_sample: false,
       });
-      const result = output[0]?.generated_text?.trim() || "";
-      // Remove the prompt prefix from result if present
-      const cleaned = result.replace(new RegExp(`^translate ${sourceLang} to ${targetLang}:\\s*`, "i"), "");
-      setTranslation(cleaned || "Translation failed. Try shorter text.");
+
+      let result = output[0]?.generated_text?.trim() || "";
+      // Strip prompt prefix if model echoes it back
+      const prefix = `translate ${sourceLang} to ${targetLang}:`;
+      if (result.toLowerCase().startsWith(prefix.toLowerCase())) {
+        result = result.slice(prefix.length).trim();
+      }
+
+      // If result is same as input, try with lowercase prompt
+      if (!result || result.toLowerCase() === clean.toLowerCase()) {
+        const promptLower = `translate ${sourceLang.toLowerCase()} to ${targetLang.toLowerCase()}: ${clean}`;
+        const retry = await pipelineRef.current(promptLower, {
+          max_new_tokens: maxTokens,
+          temperature: 0.0,
+          do_sample: false,
+        });
+        result = retry[0]?.generated_text?.trim() || "";
+        const lowerPrefix = `translate ${sourceLang.toLowerCase()} to ${targetLang.toLowerCase()}:`;
+        if (result.toLowerCase().startsWith(lowerPrefix)) {
+          result = result.slice(lowerPrefix.length).trim();
+        }
+      }
+
+      setTranslation(result || "Translation returned empty result. Try shorter text.");
     } catch (e: any) {
       setErrorMsg(`Error: ${e?.message?.slice(0, 200) || "Unknown"}`);
     }
     setLoading(false);
   }, [text, sourceLang, targetLang, modelStatus, loadModel]);
 
+  const swapLangs = useCallback(() => {
+    const s = sourceLang;
+    setSourceLang(targetLang);
+    setTargetLang(s);
+    if (translation) { setText(translation); setTranslation(""); }
+  }, [sourceLang, targetLang, text, translation]);
+
   const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
 
   return (
     <div className="space-y-4">
-      {/* Badge */}
+      {/* Privacy badge */}
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
         <span className="text-sm">🔒</span>
         <span className="text-xs text-emerald-700 dark:text-emerald-300">
@@ -155,31 +195,16 @@ export function TextTranslatorTool() {
 
       {/* Language selector */}
       <div className="flex items-center gap-2">
-        <select
-          value={sourceLang}
-          onChange={(e) => setSourceLang(e.target.value)}
-          className="px-2 py-1.5 rounded-md border border-input bg-background text-xs focus:outline-none focus:ring-2 focus:ring-ring"
-        >
+        <select value={sourceLang} onChange={(e) => { setSourceLang(e.target.value); setTranslation(""); }}
+          className="px-2 py-1.5 rounded-md border border-input bg-background text-xs focus:outline-none focus:ring-2 focus:ring-ring flex-1">
           {LANGUAGES.map((l) => (
             <option key={l.code} value={l.code}>{l.name}</option>
           ))}
         </select>
-        <button
-          onClick={() => {
-            const s = sourceLang;
-            setSourceLang(targetLang);
-            setTargetLang(s);
-            setTranslation("");
-          }}
-          className="px-2 py-1.5 rounded-md border border-input hover:bg-accent transition-colors text-xs"
-        >
-          ⇄
-        </button>
-        <select
-          value={targetLang}
-          onChange={(e) => setTargetLang(e.target.value)}
-          className="px-2 py-1.5 rounded-md border border-input bg-background text-xs focus:outline-none focus:ring-2 focus:ring-ring"
-        >
+        <button onClick={swapLangs}
+          className="px-2 py-1.5 rounded-md border border-input hover:bg-accent transition-colors text-xs shrink-0">⇄</button>
+        <select value={targetLang} onChange={(e) => { setTargetLang(e.target.value); setTranslation(""); }}
+          className="px-2 py-1.5 rounded-md border border-input bg-background text-xs focus:outline-none focus:ring-2 focus:ring-ring flex-1">
           {LANGUAGES.map((l) => (
             <option key={l.code} value={l.code}>{l.name}</option>
           ))}
@@ -188,26 +213,17 @@ export function TextTranslatorTool() {
 
       {/* Input */}
       <div>
-        <textarea
-          placeholder={`Type text to translate from ${sourceLang} to ${targetLang}...`}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          rows={5}
-          className="w-full p-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y"
-        />
+        <textarea placeholder="Type text to translate..." value={text}
+          onChange={(e) => setText(e.target.value)} rows={5}
+          className="w-full p-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y" />
         <div className="flex items-center justify-between mt-2">
           <span className="text-xs text-muted-foreground">{wordCount} words</span>
           <div className="flex gap-2">
-            <button
-              onClick={() => { setText(""); setTranslation(""); }}
-              className="px-3 py-1.5 rounded-md text-xs border border-input hover:bg-accent transition-colors"
-              disabled={!text}
-            >Clear</button>
-            <button
-              onClick={translate}
+            <button onClick={() => { setText(""); setTranslation(""); setErrorMsg(""); }}
+              className="px-3 py-1.5 rounded-md text-xs border border-input hover:bg-accent transition-colors" disabled={!text}>Clear</button>
+            <button onClick={translate}
               disabled={!text.trim() || loading || modelStatus === "downloading" || modelStatus === "compiling"}
-              className="px-4 py-1.5 rounded-md text-xs font-medium bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50"
-            >
+              className="px-4 py-1.5 rounded-md text-xs font-medium bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50">
               {modelStatus === "downloading" ? `Downloading AI... ${progress}%` : modelStatus === "compiling" ? "Initializing..." : loading ? "Translating..." : "Translate →"}
             </button>
           </div>
@@ -252,21 +268,18 @@ export function TextTranslatorTool() {
 
       {/* Output */}
       {translation && (
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => navigator.clipboard.writeText(translation)}
-              className="px-3 py-1.5 rounded-md text-xs border border-input hover:bg-accent transition-colors"
-            >Copy</button>
+            <span className="text-xs text-muted-foreground">{targetLang} :</span>
+            <button onClick={() => navigator.clipboard.writeText(translation)}
+              className="px-3 py-1.5 rounded-md text-xs border border-input hover:bg-accent transition-colors">Copy</button>
           </div>
           <div className="p-4 rounded-md border bg-card">
-            <p className="text-xs text-muted-foreground mb-2 font-medium">{targetLang}:</p>
             <p className="text-sm leading-relaxed">{translation}</p>
           </div>
         </div>
       )}
 
-      {/* Empty state */}
       {!text.trim() && !translation && (
         <div className="text-center py-8 text-muted-foreground">
           <p className="text-3xl mb-2">🌐</p>
