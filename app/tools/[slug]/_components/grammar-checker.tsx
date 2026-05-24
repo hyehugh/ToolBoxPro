@@ -19,7 +19,7 @@ export function GrammarCheckerTool() {
   const [errorMsg, setErrorMsg] = useState("");
   const pipelineRef = useRef<any>(null);
   const hostIndexRef = useRef(0);
-  const speedRef = useRef({ bytes: 0, time: 0, samples: [] as number[] });
+  const speedRef = useRef({ bytes: 0, time: 0, samples: [] as number[], lastDisplay: 0 });
 
   const loadModel = useCallback(async () => {
     setModelStatus("downloading");
@@ -53,10 +53,14 @@ export function GrammarCheckerTool() {
                   if (deltaTime > 0) {
                     s.samples.push(deltaBytes / deltaTime);
                     if (s.samples.length > 5) s.samples.shift();
-                    const avgSpeed = s.samples.reduce((a, b) => a + b, 0) / s.samples.length;
-                    setSpeed(avgSpeed > 1_000_000
-                      ? `${(avgSpeed / 1_048_576).toFixed(1)} MB/s`
-                      : `${(avgSpeed / 1024).toFixed(0)} KB/s`);
+                    // Update display at most once per second
+                    if (now - s.lastDisplay > 1000) {
+                      const avg = s.samples.reduce((a, b) => a + b, 0) / s.samples.length;
+                      setSpeed(avg > 1_000_000
+                        ? `${(avg / 1_048_576).toFixed(1)} MB/s`
+                        : `${(avg / 1024).toFixed(0)} KB/s`);
+                      s.lastDisplay = now;
+                    }
                   }
                 }
                 s.bytes = p.loaded;
