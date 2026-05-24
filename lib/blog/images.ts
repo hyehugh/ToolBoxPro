@@ -35,6 +35,11 @@ export const blogImages: BlogImage[] = [
   { blog: "dns-lookup", toolSlug: "dns-lookup", image: "/blog/dns-lookup.png" },
   { blog: "password-strength", toolSlug: "password-strength", image: "/blog/password-strength.png" },
   { blog: "percentage-calculator", toolSlug: "percentage-calculator", image: "/blog/percentage-calculator.png" },
+  { blog: "toolboxpro-vs-tinywow-vs-ilovepdf-privacy", toolSlug: "json-formatter", image: "/blog/json-formatter.png" },
+  { blog: "best-free-online-json-formatters-compared-2026", toolSlug: "json-formatter", image: "/blog/json-formatter.png" },
+  { blog: "free-online-image-compressors-compared-quality", toolSlug: "image-compressor", image: "/blog/image-compressor.png" },
+  { blog: "online-pdf-tools-client-side-vs-server-side", toolSlug: "pdf-merger", image: "/blog/pdf-merger.png" },
+  { blog: "best-free-online-regex-testers-2026", toolSlug: "regex-tester", image: "/blog/regex-tester.png" },
 ];
 
 export function getBlogImage(slug: string): string | undefined {
