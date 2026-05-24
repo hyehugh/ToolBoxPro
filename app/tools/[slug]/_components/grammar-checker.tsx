@@ -38,12 +38,9 @@ export function GrammarCheckerTool() {
             dtype: "q4",
             device: "wasm",
             progress_callback: (p: any) => {
-              // Status can be "progress" or "download" — check for loaded/total
-              if (p?.total > 0) {
-                setProgress(Math.round((p.loaded / p.total) * 100));
-              } else if (p?.progress !== undefined) {
-                // Some callbacks provide progress as a ratio
-                setProgress(Math.round(p.progress));
+              // Smooth progress: prefer aggregated (progress_total) over per-file
+              if (p?.status === "progress_total" && p?.progress !== undefined) {
+                setProgress(Math.min(Math.round(p.progress), 100));
               }
             },
           } as any

@@ -39,10 +39,8 @@ export function TextSummarizerTool() {
             dtype: "q4",
             device: "wasm",
             progress_callback: (p: any) => {
-              if (p?.total > 0) {
-                setProgress(Math.round((p.loaded / p.total) * 100));
-              } else if (p?.progress !== undefined) {
-                setProgress(Math.round(p.progress));
+              if (p?.status === "progress_total" && p?.progress !== undefined) {
+                setProgress(Math.min(Math.round(p.progress), 100));
               }
             },
           } as any
