@@ -2,7 +2,7 @@ export interface Tool {
   slug: string;
   name: string;
   description: string;
-  category: "developer" | "text" | "image" | "pdf" | "audio" | "network" | "conversion" | "utilities" | "ai";
+  category: "developer" | "text" | "image" | "pdf" | "audio" | "network" | "conversion" | "utilities";
   icon: string;
   searchKeywords: string;
 }
@@ -835,22 +835,6 @@ export const tools: Tool[] = [
     icon: "📊",
     searchKeywords: "text statistics analysis letter frequency word count online",
   },
-  {
-    slug: "grammar-checker",
-    name: "AI Text Rewriter",
-    description: "Rewrite, simplify, or change the tone of any text using AI — runs entirely in your browser",
-    category: "ai",
-    icon: "✍️",
-    searchKeywords: "ai text rewriter paraphrasing tool simplify text rewrite sentences free online browser",
-  },
-  {
-    slug: "text-summarizer",
-    name: "AI Text Summarizer",
-    description: "Summarize articles, essays, and documents instantly using AI — runs entirely in your browser",
-    category: "ai",
-    icon: "✨",
-    searchKeywords: "ai text summarizer free online article summarizer summary generator paragraph summarizer",
-  },
 ];
 
 export const categories = [
@@ -862,7 +846,6 @@ export const categories = [
   { id: "network" as const, name: "Network Tools", icon: "🌐" },
   { id: "conversion" as const, name: "Unit Converters", icon: "📐" },
   { id: "utilities" as const, name: "Utilities", icon: "🧰" },
-  { id: "ai" as const, name: "AI Tools", icon: "🤖" },
 ];
 
 export function getTool(slug: string): Tool | undefined {

@@ -1,6 +1,6 @@
-# How I Built 102 Free Tools + 2 AI Tools Without a Single Server
+# How I Built 100 Free Online Tools Without a Single Server
 
-**Tagged:** `#webdev` `#javascript` `#nextjs` `#showdev` `#machinelearning`
+**Tagged:** `#webdev` `#javascript` `#nextjs` `#showdev` `#opensource`
 
 ---
 
@@ -128,48 +128,6 @@ I chose client-side because:
 The trade-off: tools that require network access (SSL checker, DNS lookup) need third-party APIs or serverless functions. I added those as a thin API layer later.
 
 ---
-
----
-
-## Running AI in the Browser With Transformers.js
-
-The question everyone asks: "Why use a tool site when ChatGPT exists?"
-
-My answer: **Because my AI tools run in your browser too.**
-
-I added two AI tools using [Transformers.js](https://huggingface.co/docs/transformers.js):
-
-**AI Grammar Checker** — Uses Xenova/t5-base-grammar-correction to correct grammar, spelling, and style. Downloads on first use, cached afterwards.
-
-**AI Text Summarizer** — Uses Xenova/t5-small to summarize articles and documents in seconds.
-
-Here's how simple it is:
-
-```typescript
-import { pipeline } from "@huggingface/transformers";
-const summarizer = await pipeline("summarization", "Xenova/t5-small");
-const result = await summarizer(longText, { max_length: 150, min_length: 40 });
-```
-
-No API key. No server. No data leaving your device.
-
-### Why This Matters
-
-Most "AI tools" need an OpenAI API key or a backend proxy. My approach is different:
-
-- **Zero ongoing cost** — models download once, run locally forever
-- **Completely private** — no data leaves the browser
-- **Works offline** — after download, no internet needed
-- **No rate limits** — the user's hardware is the only limit
-
-### The Trade-off
-
-Browser ML isn't perfect:
-- First load requires a ~60-300MB model download
-- Slower than dedicated GPUs (WebAssembly, not CUDA)
-- Limited to smaller models
-
-But WebGPU support is coming, which will bring 10x faster inference to browsers.
 
 ## What I Learned About Next.js 15 App Router
 

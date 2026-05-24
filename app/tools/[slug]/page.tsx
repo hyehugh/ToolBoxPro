@@ -112,8 +112,6 @@ import { QrReaderTool } from "./_components/qr-reader";
 import { ColorBlindnessSimulatorTool } from "./_components/color-blindness-simulator";
 import { OnlineNotepadTool } from "./_components/online-notepad";
 import { TextStatisticsTool } from "./_components/text-statistics";
-// AI tools — loaded via client wrapper to exclude onnxruntime-node from server bundle
-import { DynamicAITool } from "./_components/dynamic-ai-tool";
 // Everyday tools
 import { RomanNumeralTool } from "./_components/roman-numeral";
 import { PercentageCalculatorTool } from "./_components/percentage-calculator";
@@ -248,9 +246,6 @@ function getToolComponent(slug: string) {
     "color-blindness-simulator": ColorBlindnessSimulatorTool,
     "online-notepad": OnlineNotepadTool,
     "text-statistics": TextStatisticsTool,
-    // AI tools use dynamic client-side loader
-    "grammar-checker": () => <DynamicAITool slug="grammar-checker" />,
-    "text-summarizer": () => <DynamicAITool slug="text-summarizer" />,
   };
   return components[slug];
 }
@@ -273,7 +268,7 @@ export default async function ToolPage({ params }: Props) {
         <Link href="/" className="hover:text-foreground">Home</Link>
         <span>/</span>
         <Link href={`/tools?category=${tool.category}`} className="hover:text-foreground capitalize">
-          {tool.category === "ai" ? "AI" : tool.category} Tools
+          {tool.category} Tools
         </Link>
         <span>/</span>
         <span className="text-foreground">{tool.name}</span>
