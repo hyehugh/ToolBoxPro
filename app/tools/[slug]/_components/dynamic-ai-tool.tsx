@@ -3,13 +3,13 @@
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 
-const GrammarChecker = dynamic(
-  () => import("./grammar-checker").then((m) => ({ default: m.GrammarCheckerTool })),
+const TextSummarizer = dynamic(
+  () => import("./text-summarizer").then((m) => ({ default: m.TextSummarizerTool })),
   { ssr: false }
 );
 
-const TextSummarizer = dynamic(
-  () => import("./text-summarizer").then((m) => ({ default: m.TextSummarizerTool })),
+const TextTranslator = dynamic(
+  () => import("./text-translator").then((m) => ({ default: m.TextTranslatorTool })),
   { ssr: false }
 );
 
@@ -18,7 +18,6 @@ interface Props {
 }
 
 export function DynamicAITool({ slug }: Props) {
-  // Prevent hydration mismatch
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -32,7 +31,7 @@ export function DynamicAITool({ slug }: Props) {
 
   switch (slug) {
     case "grammar-checker":
-      return <GrammarChecker />;
+      return <TextTranslator />;
     case "text-summarizer":
       return <TextSummarizer />;
     default:
