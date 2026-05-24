@@ -20,25 +20,6 @@ export function TextSummarizerTool() {
   const pipelineRef = useRef<any>(null);
   const hostIndexRef = useRef(0);
 
-  const createPipeline = useCallback(async (hostIndex: number) => {
-    const { pipeline, env } = await import("@huggingface/transformers");
-    env.remoteHost = MODEL_HOSTS[hostIndex];
-    env.allowLocalModels = false;
-    env.allowRemoteModels = true;
-
-    return await pipeline(
-      "summarization",
-      "Xenova/t5-small",
-      {
-        progress_callback: (p: any) => {
-          if (p?.status === "download" && p?.total > 0) {
-            setProgress(Math.round((p.loaded / p.total) * 100));
-          }
-        },
-      } as any
-    );
-  }, []);
-
   const loadModel = useCallback(async () => {
     setModelStatus("downloading");
     setProgress(0);
@@ -46,7 +27,25 @@ export function TextSummarizerTool() {
 
     for (let i = hostIndexRef.current; i < MODEL_HOSTS.length; i++) {
       try {
-        pipelineRef.current = await createPipeline(i);
+        const { pipeline, env } = await import("@huggingface/transformers");
+        env.remoteHost = MODEL_HOSTS[i];
+        env.allowLocalModels = false;
+        env.allowRemoteModels = true;
+
+        // Use quantized model (q4) to reduce download from ~300MB to ~75MB
+        pipelineRef.current = await pipeline(
+          "summarization",
+          "Xenova/t5-small",
+          {
+            dtype: "q4",
+            device: "wasm",
+            progress_callback: (p: any) => {
+              if (p?.status === "download" && p?.total > 0) {
+                setProgress(Math.round((p.loaded / p.total) * 100));
+              }
+            },
+          } as any
+        );
         setModelStatus("ready");
         hostIndexRef.current = i;
         return;
@@ -57,11 +56,11 @@ export function TextSummarizerTool() {
           setErrorMsg(`Trying mirror ${i + 2}/${MODEL_HOSTS.length}...`);
         } else {
           setModelStatus("error");
-          setErrorMsg(`Failed to load AI model. ${e?.message || ""}`);
+          setErrorMsg(`Failed to load AI model. ${e?.message?.slice(0, 100) || ""}`);
         }
       }
     }
-  }, [createPipeline]);
+  }, []);
 
   const summarize = useCallback(async () => {
     const clean = text.trim();
@@ -85,7 +84,7 @@ export function TextSummarizerTool() {
       });
       setSummary(output[0]?.summary_text?.trim() || "Could not generate summary.");
     } catch (e: any) {
-      setErrorMsg(`Error: ${e?.message || "Unknown error"}`);
+      setErrorMsg(`Error: ${e?.message?.slice(0, 100) || ""}`);
     }
     setLoading(false);
   }, [text, ratio, modelStatus, loadModel]);
@@ -97,19 +96,13 @@ export function TextSummarizerTool() {
     <div className="space-y-4">
       <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
         <span className="text-sm">🔒</span>
-        <span className="text-xs text-emerald-700 dark:text-emerald-300">
-          AI runs locally in your browser. Your text never leaves your device.
-        </span>
+        <span className="text-xs text-emerald-700 dark:text-emerald-300">AI runs locally in your browser. Text never leaves your device.</span>
       </div>
 
       <div>
-        <textarea
-          placeholder="Paste article, essay, or document text to summarize..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          rows={8}
-          className="w-full p-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y"
-        />
+        <textarea placeholder="Paste article, essay, or document text to summarize..." value={text}
+          onChange={(e) => setText(e.target.value)} rows={8}
+          className="w-full p-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y" />
         <div className="flex items-center justify-between mt-2">
           <span className="text-xs text-muted-foreground">{wordCount} words</span>
         </div>
@@ -117,15 +110,14 @@ export function TextSummarizerTool() {
 
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="text-xs text-muted-foreground whitespace-nowrap">Summary length: {ratio}%</label>
+          <label className="text-xs text-muted-foreground whitespace-nowrap">Length: {ratio}%</label>
           <input type="range" min="10" max="50" value={ratio}
             onChange={(e) => setRatio(Number(e.target.value))}
             className="w-24 h-1.5 accent-primary" />
         </div>
         <div className="flex gap-2 ml-auto">
           <button onClick={() => { setText(""); setSummary(""); }}
-            className="px-3 py-1.5 rounded-md text-xs border border-input hover:bg-accent transition-colors"
-            disabled={!text}>Clear</button>
+            className="px-3 py-1.5 rounded-md text-xs border border-input hover:bg-accent transition-colors" disabled={!text}>Clear</button>
           <button onClick={summarize}
             disabled={wordCount < 10 || loading || modelStatus === "downloading"}
             className="px-4 py-1.5 rounded-md text-xs font-medium bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50">
@@ -136,7 +128,7 @@ export function TextSummarizerTool() {
 
       {modelStatus === "downloading" && (
         <div className="p-4 rounded-md border bg-card">
-          <p className="text-xs text-muted-foreground mb-2">Downloading AI model (~60MB). First load only.</p>
+          <p className="text-xs text-muted-foreground mb-2">Downloading AI model (~75MB, quantized). First load only.</p>
           <div className="w-full bg-secondary rounded-full h-2">
             <div className="bg-primary h-2 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
@@ -147,7 +139,7 @@ export function TextSummarizerTool() {
 
       {modelStatus === "error" && (
         <div className="p-3 rounded-md bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800">
-          <p className="text-xs text-red-700 dark:text-red-300">{errorMsg || "Failed to load the AI model."}</p>
+          <p className="text-xs text-red-700 dark:text-red-300">{errorMsg}</p>
           <button onClick={() => { hostIndexRef.current = 0; loadModel(); }}
             className="mt-2 text-xs underline hover:no-underline text-red-700 dark:text-red-300">Retry</button>
         </div>
@@ -157,7 +149,7 @@ export function TextSummarizerTool() {
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-              {wordCount} words → {summaryWords} words ({Math.round((summaryWords / wordCount) * 100)}%)
+              {wordCount}w → {summaryWords}w ({Math.round((summaryWords / wordCount) * 100)}%)
             </div>
             <button onClick={() => navigator.clipboard.writeText(summary)}
               className="px-3 py-1.5 rounded-md text-xs border border-input hover:bg-accent transition-colors">Copy</button>
@@ -172,8 +164,8 @@ export function TextSummarizerTool() {
       {!text.trim() && !summary && (
         <div className="text-center py-8 text-muted-foreground">
           <p className="text-3xl mb-2">📝</p>
-          <p className="text-sm">Paste any text to get an AI-generated summary</p>
-          <p className="text-xs mt-1">Powered by AI — runs 100% in your browser</p>
+          <p className="text-sm">Paste text to get an AI summary</p>
+          <p className="text-xs mt-1">Runs 100% in your browser</p>
         </div>
       )}
     </div>
