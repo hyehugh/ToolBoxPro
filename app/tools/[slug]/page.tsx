@@ -112,6 +112,8 @@ import { QrReaderTool } from "./_components/qr-reader";
 import { ColorBlindnessSimulatorTool } from "./_components/color-blindness-simulator";
 import { OnlineNotepadTool } from "./_components/online-notepad";
 import { TextStatisticsTool } from "./_components/text-statistics";
+// AI tools
+import { GrammarCheckerTool } from "./_components/grammar-checker";
 // Everyday tools
 import { RomanNumeralTool } from "./_components/roman-numeral";
 import { PercentageCalculatorTool } from "./_components/percentage-calculator";
@@ -246,6 +248,7 @@ function getToolComponent(slug: string) {
     "color-blindness-simulator": ColorBlindnessSimulatorTool,
     "online-notepad": OnlineNotepadTool,
     "text-statistics": TextStatisticsTool,
+    "grammar-checker": GrammarCheckerTool,
   };
   return components[slug];
 }

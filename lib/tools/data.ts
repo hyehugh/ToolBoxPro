@@ -835,6 +835,14 @@ export const tools: Tool[] = [
     icon: "📊",
     searchKeywords: "text statistics analysis letter frequency word count online",
   },
+  {
+    slug: "grammar-checker",
+    name: "AI Grammar Checker",
+    description: "Check your text for grammar, spelling, and style errors using AI — all in your browser",
+    category: "text",
+    icon: "✍️",
+    searchKeywords: "ai grammar checker free online spell check grammar correction proofreading english",
+  },
 ];
 
 export const categories = [
