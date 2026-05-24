@@ -837,11 +837,11 @@ export const tools: Tool[] = [
   },
   {
     slug: "grammar-checker",
-    name: "AI Translator",
-    description: "Translate text between 10 languages instantly using AI — runs entirely in your browser",
+    name: "AI Text Rewriter",
+    description: "Rewrite, simplify, or change the tone of any text using AI — runs entirely in your browser",
     category: "ai",
-    icon: "🌐",
-    searchKeywords: "free ai translator online translate text english chinese spanish french german browser",
+    icon: "✍️",
+    searchKeywords: "ai text rewriter paraphrasing tool simplify text rewrite sentences free online browser",
   },
   {
     slug: "text-summarizer",
