@@ -1,13 +1,14 @@
-# ToolboxPro — 100+ Free Online Tools
+# ToolboxPro — 102 Free Online Tools (including 2 AI tools)
 
-> **100% client-side. No uploads. No signup. Your files stay on your device.**
+> **100% client-side. No uploads. No signup. AI runs in your browser too.**
 
 ![ToolboxPro](https://trytoolboxpro.com/og-default.svg)
 
 ## ✨ Features
 
-- **100+ free tools** across 8 categories: Developer, Text, Image, PDF, Audio, Network, Converters, Utilities
-- **Zero server processing** — everything runs in your browser via JavaScript/Canvas/WebAssembly
+- **102 free tools** across 8 categories: Developer, Text, Image, PDF, Audio, Network, Converters, Utilities
+- **2 AI tools** — Grammar Checker and Text Summarizer run in your browser via Transformers.js, zero server
+- **Zero server processing** — everything runs in your browser via JavaScript/Canvas/WebAssembly/Transformers.js
 - **No signup required** — just open and use
 - **Privacy first** — your files never leave your device
 - **Works offline** — after first load, most tools work without internet
@@ -20,7 +21,7 @@
 | Category | Tools | Examples |
 |----------|-------|---------|
 | 🖥 **Developer** | 25+ | JSON Formatter, Regex Tester, JWT Decoder, SQL Formatter, CSS Gradient |
-| 📝 **Text** | 15+ | Word Counter, Case Converter, Diff Checker, Text to Slug |
+| 🛠 **Text** | 17+ | Word Counter, Case Converter, Diff Checker, **AI Grammar Checker**, **AI Summarizer** |
 | 🖼 **Image** | 10+ | Compressor, Resizer, Converter, Filters, Watermark |
 | 📄 **PDF** | 5+ | Merger, Splitter, Rotator, Image to PDF |
 | 🎵 **Audio** | 1+ | Audio Cutter |

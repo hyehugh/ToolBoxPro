@@ -1,15 +1,17 @@
 # Reddit Post — r/SideProject
 
 ## Title
-I built 100 free online tools that process everything in YOUR browser — no uploads, no servers
+I built 100 free tools + 2 AI tools that process everything in YOUR browser — no uploads, no servers
 
 ## Body
 
 Last month I decided to scratch my own itch. I was tired of tool sites that ask me to upload my files to their servers just to format JSON or resize an image.
 
-So I built **ToolboxPro** — 100+ free online tools where every single one runs client-side in your browser.
+So I built **ToolboxPro** — 100+ free tools **plus 2 AI tools** (Grammar Checker, Text Summarizer), all running client-side in your browser.
 
 **What's included:**
+- ✅ AI Grammar Checker — corrects grammar locally via Transformers.js
+- ✅ AI Text Summarizer — summarizes articles, zero server calls
 - ✅ JSON Formatter / Minifier / Diff / to YAML / to TypeScript
 - ✅ Regex Tester with live matching
 - ✅ Image Compressor, Resizer, Converter, Filter, Watermark
@@ -19,14 +21,12 @@ So I built **ToolboxPro** — 100+ free online tools where every single one runs
 - ✅ UUID Generator, Password Generator, Hash Generator
 - ✅ Text utilities (diff, sort, deduplicate, case converter...)
 - ✅ Audio Cutter
-- ✅ And more — 100+ total across 8 categories
+- ✅ And more — 102 total across 8 categories
 
 **The privacy angle (the real differentiator):**
-Every tool uses WebAssembly, Canvas, or pure JavaScript. No data is ever sent to a server. Your files stay on your device.
+Every tool — AI included — uses WebAssembly, Canvas, or pure JavaScript. No data is ever sent to a server. Your files AND your text stay on your device.
 
-**Tech stack:** Next.js 15, Tailwind v4, TypeScript, pdf-lib for PDF tools. Zero backend. $0 hosting cost (Vercel free tier).
-
-**Hardest part:** PDF manipulation in the browser (pdf-lib doesn't support everything, had to drop encryption). Image compression quality tuning across different browsers.
+**Tech stack:** Next.js 15, Tailwind v4, TypeScript, pdf-lib for PDF, Transformers.js for AI. Zero backend. $0 hosting cost (Vercel free tier).
 
 **Would love your feedback:** https://trytoolboxpro.com
 
