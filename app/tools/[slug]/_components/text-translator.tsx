@@ -28,8 +28,8 @@ const LANGUAGES: Lang[] = [
   { code: "Portuguese", name: "Português" },
 ];
 
-// Share model cache with summarizer — same model!
-const CACHE_KEY = "text-summarizer";
+// Use separate cache key from summarizer (different pipeline type)
+const CACHE_KEY = "text-translator";
 
 export function TextTranslatorTool() {
   const [text, setText] = useState("");
@@ -54,7 +54,7 @@ export function TextTranslatorTool() {
     }
 
     // Check if model was downloaded before
-    const isCached = localStorage.getItem("hf_model_summarizer") === "1";
+    const isCached = localStorage.getItem("hf_model_translator") === "1";
     if (!isCached) {
       setModelStatus("downloading");
     } else {
@@ -106,7 +106,7 @@ export function TextTranslatorTool() {
         );
         setModelStatus("ready");
         pipelineCache.set(CACHE_KEY, pipelineRef.current);
-        localStorage.setItem("hf_model_summarizer", "1");
+        localStorage.setItem("hf_model_translator", "1");
         hostIndexRef.current = i;
         return;
       } catch (e: any) {
