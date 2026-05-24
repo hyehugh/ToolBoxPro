@@ -112,9 +112,8 @@ import { QrReaderTool } from "./_components/qr-reader";
 import { ColorBlindnessSimulatorTool } from "./_components/color-blindness-simulator";
 import { OnlineNotepadTool } from "./_components/online-notepad";
 import { TextStatisticsTool } from "./_components/text-statistics";
-// AI tools
-import { GrammarCheckerTool } from "./_components/grammar-checker";
-import { TextSummarizerTool } from "./_components/text-summarizer";
+// AI tools — loaded via client wrapper to exclude onnxruntime-node from server bundle
+import { DynamicAITool } from "./_components/dynamic-ai-tool";
 // Everyday tools
 import { RomanNumeralTool } from "./_components/roman-numeral";
 import { PercentageCalculatorTool } from "./_components/percentage-calculator";
@@ -249,8 +248,9 @@ function getToolComponent(slug: string) {
     "color-blindness-simulator": ColorBlindnessSimulatorTool,
     "online-notepad": OnlineNotepadTool,
     "text-statistics": TextStatisticsTool,
-    "grammar-checker": GrammarCheckerTool,
-    "text-summarizer": TextSummarizerTool,
+    // AI tools use dynamic client-side loader
+    "grammar-checker": () => <DynamicAITool slug="grammar-checker" />,
+    "text-summarizer": () => <DynamicAITool slug="text-summarizer" />,
   };
   return components[slug];
 }
