@@ -837,11 +837,11 @@ export const tools: Tool[] = [
   },
   {
     slug: "grammar-checker",
-    name: "AI Grammar Checker",
-    description: "Check your text for grammar, spelling, and style errors using AI — all in your browser",
+    name: "Grammar Checker",
+    description: "Check your text for common grammar, spelling, and style errors instantly — no download needed",
     category: "ai",
-    icon: "🤖",
-    searchKeywords: "ai grammar checker free online spell check grammar correction proofreading english",
+    icon: "✍️",
+    searchKeywords: "grammar checker online free spell check grammar correction proofreading english",
   },
   {
     slug: "text-summarizer",
