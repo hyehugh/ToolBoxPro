@@ -273,7 +273,7 @@ export default async function ToolPage({ params }: Props) {
         <Link href="/" className="hover:text-foreground">Home</Link>
         <span>/</span>
         <Link href={`/tools?category=${tool.category}`} className="hover:text-foreground capitalize">
-          {tool.category} Tools
+          {tool.category === "ai" ? "AI" : tool.category} Tools
         </Link>
         <span>/</span>
         <span className="text-foreground">{tool.name}</span>

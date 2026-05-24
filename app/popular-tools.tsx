@@ -2,6 +2,8 @@ import Link from "next/link";
 import { tools } from "@/lib/tools/data";
 
 const popularSlugs = new Set([
+  "grammar-checker",
+  "text-summarizer",
   "json-formatter",
   "base64-encode-decode",
   "regex-tester",

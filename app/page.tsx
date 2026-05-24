@@ -27,6 +27,49 @@ export default function HomePage() {
       {/* Popular Tools */}
       <PopularTools />
 
+      {/* AI Tools Spotlight */}
+      <section className="mb-8 relative">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-violet-500/10 via-purple-500/10 to-pink-500/10 dark:from-violet-500/5 dark:via-purple-500/5 dark:to-pink-500/5 rounded-2xl" />
+        <div className="p-6 md:p-8">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 text-xs font-medium">
+                  NEW
+                </span>
+                <span className="text-2xl">🤖</span>
+                <h2 className="text-2xl font-bold">AI-Powered Tools</h2>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Powered by AI that runs locally in your browser. Your data stays on your device.
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {tools.filter((t) => t.category === "ai").map((tool) => (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}`}
+                className="relative flex items-start gap-4 p-5 rounded-xl border-2 border-violet-200 dark:border-violet-800 bg-card hover:bg-accent transition-all duration-200 card-shadow group"
+              >
+                <div className="absolute -top-2 -right-2 px-2 py-0.5 rounded-full bg-violet-600 text-white text-[10px] font-bold">
+                  AI
+                </div>
+                <span className="text-2xl mt-1">{tool.icon}</span>
+                <div>
+                  <h3 className="font-semibold group-hover:text-primary transition-colors">
+                    {tool.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-0.5">
+                    {tool.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Category Grid */}
       <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
         {categories.map((cat) => {

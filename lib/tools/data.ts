@@ -2,7 +2,7 @@ export interface Tool {
   slug: string;
   name: string;
   description: string;
-  category: "developer" | "text" | "image" | "pdf" | "audio" | "network" | "conversion" | "utilities";
+  category: "developer" | "text" | "image" | "pdf" | "audio" | "network" | "conversion" | "utilities" | "ai";
   icon: string;
   searchKeywords: string;
 }
@@ -839,16 +839,16 @@ export const tools: Tool[] = [
     slug: "grammar-checker",
     name: "AI Grammar Checker",
     description: "Check your text for grammar, spelling, and style errors using AI — all in your browser",
-    category: "text",
-    icon: "✍️",
+    category: "ai",
+    icon: "🤖",
     searchKeywords: "ai grammar checker free online spell check grammar correction proofreading english",
   },
   {
     slug: "text-summarizer",
     name: "AI Text Summarizer",
     description: "Summarize articles, essays, and documents instantly using AI — runs entirely in your browser",
-    category: "text",
-    icon: "📝",
+    category: "ai",
+    icon: "✨",
     searchKeywords: "ai text summarizer free online article summarizer summary generator paragraph summarizer",
   },
 ];
@@ -862,6 +862,7 @@ export const categories = [
   { id: "network" as const, name: "Network Tools", icon: "🌐" },
   { id: "conversion" as const, name: "Unit Converters", icon: "📐" },
   { id: "utilities" as const, name: "Utilities", icon: "🧰" },
+  { id: "ai" as const, name: "AI Tools", icon: "🤖" },
 ];
 
 export function getTool(slug: string): Tool | undefined {

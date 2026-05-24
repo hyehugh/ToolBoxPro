@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const categories = [
+  { name: "AI Tools", href: "/tools?category=ai" },
   { name: "Developer", href: "/tools?category=developer" },
   { name: "Text", href: "/tools?category=text" },
   { name: "Image", href: "/tools?category=image" },
