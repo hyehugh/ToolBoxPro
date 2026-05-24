@@ -114,6 +114,7 @@ import { OnlineNotepadTool } from "./_components/online-notepad";
 import { TextStatisticsTool } from "./_components/text-statistics";
 // AI tools
 import { GrammarCheckerTool } from "./_components/grammar-checker";
+import { TextSummarizerTool } from "./_components/text-summarizer";
 // Everyday tools
 import { RomanNumeralTool } from "./_components/roman-numeral";
 import { PercentageCalculatorTool } from "./_components/percentage-calculator";
@@ -249,6 +250,7 @@ function getToolComponent(slug: string) {
     "online-notepad": OnlineNotepadTool,
     "text-statistics": TextStatisticsTool,
     "grammar-checker": GrammarCheckerTool,
+    "text-summarizer": TextSummarizerTool,
   };
   return components[slug];
 }

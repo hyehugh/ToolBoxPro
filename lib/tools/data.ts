@@ -843,6 +843,14 @@ export const tools: Tool[] = [
     icon: "✍️",
     searchKeywords: "ai grammar checker free online spell check grammar correction proofreading english",
   },
+  {
+    slug: "text-summarizer",
+    name: "AI Text Summarizer",
+    description: "Summarize articles, essays, and documents instantly using AI — runs entirely in your browser",
+    category: "text",
+    icon: "📝",
+    searchKeywords: "ai text summarizer free online article summarizer summary generator paragraph summarizer",
+  },
 ];
 
 export const categories = [
