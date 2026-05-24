@@ -14,14 +14,17 @@ export function GrammarCheckerTool() {
   const [result, setResult] = useState<{ corrected: string; errorCount: number; changes: { original: string; corrected: string }[] } | null>(null);
   const [modelStatus, setModelStatus] = useState<ModelStatus>("idle");
   const [progress, setProgress] = useState(0);
+  const [speed, setSpeed] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const pipelineRef = useRef<any>(null);
   const hostIndexRef = useRef(0);
+  const speedRef = useRef({ bytes: 0, time: 0, samples: [] as number[] });
 
   const loadModel = useCallback(async () => {
     setModelStatus("downloading");
     setProgress(0);
+    setSpeed("");
     setErrorMsg("");
 
     for (let i = hostIndexRef.current; i < MODEL_HOSTS.length; i++) {
@@ -41,7 +44,23 @@ export function GrammarCheckerTool() {
               if (p?.status === "progress_total" && p?.progress !== undefined) {
                 const val = Math.min(Math.round(p.progress), 100);
                 setProgress(val);
-                // Once download reaches 100%, show compiling state
+                // Calculate download speed
+                const now = Date.now();
+                const s = speedRef.current;
+                if (s.time > 0 && p.loaded > s.bytes) {
+                  const deltaBytes = p.loaded - s.bytes;
+                  const deltaTime = (now - s.time) / 1000;
+                  if (deltaTime > 0) {
+                    s.samples.push(deltaBytes / deltaTime);
+                    if (s.samples.length > 5) s.samples.shift();
+                    const avgSpeed = s.samples.reduce((a, b) => a + b, 0) / s.samples.length;
+                    setSpeed(avgSpeed > 1_000_000
+                      ? `${(avgSpeed / 1_048_576).toFixed(1)} MB/s`
+                      : `${(avgSpeed / 1024).toFixed(0)} KB/s`);
+                  }
+                }
+                s.bytes = p.loaded;
+                s.time = now;
                 if (val >= 100) {
                   setModelStatus("compiling");
                 }
@@ -133,7 +152,10 @@ export function GrammarCheckerTool() {
           <div className="w-full bg-secondary rounded-full h-2">
             <div className="bg-primary h-2 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
-          <p className="text-xs text-muted-foreground mt-1">{progress}%</p>
+          <div className="flex justify-between text-xs text-muted-foreground mt-1">
+            <span>{progress}%</span>
+            {speed && <span>{speed}</span>}
+          </div>
           {errorMsg && <p className="text-xs text-amber-600 mt-1">{errorMsg}</p>}
         </div>
       )}
