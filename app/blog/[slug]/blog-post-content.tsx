@@ -222,8 +222,8 @@ export function BlogPostContent({ slug }: { slug: string }) {
                 href={`/blog/${p.slug}`}
                 className="p-4 rounded-lg border bg-card hover:bg-accent transition-colors"
               >
-                <p className="font-medium mb-1">{p.title}</p>
-                <p className="text-xs text-muted-foreground">{p.readTime}</p>
+                <p className="font-medium mb-1">{p.titleZh ? (locale === 'zh' ? p.titleZh : p.title) : p.title}</p>
+                <p className="text-xs text-muted-foreground">{t("blog.minRead", { count: p.readTime.split(" ")[0] })}</p>
               </Link>
             ))}
         </div>
