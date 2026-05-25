@@ -157,7 +157,7 @@ export function BlogPostContent({ slug }: { slug: string }) {
         <span>/</span>
         <Link href="/blog" className="hover:text-foreground">{t("nav.blog")}</Link>
         <span>/</span>
-        <span className="text-foreground truncate">{post.title}</span>
+        <span className="text-foreground truncate">{post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title}</span>
       </nav>
 
       <article>
@@ -172,10 +172,10 @@ export function BlogPostContent({ slug }: { slug: string }) {
             <span>{t("blog.minRead", { count: post.readTime.split(" ")[0] })}</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            {post.title}
+            {post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title}
           </h1>
           <p className="text-lg text-muted-foreground">
-            {post.description}
+            {post.descriptionZh ? (locale === 'zh' ? post.descriptionZh : post.description) : post.description}
           </p>
         </header>
 
@@ -183,7 +183,7 @@ export function BlogPostContent({ slug }: { slug: string }) {
           <div className="mb-8 rounded-xl overflow-hidden border border-border card-shadow">
             <img
               src={getBlogImage(slug)!}
-              alt={`${post.title} — ToolboxPro screenshot`}
+              alt={`${post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title} — ToolboxPro screenshot`}
               className="w-full h-auto"
               loading="lazy"
             />
@@ -203,7 +203,7 @@ export function BlogPostContent({ slug }: { slug: string }) {
               href={`/tools/${post.toolSlug}`}
               className="inline-flex items-center justify-center h-10 px-6 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
             >
-              {t("blog.tryTool")} {post.title.split("—")[0].trim()} →
+              {t("blog.tryTool")} {(post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title).split("—")[0].trim()} →
             </Link>
           </div>
         )}

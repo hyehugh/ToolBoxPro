@@ -214,7 +214,7 @@ function getToolComponent(slug: string) {
 }
 
 export function ToolPageContent({ slug }: { slug: string }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const tool = getTool(slug);
   if (!tool) return null;
 
@@ -280,10 +280,10 @@ export function ToolPageContent({ slug }: { slug: string }) {
                   <span>{t("blog.minRead", { count: post.readTime.split(" ")[0] })}</span>
                 </div>
                 <h3 className="font-medium text-sm hover:text-primary transition-colors">
-                  {post.title}
+                  {post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title}
                 </h3>
                 <p className="text-xs text-muted-foreground mt-1 line-clamp-1">
-                  {post.description}
+                  {post.descriptionZh ? (locale === 'zh' ? post.descriptionZh : post.description) : post.description}
                 </p>
               </Link>
             ))}

@@ -8,13 +8,17 @@ export interface BlogPost {
   toolSlug?: string;
   content: string;
   contentZh?: string;
+  titleZh?: string;
+  descriptionZh?: string;
 }
 
 export const blogPosts: BlogPost[] = [
   {
     slug: "how-to-format-json-online",
     title: "How to Format JSON Online Free — Complete Guide",
+    titleZh: "JSON 格式化完全指南——在线免费",
     description: "Learn how to format, validate, and beautify JSON quickly using free online tools. Fix malformed JSON in seconds.",
+    descriptionZh: "学习如何使用免费在线工具快速格式化、验证和美化 JSON。秒级修复格式错误的 JSON。",
     date: "2026-05-22",
     readTime: "5 min read",
     category: "Developer Tools",
@@ -257,7 +261,9 @@ JSON 看似简单。它只支持六种值类型：字符串（双引号）、数
   {
     slug: "base64-encoding-explained",
     title: "Base64 Encoding Explained — When and Why to Use It",
+    titleZh: "Base64 编码详解——何时以及为什么使用它",
     description: "A complete guide to Base64 encoding and decoding. Learn what it is, how it works, and when to use it in your projects.",
+    descriptionZh: "Base64 编码和解码的完整指南。了解它是什么、如何工作以及在项目中何时使用它。",
     date: "2026-05-22",
     readTime: "6 min read",
     category: "Developer Tools",
@@ -453,7 +459,9 @@ Base64 有明确的优势，也有同样明确的局限性。以下是一份实�
   {
     slug: "regex-for-beginners",
     title: "Regex for Beginners: How to Test Regular Expressions Online",
+    titleZh: "正则表达式入门：如何在线测试正则表达式",
     description: "Learn regex from scratch. Patterns, quantifiers, groups, and how to test them in real-time with our free tester.",
+    descriptionZh: "从零开始学习正则表达式。模式、量词、分组以及如何使用免费测试工具实时测试。",
     date: "2026-05-22",
     readTime: "8 min read",
     category: "Developer Tools",
@@ -665,7 +673,9 @@ A: Use our [regex tester](/tools/regex-tester) with your sample data. Break the 
   {
     slug: "hex-to-rgb-color-conversion",
     title: "HEX to RGB: Color Conversion Made Simple",
+    titleZh: "HEX 转 RGB：颜色转换简单指南",
     description: "Convert colors between HEX, RGB, and HSL formats. A practical guide for designers and developers.",
+    descriptionZh: "在 HEX、RGB 和 HSL 格式之间转换颜色。面向设计师和开发者的实用指南。",
     date: "2026-05-22",
     readTime: "4 min read",
     category: "Developer Tools",
@@ -819,7 +829,9 @@ HSL 将颜色分解为三个分量：**色相（Hue）**（色轮上的度数—
   {
     slug: "compress-images-without-losing-quality",
     title: "How to Compress Images Without Losing Quality",
+    titleZh: "如何在保持画质的前提下压缩图片",
     description: "Learn the best ways to reduce image file sizes while keeping visual quality. Perfect for websites, email, and storage.",
+    descriptionZh: "学习在保持视觉质量的同时减小图片文件大小的最佳方法。适用于网站、邮件和存储。",
     date: "2026-05-22",
     readTime: "6 min read",
     category: "Image Tools",
@@ -1018,7 +1030,9 @@ A：几乎总是 JPEG。质量为 75 的 JPEG 照片通常比同等的 PNG 小 5
   {
     slug: "merge-pdf-files-free",
     title: "Merge PDF Files Free — No Limits, No Signup",
+    titleZh: "免费合并 PDF 文件——无限制，无需注册",
     description: "Combine multiple PDFs into one document instantly. Free, unlimited, and private — no watermarks, no daily limits.",
+    descriptionZh: "即时将多个 PDF 合并为一个文档。免费、无限且隐私保护——无水印，无每日限制。",
     date: "2026-05-22",
     readTime: "4 min read",
     category: "PDF Tools",
@@ -1166,7 +1180,9 @@ PDF 合并不仅仅是追加字节。每个 PDF 都有内部交叉引用表、�
   {
     slug: "create-custom-qr-codes",
     title: "How to Create Custom QR Codes for Business",
+    titleZh: "如何为商业用途创建自定义二维码",
     description: "Generate professional QR codes with custom colors, logos, and error correction. Perfect for marketing, menus, and events.",
+    descriptionZh: "使用自定义颜色、Logo 和纠错生成专业二维码。适用于营销、菜单和活动。",
     date: "2026-05-22",
     readTime: "5 min read",
     category: "Conversion",
@@ -1312,7 +1328,9 @@ QR codes can be exploited for "quishing" (QR + phishing) attacks — malicious c
   {
     slug: "word-counter-character-count",
     title: "Word Counter — Why Character Count Matters",
+    titleZh: "字数统计——为什么字符数很重要",
     description: "Track words, characters, sentences, and reading time. Essential for writers, students, and SEO professionals.",
+    descriptionZh: "追踪字数、字符数、句子数和阅读时间。作家、学生和 SEO 专业人士的必备工具。",
     date: "2026-05-22",
     readTime: "4 min read",
     category: "Text Tools",
@@ -1437,7 +1455,9 @@ A healthy keyword density range is 1–3%. Below 1% and you might not signal rel
   {
     slug: "url-encoding-101",
     title: "URL Encoding 101: What Every Developer Should Know",
+    titleZh: "URL 编码 101：每个开发者都应该了解的知识",
     description: "Understanding percent-encoding. Learn why spaces become %20 and how to encode/decode URLs correctly.",
+    descriptionZh: "了解百分比编码。学习为什么空格变成 %20 以及如何正确编码/解码 URL。",
     date: "2026-05-22",
     readTime: "5 min read",
     category: "Developer Tools",
@@ -1665,7 +1685,9 @@ URI 规范（RFC 3986）将字符分为三类：
   {
     slug: "best-free-developer-tools-2026",
     title: "10 Best Free Online Tools for Developers (2026)",
+    titleZh: "2026 年 10 款最佳免费在线开发者工具",
     description: "Essential free online tools every developer needs: JSON formatter, regex tester, Base64 encoder, color converter, and more.",
+    descriptionZh: "每个开发者必备的免费在线工具：JSON 格式化、正则测试、Base64 编码、颜色转换等。",
     date: "2026-05-22",
     readTime: "6 min read",
     category: "Developer Tools",
@@ -1853,7 +1875,9 @@ URL 编码——也称为百分号编码——是一个看似微不足道的话�
   {
     slug: "image-format-guide-jpg-png-webp",
     title: "Image Format Guide: JPG vs PNG vs WebP vs AVIF",
+    titleZh: "图片格式指南：JPG vs PNG vs WebP vs AVIF",
     description: "A complete comparison of image formats. Which one should you use for websites, print, photography, and graphics?",
+    descriptionZh: "图片格式的完整对比。网站、印刷、摄影和图形设计应该使用哪种格式？",
     date: "2026-05-22",
     readTime: "7 min read",
     category: "Image Tools",
@@ -2055,7 +2079,9 @@ A: SVG (Scalable Vector Graphics) is ideal for logos, icons, and illustrations �
 {
     slug: "uuid-generator",
     title: "How to Generate UUIDs Online — Complete Guide to UUID v4",
+    titleZh: "如何在线生成 UUID——UUID v4 完整指南",
     description: "Learn everything about UUIDs: what they are, UUID v4 vs v7, how to generate them instantly online, and best practices for using UUIDs as primary keys and identifiers.",
+    descriptionZh: "了解 UUID 的一切：什么是 UUID、UUID v4 vs v7、如何在线即时生成以及使用 UUID 作为主键的最佳实践。",
     date: "2026-05-23",
     readTime: "5 min read",
     category: "Developer Tools",
@@ -2288,7 +2314,9 @@ CREATE TABLE users (
   {
     slug: "timestamp-converter",
     title: "Unix Timestamp Converter: How to Convert Between Epoch and Human Date",
+    titleZh: "Unix 时间戳转换：如何在纪元时间和人类日期之间转换",
     description: "Master Unix timestamps: convert epoch seconds to readable dates, understand timezone handling, and use the right format for your programming language.",
+    descriptionZh: "掌握 Unix 时间戳：将纪元秒转换为可读日期，了解时区处理，为你的编程语言使用正确的格式。",
     date: "2026-05-23",
     readTime: "5 min read",
     category: "Developer Tools",
@@ -2539,7 +2567,9 @@ echo $(($(date +%s%N)/1000000))
   {
     slug: "number-base-converter",
     title: "Binary, Hex, Decimal: How to Convert Between Number Bases",
+    titleZh: "二进制、十六进制、十进制：如何在数制之间转换",
     description: "Learn to convert between binary, hexadecimal, decimal, and octal. Understand place values, conversion algorithms, and practical use cases in programming.",
+    descriptionZh: "学习在二进制、十六进制、十进制和八进制之间转换。理解位值、转换算法和编程中的实际用例。",
     date: "2026-05-23",
     readTime: "6 min read",
     category: "Developer Tools",
@@ -2876,7 +2906,9 @@ MAC: 00:1A:2B:3C:4D:5E
   {
     slug: "css-minifier",
     title: "CSS Minifier Guide: How to Minify CSS for Faster Websites",
+    titleZh: "CSS 压缩指南：如何为更快的网站压缩 CSS",
     description: "Reduce CSS file sizes by 50-70% with minification. Learn what minification does, how it differs from compression, and best practices for production CSS.",
+    descriptionZh: "通过压缩将 CSS 文件大小减少 50-70%。了解压缩的作用、与 gzip 压缩的区别以及生产环境 CSS 的最佳实践。",
     date: "2026-05-23",
     readTime: "5 min read",
     category: "Developer Tools",
@@ -3201,7 +3233,9 @@ background: #000;  /* 4 个字符 */
   {
     slug: "jwt-decoder",
     title: "JWT Decoder: How to Decode and Inspect JSON Web Tokens",
+    titleZh: "JWT 解码器：如何解码和检查 JSON Web Token",
     description: "Learn to decode JSON Web Tokens, inspect header and payload claims, verify signatures, and debug authentication issues with our free JWT decoder.",
+    descriptionZh: "学习解码 JSON Web Token，检查头部和载荷声明，验证签名，使用免费 JWT 解码器调试认证问题。",
     date: "2026-05-23",
     readTime: "5 min read",
     category: "Developer Tools",
@@ -3520,7 +3554,9 @@ function verifyToken(token) {
   {
     slug: "html-to-jsx",
     title: "HTML to JSX Converter: Migrating from HTML to React Components",
+    titleZh: "HTML 转 JSX：从 HTML 迁移到 React 组件",
     description: "Convert plain HTML to JSX instantly. Learn the key differences between HTML and JSX, common migration pitfalls, and how to convert entire pages to React components.",
+    descriptionZh: "即时将纯 HTML 转换为 JSX。了解 HTML 和 JSX 的关键区别、常见迁移陷阱以及如何将整个页面转换为 React 组件。",
     date: "2026-05-23",
     readTime: "6 min read",
     category: "Developer Tools",
@@ -3931,7 +3967,9 @@ function Page({ user, posts }) {
   {
     slug: "case-converter",
     title: "Text Case Converter: Upper, Lower, Title, CamelCase and More",
+    titleZh: "文字大小写转换：大写、小写、标题、驼峰等",
     description: "Convert text between uppercase, lowercase, title case, camelCase, snake_case, kebab-case, and more. A complete guide to text case formats in programming.",
+    descriptionZh: "在大小写、标题、驼峰、蛇形、短横等多种文本格式之间转换。编程中文本大小写格式的完整指南。",
     date: "2026-05-23",
     readTime: "5 min read",
     category: "Developer Tools",
@@ -4316,7 +4354,9 @@ user2, item3_name   // ✅ 有效
   {
     slug: "text-diff-checker",
     title: "Text Diff Checker: How to Compare Two Texts Side by Side",
+    titleZh: "文本差异对比：如何并排比较两段文本",
     description: "Learn how to compare two texts, spot differences instantly, and merge changes using a free online diff checker tool.",
+    descriptionZh: "学习如何比较两段文本，即时发现差异，使用免费在线差异对比工具合并更改。",
     date: "2026-05-23",
     readTime: "5 min read",
     category: "Text Tools",
@@ -4446,7 +4486,9 @@ Modern implementations also use **Myers' algorithm**, which is optimized for cod
   {
     slug: "lorem-ipsum-generator",
     title: "Lorem Ipsum Generator: Free Dummy Text for Design Mockups",
+    titleZh: "Lorem Ipsum 生成器：为设计稿生成免费占位文本",
     description: "Generate placeholder text for your design mockups, wireframes, and layout tests. Customize paragraphs, words, and format on the fly.",
+    descriptionZh: "为设计稿、线框图和布局测试生成占位文本。自定义段落数、字数和格式。",
     date: "2026-05-23",
     readTime: "4 min read",
     category: "Text Tools",
@@ -4551,7 +4593,9 @@ It gained popularity in the 1960s with the release of Letraset sheets containing
   {
     slug: "text-to-slug",
     title: "URL Slug Generator: How to Convert Text to Clean SEO Slugs",
+    titleZh: "URL Slug 生成器：如何将文本转换为 SEO 友好的别名",
     description: "Learn how to convert any text into a URL-friendly slug. Perfect for blog posts, product pages, and SEO-friendly URLs.",
+    descriptionZh: "学习如何将任何文本转换为 URL 友好的 slug。适用于博客文章、产品页面和 SEO 友好 URL。",
     date: "2026-05-23",
     readTime: "5 min read",
     category: "Text Tools",
@@ -4699,7 +4743,9 @@ function slugify(text) {
   {
     slug: "image-to-base64",
     title: "Image to Base64 Converter: Inline Images Without External Files",
+    titleZh: "图片转 Base64：无需外部文件的内联图片",
     description: "Convert any image to a Base64 data URI for embedding directly in HTML, CSS, or JavaScript. No external image files needed.",
+    descriptionZh: "将任何图片转换为 Base64 数据 URI，直接嵌入 HTML、CSS 或 JavaScript。无需外部图片文件。",
     date: "2026-05-23",
     readTime: "6 min read",
     category: "Image Tools",
@@ -4829,7 +4875,9 @@ Email clients block external images by default. Base64 images always render:
   {
     slug: "image-filters",
     title: "Image Filters Online: Apply Grayscale, Sepia, Blur and More",
+    titleZh: "在线图片滤镜：应用灰度、怀旧、模糊等效果",
     description: "Transform your photos with instant image filters. Apply grayscale, sepia, blur, brightness, contrast, and many more effects online.",
+    descriptionZh: "使用即时图片滤镜转换您的照片。在线应用灰度、怀旧、模糊、亮度、对比度等多种效果。",
     date: "2026-05-23",
     readTime: "7 min read",
     category: "Image Tools",
@@ -5008,7 +5056,9 @@ function applyGrayscale(imageData) {
   {
     slug: "barcode-generator",
     title: "Barcode Generator: How to Create CODE128, EAN13 & More Online",
+    titleZh: "条形码生成器：如何在线创建 CODE128、EAN13 等",
     description: "Generate professional barcodes for products, inventory, ISBN, and logistics. Supports CODE128, EAN-13, UPC-A, QR codes, and more.",
+    descriptionZh: "为产品、库存、ISBN 和物流生成专业条形码。支持 CODE128、EAN-13、UPC-A、二维码等。",
     date: "2026-05-23",
     readTime: "7 min read",
     category: "Image Tools",
@@ -5370,7 +5420,9 @@ JsBarcode("#barcode", "Hello World!", {
 {
     slug: "image-to-pdf",
     title: "Image to PDF Converter: How to Turn JPG/PNG into PDF Documents",
+    titleZh: "图片转 PDF：如何将 JPG/PNG 转换为 PDF 文档",
     description: "Convert images to PDF documents in seconds. Free, private, and works in your browser — no uploads needed.",
+    descriptionZh: "在几秒内将图片转换为 PDF 文档。免费、隐私保护且在浏览器中完成——无需上传。",
     date: "2026-05-23",
     readTime: "5 min read",
     category: "PDF Tools",
@@ -5675,7 +5727,9 @@ PDF 会自动下载。每张图片对应一页，按你指定的顺序排列。�
 {
     slug: "pdf-protector",
     title: "PDF Password Protector: How to Secure PDF Files with Encryption",
+    titleZh: "PDF 密码保护：如何使用加密保护 PDF 文件",
     description: "Add passwords and encryption to your PDF files. Protect sensitive documents with user and owner passwords for complete security.",
+    descriptionZh: "为 PDF 文件添加密码和加密。使用用户密码和所有者密码保护敏感文档，实现完全安全。",
     date: "2026-05-23",
     readTime: "6 min read",
     category: "PDF Tools",
@@ -5972,7 +6026,9 @@ ToolboxPro 默认使用 **AES-256 加密**，与银行和政府使用的标准�
 {
     slug: "ssl-checker",
     title: "SSL Checker: How to Verify SSL Certificate Validity Online",
+    titleZh: "SSL 检查器：如何在线验证 SSL 证书有效性",
     description: "Check SSL certificate details, expiration dates, and chain validity for any domain. Ensure your website is secure and trusted.",
+    descriptionZh: "检查任何域名的 SSL 证书详情、过期日期和链有效性。确保您的网站安全可信。",
     date: "2026-05-23",
     readTime: "7 min read",
     category: "Network Tools",
@@ -6297,7 +6353,9 @@ HTTPS 页面加载 HTTP 资源（图片、脚本、样式表）。小锁图标�
 {
     slug: "dns-lookup",
     title: "DNS Lookup Tool: How to Query DNS Records for Any Domain",
+    titleZh: "DNS 查询工具：如何查询任意域名的 DNS 记录",
     description: "Look up DNS records including A, AAAA, CNAME, MX, NS, TXT, and SOA. Diagnose DNS issues and verify domain configuration.",
+    descriptionZh: "查询 A、AAAA、CNAME、MX、NS、TXT、SOA 等 DNS 记录。诊断 DNS 问题并验证域名配置。",
     date: "2026-05-23",
     readTime: "6 min read",
     category: "Network Tools",
@@ -6722,7 +6780,9 @@ v=spf1 include:_spf.google.com ~all
 {
     slug: "password-strength",
     title: "Password Strength Checker: How Secure Is Your Password?",
+    titleZh: "密码强度检测：您的密码有多安全？",
     description: "Test password strength instantly. Analyze length, complexity, and resistance to brute-force attacks. Learn how to create unbreakable passwords.",
+    descriptionZh: "即时测试密码强度。分析长度、复杂度和对暴力破解的抵抗力。学习如何创建牢不可破的密码。",
     date: "2026-05-23",
     readTime: "7 min read",
     category: "Utilities",
@@ -7099,7 +7159,9 @@ Blue-Elephant-Dances-At-Midnight
 {
     slug: "percentage-calculator",
     title: "Percentage Calculator: Calculate Percentages Instantly Online",
+    titleZh: "百分比计算器：即时在线计算百分比",
     description: "Free online percentage calculator for discounts, tips, taxes, and data analysis. Calculate percentage increase, decrease, and more in seconds.",
+    descriptionZh: "免费在线百分比计算器，用于折扣、小费、税费和数据分析。几秒内计算百分比增减等。",
     date: "2026-05-23",
     readTime: "5 min read",
     category: "Conversion Tools",
@@ -7576,7 +7638,9 @@ Combine these for other percentages:
   {
     slug: "toolboxpro-vs-tinywow-vs-ilovepdf-privacy",
     title: "ToolboxPro vs TinyWow vs ILovePDF: Which Online Tool Site Is Most Private?",
+    titleZh: "ToolboxPro vs TinyWow vs ILovePDF：哪个在线工具网站最保护隐私？",
     description: "We compare the three most popular free online tool websites on privacy, file handling, features, and performance. Find out which one keeps your data safe.",
+    descriptionZh: "我们在隐私保护、文件处理、功能和性能方面对比三个最受欢迎的免费在线工具网站。找出哪个能保护您的数据安全。",
     date: "2026-05-24",
     readTime: "8 min read",
     category: "Comparison",
@@ -7693,7 +7757,9 @@ For everyday use — formatting JSON, compressing images, merging PDFs — Toolb
   {
     slug: "best-free-online-json-formatters-compared-2026",
     title: "Best Free Online JSON Formatters Compared (2026): Features, Speed and Privacy",
+    titleZh: "2026 年最佳免费在线 JSON 格式化工具对比：功能、速度和隐私",
     description: "We compare the top free online JSON formatters side by side — JSONLint, JSON Formatter and Validator, and ToolboxPro. Includes formatting, validation, minification, and privacy analysis.",
+    descriptionZh: "我们并排对比顶级免费在线 JSON 格式化工具——JSONLint、JSON Formatter and Validator 以及 ToolboxPro。包括格式化、验证、压缩和隐私分析。",
     date: "2026-05-24",
     readTime: "6 min read",
     category: "Comparison",
@@ -7802,7 +7868,9 @@ JSON 格式化看似简单——粘贴 JSON，得到格式化后的 JSON。但�
   {
     slug: "free-online-image-compressors-compared-quality",
     title: "Free Online Image Compressors: Which One Actually Keeps Your Quality?",
+    titleZh: "免费在线图片压缩工具对比：哪个能真正保持画质？",
     description: "We test the top free image compressors on compression ratio, visual quality, privacy, and speed. Includes ToolboxPro, TinyPNG, Compressor.io, and Squoosh.",
+    descriptionZh: "我们在压缩率、视觉质量、隐私和速度方面测试顶级免费图片压缩工具。包括 ToolboxPro、TinyPNG、Compressor.io 和 Squoosh。",
     date: "2026-05-24",
     readTime: "7 min read",
     category: "Comparison",
@@ -7895,7 +7963,9 @@ For sensitive images, ToolboxPro and Squoosh are the only safe choices.
   {
     slug: "online-pdf-tools-client-side-vs-server-side",
     title: "Online PDF Tools: Client-Side vs Server-Side Processing Compared (2026)",
+    titleZh: "在线 PDF 工具：客户端 vs 服务端处理对比（2026）",
     description: "A technical and practical comparison of browser-based vs server-based PDF tools. Learn why processing location matters for speed, privacy, reliability, and cost.",
+    descriptionZh: "基于浏览器的 PDF 工具与基于服务器的 PDF 工具的技术和实用对比。了解处理位置对速度、隐私、可靠性和成本的影响。",
     date: "2026-05-24",
     readTime: "7 min read",
     category: "Comparison",
@@ -8000,7 +8070,9 @@ For **95% of daily PDF tasks** — merging, splitting, rotating, converting imag
   {
     slug: "best-free-online-regex-testers-2026",
     title: "Free Online Regex Testers: Browser-Based vs Server-Based (2026 Comparison)",
+    titleZh: "免费在线正则测试工具：浏览器端 vs 服务器端（2026 对比）",
     description: "Compare the best free online regex testers including regex101, RegExr, Debuggex, and ToolboxPro. Features, speed, privacy, and UX compared side by side.",
+    descriptionZh: "对比最好的免费在线正则测试工具，包括 regex101、RegExr、Debuggex 和 ToolboxPro。功能、速度、隐私和用户体验并排对比。",
     date: "2026-05-24",
     readTime: "6 min read",
     category: "Comparison",

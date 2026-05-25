@@ -9,7 +9,7 @@ import { PopularTools } from "./popular-tools";
 import { useLocale } from "@/lib/i18n/context";
 
 export default function HomePage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   return (
     <div className="mx-auto max-w-6xl px-4">
@@ -96,7 +96,7 @@ export default function HomePage() {
                 <div className="aspect-video bg-muted overflow-hidden">
                   <img
                     src={img}
-                    alt={post.title}
+                    alt={post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title}
                     className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-300"
                     loading="lazy"
                   />
@@ -110,9 +110,9 @@ export default function HomePage() {
                 <p className="text-xs text-muted-foreground mb-1">
                   {t(`blog.categories.${post.category}`)} &middot; {t("blog.minRead", { count: post.readTime.split(" ")[0] })}
                 </p>
-                <h3 className="font-medium mb-1">{post.title}</h3>
+                <h3 className="font-medium mb-1">{post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title}</h3>
                 <p className="text-sm text-muted-foreground line-clamp-2">
-                  {post.description}
+                  {post.descriptionZh ? (locale === 'zh' ? post.descriptionZh : post.description) : post.description}
                 </p>
               </div>
             </Link>

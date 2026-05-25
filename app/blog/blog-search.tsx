@@ -8,7 +8,7 @@ import { useLocale } from "@/lib/i18n/context";
 
 export function BlogSearch({ posts }: { posts: BlogPost[] }) {
   const [query, setQuery] = useState("");
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   const filtered = useMemo(() => {
     if (!query.trim()) return posts;
@@ -60,7 +60,7 @@ export function BlogSearch({ posts }: { posts: BlogPost[] }) {
                     <div className="aspect-video bg-muted overflow-hidden">
                       <img
                         src={img}
-                        alt={post.title}
+                        alt={post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title}
                         className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-300"
                         loading="lazy"
                       />
