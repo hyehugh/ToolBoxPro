@@ -146,7 +146,7 @@ function renderMarkdown(md: string) {
 }
 
 export function BlogPostContent({ slug }: { slug: string }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return null;
 
@@ -191,7 +191,7 @@ export function BlogPostContent({ slug }: { slug: string }) {
         )}
 
         <div className="prose-custom">
-          {renderMarkdown(post.content)}
+          {renderMarkdown(post.contentZh ? (locale === "zh" ? post.contentZh : post.content) : post.content)}
         </div>
 
         {post.toolSlug && (
