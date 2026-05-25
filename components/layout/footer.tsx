@@ -20,7 +20,7 @@ export function Footer() {
               {featuredTools.map((tool) => (
                 <li key={tool.slug}>
                   <Link href={`/tools/${tool.slug}`} className="hover:text-foreground transition-colors">
-                    {tool.name}
+                    {t(`toolList.${tool.slug}.name`)}
                   </Link>
                 </li>
               ))}
@@ -32,7 +32,7 @@ export function Footer() {
               {moreTools.map((tool) => (
                 <li key={tool.slug}>
                   <Link href={`/tools/${tool.slug}`} className="hover:text-foreground transition-colors">
-                    {tool.name}
+                    {t(`toolList.${tool.slug}.name`)}
                   </Link>
                 </li>
               ))}

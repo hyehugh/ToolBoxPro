@@ -135,7 +135,7 @@ export const zh: Record<string, any> = {
     tagline: "免费在线工具。隐私优先。",
     taglineDetail: "无需注册。文件保存在本地。",
   },
-
+  // Language Switcher
   locale: {
     switchTo: "English",
     language: "语言",
@@ -143,6 +143,15 @@ export const zh: Record<string, any> = {
     zh: "中文",
   },
 
+  // Cookie Banner
+  cookie: {
+    text: "本站使用 Google Cookie 来提供服务和分析流量。未经您的同意，您的数据不会用于个性化广告。",
+    learnMore: "了解更多",
+    accept: "接受",
+    decline: "拒绝",
+  },
+
+  // Home Page
   home: {
     heroTitle: "免费在线工具。",
     heroTagline: "隐私优先。",

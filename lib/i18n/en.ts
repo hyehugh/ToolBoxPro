@@ -148,6 +148,14 @@ export const en: Record<string, any> = {
     zh: "中文",
   },
 
+  // Cookie Banner
+  cookie: {
+    text: "This site uses cookies from Google to deliver its services and analyze traffic. Your data will not be used for personalized advertising without your consent.",
+    learnMore: "Learn more",
+    accept: "Accept",
+    decline: "Decline",
+  },
+
   // Home Page
   home: {
     heroTitle: "Free Online Tools.",

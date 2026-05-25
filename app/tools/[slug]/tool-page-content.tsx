@@ -220,7 +220,7 @@ export function ToolPageContent({ slug }: { slug: string }) {
 
   const ToolComponent = getToolComponent(slug);
   const related = tools
-    .filter((t) => t.category === tool.category && t.slug !== tool.slug)
+    .filter((rt) => rt.category === tool.category && rt.slug !== tool.slug)
     .slice(0, 4);
   const relatedPosts = blogPosts.filter((p) => p.toolSlug === slug).slice(0, 3);
 
@@ -251,13 +251,13 @@ export function ToolPageContent({ slug }: { slug: string }) {
         <section className="mt-12">
           <h2 className="text-xl font-bold mb-4">{t("blog.relatedTools")}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {related.map((t) => (
+            {related.map((rt) => (
               <Link
-                key={t.slug}
-                href={`/tools/${t.slug}`}
+                key={rt.slug}
+                href={`/tools/${rt.slug}`}
                 className="p-3 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 text-sm"
               >
-                <span className="font-medium">{t.name}</span>
+                <span className="font-medium">{t(`toolList.${rt.slug}.name`)}</span>
               </Link>
             ))}
           </div>

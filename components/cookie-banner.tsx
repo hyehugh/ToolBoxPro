@@ -33,10 +33,9 @@ export function CookieBanner() {
     <div className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4">
       <div className="mx-auto max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">
-          This site uses cookies from Google to deliver its services and analyze traffic.
-          Your data will not be used for personalized advertising without your consent.
+          {t("cookie.text")}
           <a href="/privacy" className="underline hover:text-foreground ml-1">
-            {t("common.search")}
+            {t("cookie.learnMore")}
           </a>
         </p>
         <div className="flex gap-2 shrink-0">
@@ -44,13 +43,13 @@ export function CookieBanner() {
             onClick={decline}
             className="px-4 py-2 text-sm rounded-md border border-input bg-background hover:bg-accent transition-colors"
           >
-            {t("common.cancel")}
+            {t("cookie.decline")}
           </button>
           <button
             onClick={accept}
             className="px-4 py-2 text-sm rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            {t("common.confirm")}
+            {t("cookie.accept")}
           </button>
         </div>
       </div>
