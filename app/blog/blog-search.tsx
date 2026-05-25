@@ -80,9 +80,9 @@ export function BlogSearch({ posts }: { posts: BlogPost[] }) {
                       <span>·</span>
                       <span>{t("blog.minRead", { count: post.readTime.split(" ")[0] })}</span>
                     </div>
-                    <h2 className="font-semibold mb-1">{post.title}</h2>
+                    <h2 className="font-semibold mb-1">{post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title}</h2>
                     <p className="text-sm text-muted-foreground line-clamp-2">
-                      {post.description}
+                      {post.descriptionZh ? (locale === 'zh' ? post.descriptionZh : post.description) : post.description}
                     </p>
                   </div>
                 </Link>
