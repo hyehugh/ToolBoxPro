@@ -234,14 +234,14 @@ export function ToolPageContent({ slug }: { slug: string }) {
           {t(`categories.${tool.category}`)}
         </Link>
         <span>/</span>
-        <span className="text-foreground">{tool.name}</span>
+        <span className="text-foreground">{t(`toolList.${tool.slug}.name`)}</span>
       </nav>
 
-      <h1 className="text-3xl font-bold mb-2">{tool.name}</h1>
-      <p className="text-muted-foreground mb-8">{tool.description}</p>
+      <h1 className="text-3xl font-bold mb-2">{t(`toolList.${tool.slug}.name`)}</h1>
+      <p className="text-muted-foreground mb-8">{t(`toolList.${tool.slug}.desc`)}</p>
 
       <ErrorBoundary>
-        <ToolWidget title={tool.name}>
+        <ToolWidget title={t(`toolList.${tool.slug}.name`)}>
           {ToolComponent ? <ToolComponent /> : <p className="text-muted-foreground">{t("common.loading")}</p>}
         </ToolWidget>
       </ErrorBoundary>
