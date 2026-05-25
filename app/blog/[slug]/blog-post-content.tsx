@@ -164,12 +164,12 @@ export function BlogPostContent({ slug }: { slug: string }) {
         <header className="mb-8">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
             <span className="px-2 py-0.5 rounded-full bg-secondary text-xs font-medium">
-              {post.category}
+              {t(`blog.categories.${post.category}`)}
             </span>
             <span>·</span>
             <time>{post.date}</time>
             <span>·</span>
-            <span>{post.readTime}</span>
+            <span>{t("blog.minRead", { count: post.readTime.split(" ")[0] })}</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
             {post.title}
@@ -197,13 +197,13 @@ export function BlogPostContent({ slug }: { slug: string }) {
         {post.toolSlug && (
           <div className="mt-10 p-6 rounded-lg border bg-card text-center">
             <p className="text-muted-foreground mb-3">
-              {t("blog.relatedTools")}
+              {t("blog.tryIt")}
             </p>
             <Link
               href={`/tools/${post.toolSlug}`}
               className="inline-flex items-center justify-center h-10 px-6 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
             >
-              {t("common.generate")} {post.title.split("—")[0].trim()} →
+              {t("blog.tryTool")} {post.title.split("—")[0].trim()} →
             </Link>
           </div>
         )}

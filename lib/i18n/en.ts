@@ -280,6 +280,14 @@ export const en: Record<string, any> = {
     metaDesc: "Learn how to use online tools effectively. Tutorials, guides, and tips for developers, designers, and everyday users.",
     subtitle: "Tutorials, guides, and tips for getting the most out of online tools.",
     relatedTools: "Related Tools",
+    categories: {
+      "Developer Tools": "Developer Tools",
+      "Image Tools": "Image Tools",
+      "Comparison": "Comparison",
+    },
+    minRead: "{count} min read",
+    tryIt: "Try it yourself with our free online tool:",
+    tryTool: "Try",
   },
 
   // Tools Page

@@ -73,12 +73,12 @@ export function BlogSearch({ posts }: { posts: BlogPost[] }) {
                   <div className="p-4">
                     <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
                       <span className="px-2 py-0.5 rounded-full bg-secondary text-xs font-medium">
-                        {post.category}
+                        {t(`blog.categories.${post.category}`)}
                       </span>
                       <span>·</span>
                       <time>{post.date}</time>
                       <span>·</span>
-                      <span>{post.readTime}</span>
+                      <span>{t("blog.minRead", { count: post.readTime.split(" ")[0] })}</span>
                     </div>
                     <h2 className="font-semibold mb-1">{post.title}</h2>
                     <p className="text-sm text-muted-foreground line-clamp-2">

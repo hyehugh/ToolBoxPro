@@ -108,7 +108,7 @@ export default function HomePage() {
               )}
               <div className="p-4">
                 <p className="text-xs text-muted-foreground mb-1">
-                  {post.category} &middot; {post.readTime}
+                  {t(`blog.categories.${post.category}`)} &middot; {t("blog.minRead", { count: post.readTime.split(" ")[0] })}
                 </p>
                 <h3 className="font-medium mb-1">{post.title}</h3>
                 <p className="text-sm text-muted-foreground line-clamp-2">

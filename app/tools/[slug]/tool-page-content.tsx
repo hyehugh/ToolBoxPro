@@ -275,9 +275,9 @@ export function ToolPageContent({ slug }: { slug: string }) {
                 className="block p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200"
               >
                 <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
-                  <span>{post.category}</span>
+                  <span>{t(`blog.categories.${post.category}`)}</span>
                   <span>·</span>
-                  <span>{post.readTime}</span>
+                  <span>{t("blog.minRead", { count: post.readTime.split(" ")[0] })}</span>
                 </div>
                 <h3 className="font-medium text-sm hover:text-primary transition-colors">
                   {post.title}
