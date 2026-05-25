@@ -52,8 +52,8 @@ export default function HomeSearch() {
               >
                 <span className="text-lg font-mono">{tool.icon}</span>
                 <div className="text-left">
-                  <p className="text-sm font-medium">{tool.name}</p>
-                  <p className="text-xs text-muted-foreground">{tool.description}</p>
+                  <p className="text-sm font-medium">{t(`toolList.${tool.slug}.name`)}</p>
+                  <p className="text-xs text-muted-foreground">{t(`toolList.${tool.slug}.desc`)}</p>
                 </div>
               </Link>
             ))

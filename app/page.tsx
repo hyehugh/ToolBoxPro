@@ -65,9 +65,9 @@ export default function HomePage() {
             >
               <span className="text-xl mt-1 font-mono">{tool.icon}</span>
               <div>
-                <h3 className="font-medium">{tool.name}</h3>
+                <h3 className="font-medium">{t(`toolList.${tool.slug}.name`)}</h3>
                 <p className="text-sm text-muted-foreground">
-                  {tool.description}
+                  {t(`toolList.${tool.slug}.desc`)}
                 </p>
               </div>
             </Link>

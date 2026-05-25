@@ -34,7 +34,7 @@ export function PopularTools() {
           className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border text-xs text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
         >
           <span className="font-mono text-[10px]">{tool.icon}</span>
-          {tool.name}
+          {t(`toolList.${tool.slug}.name`)}
         </Link>
       ))}
     </div>
