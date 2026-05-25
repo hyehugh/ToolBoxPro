@@ -44,6 +44,8 @@ export const zh: Record<string, any> = {
     loading: "加载中...",
     processing: "处理中...",
     done: "完成",
+    darkMode: "深色模式",
+    lightMode: "浅色模式",
     input: "输入",
     output: "输出",
     length: "长度",

@@ -44,6 +44,8 @@ export const en: Record<string, any> = {
     loading: "Loading...",
     processing: "Processing...",
     done: "Done",
+    darkMode: "Dark Mode",
+    lightMode: "Light Mode",
     input: "Input",
     output: "Output",
     length: "Length",
