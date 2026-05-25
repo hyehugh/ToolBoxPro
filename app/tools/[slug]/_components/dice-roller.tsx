@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 const SIDE_OPTIONS = [4, 6, 8, 10, 12, 20];
 
@@ -49,6 +50,7 @@ function DiceFace({ value, sides }: { value: number; sides: number }) {
 }
 
 export function DiceRollerTool() {
+  const { t } = useLocale();
   const [numDice, setNumDice] = useState('2');
   const [sides, setSides] = useState(6);
   const [results, setResults] = useState<number[]>([]);
@@ -71,7 +73,7 @@ export function DiceRollerTool() {
     <div className="space-y-4">
       <div className="flex gap-2">
         <div className="flex-1 space-y-1">
-          <label className="text-xs text-muted-foreground">Number of dice (1–6)</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.dice.count')} (1–6)</label>
           <input
             type="number"
             min={1}
@@ -82,7 +84,7 @@ export function DiceRollerTool() {
           />
         </div>
         <div className="flex-1 space-y-1">
-          <label className="text-xs text-muted-foreground">Sides per die</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.dice.sides')}</label>
           <div className="flex flex-wrap gap-1">
             {SIDE_OPTIONS.map((s) => (
               <Button
@@ -99,7 +101,7 @@ export function DiceRollerTool() {
         </div>
       </div>
 
-      <Button onClick={roll}>Roll</Button>
+      <Button onClick={roll}>{t('toolCommon.dice.roll')}</Button>
 
       {results.length > 0 && (
         <div className="rounded-md border bg-card p-4 space-y-3">
@@ -110,7 +112,7 @@ export function DiceRollerTool() {
           </div>
           <hr className="border-muted" />
           <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">Total</span>
+            <span className="text-sm text-muted-foreground">{t('common.value')}</span>
             <span className="text-2xl font-mono font-bold">{total}</span>
           </div>
         </div>

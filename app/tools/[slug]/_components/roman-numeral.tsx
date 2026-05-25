@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 type Direction = 'to-roman' | 'from-roman';
 
@@ -52,6 +53,7 @@ export function RomanNumeralTool() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [direction, setDirection] = useState<Direction>('to-roman');
+  const { t } = useLocale();
 
   const convert = () => {
     if (!input.trim()) {
@@ -77,13 +79,13 @@ export function RomanNumeralTool() {
           variant={direction === 'to-roman' ? 'default' : 'outline'}
           onClick={() => { setDirection('to-roman'); setOutput(''); }}
         >
-          Number → Roman
+          {t('toolCommon.romanNumeral.toRoman')}
         </Button>
         <Button
           variant={direction === 'from-roman' ? 'default' : 'outline'}
           onClick={() => { setDirection('from-roman'); setOutput(''); }}
         >
-          Roman → Number
+          {t('toolCommon.romanNumeral.toNumber')}
         </Button>
       </div>
 
@@ -99,7 +101,7 @@ export function RomanNumeralTool() {
         />
       </div>
 
-      <Button onClick={convert}>Convert</Button>
+      <Button onClick={convert}>{t('common.convert')}</Button>
 
       {output !== '' && (
         <div>

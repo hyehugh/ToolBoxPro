@@ -2,8 +2,10 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function ImageToSketchTool() {
+  const { t } = useLocale();
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [resultUrl, setResultUrl] = useState<string>("");
@@ -178,36 +180,36 @@ export function ImageToSketchTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop an image here or click to upload</p>
-          <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
+          <p className="text-muted-foreground">{t('toolCommon.imageToSketch.uploadPrompt')}</p>
+          <p className="text-xs text-muted-foreground mt-1">{t('toolCommon.imageToSketch.supportedFormats')}</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">Convert your image to a pencil sketch</p>
+            <p className="text-sm text-muted-foreground">{t('toolCommon.imageToSketch.description')}</p>
             <Button variant="outline" size="sm" onClick={() => {
               setImageUrl(""); setImageFile(null); setResultUrl("");
             }}>
-              New Image
+              {t('toolCommon.imageToSketch.newImage')}
             </Button>
           </div>
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={resultUrl || imageUrl}
-            alt="Preview"
+            alt={t('common.preview')}
             className="max-w-full max-h-64 object-contain rounded-lg border"
           />
 
           {!resultUrl && (
             <Button onClick={convertToSketch} disabled={loading}>
-              {loading ? "Converting..." : "Convert to Sketch"}
+              {loading ? t('common.processing') : t('toolCommon.imageToSketch.convert')}
             </Button>
           )}
 
           {resultUrl && (
             <div className="space-y-2">
-              <p className="text-sm font-medium">Sketch Result</p>
+              <p className="text-sm font-medium">{t('toolCommon.imageToSketch.sketchResult')}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={resultUrl} alt="Sketch" className="rounded-lg border max-w-full max-h-64 object-contain" />
               <Button onClick={() => {
@@ -218,7 +220,7 @@ export function ImageToSketchTool() {
                   : "sketch.png";
                 a.click();
               }}>
-                Download
+                {t('common.download')}
               </Button>
             </div>
           )}

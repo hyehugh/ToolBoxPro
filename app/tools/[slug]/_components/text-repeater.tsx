@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function TextRepeaterTool() {
+  const { t } = useLocale();
   const [text, setText] = useState("");
   const [count, setCount] = useState(5);
   const [separator, setSeparator] = useState("\n");
@@ -19,14 +21,14 @@ export function TextRepeaterTool() {
   return (
     <div className="space-y-4">
       <textarea
-        placeholder="Enter text to repeat..."
+        placeholder={t('common.text')}
         value={text}
         onChange={(e) => setText(e.target.value)}
         className="w-full h-24 p-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
       />
       <div className="flex flex-wrap items-center gap-3">
         <label className="text-sm">
-          Times: <span className="font-bold">{count}</span>
+          {t('toolCommon.textRepeater.repeatCount')}: <span className="font-bold">{count}</span>
         </label>
         <input type="range" min={1} max={100} value={count} onChange={(e) => setCount(+e.target.value)} className="w-32" />
         <select
@@ -40,7 +42,7 @@ export function TextRepeaterTool() {
           <option value=" ">Space</option>
           <option value="">None</option>
         </select>
-        <Button onClick={repeat}>Repeat</Button>
+        <Button onClick={repeat}>{t('toolCommon.textRepeater.repeat')}</Button>
       </div>
       {output && (
         <div className="space-y-2">
@@ -49,7 +51,7 @@ export function TextRepeaterTool() {
             <span className="text-xs text-muted-foreground self-center">
               {output.length} chars, {output.split(separator === "\n" ? "\n" : separator).length} lines
             </span>
-            <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>Copy</Button>
+            <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>{t('common.copy')}</Button>
           </div>
         </div>
       )}

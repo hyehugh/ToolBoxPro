@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function SqlFormatterTool() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const { t } = useLocale();
 
   const keywords = [
     "SELECT", "FROM", "WHERE", "AND", "OR", "NOT", "IN", "IS", "NULL",
@@ -47,7 +49,7 @@ export function SqlFormatterTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">SQL Input</label>
+        <label className="block text-sm font-medium mb-1">{t('common.input')}</label>
         <textarea
           className="w-full h-40 p-3 border rounded font-mono text-sm"
           placeholder="select * from users where id = 1"
@@ -55,10 +57,10 @@ export function SqlFormatterTool() {
           onChange={(e) => setInput(e.target.value)}
         />
       </div>
-      <Button onClick={format}>Format SQL</Button>
+      <Button onClick={format}>{t('toolCommon.sql.format')}</Button>
       {output && (
         <div>
-          <label className="block text-sm font-medium mb-1">Formatted Output</label>
+          <label className="block text-sm font-medium mb-1">{t('common.output')}</label>
           <textarea
             className="w-full h-40 p-3 border rounded font-mono text-sm"
             value={output}

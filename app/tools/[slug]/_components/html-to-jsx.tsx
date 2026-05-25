@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function HtmlToJsxTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
@@ -42,18 +44,18 @@ export function HtmlToJsxTool() {
   return (
     <div className="space-y-4">
       <textarea
-        placeholder="Paste HTML code here..."
+        placeholder={t('toolCommon.htmlToJsx.placeholder')}
         value={input}
         onChange={(e) => setInput(e.target.value)}
         className="w-full h-48 p-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
       />
-      <Button onClick={convert}>Convert to JSX</Button>
+      <Button onClick={convert}>{t('toolCommon.htmlToJsx.convert')}</Button>
       {output && (
         <div className="space-y-2">
           <div className="p-3 rounded-md border bg-muted font-mono text-sm whitespace-pre-wrap max-h-64 overflow-y-auto">
             {output}
           </div>
-          <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>Copy</Button>
+          <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>{t('common.copy')}</Button>
         </div>
       )}
     </div>

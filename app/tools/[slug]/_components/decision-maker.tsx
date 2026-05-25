@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 export function DecisionMakerTool() {
+  const { t } = useLocale();
   const [optionsText, setOptionsText] = useState('');
   const [winner, setWinner] = useState<string | null>(null);
   const [isRunning, setIsRunning] = useState(false);
@@ -65,7 +67,7 @@ export function DecisionMakerTool() {
     <div className="space-y-4">
       <div className="space-y-1">
         <label className="text-xs text-muted-foreground">
-          Options (one per line)
+          {t('toolCommon.decision.options')}
         </label>
         <textarea
           value={optionsText}
@@ -73,18 +75,18 @@ export function DecisionMakerTool() {
             setOptionsText(e.target.value);
             setWinner(null);
           }}
-          placeholder="e.g.&#10;Pizza&#10;Sushi&#10;Burgers&#10;Tacos"
+          placeholder={t('toolCommon.decision.placeholder')}
           rows={6}
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring"
         />
         <div className="text-xs text-muted-foreground">
-          {options.length} option{options.length !== 1 ? 's' : ''}
-          {!canPick && options.length > 0 && ' — need at least 2'}
+          {options.length} {t('common.text').toLowerCase()}{options.length !== 1 ? 's' : ''}
+          {!canPick && options.length > 0 && ` — ${t('toolCommon.decision.minOptions')}`}
         </div>
       </div>
 
       <Button onClick={pick} disabled={!canPick || isRunning}>
-        {isRunning ? 'Picking...' : 'Pick One!'}
+        {isRunning ? t('toolCommon.decision.picking') : t('toolCommon.decision.ask')}
       </Button>
 
       {(isRunning || winner !== null) && (
@@ -96,7 +98,7 @@ export function DecisionMakerTool() {
           )}
           {winner !== null && !isRunning && (
             <div className="space-y-1">
-              <div className="text-xs text-muted-foreground">The winner is</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.decision.answer')}</div>
               <div className="text-4xl font-bold text-green-500">
                 {winner}
               </div>

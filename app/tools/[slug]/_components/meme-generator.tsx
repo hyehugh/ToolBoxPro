@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function MemeGeneratorTool() {
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -13,6 +14,7 @@ export function MemeGeneratorTool() {
   const [resultUrl, setResultUrl] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { t } = useLocale();
 
   const handleFile = (file: File) => {
     setImageFile(file);
@@ -137,7 +139,7 @@ export function MemeGeneratorTool() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-sm font-medium block mb-1">Top Text</label>
+              <label className="text-sm font-medium block mb-1">{t('toolCommon.meme.topText')}</label>
               <input
                 type="text"
                 value={topText}
@@ -147,7 +149,7 @@ export function MemeGeneratorTool() {
               />
             </div>
             <div>
-              <label className="text-sm font-medium block mb-1">Bottom Text</label>
+              <label className="text-sm font-medium block mb-1">{t('toolCommon.meme.bottomText')}</label>
               <input
                 type="text"
                 value={bottomText}
@@ -181,7 +183,7 @@ export function MemeGeneratorTool() {
           </div>
 
           <Button onClick={generate} disabled={loading}>
-            {loading ? "Generating..." : "Generate Meme"}
+            {loading ? t('common.loading') : t('toolCommon.meme.generate')}
           </Button>
 
           {resultUrl && (
@@ -197,7 +199,7 @@ export function MemeGeneratorTool() {
                   : "meme.png";
                 a.click();
               }}>
-                Download
+              {t('common.download')}
               </Button>
             </div>
           )}

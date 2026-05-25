@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function JsonToYamlTool() {
+  const { t } = useLocale();
   const [jsonInput, setJsonInput] = useState("");
   const [yamlInput, setYamlInput] = useState("");
   const [jsonOutput, setJsonOutput] = useState("");
@@ -85,7 +87,7 @@ export function JsonToYamlTool() {
       setYamlOutput(jsonToYaml(parsed));
       setMode("toYaml");
     } catch {
-      setYamlOutput("Invalid JSON input");
+      setYamlOutput(t('toolCommon.jsonToYaml.invalidJson'));
     }
   };
 
@@ -94,7 +96,7 @@ export function JsonToYamlTool() {
       setJsonOutput(yamlToJson(yamlInput));
       setMode("toJson");
     } catch {
-      setJsonOutput("Invalid YAML input");
+      setJsonOutput(t('toolCommon.jsonToYaml.invalidYaml'));
     }
   };
 
@@ -102,7 +104,7 @@ export function JsonToYamlTool() {
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-1">JSON Input</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.jsonToYaml.jsonInput')}</label>
           <textarea
             className="w-full h-40 p-3 border rounded font-mono text-sm"
             placeholder='{"name": "John", "age": 30}'
@@ -110,11 +112,11 @@ export function JsonToYamlTool() {
             onChange={(e) => setJsonInput(e.target.value)}
           />
           <Button className="mt-2" onClick={convertToYaml}>
-            Convert to YAML
+            {t('common.convert')} YAML
           </Button>
           {mode === "toYaml" && yamlOutput && (
             <div className="mt-2">
-              <label className="block text-sm font-medium mb-1">YAML Output</label>
+              <label className="block text-sm font-medium mb-1">{t('toolCommon.jsonToYaml.yamlOutput')}</label>
               <textarea
                 className="w-full h-40 p-3 border rounded font-mono text-sm"
                 value={yamlOutput}
@@ -124,7 +126,7 @@ export function JsonToYamlTool() {
           )}
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">YAML Input</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.jsonToYaml.yamlInput')}</label>
           <textarea
             className="w-full h-40 p-3 border rounded font-mono text-sm"
             placeholder="name: John\nage: 30"
@@ -132,11 +134,11 @@ export function JsonToYamlTool() {
             onChange={(e) => setYamlInput(e.target.value)}
           />
           <Button className="mt-2" onClick={convertToJson}>
-            Convert to JSON
+            {t('common.convert')} JSON
           </Button>
           {mode === "toJson" && jsonOutput && (
             <div className="mt-2">
-              <label className="block text-sm font-medium mb-1">JSON Output</label>
+              <label className="block text-sm font-medium mb-1">{t('toolCommon.jsonToYaml.jsonOutput')}</label>
               <textarea
                 className="w-full h-40 p-3 border rounded font-mono text-sm"
                 value={jsonOutput}

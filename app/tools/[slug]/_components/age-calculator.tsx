@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 function getDaysInMonth(year: number, month: number): number {
   return new Date(year, month + 1, 0).getDate();
@@ -47,6 +48,7 @@ export function AgeCalculatorTool() {
   const [age, setAge] = useState<{ years: number; months: number; days: number } | null>(null);
   const [showCountdown, setShowCountdown] = useState(false);
   const [countdown, setCountdown] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
+  const { t } = useLocale();
 
   const calculateAge = () => {
     if (!dob) return;
@@ -73,7 +75,7 @@ export function AgeCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Date of birth</label>
+        <label className="text-xs text-muted-foreground">{t('toolCommon.age.birthDate')}</label>
         <input
           type="date"
           value={dob}
@@ -84,7 +86,7 @@ export function AgeCalculatorTool() {
 
       <div className="flex items-center gap-2">
         <Button onClick={calculateAge} disabled={!dob}>
-          Calculate Age
+          {t('common.calculate')}
         </Button>
         <label className="flex items-center gap-2 text-sm cursor-pointer">
           <input
@@ -93,7 +95,7 @@ export function AgeCalculatorTool() {
             onChange={(e) => setShowCountdown(e.target.checked)}
             className="rounded border-input"
           />
-          Show birthday countdown
+          {t('toolCommon.age.nextBirthday')}
         </label>
       </div>
 
@@ -101,18 +103,18 @@ export function AgeCalculatorTool() {
         <div className="rounded-md border bg-card p-4 space-y-3">
           <div className="text-center">
             <span className="text-4xl font-mono font-bold">{age.years}</span>
-            <span className="text-sm text-muted-foreground ml-1">years</span>
+            <span className="text-sm text-muted-foreground ml-1">{t('toolCommon.age.years')}</span>
           </div>
           <div className="flex justify-center gap-4 text-sm text-muted-foreground">
-            <span>{age.months} months</span>
-            <span>{age.days} days</span>
+            <span>{age.months} {t('toolCommon.age.months')}</span>
+            <span>{age.days} {t('toolCommon.age.days')}</span>
           </div>
         </div>
       )}
 
       {showCountdown && countdown !== null && age !== null && (
         <div className="rounded-md border bg-card p-4">
-          <div className="text-xs text-muted-foreground mb-2">Next birthday in</div>
+          <div className="text-xs text-muted-foreground mb-2">{t('toolCommon.age.nextBirthday')}</div>
           <div className="grid grid-cols-4 gap-2 text-center">
             <div>
               <div className="text-2xl font-mono font-bold">{countdown.days}</div>

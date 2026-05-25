@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 function escapeHtml(text: string): string {
   return text
@@ -169,6 +170,7 @@ function sanitizeUrl(url: string): string {
 }
 
 export function MarkdownToHtmlTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
 
@@ -178,13 +180,13 @@ export function MarkdownToHtmlTool() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Markdown to HTML</h2>
+      <h2 className="text-xl font-semibold">{t('toolCommon.markdown.title')}</h2>
       <p className="text-sm text-muted-foreground">
-        Write Markdown on the left and see the rendered HTML on the right.
+        {t('toolCommon.markdown.description')}
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-1">Markdown Input</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.markdown.input')}</label>
           <textarea
             className="w-full h-80 p-3 border rounded-md resize-y font-mono text-sm"
             placeholder={`# Hello World\n\nThis is **bold** and *italic*.\n\n- List item 1\n- List item 2\n\n\`inline code\`\n\n[A link](https://example.com)`}
@@ -193,17 +195,17 @@ export function MarkdownToHtmlTool() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Rendered HTML</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.markdown.preview')}</label>
           <div
             className="w-full h-80 p-3 border rounded-md overflow-y-auto bg-white prose prose-sm max-w-none"
             dangerouslySetInnerHTML={{ __html: output }}
           />
         </div>
       </div>
-      <Button onClick={handleConvert}>Convert to HTML</Button>
+      <Button onClick={handleConvert}>{t('toolCommon.markdown.convert')}</Button>
       {output && (
         <div className="mt-4">
-          <label className="block text-sm font-medium mb-1">HTML Source:</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.markdown.htmlSource')}:</label>
           <textarea
             className="w-full h-40 p-3 border rounded-md resize-y font-mono text-sm"
             value={output}
@@ -214,7 +216,7 @@ export function MarkdownToHtmlTool() {
             className="mt-2"
             onClick={() => navigator.clipboard.writeText(output)}
           >
-            Copy to Clipboard
+            {t('common.copy')}
           </Button>
         </div>
       )}

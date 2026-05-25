@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function IpCalculatorTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState("");
   const [result, setResult] = useState<{
     ipAddress: string;
@@ -41,13 +43,13 @@ export function IpCalculatorTool() {
 
     const trimmed = input.trim();
     if (!trimmed) {
-      setError("Please enter an IP address with CIDR notation.");
+      setError(t('toolCommon.ipCalc.enterIp'));
       return;
     }
 
     const match = trimmed.match(/^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\/(\d{1,2})$/);
     if (!match) {
-      setError("Invalid format. Use CIDR notation like 192.168.1.0/24");
+      setError(t('toolCommon.ipCalc.invalidFormat'));
       return;
     }
 
@@ -55,14 +57,14 @@ export function IpCalculatorTool() {
     const cidr = parseInt(match[2], 10);
 
     if (cidr < 0 || cidr > 32) {
-      setError("CIDR prefix must be between 0 and 32.");
+      setError(t('toolCommon.ipCalc.cidrRange'));
       return;
     }
 
     const ipParts = ipStr.split(".").map(Number);
     for (const part of ipParts) {
       if (part < 0 || part > 255) {
-        setError("IP octets must be between 0 and 255.");
+        setError(t('toolCommon.ipCalc.octetRange'));
         return;
       }
     }
@@ -93,7 +95,7 @@ export function IpCalculatorTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">IP Address / CIDR</label>
+        <label className="block text-sm font-medium mb-1">{t('toolCommon.ipCalc.ipAddress')} / CIDR</label>
         <input
           type="text"
           className="w-full p-3 border rounded font-mono text-sm"
@@ -102,17 +104,17 @@ export function IpCalculatorTool() {
           onChange={(e) => setInput(e.target.value)}
         />
         <p className="text-xs text-muted-foreground mt-1">
-          Enter an IP address with CIDR notation (e.g., 192.168.1.0/24)
+          {t('toolCommon.ipCalc.cidrHint')}
         </p>
       </div>
-      <Button onClick={calculate}>Calculate</Button>
+      <Button onClick={calculate}>{t('common.calculate')}</Button>
       {error && <p className="text-red-500 text-sm">{error}</p>}
       {result && (
         <div className="border rounded p-4 space-y-2 bg-muted/30">
-          <h3 className="font-medium text-sm mb-2">Results</h3>
+          <h3 className="font-medium text-sm mb-2">{t('common.result')}</h3>
           <div className="grid grid-cols-2 gap-2 text-sm">
             <div>
-              <span className="text-muted-foreground">IP Address:</span>
+              <span className="text-muted-foreground">{t('toolCommon.ipCalc.ipAddress')}:</span>
               <span className="ml-2 font-mono">{result.ipAddress}</span>
             </div>
             <div>
@@ -120,27 +122,27 @@ export function IpCalculatorTool() {
               <span className="ml-2 font-mono">/{result.cidr}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Subnet Mask:</span>
+              <span className="text-muted-foreground">{t('toolCommon.ipCalc.subnetMask')}:</span>
               <span className="ml-2 font-mono">{result.subnetMask}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Network Address:</span>
+              <span className="text-muted-foreground">{t('toolCommon.ipCalc.networkAddress')}:</span>
               <span className="ml-2 font-mono">{result.networkAddress}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Broadcast Address:</span>
+              <span className="text-muted-foreground">{t('toolCommon.ipCalc.broadcast')}:</span>
               <span className="ml-2 font-mono">{result.broadcastAddress}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Usable Hosts:</span>
+              <span className="text-muted-foreground">{t('toolCommon.ipCalc.usableHosts')}:</span>
               <span className="ml-2 font-mono">{result.usableHosts.toLocaleString()}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Total Hosts:</span>
+              <span className="text-muted-foreground">{t('toolCommon.ipCalc.totalHosts')}:</span>
               <span className="ml-2 font-mono">{result.totalHosts.toLocaleString()}</span>
             </div>
             <div className="col-span-2">
-              <span className="text-muted-foreground">Host Range:</span>
+              <span className="text-muted-foreground">{t('toolCommon.ipCalc.hostRange')}:</span>
               <span className="ml-2 font-mono">{result.hostRange}</span>
             </div>
           </div>

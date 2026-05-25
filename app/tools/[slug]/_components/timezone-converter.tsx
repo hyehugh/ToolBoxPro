@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 interface Timezone {
   value: string;
@@ -81,6 +82,7 @@ const TIMEZONES: Timezone[] = [
 ];
 
 export function TimezoneConverterTool() {
+  const { t } = useLocale();
   const [fromTz, setFromTz] = useState('UTC');
   const [toTz, setToTz] = useState('America/New_York');
   const [dateTime, setDateTime] = useState('');
@@ -191,11 +193,11 @@ export function TimezoneConverterTool() {
     <div className="space-y-4">
       <h2 className="text-xl font-semibold">Timezone Converter</h2>
       <p className="text-sm text-muted-foreground">
-        Convert a date and time from one timezone to another.
+        Convert {t('common.from')} {t('toolCommon.timezone.currentTime')} {t('common.to')} another.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-1">From Timezone</label>
+          <label className="block text-sm font-medium mb-1">{t('common.from')} {t('toolCommon.timezone.currentTime')}</label>
           <select
             className="w-full p-2 border rounded-md text-sm"
             value={fromTz}
@@ -209,7 +211,7 @@ export function TimezoneConverterTool() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">To Timezone</label>
+          <label className="block text-sm font-medium mb-1">{t('common.to')} {t('toolCommon.timezone.currentTime')}</label>
           <select
             className="w-full p-2 border rounded-md text-sm"
             value={toTz}
@@ -225,7 +227,7 @@ export function TimezoneConverterTool() {
       </div>
       <div>
         <label className="block text-sm font-medium mb-1">
-          Date &amp; Time ({fromTz})
+          {t('common.value')} &amp; Time ({fromTz})
         </label>
         <div className="flex gap-2">
           <input
@@ -236,11 +238,11 @@ export function TimezoneConverterTool() {
             onChange={(e) => setDateTime(e.target.value)}
           />
           <Button variant="outline" onClick={handleNow}>
-            Now
+            {t('toolCommon.timestamp.current')}
           </Button>
         </div>
       </div>
-      <Button onClick={handleConvert}>Convert</Button>
+      <Button onClick={handleConvert}>{t('common.convert')}</Button>
       {error && (
         <div className="p-3 border border-red-300 bg-red-50 rounded-md text-sm text-red-700 whitespace-pre-line">
           {error}
@@ -249,7 +251,7 @@ export function TimezoneConverterTool() {
       {result && !error && (
         <div className="p-4 border border-green-300 bg-green-50 rounded-md">
           <label className="block text-sm font-medium text-green-800 mb-1">
-            Result ({toTz}):
+            {t('common.result')} ({toTz}):
           </label>
           <div className="text-lg font-bold text-green-900">{result}</div>
           <Button
@@ -257,7 +259,7 @@ export function TimezoneConverterTool() {
             className="mt-2"
             onClick={() => navigator.clipboard.writeText(result)}
           >
-            Copy to Clipboard
+            {t('common.copy')}
           </Button>
         </div>
       )}

@@ -2,15 +2,20 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 const UNITS: { key: string; label: string; toKg: (v: number) => number; fromKg: (v: number) => number }[] = [
   { key: "kg", label: "Kilogram (kg)", toKg: (v) => v, fromKg: (v) => v },
   { key: "g", label: "Gram (g)", toKg: (v) => v / 1000, fromKg: (v) => v * 1000 },
-  { key: "lb", label: "Pound (lb)", toKg: (v) => v * 0.453592, fromKg: (v) => v / 0.453592 },
+  { key: "mg", label: "Milligram (mg)", toKg: (v) => v / 1000000, fromKg: (v) => v * 1000000 },
+  { key: "ton", label: "Metric Ton", toKg: (v) => v * 1000, fromKg: (v) => v / 1000 },
   { key: "oz", label: "Ounce (oz)", toKg: (v) => v * 0.0283495, fromKg: (v) => v / 0.0283495 },
+  { key: "lb", label: "Pound (lb)", toKg: (v) => v * 0.453592, fromKg: (v) => v / 0.453592 },
+  { key: "stone", label: "Stone", toKg: (v) => v * 6.35029, fromKg: (v) => v / 6.35029 },
 ];
 
 export function WeightConverterTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState("");
   const [fromUnit, setFromUnit] = useState("kg");
   const [results, setResults] = useState<{ key: string; label: string; value: string }[]>([]);
@@ -48,7 +53,7 @@ export function WeightConverterTool() {
             <option key={u.key} value={u.key}>{u.label}</option>
           ))}
         </select>
-        <Button onClick={convert}>Convert</Button>
+        <Button onClick={convert}>{t('common.convert')}</Button>
       </div>
       {results.length > 0 && (
         <div className="space-y-2">
@@ -56,7 +61,7 @@ export function WeightConverterTool() {
             <div key={r.key} className="flex items-center gap-2 p-3 rounded-md border bg-card">
               <span className="text-xs text-muted-foreground w-36">{r.label}</span>
               <span className="flex-1 font-mono text-sm">{r.value}</span>
-              <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(r.value)}>Copy</Button>
+              <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(r.value)}>{t('common.copy')}</Button>
             </div>
           ))}
         </div>

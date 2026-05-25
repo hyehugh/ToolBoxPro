@@ -2,8 +2,10 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function ImageCompressorTool() {
+  const { t } = useLocale();
   const [originalSize, setOriginalSize] = useState(0);
   const [compressedSize, setCompressedSize] = useState(0);
   const [resultUrl, setResultUrl] = useState("");

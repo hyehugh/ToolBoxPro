@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 type Mode = 'x-percent-of-y' | 'x-is-what-percent-of-y' | 'percent-change';
 
@@ -10,6 +11,7 @@ export function PercentageCalculatorTool() {
   const [valA, setValA] = useState('');
   const [valB, setValB] = useState('');
   const [result, setResult] = useState<string | null>(null);
+  const { t } = useLocale();
 
   const calculate = () => {
     const a = parseFloat(valA);
@@ -70,19 +72,19 @@ export function PercentageCalculatorTool() {
           variant={mode === 'x-percent-of-y' ? 'default' : 'outline'}
           onClick={() => { setMode('x-percent-of-y'); setResult(null); }}
         >
-          X% of Y
+          {t('toolCommon.percentage.whatIs')}
         </Button>
         <Button
           variant={mode === 'x-is-what-percent-of-y' ? 'default' : 'outline'}
           onClick={() => { setMode('x-is-what-percent-of-y'); setResult(null); }}
         >
-          X is what % of Y
+          {t('toolCommon.percentage.whatPercent')}
         </Button>
         <Button
           variant={mode === 'percent-change' ? 'default' : 'outline'}
           onClick={() => { setMode('percent-change'); setResult(null); }}
         >
-          % Increase/Decrease
+          {t('toolCommon.percentage.percentChange')}
         </Button>
       </div>
 
@@ -107,7 +109,7 @@ export function PercentageCalculatorTool() {
         </div>
       </div>
 
-      <Button onClick={calculate}>Calculate</Button>
+      <Button onClick={calculate}>{t('common.calculate')}</Button>
 
       {result !== null && (
         <div>

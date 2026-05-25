@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function PdfRotatorTool() {
   const [file, setFile] = useState<File | null>(null);
   const [rotation, setRotation] = useState(90);
   const [loading, setLoading] = useState(false);
+  const { t } = useLocale();
 
   const rotate = async () => {
     if (!file) return;
@@ -68,7 +70,7 @@ export function PdfRotatorTool() {
             ))}
           </div>
           <Button onClick={rotate} disabled={loading}>
-            {loading ? "Rotating..." : `Rotate ${rotation}°`}
+            {loading ? t('common.loading') : `${t('toolCommon.pdfRotator.rotate')} ${rotation}°`}
           </Button>
         </div>
       )}

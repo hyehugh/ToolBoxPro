@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 function parseColor(input: string): { r: number; g: number; b: number } | null {
   input = input.trim();
@@ -83,19 +84,20 @@ export function ColorConverterTool() {
   const [input, setInput] = useState("#2563eb");
   const [color, setColor] = useState<{ r: number; g: number; b: number } | null>({ r: 37, g: 99, b: 235 });
   const [error, setError] = useState("");
+  const { t } = useLocale();
 
   const handleInput = (val: string) => {
     setInput(val);
     setError("");
     const parsed = parseColor(val);
     if (parsed) setColor(parsed);
-    else setError("Invalid color format");
+    else setError(t('common.colorInvalid') || "Invalid color format");
   };
 
   return (
     <div className="space-y-4">
       <input
-        placeholder="Enter a color (HEX, RGB, HSL)..."
+        placeholder={`${t('common.input')} (HEX, RGB, HSL)...`}
         value={input}
         onChange={(e) => handleInput(e.target.value)}
         className="w-full h-10 px-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
@@ -111,9 +113,9 @@ export function ColorConverterTool() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
-              { label: "HEX", value: toHex(color.r, color.g, color.b) },
-              { label: "RGB", value: toRgb(color.r, color.g, color.b) },
-              { label: "HSL", value: toHsl(color.r, color.g, color.b) },
+              { label: t('toolCommon.color.hex'), value: toHex(color.r, color.g, color.b) },
+              { label: t('toolCommon.color.rgb'), value: toRgb(color.r, color.g, color.b) },
+              { label: t('toolCommon.color.hsl'), value: toHsl(color.r, color.g, color.b) },
             ].map(({ label, value }) => (
               <div key={label} className="p-3 rounded-md border bg-card">
                 <p className="text-xs text-muted-foreground mb-1">{label}</p>
@@ -124,13 +126,13 @@ export function ColorConverterTool() {
                   className="mt-1 h-6 text-xs"
                   onClick={() => navigator.clipboard.writeText(value)}
                 >
-                  Copy
+                  {t('common.copy')}
                 </Button>
               </div>
             ))}
           </div>
           <div className="text-sm text-muted-foreground">
-            Contrast ratio: {contrastRatio(color.r, color.g, color.b).toFixed(2)}:1
+            {t('toolCommon.color.contrast') || 'Contrast ratio'}: {contrastRatio(color.r, color.g, color.b).toFixed(2)}:1
             (against white)
           </div>
         </div>

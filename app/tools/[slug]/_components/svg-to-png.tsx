@@ -2,8 +2,10 @@
 
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 export function SvgToPngTool() {
+  const { t } = useLocale();
   const [svgInput, setSvgInput] = useState('');
   const [fileName, setFileName] = useState('image');
   const [error, setError] = useState('');
@@ -92,9 +94,9 @@ export function SvgToPngTool() {
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={() => fileInputRef.current?.click()}>
-            Upload SVG File
+            {t('common.upload')} SVG
           </Button>
-          <span className="text-xs text-muted-foreground">or paste code below</span>
+          <span className="text-xs text-muted-foreground">{t('common.or')} paste code below</span>
         </div>
         <input
           ref={fileInputRef}
@@ -112,7 +114,7 @@ export function SvgToPngTool() {
       </div>
 
       <Button onClick={handleRender} disabled={!svgInput.trim()}>
-        Render to PNG
+        {t('toolCommon.svgToPng.convert')}
       </Button>
 
       {error && (
@@ -127,11 +129,11 @@ export function SvgToPngTool() {
         <div className="space-y-3">
           <div className="flex justify-center p-4 rounded-lg border bg-white">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={previewUrl} alt="PNG Preview" className="max-w-full max-h-80" />
+            <img src={previewUrl} alt={t('common.preview')} className="max-w-full max-h-80" />
           </div>
           <div className="flex gap-2 justify-center">
             <Button variant="outline" size="sm" onClick={handleDownload}>
-              Download PNG
+              {t('common.download')} PNG
             </Button>
           </div>
         </div>

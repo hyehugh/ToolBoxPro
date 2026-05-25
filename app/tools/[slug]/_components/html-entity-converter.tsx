@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 const ENTITIES: Record<string, string> = {
   "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": "\"",
@@ -14,6 +15,7 @@ const ENTITIES: Record<string, string> = {
 };
 
 export function HtmlEntityConverterTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
@@ -46,20 +48,20 @@ export function HtmlEntityConverterTool() {
   return (
     <div className="space-y-4">
       <div className="flex gap-2">
-        <Button variant={mode === "encode" ? "default" : "outline"} size="sm" onClick={() => setMode("encode")}>Encode</Button>
-        <Button variant={mode === "decode" ? "default" : "outline"} size="sm" onClick={() => setMode("decode")}>Decode</Button>
+        <Button variant={mode === "encode" ? "default" : "outline"} size="sm" onClick={() => setMode("encode")}>{t('toolCommon.htmlEntities.encode')}</Button>
+        <Button variant={mode === "decode" ? "default" : "outline"} size="sm" onClick={() => setMode("decode")}>{t('toolCommon.htmlEntities.decode')}</Button>
       </div>
       <textarea
-        placeholder={mode === "encode" ? "Enter text containing <tags> and & symbols..." : "Enter HTML with entities like &amp;..."}
+        placeholder={mode === "encode" ? t('toolCommon.htmlEntities.encodePlaceholder') : t('toolCommon.htmlEntities.decodePlaceholder')}
         value={input}
         onChange={(e) => setInput(e.target.value)}
         className="w-full h-32 p-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
       />
-      <Button onClick={process}>{mode === "encode" ? "Encode" : "Decode"}</Button>
+      <Button onClick={process}>{mode === "encode" ? t('toolCommon.htmlEntities.encode') : t('toolCommon.htmlEntities.decode')}</Button>
       {output && (
         <div className="space-y-2">
           <textarea readOnly value={output} className="w-full h-32 p-3 rounded-md border border-input bg-muted font-mono text-sm" />
-          <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>Copy</Button>
+          <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>{t('common.copy')}</Button>
         </div>
       )}
     </div>

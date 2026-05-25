@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 export function RandomStringGeneratorTool() {
   const [length, setLength] = useState(16);
@@ -9,6 +10,7 @@ export function RandomStringGeneratorTool() {
   const [includeNumbers, setIncludeNumbers] = useState(true);
   const [includeSymbols, setIncludeSymbols] = useState(false);
   const [output, setOutput] = useState('');
+  const { t } = useLocale();
 
   const generate = useCallback(() => {
     const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -79,7 +81,7 @@ export function RandomStringGeneratorTool() {
         </label>
       </div>
 
-      <Button onClick={generate}>Generate</Button>
+      <Button onClick={generate}>{t('common.generate')}</Button>
 
       {output !== '' && (
         <div>

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LocaleProvider } from "@/lib/i18n/context";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { CookieBanner } from "@/components/cookie-banner";
 import "./globals.css";
@@ -45,6 +46,12 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    languages: {
+      en: "https://trytoolboxpro.com",
+      zh: "https://trytoolboxpro.com",
+    },
   },
   other: {
     "application/ld+json": JSON.stringify([
@@ -89,11 +96,13 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <ThemeProvider>
-          <GoogleAnalytics />
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <CookieBanner />
+          <LocaleProvider>
+            <GoogleAnalytics />
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <CookieBanner />
+          </LocaleProvider>
         </ThemeProvider>
       </body>
     </html>

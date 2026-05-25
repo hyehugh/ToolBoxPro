@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 interface CharInfo {
   char: string;
@@ -47,6 +48,7 @@ function getCategoryDisplay(cat: string): string {
 }
 
 export function UnicodeDetectorTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState('');
   const [chars, setChars] = useState<CharInfo[]>([]);
 
@@ -95,9 +97,9 @@ export function UnicodeDetectorTool() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Unicode Detector</h2>
+      <h2 className="text-xl font-semibold">{t('toolCommon.unicode.detect')}</h2>
       <p className="text-sm text-muted-foreground">
-        Enter text to see detailed Unicode information for each character.
+        {t('common.input')} {t('common.text')} {t('common.to')} {t('toolCommon.unicode.detect')}.
       </p>
       <textarea
         className="w-full h-32 p-3 border rounded-md resize-y font-mono text-sm"
@@ -105,15 +107,15 @@ export function UnicodeDetectorTool() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <Button onClick={handleDetect}>Detect</Button>
+      <Button onClick={handleDetect}>{t('toolCommon.unicode.detect')}</Button>
       {chars.length > 0 && (
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="bg-muted">
-                <th className="border p-2 text-left">Char</th>
-                <th className="border p-2 text-left">Codepoint</th>
-                <th className="border p-2 text-left">Category</th>
+                <th className="border p-2 text-left">{t('toolCommon.unicode.character')}</th>
+                <th className="border p-2 text-left">{t('toolCommon.unicode.codepoint')}</th>
+                <th className="border p-2 text-left">{t('toolCommon.unicode.category')}</th>
                 <th className="border p-2 text-left">Name</th>
               </tr>
             </thead>

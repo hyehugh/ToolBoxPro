@@ -2,8 +2,10 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function ImageToPdfTool() {
+  const { t } = useLocale();
   const [images, setImages] = useState<{ file: File; url: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);

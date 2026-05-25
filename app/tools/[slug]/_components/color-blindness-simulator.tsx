@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 type SimType = 'protanopia' | 'deuteranopia' | 'tritanopia';
 
@@ -68,7 +69,6 @@ function applyColorMatrix(
     data[i + 2] = Math.min(255, Math.max(0,
       r * matrix[10] + g * matrix[11] + b * matrix[12] + a * matrix[13] + matrix[14]
     ));
-    // Alpha stays the same
   }
 
   ctx.putImageData(imageData, 0, 0);
@@ -87,6 +87,7 @@ export function ColorBlindnessSimulatorTool() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const originalCanvasRef = useRef<HTMLCanvasElement>(null);
   const simCanvasRef = useRef<HTMLCanvasElement>(null);
+  const { t } = useLocale();
 
   const processImage = async (file: File) => {
     if (!file.type.startsWith('image/')) {
@@ -214,7 +215,7 @@ export function ColorBlindnessSimulatorTool() {
         {loading ? (
           <div className="flex flex-col items-center gap-2">
             <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-            <span className="text-sm text-muted-foreground">Processing image...</span>
+            <span className="text-sm text-muted-foreground">{t('common.loading')}</span>
           </div>
         ) : (
           <div>
@@ -232,7 +233,7 @@ export function ColorBlindnessSimulatorTool() {
               />
             </svg>
             <p className="text-sm text-muted-foreground">
-              Upload an image to simulate color blindness
+              {t('common.upload')} {t('common.file')} {t('toolCommon.colorBlind.simulate') || 'to simulate color blindness'}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
               Supports JPG, PNG, WebP
@@ -255,7 +256,7 @@ export function ColorBlindnessSimulatorTool() {
         <div className="space-y-4">
           {/* Original image */}
           <div>
-            <h3 className="text-sm font-medium mb-2">Original</h3>
+            <h3 className="text-sm font-medium mb-2">{t('toolCommon.colorBlind.original')}</h3>
             <div className="flex justify-center p-2 rounded-lg border bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -275,10 +276,14 @@ export function ColorBlindnessSimulatorTool() {
             {(Object.entries(SIMULATIONS) as [SimType, SimConfig][]).map(([type, config]) => (
               <div key={type} className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium">{config.label}</h3>
+                  <h3 className="text-sm font-medium">
+                    {type === 'protanopia' ? t('toolCommon.colorBlind.protanopia') :
+                     type === 'deuteranopia' ? t('toolCommon.colorBlind.deuteranopia') :
+                     t('toolCommon.colorBlind.tritanopia')}
+                  </h3>
                   {simulatedUrls[type] && (
                     <Button variant="ghost" size="sm" onClick={() => downloadSim(type)}>
-                      Download
+                      {t('common.download')}
                     </Button>
                   )}
                 </div>
@@ -293,7 +298,7 @@ export function ColorBlindnessSimulatorTool() {
                     />
                   ) : (
                     <div className="flex items-center text-xs text-muted-foreground">
-                      Processing...
+                      {t('common.loading')}
                     </div>
                   )}
                 </div>
@@ -306,7 +311,7 @@ export function ColorBlindnessSimulatorTool() {
 
       {!imageUrl && !loading && (
         <div className="text-center text-sm text-muted-foreground py-8">
-          Upload an image to see how it looks under different types of color blindness
+          {t('common.upload')} {t('common.file')} {t('toolCommon.colorBlind.description') || 'to see color blindness simulation'}
         </div>
       )}
     </div>

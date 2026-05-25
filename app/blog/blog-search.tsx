@@ -4,9 +4,11 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { getBlogImage } from "@/lib/blog/images";
 import type { BlogPost } from "@/lib/blog/data";
+import { useLocale } from "@/lib/i18n/context";
 
 export function BlogSearch({ posts }: { posts: BlogPost[] }) {
   const [query, setQuery] = useState("");
+  const { t } = useLocale();
 
   const filtered = useMemo(() => {
     if (!query.trim()) return posts;
@@ -24,7 +26,7 @@ export function BlogSearch({ posts }: { posts: BlogPost[] }) {
       <div className="relative max-w-md mb-8">
         <input
           type="search"
-          placeholder="Search articles..."
+          placeholder={t("search.placeholder")}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="w-full h-10 pl-4 pr-10 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
@@ -41,8 +43,8 @@ export function BlogSearch({ posts }: { posts: BlogPost[] }) {
 
       {filtered.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground">
-          <p className="text-lg mb-1">No articles found</p>
-          <p className="text-sm">Try a different search term</p>
+          <p className="text-lg mb-1">{t("search.noResults")}</p>
+          <p className="text-sm">{t("blog.subtitle")}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -78,9 +80,7 @@ export function BlogSearch({ posts }: { posts: BlogPost[] }) {
                       <span>·</span>
                       <span>{post.readTime}</span>
                     </div>
-                    <h2 className="font-bold mb-1 hover:text-primary transition-colors">
-                      {post.title}
-                    </h2>
+                    <h2 className="font-semibold mb-1">{post.title}</h2>
                     <p className="text-sm text-muted-foreground line-clamp-2">
                       {post.description}
                     </p>

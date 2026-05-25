@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 export function DaysBetweenTool() {
   const [startDate, setStartDate] = useState('');
@@ -16,6 +17,7 @@ export function DaysBetweenTool() {
     hours: number;
     minutes: number;
   } | null>(null);
+  const { t } = useLocale();
 
   const calculate = () => {
     if (!startDate || !endDate) return;
@@ -62,7 +64,7 @@ export function DaysBetweenTool() {
     <div className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <label className="text-xs text-muted-foreground">Start Date</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.daysBetween.from')}</label>
           <div className="flex gap-2">
             <input
               type="date"
@@ -71,12 +73,12 @@ export function DaysBetweenTool() {
               className="flex-1 h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
             />
             <Button variant="outline" size="sm" onClick={() => setToday('start')}>
-              Today
+              {t('toolCommon.daysBetween.today') || 'Today'}
             </Button>
           </div>
         </div>
         <div className="space-y-2">
-          <label className="text-xs text-muted-foreground">End Date</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.daysBetween.to')}</label>
           <div className="flex gap-2">
             <input
               type="date"
@@ -85,14 +87,14 @@ export function DaysBetweenTool() {
               className="flex-1 h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
             />
             <Button variant="outline" size="sm" onClick={() => setToday('end')}>
-              Today
+              {t('toolCommon.daysBetween.today') || 'Today'}
             </Button>
           </div>
         </div>
       </div>
 
       <Button onClick={calculate} disabled={!startDate || !endDate}>
-        Calculate Difference
+        {t('common.calculate')}
       </Button>
 
       {result !== null && (
@@ -100,34 +102,34 @@ export function DaysBetweenTool() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             <div>
               <div className="text-3xl font-mono font-bold">{result.days}</div>
-              <div className="text-xs text-muted-foreground">Days</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.daysBetween.days')}</div>
             </div>
             <div>
               <div className="text-3xl font-mono font-bold">{result.months}</div>
-              <div className="text-xs text-muted-foreground">Months</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.daysBetween.months') || 'Months'}</div>
             </div>
             <div>
               <div className="text-3xl font-mono font-bold">{result.years}</div>
-              <div className="text-xs text-muted-foreground">Years</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.daysBetween.years') || 'Years'}</div>
             </div>
             <div>
               <div className="text-3xl font-mono font-bold">{result.weeks}</div>
-              <div className="text-xs text-muted-foreground">Weeks</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.daysBetween.weeks') || 'Weeks'}</div>
             </div>
           </div>
           <hr className="my-3" />
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center text-sm">
             <div>
               <span className="font-mono font-bold">{result.hours.toLocaleString()}</span>{' '}
-              <span className="text-muted-foreground">hours</span>
+              <span className="text-muted-foreground">{t('toolCommon.daysBetween.hours') || 'hours'}</span>
             </div>
             <div>
               <span className="font-mono font-bold">{result.minutes.toLocaleString()}</span>{' '}
-              <span className="text-muted-foreground">minutes</span>
+              <span className="text-muted-foreground">{t('toolCommon.daysBetween.minutes') || 'minutes'}</span>
             </div>
             <div className="flex gap-2 justify-center">
-              <span className="text-muted-foreground">{result.weekdays} weekdays</span>
-              <span className="text-muted-foreground">· {result.weekends} weekends</span>
+              <span className="text-muted-foreground">{result.weekdays} {t('toolCommon.daysBetween.weekdays') || 'weekdays'}</span>
+              <span className="text-muted-foreground">· {result.weekends} {t('toolCommon.daysBetween.weekends') || 'weekends'}</span>
             </div>
           </div>
         </div>

@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function JsonToTypescriptTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
@@ -14,7 +16,7 @@ export function JsonToTypescriptTool() {
     setOutput("");
 
     if (!input.trim()) {
-      setError("Please paste some JSON first.");
+      setError(t('toolCommon.jsonToTs.pasteJson'));
       return;
     }
 
@@ -22,15 +24,15 @@ export function JsonToTypescriptTool() {
     try {
       parsed = JSON.parse(input);
     } catch {
-      setError("Invalid JSON. Please check your input.");
+      setError(t('toolCommon.jsonToTs.invalidJson'));
       return;
     }
 
     try {
-      const result = convertToInterface(parsed, "RootObject");
+      const result = convertToInterface(parsed, t('toolCommon.jsonToTs.rootName'));
       setOutput(result);
     } catch (e: any) {
-      setError(e.message || "Failed to generate TypeScript interface.");
+      setError(e.message || t('toolCommon.jsonToTs.failed'));
     }
   };
 
@@ -55,7 +57,7 @@ export function JsonToTypescriptTool() {
     <div className="space-y-4">
       <div>
         <label className="text-sm text-muted-foreground block mb-1">
-          Paste JSON here
+          {t('toolCommon.jsonToTs.pasteJson')}
         </label>
         <textarea
           value={input}
@@ -66,7 +68,7 @@ export function JsonToTypescriptTool() {
       </div>
 
       <Button onClick={generateInterface} className="w-full" disabled={!input.trim()}>
-        Generate TypeScript Interface
+        {t('toolCommon.jsonToTs.convert')}
       </Button>
 
       {error && (
@@ -78,13 +80,13 @@ export function JsonToTypescriptTool() {
       {output && (
         <div className="space-y-2">
           <label className="text-sm text-muted-foreground block">
-            TypeScript Interface
+            {t('toolCommon.jsonToTs.typeScriptInterface')}
           </label>
           <pre className="bg-muted p-3 rounded-lg text-sm overflow-x-auto max-h-64 overflow-y-auto">
             <code>{output}</code>
           </pre>
           <Button onClick={handleCopy} className="w-full">
-            {copied ? "Copied!" : "Copy TypeScript Interface"}
+            {copied ? t('common.copied') : t('toolCommon.jsonToTs.copyInterface')}
           </Button>
         </div>
       )}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 const UNITS: { key: string; label: string; toM: (v: number) => number; fromM: (v: number) => number }[] = [
   { key: "m", label: "Meter (m)", toM: (v) => v, fromM: (v) => v },
@@ -13,6 +14,7 @@ const UNITS: { key: string; label: string; toM: (v: number) => number; fromM: (v
 ];
 
 export function LengthConverterTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState("");
   const [fromUnit, setFromUnit] = useState("m");
   const [results, setResults] = useState<{ key: string; label: string; value: string }[]>([]);
@@ -36,7 +38,7 @@ export function LengthConverterTool() {
       <div className="flex gap-2">
         <input
           type="number"
-          placeholder="Enter a value..."
+          placeholder={t('toolCommon.length.enterValue')}
           value={input}
           onChange={(e) => { setInput(e.target.value); setResults([]); }}
           className="flex-1 h-10 px-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
@@ -50,7 +52,7 @@ export function LengthConverterTool() {
             <option key={u.key} value={u.key}>{u.label}</option>
           ))}
         </select>
-        <Button onClick={convert}>Convert</Button>
+        <Button onClick={convert}>{t('common.convert')}</Button>
       </div>
       {results.length > 0 && (
         <div className="space-y-2">
@@ -58,7 +60,7 @@ export function LengthConverterTool() {
             <div key={r.key} className="flex items-center gap-2 p-3 rounded-md border bg-card">
               <span className="text-xs text-muted-foreground w-36">{r.label}</span>
               <span className="flex-1 font-mono text-sm">{r.value}</span>
-              <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(r.value)}>Copy</Button>
+              <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(r.value)}>{t('common.copy')}</Button>
             </div>
           ))}
         </div>

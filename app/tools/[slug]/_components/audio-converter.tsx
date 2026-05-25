@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 function floatTo16BitPCM(samples: Float32Array): ArrayBuffer {
   const buffer = new ArrayBuffer(samples.length * 2);
@@ -63,6 +64,7 @@ export function AudioConverterTool() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [fileInfo, setFileInfo] = useState<{ name: string; duration: number; origSampleRate: number; channels: number } | null>(null);
+  const { t } = useLocale();
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -70,7 +72,7 @@ export function AudioConverterTool() {
 
     if (!['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/mp3'].includes(file.type) &&
         !file.name.match(/\.(mp3|wav|ogg)$/i)) {
-      setError('Please upload MP3, WAV, or OGG audio files.');
+      setError(t('common.selectFile'));
       return;
     }
 
@@ -92,7 +94,7 @@ export function AudioConverterTool() {
       });
       ctx.close();
     } catch {
-      setError('Failed to decode audio file.');
+      setError(t('common.error'));
     }
     setLoading(false);
   };
@@ -135,7 +137,7 @@ export function AudioConverterTool() {
 
       setConvertedBlob(blob);
     } catch {
-      setError('Failed to convert audio.');
+      setError(t('common.error'));
     }
     setLoading(false);
   };
@@ -161,7 +163,7 @@ export function AudioConverterTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">Upload Audio (MP3, WAV, OGG)</label>
+        <label className="block text-sm font-medium mb-1">{t('common.selectFile')}</label>
         <input
           type="file"
           accept="audio/mpeg,audio/wav,audio/ogg,.mp3,.wav,.ogg"
@@ -170,13 +172,13 @@ export function AudioConverterTool() {
         />
       </div>
 
-      {loading && <p className="text-sm text-muted-foreground">Processing...</p>}
+      {loading && <p className="text-sm text-muted-foreground">{t('common.loading')}</p>}
       {error && <p className="text-sm text-red-500">{error}</p>}
 
       {fileInfo && (
         <div className="rounded-md border bg-card p-3 space-y-1 text-sm">
           <div className="flex justify-between">
-            <span className="text-muted-foreground">File:</span>
+            <span className="text-muted-foreground">{t('common.file')}:</span>
             <span className="font-mono">{fileInfo.name}</span>
           </div>
           <div className="flex justify-between">
@@ -198,7 +200,7 @@ export function AudioConverterTool() {
         <>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label className="text-xs text-muted-foreground">Output Format</label>
+              <label className="text-xs text-muted-foreground">{t('toolCommon.audio.convertTo')}</label>
               <select
                 value={outputFormat}
                 onChange={(e) => setOutputFormat(e.target.value)}
@@ -224,18 +226,18 @@ export function AudioConverterTool() {
           </div>
 
           <Button onClick={convertAudio} disabled={loading}>
-            {loading ? 'Converting...' : '🔄 Convert Audio'}
+            {loading ? t('common.loading') : t('toolCommon.audio.convertTo')}
           </Button>
         </>
       )}
 
       {convertedBlob && (
         <div className="rounded-md border bg-card p-4 space-y-2">
-          <p className="text-sm text-green-600 font-medium">Conversion complete!</p>
+          <p className="text-sm text-green-600 font-medium">{t('common.result')}</p>
           <p className="text-xs text-muted-foreground">
-            Format: {OUTPUT_FORMATS.find((f) => f.value === outputFormat)?.label} @ {sampleRate} Hz
+            {t('common.output')}: {OUTPUT_FORMATS.find((f) => f.value === outputFormat)?.label} @ {sampleRate} Hz
           </p>
-          <Button onClick={downloadConverted}>⬇ Download Converted Audio</Button>
+          <Button onClick={downloadConverted}>{t('common.download')}</Button>
         </div>
       )}
     </div>

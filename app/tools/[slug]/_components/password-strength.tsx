@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 const COMMON_PATTERNS = [
   'password', '123456', '12345678', '123456789', 'qwerty', 'abc123',
@@ -59,19 +60,19 @@ function analyzePassword(password: string): StrengthResult {
   let color: string;
   let bgColor: string;
   if (score < 25) {
-    label = 'Weak';
+    label = 'weak';
     color = 'text-red-500';
     bgColor = 'bg-red-500';
   } else if (score < 50) {
-    label = 'Medium';
+    label = 'medium';
     color = 'text-orange-500';
     bgColor = 'bg-orange-500';
   } else if (score < 75) {
-    label = 'Strong';
+    label = 'strong';
     color = 'text-yellow-500';
     bgColor = 'bg-yellow-500';
   } else {
-    label = 'Very Strong';
+    label = 'veryWeak';
     color = 'text-green-500';
     bgColor = 'bg-green-500';
   }
@@ -106,6 +107,7 @@ function analyzePassword(password: string): StrengthResult {
 export function PasswordStrengthTool() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const { t } = useLocale();
 
   const result = useMemo(() => analyzePassword(password), [password]);
 
@@ -136,7 +138,7 @@ export function PasswordStrengthTool() {
           {/* Score bar */}
           <div className="space-y-1">
             <div className="flex justify-between text-sm">
-              <span className={`font-semibold ${result.color}`}>{result.label}</span>
+              <span className={`font-semibold ${result.color}`}>{t('common.' + result.label)}</span>
               <span className="text-muted-foreground">{result.score}/100</span>
             </div>
             <div className="w-full h-2.5 rounded-full bg-secondary overflow-hidden">

@@ -1,11 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { tools, categories } from "@/lib/tools/data";
 import { blogPosts } from "@/lib/blog/data";
 import { getBlogImage } from "@/lib/blog/images";
 import HomeSearch from "./home-search";
 import { PopularTools } from "./popular-tools";
+import { useLocale } from "@/lib/i18n/context";
 
 export default function HomePage() {
+  const { t } = useLocale();
+
   return (
     <div className="mx-auto max-w-6xl px-4">
       {/* Hero */}
@@ -13,13 +18,12 @@ export default function HomePage() {
         {/* Warm ambient background */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] dark:from-[#2a2422] to-transparent rounded-3xl mx-4" />
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-          Free Online Tools.
+          {t("home.heroTitle")}
           <br />
-          <span className="text-primary">Privacy First.</span>
+          <span className="text-primary">{t("home.heroTagline")}</span>
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-          {tools.length}+ tools for developers, designers, and everyday tasks.
-          No signup. No upload. Files stay on your device.
+          {t("home.heroDesc").replace("{count}", String(tools.length))}
         </p>
         <HomeSearch />
       </section>
@@ -38,9 +42,11 @@ export default function HomePage() {
               className="flex flex-col items-center gap-2 p-6 rounded-lg border bg-card card-shadow hover:bg-accent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span className="text-3xl">{cat.icon}</span>
-              <span className="font-medium text-sm text-center">{cat.name}</span>
+              <span className="font-medium text-sm text-center">{t(`categories.${cat.id}`)}</span>
               <span className="text-xs text-muted-foreground">
-                {count} tool{count !== 1 ? "s" : ""}
+                {count === 1
+                  ? t("home.toolCount").replace("{count}", String(count))
+                  : t("home.toolCountPlural").replace("{count}", String(count))}
               </span>
             </Link>
           );
@@ -49,7 +55,7 @@ export default function HomePage() {
 
       {/* All Tools Grid */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-6">All Tools</h2>
+        <h2 className="text-2xl font-bold mb-6">{t("home.allTools")}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {tools.map((tool) => (
             <Link
@@ -72,9 +78,9 @@ export default function HomePage() {
       {/* Latest Blog */}
       <section className="mb-16">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold">Latest from Blog</h2>
+          <h2 className="text-2xl font-bold">{t("home.latestBlog")}</h2>
           <Link href="/blog" className="text-sm text-primary hover:underline">
-            View all &rarr;
+            {t("home.viewAll")}
           </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -117,22 +123,19 @@ export default function HomePage() {
 
       {/* Why ToolboxPro */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold text-center mb-8">Why ToolboxPro?</h2>
+        <h2 className="text-2xl font-bold text-center mb-8">{t("home.whyTitle")}</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { title: "No Signup", desc: "Just open and use" },
-            { title: "Privacy First", desc: "Files stay on your device" },
-            { title: "No Limits", desc: "Unlimited free usage" },
-            { title: "AI Enhanced", desc: "Smarter tools" },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="text-center p-6 rounded-lg border bg-card card-shadow"
-            >
-              <h3 className="font-bold text-lg">{item.title}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
-            </div>
-          ))}
+          {(t("home.whyItems") as { title: string; desc: string }[]).map(
+            (item: { title: string; desc: string }) => (
+              <div
+                key={item.title}
+                className="text-center p-6 rounded-lg border bg-card card-shadow"
+              >
+                <h3 className="font-bold text-lg">{item.title}</h3>
+                <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
+              </div>
+            )
+          )}
         </div>
       </section>
     </div>

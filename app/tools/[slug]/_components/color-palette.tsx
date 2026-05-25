@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 interface PaletteColor {
   hex: string;
@@ -16,6 +17,7 @@ export function ColorPaletteTool() {
   const [baseColor, setBaseColor] = useState("#6366f1");
   const [palettes, setPalettes] = useState<PaletteSet[]>([]);
   const [copiedIndex, setCopiedIndex] = useState<{ p: number; c: number } | null>(null);
+  const { t } = useLocale();
 
   const hexToHsl = (hex: string) => {
     const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -79,10 +81,10 @@ export function ColorPaletteTool() {
     ];
 
     setPalettes([
-      { label: "Monochromatic", colors: mono },
-      { label: "Complementary", colors: comp },
-      { label: "Analogous", colors: analog },
-      { label: "Triadic", colors: triad },
+      { label: t('toolCommon.colorPalette.monochromatic') || "Monochromatic", colors: mono },
+      { label: t('toolCommon.colorPalette.complementary') || "Complementary", colors: comp },
+      { label: t('toolCommon.colorPalette.analogous') || "Analogous", colors: analog },
+      { label: t('toolCommon.colorPalette.triadic') || "Triadic", colors: triad },
     ]);
   };
 
@@ -95,7 +97,7 @@ export function ColorPaletteTool() {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <label className="text-sm">Base Color:</label>
+        <label className="text-sm">{t('toolCommon.colorPalette.baseColor')}:</label>
         <input
           type="color"
           value={baseColor}
@@ -103,7 +105,7 @@ export function ColorPaletteTool() {
           className="w-10 h-10 rounded cursor-pointer border border-input"
         />
         <span className="text-sm font-mono">{baseColor}</span>
-        <Button onClick={generatePalette}>Generate Palette</Button>
+        <Button onClick={generatePalette}>{t('toolCommon.colorPalette.generatePalette')}</Button>
       </div>
 
       {palettes.map((palette, pIdx) => (

@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 type InputType = "url" | "text" | "phone" | "sms" | "email" | "wifi";
 
@@ -10,6 +11,7 @@ export function QrGeneratorTool() {
   const [input, setInput] = useState("");
   const [qrDataUrl, setQrDataUrl] = useState("");
   const [size, setSize] = useState(256);
+  const { t } = useLocale();
 
   const generate = useCallback(() => {
     if (!input) return;
@@ -62,7 +64,7 @@ export function QrGeneratorTool() {
       )}
 
       <div className="flex items-center gap-3">
-        <Button onClick={generate}>Generate QR Code</Button>
+        <Button onClick={generate}>{t('toolCommon.qr.generateQR')}</Button>
         <label className="text-sm text-muted-foreground">
           Size:
           <select
@@ -88,7 +90,7 @@ export function QrGeneratorTool() {
             <Button variant="outline" size="sm" onClick={() => {
               const a = document.createElement("a");
               a.href = qrDataUrl; a.download = `qrcode-${size}.png`; a.click();
-            }}>Download PNG</Button>
+            }}>{t('common.download')}</Button>
           </div>
         </div>
       )}

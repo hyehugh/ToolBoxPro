@@ -1,16 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useLocale } from "@/lib/i18n/context";
 
 const COOKIE_CONSENT_KEY = "toolboxpro_cookie_consent";
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false);
+  const { t } = useLocale();
 
   useEffect(() => {
     const consented = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consented) {
-      // Delay showing for better UX
       const timer = setTimeout(() => setVisible(true), 1000);
       return () => clearTimeout(timer);
     }
@@ -35,7 +36,7 @@ export function CookieBanner() {
           This site uses cookies from Google to deliver its services and analyze traffic.
           Your data will not be used for personalized advertising without your consent.
           <a href="/privacy" className="underline hover:text-foreground ml-1">
-            Learn more
+            {t("common.search")}
           </a>
         </p>
         <div className="flex gap-2 shrink-0">
@@ -43,13 +44,13 @@ export function CookieBanner() {
             onClick={decline}
             className="px-4 py-2 text-sm rounded-md border border-input bg-background hover:bg-accent transition-colors"
           >
-            Decline
+            {t("common.cancel")}
           </button>
           <button
             onClick={accept}
             className="px-4 py-2 text-sm rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            Accept
+            {t("common.confirm")}
           </button>
         </div>
       </div>

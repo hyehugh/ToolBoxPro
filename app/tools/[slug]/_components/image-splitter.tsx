@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 function createZip(files: { name: string; data: Uint8Array }[]): Blob {
   // Simple ZIP creator using STORE (no compression)
@@ -108,6 +109,7 @@ function createZip(files: { name: string; data: Uint8Array }[]): Blob {
 }
 
 export function ImageSplitterTool() {
+  const { t } = useLocale();
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [rows, setRows] = useState(2);

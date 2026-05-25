@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function UuidGeneratorTool() {
+  const { t } = useLocale();
   const [count, setCount] = useState(1);
   const [uuids, setUuids] = useState<string[]>([]);
   const [uppercase, setUppercase] = useState(false);
@@ -27,24 +29,24 @@ export function UuidGeneratorTool() {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-4">
-        <label className="text-sm">Count: {count}</label>
+        <label className="text-sm">{t('toolCommon.uuid.count')}: {count}</label>
         <input type="range" min={1} max={100} value={count} onChange={(e) => setCount(+e.target.value)} className="flex-1" />
         <label className="flex items-center gap-2 text-sm">
           <input type="checkbox" checked={uppercase} onChange={(e) => setUppercase(e.target.checked)} />
           Uppercase
         </label>
       </div>
-      <Button onClick={generate}>Generate UUID{count > 1 ? "s" : ""}</Button>
+      <Button onClick={generate}>{t('toolCommon.uuid.generate')}</Button>
       {uuids.length > 0 && (
         <div className="space-y-2">
           {uuids.map((uuid, i) => (
             <div key={i} className="flex items-center gap-2 p-2 rounded-md bg-muted font-mono text-sm">
               <span className="flex-1">{uuid}</span>
-              <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(uuid)}>Copy</Button>
+              <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(uuid)}>{t('common.copy')}</Button>
             </div>
           ))}
           <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(uuids.join("\n"))}>
-            Copy All
+            {t('common.copy')} {t('common.all')}
           </Button>
         </div>
       )}

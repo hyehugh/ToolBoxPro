@@ -1,23 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "@/lib/i18n/context";
 
 type CaseType = "upper" | "lower" | "title" | "sentence" | "camel" | "pascal" | "snake" | "kebab";
 
-const CASES: { id: CaseType; label: string }[] = [
-  { id: "upper", label: "UPPER CASE" },
-  { id: "lower", label: "lower case" },
-  { id: "title", label: "Title Case" },
-  { id: "sentence", label: "Sentence case" },
-  { id: "camel", label: "camelCase" },
-  { id: "pascal", label: "PascalCase" },
-  { id: "snake", label: "snake_case" },
-  { id: "kebab", label: "kebab-case" },
+const CASES: { id: CaseType; labelKey: string }[] = [
+  { id: "upper", labelKey: "toolCommon.caseConverter.uppercase" },
+  { id: "lower", labelKey: "toolCommon.caseConverter.lowercase" },
+  { id: "title", labelKey: "toolCommon.caseConverter.titleCase" },
+  { id: "sentence", labelKey: "toolCommon.caseConverter.sentence" },
+  { id: "camel", labelKey: "toolCommon.caseConverter.camelCase" },
+  { id: "pascal", labelKey: "toolCommon.caseConverter.pascalCase" },
+  { id: "snake", labelKey: "toolCommon.caseConverter.snakeCase" },
+  { id: "kebab", labelKey: "toolCommon.caseConverter.kebabCase" },
 ];
 
 export function CaseConverterTool() {
   const [input, setInput] = useState("");
   const [activeCase, setActiveCase] = useState<CaseType>("upper");
+  const { t } = useLocale();
 
   const convert = (text: string, type: CaseType): string => {
     switch (type) {
@@ -37,7 +39,7 @@ export function CaseConverterTool() {
   return (
     <div className="space-y-4">
       <textarea
-        placeholder="Type or paste text to convert..."
+        placeholder={`${t('common.input')}...`}
         value={input}
         onChange={(e) => setInput(e.target.value)}
         className="w-full h-32 p-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
@@ -53,7 +55,7 @@ export function CaseConverterTool() {
                 : "bg-card border-input hover:bg-accent"
             }`}
           >
-            {c.label}
+            {t(c.labelKey)}
           </button>
         ))}
       </div>
@@ -64,7 +66,7 @@ export function CaseConverterTool() {
             onClick={() => navigator.clipboard.writeText(output)}
             className="px-3 py-1.5 rounded-md text-sm border border-input bg-background hover:bg-accent"
           >
-            Copy
+            {t('common.copy')}
           </button>
         </div>
       )}

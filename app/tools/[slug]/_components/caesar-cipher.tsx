@@ -2,11 +2,13 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 export function CaesarCipherTool() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [shift, setShift] = useState(3);
+  const { t } = useLocale();
 
   const shiftText = (text: string, shiftAmount: number): string => {
     return text
@@ -14,11 +16,9 @@ export function CaesarCipherTool() {
       .map((ch) => {
         const code = ch.charCodeAt(0);
         if (code >= 65 && code <= 90) {
-          // Uppercase
           return String.fromCharCode(((code - 65 + shiftAmount + 26) % 26) + 65);
         }
         if (code >= 97 && code <= 122) {
-          // Lowercase
           return String.fromCharCode(((code - 97 + shiftAmount + 26) % 26) + 97);
         }
         return ch;
@@ -36,13 +36,13 @@ export function CaesarCipherTool() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Caesar Cipher</h2>
+      <h2 className="text-xl font-semibold">{t('toolCommon.caesar.caesar') || 'Caesar Cipher'}</h2>
       <p className="text-sm text-muted-foreground">
         Shift each letter by a set amount. Only letters A-Z and a-z are affected.
       </p>
       <div className="space-y-2">
         <label className="block text-sm font-medium">
-          Shift: <span className="font-mono">{shift}</span>
+          {t('toolCommon.caesar.shift')}: <span className="font-mono">{shift}</span>
         </label>
         <input
           type="range"
@@ -60,17 +60,17 @@ export function CaesarCipherTool() {
       </div>
       <textarea
         className="w-full h-32 p-3 border rounded-md resize-y font-mono text-sm"
-        placeholder="Enter text to encode or decode..."
+        placeholder={`${t('common.input')}...`}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
       <div className="flex gap-2">
-        <Button onClick={handleEncode}>Encode</Button>
-        <Button variant="outline" onClick={handleDecode}>Decode</Button>
+        <Button onClick={handleEncode}>{t('toolCommon.caesar.encrypt')}</Button>
+        <Button variant="outline" onClick={handleDecode}>{t('toolCommon.caesar.decrypt')}</Button>
       </div>
       {output && (
         <div className="mt-4">
-          <label className="block text-sm font-medium mb-1">Result:</label>
+          <label className="block text-sm font-medium mb-1">{t('common.result')}:</label>
           <textarea
             className="w-full h-32 p-3 border rounded-md resize-y font-mono text-sm"
             value={output}
@@ -81,7 +81,7 @@ export function CaesarCipherTool() {
             className="mt-2"
             onClick={() => navigator.clipboard.writeText(output)}
           >
-            Copy to Clipboard
+            {t('common.copy')}
           </Button>
         </div>
       )}

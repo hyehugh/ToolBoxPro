@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 const VOWELS = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
 
@@ -78,6 +79,7 @@ function analyzeText(text: string): TextStats {
 }
 
 export function TextStatisticsTool() {
+  const { t } = useLocale();
   const [text, setText] = useState('');
 
   const stats = useMemo(() => analyzeText(text), [text]);
@@ -85,7 +87,7 @@ export function TextStatisticsTool() {
   return (
     <div className="space-y-4">
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Enter text to analyze</label>
+        <label className="text-xs text-muted-foreground">{t('common.input')}</label>
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -98,19 +100,19 @@ export function TextStatisticsTool() {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {/* Character stats */}
           <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Total Characters</div>
+            <div className="text-xs text-muted-foreground">{t('common.text')}</div>
             <div className="text-xl font-mono font-bold">{stats.totalChars.toLocaleString()}</div>
           </div>
           <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Characters (no spaces)</div>
+            <div className="text-xs text-muted-foreground">{t('toolCommon.wordCounter.charactersNoSpaces')}</div>
             <div className="text-xl font-mono font-bold">{stats.charsNoSpaces.toLocaleString()}</div>
           </div>
           <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Letters</div>
+            <div className="text-xs text-muted-foreground">{t('common.text')} {t('common.length')}</div>
             <div className="text-xl font-mono font-bold">{stats.letters.toLocaleString()}</div>
           </div>
           <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Digits</div>
+            <div className="text-xs text-muted-foreground">{t('toolCommon.textStats.stats')}</div>
             <div className="text-xl font-mono font-bold">{stats.digits.toLocaleString()}</div>
           </div>
           <div className="rounded-md border bg-card p-3">
@@ -148,20 +150,20 @@ export function TextStatisticsTool() {
             <div className="text-xl font-mono font-bold">{stats.uniqueWords.toLocaleString()}</div>
           </div>
           <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Avg Word Length</div>
+            <div className="text-xs text-muted-foreground">{t('toolCommon.textStats.averageWordLength')}</div>
             <div className="text-xl font-mono font-bold">{stats.avgWordLength.toFixed(1)}</div>
           </div>
 
           {/* Longest/Shortest */}
           <div className="rounded-md border bg-card p-3 col-span-1">
-            <div className="text-xs text-muted-foreground">Longest Word</div>
+            <div className="text-xs text-muted-foreground">{t('toolCommon.textStats.longestWord')}</div>
             <div className="text-sm font-mono font-bold truncate" title={stats.longestWord}>
               {stats.longestWord || 'N/A'}
             </div>
             <div className="text-xs text-muted-foreground mt-1">{stats.longestWord.length} chars</div>
           </div>
           <div className="rounded-md border bg-card p-3 col-span-1">
-            <div className="text-xs text-muted-foreground">Shortest Word</div>
+            <div className="text-xs text-muted-foreground">{t('toolCommon.textStats.shortestWord')}</div>
             <div className="text-sm font-mono font-bold">{stats.shortestWord || 'N/A'}</div>
             <div className="text-xs text-muted-foreground mt-1">{stats.shortestWord.length} chars</div>
           </div>
@@ -177,11 +179,11 @@ export function TextStatisticsTool() {
 
           {/* Structure */}
           <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Sentences</div>
+            <div className="text-xs text-muted-foreground">{t('toolCommon.wordCounter.sentences')}</div>
             <div className="text-xl font-mono font-bold">{stats.sentences.toLocaleString()}</div>
           </div>
           <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Paragraphs</div>
+            <div className="text-xs text-muted-foreground">{t('toolCommon.wordCounter.paragraphs')}</div>
             <div className="text-xl font-mono font-bold">{stats.paragraphs.toLocaleString()}</div>
           </div>
           <div className="rounded-md border bg-card p-3">
@@ -193,7 +195,7 @@ export function TextStatisticsTool() {
 
       {!text && (
         <div className="text-center text-sm text-muted-foreground py-8">
-          Enter text above to see detailed statistics
+          {t('toolCommon.textStats.analyze')}
         </div>
       )}
     </div>

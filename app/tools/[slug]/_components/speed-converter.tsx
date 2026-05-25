@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 const UNITS: { key: string; label: string; toKmh: (v: number) => number; fromKmh: (v: number) => number }[] = [
   { key: "kmh", label: "Kilometers/hour (km/h)", toKmh: (v) => v, fromKmh: (v) => v },
@@ -14,6 +15,7 @@ export function SpeedConverterTool() {
   const [input, setInput] = useState("");
   const [fromUnit, setFromUnit] = useState("kmh");
   const [results, setResults] = useState<{ key: string; label: string; value: string }[]>([]);
+  const { t } = useLocale();
 
   const convert = () => {
     const num = parseFloat(input);
@@ -48,7 +50,7 @@ export function SpeedConverterTool() {
             <option key={u.key} value={u.key}>{u.label}</option>
           ))}
         </select>
-        <Button onClick={convert}>Convert</Button>
+        <Button onClick={convert}>{t('common.convert')}</Button>
       </div>
       {results.length > 0 && (
         <div className="space-y-2">
@@ -56,7 +58,7 @@ export function SpeedConverterTool() {
             <div key={r.key} className="flex items-center gap-2 p-3 rounded-md border bg-card">
               <span className="text-xs text-muted-foreground w-36">{r.label}</span>
               <span className="flex-1 font-mono text-sm">{r.value}</span>
-              <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(r.value)}>Copy</Button>
+              <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(r.value)}>{t('common.copy')}</Button>
             </div>
           ))}
         </div>

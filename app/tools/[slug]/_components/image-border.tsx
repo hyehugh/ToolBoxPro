@@ -2,10 +2,12 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 type BorderStyle = "solid" | "dashed" | "dotted";
 
 export function ImageBorderTool() {
+  const { t } = useLocale();
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [borderWidth, setBorderWidth] = useState(10);
@@ -95,17 +97,17 @@ export function ImageBorderTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop an image here or click to upload</p>
-          <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
+          <p className="text-muted-foreground">{t('common.selectFile')}</p>
+          <p className="text-xs text-muted-foreground mt-1">{t('toolCommon.imageBorder.supportedFormats')}</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">Add a border to your image</p>
+            <p className="text-sm text-muted-foreground">{t('toolCommon.imageBorder.description')}</p>
             <Button variant="outline" size="sm" onClick={() => {
               setImageUrl(""); setImageFile(null); setResultUrl("");
             }}>
-              New Image
+              {t('common.selectFile')}
             </Button>
           </div>
 
@@ -120,7 +122,7 @@ export function ImageBorderTool() {
           />
 
           <div>
-            <label className="text-sm font-medium block mb-1">Border Width: {borderWidth}px</label>
+            <label className="text-sm font-medium block mb-1">{t('toolCommon.imageBorder.borderWidth')}: {borderWidth}px</label>
             <input
               type="range"
               min={1}
@@ -132,7 +134,7 @@ export function ImageBorderTool() {
           </div>
 
           <div>
-            <label className="text-sm font-medium block mb-1">Border Color</label>
+            <label className="text-sm font-medium block mb-1">{t('toolCommon.imageBorder.borderColor')}</label>
             <input
               type="color"
               value={borderColor}
@@ -142,7 +144,7 @@ export function ImageBorderTool() {
           </div>
 
           <div>
-            <label className="text-sm font-medium block mb-1">Border Style</label>
+            <label className="text-sm font-medium block mb-1">{t('toolCommon.imageBorder.borderStyle')}</label>
             <div className="flex gap-2">
               {STYLES.map((s) => (
                 <Button
@@ -158,12 +160,12 @@ export function ImageBorderTool() {
           </div>
 
           <Button onClick={applyBorder} disabled={loading}>
-            {loading ? "Applying..." : "Apply Border"}
+            {loading ? t('common.processing') : t('toolCommon.imageBorder.applyBorder')}
           </Button>
 
           {resultUrl && (
             <div className="space-y-2">
-              <p className="text-sm font-medium">Result</p>
+              <p className="text-sm font-medium">{t('common.result')}</p>
               <Button onClick={() => {
                 const a = document.createElement("a");
                 a.href = resultUrl;
@@ -172,7 +174,7 @@ export function ImageBorderTool() {
                   : "bordered.png";
                 a.click();
               }}>
-                Download
+                {t('common.download')}
               </Button>
             </div>
           )}

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 type BarcodeType = 'code128' | 'ean13' | 'code39' | 'upca';
 
@@ -173,26 +174,20 @@ function generateCode39(text: string): string {
 }
 
 function generateEAN13(text: string): number[] {
-  // EAN-13 uses a simpler structure - just encode digits as bars
-  // Simplified: just use the first 12 digits + check digit
   const digits = text.replace(/\D/g, '').slice(0, 13).split('').map(Number);
   if (digits.length < 12) return [];
 
-  // Simple UPC-A style encoding (narrow/wide)
   const result: number[] = [];
-  // Left guard
   result.push(1, 1, 1);
   for (let i = 0; i < 6; i++) {
     const d = digits[i];
     result.push(d % 2 === 0 ? 1 : 3, d % 3 === 0 ? 1 : 3, d < 5 ? 1 : 3, d % 2 === 0 ? 3 : 1);
   }
-  // Center guard
   result.push(1, 1, 1, 1, 1);
   for (let i = 6; i < 12; i++) {
     const d = digits[i];
     result.push(d % 2 === 0 ? 3 : 1, d % 3 === 0 ? 3 : 1, d < 5 ? 3 : 1, d % 2 === 0 ? 1 : 3);
   }
-  // Right guard
   result.push(1, 1, 1);
   return result;
 }
@@ -201,7 +196,6 @@ function generateUPCA(text: string): number[] {
   const digits = text.replace(/\D/g, '').slice(0, 12).split('').map(Number);
   if (digits.length < 11) return [];
 
-  // UPC-A encoding
   const L_PATTERNS: number[][] = [
     [3,2,1,1], [2,2,2,1], [2,1,2,2], [1,4,1,1], [1,1,3,2],
     [1,2,3,1], [1,1,1,4], [1,3,1,2], [1,2,1,3], [3,1,1,2],
@@ -212,19 +206,15 @@ function generateUPCA(text: string): number[] {
   ];
 
   const result: number[] = [];
-  // Left guard
   result.push(1, 1, 1);
   for (let i = 0; i < 6; i++) {
     result.push(...L_PATTERNS[digits[i]]);
   }
-  // Center guard
   result.push(1, 1, 1, 1, 1);
   for (let i = 6; i < 11; i++) {
     result.push(...R_PATTERNS[digits[i]]);
   }
-  // Check digit
   result.push(...R_PATTERNS[digits[11] || 0]);
-  // Right guard
   result.push(1, 1, 1);
   return result;
 }
@@ -234,6 +224,7 @@ export function BarcodeGeneratorTool() {
   const [type, setType] = useState<BarcodeType>('code128');
   const [barcodeDataUrl, setBarcodeDataUrl] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { t } = useLocale();
 
   const generate = useCallback(() => {
     if (!text.trim()) return;
@@ -263,14 +254,12 @@ export function BarcodeGeneratorTool() {
       if (bars.length === 0) return;
     }
 
-    // Calculate total width
     let totalWidth = bars.reduce((a, b) => a + b, 0) * BAR_WIDTH;
     const width = totalWidth + QUIET_ZONE * 2;
 
     canvas.width = width;
     canvas.height = HEIGHT + 30;
 
-    // White background
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -278,14 +267,12 @@ export function BarcodeGeneratorTool() {
     for (let i = 0; i < bars.length; i++) {
       const barWidth = bars[i] * BAR_WIDTH;
       if (i % 2 === 0) {
-        // Bar (black)
         ctx.fillStyle = 'black';
         ctx.fillRect(x, 0, barWidth, HEIGHT);
       }
       x += barWidth;
     }
 
-    // Draw text below
     ctx.fillStyle = 'black';
     ctx.font = '12px monospace';
     ctx.textAlign = 'center';
@@ -305,7 +292,7 @@ export function BarcodeGeneratorTool() {
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <label className="text-xs text-muted-foreground">Barcode Type</label>
+        <label className="text-xs text-muted-foreground">{t('common.type')}</label>
         <div className="flex flex-wrap gap-2">
           {(['code128', 'ean13', 'code39', 'upca'] as BarcodeType[]).map((t) => (
             <Button
@@ -321,13 +308,13 @@ export function BarcodeGeneratorTool() {
       </div>
 
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Content</label>
+        <label className="text-xs text-muted-foreground">{t('toolCommon.barcode.data')}</label>
         <input
           type="text"
           value={text}
           onChange={(e) => { setText(e.target.value); setBarcodeDataUrl(''); }}
           placeholder={
-            type === 'code128' ? 'Any text...' :
+            type === 'code128' ? `${t('common.text')}...` :
             type === 'code39' ? 'Alphanumeric...' :
             type === 'ean13' ? '12-13 digit EAN code...' :
             '11-12 digit UPC code...'
@@ -337,7 +324,7 @@ export function BarcodeGeneratorTool() {
       </div>
 
       <Button onClick={generate} disabled={!text.trim()}>
-        Generate Barcode
+        {t('toolCommon.barcode.generateBarcode')}
       </Button>
 
       <canvas ref={canvasRef} className="hidden" />
@@ -346,11 +333,11 @@ export function BarcodeGeneratorTool() {
         <div className="space-y-3">
           <div className="flex justify-center p-4 rounded-lg border bg-white overflow-auto">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={barcodeDataUrl} alt="Barcode" className="max-w-full" />
+            <img src={barcodeDataUrl} alt={t('toolCommon.barcode.generateBarcode')} className="max-w-full" />
           </div>
           <div className="flex gap-2 justify-center">
             <Button variant="outline" size="sm" onClick={handleDownload}>
-              Download PNG
+              {t('common.download')} PNG
             </Button>
           </div>
         </div>

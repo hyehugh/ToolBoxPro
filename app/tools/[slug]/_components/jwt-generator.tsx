@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function JwtGeneratorTool() {
+  const { t } = useLocale();
   const [headerJson, setHeaderJson] = useState(JSON.stringify({ alg: "HS256", typ: "JWT" }, null, 2));
   const [payloadJson, setPayloadJson] = useState(JSON.stringify({ sub: "1234567890", name: "John Doe", iat: 1516239022 }, null, 2));
   const [secret, setSecret] = useState("your-secret-key");
@@ -48,7 +50,7 @@ export function JwtGeneratorTool() {
 
       setOutput(jwt);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Invalid JSON input");
+      setError(err instanceof Error ? err.message : t('toolCommon.jwt.generatorInvalidJson'));
     }
   };
 
@@ -56,7 +58,7 @@ export function JwtGeneratorTool() {
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-1">Header (JSON)</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.jwt.header')} (JSON)</label>
           <textarea
             className="w-full h-32 p-3 border rounded font-mono text-sm"
             placeholder='{"alg": "HS256", "typ": "JWT"}'
@@ -65,7 +67,7 @@ export function JwtGeneratorTool() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Payload (JSON)</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.jwt.payload')} (JSON)</label>
           <textarea
             className="w-full h-32 p-3 border rounded font-mono text-sm"
             placeholder='{"sub": "1234567890", "name": "John Doe"}'
@@ -75,7 +77,7 @@ export function JwtGeneratorTool() {
         </div>
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Secret Key</label>
+        <label className="block text-sm font-medium mb-1">{t('toolCommon.jwt.secretKey')}</label>
         <input
           type="text"
           className="w-full p-3 border rounded font-mono text-sm"
@@ -84,18 +86,18 @@ export function JwtGeneratorTool() {
           onChange={(e) => setSecret(e.target.value)}
         />
       </div>
-      <Button onClick={generate}>Generate JWT</Button>
+      <Button onClick={generate}>{t('common.generate')} JWT</Button>
       {error && <p className="text-red-500 text-sm">{error}</p>}
       {output && (
         <div>
-          <label className="block text-sm font-medium mb-1">Generated JWT</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.jwt.generatedJwt')}</label>
           <textarea
             className="w-full h-24 p-3 border rounded font-mono text-sm bg-muted"
             value={output}
             readOnly
           />
           <p className="text-xs text-muted-foreground mt-1">
-            Note: This generates a JWT with a simulated signature. For production, use the Web Crypto API.
+            {t('toolCommon.jwt.signatureNote')}
           </p>
         </div>
       )}

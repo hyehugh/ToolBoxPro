@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 interface StatusCode {
   code: number;
@@ -70,6 +71,7 @@ const STATUS_CODES: StatusCode[] = [
 ];
 
 export function HttpStatusCodesTool() {
+  const { t } = useLocale();
   const [search, setSearch] = useState('');
 
   const filtered = search.trim()
@@ -99,14 +101,14 @@ export function HttpStatusCodesTool() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">HTTP Status Codes</h2>
+      <h2 className="text-xl font-semibold">{t('toolCommon.httpStatus.title')}</h2>
       <p className="text-sm text-muted-foreground">
-        Search or browse common HTTP status codes and their descriptions.
+        {t('toolCommon.httpStatus.description')}
       </p>
       <input
         type="text"
         className="w-full p-2 border rounded-md font-mono text-sm"
-        placeholder="Search by code, name, or description..."
+        placeholder={t('toolCommon.httpStatus.search')}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -114,16 +116,16 @@ export function HttpStatusCodesTool() {
         <table className="w-full text-sm border-collapse">
           <thead className="sticky top-0 bg-muted">
             <tr>
-              <th className="border p-2 text-left w-20">Code</th>
-              <th className="border p-2 text-left w-48">Name</th>
-              <th className="border p-2 text-left">Description</th>
+              <th className="border p-2 text-left w-20">{t('toolCommon.httpStatus.code')}</th>
+              <th className="border p-2 text-left w-48">{t('toolCommon.httpStatus.name')}</th>
+              <th className="border p-2 text-left">{t('toolCommon.httpStatus.description')}</th>
             </tr>
           </thead>
           <tbody>
             {filtered.length === 0 ? (
               <tr>
                 <td className="border p-4 text-center text-muted-foreground" colSpan={3}>
-                  No status codes match &quot;{search}&quot;
+                  {t('toolCommon.httpStatus.noResults', { search })}
                 </td>
               </tr>
             ) : (
@@ -141,7 +143,7 @@ export function HttpStatusCodesTool() {
         </table>
       </div>
       <p className="text-xs text-muted-foreground">
-        Showing {filtered.length} of {STATUS_CODES.length} status codes
+        {t('toolCommon.httpStatus.showing', { count: filtered.length, total: STATUS_CODES.length })}
       </p>
     </div>
   );

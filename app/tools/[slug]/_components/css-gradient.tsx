@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 type GradientType = "linear" | "radial";
 
@@ -22,6 +23,7 @@ export function CssGradientTool() {
   const [color1, setColor1] = useState("#667eea");
   const [color2, setColor2] = useState("#764ba2");
   const [copied, setCopied] = useState(false);
+  const { t } = useLocale();
 
   const cssCode =
     type === "linear"
@@ -42,7 +44,6 @@ export function CssGradientTool() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // fallback
       const ta = document.createElement("textarea");
       ta.value = cssCode;
       document.body.appendChild(ta);
@@ -63,14 +64,14 @@ export function CssGradientTool() {
           size="sm"
           onClick={() => setType("linear")}
         >
-          Linear
+          {t('toolCommon.css.gradient')} Linear
         </Button>
         <Button
           variant={type === "radial" ? "default" : "outline"}
           size="sm"
           onClick={() => setType("radial")}
         >
-          Radial
+          {t('toolCommon.css.gradient')} Radial
         </Button>
       </div>
 
@@ -78,7 +79,7 @@ export function CssGradientTool() {
       {type === "linear" && (
         <div>
           <label className="text-sm text-muted-foreground block mb-1">
-            Direction
+            {t('toolCommon.css.direction')}
           </label>
           <div className="flex flex-wrap gap-1">
             {DIRECTIONS.map((d) => (
@@ -99,7 +100,7 @@ export function CssGradientTool() {
       <div className="flex gap-4">
         <div className="flex-1">
           <label className="text-sm text-muted-foreground block mb-1">
-            Color 1
+            {t('toolCommon.css.color1')}
           </label>
           <input
             type="color"
@@ -110,7 +111,7 @@ export function CssGradientTool() {
         </div>
         <div className="flex-1">
           <label className="text-sm text-muted-foreground block mb-1">
-            Color 2
+            {t('toolCommon.css.color2')}
           </label>
           <input
             type="color"
@@ -124,19 +125,19 @@ export function CssGradientTool() {
       {/* Live preview */}
       <div>
         <label className="text-sm text-muted-foreground block mb-1">
-          Preview
+          {t('toolCommon.color.preview')}
         </label>
         <div className="w-full h-40 border rounded-lg" style={previewStyle} />
       </div>
 
       {/* CSS code + copy */}
       <div className="space-y-2">
-        <label className="text-sm text-muted-foreground block">CSS Code</label>
+        <label className="text-sm text-muted-foreground block">{t('common.result')}</label>
         <pre className="bg-muted p-3 rounded-lg text-sm overflow-x-auto">
           <code>{cssCode}</code>
         </pre>
         <Button onClick={handleCopy} className="w-full">
-          {copied ? "Copied!" : "Copy CSS Code"}
+          {copied ? t('common.copied') || "Copied!" : t('common.copy')}
         </Button>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function RegexTesterTool() {
   const [pattern, setPattern] = useState("");
@@ -10,6 +11,7 @@ export function RegexTesterTool() {
   const [matches, setMatches] = useState<RegExpExecArray[]>([]);
   const [error, setError] = useState("");
   const debounceRef = useRef<NodeJS.Timeout>(undefined as unknown as NodeJS.Timeout);
+  const { t } = useLocale();
 
   const runTest = useCallback(() => {
     setError("");
@@ -48,7 +50,7 @@ export function RegexTesterTool() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
         <input
-          placeholder="Enter regex pattern..."
+          placeholder={t('toolCommon.regex.pattern')}
           value={pattern}
           onChange={(e) => setPattern(e.target.value)}
           className="flex-1 min-w-[200px] h-10 px-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
@@ -77,7 +79,7 @@ export function RegexTesterTool() {
         ))}
       </div>
       <textarea
-        placeholder="Enter test string..."
+        placeholder={t('toolCommon.regex.testString')}
         value={testStr}
         onChange={(e) => setTestStr(e.target.value)}
         className="w-full h-32 p-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
@@ -88,7 +90,7 @@ export function RegexTesterTool() {
       {matches.length > 0 && (
         <div className="space-y-2">
           <p className="text-sm text-muted-foreground">
-            {matches.length} match{matches.length !== 1 ? "es" : ""} found
+            {matches.length} {matches.length === 1 ? t('toolCommon.regex.matches') : t('toolCommon.regex.matchCount')}
           </p>
           <div className="max-h-40 overflow-y-auto space-y-1">
             {matches.map((m, i) => (
@@ -106,7 +108,7 @@ export function RegexTesterTool() {
         </div>
       )}
       {!error && pattern && testStr && matches.length === 0 && (
-        <p className="text-sm text-muted-foreground">No matches found</p>
+        <p className="text-sm text-muted-foreground">{t('toolCommon.regex.noMatch')}</p>
       )}
     </div>
   );

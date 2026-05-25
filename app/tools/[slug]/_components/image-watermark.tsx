@@ -2,10 +2,12 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 type WatermarkPosition = "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center";
 
 export function ImageWatermarkTool() {
+  const { t } = useLocale();
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [watermarkText, setWatermarkText] = useState("");
@@ -87,11 +89,11 @@ export function ImageWatermarkTool() {
   };
 
   const POSITIONS: { key: WatermarkPosition; label: string }[] = [
-    { key: "top-left", label: "Top Left" },
-    { key: "top-right", label: "Top Right" },
-    { key: "bottom-left", label: "Bottom Left" },
-    { key: "bottom-right", label: "Bottom Right" },
-    { key: "center", label: "Center" },
+    { key: "top-left", label: t('toolCommon.watermark.topLeft') },
+    { key: "top-right", label: t('toolCommon.watermark.topRight') },
+    { key: "bottom-left", label: t('toolCommon.watermark.bottomLeft') },
+    { key: "bottom-right", label: t('toolCommon.watermark.bottomRight') },
+    { key: "center", label: t('toolCommon.watermark.center') },
   ];
 
   return (
@@ -110,37 +112,37 @@ export function ImageWatermarkTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop an image here or click to upload</p>
-          <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
+          <p className="text-muted-foreground">{t('toolCommon.imageWatermark.uploadPrompt')}</p>
+          <p className="text-xs text-muted-foreground mt-1">{t('toolCommon.imageWatermark.supportedFormats')}</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">Add a watermark to your image</p>
+            <p className="text-sm text-muted-foreground">{t('toolCommon.imageWatermark.description')}</p>
             <Button variant="outline" size="sm" onClick={() => {
               setImageUrl(""); setImageFile(null); setResultUrl("");
             }}>
-              New Image
+              {t('toolCommon.imageWatermark.newImage')}
             </Button>
           </div>
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={imageUrl} alt="Preview" className="max-w-full max-h-64 object-contain rounded-lg border" />
+          <img src={imageUrl} alt={t('common.preview')} className="max-w-full max-h-64 object-contain rounded-lg border" />
 
           <div className="space-y-3">
             <div>
-              <label className="text-sm font-medium block mb-1">Watermark Text</label>
+              <label className="text-sm font-medium block mb-1">{t('common.text')}</label>
               <input
                 type="text"
                 value={watermarkText}
                 onChange={(e) => setWatermarkText(e.target.value)}
-                placeholder="Enter watermark text..."
+                placeholder={t('toolCommon.imageWatermark.watermarkPlaceholder')}
                 className="w-full px-3 py-2 border border-input rounded-md bg-background text-sm"
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium block mb-1">Position</label>
+              <label className="text-sm font-medium block mb-1">{t('toolCommon.imageWatermark.position')}</label>
               <div className="flex flex-wrap gap-2">
                 {POSITIONS.map((p) => (
                   <Button
@@ -156,7 +158,7 @@ export function ImageWatermarkTool() {
             </div>
 
             <div>
-              <label className="text-sm font-medium block mb-1">Opacity: {opacity}%</label>
+              <label className="text-sm font-medium block mb-1">{t('common.opacity')}: {opacity}%</label>
               <input
                 type="range"
                 min={10}
@@ -168,7 +170,7 @@ export function ImageWatermarkTool() {
             </div>
 
             <div>
-              <label className="text-sm font-medium block mb-1">Font Size: {fontSize}px</label>
+              <label className="text-sm font-medium block mb-1">{t('common.fontSize')}: {fontSize}px</label>
               <input
                 type="range"
                 min={12}
@@ -180,13 +182,13 @@ export function ImageWatermarkTool() {
             </div>
 
             <Button onClick={applyWatermark} disabled={loading || !watermarkText.trim()}>
-              {loading ? "Applying..." : "Apply Watermark"}
+              {loading ? t('common.processing') : t('common.watermark')}
             </Button>
           </div>
 
           {resultUrl && (
             <div className="space-y-2">
-              <p className="text-sm font-medium">Result</p>
+              <p className="text-sm font-medium">{t('common.result')}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={resultUrl} alt="Watermarked" className="rounded-lg border max-w-full max-h-48 object-contain" />
               <Button onClick={() => {
@@ -197,7 +199,7 @@ export function ImageWatermarkTool() {
                   : "watermarked.png";
                 a.click();
               }}>
-                Download
+                {t('common.download')}
               </Button>
             </div>
           )}

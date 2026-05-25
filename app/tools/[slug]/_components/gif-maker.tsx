@@ -2,8 +2,10 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function GifMakerTool() {
+  const { t } = useLocale();
   const [frames, setFrames] = useState<{ url: string; file: File; }[]>([]);
   const [delay, setDelay] = useState(500);
   const [resultUrl, setResultUrl] = useState<string>("");
@@ -154,9 +156,9 @@ export function GifMakerTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop images here or click to upload</p>
+          <p className="text-muted-foreground">{t('common.upload')}</p>
           <p className="text-xs text-muted-foreground mt-1">
-            Add at least 2 images to make a GIF
+            {t('toolCommon.gifMaker.minImages')}
           </p>
         </div>
       )}
@@ -176,12 +178,12 @@ export function GifMakerTool() {
                 input.onchange = (e: any) => e.target.files && addFiles(e.target.files);
                 input.click();
               }}>
-                Add Frames
+                {t('toolCommon.gifMaker.addImages')}
               </Button>
               <Button variant="outline" size="sm" onClick={() => {
                 setFrames([]); setResultUrl(""); stopPreview();
               }}>
-                Clear All
+                {t('common.clear')}
               </Button>
             </div>
           </div>
@@ -228,7 +230,7 @@ export function GifMakerTool() {
           {/* Preview */}
           {frames.length > 0 && (
             <div className="space-y-2">
-              <p className="text-sm font-medium">Preview</p>
+              <p className="text-sm font-medium">{t('common.preview')}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={frames[previewIndex]?.url}
@@ -240,7 +242,7 @@ export function GifMakerTool() {
 
           {/* Delay control */}
           <div className="flex items-center gap-3">
-            <label className="text-sm">Frame delay:</label>
+            <label className="text-sm">{t('toolCommon.gifMaker.delay')}:</label>
             <input
               type="range" min="50" max="2000" step="50"
               value={delay}
@@ -253,21 +255,21 @@ export function GifMakerTool() {
           <div className="flex gap-2">
             {previewRunning ? (
               <Button variant="outline" onClick={stopPreview}>
-                Stop Preview
+                {t('toolCommon.gifMaker.stopPreview')}
               </Button>
             ) : (
               <Button variant="outline" onClick={startPreview} disabled={frames.length < 2}>
-                Preview Animation
+                {t('toolCommon.gifMaker.previewAnimation')}
               </Button>
             )}
             <Button onClick={generateGif} disabled={loading || frames.length < 2}>
-              {loading ? "Generating GIF..." : "Generate GIF"}
+              {loading ? t('common.processing') : t('toolCommon.gifMaker.create')}
             </Button>
           </div>
 
           {resultUrl && (
             <div className="space-y-2">
-              <p className="text-sm font-medium">Generated GIF</p>
+              <p className="text-sm font-medium">{t('toolCommon.gifMaker.generatedGif')}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={resultUrl} alt="GIF Result" className="rounded-lg border max-w-full max-h-64 object-contain" />
               <Button onClick={() => {

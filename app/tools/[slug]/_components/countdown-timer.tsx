@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 export function CountdownTimerTool() {
   const [targetDate, setTargetDate] = useState('');
@@ -13,6 +14,7 @@ export function CountdownTimerTool() {
   const [isExpired, setIsExpired] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const targetRef = useRef<number>(0);
+  const { t } = useLocale();
 
   const startCountdown = () => {
     if (!targetDate) return;
@@ -80,7 +82,7 @@ export function CountdownTimerTool() {
     <div className="space-y-4">
       <div className="flex gap-2">
         <div className="flex-1 space-y-1">
-          <label className="text-xs text-muted-foreground">Date</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.countdown.targetDate')}</label>
           <input
             type="date"
             value={targetDate}
@@ -89,7 +91,7 @@ export function CountdownTimerTool() {
           />
         </div>
         <div className="flex-1 space-y-1">
-          <label className="text-xs text-muted-foreground">Time (optional)</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.countdown.time') || 'Time (optional)'}</label>
           <input
             type="time"
             value={targetTime}
@@ -101,19 +103,19 @@ export function CountdownTimerTool() {
 
       <div className="flex flex-wrap gap-2">
         <Button onClick={startCountdown} disabled={!targetDate || isRunning}>
-          Start
+          {t('toolCommon.countdown.start') || 'Start'}
         </Button>
         <Button variant="outline" onClick={stopCountdown} disabled={!isRunning}>
-          Stop
+          {t('toolCommon.countdown.stop') || 'Stop'}
         </Button>
         <Button variant="outline" onClick={resetCountdown}>
-          Reset
+          {t('toolCommon.countdown.reset') || 'Reset'}
         </Button>
       </div>
 
       {isExpired && (
         <div className="rounded-md border bg-card p-6 text-center">
-          <span className="text-2xl font-bold">Time&apos;s up!</span>
+          <span className="text-2xl font-bold">{t('toolCommon.countdown.expired') || "Time's up!"}</span>
         </div>
       )}
 
@@ -124,25 +126,25 @@ export function CountdownTimerTool() {
               <div className="text-3xl font-mono font-bold">
                 {String(remaining.days).padStart(2, '0')}
               </div>
-              <div className="text-xs text-muted-foreground">days</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.countdown.daysLeft')}</div>
             </div>
             <div>
               <div className="text-3xl font-mono font-bold">
                 {String(remaining.hours).padStart(2, '0')}
               </div>
-              <div className="text-xs text-muted-foreground">hours</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.countdown.hoursLeft')}</div>
             </div>
             <div>
               <div className="text-3xl font-mono font-bold">
                 {String(remaining.minutes).padStart(2, '0')}
               </div>
-              <div className="text-xs text-muted-foreground">min</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.countdown.minutesLeft')}</div>
             </div>
             <div>
               <div className="text-3xl font-mono font-bold">
                 {String(remaining.seconds).padStart(2, '0')}
               </div>
-              <div className="text-xs text-muted-foreground">sec</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.countdown.secondsLeft')}</div>
             </div>
           </div>
         </div>

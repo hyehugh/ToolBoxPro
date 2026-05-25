@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 interface DnsRecord {
   type: string;
@@ -19,6 +20,7 @@ interface DnsResult {
 const RECORD_TYPES = ['A', 'AAAA', 'MX', 'NS', 'TXT', 'CNAME', 'SOA'] as const;
 
 export function DnsLookupTool() {
+  const { t } = useLocale();
   const [domain, setDomain] = useState('');
   const [result, setResult] = useState<DnsResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -73,7 +75,7 @@ export function DnsLookupTool() {
     clearTimeout(timeoutId);
 
     if (allRecords.length === 0 && hasError) {
-      setError('DNS lookup timed out or failed. Check the domain name and try again.');
+      setError(t('toolCommon.dns.timeout'));
     }
 
     setResult({
@@ -94,7 +96,7 @@ export function DnsLookupTool() {
   return (
     <div className="space-y-4">
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Enter Domain</label>
+        <label className="text-xs text-muted-foreground">{t('toolCommon.dns.domain')}</label>
         <div className="flex gap-2">
           <input
             type="text"
@@ -105,7 +107,7 @@ export function DnsLookupTool() {
             className="flex-1 h-10 px-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
           />
           <Button onClick={lookupDomain} disabled={loading || !domain.trim()}>
-            {loading ? 'Looking up...' : 'Lookup'}
+            {loading ? t('common.processing') : t('toolCommon.dns.lookup')}
           </Button>
         </div>
       </div>
@@ -120,11 +122,11 @@ export function DnsLookupTool() {
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <p className="text-sm">
-              <span className="text-muted-foreground">Domain:</span>{' '}
+              <span className="text-muted-foreground">{t('toolCommon.dns.domain')}:</span>{' '}
               <span className="font-mono font-medium">{result.domain}</span>
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Found {result.records.length} DNS record{result.records.length !== 1 ? 's' : ''}
+              {t('toolCommon.dns.recordsFound', { count: result.records.length })}
             </p>
           </div>
 
@@ -135,13 +137,13 @@ export function DnsLookupTool() {
                   <thead className="bg-muted sticky top-0">
                     <tr>
                       <th className="text-left px-3 py-2 font-medium text-muted-foreground text-xs uppercase tracking-wider">
-                        Type
+                        {t('common.type')}
                       </th>
                       <th className="text-left px-3 py-2 font-medium text-muted-foreground text-xs uppercase tracking-wider">
-                        Name
+                        {t('common.text')}
                       </th>
                       <th className="text-left px-3 py-2 font-medium text-muted-foreground text-xs uppercase tracking-wider">
-                        Value
+                        {t('common.value')}
                       </th>
                       <th className="text-right px-3 py-2 font-medium text-muted-foreground text-xs uppercase tracking-wider">
                         TTL
@@ -176,7 +178,7 @@ export function DnsLookupTool() {
                         </td>
                         <td className="px-3 py-2 font-mono text-xs">{record.name}</td>
                         <td className="px-3 py-2 font-mono text-xs break-all max-w-xs">
-                          <span className="group cursor-pointer" onClick={() => copyToClipboard(record.data)} title="Click to copy">
+                          <span className="group cursor-pointer" onClick={() => copyToClipboard(record.data)} title={t('common.clickToCopy')}>
                             {record.data}
                             <span className="ml-1 opacity-0 group-hover:opacity-50 text-muted-foreground">📋</span>
                           </span>
@@ -192,7 +194,7 @@ export function DnsLookupTool() {
             </div>
           ) : (
             <div className="rounded-md border bg-card p-4 text-center text-sm text-muted-foreground">
-              No DNS records found for this domain.
+              {t('toolCommon.dns.noRecords')}
             </div>
           )}
         </div>

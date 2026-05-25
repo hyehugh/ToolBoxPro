@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function TemperatureConverterTool() {
+  const { t } = useLocale();
   const [celsius, setCelsius] = useState("");
   const [fahrenheit, setFahrenheit] = useState("");
   const [kelvin, setKelvin] = useState("");
@@ -48,7 +50,7 @@ export function TemperatureConverterTool() {
     <div className="space-y-4">
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <label className="w-24 text-sm font-medium">Celsius</label>
+          <label className="w-24 text-sm font-medium">{t('toolCommon.temperature.celsius')}</label>
           <input
             type="number"
             placeholder="°C"
@@ -59,7 +61,7 @@ export function TemperatureConverterTool() {
           <span className="text-sm text-muted-foreground w-8">°C</span>
         </div>
         <div className="flex items-center gap-2">
-          <label className="w-24 text-sm font-medium">Fahrenheit</label>
+          <label className="w-24 text-sm font-medium">{t('toolCommon.temperature.fahrenheit')}</label>
           <input
             type="number"
             placeholder="°F"
@@ -70,7 +72,7 @@ export function TemperatureConverterTool() {
           <span className="text-sm text-muted-foreground w-8">°F</span>
         </div>
         <div className="flex items-center gap-2">
-          <label className="w-24 text-sm font-medium">Kelvin</label>
+          <label className="w-24 text-sm font-medium">{t('toolCommon.temperature.kelvin')}</label>
           <input
             type="number"
             placeholder="K"

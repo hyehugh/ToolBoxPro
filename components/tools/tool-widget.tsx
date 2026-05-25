@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { useLocale } from "@/lib/i18n/context";
 
 interface ToolWidgetProps {
   title: string;
@@ -10,6 +11,8 @@ interface ToolWidgetProps {
 }
 
 export function ToolWidget({ title, children, className }: ToolWidgetProps) {
+  const { t } = useLocale();
+
   return (
     <div className={cn("rounded-lg border bg-card p-6 card-shadow", className)}>
       <div className="flex items-center gap-2 mb-4">
@@ -18,7 +21,7 @@ export function ToolWidget({ title, children, className }: ToolWidgetProps) {
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>
-          Processing on your device — files never leave your browser
+          {t("toolWidget.privacyNote")}
         </span>
       </div>
       {children}

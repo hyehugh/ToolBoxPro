@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 type Mode = 'text-to-binary' | 'binary-to-text';
 
@@ -10,6 +11,7 @@ export function BinaryToTextTool() {
   const [output, setOutput] = useState('');
   const [mode, setMode] = useState<Mode>('text-to-binary');
   const [error, setError] = useState('');
+  const { t } = useLocale();
 
   const textToBinary = (text: string): string => {
     return Array.from(text)
@@ -60,25 +62,25 @@ export function BinaryToTextTool() {
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-semibold">
-        {mode === 'text-to-binary' ? 'Text → Binary' : 'Binary → Text'}
+        {mode === 'text-to-binary' ? t('toolCommon.binary.textToBinary') : t('toolCommon.binary.binaryToText')}
       </h2>
       <p className="text-sm text-muted-foreground">
-        Convert between plain text and binary representation.
+        {t('common.convert')} between plain text and binary representation.
       </p>
       <Button variant="outline" onClick={toggleMode}>
-        Switch to {mode === 'text-to-binary' ? 'Binary → Text' : 'Text → Binary'}
+        {t('common.convert')} to {mode === 'text-to-binary' ? t('toolCommon.binary.binaryToText') : t('toolCommon.binary.textToBinary')}
       </Button>
       <textarea
         className="w-full h-32 p-3 border rounded-md resize-y font-mono text-sm"
         placeholder={
           mode === 'text-to-binary'
-            ? 'Enter text to convert to binary...'
-            : 'Enter binary (space-separated 8-bit bytes) to convert to text...'
+            ? `${t('common.input')}...`
+            : `${t('common.input')}...`
         }
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <Button onClick={handleConvert}>Convert</Button>
+      <Button onClick={handleConvert}>{t('common.convert')}</Button>
       {error && (
         <div className="p-3 border border-red-300 bg-red-50 rounded-md text-sm text-red-700">
           {error}
@@ -86,7 +88,7 @@ export function BinaryToTextTool() {
       )}
       {output && !error && (
         <div className="mt-4">
-          <label className="block text-sm font-medium mb-1">Result:</label>
+          <label className="block text-sm font-medium mb-1">{t('common.result')}:</label>
           <textarea
             className="w-full h-32 p-3 border rounded-md resize-y font-mono text-sm"
             value={output}
@@ -97,7 +99,7 @@ export function BinaryToTextTool() {
             className="mt-2"
             onClick={() => navigator.clipboard.writeText(output)}
           >
-            Copy to Clipboard
+            {t('common.copy')}
           </Button>
         </div>
       )}

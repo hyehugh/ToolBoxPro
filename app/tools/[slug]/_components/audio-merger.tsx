@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 function floatTo16BitPCM(samples: Float32Array): ArrayBuffer {
   const buffer = new ArrayBuffer(samples.length * 2);
@@ -59,6 +60,7 @@ export function AudioMergerTool() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { t } = useLocale();
 
   const addFiles = async (fileList: FileList) => {
     setError('');
@@ -182,7 +184,7 @@ export function AudioMergerTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">Add Audio Files (MP3, WAV, OGG)</label>
+        <label className="block text-sm font-medium mb-1">{t('toolCommon.audio.addFiles')} (MP3, WAV, OGG)</label>
         <input
           ref={fileInputRef}
           type="file"
@@ -208,7 +210,7 @@ export function AudioMergerTool() {
                     onClick={() => moveUp(i)}
                     disabled={i === 0}
                     className="px-2 py-1 text-xs rounded border border-input hover:bg-accent disabled:opacity-30"
-                    title="Move up"
+                    title={t('toolCommon.audio.moveUp') || 'Move up'}
                   >
                     ↑
                   </button>
@@ -216,14 +218,14 @@ export function AudioMergerTool() {
                     onClick={() => moveDown(i)}
                     disabled={i >= entries.length - 1}
                     className="px-2 py-1 text-xs rounded border border-input hover:bg-accent disabled:opacity-30"
-                    title="Move down"
+                    title={t('toolCommon.audio.moveDown') || 'Move down'}
                   >
                     ↓
                   </button>
                   <button
                     onClick={() => removeEntry(i)}
                     className="px-2 py-1 text-xs rounded border border-red-300 text-red-500 hover:bg-red-50"
-                    title="Remove"
+                    title={t('common.remove')}
                   >
                     ✕
                   </button>
@@ -236,18 +238,18 @@ export function AudioMergerTool() {
 
       {entries.length >= 2 && (
         <Button onClick={mergeTracks} disabled={loading}>
-          {loading ? 'Merging...' : `🔗 Merge ${entries.length} Tracks`}
+          {loading ? t('common.loading') : `🔗 ${t('toolCommon.audio.mergeOrder') || 'Merge'} ${entries.length} ${t('toolCommon.audio.tracks') || 'Tracks'}`}
         </Button>
       )}
 
       {entries.length > 0 && entries.length < 2 && (
-        <p className="text-sm text-muted-foreground">Add at least 2 audio files to merge.</p>
+        <p className="text-sm text-muted-foreground">{t('toolCommon.audio.minFiles') || 'Add at least 2 audio files to merge.'}</p>
       )}
 
       {mergedBlob && (
         <div className="rounded-md border bg-card p-4 space-y-2">
-          <p className="text-sm text-muted-foreground">Merged audio ready!</p>
-          <Button onClick={downloadMerged}>⬇ Download Merged WAV</Button>
+          <p className="text-sm text-muted-foreground">{t('common.result')}: {t('common.download')}</p>
+          <Button onClick={downloadMerged}>⬇ {t('common.download')}</Button>
         </div>
       )}
     </div>

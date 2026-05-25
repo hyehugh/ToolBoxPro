@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 interface ColorInfo {
   hex: string;
@@ -15,6 +16,7 @@ export function ColorPickerTool() {
   const [colorHistory, setColorHistory] = useState<ColorInfo[]>([]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
+  const { t } = useLocale();
 
   const handleFile = (file: File) => {
     setImageUrl(URL.createObjectURL(file));
@@ -92,7 +94,6 @@ export function ColorPickerTool() {
 
   const handleColorInput = (hex: string) => {
     setColor(null);
-    // Convert hex to RGB
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);
     const b = parseInt(hex.slice(5, 7), 16);
@@ -125,14 +126,14 @@ export function ColorPickerTool() {
               input.click();
             }}
           >
-            <p className="text-muted-foreground">Drop an image here or click to upload</p>
+            <p className="text-muted-foreground">{t('common.selectFile') || 'Drop an image here or click to upload'}</p>
             <p className="text-xs text-muted-foreground mt-1">
-              Then click any pixel to get its color
+              {t('toolCommon.colorPicker.pickColor')}
             </p>
           </div>
 
           <div className="border-t pt-4">
-            <p className="text-sm text-muted-foreground mb-2">Or pick a color directly:</p>
+            <p className="text-sm text-muted-foreground mb-2">{t('toolCommon.colorPicker.hexInput')}:</p>
             <div className="flex items-center gap-3">
               <input
                 type="color"
@@ -140,18 +141,18 @@ export function ColorPickerTool() {
                 onChange={(e) => handleColorInput(e.target.value)}
                 className="w-10 h-10 rounded cursor-pointer border border-input"
               />
-              <span className="text-sm text-muted-foreground">Click the swatch to pick</span>
+              <span className="text-sm text-muted-foreground">{t('toolCommon.colorPicker.clickSwatch') || 'Click the swatch to pick'}</span>
             </div>
           </div>
         </>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">Click anywhere on the image to pick a color</p>
+            <p className="text-sm text-muted-foreground">{t('toolCommon.colorPicker.pickColor')}</p>
             <Button variant="outline" size="sm" onClick={() => {
               setImageUrl(""); setColor(null); setColorHistory([]);
             }}>
-              New Image
+              {t('common.new') || 'New Image'}
             </Button>
           </div>
 
@@ -171,7 +172,7 @@ export function ColorPickerTool() {
           />
 
           <p className="text-xs text-muted-foreground">
-            Click a pixel on the image above
+            {t('toolCommon.colorPicker.clickInstruction') || 'Click a pixel on the image above'}
           </p>
         </div>
       )}
@@ -183,19 +184,19 @@ export function ColorPickerTool() {
               className="w-12 h-12 rounded-lg border"
               style={{ backgroundColor: color.hex }}
             />
-            <p className="text-sm font-medium">Picked Color</p>
+            <p className="text-sm font-medium">{t('toolCommon.color.preview') || 'Picked Color'}</p>
           </div>
           <div className="grid grid-cols-3 gap-2">
             {[
-              { label: "HEX", value: color.hex },
-              { label: "RGB", value: color.rgb },
-              { label: "HSL", value: color.hsl },
+              { label: t('toolCommon.color.hex'), value: color.hex },
+              { label: t('toolCommon.color.rgb'), value: color.rgb },
+              { label: t('toolCommon.color.hsl'), value: color.hsl },
             ].map((item) => (
               <div
                 key={item.label}
                 className="text-sm bg-background rounded-md p-2 cursor-pointer hover:bg-accent transition-colors"
                 onClick={() => copyToClipboard(item.value)}
-                title="Click to copy"
+                title={t('common.copy')}
               >
                 <span className="text-xs text-muted-foreground block">{item.label}</span>
                 <span className="font-mono text-xs">{item.value}</span>
@@ -207,7 +208,7 @@ export function ColorPickerTool() {
 
       {colorHistory.length > 0 && (
         <div className="space-y-2">
-          <p className="text-sm font-medium">Color History</p>
+          <p className="text-sm font-medium">{t('toolCommon.color.history') || 'Color History'}</p>
           <div className="flex flex-wrap gap-2">
             {colorHistory.map((c, i) => (
               <div

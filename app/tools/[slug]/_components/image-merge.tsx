@@ -2,10 +2,12 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 type MergeLayout = "horizontal" | "vertical" | "grid";
 
 export function ImageMergeTool() {
+  const { t } = useLocale();
   const [images, setImages] = useState<{ file: File; url: string }[]>([]);
   const [layout, setLayout] = useState<MergeLayout>("horizontal");
   const [resultUrl, setResultUrl] = useState<string>("");

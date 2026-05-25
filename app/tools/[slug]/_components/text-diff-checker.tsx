@@ -2,8 +2,10 @@
 
 import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function TextDiffCheckerTool() {
+  const { t } = useLocale();
   const [textA, setTextA] = useState("");
   const [textB, setTextB] = useState("");
 
@@ -38,18 +40,18 @@ export function TextDiffCheckerTool() {
     <div className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <p className="text-sm text-muted-foreground mb-1">Original Text</p>
+          <p className="text-sm text-muted-foreground mb-1">{t('toolCommon.textDiff.original')}</p>
           <textarea
-            placeholder="Paste original text..."
+            placeholder={t('common.text')}
             value={textA}
             onChange={(e) => setTextA(e.target.value)}
             className="w-full h-40 p-3 rounded-md border border-input bg-background text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
         <div>
-          <p className="text-sm text-muted-foreground mb-1">Changed Text</p>
+          <p className="text-sm text-muted-foreground mb-1">{t('toolCommon.textDiff.modified')}</p>
           <textarea
-            placeholder="Paste changed text..."
+            placeholder={t('common.text')}
             value={textB}
             onChange={(e) => setTextB(e.target.value)}
             className="w-full h-40 p-3 rounded-md border border-input bg-background text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring"
@@ -60,8 +62,8 @@ export function TextDiffCheckerTool() {
       {textA && textB && (
         <>
           <div className="flex gap-4 text-sm">
-            <span className="text-green-500">+{stats.added} added</span>
-            <span className="text-red-500">-{stats.removed} removed</span>
+            <span className="text-green-500">+{stats.added} {t('toolCommon.textDiff.additions')}</span>
+            <span className="text-red-500">-{stats.removed} {t('toolCommon.textDiff.deletions')}</span>
             <span className="text-muted-foreground">{stats.same} unchanged</span>
           </div>
           <div className="border rounded-md max-h-60 overflow-y-auto font-mono text-sm">

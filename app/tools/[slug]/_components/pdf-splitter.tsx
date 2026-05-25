@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function PdfSplitterTool() {
   const [file, setFile] = useState<File | null>(null);
   const [ranges, setRanges] = useState("");
   const [loading, setLoading] = useState(false);
   const [pageCount, setPageCount] = useState(0);
+  const { t } = useLocale();
 
   const loadFile = async (f: File) => {
     setFile(f);
@@ -90,10 +92,10 @@ export function PdfSplitterTool() {
           />
           <div className="flex gap-2">
             <Button onClick={split} disabled={loading}>
-              {loading ? "Splitting..." : "Extract Pages"}
+              {loading ? t('common.loading') : t('toolCommon.pdfSplitter.split')}
             </Button>
             <Button variant="ghost" onClick={() => { setFile(null); setRanges(""); }}>
-              Clear
+              {t('common.clear')}
             </Button>
           </div>
         </div>

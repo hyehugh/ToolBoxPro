@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 export function PalindromeCheckerTool() {
   const [input, setInput] = useState('');
   const [result, setResult] = useState<string | null>(null);
+  const { t } = useLocale();
 
   const checkPalindrome = () => {
     if (!input.trim()) {
@@ -33,15 +35,15 @@ export function PalindromeCheckerTool() {
           placeholder="e.g. racecar or A man, a plan, a canal, Panama"
         />
       </div>
-      <Button onClick={checkPalindrome}>Check Palindrome</Button>
+      <Button onClick={checkPalindrome}>{t('toolCommon.palindrome.check')}</Button>
       {result === 'yes' && (
         <div className="rounded-md border border-green-500 bg-green-50 dark:bg-green-950 px-3 py-2 text-sm text-green-700 dark:text-green-300">
-          Yes, &apos;{input}&apos; is a palindrome
+          {t('toolCommon.palindrome.isPalindrome')}
         </div>
       )}
       {result === 'no' && (
         <div className="rounded-md border border-red-500 bg-red-50 dark:bg-red-950 px-3 py-2 text-sm text-red-700 dark:text-red-300">
-          No, not a palindrome
+          {t('toolCommon.palindrome.notPalindrome')}
         </div>
       )}
     </div>

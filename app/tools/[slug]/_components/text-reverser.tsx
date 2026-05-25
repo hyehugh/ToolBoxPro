@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 type ReverseMode = 'all' | 'words' | 'lines';
 
 export function TextReverserTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [mode, setMode] = useState<ReverseMode>('all');
@@ -36,15 +38,15 @@ export function TextReverserTool() {
   };
 
   const modes: { value: ReverseMode; label: string }[] = [
-    { value: 'all', label: 'Reverse All' },
-    { value: 'words', label: 'Reverse Words' },
+    { value: 'all', label: t('toolCommon.textReverse.reverseText') },
+    { value: 'words', label: t('toolCommon.textReverse.reverseWords') },
     { value: 'lines', label: 'Reverse Lines' },
   ];
 
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">Enter text to reverse</label>
+        <label className="block text-sm font-medium mb-1">{t('common.input')}</label>
         <textarea
           className="w-full min-h-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm"
           value={input}
@@ -63,10 +65,10 @@ export function TextReverserTool() {
           </Button>
         ))}
       </div>
-      <Button onClick={handleReverse}>Reverse</Button>
+      <Button onClick={handleReverse}>{t('common.convert')}</Button>
       {output !== '' && (
         <div>
-          <label className="block text-sm font-medium mb-1">Reversed output</label>
+          <label className="block text-sm font-medium mb-1">{t('common.output')}</label>
           <textarea
             className="w-full min-h-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm"
             value={output}

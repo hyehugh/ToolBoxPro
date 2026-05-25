@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLocale } from "@/lib/i18n/context";
 
 const FAVORITES_KEY = "toolboxpro_favorites";
 
@@ -43,6 +44,7 @@ export function useFavorites() {
 
 export function FavoriteButton({ slug }: { slug: string }) {
   const { favorites, toggle } = useFavorites();
+  const { t } = useLocale();
   const isFav = favorites.includes(slug);
 
   return (
@@ -58,7 +60,7 @@ export function FavoriteButton({ slug }: { slug: string }) {
           ? "text-yellow-500 hover:text-yellow-600"
           : "text-muted-foreground hover:text-foreground"
       )}
-      title={isFav ? "Remove from favorites" : "Add to favorites"}
+      title={isFav ? t("common.remove") + " favorites" : t("common.add") + " favorites"}
     >
       <Star size={16} fill={isFav ? "currentColor" : "none"} />
     </button>

@@ -2,10 +2,12 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 const FORMATS = ["JPG", "PNG", "WebP", "AVIF", "GIF"];
 
 export function ImageConverterTool() {
+  const { t } = useLocale();
   const [files, setFiles] = useState<File[]>([]);
   const [outputFormat, setOutputFormat] = useState("WebP");
   const [converted, setConverted] = useState<{ url: string; name: string }[]>([]);

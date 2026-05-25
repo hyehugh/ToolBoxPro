@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function TimestampConverterTool() {
+  const { t } = useLocale();
   const [unixInput, setUnixInput] = useState("");
   const [dateInput, setDateInput] = useState("");
   const [unixResult, setUnixResult] = useState("");
@@ -31,7 +33,7 @@ export function TimestampConverterTool() {
     <div className="space-y-6">
       {/* Timestamp → Date */}
       <div className="space-y-3">
-        <h3 className="font-semibold">Unix Timestamp → Human Date</h3>
+        <h3 className="font-semibold">{t('toolCommon.timestamp.toDate')}</h3>
         <div className="flex gap-2">
           <input
             placeholder="Enter Unix timestamp (e.g. 1716364800)"
@@ -39,8 +41,8 @@ export function TimestampConverterTool() {
             onChange={(e) => setUnixInput(e.target.value)}
             className="flex-1 h-10 px-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
           />
-          <Button onClick={toDate}>Convert</Button>
-          <Button variant="outline" onClick={now}>Now</Button>
+          <Button onClick={toDate}>{t('common.convert')}</Button>
+          <Button variant="outline" onClick={now}>{t('toolCommon.timestamp.current')}</Button>
         </div>
         {unixResult && (
           <div className="p-3 rounded-md border bg-card text-sm font-mono">{unixResult}</div>
@@ -49,7 +51,7 @@ export function TimestampConverterTool() {
 
       {/* Date → Timestamp */}
       <div className="space-y-3">
-        <h3 className="font-semibold">Human Date → Unix Timestamp</h3>
+        <h3 className="font-semibold">{t('toolCommon.timestamp.toTimestamp')}</h3>
         <div className="flex gap-2">
           <input
             type="datetime-local"
@@ -57,7 +59,7 @@ export function TimestampConverterTool() {
             onChange={(e) => setDateInput(e.target.value)}
             className="flex-1 h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
           />
-          <Button onClick={toTimestamp}>Convert</Button>
+          <Button onClick={toTimestamp}>{t('common.convert')}</Button>
         </div>
         {dateResult && (
           <div className="p-3 rounded-md border bg-card text-sm font-mono">{dateResult}</div>

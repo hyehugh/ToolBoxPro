@@ -1,0 +1,942 @@
+// English translations dictionary
+export const en: Record<string, any> = {
+  common: {
+    copy: "Copy",
+    copied: "Copied!",
+    generate: "Generate",
+    regenerate: "Regenerate",
+    download: "Download",
+    upload: "Upload",
+    uploadFile: "Upload File",
+    format: "Format",
+    minify: "Minify",
+    validate: "Validate",
+    calculate: "Calculate",
+    convert: "Convert",
+    encode: "Encode",
+    decode: "Decode",
+    clear: "Clear",
+    reset: "Reset",
+    compress: "Compress",
+    merge: "Merge",
+    split: "Split",
+    rotate: "Rotate",
+    crop: "Crop",
+    resize: "Resize",
+    flip: "Flip",
+    filter: "Filter",
+    invert: "Invert",
+    watermark: "Watermark",
+    preview: "Preview",
+    save: "Save",
+    share: "Share",
+    export: "Export",
+    import: "Import",
+    replace: "Replace",
+    search: "Search",
+    remove: "Remove",
+    extract: "Extract",
+    selectFile: "Select File",
+    noFileSelected: "No file selected",
+    result: "Result",
+    error: "Error",
+    success: "Success",
+    loading: "Loading...",
+    processing: "Processing...",
+    done: "Done",
+    input: "Input",
+    output: "Output",
+    length: "Length",
+    strength: "Strength",
+    quality: "Quality",
+    width: "Width",
+    height: "Height",
+    size: "Size",
+    file: "File",
+    text: "Text",
+    value: "Value",
+    type: "Type",
+    unit: "Unit",
+    from: "From",
+    to: "To",
+    options: "Options",
+    weak: "Weak",
+    medium: "Medium",
+    strong: "Strong",
+    veryWeak: "Very Weak",
+    seconds: "seconds",
+    minutes: "minutes",
+    hours: "hours",
+    days: "days",
+    yes: "Yes",
+    no: "No",
+    on: "On",
+    off: "Off",
+    all: "All",
+    none: "None",
+    clickToCopy: "Click to copy",
+    pasted: "Pasted",
+    or: "or",
+    and: "and",
+    selectAll: "Select All",
+    deselectAll: "Deselect All",
+    close: "Close",
+    back: "Back",
+    next: "Next",
+    submit: "Submit",
+    cancel: "Cancel",
+    confirm: "Confirm",
+    delete: "Delete",
+    edit: "Edit",
+    add: "Add",
+    removeFile: "Remove File",
+  },
+
+  // Navigation & Categories
+  nav: {
+    blog: "Blog",
+    about: "About",
+    contact: "Contact",
+    allTools: "All Tools",
+  },
+
+  categories: {
+    developer: "Developer Tools",
+    text: "Text Tools",
+    image: "Image Tools",
+    pdf: "PDF Tools",
+    audio: "Audio Tools",
+    network: "Network Tools",
+    conversion: "Converters",
+    utilities: "Utilities",
+  },
+
+  // Search / Filter
+  search: {
+    placeholder: "Search any tool...",
+    noResults: "No tools found",
+    noResultsInCategory: "No tools found in this category.",
+    trending: "Trending",
+    allCategories: "All",
+  },
+
+  // Tool Widget (privacy badge)
+  toolWidget: {
+    privacyNote: "Processing on your device — files never leave your browser",
+  },
+
+  // Footer
+  footer: {
+    tools: "Tools",
+    moreTools: "More Tools",
+    company: "Company",
+    about: "About",
+    contact: "Contact",
+    blog: "Blog",
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
+    rights: "All rights reserved.",
+    tagline: "Free online tools. Privacy first.",
+    taglineDetail: "No signup required. Files stay on your device.",
+  },
+
+  // Language Switcher
+  locale: {
+    switchTo: "中文",
+    language: "Language",
+    en: "English",
+    zh: "中文",
+  },
+
+  // Home Page
+  home: {
+    heroTitle: "Free Online Tools.",
+    heroTagline: "Privacy First.",
+    heroDesc: "{count}+ tools for developers, designers, and everyday tasks. No signup. No upload. Files stay on your device.",
+    whyTitle: "Why ToolboxPro?",
+    whyItems: [
+      { title: "No Signup", desc: "Just open and use" },
+      { title: "Privacy First", desc: "Files stay on your device" },
+      { title: "No Limits", desc: "Unlimited free usage" },
+      { title: "AI Enhanced", desc: "Smarter tools" },
+    ],
+    latestBlog: "Latest from Blog",
+    viewAll: "View all →",
+    allTools: "All Tools",
+    allToolsDesc: "{count} free online tools. No signup required.",
+    toolCount: "{count} tool",
+    toolCountPlural: "{count} tools",
+  },
+
+  // About Page
+  about: {
+    title: "About ToolboxPro",
+    metaTitle: "About Us",
+    metaDesc: "Learn about ToolboxPro — free online tools with privacy first",
+    paragraph1: "ToolboxPro is a free online toolbox offering {count}+ utilities for developers, designers, writers, and everyday users. Our mission is simple: provide fast, reliable tools that respect your privacy.",
+    paragraph2: "Unlike many online tools, we process everything directly in your browser using WebAssembly. Your files never leave your device. No servers, no cloud, no data leaks.",
+    paragraph3: "Built by developers for developers and anyone who needs a quick tool without the hassle of signups, limits, or watermarks.",
+    principlesTitle: "Our Principles",
+    principles: [
+      "<strong>Privacy by design</strong> — processing happens on your device",
+      "<strong>Zero friction</strong> — no accounts, no payments, no limits",
+      "<strong>Speed matters</strong> — every tool loads in under a second",
+      "<strong>Always improving</strong> — new tools and features added regularly",
+    ],
+  },
+
+  // Contact Page
+  contact: {
+    title: "Contact Us",
+    metaTitle: "Contact Us",
+    metaDesc: "Get in touch with the ToolboxPro team",
+    intro: "Have a suggestion, found a bug, or want to partner with us? We'd love to hear from you.",
+    generalInquiries: "General Inquiries",
+    generalInquiriesDesc: "For questions, suggestions, or feedback about our tools",
+    reportBug: "Report a Bug",
+    reportBugDesc: "Found something not working? Let us know which tool and what happened",
+    advertising: "Advertising & Partnerships",
+    advertisingDesc: "Interested in advertising on ToolboxPro or partnership opportunities",
+  },
+
+  // Privacy Page
+  privacy: {
+    title: "Privacy Policy",
+    metaTitle: "Privacy Policy",
+    lastUpdated: "Last updated:",
+    section1Title: "1. Data Processing",
+    section1Body: "ToolboxPro processes all data locally in your browser. When you use our tools (JSON formatter, image compressor, PDF merger, etc.), your files are processed using WebAssembly or JavaScript on your own device. No file data is transmitted to our servers.",
+    section2Title: "2. Information We Collect",
+    section2Body: "We use Google Analytics to collect anonymous usage data: page views, tool usage frequency, browser type, and approximate location (country level). This data helps us improve our tools and understand usage patterns.",
+    section2NoCollect: "We do <strong>not</strong> collect, store, or transmit:",
+    section2NoCollectItems: [
+      "Your uploaded files or their contents",
+      "Personal identification information",
+      "Login credentials (we have no user accounts)",
+    ],
+    section3Title: "3. Cookies & Advertising",
+    section3Body1: "We use cookies and similar technologies to enhance your experience and serve personalized advertisements. Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website and other websites.",
+    section3Adsense: "Google AdSense Cookies",
+    section3Body2: 'Google uses the <strong>DoubleClick cookie</strong> to enable it and its partners to serve ads based on your visit to our site and/or other sites on the Internet. You may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Google\'s Ad Settings</a>.',
+    section3Body3: "You can also opt out of third-party vendor cookies by visiting <a href=\"https://optout.networkadvertising.org\" className=\"text-primary hover:underline\" target=\"_blank\" rel=\"noopener noreferrer\">Network Advertising Initiative opt-out page</a>.",
+    section4Title: "4. Third-Party Services",
+    section4Body: "We use the following third-party services:",
+    section4GoogleAnalytics: "<strong>Google Analytics</strong> — anonymized usage tracking (GDPR compliant, IP anonymized)",
+    section4AdSense: "<strong>Google AdSense</strong> — advertising (uses cookies)",
+    section4Vercel: "<strong>Vercel</strong> — hosting and CDN (standard server logs)",
+    section5Title: "5. Your Rights",
+    section5Body: "Depending on your location, you may have the following rights:",
+    section5Items: [
+      "Right to access your data",
+      "Right to delete your data",
+      "Right to restrict processing",
+      "Right to data portability",
+      "Right to object to processing",
+    ],
+    section5Contact: "To exercise these rights, contact us at hyehugh520@gmail.com.",
+    section6Title: "6. Changes to This Policy",
+    section6Body: "We may update this privacy policy from time to time. Changes will be posted on this page with an updated date.",
+    section7Title: "7. Contact",
+    section7Body: 'If you have any questions about this policy, please <a href="/contact" className="text-primary hover:underline">contact us</a>.',
+  },
+
+  // Terms Page
+  terms: {
+    title: "Terms of Service",
+    metaTitle: "Terms of Service",
+    lastUpdated: "Last updated:",
+    section1Title: "1. Acceptance",
+    section1Body: "By using ToolboxPro, you agree to these terms. If you do not agree, do not use the service.",
+    section2Title: "2. Service Description",
+    section2Body: 'ToolboxPro provides free online tools for file conversion, image processing, text manipulation, and other utilities. All tools are provided "as is" without warranty.',
+    section3Title: "3. Acceptable Use",
+    section3Body: "You agree not to:",
+    section3Items: [
+      "Use the service for illegal purposes",
+      "Attempt to reverse engineer or abuse the service",
+      "Upload malicious files or content",
+      "Generate automated traffic or abuse the platform",
+    ],
+    section4Title: "4. Disclaimer",
+    section4Body: "ToolboxPro is provided free of charge. We make no warranties about the accuracy, reliability, or availability of the service. We are not liable for any damages arising from use of our tools.",
+    section5Title: "5. Changes",
+    section5Body: "We may update these terms at any time. Continued use after changes constitutes acceptance of the new terms.",
+  },
+
+  // Blog Page
+  blog: {
+    title: "Blog",
+    metaTitle: "Blog",
+    metaDesc: "Learn how to use online tools effectively. Tutorials, guides, and tips for developers, designers, and everyday users.",
+    subtitle: "Tutorials, guides, and tips for getting the most out of online tools.",
+    relatedTools: "Related Tools",
+  },
+
+  // Tools Page
+  tools: {
+    title: "All Tools",
+    metaTitle: "All Tools",
+    metaDesc: "Browse all free online tools: developer tools, PDF tools, image tools, text tools, and conversion tools.",
+    subtitle: "{count} free online tools. No signup required.",
+  },
+
+  // Not Found Page
+  notFound: {
+    title: "Page Not Found",
+    message: "Sorry, the page you're looking for doesn't exist.",
+    backHome: "Back to Home",
+  },
+
+  // Tool-specific common UI strings (used across multiple tools)
+  toolCommon: {
+    // Password Generator
+    password: {
+      title: "Password Generator",
+      uppercase: "Uppercase (A-Z)",
+      lowercase: "Lowercase (a-z)",
+      numbers: "Numbers (0-9)",
+      symbols: "Symbols (!@#)",
+      strength: "Strength",
+      generatePassword: "Generate Password",
+    },
+    // JSON tools
+    json: {
+      placeholder: "Paste your JSON here...",
+      treeView: "Tree View",
+      rawView: "Raw View",
+      validJson: "✓ Valid JSON",
+    },
+    // Image tools
+    image: {
+      quality: "Quality",
+      original: "Original",
+      compressed: "Compressed",
+      preview: "Preview",
+    },
+    // Unit converters
+    converter: {
+      value: "Value",
+      result: "Result",
+    },
+    // PDF tools
+    pdf: {
+      addFiles: "Add Files",
+      mergedSuccess: "PDFs merged successfully!",
+      splitSuccess: "PDF split successfully!",
+    },
+    // QR code
+    qr: {
+      content: "Content",
+      foreground: "Foreground Color",
+      background: "Background Color",
+      generateQR: "Generate QR Code",
+    },
+    // Text counter
+    wordCounter: {
+      words: "Words",
+      characters: "Characters",
+      charactersNoSpaces: "Characters (no spaces)",
+      sentences: "Sentences",
+      paragraphs: "Paragraphs",
+      readingTime: "Reading Time",
+      speakingTime: "Speaking Time",
+    },
+    // Case converter
+    caseConverter: {
+      uppercase: "UPPERCASE",
+      lowercase: "lowercase",
+      titleCase: "Title Case",
+      camelCase: "camelCase",
+      pascalCase: "PascalCase",
+      snakeCase: "snake_case",
+      kebabCase: "kebab-case",
+    },
+    // Timestamp
+    timestamp: {
+      current: "Current Timestamp",
+      unixSeconds: "Unix Seconds",
+      unixMs: "Unix Milliseconds",
+      isoDate: "ISO Date",
+      utcDate: "UTC Date",
+      localeDate: "Locale Date",
+      toDate: "Convert to Date",
+      toTimestamp: "Convert to Timestamp",
+    },
+    // Color
+    color: {
+      hex: "HEX",
+      rgb: "RGB",
+      hsl: "HSL",
+      cmyk: "CMYK",
+      preview: "Color Preview",
+      palettes: "Color Palettes",
+      similarColors: "Similar Colors",
+      complementary: "Complementary",
+    },
+    // BMI
+    bmi: {
+      height: "Height (cm)",
+      weight: "Weight (kg)",
+      bmi: "BMI",
+      category: "Category",
+      underweight: "Underweight",
+      normal: "Normal",
+      overweight: "Overweight",
+      obese: "Obese",
+      heightPlaceholder: "e.g. 175",
+      weightPlaceholder: "e.g. 70",
+    },
+    // Base64
+    base64: {
+      encode: "Encode to Base64",
+      decode: "Decode from Base64",
+      dropFile: "Drop a file or click to upload",
+      stringMode: "String",
+      fileMode: "File",
+    },
+    // Regex
+    regex: {
+      pattern: "Pattern",
+      flags: "Flags",
+      testString: "Test String",
+      matches: "Matches",
+      noMatch: "No match found",
+      matchCount: "{count} match(es) found",
+    },
+    // UUID
+    uuid: {
+      generate: "Generate UUID",
+      v4: "UUID v4",
+      v1: "UUID v1",
+      count: "Count",
+    },
+    // Hash
+    hash: {
+      generate: "Generate Hash",
+      text: "Text to Hash",
+      algorithm: "Algorithm",
+    },
+    // Number base
+    numberBase: {
+      decimal: "Decimal",
+      binary: "Binary",
+      octal: "Octal",
+      hexadecimal: "Hexadecimal",
+    },
+    // Lorem Ipsum
+    loremIpsum: {
+      generate: "Generate Lorem Ipsum",
+      paragraphs: "Paragraphs",
+      sentences: "Sentences",
+      words: "Words",
+      type: "Type",
+    },
+    // Text Diff
+    textDiff: {
+      original: "Original Text",
+      modified: "Modified Text",
+      additions: "Additions",
+      deletions: "Deletions",
+    },
+    // URL Encode
+    url: {
+      encode: "Encode URL",
+      decode: "Decode URL",
+    },
+    // Text Reverse
+    textReverse: {
+      reverseText: "Reverse Text",
+      reverseWords: "Reverse Words",
+    },
+    // Text Sort
+    textSort: {
+      sortAsc: "Sort A-Z",
+      sortDesc: "Sort Z-A",
+      removeDuplicates: "Remove Duplicates",
+    },
+    // Word Counter
+    wordCount: {
+      countWords: "Count Words",
+      wordCountDesc: "Count words, characters, sentences, and paragraphs",
+    },
+    // Timezone
+    timezone: {
+      currentTime: "Current Time",
+      utcOffset: "UTC Offset",
+      dst: "Daylight Saving Time",
+    },
+    // HTML entities
+    htmlEntities: {
+      encode: "Encode HTML",
+      decode: "Decode HTML",
+    },
+    // JWT
+    jwt: {
+      header: "Header",
+      payload: "Payload",
+      verify: "Verify Signature",
+      token: "Token",
+    },
+    // Cron
+    cron: {
+      expression: "Cron Expression",
+      nextRuns: "Next Runs",
+      description: "Description",
+    },
+    // CSS
+    css: {
+      gradient: "CSS Gradient",
+      shadow: "Box Shadow",
+      minify: "Minify CSS",
+      color1: "Color 1",
+      color2: "Color 2",
+      direction: "Direction",
+      angle: "Angle",
+    },
+    // Image filters
+    imageFilter: {
+      brightness: "Brightness",
+      contrast: "Contrast",
+      saturation: "Saturation",
+      sepia: "Sepia",
+      blur: "Blur",
+      grayscale: "Grayscale",
+      hueRotate: "Hue Rotate",
+    },
+    // Image resize
+    imageResize: {
+      maintainAspect: "Maintain Aspect Ratio",
+      percentage: "Percentage",
+      pixels: "Pixels",
+    },
+    // QR Reader
+    qrReader: {
+      uploadQR: "Upload QR Code Image",
+      scanResult: "Scan Result",
+    },
+    // Barcode
+    barcode: {
+      generateBarcode: "Generate Barcode",
+      barcodeType: "Barcode Type",
+      data: "Data",
+      width: "Width",
+      height: "Height",
+    },
+    // CSV
+    csv: {
+      separator: "Separator",
+      hasHeader: "Has Header Row",
+      rows: "Rows",
+      columns: "Columns",
+    },
+    // Audio
+    audio: {
+      convertTo: "Convert to",
+      cutFrom: "Cut from",
+      cutTo: "Cut to",
+      addFiles: "Add Audio Files",
+      mergeOrder: "Merge Order",
+    },
+    // Color Blindness
+    colorBlind: {
+      original: "Original View",
+      protanopia: "Protanopia (Red-Blind)",
+      deuteranopia: "Deuteranopia (Green-Blind)",
+      tritanopia: "Tritanopia (Blue-Blind)",
+      achromatopsia: "Achromatopsia (Full)",
+      simulate: "Simulate",
+      description: "Color Blindness Simulator",
+    },
+    // Age Calculator
+    age: {
+      birthDate: "Date of Birth",
+      age: "Age",
+      years: "Years",
+      months: "Months",
+      days: "Days",
+      nextBirthday: "Next Birthday",
+    },
+    // Countdown
+    countdown: {
+      targetDate: "Target Date",
+      daysLeft: "Days",
+      hoursLeft: "Hours",
+      minutesLeft: "Minutes",
+      secondsLeft: "Seconds",
+    },
+    // Palindrome
+    palindrome: {
+      check: "Check Palindrome",
+      isPalindrome: "Yes, it's a palindrome!",
+      notPalindrome: "No, it's not a palindrome.",
+    },
+    // Morse Code
+    morseCode: {
+      encode: "Text to Morse",
+      decode: "Morse to Text",
+    },
+    // Caesar Cipher
+    caesar: {
+      shift: "Shift",
+      encrypt: "Encrypt",
+      decrypt: "Decrypt",
+    },
+    // Random
+    random: {
+      generateNumbers: "Generate Numbers",
+      generateString: "Generate String",
+      min: "Min",
+      max: "Max",
+      count: "Count",
+      stringLength: "String Length",
+      includeNumbers: "Include Numbers",
+      includeLetters: "Include Letters",
+      includeSymbols: "Include Symbols",
+    },
+    // ASCII / Binary / Text
+    binary: {
+      textToBinary: "Text to Binary",
+      binaryToText: "Binary to Text",
+    },
+    // Temperature
+    temperature: {
+      celsius: "Celsius",
+      fahrenheit: "Fahrenheit",
+      kelvin: "Kelvin",
+    },
+    // Data Size
+    dataSize: {
+      bits: "Bits",
+      bytes: "Bytes",
+      kb: "KB",
+      mb: "MB",
+      gb: "GB",
+      tb: "TB",
+    },
+    // Days Between
+    daysBetween: {
+      from: "From Date",
+      to: "To Date",
+      days: "Days Between",
+    },
+    // Percentage
+    percentage: {
+      whatIs: "What is X% of Y?",
+      whatPercent: "X is what % of Y?",
+      percentChange: "Percent Change",
+    },
+    // Tip Calculator
+    tip: {
+      billAmount: "Bill Amount",
+      tipPercent: "Tip %",
+      split: "Split",
+      tipAmount: "Tip Amount",
+      total: "Total",
+      perPerson: "Per Person",
+    },
+    // Decision Maker
+    decision: {
+      ask: "Ask the Universe",
+      question: "Your Question",
+      answer: "Answer",
+    },
+    // Dice
+    dice: {
+      roll: "Roll Dice",
+      sides: "Sides",
+      count: "Dice Count",
+    },
+    // IP Calculator
+    ipCalc: {
+      ipAddress: "IP Address",
+      subnetMask: "Subnet Mask",
+      networkAddress: "Network Address",
+      broadcast: "Broadcast",
+      usableHosts: "Usable Hosts",
+      firstHost: "First Host",
+      lastHost: "Last Host",
+    },
+    // WHOIS
+    whois: {
+      domain: "Domain Name",
+      lookup: "Lookup",
+      registrar: "Registrar",
+      created: "Created",
+      expires: "Expires",
+    },
+    // DNS
+    dns: {
+      domain: "Domain",
+      lookup: "DNS Lookup",
+      recordType: "Record Type",
+      ipv4: "A (IPv4)",
+      ipv6: "AAAA (IPv6)",
+      mx: "MX (Mail)",
+      cname: "CNAME",
+      ns: "NS (Nameserver)",
+      txt: "TXT",
+      recordsFound: "{count} record(s) found",
+    },
+    // HTTP Status
+    httpStatus: {
+      search: "Search Status Code",
+      all: "All Codes",
+      noResults: "No status codes match \"{search}\"",
+      showing: "Showing {count} of {total}",
+    },
+    // Text Statistics
+    textStats: {
+      analyze: "Analyze Text",
+      stats: "Statistics",
+      longestWord: "Longest Word",
+      shortestWord: "Shortest Word",
+      averageWordLength: "Avg Word Length",
+    },
+    // Slug
+    slug: {
+      generate: "Generate Slug",
+      slug: "Slug",
+    },
+    // Duplicate Remover
+    deduplicate: {
+      removeDuplicates: "Remove Duplicates",
+      caseSensitive: "Case Sensitive",
+      linesFound: "Lines Found",
+      uniqueLines: "Unique Lines",
+      duplicatesRemoved: "Duplicates Removed",
+    },
+    // SQL Formatter
+    sql: {
+      format: "Format SQL",
+      minify: "Minify SQL",
+    },
+    // Color Palette
+    colorPalette: {
+      generatePalette: "Generate Palette",
+      baseColor: "Base Color",
+      count: "Number of Colors",
+    },
+    // Meme Generator
+    meme: {
+      topText: "Top Text",
+      bottomText: "Bottom Text",
+      generate: "Generate Meme",
+    },
+    // Audio Cutter
+    audioCutter: {
+      upload: "Upload Audio",
+      trim: "Trim Audio",
+      startTime: "Start (s)",
+      endTime: "End (s)",
+    },
+    // Image to Sketch
+    imageToSketch: {
+      convert: "Convert to Sketch",
+      invertColors: "Invert Colors",
+    },
+    // Image Border
+    imageBorder: {
+      borderWidth: "Border Width",
+      borderRadius: "Border Radius",
+      borderColor: "Border Color",
+    },
+    // Image Merge
+    imageMerge: {
+      direction: "Direction",
+      horizontal: "Horizontal",
+      vertical: "Vertical",
+    },
+    // Image Split
+    imageSplit: {
+      rows: "Rows",
+      columns: "Columns",
+    },
+    // Image Collage
+    imageCollage: {
+      layout: "Layout",
+      gap: "Gap",
+    },
+    // Image to PDF
+    imageToPdf: {
+      pageSize: "Page Size",
+      margin: "Margin",
+      orientation: "Orientation",
+      portrait: "Portrait",
+      landscape: "Landscape",
+      a4: "A4",
+      letter: "Letter",
+    },
+    // Markdown to HTML
+    markdown: {
+      convert: "Convert to HTML",
+      preview: "Preview",
+    },
+    // HTML to JSX
+    htmlToJsx: {
+      convert: "Convert to JSX",
+    },
+    // JSON to TypeScript
+    jsonToTs: {
+      rootName: "Root Name",
+      convert: "Convert to TypeScript",
+    },
+    // JSON Diff
+    jsonDiff: {
+      left: "Left JSON",
+      right: "Right JSON",
+      compare: "Compare",
+    },
+    // Text to Slug
+    textToSlug: {
+      input: "Text to Slugify",
+    },
+    // HTML Tag Stripper
+    htmlStrip: {
+      strip: "Strip HTML Tags",
+      stripped: "Stripped Text",
+    },
+    // String Escaper
+    stringEscape: {
+      escape: "Escape String",
+      unescape: "Unescape String",
+    },
+    // Gif Maker
+    gifMaker: {
+      addImages: "Add Images",
+      delay: "Delay (ms)",
+      create: "Create GIF",
+      width: "Width (px)",
+    },
+    // Aspect Ratio
+    aspectRatio: {
+      original: "Original",
+      target: "Target",
+      calculate: "Calculate Aspect Ratio",
+      width: "Width",
+      height: "Height",
+    },
+    // Speed Converter
+    speed: {
+      kmh: "km/h",
+      mph: "mph",
+      knots: "Knots",
+      ms: "m/s",
+    },
+    // Area Converter
+    area: {
+      sqm: "Square Meters",
+      sqkm: "Square Kilometers",
+      sqft: "Square Feet",
+      sqyd: "Square Yards",
+      acres: "Acres",
+      hectares: "Hectares",
+    },
+    // Length Converter
+    length: {
+      mm: "Millimeters",
+      cm: "Centimeters",
+      m: "Meters",
+      km: "Kilometers",
+      inches: "Inches",
+      feet: "Feet",
+      yards: "Yards",
+      miles: "Miles",
+      enterValue: "Enter a value",
+    },
+    // Weight Converter
+    weight: {
+      mg: "Milligrams",
+      g: "Grams",
+      kg: "Kilograms",
+      ton: "Metric Tons",
+      oz: "Ounces",
+      lb: "Pounds",
+      stone: "Stones",
+    },
+    // Random Number
+    randomNumber: {
+      generate: "Generate Random Number",
+    },
+    // Roman Numeral
+    romanNumeral: {
+      toRoman: "Convert to Roman",
+      toNumber: "Convert to Number",
+    },
+    // Emoji Remover
+    emojiRemover: {
+      remove: "Remove Emojis",
+      result: "Text without Emojis",
+    },
+    // Unicode Detector
+    unicode: {
+      detect: "Detect Unicode Characters",
+      codepoint: "Code Point",
+      character: "Character",
+      category: "Category",
+    },
+    // Online Notepad
+    notepad: {
+      title: "Online Notepad",
+      saved: "Saved!",
+      wordCount: "Words",
+      charCount: "Chars",
+      autosave: "Auto-saves in browser",
+    },
+    // SVG to PNG
+    svgToPng: {
+      convert: "Convert SVG to PNG",
+      scale: "Scale",
+    },
+    // Text Repeater
+    textRepeater: {
+      repeatCount: "Repeat Count",
+      repeat: "Repeat Text",
+      separator: "Separator",
+    },
+    // Binary to Text
+    binaryToText: {
+      decode: "Binary to Text",
+      encode: "Text to Binary",
+    },
+    // Color Picker
+    colorPicker: {
+      pickColor: "Pick a Color",
+      hexInput: "HEX Input",
+    },
+    // PDF Page Remover
+    pdfPageRemover: {
+      selectPages: "Select Pages to Remove",
+      totalPages: "Total Pages",
+      removeSelected: "Remove Selected",
+    },
+    // PDF Rotator
+    pdfRotator: {
+      rotate: "Rotate PDF",
+      angle: "Angle",
+      clockwise90: "90° Clockwise",
+      counterclockwise90: "90° Counterclockwise",
+      rotate180: "180°",
+    },
+    // PDF Splitter
+    pdfSplitter: {
+      split: "Split PDF",
+      pagesPerFile: "Pages per File",
+    },
+    // Temperature Converter label
+    temperatureConverter: {
+      label: "Temperature Converter",
+    },
+    // Case Converter label
+    caseConverterLabel: {
+      label: "Case Converter",
+    },
+    // Binary to Text label
+    binaryToTextLabel: {
+      label: "Binary ⇄ Text",
+    },
+    // Emoji Remover label
+    emojiRemoverLabel: {
+      label: "Emoji Remover",
+    },
+  },
+};

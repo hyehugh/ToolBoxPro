@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 export function TextSorterTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
 
@@ -28,7 +30,7 @@ export function TextSorterTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">Input lines</label>
+        <label className="block text-sm font-medium mb-1">{t('common.input')}</label>
         <textarea
           className="w-full min-h-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm"
           value={input}
@@ -37,13 +39,13 @@ export function TextSorterTool() {
         />
       </div>
       <div className="flex flex-wrap gap-2">
-        <Button onClick={sortAsc}>Sort A → Z</Button>
-        <Button onClick={sortDesc}>Sort Z → A</Button>
+        <Button onClick={sortAsc}>{t('toolCommon.textSort.sortAsc')}</Button>
+        <Button onClick={sortDesc}>{t('toolCommon.textSort.sortDesc')}</Button>
         <Button onClick={sortByLength}>Sort by Length</Button>
       </div>
       {output !== '' && (
         <div>
-          <label className="block text-sm font-medium mb-1">Sorted output</label>
+          <label className="block text-sm font-medium mb-1">{t('common.output')}</label>
           <textarea
             className="w-full min-h-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm"
             value={output}

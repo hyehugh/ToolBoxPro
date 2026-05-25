@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function StringEscaperTool() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [mode, setMode] = useState<"escape" | "unescape">("escape");
+  const { t } = useLocale();
 
   const escape = (str: string) => {
     return str
@@ -47,10 +49,10 @@ export function StringEscaperTool() {
       <div className="flex items-center gap-2 mb-2">
         <span className="text-sm font-medium">Mode:</span>
         <Button variant={mode === "escape" ? "default" : "outline"} size="sm" onClick={() => { setMode("escape"); setInput(""); setOutput(""); }}>
-          Escape
+          {t('toolCommon.stringEscape.escape')}
         </Button>
         <Button variant={mode === "unescape" ? "default" : "outline"} size="sm" onClick={() => { setMode("unescape"); setInput(""); setOutput(""); }}>
-          Unescape
+          {t('toolCommon.stringEscape.unescape')}
         </Button>
       </div>
       <div>
@@ -65,7 +67,7 @@ export function StringEscaperTool() {
         />
       </div>
       <Button onClick={handleConvert}>
-        {mode === "escape" ? "Escape Text" : "Unescape Text"}
+        {mode === "escape" ? t('toolCommon.stringEscape.escape') : t('toolCommon.stringEscape.unescape')}
       </Button>
       {output && (
         <div>

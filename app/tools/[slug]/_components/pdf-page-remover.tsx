@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function PdfPageRemoverTool() {
   const [file, setFile] = useState<File | null>(null);
   const [pageCount, setPageCount] = useState(0);
   const [pagesToRemove, setPagesToRemove] = useState<number[]>([]);
   const [loading, setLoading] = useState(false);
+  const { t } = useLocale();
 
   const loadFile = async (f: File) => {
     setFile(f);
@@ -62,7 +64,7 @@ export function PdfPageRemoverTool() {
         }}
       >
         {file ? (
-          <p className="text-muted-foreground">{file.name} ({pageCount} pages)</p>
+          <p className="text-muted-foreground">{file.name} ({t('toolCommon.pdfPageRemover.totalPages')}: {pageCount})</p>
         ) : (
           <p className="text-muted-foreground">Drop a PDF here or click to upload</p>
         )}
@@ -71,7 +73,7 @@ export function PdfPageRemoverTool() {
       {file && pageCount > 0 && (
         <div className="space-y-3">
           <p className="text-sm text-muted-foreground">
-            Click pages to remove ({pagesToRemove.length} selected)
+            {t('toolCommon.pdfPageRemover.selectPages')} ({pagesToRemove.length} {t('common.remove')})
           </p>
           <div className="flex flex-wrap gap-2">
             {Array.from({ length: pageCount }, (_, i) => (
@@ -90,9 +92,9 @@ export function PdfPageRemoverTool() {
           </div>
           <div className="flex gap-2">
             <Button onClick={remove} disabled={loading || pagesToRemove.length === 0}>
-              {loading ? "Processing..." : `Remove ${pagesToRemove.length} page${pagesToRemove.length > 1 ? "s" : ""}`}
+              {loading ? t('common.loading') : t('toolCommon.pdfPageRemover.removeSelected')}
             </Button>
-            <Button variant="ghost" onClick={() => setPagesToRemove([])}>Clear Selection</Button>
+            <Button variant="ghost" onClick={() => setPagesToRemove([])}>{t('common.clear')}</Button>
           </div>
         </div>
       )}

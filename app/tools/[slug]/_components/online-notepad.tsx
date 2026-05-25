@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 const STORAGE_KEY = 'toolboxpro-notepad';
 
@@ -10,6 +11,7 @@ export function OnlineNotepadTool() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
   const [savedAt, setSavedAt] = useState<string | null>(null);
+  const { t } = useLocale();
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -65,17 +67,17 @@ export function OnlineNotepadTool() {
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder="Start typing here... Your notes are saved automatically."
+          placeholder={t('toolCommon.notepad.autosave')}
           className="w-full min-h-[400px] p-4 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y"
         />
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex gap-4 text-xs text-muted-foreground">
-          <span>{charCount} characters</span>
-          <span>{wordCount} words</span>
+          <span>{charCount} {t('toolCommon.notepad.charCount')}</span>
+          <span>{wordCount} {t('toolCommon.notepad.wordCount')}</span>
           <span>{lineCount} lines</span>
-          {savedAt && <span>Saved at {savedAt}</span>}
+          {savedAt && <span>{t('toolCommon.notepad.saved')} {savedAt}</span>}
         </div>
 
         {showClearConfirm ? (
@@ -85,7 +87,7 @@ export function OnlineNotepadTool() {
               Yes, Clear
             </Button>
             <Button variant="outline" size="sm" onClick={() => setShowClearConfirm(false)}>
-              Cancel
+              {t('common.cancel')}
             </Button>
           </div>
         ) : (
@@ -95,7 +97,7 @@ export function OnlineNotepadTool() {
             onClick={() => setShowClearConfirm(true)}
             disabled={!text}
           >
-            Clear
+            {t('common.clear')}
           </Button>
         )}
       </div>

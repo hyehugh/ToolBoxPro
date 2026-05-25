@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 export function TipCalculatorTool() {
+  const { t } = useLocale();
   const [bill, setBill] = useState('');
   const [tipPercent, setTipPercent] = useState(15);
   const [split, setSplit] = useState('1');
@@ -18,7 +20,7 @@ export function TipCalculatorTool() {
   return (
     <div className="space-y-4">
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Bill amount</label>
+        <label className="text-xs text-muted-foreground">{t('toolCommon.tip.billAmount')}</label>
         <input
           type="number"
           value={bill}
@@ -30,7 +32,7 @@ export function TipCalculatorTool() {
 
       <div className="space-y-1">
         <label className="text-xs text-muted-foreground">
-          Tip: {tipPercent}%
+          {t('toolCommon.tip.tipPercent')}: {tipPercent}%
         </label>
         <input
           type="range"
@@ -47,7 +49,7 @@ export function TipCalculatorTool() {
       </div>
 
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Split between</label>
+        <label className="text-xs text-muted-foreground">{t('toolCommon.tip.split')}</label>
         <input
           type="number"
           min={1}
@@ -58,19 +60,19 @@ export function TipCalculatorTool() {
       </div>
 
       <Button onClick={() => setCalculated(true)} disabled={!bill}>
-        Calculate
+        {t('common.calculate')}
       </Button>
 
       {calculated && billNum > 0 && (
         <div className="rounded-md border bg-card p-4 space-y-3">
           <div className="flex justify-between">
-            <span className="text-sm text-muted-foreground">Tip amount</span>
+            <span className="text-sm text-muted-foreground">{t('toolCommon.tip.tipAmount')}</span>
             <span className="text-lg font-mono font-bold">
               ${tipAmount.toFixed(2)}
             </span>
           </div>
           <div className="flex justify-between">
-            <span className="text-sm text-muted-foreground">Total</span>
+            <span className="text-sm text-muted-foreground">{t('toolCommon.tip.total')}</span>
             <span className="text-lg font-mono font-bold">
               ${total.toFixed(2)}
             </span>
@@ -80,7 +82,7 @@ export function TipCalculatorTool() {
               <hr className="border-muted" />
               <div className="flex justify-between">
                 <span className="text-sm text-muted-foreground">
-                  Per person ({splitNum})
+                  {t('toolCommon.tip.perPerson')} ({splitNum})
                 </span>
                 <span className="text-lg font-mono font-bold">
                   ${perPerson.toFixed(2)}

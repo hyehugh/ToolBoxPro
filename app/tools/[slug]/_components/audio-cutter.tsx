@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 function floatTo16BitPCM(samples: Float32Array): ArrayBuffer {
   const buffer = new ArrayBuffer(samples.length * 2);
@@ -58,6 +59,7 @@ export function AudioCutterTool() {
   const [trimmedBlob, setTrimmedBlob] = useState<Blob | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const { t } = useLocale();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -304,7 +306,7 @@ export function AudioCutterTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">Upload Audio (MP3, WAV, OGG)</label>
+        <label className="block text-sm font-medium mb-1">{t('common.upload')} Audio (MP3, WAV, OGG)</label>
         <input
           type="file"
           accept="audio/mpeg,audio/wav,audio/ogg,.mp3,.wav,.ogg"
@@ -313,7 +315,7 @@ export function AudioCutterTool() {
         />
       </div>
 
-      {loading && <p className="text-sm text-muted-foreground">Processing...</p>}
+      {loading && <p className="text-sm text-muted-foreground">{t('common.loading')}</p>}
       {error && <p className="text-sm text-red-500">{error}</p>}
 
       {audioBuffer && (
@@ -331,31 +333,31 @@ export function AudioCutterTool() {
             />
 
             <div className="flex justify-between text-xs text-muted-foreground">
-              <span>Start: {formatTime(startTime)}</span>
-              <span>End: {formatTime(endTime)}</span>
-              <span>Selected: {formatTime(endTime - startTime)}</span>
+              <span>{t('common.from')}: {formatTime(startTime)}</span>
+              <span>{t('common.to')}: {formatTime(endTime)}</span>
+              <span>{t('common.length')}: {formatTime(endTime - startTime)}</span>
             </div>
           </div>
 
           <div className="flex gap-2">
             {!isPlaying ? (
               <Button onClick={playPreview} disabled={!audioBuffer}>
-                ▶ Play Preview
+                ▶ {t('common.preview')}
               </Button>
             ) : (
               <Button onClick={stopPreview} variant="destructive">
-                ⏹ Stop
+                ⏹ {t('common.stop') || 'Stop'}
               </Button>
             )}
             <Button onClick={trimAndDownload} disabled={loading || !audioBuffer} variant="secondary">
-              ✂ Trim &amp; Render
+              ✂ {t('toolCommon.audio.cutFrom')} &amp; {t('common.download')}
             </Button>
           </div>
 
           {trimmedBlob && (
             <div className="rounded-md border bg-card p-4">
-              <p className="text-sm text-muted-foreground mb-2">Trimmed audio ready!</p>
-              <Button onClick={downloadTrimmed}>⬇ Download Trimmed Audio</Button>
+              <p className="text-sm text-muted-foreground mb-2">{t('common.result')}: {t('common.download')}</p>
+              <Button onClick={downloadTrimmed}>⬇ {t('common.download')}</Button>
             </div>
           )}
         </>

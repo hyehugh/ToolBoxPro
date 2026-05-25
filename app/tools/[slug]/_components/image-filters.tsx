@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 type FilterType = "none" | "grayscale" | "sepia" | "blur" | "brightness" | "contrast";
 
@@ -14,6 +15,7 @@ const FILTERS: { key: FilterType; label: string; css: string }[] = [
 ];
 
 export function ImageFiltersTool() {
+  const { t } = useLocale();
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [activeFilter, setActiveFilter] = useState<FilterType>("none");
@@ -71,17 +73,17 @@ export function ImageFiltersTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop an image here or click to upload</p>
+          <p className="text-muted-foreground">{t('common.selectFile')}</p>
           <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">Select a filter to preview</p>
+            <p className="text-sm text-muted-foreground">{t('toolCommon.imageFilter.selectFilter')}</p>
             <Button variant="outline" size="sm" onClick={() => {
               setImageUrl(""); setImageFile(null); setResultUrl("");
             }}>
-              New Image
+              {t('common.selectFile')}
             </Button>
           </div>
 
@@ -91,7 +93,7 @@ export function ImageFiltersTool() {
               size="sm"
               onClick={() => applyFilter("none")}
             >
-              Original
+              {t('common.none')}
             </Button>
             {FILTERS.map((f) => (
               <Button
@@ -120,13 +122,13 @@ export function ImageFiltersTool() {
 
           {activeFilter !== "none" && !resultUrl && (
             <Button onClick={applyPermanent} disabled={loading}>
-              {loading ? "Applying..." : "Apply Filter Permanently"}
+              {loading ? t('common.processing') : t('toolCommon.imageFilter.applyFilter')}
             </Button>
           )}
 
           {resultUrl && (
             <div className="space-y-2">
-              <p className="text-sm font-medium">Filtered Result</p>
+              <p className="text-sm font-medium">{t('toolCommon.imageFilter.filteredResult')}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={resultUrl} alt="Filtered" className="rounded-lg border max-w-full max-h-48 object-contain" />
               <Button onClick={() => {
@@ -137,7 +139,7 @@ export function ImageFiltersTool() {
                   : "filtered.png";
                 a.click();
               }}>
-                Download
+                {t('common.download')}
               </Button>
             </div>
           )}

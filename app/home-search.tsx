@@ -3,11 +3,13 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
 import { tools } from "@/lib/tools/data";
+import { useLocale } from "@/lib/i18n/context";
 
 export default function HomeSearch() {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const { t } = useLocale();
 
   const results = query.trim()
     ? tools.filter(
@@ -30,7 +32,7 @@ export default function HomeSearch() {
     <div ref={ref} className="relative max-w-md mx-auto">
       <input
         type="search"
-        placeholder="Search any tool..."
+        placeholder={t("search.placeholder")}
         value={query}
         onChange={(e) => { setQuery(e.target.value); setShowResults(true); }}
         onFocus={() => setShowResults(true)}
@@ -56,7 +58,7 @@ export default function HomeSearch() {
               </Link>
             ))
           ) : (
-            <p className="px-4 py-3 text-sm text-muted-foreground">No tools found</p>
+            <p className="px-4 py-3 text-sm text-muted-foreground">{t("search.noResults")}</p>
           )}
         </div>
       )}

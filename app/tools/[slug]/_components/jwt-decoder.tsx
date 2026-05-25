@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function JwtDecoderTool() {
+  const { t } = useLocale();
   const [token, setToken] = useState("");
   const [header, setHeader] = useState("");
   const [payload, setPayload] = useState("");
@@ -27,7 +29,7 @@ export function JwtDecoderTool() {
 
     const parts = token.trim().split(".");
     if (parts.length !== 3) {
-      setError("Invalid JWT format. Expected 3 parts separated by dots.");
+      setError(t('toolCommon.jwt.invalidFormat'));
       return;
     }
 
@@ -35,7 +37,7 @@ export function JwtDecoderTool() {
     const payloadStr = base64UrlDecode(parts[1]);
 
     if (!headerStr || !payloadStr) {
-      setError("Invalid Base64 encoding in JWT parts.");
+      setError(t('toolCommon.jwt.invalidBase64'));
       return;
     }
 
@@ -45,27 +47,27 @@ export function JwtDecoderTool() {
       setHeader(JSON.stringify(headerObj, null, 2));
       setPayload(JSON.stringify(payloadObj, null, 2));
     } catch {
-      setError("Decoded parts are not valid JSON.");
+      setError(t('toolCommon.jwt.invalidJson'));
     }
   };
 
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">JWT Token</label>
+        <label className="block text-sm font-medium mb-1">{t('toolCommon.jwt.token')}</label>
         <textarea
           className="w-full h-24 p-3 border rounded font-mono text-sm"
-          placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          placeholder="eyJhbG...sw5c"
           value={token}
           onChange={(e) => setToken(e.target.value)}
         />
       </div>
-      <Button onClick={decode}>Decode JWT</Button>
+      <Button onClick={decode}>{t('common.decode')} JWT</Button>
       {error && <p className="text-red-500 text-sm">{error}</p>}
       {(header || payload) && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Header</label>
+            <label className="block text-sm font-medium mb-1">{t('toolCommon.jwt.header')}</label>
             <textarea
               className="w-full h-40 p-3 border rounded font-mono text-sm bg-muted"
               value={header}
@@ -73,7 +75,7 @@ export function JwtDecoderTool() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Payload</label>
+            <label className="block text-sm font-medium mb-1">{t('toolCommon.jwt.payload')}</label>
             <textarea
               className="w-full h-40 p-3 border rounded font-mono text-sm bg-muted"
               value={payload}

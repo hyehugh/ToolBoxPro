@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { tools } from "@/lib/tools/data";
+import { useLocale } from "@/lib/i18n/context";
 
 const popularSlugs = new Set([
   "json-formatter",
@@ -17,10 +20,12 @@ const popularSlugs = new Set([
 const popularTools = tools.filter((t) => popularSlugs.has(t.slug));
 
 export function PopularTools() {
+  const { t } = useLocale();
+
   return (
     <div className="flex flex-wrap items-center gap-2 mb-8">
       <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider mr-1">
-        Trending
+        {t("search.trending")}
       </span>
       {popularTools.map((tool) => (
         <Link

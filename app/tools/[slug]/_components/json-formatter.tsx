@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function JsonFormatterTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
@@ -35,7 +37,7 @@ export function JsonFormatterTool() {
     setError("");
     try {
       JSON.parse(input);
-      setOutput("✓ Valid JSON");
+      setOutput(t('toolCommon.json.validJson'));
     } catch (e: any) {
       setError(e.message);
       setOutput("");
@@ -47,17 +49,17 @@ export function JsonFormatterTool() {
   return (
     <div className="space-y-4">
       <textarea
-        placeholder="Paste your JSON here..."
+        placeholder={t('toolCommon.json.placeholder')}
         value={input}
         onChange={(e) => { setInput(e.target.value); setError(""); }}
         className="w-full h-40 p-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
       />
       <div className="flex flex-wrap gap-2">
-        <Button onClick={format}>Format</Button>
-        <Button variant="secondary" onClick={validate}>Validate</Button>
-        <Button variant="outline" onClick={minify}>Minify</Button>
+        <Button onClick={format}>{t('common.format')}</Button>
+        <Button variant="secondary" onClick={validate}>{t('common.validate')}</Button>
+        <Button variant="outline" onClick={minify}>{t('common.minify')}</Button>
         <Button variant="ghost" size="sm" onClick={() => setTreeView(!treeView)}>
-          {treeView ? "Raw View" : "Tree View"}
+          {treeView ? t('toolCommon.json.rawView') : t('toolCommon.json.treeView')}
         </Button>
       </div>
       {error && (
@@ -73,15 +75,15 @@ export function JsonFormatterTool() {
             className="w-full h-40 p-3 rounded-md border border-input bg-muted font-mono text-sm"
           />
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" onClick={copyOutput}>Copy</Button>
+            <Button variant="outline" size="sm" onClick={copyOutput}>{t('common.copy')}</Button>
             <Button variant="outline" size="sm" onClick={() => {
               const blob = new Blob([output], { type: "application/json" });
               const url = URL.createObjectURL(blob);
               const a = document.createElement("a");
               a.href = url; a.download = "formatted.json"; a.click();
               URL.revokeObjectURL(url);
-            }}>Download</Button>
-            <Button variant="ghost" size="sm" onClick={() => { setInput(""); setOutput(""); setError(""); }}>Clear</Button>
+            }}>{t('common.download')}</Button>
+            <Button variant="ghost" size="sm" onClick={() => { setInput(""); setOutput(""); setError(""); }}>{t('common.clear')}</Button>
           </div>
         </div>
       )}

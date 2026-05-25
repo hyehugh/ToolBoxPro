@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useLocale } from "@/lib/i18n/context";
 
 export function WordCounterTool() {
+  const { t } = useLocale();
   const [text, setText] = useState("");
 
   const stats = useMemo(() => {
@@ -36,13 +38,13 @@ export function WordCounterTool() {
       />
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: "Words", value: stats.words },
-          { label: "Characters", value: stats.chars },
-          { label: "Characters (no spaces)", value: stats.charsNoSpace },
-          { label: "Sentences", value: stats.sentences },
-          { label: "Paragraphs", value: stats.paragraphs },
-          { label: "Reading Time", value: `${stats.readingTime} min` },
-          { label: "Speaking Time", value: `${stats.speakingTime} min` },
+          { label: t('toolCommon.wordCounter.words'), value: stats.words },
+          { label: t('toolCommon.wordCounter.characters'), value: stats.chars },
+          { label: t('toolCommon.wordCounter.charactersNoSpaces'), value: stats.charsNoSpace },
+          { label: t('toolCommon.wordCounter.sentences'), value: stats.sentences },
+          { label: t('toolCommon.wordCounter.paragraphs'), value: stats.paragraphs },
+          { label: t('toolCommon.wordCounter.readingTime'), value: `${stats.readingTime} min` },
+          { label: t('toolCommon.wordCounter.speakingTime'), value: `${stats.speakingTime} min` },
         ].map(({ label, value }) => (
           <div key={label} className="p-3 rounded-md border bg-card text-center">
             <p className="text-2xl font-bold">{value}</p>
@@ -52,7 +54,7 @@ export function WordCounterTool() {
       </div>
       {stats.topKeywords.length > 0 && (
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Top Keywords:</p>
+          <p className="text-sm text-muted-foreground mb-2">{t('common.result')}:</p>
           <div className="flex flex-wrap gap-1.5">
             {stats.topKeywords.map(([word, count]) => (
               <span key={word} className="px-2 py-0.5 rounded-full bg-secondary text-xs">

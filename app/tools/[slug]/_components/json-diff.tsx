@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 interface DiffEntry {
   key: string;
@@ -52,6 +53,7 @@ function flattenKeys(obj: unknown, prefix = ''): Record<string, string> {
 }
 
 export function JsonDiffTool() {
+  const { t } = useLocale();
   const [left, setLeft] = useState('');
   const [right, setRight] = useState('');
   const [diffs, setDiffs] = useState<DiffEntry[]>([]);
@@ -93,19 +95,19 @@ export function JsonDiffTool() {
 
       setDiffs(results);
     } catch (e) {
-      setError(e instanceof SyntaxError ? 'Invalid JSON syntax' : 'Comparison failed');
+      setError(e instanceof SyntaxError ? t('toolCommon.jsonDiff.invalidJson') : t('toolCommon.jsonDiff.compareFailed'));
     }
   };
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">JSON Diff</h2>
+      <h2 className="text-xl font-semibold">{t('toolCommon.jsonDiff.title')}</h2>
       <p className="text-sm text-muted-foreground">
-        Compare two JSON objects and see added, removed, and changed keys.
+        {t('toolCommon.jsonDiff.description')}
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-1">Original JSON</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.jsonDiff.left')}</label>
           <textarea
             className="w-full h-48 p-3 border rounded-md resize-y font-mono text-sm"
             placeholder='{"key": "value"}'
@@ -114,7 +116,7 @@ export function JsonDiffTool() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">New JSON</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.jsonDiff.right')}</label>
           <textarea
             className="w-full h-48 p-3 border rounded-md resize-y font-mono text-sm"
             placeholder='{"key": "new_value"}'
@@ -123,7 +125,7 @@ export function JsonDiffTool() {
           />
         </div>
       </div>
-      <Button onClick={handleCompare}>Compare</Button>
+      <Button onClick={handleCompare}>{t('toolCommon.jsonDiff.compare')}</Button>
       {error && (
         <div className="p-3 border border-red-300 bg-red-50 rounded-md text-sm text-red-700">
           {error}
@@ -134,17 +136,17 @@ export function JsonDiffTool() {
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="bg-muted">
-                <th className="border p-2 text-left">Status</th>
+                <th className="border p-2 text-left">{t('toolCommon.jsonDiff.status')}</th>
                 <th className="border p-2 text-left">Key</th>
-                <th className="border p-2 text-left">Old Value</th>
-                <th className="border p-2 text-left">New Value</th>
+                <th className="border p-2 text-left">{t('toolCommon.jsonDiff.oldValue')}</th>
+                <th className="border p-2 text-left">{t('toolCommon.jsonDiff.newValue')}</th>
               </tr>
             </thead>
             <tbody>
               {diffs.length === 0 && (
                 <tr>
                   <td className="border p-2 text-green-600 font-medium" colSpan={4}>
-                    ✓ No differences found
+                    ✓ {t('toolCommon.jsonDiff.noDifferences')}
                   </td>
                 </tr>
               )}
@@ -161,13 +163,13 @@ export function JsonDiffTool() {
                 >
                   <td className="border p-2 font-medium">
                     {d.type === 'added' && (
-                      <span className="text-green-700">Added</span>
+                      <span className="text-green-700">{t('toolCommon.jsonDiff.added')}</span>
                     )}
                     {d.type === 'removed' && (
-                      <span className="text-red-700">Removed</span>
+                      <span className="text-red-700">{t('toolCommon.jsonDiff.removed')}</span>
                     )}
                     {d.type === 'changed' && (
-                      <span className="text-yellow-700">Changed</span>
+                      <span className="text-yellow-700">{t('toolCommon.jsonDiff.changed')}</span>
                     )}
                   </td>
                   <td className="border p-2 font-mono text-xs">{d.key}</td>
@@ -182,13 +184,13 @@ export function JsonDiffTool() {
             </tbody>
           </table>
           <p className="text-xs text-muted-foreground mt-2">
-            Total: {diffs.length} difference{diffs.length !== 1 ? 's' : ''}
+            {t('toolCommon.jsonDiff.total')}: {diffs.length} {t('toolCommon.jsonDiff.differences')}
           </p>
         </div>
       )}
       {diffs.length === 0 && !error && left && right && (
         <div className="p-3 border border-green-300 bg-green-50 rounded-md text-sm text-green-700">
-          ✓ JSON objects are identical — no differences found.
+          ✓ {t('toolCommon.jsonDiff.identical')}
         </div>
       )}
     </div>

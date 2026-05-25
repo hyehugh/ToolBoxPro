@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { GripVertical, X } from "lucide-react";
+import { useLocale } from "@/lib/i18n/context";
 
 interface PdfFile {
   file: File;
@@ -15,6 +16,7 @@ export function PdfMergerTool() {
   const [merged, setMerged] = useState<Uint8Array | null>(null);
   const [loading, setLoading] = useState(false);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
+  const { t } = useLocale();
 
   const addFiles = (files: FileList) => {
     const newPdfs = Array.from(files)
@@ -112,10 +114,10 @@ export function PdfMergerTool() {
           ))}
           <div className="flex gap-2 pt-2">
             <Button onClick={merge} disabled={pdfs.length < 2 || loading}>
-              {loading ? "Merging..." : `Merge ${pdfs.length} PDFs`}
+              {loading ? t('common.loading') : `${t('common.merge')} ${pdfs.length} PDFs`}
             </Button>
             <Button variant="ghost" onClick={() => { setPdfs([]); setMerged(null); }}>
-              Clear All
+              {t('common.clear')}
             </Button>
           </div>
         </div>
@@ -123,7 +125,7 @@ export function PdfMergerTool() {
 
       {merged && (
         <div className="p-4 rounded-lg border bg-card text-center">
-          <p className="text-sm text-muted-foreground mb-2">PDF merged successfully!</p>
+          <p className="text-sm text-muted-foreground mb-2">{t('toolCommon.pdf.mergedSuccess')}</p>
           <Button
             onClick={() => {
               const blob = new Blob([merged as BlobPart], { type: "application/pdf" });
@@ -133,7 +135,7 @@ export function PdfMergerTool() {
               URL.revokeObjectURL(url);
             }}
           >
-            Download Merged PDF
+            {t('common.download')}
           </Button>
         </div>
       )}

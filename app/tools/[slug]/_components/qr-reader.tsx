@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 export function QrReaderTool() {
   const [decodedText, setDecodedText] = useState('');
@@ -10,6 +11,7 @@ export function QrReaderTool() {
   const [imageUrl, setImageUrl] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { t } = useLocale();
 
   const decodeQR = async (file: File) => {
     setError('');
@@ -130,7 +132,7 @@ export function QrReaderTool() {
         {loading ? (
           <div className="flex flex-col items-center gap-2">
             <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-            <span className="text-sm text-muted-foreground">Analyzing QR code...</span>
+            <span className="text-sm text-muted-foreground">{t('common.loading')}</span>
           </div>
         ) : (
           <div>
@@ -148,7 +150,7 @@ export function QrReaderTool() {
               />
             </svg>
             <p className="text-sm text-muted-foreground">
-              Click or drag & drop a QR code image here
+              {t('toolCommon.qrReader.uploadQR')}
             </p>
             <p className="text-xs text-muted-foreground mt-1">Supports PNG, JPG</p>
           </div>
@@ -173,12 +175,12 @@ export function QrReaderTool() {
       {decodedText && (
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-4">
-            <div className="text-xs text-muted-foreground mb-1">Decoded Content</div>
+            <div className="text-xs text-muted-foreground mb-1">{t('toolCommon.qrReader.scanResult')}</div>
             <p className="font-mono text-sm break-all whitespace-pre-wrap">{decodedText}</p>
           </div>
           <div className="flex gap-2 justify-center">
             <Button variant="outline" size="sm" onClick={handleCopy}>
-              Copy
+              {t('common.copy')}
             </Button>
           </div>
         </div>

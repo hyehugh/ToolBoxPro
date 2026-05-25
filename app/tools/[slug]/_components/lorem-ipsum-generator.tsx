@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 const LORUM = [
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -17,6 +18,7 @@ const LORUM = [
 ];
 
 export function LoremIpsumGeneratorTool() {
+  const { t } = useLocale();
   const [type, setType] = useState<"paragraphs" | "words" | "sentences">("paragraphs");
   const [count, setCount] = useState(3);
   const [output, setOutput] = useState("");
@@ -45,28 +47,28 @@ export function LoremIpsumGeneratorTool() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-3">
         <div className="flex gap-1 bg-secondary rounded-lg p-1">
-          {(["paragraphs", "sentences", "words"] as const).map((t) => (
+          {(["paragraphs", "sentences", "words"] as const).map((tp) => (
             <button
-              key={t}
-              onClick={() => setType(t)}
+              key={tp}
+              onClick={() => setType(tp)}
               className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                type === t ? "bg-background shadow-sm" : "text-muted-foreground"
+                type === tp ? "bg-background shadow-sm" : "text-muted-foreground"
               }`}
             >
-              {t.charAt(0).toUpperCase() + t.slice(1)}
+              {tp === "paragraphs" ? t('toolCommon.loremIpsum.paragraphs') : tp === "sentences" ? t('toolCommon.loremIpsum.sentences') : t('toolCommon.loremIpsum.words')}
             </button>
           ))}
         </div>
         <label className="text-sm">
-          {type === "paragraphs" ? `Paragraphs: ${count}` : type === "sentences" ? `Sentences: ${count}` : `Words: ${count}`}
+          {type === "paragraphs" ? `${t('toolCommon.loremIpsum.paragraphs')}: ${count}` : type === "sentences" ? `${t('toolCommon.loremIpsum.sentences')}: ${count}` : `${t('toolCommon.loremIpsum.words')}: ${count}`}
         </label>
         <input type="range" min={1} max={20} value={count} onChange={(e) => setCount(+e.target.value)} className="w-32" />
       </div>
-      <Button onClick={generate}>Generate</Button>
+      <Button onClick={generate}>{t('toolCommon.loremIpsum.generate')}</Button>
       {output && (
         <div className="space-y-2">
           <textarea readOnly value={output} className="w-full h-48 p-3 rounded-md border border-input bg-muted text-sm" />
-          <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>Copy</Button>
+          <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>{t('common.copy')}</Button>
         </div>
       )}
     </div>

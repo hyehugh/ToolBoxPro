@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 function getBMICategory(bmi: number): { label: string; color: string } {
   if (bmi < 18.5) return { label: 'Underweight', color: 'text-blue-500' };
@@ -14,6 +15,7 @@ export function BmiCalculatorTool() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [bmi, setBmi] = useState<number | null>(null);
+  const { t } = useLocale();
 
   const calculate = () => {
     const h = parseFloat(height);
@@ -30,7 +32,7 @@ export function BmiCalculatorTool() {
     <div className="space-y-4">
       <div className="flex gap-2">
         <div className="flex-1 space-y-1">
-          <label className="text-xs text-muted-foreground">Height (cm)</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.bmi.height')} (cm)</label>
           <input
             type="number"
             value={height}
@@ -40,7 +42,7 @@ export function BmiCalculatorTool() {
           />
         </div>
         <div className="flex-1 space-y-1">
-          <label className="text-xs text-muted-foreground">Weight (kg)</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.bmi.weight')} (kg)</label>
           <input
             type="number"
             value={weight}
@@ -52,7 +54,7 @@ export function BmiCalculatorTool() {
       </div>
 
       <Button onClick={calculate} disabled={!height || !weight}>
-        Calculate BMI
+        {t('common.calculate')} BMI
       </Button>
 
       {bmi !== null && (
@@ -63,7 +65,10 @@ export function BmiCalculatorTool() {
           </div>
           {category && (
             <div className={`text-center text-lg font-semibold ${category.color}`}>
-              {category.label}
+              {category.label === 'Underweight' ? t('toolCommon.bmi.underweight') :
+               category.label === 'Normal' ? t('toolCommon.bmi.normal') :
+               category.label === 'Overweight' ? t('toolCommon.bmi.overweight') :
+               t('toolCommon.bmi.obese')}
             </div>
           )}
           <div className="h-3 rounded-full bg-muted overflow-hidden">

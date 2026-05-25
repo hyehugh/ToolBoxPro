@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function CsvViewerTool() {
   const [input, setInput] = useState("");
   const [parsedData, setParsedData] = useState<string[][]>([]);
   const [hasHeader, setHasHeader] = useState(true);
   const [error, setError] = useState("");
+  const { t } = useLocale();
 
   const parseCSV = (text: string): string[][] => {
     const rows: string[][] = [];
@@ -92,7 +94,7 @@ export function CsvViewerTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">CSV Input</label>
+        <label className="block text-sm font-medium mb-1">{t('common.input')}</label>
         <textarea
           className="w-full h-32 p-3 border rounded font-mono text-sm"
           placeholder="name,age,city\nJohn,30,New York\nJane,25,London"
@@ -101,14 +103,14 @@ export function CsvViewerTool() {
         />
       </div>
       <div className="flex items-center gap-4">
-        <Button onClick={handleParse}>Parse CSV</Button>
+        <Button onClick={handleParse}>{t('common.format')}</Button>
         <label className="flex items-center gap-2 text-sm">
           <input
             type="checkbox"
             checked={hasHeader}
             onChange={(e) => setHasHeader(e.target.checked)}
           />
-          First row is header
+          {t('toolCommon.csv.hasHeader')}
         </label>
       </div>
       {error && <p className="text-red-500 text-sm">{error}</p>}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function RandomNumberGeneratorTool() {
   const [min, setMin] = useState("1");
@@ -9,6 +10,7 @@ export function RandomNumberGeneratorTool() {
   const [result, setResult] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
   const [history, setHistory] = useState<number[]>([]);
+  const { t } = useLocale();
 
   const generate = () => {
     const minNum = parseInt(min);
@@ -31,7 +33,7 @@ export function RandomNumberGeneratorTool() {
     <div className="space-y-4">
       <div className="flex gap-2">
         <div className="flex-1 space-y-1">
-          <label className="text-xs text-muted-foreground">Min</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.random.min')}</label>
           <input
             type="number"
             value={min}
@@ -40,7 +42,7 @@ export function RandomNumberGeneratorTool() {
           />
         </div>
         <div className="flex-1 space-y-1">
-          <label className="text-xs text-muted-foreground">Max</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.random.max')}</label>
           <input
             type="number"
             value={max}
@@ -49,7 +51,7 @@ export function RandomNumberGeneratorTool() {
           />
         </div>
         <div className="flex items-end">
-          <Button onClick={generate}>Generate</Button>
+          <Button onClick={generate}>{t('common.generate')}</Button>
         </div>
       </div>
       {result !== null && (
@@ -57,7 +59,7 @@ export function RandomNumberGeneratorTool() {
           <div className="flex items-center justify-between p-6 rounded-md border bg-card">
             <span className="text-4xl font-mono font-bold">{result}</span>
             <Button variant="outline" onClick={copyResult}>
-              {copied ? "Copied!" : "Copy"}
+              {copied ? t('common.copied') : t('common.copy')}
             </Button>
           </div>
           {history.length > 1 && (

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 // Full Morse code map A-Z, 0-9
 const CHAR_TO_MORSE: Record<string, string> = {
@@ -24,6 +25,7 @@ export function MorseCodeConverterTool() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [direction, setDirection] = useState<Direction>('text-to-morse');
+  const { t } = useLocale();
 
   const convert = () => {
     if (!input.trim()) {
@@ -79,13 +81,13 @@ export function MorseCodeConverterTool() {
           variant={direction === 'text-to-morse' ? 'default' : 'outline'}
           onClick={() => { setDirection('text-to-morse'); setOutput(''); }}
         >
-          Text → Morse
+          {t('toolCommon.morseCode.encode')}
         </Button>
         <Button
           variant={direction === 'morse-to-text' ? 'default' : 'outline'}
           onClick={() => { setDirection('morse-to-text'); setOutput(''); }}
         >
-          Morse → Text
+          {t('toolCommon.morseCode.decode')}
         </Button>
       </div>
 
@@ -108,7 +110,7 @@ export function MorseCodeConverterTool() {
         />
       </div>
 
-      <Button onClick={convert}>Convert</Button>
+      <Button onClick={convert}>{t('common.convert')}</Button>
 
       {output !== '' && (
         <div>

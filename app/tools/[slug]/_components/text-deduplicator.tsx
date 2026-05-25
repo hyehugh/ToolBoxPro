@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 export function TextDeduplicatorTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
 
@@ -23,18 +25,18 @@ export function TextDeduplicatorTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">Input lines</label>
+        <label className="block text-sm font-medium mb-1">{t('common.input')}</label>
         <textarea
           className="w-full min-h-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter one item per line (duplicates will be removed)..."
+          placeholder={t('toolCommon.deduplicate.removeDuplicates')}
         />
       </div>
-      <Button onClick={removeDuplicates}>Remove Duplicates</Button>
+      <Button onClick={removeDuplicates}>{t('toolCommon.deduplicate.removeDuplicates')}</Button>
       {output !== '' && (
         <div>
-          <label className="block text-sm font-medium mb-1">Unique lines (order preserved)</label>
+          <label className="block text-sm font-medium mb-1">{t('common.result')}</label>
           <textarea
             className="w-full min-h-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm"
             value={output}

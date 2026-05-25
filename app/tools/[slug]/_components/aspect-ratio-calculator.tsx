@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from "@/lib/i18n/context";
 
 interface Preset {
   label: string;
@@ -30,6 +31,7 @@ export function AspectRatioCalculatorTool() {
   const [ratioH, setRatioH] = useState('9');
   const [resultWidth, setResultWidth] = useState<number | null>(null);
   const [resultHeight, setResultHeight] = useState<number | null>(null);
+  const { t } = useLocale();
 
   const gcd = (a: number, b: number): number => {
     a = Math.abs(a);
@@ -111,30 +113,30 @@ export function AspectRatioCalculatorTool() {
           size="sm"
           onClick={() => { setMode('ratio'); setResultWidth(null); setResultHeight(null); }}
         >
-          Ratio + Value
+          {t('toolCommon.aspectRatio.target')}
         </Button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <label className="text-xs text-muted-foreground">Width (px)</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.aspectRatio.width')}</label>
           <input
             type="number"
             min="1"
             value={width}
             onChange={(e) => { setWidth(e.target.value); setResultWidth(null); setResultHeight(null); }}
-            placeholder="e.g. 1920"
+            placeholder={t('toolCommon.aspectRatio.width')}
             className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
         <div className="space-y-2">
-          <label className="text-xs text-muted-foreground">Height (px)</label>
+          <label className="text-xs text-muted-foreground">{t('toolCommon.aspectRatio.height')}</label>
           <input
             type="number"
             min="1"
             value={height}
             onChange={(e) => { setHeight(e.target.value); setResultWidth(null); setResultHeight(null); }}
-            placeholder="e.g. 1080"
+            placeholder={t('toolCommon.aspectRatio.height')}
             className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
@@ -143,7 +145,7 @@ export function AspectRatioCalculatorTool() {
       {mode === 'ratio' && (
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-xs text-muted-foreground">Ratio Width</label>
+            <label className="text-xs text-muted-foreground">{t('toolCommon.aspectRatio.width')}</label>
             <input
               type="number"
               min="1"
@@ -153,7 +155,7 @@ export function AspectRatioCalculatorTool() {
             />
           </div>
           <div className="space-y-2">
-            <label className="text-xs text-muted-foreground">Ratio Height</label>
+            <label className="text-xs text-muted-foreground">{t('toolCommon.aspectRatio.height')}</label>
             <input
               type="number"
               min="1"
@@ -167,7 +169,7 @@ export function AspectRatioCalculatorTool() {
 
       {mode === 'ratio' && (
         <div>
-          <label className="text-xs text-muted-foreground mb-1 block">Common Presets</label>
+          <label className="text-xs text-muted-foreground mb-1 block">{t('common.options')}</label>
           <div className="flex flex-wrap gap-1.5">
             {PRESETS.map((preset) => (
               <Button
@@ -184,28 +186,28 @@ export function AspectRatioCalculatorTool() {
       )}
 
       <Button onClick={calculate} disabled={!canCalculate}>
-        Calculate
+        {t('toolCommon.aspectRatio.calculate')}
       </Button>
 
       {resultWidth !== null && resultHeight !== null && (
         <div className="rounded-md border bg-card p-4 space-y-3">
-          <h3 className="text-sm font-medium">Result</h3>
+          <h3 className="text-sm font-medium">{t('common.result')}</h3>
           <div className="grid grid-cols-2 gap-4 text-center">
             <div>
               <div className="text-3xl font-mono font-bold">{resultWidth}</div>
-              <div className="text-xs text-muted-foreground">Width (px)</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.aspectRatio.width')}</div>
             </div>
             <div>
               <div className="text-3xl font-mono font-bold">{resultHeight}</div>
-              <div className="text-xs text-muted-foreground">Height (px)</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.aspectRatio.height')}</div>
             </div>
           </div>
           <div className="text-center">
             <span className="text-lg font-semibold">{simplifiedRatio}</span>
-            <span className="text-xs text-muted-foreground ml-2">aspect ratio</span>
+            <span className="text-xs text-muted-foreground ml-2">{t('toolCommon.aspectRatio.target')}</span>
           </div>
           <div className="text-center text-xs text-muted-foreground">
-            Resolution: {resultWidth} × {resultHeight} = {(resultWidth * resultHeight).toLocaleString()} px²
+            {t('common.result')}: {resultWidth} × {resultHeight} = {(resultWidth * resultHeight).toLocaleString()} px²
             {resultWidth >= 3840 && resultHeight >= 2160 && ' (4K)'}
             {resultWidth >= 1920 && resultHeight >= 1080 && resultWidth < 3840 && ' (Full HD)'}
             {resultWidth >= 1280 && resultHeight >= 720 && resultWidth < 1920 && ' (HD)'}

@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 interface WhoisData {
   domain?: string;
@@ -18,6 +19,7 @@ interface WhoisData {
 }
 
 export function WhoisLookupTool() {
+  const { t } = useLocale();
   const [domain, setDomain] = useState('');
   const [data, setData] = useState<WhoisData | null>(null);
   const [loading, setLoading] = useState(false);
@@ -160,7 +162,7 @@ export function WhoisLookupTool() {
   return (
     <div className="space-y-4">
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Domain Name</label>
+        <label className="text-xs text-muted-foreground">{t('toolCommon.whois.domain')}</label>
         <div className="flex gap-2">
           <input
             type="text"
@@ -174,10 +176,10 @@ export function WhoisLookupTool() {
             {loading ? (
               <span className="flex items-center gap-2">
                 <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                Looking up...
+                {t('common.loading')}
               </span>
             ) : (
-              'Lookup'
+              t('toolCommon.whois.lookup')
             )}
           </Button>
         </div>
@@ -192,13 +194,13 @@ export function WhoisLookupTool() {
       {data && !error && (
         <div className="space-y-3">
           <div>
-            <h3 className="text-xs text-muted-foreground mb-1">Domain</h3>
+            <h3 className="text-xs text-muted-foreground mb-1">{t('toolCommon.whois.domain')}</h3>
             <p className="font-mono text-sm">{data.domain || domain}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="rounded-md border bg-card p-3">
-              <div className="text-xs text-muted-foreground">Registrar</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.whois.registrar')}</div>
               <div className="text-sm font-medium">{registrar || 'N/A'}</div>
             </div>
             <div className="rounded-md border bg-card p-3">
@@ -208,11 +210,11 @@ export function WhoisLookupTool() {
               </div>
             </div>
             <div className="rounded-md border bg-card p-3">
-              <div className="text-xs text-muted-foreground">Creation Date</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.whois.created')}</div>
               <div className="text-sm font-medium">{formatDate(creationDate)}</div>
             </div>
             <div className="rounded-md border bg-card p-3">
-              <div className="text-xs text-muted-foreground">Expiry Date</div>
+              <div className="text-xs text-muted-foreground">{t('toolCommon.whois.expires')}</div>
               <div className="text-sm font-medium">{formatDate(expiryDate)}</div>
             </div>
             {updatedDate && (
@@ -247,7 +249,7 @@ export function WhoisLookupTool() {
 
       {!data && !error && !loading && (
         <div className="text-center text-sm text-muted-foreground py-8">
-          Enter a domain name and click Lookup to fetch WHOIS information
+          {t('common.input')} {t('toolCommon.whois.domain')} {t('common.to')} {t('toolCommon.whois.lookup')}
         </div>
       )}
     </div>

@@ -2,19 +2,21 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function CssMinifierTool() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const { t } = useLocale();
 
   const minify = () => {
     const minified = input
-      .replace(/\/\*[\s\S]*?\*\//g, "") // Remove block comments
-      .replace(/\/\/.*$/gm, "") // Remove line comments
-      .replace(/\s*([{}:;,])\s*/g, "$1") // Collapse whitespace around syntax chars
-      .replace(/;}/g, "}") // Remove trailing semicolons before }
-      .replace(/\s+/g, " ") // Collapse multiple spaces
-      .replace(/ ?([>+~]) ?/g, "$1") // Trim spaces around combinators
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/\/\/.*$/gm, "")
+      .replace(/\s*([{}:;,])\s*/g, "$1")
+      .replace(/;}/g, "}")
+      .replace(/\s+/g, " ")
+      .replace(/ ?([>+~]) ?/g, "$1")
       .trim();
     setOutput(minified);
   };
@@ -22,7 +24,7 @@ export function CssMinifierTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">CSS Input</label>
+        <label className="block text-sm font-medium mb-1">{t('common.input')}</label>
         <textarea
           className="w-full h-40 p-3 border rounded font-mono text-sm"
           placeholder="/* Your CSS here */ body { color: red; }"
@@ -30,10 +32,10 @@ export function CssMinifierTool() {
           onChange={(e) => setInput(e.target.value)}
         />
       </div>
-      <Button onClick={minify}>Minify CSS</Button>
+      <Button onClick={minify}>{t('toolCommon.css.minify')}</Button>
       {output && (
         <div>
-          <label className="block text-sm font-medium mb-1">Minified Output</label>
+          <label className="block text-sm font-medium mb-1">{t('common.output')}</label>
           <textarea
             className="w-full h-40 p-3 border rounded font-mono text-sm"
             value={output}

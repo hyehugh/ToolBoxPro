@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 type Mode = "encode" | "decode";
 
@@ -10,6 +11,7 @@ export function Base64Tool() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
+  const { t } = useLocale();
 
   const process = () => {
     setError("");
@@ -34,23 +36,23 @@ export function Base64Tool() {
           size="sm"
           onClick={() => { setMode("encode"); setOutput(""); setError(""); }}
         >
-          Encode
+          {t('common.encode')}
         </Button>
         <Button
           variant={mode === "decode" ? "default" : "outline"}
           size="sm"
           onClick={() => { setMode("decode"); setOutput(""); setError(""); }}
         >
-          Decode
+          {t('common.decode')}
         </Button>
       </div>
       <textarea
-        placeholder={mode === "encode" ? "Enter text to encode..." : "Enter Base64 to decode..."}
+        placeholder={mode === "encode" ? `${t('common.input')}...` : `${t('common.decode')}...`}
         value={input}
         onChange={(e) => { setInput(e.target.value); setError(""); }}
         className="w-full h-32 p-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
       />
-      <Button onClick={process}>{mode === "encode" ? "Encode" : "Decode"}</Button>
+      <Button onClick={process}>{mode === "encode" ? t('common.encode') : t('common.decode')}</Button>
       {error && (
         <p className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">{error}</p>
       )}
@@ -63,10 +65,10 @@ export function Base64Tool() {
           />
           <div className="flex gap-2">
             <Button variant="outline" size="sm" onClick={() => navigator.clipboard.writeText(output)}>
-              Copy
+              {t('common.copy')}
             </Button>
             <Button variant="ghost" size="sm" onClick={() => { setInput(""); setOutput(""); setError(""); }}>
-              Clear
+              {t('common.clear')}
             </Button>
           </div>
         </div>

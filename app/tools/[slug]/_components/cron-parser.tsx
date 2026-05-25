@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function CronParserTool() {
   const [expression, setExpression] = useState("");
   const [description, setDescription] = useState("");
+  const { t } = useLocale();
 
   const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -50,7 +52,6 @@ export function CronParserTool() {
     const parts = expression.trim().split(/\s+/);
     if (parts.length !== 5 && parts.length !== 6) {
       if (parts.length === 7) {
-        // Handle standard cron with seconds or year
         setDescription("6-field or 7-field cron expressions are not supported. Use the standard 5-field format:\nminute hour day-of-month month day-of-week");
         return;
       }
@@ -67,8 +68,8 @@ export function CronParserTool() {
       const months = parseField(month, 1, 12, monthNames);
       const weekdays = parseField(dayOfWeek, 0, 6, dayNames);
 
-      const lines: string[] = ["Cron Expression: " + expression, ""];
-      lines.push("Schedule Description:");
+      const lines: string[] = [t('toolCommon.cron.expression') + ": " + expression, ""];
+      lines.push(t('toolCommon.cron.description') + ":");
       lines.push("");
       lines.push(`  Minute:       ${minute === "*" ? "Every minute" : minutes.join(", ")}`);
       lines.push(`  Hour:         ${hour === "*" ? "Every hour" : hours.join(", ")}`);
@@ -77,7 +78,6 @@ export function CronParserTool() {
       lines.push(`  Day of Week:  ${dayOfWeek === "*" ? "Every day of week" : weekdays.join(", ")}`);
       lines.push("");
 
-      // Human readable summary
       let summary = "Runs ";
       if (minute !== "*" && hour === "*" && dayOfMonth === "*" && month === "*" && dayOfWeek === "*") {
         summary += `at minute ${minute} of every hour`;
@@ -106,7 +106,7 @@ export function CronParserTool() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-1">Cron Expression</label>
+        <label className="block text-sm font-medium mb-1">{t('toolCommon.cron.expression')}</label>
         <input
           type="text"
           className="w-full p-3 border rounded font-mono text-sm"
@@ -118,10 +118,10 @@ export function CronParserTool() {
           Format: minute hour day-of-month month day-of-week (5 fields)
         </p>
       </div>
-      <Button onClick={parse}>Parse Cron</Button>
+      <Button onClick={parse}>{t('toolCommon.cron.parse') || 'Parse Cron'}</Button>
       {description && (
         <div>
-          <label className="block text-sm font-medium mb-1">Description</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.cron.description')}</label>
           <pre className="w-full p-3 border rounded font-mono text-sm bg-muted whitespace-pre-wrap">
             {description}
           </pre>

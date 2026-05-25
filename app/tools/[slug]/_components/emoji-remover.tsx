@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocale } from '@/lib/i18n/context';
 
 export function EmojiRemoverTool() {
+  const { t } = useLocale();
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
 
@@ -15,20 +17,20 @@ export function EmojiRemoverTool() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Emoji Remover</h2>
+      <h2 className="text-xl font-semibold">{t('toolCommon.emojiRemoverLabel.label')}</h2>
       <p className="text-sm text-muted-foreground">
-        Paste text containing emojis and remove them all at once.
+        {t('toolCommon.emojiRemover.description')}
       </p>
       <textarea
         className="w-full h-40 p-3 border rounded-md resize-y font-mono text-sm"
-        placeholder="Paste text with emojis here..."
+        placeholder={t('toolCommon.emojiRemover.placeholder')}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <Button onClick={handleRemove}>Remove Emoji</Button>
+      <Button onClick={handleRemove}>{t('toolCommon.emojiRemover.remove')}</Button>
       {output && (
         <div className="mt-4">
-          <label className="block text-sm font-medium mb-1">Result:</label>
+          <label className="block text-sm font-medium mb-1">{t('toolCommon.emojiRemover.result')}:</label>
           <textarea
             className="w-full h-40 p-3 border rounded-md resize-y font-mono text-sm"
             value={output}
@@ -39,7 +41,7 @@ export function EmojiRemoverTool() {
             className="mt-2"
             onClick={() => navigator.clipboard.writeText(output)}
           >
-            Copy to Clipboard
+            {t('common.copy')}
           </Button>
         </div>
       )}
