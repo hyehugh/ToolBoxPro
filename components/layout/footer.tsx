@@ -4,6 +4,7 @@ import Link from "next/link";
 import { tools } from "@/lib/tools/data";
 import { useLocale } from "@/lib/i18n/context";
 import { FooterThemeToggle } from "./footer-theme-toggle";
+import { VisitorCounter } from "@/components/visitor-counter";
 
 export function Footer() {
   const { t } = useLocale();
@@ -58,7 +59,10 @@ export function Footer() {
         </div>
         <div className="mt-8 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} ToolboxPro. {t("footer.rights")}</p>
-          <FooterThemeToggle />
+          <div className="flex items-center gap-3">
+            <VisitorCounter />
+            <FooterThemeToggle />
+          </div>
         </div>
       </div>
     </footer>
