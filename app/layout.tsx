@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LocaleProvider } from "@/lib/i18n/context";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { AdSense } from "@/components/adsense";
 import { CookieBanner } from "@/components/cookie-banner";
 import "./globals.css";
 
@@ -98,6 +99,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LocaleProvider>
             <GoogleAnalytics />
+            <AdSense />
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
