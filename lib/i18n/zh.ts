@@ -274,6 +274,13 @@ export const zh: Record<string, any> = {
       "Developer Tools": "开发者工具",
       "Image Tools": "图片工具",
       "Comparison": "对比评测",
+      "Network Tools": "网络工具",
+      "PDF Tools": "PDF 工具",
+      "Text Tools": "文本工具",
+      "Security": "安全工具",
+      "Utilities": "实用工具",
+      "Conversion Tools": "转换工具",
+      "Conversion": "转换",
     },
     minRead: "{count} 分钟阅读",
     tryIt: "用我们的免费在线工具试试：",
@@ -347,6 +354,7 @@ export const zh: Record<string, any> = {
       pascalCase: "帕斯卡式",
       snakeCase: "蛇形式",
       kebabCase: "短横式",
+      sentence: "句首大写",
     },
     timestamp: {
       current: "当前时间戳",
@@ -367,6 +375,8 @@ export const zh: Record<string, any> = {
       palettes: "调色板",
       similarColors: "相似颜色",
       complementary: "互补色",
+      contrast: "对比度",
+      history: "历史记录",
     },
     bmi: {
       height: "身高 (cm)",
@@ -450,17 +460,27 @@ export const zh: Record<string, any> = {
     htmlEntities: {
       encode: "编码 HTML",
       decode: "解码 HTML",
+      decodePlaceholder: "在此粘贴 HTML 实体...",
+      encodePlaceholder: "在此粘贴要编码为 HTML 实体的文本...",
     },
     jwt: {
       header: "头部",
       payload: "载荷",
       verify: "验证签名",
       token: "Token",
+      generatedJwt: "生成的 JWT",
+      generatorInvalidJson: "请求头/负载的 JSON 无效",
+      invalidBase64: "无效的 Base64 编码",
+      invalidFormat: "无效的 JWT 格式",
+      invalidJson: "无效的 JSON",
+      secretKey: "密钥",
+      signatureNote: "注意：签名仅供演示",
     },
     cron: {
       expression: "Cron 表达式",
       nextRuns: "下次运行",
       description: "描述",
+      parse: "解析",
     },
     css: {
       gradient: "CSS 渐变",
@@ -470,6 +490,10 @@ export const zh: Record<string, any> = {
       color2: "颜色 2",
       direction: "方向",
       angle: "角度",
+      shadowBlur: "模糊",
+      shadowOffsetX: "X 偏移",
+      shadowOffsetY: "Y 偏移",
+      shadowSpread: "扩展",
     },
     imageFilter: {
       brightness: "亮度",
@@ -479,6 +503,9 @@ export const zh: Record<string, any> = {
       blur: "模糊",
       grayscale: "灰度",
       hueRotate: "色相旋转",
+      applyFilter: "应用滤镜",
+      filteredResult: "滤镜结果",
+      selectFilter: "选择滤镜",
     },
     imageResize: {
       maintainAspect: "保持宽高比",
@@ -508,6 +535,10 @@ export const zh: Record<string, any> = {
       cutTo: "到",
       addFiles: "添加音频文件",
       mergeOrder: "合并顺序",
+      minFiles: "至少需要 {count} 个文件",
+      moveDown: "下移",
+      moveUp: "上移",
+      tracks: "音轨",
     },
     colorBlind: {
       original: "原始视图",
@@ -532,6 +563,11 @@ export const zh: Record<string, any> = {
       hoursLeft: "小时",
       minutesLeft: "分钟",
       secondsLeft: "秒",
+      expired: "时间到！",
+      reset: "重置",
+      start: "开始",
+      stop: "停止",
+      time: "时间",
     },
     palindrome: {
       check: "检查回文",
@@ -546,6 +582,7 @@ export const zh: Record<string, any> = {
       shift: "偏移量",
       encrypt: "加密",
       decrypt: "解密",
+      caesar: "凯撒密码",
     },
     random: {
       generateNumbers: "生成数字",
@@ -579,6 +616,14 @@ export const zh: Record<string, any> = {
       from: "开始日期",
       to: "结束日期",
       days: "相隔天数",
+      hours: "小时",
+      minutes: "分钟",
+      months: "月",
+      today: "今天",
+      weekdays: "工作日",
+      weekends: "周末",
+      weeks: "周",
+      years: "年",
     },
     percentage: {
       whatIs: "X 是 Y 的百分之几？",
@@ -597,6 +642,10 @@ export const zh: Record<string, any> = {
       ask: "问问宇宙",
       question: "您的问题",
       answer: "答案",
+      minOptions: "请至少输入 2 个选项",
+      options: "选项（每行一个）",
+      picking: "选择中...",
+      placeholder: "输入选项，每行一个",
     },
     dice: {
       roll: "掷骰子",
@@ -611,6 +660,13 @@ export const zh: Record<string, any> = {
       usableHosts: "可用主机数",
       firstHost: "首台主机",
       lastHost: "最后主机",
+      cidrHint: "输入 CIDR 格式的 IP（如 192.168.1.0/24）",
+      cidrRange: "CIDR 范围",
+      enterIp: "输入带 CIDR 的 IP 地址（如 192.168.1.0/24）",
+      hostRange: "主机范围",
+      invalidFormat: "无效的 IP 格式",
+      octetRange: "每个八位组必须在 0-255 之间",
+      totalHosts: "总主机数",
     },
     whois: {
       domain: "域名",
@@ -630,12 +686,18 @@ export const zh: Record<string, any> = {
       ns: "NS (名称服务器)",
       txt: "TXT",
       recordsFound: "找到 {count} 条记录",
+      noRecords: "未找到记录",
+      timeout: "请求超时",
     },
     httpStatus: {
       search: "搜索状态码",
       all: "全部状态码",
       noResults: "未找到匹配「{search}」的状态码",
       showing: "显示第 {count} 个，共 {total} 个",
+      code: "状态码",
+      description: "描述",
+      name: "名称",
+      title: "HTTP 状态码",
     },
     textStats: {
       analyze: "分析文本",
@@ -663,6 +725,10 @@ export const zh: Record<string, any> = {
       generatePalette: "生成调色板",
       baseColor: "基础颜色",
       count: "颜色数量",
+      analogous: "类似色",
+      complementary: "互补色",
+      monochromatic: "单色系",
+      triadic: "三色组",
     },
     meme: {
       topText: "顶部文字",
@@ -678,11 +744,20 @@ export const zh: Record<string, any> = {
     imageToSketch: {
       convert: "转换为素描",
       invertColors: "反色",
+      description: "将照片转换为铅笔素描画",
+      newImage: "新图片",
+      sketchResult: "素描结果",
+      supportedFormats: "支持 JPG、PNG、WebP、GIF",
+      uploadPrompt: "拖拽图片或点击上传",
     },
     imageBorder: {
       borderWidth: "边框宽度",
       borderRadius: "圆角半径",
       borderColor: "边框颜色",
+      applyBorder: "应用边框",
+      borderStyle: "边框样式",
+      description: "为图片添加边框和相框",
+      supportedFormats: "支持 JPG、PNG、WebP、GIF",
     },
     imageMerge: {
       direction: "方向",
@@ -709,18 +784,42 @@ export const zh: Record<string, any> = {
     markdown: {
       convert: "转换为 HTML",
       preview: "预览",
+      description: "实时将 Markdown 转换为 HTML",
+      htmlSource: "HTML 源码",
+      input: "Markdown 输入",
+      title: "Markdown 转 HTML",
     },
     htmlToJsx: {
       convert: "转换为 JSX",
+      placeholder: "在此粘贴 HTML 代码...",
     },
     jsonToTs: {
       rootName: "根名称",
       convert: "转换为 TypeScript",
+      copyInterface: "复制接口",
+      failed: "转换失败",
+      invalidJson: "无效的 JSON 输入",
+      pasteJson: "在此粘贴 JSON...",
+      typeScriptInterface: "TypeScript 接口",
     },
     jsonDiff: {
       left: "左侧 JSON",
       right: "右侧 JSON",
       compare: "比较",
+      added: "新增",
+      changed: "修改",
+      compareFailed: "JSON 比较失败",
+      description: "并排比较两个 JSON 对象",
+      differences: "差异",
+      identical: "JSON 对象完全相同",
+      invalidJson: "无效的 JSON",
+      newValue: "新值",
+      noDifferences: "未发现差异",
+      oldValue: "旧值",
+      removed: "删除",
+      status: "状态",
+      title: "JSON 差异对比",
+      total: "总计",
     },
     textToSlug: {
       input: "要转换的文本",
@@ -728,6 +827,7 @@ export const zh: Record<string, any> = {
     htmlStrip: {
       strip: "移除 HTML 标签",
       stripped: "移除后的文本",
+      htmlInput: "在此粘贴 HTML...",
     },
     stringEscape: {
       escape: "转义字符串",
@@ -738,6 +838,10 @@ export const zh: Record<string, any> = {
       delay: "延迟 (毫秒)",
       create: "创建 GIF",
       width: "宽度 (像素)",
+      generatedGif: "生成的 GIF",
+      minImages: "请至少添加 2 张图片",
+      previewAnimation: "预览动画",
+      stopPreview: "停止预览",
     },
     aspectRatio: {
       original: "原始",
@@ -790,6 +894,8 @@ export const zh: Record<string, any> = {
     emojiRemover: {
       remove: "移除表情符号",
       result: "移除表情后的文本",
+      description: "从文本中移除所有表情符号",
+      placeholder: "在此粘贴含表情符号的文本...",
     },
     unicode: {
       detect: "检测 Unicode 字符",
@@ -820,6 +926,8 @@ export const zh: Record<string, any> = {
     colorPicker: {
       pickColor: "选取颜色",
       hexInput: "HEX 输入",
+      clickInstruction: "点击图片拾取颜色",
+      clickSwatch: "点击色块复制",
     },
     pdfPageRemover: {
       selectPages: "选择要移除的页面",
@@ -849,7 +957,40 @@ export const zh: Record<string, any> = {
     emojiRemoverLabel: {
       label: "表情符号移除",
     },
+    // htmlPreview
+    htmlPreview: {
+      code: "HTML 代码",
+      livePreview: "实时预览",
+      template: "模板",
+    },
+    // jsonToYaml
+    jsonToYaml: {
+      invalidJson: "无效的 JSON 输入",
+      invalidYaml: "无效的 YAML 输入",
+      jsonInput: "JSON 输入",
+      jsonOutput: "JSON 输出",
+      yamlInput: "YAML 输入",
+      yamlOutput: "YAML 输出",
+    },
+    // imageWatermark
+    imageWatermark: {
+      description: "为图片添加文字水印",
+      newImage: "新图片",
+      position: "位置",
+      supportedFormats: "支持 JPG、PNG、WebP、GIF",
+      uploadPrompt: "拖拽图片或点击上传",
+      watermarkPlaceholder: "输入水印文字...",
+    },
+    // watermark
+    watermark: {
+      bottomLeft: "左下角",
+      bottomRight: "右下角",
+      center: "居中",
+      topLeft: "左上角",
+      topRight: "右上角",
+    },
   },
+
 
   // Tool names and descriptions for listing pages
   toolList: {

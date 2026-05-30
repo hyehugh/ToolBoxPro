@@ -74,7 +74,7 @@ export const tools: Tool[] = [
   {
     slug: "hash-generator",
     name: "Hash Generator",
-    description: "Generate MD5, SHA-1, SHA-256, SHA-512 hashes for any text or file. Compare checksums and verify data integrity with multiple hash algorithms.",
+    description: "Generate SHA-256, SHA-384, SHA-512 hashes for any text or file. Compare checksums and verify data integrity with multiple hash algorithms.",
     category: "developer",
     icon: "#H",
     searchKeywords: "hash generator md5 sha256 sha1 sha512 hash online",

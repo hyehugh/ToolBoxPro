@@ -111,6 +111,9 @@ export const en: Record<string, any> = {
     network: "Network Tools",
     conversion: "Converters",
     utilities: "Utilities",
+      "Security": "Security",
+      "Conversion Tools": "Conversion Tools",
+      "Conversion": "Conversion",
   },
 
   // Search / Filter
@@ -368,6 +371,7 @@ export const en: Record<string, any> = {
       pascalCase: "PascalCase",
       snakeCase: "snake_case",
       kebabCase: "kebab-case",
+      sentence: "Sentence case",
     },
     // Timestamp
     timestamp: {
@@ -390,6 +394,8 @@ export const en: Record<string, any> = {
       palettes: "Color Palettes",
       similarColors: "Similar Colors",
       complementary: "Complementary",
+      contrast: "Contrast",
+      history: "History",
     },
     // BMI
     bmi: {
@@ -487,6 +493,8 @@ export const en: Record<string, any> = {
     htmlEntities: {
       encode: "Encode HTML",
       decode: "Decode HTML",
+      decodePlaceholder: "Paste HTML entities here...",
+      encodePlaceholder: "Paste text to encode as HTML entities...",
     },
     // JWT
     jwt: {
@@ -494,12 +502,20 @@ export const en: Record<string, any> = {
       payload: "Payload",
       verify: "Verify Signature",
       token: "Token",
+      generatedJwt: "Generated JWT",
+      generatorInvalidJson: "Invalid JSON for header/payload",
+      invalidBase64: "Invalid Base64 encoding",
+      invalidFormat: "Invalid JWT format",
+      invalidJson: "Invalid JSON",
+      secretKey: "Secret Key",
+      signatureNote: "Note: Signature is for demonstration only",
     },
     // Cron
     cron: {
       expression: "Cron Expression",
       nextRuns: "Next Runs",
       description: "Description",
+      parse: "Parse",
     },
     // CSS
     css: {
@@ -510,6 +526,10 @@ export const en: Record<string, any> = {
       color2: "Color 2",
       direction: "Direction",
       angle: "Angle",
+      shadowBlur: "Blur",
+      shadowOffsetX: "Offset X",
+      shadowOffsetY: "Offset Y",
+      shadowSpread: "Spread",
     },
     // Image filters
     imageFilter: {
@@ -520,6 +540,9 @@ export const en: Record<string, any> = {
       blur: "Blur",
       grayscale: "Grayscale",
       hueRotate: "Hue Rotate",
+      applyFilter: "Apply Filter",
+      filteredResult: "Filtered Result",
+      selectFilter: "Select a filter",
     },
     // Image resize
     imageResize: {
@@ -554,6 +577,10 @@ export const en: Record<string, any> = {
       cutTo: "Cut to",
       addFiles: "Add Audio Files",
       mergeOrder: "Merge Order",
+      minFiles: "Minimum {count} files required",
+      moveDown: "Move Down",
+      moveUp: "Move Up",
+      tracks: "Tracks",
     },
     // Color Blindness
     colorBlind: {
@@ -581,6 +608,11 @@ export const en: Record<string, any> = {
       hoursLeft: "Hours",
       minutesLeft: "Minutes",
       secondsLeft: "Seconds",
+      expired: "Time's up!",
+      reset: "Reset",
+      start: "Start",
+      stop: "Stop",
+      time: "Time",
     },
     // Palindrome
     palindrome: {
@@ -598,6 +630,7 @@ export const en: Record<string, any> = {
       shift: "Shift",
       encrypt: "Encrypt",
       decrypt: "Decrypt",
+      caesar: "Caesar Cipher",
     },
     // Random
     random: {
@@ -636,6 +669,14 @@ export const en: Record<string, any> = {
       from: "From Date",
       to: "To Date",
       days: "Days Between",
+      hours: "Hours",
+      minutes: "Minutes",
+      months: "Months",
+      today: "Today",
+      weekdays: "Weekdays",
+      weekends: "Weekends",
+      weeks: "Weeks",
+      years: "Years",
     },
     // Percentage
     percentage: {
@@ -657,6 +698,10 @@ export const en: Record<string, any> = {
       ask: "Ask the Universe",
       question: "Your Question",
       answer: "Answer",
+      minOptions: "Please enter at least 2 options",
+      options: "Options (one per line)",
+      picking: "Picking...",
+      placeholder: "Enter your options, one per line",
     },
     // Dice
     dice: {
@@ -673,6 +718,13 @@ export const en: Record<string, any> = {
       usableHosts: "Usable Hosts",
       firstHost: "First Host",
       lastHost: "Last Host",
+      cidrHint: "Enter IP in CIDR notation (e.g. 192.168.1.0/24)",
+      cidrRange: "CIDR Range",
+      enterIp: "Enter an IP address with CIDR (e.g. 192.168.1.0/24)",
+      hostRange: "Host Range",
+      invalidFormat: "Invalid IP format",
+      octetRange: "Each octet must be 0-255",
+      totalHosts: "Total Hosts",
     },
     // WHOIS
     whois: {
@@ -694,6 +746,8 @@ export const en: Record<string, any> = {
       ns: "NS (Nameserver)",
       txt: "TXT",
       recordsFound: "{count} record(s) found",
+      noRecords: "No records found",
+      timeout: "Request timed out",
     },
     // HTTP Status
     httpStatus: {
@@ -701,6 +755,10 @@ export const en: Record<string, any> = {
       all: "All Codes",
       noResults: "No status codes match \"{search}\"",
       showing: "Showing {count} of {total}",
+      code: "Code",
+      description: "Description",
+      name: "Name",
+      title: "HTTP Status Codes",
     },
     // Text Statistics
     textStats: {
@@ -733,6 +791,10 @@ export const en: Record<string, any> = {
       generatePalette: "Generate Palette",
       baseColor: "Base Color",
       count: "Number of Colors",
+      analogous: "Analogous",
+      complementary: "Complementary",
+      monochromatic: "Monochromatic",
+      triadic: "Triadic",
     },
     // Meme Generator
     meme: {
@@ -751,12 +813,21 @@ export const en: Record<string, any> = {
     imageToSketch: {
       convert: "Convert to Sketch",
       invertColors: "Invert Colors",
+      description: "Convert your photo into a pencil sketch drawing",
+      newImage: "New Image",
+      sketchResult: "Sketch Result",
+      supportedFormats: "Supports JPG, PNG, WebP, GIF",
+      uploadPrompt: "Drop an image or click to upload",
     },
     // Image Border
     imageBorder: {
       borderWidth: "Border Width",
       borderRadius: "Border Radius",
       borderColor: "Border Color",
+      applyBorder: "Apply Border",
+      borderStyle: "Border Style",
+      description: "Add borders and frames to your images",
+      supportedFormats: "Supports JPG, PNG, WebP, GIF",
     },
     // Image Merge
     imageMerge: {
@@ -788,21 +859,45 @@ export const en: Record<string, any> = {
     markdown: {
       convert: "Convert to HTML",
       preview: "Preview",
+      description: "Convert Markdown to HTML in real-time",
+      htmlSource: "HTML Source",
+      input: "Markdown Input",
+      title: "Markdown to HTML",
     },
     // HTML to JSX
     htmlToJsx: {
       convert: "Convert to JSX",
+      placeholder: "Paste HTML code here...",
     },
     // JSON to TypeScript
     jsonToTs: {
       rootName: "Root Name",
       convert: "Convert to TypeScript",
+      copyInterface: "Copy Interface",
+      failed: "Failed to convert",
+      invalidJson: "Invalid JSON input",
+      pasteJson: "Paste your JSON here...",
+      typeScriptInterface: "TypeScript Interface",
     },
     // JSON Diff
     jsonDiff: {
       left: "Left JSON",
       right: "Right JSON",
       compare: "Compare",
+      added: "Added",
+      changed: "Changed",
+      compareFailed: "Failed to compare JSON",
+      description: "Compare two JSON objects side by side",
+      differences: "Differences",
+      identical: "JSON objects are identical",
+      invalidJson: "Invalid JSON",
+      newValue: "New Value",
+      noDifferences: "No differences found",
+      oldValue: "Old Value",
+      removed: "Removed",
+      status: "Status",
+      title: "JSON Diff",
+      total: "Total",
     },
     // Text to Slug
     textToSlug: {
@@ -812,6 +907,7 @@ export const en: Record<string, any> = {
     htmlStrip: {
       strip: "Strip HTML Tags",
       stripped: "Stripped Text",
+      htmlInput: "Paste HTML here...",
     },
     // String Escaper
     stringEscape: {
@@ -824,6 +920,10 @@ export const en: Record<string, any> = {
       delay: "Delay (ms)",
       create: "Create GIF",
       width: "Width (px)",
+      generatedGif: "Generated GIF",
+      minImages: "Please add at least 2 images",
+      previewAnimation: "Preview Animation",
+      stopPreview: "Stop Preview",
     },
     // Aspect Ratio
     aspectRatio: {
@@ -884,6 +984,8 @@ export const en: Record<string, any> = {
     emojiRemover: {
       remove: "Remove Emojis",
       result: "Text without Emojis",
+      description: "Remove all emoji characters from your text",
+      placeholder: "Paste text with emojis here...",
     },
     // Unicode Detector
     unicode: {
@@ -920,6 +1022,8 @@ export const en: Record<string, any> = {
     colorPicker: {
       pickColor: "Pick a Color",
       hexInput: "HEX Input",
+      clickInstruction: "Click on the image to pick a color",
+      clickSwatch: "Click a swatch to copy",
     },
     // PDF Page Remover
     pdfPageRemover: {
@@ -956,6 +1060,38 @@ export const en: Record<string, any> = {
     emojiRemoverLabel: {
       label: "Emoji Remover",
     },
+    // HTML Preview
+    htmlPreview: {
+      code: "HTML Code",
+      livePreview: "Live Preview",
+      template: "Template",
+    },
+    // JSON to YAML
+    jsonToYaml: {
+      invalidJson: "Invalid JSON input",
+      invalidYaml: "Invalid YAML input",
+      jsonInput: "JSON Input",
+      jsonOutput: "JSON Output",
+      yamlInput: "YAML Input",
+      yamlOutput: "YAML Output",
+    },
+    // Image Watermark
+    imageWatermark: {
+      description: "Add text watermarks to your images",
+      newImage: "New Image",
+      position: "Position",
+      supportedFormats: "Supports JPG, PNG, WebP, GIF",
+      uploadPrompt: "Drop an image or click to upload",
+      watermarkPlaceholder: "Enter watermark text...",
+    },
+    // Watermark positions
+    watermark: {
+      bottomLeft: "Bottom Left",
+      bottomRight: "Bottom Right",
+      center: "Center",
+      topLeft: "Top Left",
+      topRight: "Top Right",
+    },
   },
 
   // Tool names and descriptions for listing pages
@@ -967,7 +1103,7 @@ export const en: Record<string, any> = {
     "url-encoder-decoder": { name: "URL Encoder/Decoder", desc: "Encode and decode URL components instantly" },
     "uuid-generator": { name: "UUID Generator", desc: "Generate random UUIDs v4 for unique identifiers" },
     "password-generator": { name: "Password Generator", desc: "Create strong, secure passwords with custom options" },
-    "hash-generator": { name: "Hash Generator", desc: "Generate MD5, SHA-1, SHA-256, SHA-512 hashes" },
+    "hash-generator": { name: "Hash Generator", desc: "Generate SHA-256, SHA-384, SHA-512 hashes" },
     "timestamp-converter": { name: "Timestamp Converter", desc: "Convert between Unix timestamps and human-readable dates" },
     "number-base-converter": { name: "Number Base Converter", desc: "Convert between binary, octal, decimal, and hexadecimal" },
     "image-compressor": { name: "Image Compressor", desc: "Compress images without losing quality" },
