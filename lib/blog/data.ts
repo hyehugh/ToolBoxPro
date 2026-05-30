@@ -9537,7 +9537,7 @@ A: Yes. You can toggle between desktop, tablet, and mobile viewport sizes to see
 A real-time HTML preview tool is one of the most practical additions to any web developer's toolkit. Whether you're learning the basics, prototyping a component, debugging a layout issue, or testing an embed code, the ability to write HTML and see the result instantly saves time and reduces frustration.
 
 Try the free HTML Preview tool at [trytoolboxpro.com/tools/html-preview](/tools/html-preview) — no sign-up, no installation, no data sent to servers. Just you, your code, and instant results.
-\`,
+`,
     contentZh: `## 如何在线实时预览和测试 HTML
 
 HTML 是网络的基石。你访问的每个网页——从简单的博客文章到复杂的单页应用——都是由 HTML 渲染而成的。无论你是学习 Web 开发的初学者、设计布局的设计师，还是调试渲染问题的资深开发者，能够即时预览 HTML 都至关重要。
@@ -9702,7 +9702,7 @@ HTML 是网络的基石。你访问的每个网页——从简单的博客文章
 实时 HTML 预览工具是任何 Web 开发者工具箱中最实用的工具之一。无论你是在学习基础知识、原型设计组件、调试布局问题还是测试嵌入代码，编写 HTML 并即时查看结果的能力都能节省时间并减少挫败感。
 
 立即尝试 [trytoolboxpro.com/tools/html-preview](/tools/html-preview) 的免费 HTML 预览工具——无需注册、无需安装、不会向服务器发送任何数据。只有你、你的代码和即时结果。
-\`,
+`,
   },
   {
     slug: "sql-formatting-guide",
@@ -9736,23 +9736,23 @@ While every team has its own style guide, most follow a common set of convention
 
 | Convention | Common Practice | Example |
 |---|---|---|
-| Keyword casing | UPPERCASE for SQL keywords | \\`SELECT\\`, \\`FROM\\`, \\`WHERE\\`, \\`JOIN\\` |
-| Column/table casing | lowercase or snake\\_case | \\`user\\_id\\`, \\`order\\_total\\` |
-| Clause alignment | Each major clause on its own line | \\`SELECT\\`, \\`FROM\\`, \\`WHERE\\` on separate lines |
-| Column separation | One column per line for 3+ columns | Indented under \\`SELECT\\` |
-| Join alignment | \\`JOIN\\` indented at clause level | Aligned with \\`FROM\\` |
+| Keyword casing | UPPERCASE for SQL keywords | \`SELECT\`, \`FROM\`, \`WHERE\`, \`JOIN\` |
+| Column/table casing | lowercase or snake\\_case | \`user\\_id\`, \`order\\_total\` |
+| Clause alignment | Each major clause on its own line | \`SELECT\`, \`FROM\`, \`WHERE\` on separate lines |
+| Column separation | One column per line for 3+ columns | Indented under \`SELECT\` |
+| Join alignment | \`JOIN\` indented at clause level | Aligned with \`FROM\` |
 | Parentheses nesting | Indented inside open parens | Subqueries get one extra indent level |
-| Boolean operators | Operators at line start (not end) | \\`AND\\` / \\`OR\\` at beginning of line |
+| Boolean operators | Operators at line start (not end) | \`AND\` / \`OR\` at beginning of line |
 | Comma placement | Leading commas (some teams) or trailing | Leading: easier to spot missing columns |
 
 ### Manual Formatting vs. Automated Tools
 
-Formatting SQL manually is possible — but impractical for anything beyond trivial queries. Consider a production query with twelve JOINs, five CTEs, three window functions, and a \\`CASE\\` expression spanning twenty branches. Manually indenting and aligning that query is error-prone and time-consuming.
+Formatting SQL manually is possible — but impractical for anything beyond trivial queries. Consider a production query with twelve JOINs, five CTEs, three window functions, and a \`CASE\` expression spanning twenty branches. Manually indenting and aligning that query is error-prone and time-consuming.
 
 Automated formatting tools handle these cases consistently:
 
 - They apply rules deterministically — the same input always produces the same output.
-- They handle edge cases like nested subqueries, string literals containing SQL-like text, and dialect-specific syntax (\\`LIMIT\\` vs. \\`TOP\\`, \\`ILIKE\\` vs. \\`LIKE\\`, array operators, JSON functions).
+- They handle edge cases like nested subqueries, string literals containing SQL-like text, and dialect-specific syntax (\`LIMIT\` vs. \`TOP\`, \`ILIKE\` vs. \`LIKE\`, array operators, JSON functions).
 - They normalize whitespace, remove accidental extra spaces, and preserve comments.
 - They support multiple SQL dialects — MySQL, PostgreSQL, SQL Server, Oracle, SQLite, and others.
 
@@ -9803,7 +9803,7 @@ The difference is night and day. The formatted version reveals the query structu
 
 #### 1. Capitalize SQL Keywords
 
-Always write SQL reserved words in UPPERCASE: \\`SELECT\\`, \\`FROM\\`, \\`WHERE\\`, \\`AND\\`, \\`OR\\`, \\`INNER JOIN\\`, \\`LEFT JOIN\\`, \\`GROUP BY\\`, \\`HAVING\\`, \\`ORDER BY\\`, \\`LIMIT\\`, \\`OFFSET\\`, \\`INSERT INTO\\`, \\`VALUES\\`, \\`UPDATE\\`, \\`SET\\`, \\`DELETE FROM\\`, \\`CREATE TABLE\\`, \\`ALTER TABLE\\`, \\`DROP TABLE\\`, \\`CREATE INDEX\\`, \\`CREATE VIEW\\`, \\`UNION\\`, \\`INTERSECT\\`, \\`EXCEPT\\`.
+Always write SQL reserved words in UPPERCASE: \`SELECT\`, \`FROM\`, \`WHERE\`, \`AND\`, \`OR\`, \`INNER JOIN\`, \`LEFT JOIN\`, \`GROUP BY\`, \`HAVING\`, \`ORDER BY\`, \`LIMIT\`, \`OFFSET\`, \`INSERT INTO\`, \`VALUES\`, \`UPDATE\`, \`SET\`, \`DELETE FROM\`, \`CREATE TABLE\`, \`ALTER TABLE\`, \`DROP TABLE\`, \`CREATE INDEX\`, \`CREATE VIEW\`, \`UNION\`, \`INTERSECT\`, \`EXCEPT\`.
 
 This visually distinguishes keywords from identifiers (column names, table names, aliases) making the query easier to scan.
 
@@ -9863,7 +9863,7 @@ WHERE
 
 #### 4. Alias Tables Clearly
 
-Table aliases reduce repetition but should be meaningful. Avoid single-letter aliases like \\`a\\`, \\`b\\`, \\`c\\` unless the query is trivial. Use abbreviations that reflect the table name: \\`users \\-> u\\`, \\`order\\_items \\-> oi\\`, \\`product\\_categories \\-> pc\\`.
+Table aliases reduce repetition but should be meaningful. Avoid single-letter aliases like \`a\`, \`b\`, \`c\` unless the query is trivial. Use abbreviations that reflect the table name: \`users \\-> u\`, \`order\\_items \\-> oi\`, \`product\\_categories \\-> pc\`.
 
 Most SQL formatters preserve aliases while formatting the rest of the query structure.
 
@@ -9878,9 +9878,9 @@ Both are valid. Choose one and apply it consistently. A SQL formatter can enforc
 
 ### Common SQL Formatting Pitfalls
 
-**Pitfall 1: Inline Functions Break Flow.** Long function calls like \\`ROW\\_NUMBER() OVER (PARTITION BY ... ORDER BY ...)\\` inside a SELECT clause can break line alignment. The fix: put each window function on its own line with its \\`OVER\\` clause on the same line or indented below.
+**Pitfall 1: Inline Functions Break Flow.** Long function calls like \`ROW\\_NUMBER() OVER (PARTITION BY ... ORDER BY ...)\` inside a SELECT clause can break line alignment. The fix: put each window function on its own line with its \`OVER\` clause on the same line or indented below.
 
-**Pitfall 2: Long IN Lists.** An \\`IN (...)\\` clause with fifty IDs should never appear on one line. Break it across lines:
+**Pitfall 2: Long IN Lists.** An \`IN (...)\` clause with fifty IDs should never appear on one line. Break it across lines:
 
 \`\`\`sql
 WHERE
@@ -9895,7 +9895,7 @@ WHERE
 
 **Pitfall 3: String Literals Containing SQL.** When formatting SQL in a codebase (inside Python f-strings, JavaScript template literals, or Java prepared statements), format the SQL in isolation first, then embed it.
 
-**Pitfall 4: Dialect-Specific Syntax.** Not all SQL formatters support every dialect's extensions. PostgreSQL's \\`->>\\` JSON operator, MySQL's \\`\\`\\` backtick quoting, and SQL Server's square brackets all require dialect-aware formatting.
+**Pitfall 4: Dialect-Specific Syntax.** Not all SQL formatters support every dialect's extensions. PostgreSQL's \`->>\` JSON operator, MySQL's \`\`\` backtick quoting, and SQL Server's square brackets all require dialect-aware formatting.
 
 ### Using the ToolboxPro SQL Formatter
 
@@ -9912,13 +9912,13 @@ The free [SQL Formatter tool at trytoolboxpro.com](/tools/sql-formatter) provide
 ### Frequently Asked Questions
 
 **Q: Will the formatter preserve my SQL comments?**  
-A: Yes. Single-line comments (\\`-- comment\\`) and block comments (\\`/* comment */\\`) are preserved. The formatter only modifies whitespace and indentation.
+A: Yes. Single-line comments (\`-- comment\`) and block comments (\`/* comment */\`) are preserved. The formatter only modifies whitespace and indentation.
 
-**Q: Can I format a \\`CREATE TABLE\\` statement?**  
-A: Absolutely. The formatter handles DDL (\\`CREATE\\`, \\`ALTER\\`, \\`DROP\\`) alongside DML (\\`SELECT\\`, \\`INSERT\\`, \\`UPDATE\\`, \\`DELETE\\`). Column definitions, constraints, and indexes are all indented consistently.
+**Q: Can I format a \`CREATE TABLE\` statement?**  
+A: Absolutely. The formatter handles DDL (\`CREATE\`, \`ALTER\`, \`DROP\`) alongside DML (\`SELECT\`, \`INSERT\`, \`UPDATE\`, \`DELETE\`). Column definitions, constraints, and indexes are all indented consistently.
 
-**Q: Does it support PostgreSQL-specific syntax like \\`SELECT DISTINCT ON\\` or \\`RETURNING\\`?**  
-A: Yes. The PostgreSQL dialect mode handles PostgreSQL-specific keywords, operators (\\`->>\\`, \\`@>\\`, \\`<@\\`, \\`?\\`), array syntax, and JSON functions.
+**Q: Does it support PostgreSQL-specific syntax like \`SELECT DISTINCT ON\` or \`RETURNING\`?**  
+A: Yes. The PostgreSQL dialect mode handles PostgreSQL-specific keywords, operators (\`->>\`, \`@>\`, \`<@\`, \`?\`), array syntax, and JSON functions.
 
 **Q: What about very large queries — is there a size limit?**  
 A: The tool handles most production-sized queries comfortably. Since it runs entirely in your browser, the practical limit depends on your device's memory.
@@ -9933,7 +9933,7 @@ Formatting SQL is not optional for serious development work. Clean, consistent S
 The ToolboxPro SQL Formatter makes it trivial to clean up any SQL query. Paste your query, choose your dialect and style preferences, and get perfectly formatted SQL in seconds. No registration, no installation, no data leaving your machine.
 
 Try the free [SQL Formatter tool at trytoolboxpro.com/tools/sql-formatter](/tools/sql-formatter) on your next query.
-    |,
+`,
 
     contentZh: `## 在线格式化SQL查询：最佳实践与工具指南
 
@@ -9957,13 +9957,13 @@ SQL是现代数据管理的基石，但在时间压力下编写的原始SQL查�
 
 | 约定 | 常见做法 | 示例 |
 |---|---|---|
-| 关键字大小写 | SQL关键字使用大写 | \\\\`SELECT\\\\`、\\\\`FROM\\\\`、\\\\`WHERE\\\\`、\\\\`JOIN\\\\` |
-| 列/表大小写 | 小写或蛇形命名 | \\\\`user\\\\_id\\\\`、\\\\`order\\\\_total\\\\` |
-| 子句对齐 | 每个主要子句独占一行 | \\\\`SELECT\\\\`、\\\\`FROM\\\\`、\\\\`WHERE\\\\`各占一行 |
-| 列分隔 | 3列以上每列一行 | 在\\\\`SELECT\\\\`下缩进 |
-| JOIN对齐 | \\\\`JOIN\\\\`在子句级别缩进 | 与\\\\`FROM\\\\`对齐 |
+| 关键字大小写 | SQL关键字使用大写 | \\\`SELECT\\\`、\\\`FROM\\\`、\\\`WHERE\\\`、\\\`JOIN\\\` |
+| 列/表大小写 | 小写或蛇形命名 | \\\`user\\\\_id\\\`、\\\`order\\\\_total\\\` |
+| 子句对齐 | 每个主要子句独占一行 | \\\`SELECT\\\`、\\\`FROM\\\`、\\\`WHERE\\\`各占一行 |
+| 列分隔 | 3列以上每列一行 | 在\\\`SELECT\\\`下缩进 |
+| JOIN对齐 | \\\`JOIN\\\`在子句级别缩进 | 与\\\`FROM\\\`对齐 |
 | 括号嵌套 | 在左括号内缩进 | 子查询增加一个缩进级别 |
-| 布尔运算符 | 运算符在行首（不在行尾） | \\\\`AND\\\\`/\\\\`OR\\\\`在行首 |
+| 布尔运算符 | 运算符在行首（不在行尾） | \\\`AND\\\`/\\\`OR\\\`在行首 |
 | 逗号位置 | 前导逗号（部分团队）或尾随逗号 | 前导：更容易发现缺失的列 |
 
 ### 手动格式化 vs. 自动化工具
@@ -9973,7 +9973,7 @@ SQL是现代数据管理的基石，但在时间压力下编写的原始SQL查�
 自动化格式化工具可以一致地处理这些情况：
 
 - 它们确定性地应用规则——相同的输入总是产生相同的输出。
-- 它们处理边缘情况，如嵌套子查询、包含类似SQL文本的字符串字面量以及方言特定语法（\\\\`LIMIT\\\\` vs. \\\\`TOP\\\\`、\\\\`ILIKE\\\\` vs. \\\\`LIKE\\\\`、数组运算符、JSON函数）。
+- 它们处理边缘情况，如嵌套子查询、包含类似SQL文本的字符串字面量以及方言特定语法（\\\`LIMIT\\\` vs. \\\`TOP\\\`、\\\`ILIKE\\\` vs. \\\`LIKE\\\`、数组运算符、JSON函数）。
 - 它们规范化空白字符、删除意外的多余空格并保留注释。
 - 它们支持多种SQL方言——MySQL、PostgreSQL、SQL Server、Oracle、SQLite等。
 
@@ -9981,13 +9981,13 @@ SQL是现代数据管理的基石，但在时间压力下编写的原始SQL查�
 
 以下是一个典型的未格式化查询，可能来自生产代码库或生成的ORM导出：
 
-\\`\\`\\`sql
+\`\`\`sql
 SELECT u.id,u.name,u.email,o.id as order_id,o.total,o.created_at,oi.product_name,oi.quantity,oi.price,p.category,c.name as category_name FROM users u INNER JOIN orders o ON u.id=o.user_id INNER JOIN order_items oi ON o.id=oi.order_id INNER JOIN products p ON oi.product_id=p.id LEFT JOIN categories c ON p.category=c.id WHERE o.total>100 AND o.created_at>='2026-01-01' AND (p.category IS NOT NULL OR c.name IS NOT NULL) ORDER BY o.created_at DESC LIMIT 50;
-\\`\\`\\`
+\`\`\`
 
 以下是经过自动化格式化后的相同查询：
 
-\\`\\`\\`sql
+\`\`\`sql
 SELECT
   u.id,
   u.name,
@@ -10016,7 +10016,7 @@ WHERE
 ORDER BY
   o.created_at DESC
 LIMIT 50;
-\\`\\`\\`
+\`\`\`
 
 差异天壤之别。格式化版本立即揭示了查询结构：它从四个连接表中选择了十一列，按两个条件加上一个嵌套的OR分组进行过滤，并按单个列排序。阅读未格式化版本的开发者必须通过心智解析整个查询才能理解其结构。
 
@@ -10024,7 +10024,7 @@ LIMIT 50;
 
 #### 1. 大写SQL关键字
 
-始终将SQL保留字写成大写：\\\\`SELECT\\\\`、\\\\`FROM\\\\`、\\\\`WHERE\\\\`、\\\\`AND\\\\`、\\\\`OR\\\\`、\\\\`INNER JOIN\\\\`、\\\\`LEFT JOIN\\\\`、\\\\`GROUP BY\\\\`、\\\\`HAVING\\\\`、\\\\`ORDER BY\\\\`、\\\\`LIMIT\\\\`、\\\\`OFFSET\\\\`、\\\\`INSERT INTO\\\\`、\\\\`VALUES\\\\`、\\\\`UPDATE\\\\`、\\\\`SET\\\\`、\\\\`DELETE FROM\\\\`、\\\\`CREATE TABLE\\\\`、\\\\`ALTER TABLE\\\\`、\\\\`DROP TABLE\\\\`、\\\\`CREATE INDEX\\\\`、\\\\`CREATE VIEW\\\\`、\\\\`UNION\\\\`、\\\\`INTERSECT\\\\`、\\\\`EXCEPT\\\\`。
+始终将SQL保留字写成大写：\\\`SELECT\\\`、\\\`FROM\\\`、\\\`WHERE\\\`、\\\`AND\\\`、\\\`OR\\\`、\\\`INNER JOIN\\\`、\\\`LEFT JOIN\\\`、\\\`GROUP BY\\\`、\\\`HAVING\\\`、\\\`ORDER BY\\\`、\\\`LIMIT\\\`、\\\`OFFSET\\\`、\\\`INSERT INTO\\\`、\\\`VALUES\\\`、\\\`UPDATE\\\`、\\\`SET\\\`、\\\`DELETE FROM\\\`、\\\`CREATE TABLE\\\`、\\\`ALTER TABLE\\\`、\\\`DROP TABLE\\\`、\\\`CREATE INDEX\\\`、\\\`CREATE VIEW\\\`、\\\`UNION\\\`、\\\`INTERSECT\\\`、\\\`EXCEPT\\\`。
 
 这从视觉上将关键字与标识符（列名、表名、别名）区分开来，使查询更容易扫描。
 
@@ -10032,7 +10032,7 @@ LIMIT 50;
 
 查询的每个主要子句应在新行开始。这是你能做出的影响最大的单一格式化更改：
 
-\\`\\`\\`sql
+\`\`\`sql
 SELECT
   column1,
   column2
@@ -10051,13 +10051,13 @@ ORDER BY
   column1 DESC
 LIMIT
   100;
-\\`\\`\\`
+\`\`\`
 
 #### 3. 缩进子查询和括号表达式
 
 当子查询或复杂表达式出现在括号内时，缩进以显示嵌套级别：
 
-\\`\\`\\`sql
+\`\`\`sql
 SELECT
   u.name,
   (
@@ -10080,11 +10080,11 @@ WHERE
     WHERE
       o.user_id = u.id
   );
-\\`\\`\\`
+\`\`\`
 
 #### 4. 清晰命名表别名
 
-表别名可以减少重复，但应具有意义。除非查询非常简单，否则避免使用单字母别名如\\\\`a\\\\`、\\\\`b\\\\`、\\\\`c\\\\`。使用反映表名的缩写：\\\\`users -> u\\\\`、\\\\`order_items -> oi\\\\`、\\\\`product_categories -> pc\\\\`。
+表别名可以减少重复，但应具有意义。除非查询非常简单，否则避免使用单字母别名如\\\`a\\\`、\\\`b\\\`、\\\`c\\\`。使用反映表名的缩写：\\\`users -> u\\\`、\\\`order_items -> oi\\\`、\\\`product_categories -> pc\\\`。
 
 大多数SQL格式化工具在格式化查询其余结构的同时会保留别名。
 
@@ -10099,11 +10099,11 @@ WHERE
 
 ### 常见的SQL格式化陷阱
 
-**陷阱1：内联函数破坏排版。** SELECT子句中像\\\\`ROW_NUMBER() OVER (PARTITION BY ... ORDER BY ...)\\\\`这样的长函数调用可能破坏行对齐。解决方法：将每个窗口函数放在单独的行上，其\\\\`OVER\\\\`子句在同一行或缩进在下方。
+**陷阱1：内联函数破坏排版。** SELECT子句中像\\\`ROW_NUMBER() OVER (PARTITION BY ... ORDER BY ...)\\\`这样的长函数调用可能破坏行对齐。解决方法：将每个窗口函数放在单独的行上，其\\\`OVER\\\`子句在同一行或缩进在下方。
 
-**陷阱2：过长的IN列表。** 包含五十个ID的\\\\`IN (...)\\\\`子句绝不应出现在一行上。应跨行书写：
+**陷阱2：过长的IN列表。** 包含五十个ID的\\\`IN (...)\\\`子句绝不应出现在一行上。应跨行书写：
 
-\\`\\`\\`sql
+\`\`\`sql
 WHERE
   user_id IN (
     1001,
@@ -10112,11 +10112,11 @@ WHERE
     1004,
     1005
   );
-\\`\\`\\`
+\`\`\`
 
 **陷阱3：包含SQL的字符串字面量。** 在代码库中格式化SQL时（如在Python f-string、JavaScript模板字面量或Java预编译语句中），先单独格式化SQL，然后再嵌入。
 
-**陷阱4：方言特定语法。** 并非所有SQL格式化工具都支持每种方言的扩展。PostgreSQL的\\\\`->>\\\\` JSON运算符、MySQL的反引号引用和SQL Server的方括号都需要方言感知的格式化。
+**陷阱4：方言特定语法。** 并非所有SQL格式化工具都支持每种方言的扩展。PostgreSQL的\\\`->>\\\` JSON运算符、MySQL的反引号引用和SQL Server的方括号都需要方言感知的格式化。
 
 ### 使用ToolboxPro SQL格式化工具
 
@@ -10133,13 +10133,13 @@ WHERE
 ### 常见问题
 
 **问：格式化工具会保留我的SQL注释吗？**
-答：会。单行注释（\\\\`-- comment\\\\`）和块注释（\\\\`/* comment */\\\\`）都会被保留。格式化工具只修改空白和缩进。
+答：会。单行注释（\\\`-- comment\\\`）和块注释（\\\`/* comment */\\\`）都会被保留。格式化工具只修改空白和缩进。
 
 **问：我可以格式化CREATE TABLE语句吗？**
-答：完全可以。该工具处理DDL（\\\\`CREATE\\\\`、\\\\`ALTER\\\\`、\\\\`DROP\\\\`）以及DML（\\\\`SELECT\\\\`、\\\\`INSERT\\\\`、\\\\`UPDATE\\\\`、\\\\`DELETE\\\\`）。列定义、约束和索引都一致缩进。
+答：完全可以。该工具处理DDL（\\\`CREATE\\\`、\\\`ALTER\\\`、\\\`DROP\\\`）以及DML（\\\`SELECT\\\`、\\\`INSERT\\\`、\\\`UPDATE\\\`、\\\`DELETE\\\`）。列定义、约束和索引都一致缩进。
 
-**问：它支持PostgreSQL特定的语法如\\\\`SELECT DISTINCT ON\\\\`或\\\\`RETURNING\\\\`吗？**
-答：支持。PostgreSQL方言模式处理PostgreSQL特定的关键字、运算符（\\\\`->>\\\\`、\\\\`@>\\\\`、\\\\`<@\\\\`、\\\\`?\\\\`）、数组语法和JSON函数。
+**问：它支持PostgreSQL特定的语法如\\\`SELECT DISTINCT ON\\\`或\\\`RETURNING\\\`吗？**
+答：支持。PostgreSQL方言模式处理PostgreSQL特定的关键字、运算符（\\\`->>\\\`、\\\`@>\\\`、\\\`<@\\\`、\\\`?\\\`）、数组语法和JSON函数。
 
 **问：非常大的查询呢——有大小限制吗？**
 答：该工具可以轻松处理大多数生产级查询。由于它完全在你的浏览器中运行，实际限制取决于你设备的内存。
@@ -10154,7 +10154,7 @@ WHERE
 ToolboxPro SQL格式化工具让清理任何SQL查询变得轻而易举。粘贴你的查询，选择你的方言和样式偏好，几秒钟内即可获得完美格式化的SQL。无需注册，无需安装，数据不会离开你的设备。
 
 立即在下一个查询中试试免费的SQL格式化工具：trytoolboxpro.com/tools/sql-formatter。
-    |,
+`,
   },
   {
     slug: "color-picker-online-guide",
@@ -10382,7 +10382,7 @@ Color selection is a fundamental skill for anyone building for the web. Whether 
 Understanding the differences between HEX, RGB, and HSL gives you the flexibility to work in whatever format suits your task. Applying basic color theory — the color wheel, the 60-30-10 rule, and contrast requirements — elevates your work from functional to polished. And using a free, instant online tool like the [ToolboxPro Color Picker](/tools/color-picker) means you can experiment, validate, and execute your color decisions in seconds.
 
 No sign-up, no installation, no cost. Open the tool, pick a color, and start creating.
-    |,
+`,
     contentZh: `## 在线取色完全指南：颜色选择与调色技巧
 
 颜色是设计师和开发者工具箱中最强大的工具之一。正确的配色方案能让网站看起来精致专业，而搭配不当的色彩则会使用户感到困惑并流失。无论你是在构建品牌标识、设计用户界面，还是调试 CSS 样式，掌握高效选取和操作颜色的能力都是一项基本技能。
@@ -10599,7 +10599,7 @@ color: #9CA3AF;            /* 浅灰色 — 约 2.7:1 对比度 ✗ */
 理解 HEX、RGB 和 HSL 之间的差异，让你可以灵活地使用适合当前任务的任何格式。应用基本的色彩理论——色轮、60-30-10 法则和对比度要求——能让你的作品从功能完善提升到精致美观。使用免费的即时在线工具如 [ToolboxPro 取色器](/tools/color-picker)，你可以即时实验、验证并执行你的颜色决策。
 
 无需注册、无需安装、无需费用。打开工具，选取颜色，开始创作。
-    |,
+`,
   },
   {
     slug: "resize-images-online",
