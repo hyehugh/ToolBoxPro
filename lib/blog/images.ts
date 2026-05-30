@@ -40,6 +40,11 @@ export const blogImages: BlogImage[] = [
   { blog: "free-online-image-compressors-compared-quality", toolSlug: "image-compressor", image: "/blog/image-compressor.png" },
   { blog: "online-pdf-tools-client-side-vs-server-side", toolSlug: "pdf-merger", image: "/blog/pdf-merger.png" },
   { blog: "best-free-online-regex-testers-2026", toolSlug: "regex-tester", image: "/blog/regex-tester.png" },
+  { blog: "password-strength-guide", toolSlug: "password-strength", image: "/blog/password-strength-guide.png" },
+  { blog: "html-preview-online", toolSlug: "html-preview", image: "/blog/html-preview-online.png" },
+  { blog: "sql-formatting-guide", toolSlug: "sql-formatter", image: "/blog/sql-formatting-guide.png" },
+  { blog: "color-picker-online-guide", toolSlug: "color-picker", image: "/blog/color-picker-online-guide.png" },
+  { blog: "resize-images-online", toolSlug: "image-resizer", image: "/blog/resize-images-online.png" },
 ];
 
 export function getBlogImage(slug: string): string | undefined {

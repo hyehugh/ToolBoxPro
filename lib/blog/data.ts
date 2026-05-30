@@ -4482,7 +4482,129 @@ Modern implementations also use **Myers' algorithm**, which is optimized for cod
 
 **Are my texts uploaded to a server?** No. Everything runs in your browser using JavaScript. Your data never leaves your device.
 
-**What's the difference between unified diff and side-by-side?** Unified diff shows changes in a single column with context lines. Side-by-side (which our tool uses) shows both versions simultaneously — easier to read for most use cases.`},
+**What's the difference between unified diff and side-by-side?** Unified diff shows changes in a single column with context lines. Side-by-side (which our tool uses) shows both versions simultaneously — easier to read for most use cases.`,
+  contentZh: `## 什么是文本差异对比工具？
+
+文本差异对比工具（简称"差异对比工具"）用于比较两段文本，并高亮显示它们之间的差异。无论你是在审查代码变更、比较文档版本，还是检查抄袭，差异工具都能精确地展示出每一处变化——精确到单个字符。
+
+差异工具是 Git 等版本控制系统的基础组件，但当你需要快速比较而无需搭建仓库时，独立的差异对比工具就显得格外珍贵。
+
+## 为什么要使用差异对比工具？
+
+- **代码审查** —— 在部署前比较脚本的新旧版本
+- **文档修订** —— 精确查看编辑对合同做了哪些修改
+- **抄袭检测** —— 快速发现不同提交之间的复制内容
+- **配置文件** —— 捕捉配置文件备份中的意外变更
+- **数据迁移** —— 验证迁移后源数据和目标数据是否一致
+
+## 差异对比的工作原理
+
+### 逐行对比
+
+这是最常用的模式。每一行都会被比较，工具会显示：
+
+- **绿色**（新增）—— 新文本中有但旧文本中没有的行
+- **红色**（删除）—— 旧文本中有但新文本中没有的行
+- **白色**（未变更）—— 两个版本中完全相同的行
+
+### 逐字符对比
+
+对于精细编辑，逐字符对比能显示行*内部*的变化。如果你将"colour"改成了"color"，逐行对比只会显示整行发生了变化，而逐字符对比则会精确地高亮显示"u"被删除、"r"被新增。
+
+### 逐词对比
+
+介于逐行和逐字符之间。新增和删除按单词而不是按字符显示——非常适合散文和文档。
+
+## 如何使用差异对比工具
+
+### 第一步：准备文本
+
+将原始文本复制到左侧面板，将修改后的文本复制到右侧面板。顺序很重要——工具会显示从左侧*到*右侧发生了什么变化。
+
+### 第二步：即时对比
+
+大多数差异工具会随着你的输入或粘贴实时更新。你无需点击任何按钮——高亮显示会立即呈现。
+
+### 第三步：审查输出
+
+浏览高亮显示的差异：
+
+| 颜色 | 含义 | 需要检查的内容 |
+|------|------|---------------|
+| 绿色 | 新增行 | 确认新增内容正确无误 |
+| 红色 | 删除行 | 确认删除是故意的 |
+| 黄色高亮 | 行内变化 | 仔细核对修改过的单词/字符 |
+
+### 第四步：复制或合并
+
+确认无误后，你可以：
+- 将结果复制到剪贴板
+- 下载差异报告
+- 手动应用更改
+
+## 实际示例
+
+### 示例 1：文档修订
+
+**原文：**
+\`\`\`
+The quick brown fox jumps over the lazy dog.
+\`\`\`
+
+**修改后：**
+\`\`\`
+The quick brown fox leaps over the lazy cat.
+\`\`\`
+
+**差异结果：**
+- 第 1 行："jumps" → "leaps"（逐词变化）
+- 第 1 行："dog" → "cat"（逐词变化）
+
+### 示例 2：代码变更
+
+**修改前：**
+\`\`\`javascript
+function greet(name) {
+  return "Hello, " + name;
+}
+\`\`\`
+
+**修改后：**
+\`\`\`javascript
+function greet(name, time) {
+  return \`Good \${time}, \${name}\`;
+}
+\`\`\`
+
+**差异结果：**
+- 函数签名新增参数 "time"
+- 返回值从字符串拼接改为模板字面量
+- 两行都发生了完全变更
+
+## 差异算法解析
+
+大多数差异工具（包括我们的工具）使用**最长公共子序列（LCS）**算法。它找出两段文本中按相同顺序出现的最长字符序列，然后将其他所有内容标记为变更。
+
+现代实现还使用**Myers 算法**，该算法针对代码差异进行了优化，通过优先显示连续的变更块而不是分散的单行差异，生成更易读的输出。
+
+## 获得清晰差异的技巧
+
+1. **规范化空白字符** —— 尾部空格和不一致的缩进会产生误报
+2. **修剪空行** —— 开头或结尾的多余空行会显示为新增/删除
+3. **使用一致的行尾符** —— Windows（CRLF）与 Unix（LF）的差异不可见，但会显示为整行变更
+4. **排序你的输入** —— 对于无序列表，先对两边进行排序再比较可以减少干扰
+
+## 常见问题
+
+**比较区分大小写吗？** 默认是区分的。大多数差异工具都有"忽略大小写"开关，当你只关心内容而不关心大小写时可以使用。
+
+**可以比较非常大的文件吗？** 可以。我们的差异对比工具可以轻松处理最大 1MB 的文件。对于更大的文件，性能取决于浏览器的内存。
+
+**它适用于代码还是纯文本？** 它适用于任何文本。编程语言适合使用逐行视图，而散文更适合使用逐词视图。
+
+**我的文本会上传到服务器吗？** 不会。所有操作都在你的浏览器中通过 JavaScript 完成。你的数据永远不会离开你的设备。
+
+**统一差异和并排差异有什么区别？** 统一差异在单列中显示变更及其上下文行。并排差异（我们的工具使用的方式）同时显示两个版本——对于大多数使用场景来说更易于阅读。`},
   {
     slug: "lorem-ipsum-generator",
     title: "Lorem Ipsum Generator: Free Dummy Text for Design Mockups",
@@ -4589,7 +4711,105 @@ It gained popularity in the 1960s with the release of Letraset sheets containing
 
 **Does the length of generated text vary?** Most generators produce consistent-length paragraphs (~50-100 words each). For precise control, use word-count mode.
 
-**Is there a privacy concern?** No. Generation happens entirely in your browser. No text is sent to any server.`},
+**Is there a privacy concern?** No. Generation happens entirely in your browser. No text is sent to any server.`,
+
+    contentZh: `## 什么是 Lorem Ipsum？
+
+Lorem Ipsum 是设计师、开发人员和排版人员在实际内容准备好之前，用于填充布局空间的占位文本。经典的段落自 16 世纪以来一直是行业标准占位文本，当时一位不知名的印刷工人打乱了一段拉丁文，制作了一本字体样本书。
+
+最常见的变体以以下内容开头：
+
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+## 为什么要使用占位文本？
+
+- **专注于布局**——真实文本会分散对视觉设计决策的注意力
+- **展示文本密度**——查看你的设计如何处理不同长度的内容
+- **客户演示**——占位文本让注意力保持在结构上，而非措辞
+- **响应式测试**——测试文本在不同屏幕尺寸下的换行效果
+- **打印模拟**——用看起来像真实文本的内容填充宣传册、传单和海报
+
+## 好的 Lorem Ipsum 生成器的功能
+
+### 1. 可自定义的段落数量
+
+有时你需要一个段落用于工具提示预览。有时你需要 20 个段落用于落地页模拟。一个好的生成器让你自由选择。
+
+### 2. 字数控制
+
+对于精确的布局测试，生成恰好 50、100 或 500 个单词。这对于以下情况至关重要：
+- 测试特定字数限制下的文本截断
+- 用逼真的输入长度填充表单字段
+- 为开发环境创建一致的测试数据
+
+### 3. 以 "Lorem Ipsum" 开头
+
+某些用例——尤其是面向客户的模拟——需要经典的 "Lorem ipsum dolor sit amet..." 开头。其他用例只需要任何拉丁文本，不关心第一行。一个好的生成器给你选择权。
+
+### 4. HTML 输出
+
+对于 Web 开发人员，生成包裹在 \`<p>\` 标签中的 lorem ipsum 可以在原型设计期间节省时间：
+
+\`\`\`html
+<p>Lorem ipsum dolor sit amet...</p>
+<p>Sed do eiusmod tempor...</p>
+\`\`\`
+
+### 5. 替代变体
+
+虽然经典的 lorem ipsum 是拉丁文，但有时你可能想要：
+
+- **西塞罗**——公元前 45 年罗马政治家西塞罗的原始文本
+- **黑客 ipsum**——以技术为主题的占位文本（"sudo apt-get install dolor sit amet"）
+- **企业 ipsum**——商业行话占位文本（"利用敏捷框架提供稳健的概要"）
+- **海盗 ipsum**——有趣的海盗主题文本（"Prow scuttle parrel provost Sail ho"）
+
+## 如何生成 Lorem Ipsum
+
+### 使用 ToolboxPro
+
+1. 访问我们的 [Lorem Ipsum 生成器](/tools/lorem-ipsum-generator)
+2. 选择输出模式：段落、单词或字节
+3. 设置数量（例如，5 个段落或 100 个单词）
+4. 切换是否以 "Lorem ipsum dolor sit amet" 开头
+5. 选择纯文本或 HTML 格式
+6. 点击**生成**——你的文本立即出现
+7. 一键复制
+
+### 手动生成（JavaScript）
+
+\`\`\`javascript
+const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit...";
+function generateParagraphs(count) {
+  return Array(count).fill(loremIpsum).join('\\n\\n');
+}
+\`\`\`
+
+## 使用占位文本的最佳实践
+
+1. **不要依赖它进行用户测试**——真实用户需要真实内容才能提供准确反馈
+2. **在发布前替换为真实文本**——搜索引擎会索引你的内容；lorem ipsum 损害 SEO
+3. **使段落长度匹配你的用例**——博客文章需要 5-10 个段落；工具提示需要 1 个
+4. **Web 原型使用 HTML 格式**——节省从纯文本转换的时间
+5. **考虑可读性测试**——lorem ipsum 不能测试易读性；使用真实文本进行测试
+
+## Lorem Ipsum 的历史
+
+这段文字出自西塞罗公元前 45 年所著的 *De Finibus Bonorum et Malorum*（论善恶的终极目的）第 1.10.32 和 1.10.33 节。"lorem ipsum" 这个确切词语是 "dolorem ipsum"（痛苦本身）的变体。
+
+它在 20 世纪 60 年代随着包含 lorem ipsum 段落的 Letraset 字帖的发布而流行起来，后来随着 Aldus PageMaker 等桌面出版软件而更加普及。
+
+## 常见问题
+
+**Lorem ipsum 是随机的吗？** 不是。它是真实拉丁文本的打乱版本。真正的随机文本看起来不像自然语言。
+
+**可以在商业项目中使用 lorem ipsum 吗？** 可以。它是来自古代的公共领域文本。
+
+**为什么被称为"希腊化"文本？** 在设计术语中，使用占位文本被称为 "greeking"——无论文本实际上是希腊文还是拉丁文。
+
+**生成文本的长度会变化吗？** 大多数生成器产生长度一致的段落（每个约 50-100 个单词）。如需精确控制，请使用字数模式。
+
+**有隐私问题吗？** 没有。生成完全在你的浏览器中进行。没有文本被发送到任何服务器。`},
   {
     slug: "text-to-slug",
     title: "URL Slug Generator: How to Convert Text to Clean SEO Slugs",
@@ -4739,7 +4959,147 @@ function slugify(text) {
 
 **Can I change a slug after publishing?** You can, but you should set up a 301 redirect from the old URL to the new one. Otherwise, any links to the old URL will break.
 
-**Does casing matter in URLs?** While web servers typically treat URLs case-insensitively, lowercase slugs are the universal convention. Mixed-case URLs can cause duplicate content issues.`},
+**Does casing matter in URLs?** While web servers typically treat URLs case-insensitively, lowercase slugs are the universal convention. Mixed-case URLs can cause duplicate content issues.`,
+    contentZh: `## 什么是 URL Slug？
+
+URL slug 是 URL 中用于以人类可读方式标识特定页面的部分。例如，在以下 URL 中：
+
+\`\`\`
+https://example.com/blog/url-slug-generator-guide
+\`\`\`
+
+slug 是 \`url-slug-generator-guide\`。它是域名和分类路径后面的文本。
+
+Slug 对于以下方面至关重要：
+- **SEO**——搜索引擎使用 slug 文本来理解页面内容
+- **可读性**——用户在点击前就能知道页面内容
+- **分享**——在消息或社交媒体上分享时，干净的 slug 看起来很专业
+- **可访问性**——屏幕阅读器受益于描述性 URL 文本
+
+## 为什么需要文本转 Slug 转换
+
+原始文本——尤其是标题——包含在 URL 中无效或有问题的字符：
+
+| 字符 | 问题 | Slug 替换 |
+|-----------|---------|------------------|
+| 空格 | 在 URL 中无效 | 连字符 (-) |
+| 大写字母 | 技术上有效但不一致 | 小写 |
+| 引号 | 无效 | 删除 |
+| 撇号 | 无效 | 删除或保留 |
+| 逗号 | 保留字符 | 删除 |
+| 括号 | 可能破坏链接解析 | 删除 |
+| 冒号、分号 | 保留字符 | 删除 |
+| 带重音符号的字符 | 兼容性问题 | ASCII 等价（如 é → e） |
+| 特殊字符 (!, @, #, $, %, ^, &, *) | 保留或不安全 | 删除 |
+| 斜杠 (/, \\\\) | 路径分隔符 | 删除 |
+| 多个连字符 | 产生难看的 URL | 合并为单个连字符 |
+| 开头/结尾连字符 | 看起来像损坏 | 修剪 |
+
+## Slug 生成器的工作原理
+
+### 第一步：规范化
+
+将文本转换为小写，并去除开头和结尾的空白。
+
+### 第二步：音译
+
+将带重音符号和非 ASCII 字符转换为最接近的 ASCII 等价字符：
+- "café" → "cafe"
+- "über" → "uber"
+- "façade" → "facade"
+
+### 第三步：移除无效字符
+
+删除除字母、数字、空格和连字符之外的所有内容。
+
+### 第四步：用连字符替换空格
+
+将所有空格（和允许的分隔符）替换为单个连字符。
+
+### 第五步：合并和修剪
+
+将多个连续连字符替换为单个连字符，然后从两端修剪连字符。
+
+## 如何使用我们的文本转 Slug 工具
+
+1. 访问我们的 [Slug 生成器](/tools/text-to-slug)
+2. 输入或粘贴你的文本（例如，"如何在 10 分钟内烤蛋糕！"）
+3. 实时查看生成的 slug："如何在-10-分钟内烤蛋糕"
+4. 点击**复制**将 slug 复制到剪贴板
+
+## 示例
+
+| 原始文本 | 生成的 Slug |
+|---------------|----------------|
+| 我的第一篇博客文章！ | 我的第一篇博客文章 |
+| 10 种省钱的方法 | 10-种省钱的方法 |
+| Cómo Hacer Paella Valenciana | como-hacer-paella-valenciana |
+| 汤姆和杰瑞：大电影（2024） | 汤姆和杰瑞大电影-2024 |
+| React 19 有什么新功能？ | react-19-有什么新功能 |
+| 100% 纯棉——立即购买！ | 100-纯棉-立即购买 |
+| 咖啡馆与面包店 | 咖啡馆与面包店 |
+| _重要——不要删除_ | 重要-不要删除 |
+
+## Slug 的 SEO 最佳实践
+
+### 要做的 ✅
+
+- **保持简短**——3-5 个词是理想的（Google 在搜索结果中会截断长 slug）
+- **包含主要关键词**——slug 是一个排名因素
+- **使用连字符**——Google 推荐连字符而非下划线
+- **使其可读**——用户应能仅从 slug 了解页面主题
+- **保持一致**——在整个网站中使用相同的 slug 格式
+
+### 不要做的 ❌
+
+- **不要使用停用词**——尽可能删除"的"、"了"、"和"等词
+- **不要包含日期**——除非你的内容有时效性，否则日期会让你 URL 过时
+- **发布后不要更改 slug**——这会破坏现有链接并损失 SEO 价值
+- **不要仅使用 ID**——\`/p/12345\` 无法告诉搜索引擎关于你内容的任何信息
+- **不要不必要地包含子分类**——\`/products/shoes/running/nike/air-zoom\` 太深了
+
+## Slug 与 URL 路径：有什么区别？
+
+Slug 是 URL 路径的最后一段。完整路径可能包含分类或日期层级：
+
+\`\`\`
+example.com/blog/2026/05/text-to-slug-guide
+│                │     │   │              │
+│                │     │   └── Slug       │
+│                │     └── 日期段         │
+│                └── 分类段               │
+└── 域名                                   │
+                                          │
+              这整个是 URL 路径
+\`\`\`
+
+大多数现代 SEO 策略推荐扁平化 URL 结构，尽量减少路径段，将重点放在 slug 本身。
+
+## 程序化 Slug 生成
+
+\`\`\`javascript
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\\w\\s-]/g, '')     // 删除非单词字符（空格和连字符除外）
+    .replace(/[\\s_]+/g, '-')       // 用连字符替换空格和下划线
+    .replace(/-+/g, '-')           // 合并多个连字符
+    .replace(/^-+|-+$/g, '');     // 修剪开头和结尾的连字符
+}
+\`\`\`
+
+## 常见问题
+
+**在 URL 中应该使用连字符还是下划线？** 连字符。Google 将连字符视为单词分隔符，但将下划线视为单词连接符。\`my-file-name\` 被解读为 "my file name"，但 \`my_file_name\` 被解读为 "myfilename"。
+
+**slug 应该多长？** 30-60 个字符是理想的。Google 的搜索结果通常显示 URL 的前 60 个字符。
+
+**Slug 会影响 SEO 排名吗？** 会——URL slug 是一个已确认的排名因素。在 slug 中包含目标关键词会带来微小但可衡量的 SEO 提升。
+
+**发布后可以更改 slug 吗？** 可以，但应该设置从旧 URL 到新 URL 的 301 重定向。否则，任何指向旧 URL 的链接都会失效。
+
+**URL 中的大小写重要吗？** 虽然 Web 服务器通常不区分 URL 大小写，但小写 slug 是通用惯例。大小写混合的 URL 可能导致重复内容问题。`},
   {
     slug: "image-to-base64",
     title: "Image to Base64 Converter: Inline Images Without External Files",
@@ -4871,7 +5231,129 @@ Email clients block external images by default. Base64 images always render:
 
 **Does Base64 work in all browsers?** Yes. Data URIs are supported in every modern browser, including Chrome, Firefox, Safari, and Edge. Support goes back to Internet Explorer 8.
 
-**What's the difference between Base64 and Base64URL?** Base64URL uses \`-\` and \`_\` instead of \`+\` and \`/\` to be safe for URL query parameters. For \`data:\` URIs, standard Base64 is used.`},
+standard Base64 is used.`,
+    contentZh: `## 什么是图片转 Base64？
+
+Base64 编码将二进制图片数据转换为由 64 个可打印字符（A-Z、a-z、0-9、+、/）组成的文本字符串。当您将图片转换为 Base64 时，会得到一个代表完整图片文件的长文本字符串。
+
+该字符串可以直接作为 **data URI** 嵌入 HTML、CSS 或 JavaScript 中：
+
+\`\`\`html
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA..." alt="内联图片">
+\`\`\`
+
+浏览器解码 Base64 字符串并渲染图片——无需额外的 HTTP 请求。
+
+## 何时使用内联 Base64 图片
+
+### ✅ 适用场景
+
+- **小图标和 UI 元素**——小于 5KB 时，额外的编码开销是值得的
+- **邮件签名**——邮件无法加载外部资源；Base64 图片可稳定渲染
+- **SVG 占位符**——在大图加载时嵌入微小的预览图
+- **单文件 HTML 页面**——离线文档、演示或原型
+- **API 响应**——在 JSON 中直接返回图片数据，无需额外请求
+- **网站图标（Favicons）**——将 favicon 数据直接嵌入 HTML 的 \\\`<head>\\\` 中
+- **小资源 CSS Sprite**——消除对小图片的 HTTP 请求
+
+### ❌ 避免使用
+
+- **大尺寸照片**——Base64 增加约 33% 的开销；100KB 的 JPG 会变成 133KB 的文本
+- **在多个页面中使用的图片**——外部文件缓存效果更好
+- **CDN 托管的资源**——CDN 分发 + 缓存始终优于内联嵌入
+- **超过 10KB 的图片**——随着图片大小增加，减少 HTTP 请求的论点逐渐失去优势
+
+## 数学分析：请求开销 vs 编码开销
+
+支持 Base64 的经典论点是减少 HTTP 请求。以下是权衡对比：
+
+| 图片大小 | HTTP 开销（约） | Base64 开销（33%） | 结论 |
+|----------|----------------|-------------------|------|
+| 1 KB | ~0.5 KB（头部 + TLS） | ~0.3 KB | Base64 胜出 |
+| 5 KB | ~0.5 KB | ~1.7 KB | 不相上下 |
+| 10 KB | ~0.5 KB | ~3.3 KB | HTTP 请求可能胜出 |
+| 50 KB | ~0.5 KB | ~16.5 KB | 外部文件胜出 |
+| 100 KB | ~0.5 KB | ~33 KB | 外部文件大幅胜出 |
+
+**经验法则：** 小于 5KB → 用 Base64。超过 10KB → 用外部文件。
+
+## 如何将图片转换为 Base64
+
+### 使用 ToolboxPro
+
+1. 访问我们的[图片转 Base64 转换器](/tools/image-to-base64)
+2. 点击或拖拽上传图片
+3. 工具即时生成 Base64 字符串
+4. 选择输出格式：
+   - **Data URI**——可直接粘贴到 \\\`src\\\` 属性中：\\\`data:image/png;base64,...\\\`
+   - **Raw Base64**——仅有编码字符串，无前缀
+5. 一键复制结果
+
+### 支持的格式
+
+| 格式 | MIME 类型 | 最佳用途 |
+|------|-----------|----------|
+| PNG | image/png | 图标、Logo、截图 |
+| JPG | image/jpeg | 照片、复杂图片 |
+| GIF | image/gif | 简单动画 |
+| WebP | image/webp | 现代网页优化图片 |
+| SVG | image/svg+xml | 矢量图形 |
+| BMP | image/bmp | 旧版兼容 |
+| ICO | image/x-icon | 网站图标 |
+
+## 在不同场景中使用 Base64 图片
+
+### 在 HTML 中
+
+\`\`\`html
+<img src="data:image/webp;base64,UklGRlA..." alt="主图占位符">
+\`\`\`
+
+### 在 CSS 中
+
+\`\`\`css
+.background-image {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0...");
+}
+\`\`\`
+
+### 在 JavaScript 中
+
+\`\`\`javascript
+const img = new Image();
+img.src = "data:image/png;base64,iVBORw0KGgo...";
+document.body.appendChild(img);
+\`\`\`
+
+### 在邮件 HTML 中
+
+邮件客户端默认阻止外部图片。Base64 图片始终能正常渲染：
+
+\`\`\`html
+<img src="data:image/png;base64,iVBORw0KGgo..." alt="Logo" />
+\`\`\`
+
+## 性能考量
+
+1. **Gzip 对 Base64 压缩效果良好**——虽然 Base64 文本比二进制大 33%，但 gzip 能显著缩小差距（压缩后通常仅为 3-5% 的开销）
+
+2. **CSS 背景图片不会单独缓存**——CSS 中的内联 Base64 意味着除非 CSS 文件本身被缓存，否则每次访问都必须重新下载整个样式表
+
+3. **HTML 大小影响首字节时间（TTFB）**——大型内联图片会增加初始 HTML 负载，延迟浏览器开始解析的时间
+
+4. **移动端考量**——内存有限的设备解析大型 Base64 字符串可能会有困难
+
+## 常见问题
+
+**Base64 是压缩吗？** 不是。Base64 是编码，不是压缩。编码后的字符串始终比原始二进制数据大约大 33%。
+
+**我可以将 Base64 转换回图片吗？** 可以。我们的工具可以将 Base64 字符串解码回可下载的图片文件。粘贴 Base64 字符串，然后点击**下载为图片**。
+
+**有文件大小限制吗？** 我们的工具可处理最大约 50MB 的图片。不过，实际使用中我们建议仅对 10KB 以下的图片使用 Base64。
+
+**Base64 在所有浏览器中都能用吗？** 可以。Data URI 在所有现代浏览器中均受支持，包括 Chrome、Firefox、Safari 和 Edge。支持可追溯到 Internet Explorer 8。
+
+**Base64 和 Base64URL 有什么区别？** Base64URL 使用 \\\`-\\\` 和 \\\`_\\\` 代替 \\\`+\\\` 和 \\\`/\\\`，以确保 URL 查询参数的安全性。对于 \\\`data:\\\` URI，使用标准 Base64。`},
   {
     slug: "image-filters",
     title: "Image Filters Online: Apply Grayscale, Sepia, Blur and More",
@@ -5052,7 +5534,179 @@ function applyGrayscale(imageData) {
 
 **Can I apply multiple filters at once?** Yes. Apply them one at a time and each builds on the previous result. The undo stack lets you step back through individual filter applications.
 
-**Are my images uploaded to a server?** No. All filter processing runs in your browser using the Canvas API. Your images stay on your device.`},
+**Are my images uploaded to a server?** No. All filter processing runs in your browser using the Canvas API. Your images stay on your device.`,
+
+    contentZh: `## 什么是图片滤镜
+
+图片滤镜是修改图像像素以产生视觉效果的算法。从经典的黑白转换到艺术模糊和色彩偏移，滤镜让您可以改变任何照片的情调和风格，无需 Photoshop 或专业编辑技能。
+
+滤镜通过操纵像素值来工作——调整亮度、对比度、颜色通道，或应用混合相邻像素的卷积矩阵。
+
+## 常见图片滤镜详解
+
+### 灰度
+
+通过移除颜色信息将图像转换为黑白。每个像素的 RGB 值合并为一个亮度值：
+
+\`\`\`
+Gray = 0.299 × R + 0.587 × G + 0.114 × B
+\`\`\`
+
+这些权重与人类感知相匹配——我们对绿色最敏感，对蓝色最不敏感。
+
+**使用场景：** 创建经典风格、减少颜色干扰、为黑白打印准备图像。
+
+### 怀旧
+
+为图像赋予温暖棕褐色调，让人联想到 19 世纪的照片。转换为灰度后，每个像素被着上暖色调：
+
+\`\`\`
+输出 R = Gray × 1.2
+输出 G = Gray × 0.93
+输出 B = Gray × 0.55
+\`\`\`
+
+**使用场景：** 创建复古、怀旧或历史感的图像。
+
+### 反色
+
+将所有颜色翻转为色环上的相反色。黑色变为白色，红色变为青色，绿色变为品红。
+
+\`\`\`
+输出 R = 255 - 输入 R
+输出 G = 255 - 输入 G
+输出 B = 255 - 输入 B
+\`\`\`
+
+**使用场景：** 创建底片效果、艺术构图或无障碍高对比度视图。
+
+### 亮度
+
+对所有 RGB 通道添加或减去一个常数值：
+
+\`\`\`
+输出 = 输入 + 亮度值
+\`\`\`
+
+正值使图像更亮；负值使图像更暗。结果被限制在 0-255 范围内。
+
+**使用场景：** 校正曝光不足或过度的照片，匹配一系列图像的光照。
+
+### 对比度
+
+拉伸或压缩像素值的范围。高对比度使暗部更暗、亮部更亮；低对比度产生更平坦、柔和的效果：
+
+\`\`\`
+输出 = ((输入 / 255 - 0.5) × 对比度因子 + 0.5) × 255
+\`\`\`
+
+**使用场景：** 让图像更加醒目（增加对比度）或创建柔和梦幻效果（降低对比度）。
+
+### 模糊
+
+将每个像素与其相邻像素平均，产生柔化效果。最常用的是**高斯模糊**，它使用加权平均，附近的像素比远处的像素影响更大：
+
+\`\`\`
+// 3×3 高斯核
+[1, 2, 1]
+[2, 4, 2]
+[1, 2, 1] × (1/16)
+\`\`\`
+
+**使用场景：** 背景模糊、遮盖敏感信息、创建景深效果或平滑肤色。
+
+### 饱和度
+
+控制颜色的强度。0% 时图像为灰度。100% 时颜色自然。200% 时颜色极其鲜艳（有时称为\"HDR 效果\"）。
+
+**使用场景：** 创建生动的社交媒体图像（增加）或柔和专业的风格（降低）。
+
+### 色调旋转
+
+将所有颜色沿色环旋转给定角度。旋转 180 度可创建互补色方案。
+
+**使用场景：** 快速更改配色方案、创意效果或校正偏色。
+
+## 如何在线应用滤镜
+
+### 使用 ToolboxPro
+
+1. 访问我们的[图片滤镜](/tools/image-filters)工具
+2. 通过点击或拖放上传图像
+3. 浏览工具栏中的可用滤镜
+4. 点击任意滤镜即时应用
+5. 调整强度滑块进行精细控制
+6. 查看实时前后对比预览
+7. 将滤镜后的图像下载为 JPG、PNG 或 WebP
+
+### 可用滤镜
+
+| 滤镜 | 作用 | 最佳用途 |
+|--------|-------------|----------|
+| 灰度 | 移除所有颜色 | 经典黑白摄影 |
+| 怀旧 | 暖棕色调 | 复古照片 |
+| 反色 | 反转所有颜色 | 底片效果 |
+| 亮度 | 调整明度 | 曝光校正 |
+| 对比度 | 拉伸色调范围 | 让图像更醒目 |
+| 模糊 | 柔化细节 | 背景模糊 |
+| 锐化 | 增强边缘 | 修复轻微模糊的照片 |
+| 饱和度 | 调整颜色强度 | 鲜艳或柔和风格 |
+| 色调旋转 | 偏移所有颜色 | 创意颜色变化 |
+| 不透明度 | 调整透明度 | 叠加效果 |
+
+## 进阶：叠加滤镜
+
+真实的图像编辑很少只使用单个滤镜。尝试组合使用：
+
+**复古人像效果：**
+1. 应用怀旧（强度：70%）
+2. 降低对比度（-20%）
+3. 添加轻微模糊（半径：1px）
+4. 降低饱和度（60%）
+
+**戏剧性黑白：**
+1. 应用灰度
+2. 增加对比度（+40%）
+3. 增加锐化（强度：2）
+4. 暗角效果（如可用）
+
+**梦幻柔光：**
+1. 应用模糊（半径：3px）
+2. 降低对比度（-20%）
+3. 增加亮度（+15%）
+4. 降低饱和度（80%）
+
+## Canvas API 方案
+
+如果您是开发者，以下是如何使用 HTML5 Canvas API 应用灰度滤镜：
+
+\`\`\`javascript
+function applyGrayscale(imageData) {
+  const pixels = imageData.data;
+  for (let i = 0; i < pixels.length; i += 4) {
+    const gray = 0.299 * pixels[i] + 0.587 * pixels[i+1] + 0.114 * pixels[i+2];
+    pixels[i] = gray;     // 红
+    pixels[i+1] = gray;   // 绿
+    pixels[i+2] = gray;   // 蓝
+    // pixels[i+3] = alpha（不变）
+  }
+  return imageData;
+}
+\`\`\`
+
+## 常见问题
+
+**图片滤镜会应用到原始文件吗？** 不会。滤镜应用于副本。原始图像不会被修改——您可以随时重新开始。
+
+**可以撤消滤镜吗？** 可以。我们的工具具有撤消/重做堆栈，您可以随时重置为原始图像。
+
+**最大图像尺寸是多少？** 我们的滤镜工具可以轻松处理最大 4096×4096 像素的图像。更大的图像可能会根据您的设备而变慢。
+
+**滤镜在透明 PNG 上有效吗？** 有效。Alpha 通道（透明度）在所有滤镜操作中都会保留。
+
+**可以同时应用多个滤镜吗？** 可以。逐个应用，每个滤镜在前一个结果基础上构建。撤消堆栈让您可以回退到单个滤镜应用之前的效果。
+
+**我的图像会上传到服务器吗？** 不会。所有滤镜处理均在您的浏览器中使用 Canvas API 运行。您的图像保留在您的设备上。`},
   {
     slug: "barcode-generator",
     title: "Barcode Generator: How to Create CODE128, EAN13 & More Online",
@@ -8167,5 +8821,2059 @@ Regular expressions are powerful but notoriously hard to debug. A good regex tes
 **最佳复杂可视化调试：** Debuggex 的铁路图无与伦比。
 `,
 
+  },
+
+  {
+    slug: "password-strength-guide",
+    title: "How to Create Strong Passwords Online: A Complete Security Guide",
+    titleZh: "如何在线创建强密码：完整安全指南",
+    description: "Learn how to create strong passwords with our complete security guide. Discover password strength tips, common attack methods, and best practices for online password security.",
+    descriptionZh: "学习如何通过我们的完整安全指南创建强密码。了解密码强度技巧、常见攻击方法和在线密码安全的最佳实践。",
+    date: "2026-05-30",
+    readTime: "7 min read",
+    category: "Security",
+    toolSlug: "password-generator",
+    content: `## Password Strength: How to Create and Manage Strong Passwords in 2026
+
+Passwords remain the first line of defense for nearly every online account — yet most people still use weak, guessable ones. In 2026, credential stuffing attacks have become more sophisticated, and a single compromised password can cascade into a full identity take-over. This guide explains what makes a password strong, how attackers crack them, and how to generate and manage unbreakable passwords using a free online tool.
+
+### What Makes a Password Strong?
+
+A strong password has three properties: **length**, **unpredictability**, and **uniqueness**. Let's break each one down.
+
+**Length is king.** Every additional character exponentially increases the number of possible combinations an attacker must try. A 6-character lowercase password has 308 million possibilities (26^6). A 12-character password with mixed case, digits, and symbols has 62 trillion trillion possibilities (94^12). Modern cracking hardware can exhaust the short one in seconds; the long one would take millions of years.
+
+**Unpredictability matters more than complexity rules.** "P@ssw0rd!" meets every typical complexity requirement — uppercase, lowercase, digit, symbol — yet it's one of the first guesses an attacker tries. Password crackers use dictionaries of leaked passwords and common substitutions. A random, machine-generated password is fundamentally stronger than any human-chosen one.
+
+**Uniqueness is non-negotiable.** Reusing passwords across sites is the single most dangerous habit. When one site gets breached (and they will), all your other accounts using the same password are immediately vulnerable. Every account should have its own unique password.
+
+| Password | Length | Character Set | Estimated Crack Time (RTX 4090) |
+|----------|--------|--------------|--------------------------------|
+| dog | 3 | lowercase only | Instant |
+| iloveyou | 8 | lowercase only | < 1 second |
+| P@ssw0rd! | 9 | mixed | < 2 seconds |
+| Tr0ub4dor&3 | 11 | mixed | ~ 2 minutes |
+| correct-horse-battery-staple | 28 | lowercase + hyphens | ~ 550 years |
+| uT7\$k9Lm\#2pQ!vX | 16 | full random | ~ 34 million years |
+
+### How Attackers Crack Passwords
+
+Understanding the adversary's methods helps you defend properly.
+
+**Brute force.** The attacker tries every possible combination of characters. This is the slowest method — pure brute force against a 12+ character random password is effectively impossible with current hardware. Attackers only use this as a last resort.
+
+**Dictionary attacks.** Instead of trying every combination, the attacker tries words from a pre-compiled list (dictionary). This includes common words, names, and leaked password databases. This is why "football", "princess", and "qwerty123" are cracked instantly — they appear in every cracker's dictionary.
+
+**Rule-based attacks (Hybrid).** The attacker takes dictionary words and applies transformation rules: capitalizing the first letter, appending digits, substituting "e" with "3", "a" with "@", "s" with "\$". This is how "P@ssw0rd!" gets cracked — it follows a predictable substitution pattern that every cracker knows.
+
+**Rainbow tables.** Pre-computed hash chains that reverse unsalted password hashes. If a website stores passwords with a weak hash (MD5, SHA1) and no salt, rainbow tables can reverse the hash to the original password in milliseconds. Modern sites use salted hashing (bcrypt, argon2) which makes rainbow tables useless.
+
+**Credential stuffing.** The attacker takes username/email and password pairs from a data breach and tries them on other popular services. Since password reuse is rampant, this is dramatically effective. In 2024 alone, over 2 billion credentials were leaked in data breaches.
+
+### How to Generate Strong Passwords
+
+The strongest passwords are computer-generated, completely random, and contain a mix of character types. This is where a dedicated password generator tool becomes essential.
+
+Here's an example of how to generate a strong password programmatically using JavaScript — the same logic used by our online tool:
+
+\`\`\`javascript
+function generatePassword(length = 16) {
+  const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const lower = 'abcdefghijklmnopqrstuvwxyz';
+  const digits = '0123456789';
+  const symbols = '!@#\$%^&*()_+-=[]{}|;:,.<>?';
+  const all = upper + lower + digits + symbols;
+
+  // Ensure at least one character from each category
+  const required = [
+    upper[Math.floor(Math.random() * upper.length)],
+    lower[Math.floor(Math.random() * lower.length)],
+    digits[Math.floor(Math.random() * digits.length)],
+    symbols[Math.floor(Math.random() * symbols.length)],
+  ];
+
+  const remaining = Array.from({ length: length - 4 }, () =>
+    all[Math.floor(Math.random() * all.length)]
+  );
+
+  // Shuffle using Fisher-Yates
+  const password = [...required, ...remaining];
+  for (let i = password.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [password[i], password[j]] = [password[j], password[i]];
+  }
+
+  return password.join('');
+}
+
+console.log(generatePassword(20));
+// Example output: "K8m\$pL9xQ!vN2jR%tW5"
+\`\`\`
+
+The key steps are:
+1. Define separate character pools for uppercase, lowercase, digits, and symbols
+2. Guarantee at least one character from each pool
+3. Fill the remaining characters randomly from the full pool
+4. Shuffle the entire result to avoid a predictable prefix pattern
+
+Don't write your own generator from scratch — use [/tools/password-generator](/tools/password-generator) which implements these best practices with a secure, cryptographically strong random-number generator that runs entirely in your browser.
+
+### Password Management Best Practices
+
+Even the strongest password is useless if you can't remember it or manage it safely. Here's a practical framework:
+
+**1. Use a password manager.** Apps like Bitwarden, 1Password, or KeePassXC generate and store unique passwords for every site. You only need to remember one master password. In 2026, password managers support biometric unlock, passkeys, and encrypted cloud sync, making them more convenient than ever.
+
+**2. Enable multi-factor authentication (MFA).** A strong password plus a second factor (TOTP code, hardware key, biometric) creates defense-in-depth. Even if your password is compromised, the attacker still can't log in without the second factor. Prioritize hardware security keys (FIDO2/WebAuthn) over SMS codes, which are vulnerable to SIM-swapping.
+
+**3. Avoid security questions.** "What was your first pet's name?" and "What street did you grow up on?" are easily guessable or discoverable through social media. Treat security question answers like additional passwords — either use random answers stored in your password manager, or avoid services that require them.
+
+**4. Check for breaches regularly.** Services like Have I Been Pwned let you check if your email or password has appeared in a known breach. If it has, change that password immediately and enable MFA on the account. Sites that support passkeys (WebAuthn) offer the strongest phishing-resistant authentication available.
+
+**5. Never share passwords.** No legitimate service will ask for your password via email, phone, or text message. If you receive such a request, it's a phishing attempt. Report it and do not respond.
+
+### Common Password Myths Debunked
+
+| Myth | Truth |
+|------|-------|
+| Passwords must be changed every 90 days | NIST now recommends **against** forced periodic changes — they lead to weaker, predictable passwords |
+| Longer passwords are always better | Length is critical, but a long dictionary sentence (e.g. "correct horse battery staple") is weaker than a shorter random string because words are crackable |
+| Security questions add real protection | Security question answers are often publicly discoverable — treat them as usernames, not passwords |
+| Symbol substitutions make passwords strong | "P@ssw0rd!" uses substitutions but is still guessed in the first few thousand attempts |
+| A password generator is unnecessary | Humans cannot generate truly random passwords — machine generation is essential for real randomness |
+
+### Why Online Password Generators Are Safe
+
+A common concern: "Doesn't typing my password into a website defeat the purpose?" The answer depends entirely on **where the generation happens**. Our [/tools/password-generator](/tools/password-generator) generates passwords entirely client-side — the JavaScript runs in your browser and never sends data to any server. You can verify this by disconnecting from the internet after the page loads; the generator still works. No passwords are stored, logged, or transmitted.
+
+For maximum security, look for password generators that:
+- Operate fully client-side (no data sent to a server)
+- Use cryptographically secure random number generation (window.crypto.getRandomValues, not Math.random)
+- Allow customization of length and character types
+- Display a strength meter that estimates crack time
+- Offer a copy-to-clipboard button (avoiding the clipboard's shared history)
+
+### Quick Reference: Password Strength Checklist
+
+Use this checklist every time you create a new password:
+
+- [ ] At least **16 characters** long (longer is better)
+- [ ] Contains **uppercase** and **lowercase** letters
+- [ ] Contains at least **one digit**
+- [ ] Contains at least **one symbol**
+- [ ] **Not based** on a dictionary word, name, or date
+- [ ] **Not reused** from any other account
+- [ ] **Not shared** with anyone
+- [ ] Stored in a **password manager**
+- [ ] Protected by **multi-factor authentication**
+- [ ] Generated by a **cryptographically secure random generator**
+
+### Summary
+
+Password security doesn't have to be complicated. The formula is simple: generate a unique, random, 16+ character password for every account, store them in a password manager, and enable MFA wherever possible. Stop trying to invent your own passwords — machines are far better at randomness than humans. Use [/tools/password-generator](/tools/password-generator) to create strong, secure passwords instantly, right in your browser.
+`,
+    contentZh: `## 密码强度：如何在2026年创建和管理强密码
+
+密码仍然是几乎所有在线账户的第一道防线——但大多数人仍然使用弱密码、容易被猜到的密码。2026年，凭证填充攻击变得更加复杂，一个密码被攻破就可能导致整个身份被盗用。本指南将解释什么构成强密码、攻击者如何破解密码，以及如何使用免费在线工具生成和管理牢不可破的密码。
+
+### 什么构成强密码？
+
+强密码具有三个特性：**长度**、**不可预测性**和**唯一性**。让我们逐一分析。
+
+**长度是王道。** 每增加一个字符，攻击者需要尝试的组合数量就会呈指数级增长。一个6位小写字母密码有3.08亿种可能组合（26^6）。而一个12位混合大小写字母、数字和符号的密码有62万亿亿种可能组合（94^12）。现代破解硬件可以在几秒钟内穷举短密码；而长密码则需要数百万年。
+
+**不可预测性比复杂的规则更重要。** "P@ssw0rd!" 满足所有典型的复杂性要求——大写字母、小写字母、数字、符号——但它却是攻击者首先尝试的密码之一。密码破解程序使用泄露密码的字典和常见替换模式。机器生成的随机密码从根本上比任何人选择的密码都要强。
+
+**唯一性没有商量余地。** 在不同网站重复使用密码是最危险的习惯。当一个网站被入侵时（这是迟早的事），你所有使用相同密码的其他账户都会立即面临风险。每个账户都应有自己独特的密码。
+
+| 密码 | 长度 | 字符集 | 预估破解时间（RTX 4090） |
+|------|------|--------|--------------------------|
+| dog | 3 | 仅小写字母 | 瞬间 |
+| iloveyou | 8 | 仅小写字母 | < 1秒 |
+| P@ssw0rd! | 9 | 混合 | < 2秒 |
+| Tr0ub4dor&3 | 11 | 混合 | ~ 2分钟 |
+| correct-horse-battery-staple | 28 | 小写字母+连字符 | ~ 550年 |
+| uT7\\$k9Lm\\#2pQ!vX | 16 | 完全随机 | ~ 3400万年 |
+
+### 攻击者如何破解密码
+
+了解对手的方法有助于你正确防御。
+
+**暴力破解。** 攻击者尝试所有可能的字符组合。这是最慢的方法——对于12位以上的随机密码，纯暴力破解在当前硬件条件下实际上是不可能的。攻击者只在万不得已时才使用这种方法。
+
+**字典攻击。** 攻击者不尝试每一种组合，而是使用预先编译好的列表（字典）中的单词进行尝试。这包括常见单词、人名和泄露的密码数据库。这就是为什么"football"、"princess"和"qwerty123"会被瞬间破解——它们出现在每个破解工具的字典中。
+
+**基于规则的攻击（混合攻击）。** 攻击者获取字典中的单词并应用转换规则：首字母大写、追加数字、将"e"替换为"3"、"a"替换为"@"、"s"替换为"$"。这就是"P@ssw0rd!"被破解的原因——它遵循了每个破解工具都知道的可预测替换模式。
+
+**彩虹表。** 预先计算好的哈希链，用于逆向未加盐的密码哈希。如果网站使用弱哈希（MD5、SHA1）且不加盐存储密码，彩虹表可以在毫秒内将哈希还原为原始密码。现代网站使用加盐哈希（bcrypt、argon2），这使得彩虹表毫无用武之地。
+
+**凭证填充。** 攻击者从数据泄露中获取用户名/邮箱和密码组合，然后在其他流行服务上尝试登录。由于密码重用现象普遍，这种方法非常有效。仅2024年，就有超过20亿个凭据在数据泄露中被泄露。
+
+### 如何生成强密码
+
+最强的密码是计算机生成的、完全随机的，并且包含多种字符类型。这时候，专门的密码生成工具就变得至关重要了。
+
+以下是一个使用JavaScript以编程方式生成强密码的示例——与我们的在线工具使用的逻辑相同：
+
+\`\`\`javascript
+function generatePassword(length = 16) {
+  const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const lower = 'abcdefghijklmnopqrstuvwxyz';
+  const digits = '0123456789';
+  const symbols = '!@#\\$%^&*()_+-=[]{}|;:,.<>?';
+  const all = upper + lower + digits + symbols;
+
+  // 确保每个类别至少有一个字符
+  const required = [
+    upper[Math.floor(Math.random() * upper.length)],
+    lower[Math.floor(Math.random() * lower.length)],
+    digits[Math.floor(Math.random() * digits.length)],
+    symbols[Math.floor(Math.random() * symbols.length)],
+  ];
+
+  const remaining = Array.from({ length: length - 4 }, () =>
+    all[Math.floor(Math.random() * all.length)]
+  );
+
+  // 使用Fisher-Yates算法打乱顺序
+  const password = [...required, ...remaining];
+  for (let i = password.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [password[i], password[j]] = [password[j], password[i]];
+  }
+
+  return password.join('');
+}
+
+console.log(generatePassword(20));
+// 示例输出："K8m\\$pL9xQ!vN2jR%tW5"
+\`\`\`
+
+关键步骤如下：
+1. 分别为大写字母、小写字母、数字和符号定义字符池
+2. 确保每个池中至少有一个字符
+3. 从完整的字符池中随机填充剩余字符
+4. 打乱整个结果，避免可预测的前缀模式
+
+不要从头开始编写自己的生成器——使用[/tools/password-generator](/tools/password-generator)（密码生成器），它实现了这些最佳实践，使用安全的、加密级的随机数生成器，完全在浏览器中运行。
+
+### 密码管理最佳实践
+
+即使是最强的密码，如果你记不住或无法安全地管理它，也是毫无用处的。以下是一个实用框架：
+
+**1. 使用密码管理器。** Bitwarden、1Password或KeePassXC等应用可以为每个网站生成和存储独特的密码。你只需记住一个主密码。2026年，密码管理器支持生物识别解锁、通行密钥（passkeys）和加密云同步，比以往任何时候都更方便。
+
+**2. 启用多因素认证（MFA）。** 强密码加上第二因素（TOTP验证码、硬件密钥、生物识别）可以形成纵深防御。即使你的密码被泄露，攻击者没有第二因素也无法登录。优先使用硬件安全密钥（FIDO2/WebAuthn），而不是容易受到SIM卡交换攻击的短信验证码。
+
+**3. 避免使用安全问题。** "你的第一只宠物叫什么？"和"你在哪条街上长大？"这些问题很容易被猜到或通过社交媒体发现。将安全问题的答案视为额外的密码——要么使用存储在密码管理器中的随机答案，要么避免使用需要安全问题的服务。
+
+**4. 定期检查数据泄露。** Have I Been Pwned等服务可以让你检查邮箱或密码是否出现在已知的数据泄露中。如果出现了，立即更改该密码并为该账户启用MFA。支持通行密钥（WebAuthn）的网站提供了最强的抗钓鱼认证方式。
+
+**5. 绝不共享密码。** 任何合法服务都不会通过电子邮件、电话或短信要求你提供密码。如果你收到此类请求，那就是钓鱼攻击。请举报，切勿回复。
+
+### 常见密码误区辨析
+
+| 误区 | 真相 |
+|------|------|
+| 密码必须每90天更换一次 | NIST现在**反对**强制定期更换——这会导致更弱、更可预测的密码 |
+| 密码越长一定越好 | 长度很关键，但较长的字典句子（如"correct horse battery staple"）比较短的随机字符串更弱，因为单词可以被破解 |
+| 安全问题能提供真正的保护 | 安全问题的答案通常可以通过公开途径发现——把它们当作用户名，而不是密码 |
+| 符号替换能让密码变强 | "P@ssw0rd!"使用了替换，但仍然在前几千次尝试中就会被猜出 |
+| 密码生成器没有必要 | 人类无法生成真正随机的密码——机器生成对于真正的随机性至关重要 |
+
+### 为什么在线密码生成器是安全的
+
+一个常见的担忧："把密码输入网站不是违背了目的吗？"答案完全取决于**密码生成发生在哪里**。我们的[/tools/password-generator](/tools/password-generator)（密码生成器）完全在客户端生成密码——JavaScript在浏览器中运行，从不向任何服务器发送数据。你可以通过断开网络连接来验证这一点：页面加载后断开网络，生成器仍然可以工作。没有密码被存储、记录或传输。
+
+为了最大安全性，请选择具备以下条件的密码生成器：
+- 完全在客户端运行（不向服务器发送数据）
+- 使用加密级安全的随机数生成（window.crypto.getRandomValues，而不是Math.random）
+- 允许自定义长度和字符类型
+- 显示密码强度指示器，估算破解时间
+- 提供一键复制按钮（避免剪贴板的共享历史记录）
+
+### 快速参考：密码强度检查清单
+
+每次创建新密码时使用此清单：
+
+- [ ] 至少**16个字符**长（越长越好）
+- [ ] 包含**大写字母**和**小写字母**
+- [ ] 包含至少**一个数字**
+- [ ] 包含至少**一个符号**
+- [ ] **不基于**字典中的单词、姓名或日期
+- [ ] **不与**任何其他账户重复
+- [ ] **不与**任何人共享
+- [ ] 存储在**密码管理器**中
+- [ ] 受**多因素认证**保护
+- [ ] 由**加密级安全的随机生成器**生成
+
+### 总结
+
+密码安全不必复杂。公式很简单：为每个账户生成一个独特的、随机的16位以上字符的密码，存储在密码管理器中，并在可能的情况下启用MFA。别再试图自己发明密码了——机器在随机性方面远胜人类。使用[/tools/password-generator](/tools/password-generator)（密码生成器），在浏览器中即时创建强大、安全的密码。
+`,
+  },
+  {
+    slug: "markdown-to-html-guide",
+    title: "Convert Markdown to HTML: A Complete Guide for Beginners",
+    titleZh: "Markdown 转 HTML 完全指南——初学者教程",
+    description: "Learn how to convert Markdown to HTML step by step. Complete guide covering syntax, tools, best practices, and real-time conversion online.",
+    descriptionZh: "一步步学习如何将 Markdown 转换为 HTML。涵盖语法、工具、最佳实践和在线实时转换的完整指南。",
+    date: "2026-05-30",
+    readTime: "7 min read",
+    category: "Developer Tools",
+    toolSlug: "markdown-to-html",
+    content: `## Markdown to HTML: Syntax Guide, Conversion Methods, and Best Practices
+
+Markdown is the de facto standard for writing on the modern web. From GitHub READMEs and documentation sites to blog posts and internal wikis, Markdown's simplicity makes it the preferred format for content creation. But ultimately, the web runs on HTML. Understanding how Markdown maps to HTML — and how to convert between them efficiently — is a fundamental skill for any developer, writer, or content creator.
+
+### What Is Markdown?
+
+Markdown is a lightweight markup language created by John Gruber in 2004. It was designed to be easy to read and write in its raw form while still being convertible to valid HTML. Unlike WYSIWYG editors that hide the underlying code, Markdown gives you plain-text control over structure — headings, lists, links, and emphasis — without requiring you to remember complex HTML tags.
+
+The philosophy is simple: write naturally, and let the converter handle the formatting. A heading gets a # prefix. A list item starts with a dash or asterisk. A link is written as [text](url). The result is text that looks structured even before conversion.
+
+### Markdown Syntax Reference
+
+Here is a comprehensive reference of standard Markdown syntax and its corresponding HTML output:
+
+| Markdown Element | Markdown Syntax | HTML Output |
+|-----------------|----------------|-------------|
+| Heading 1 | \`# Title\` | \`<h1>Title</h1>\` |
+| Heading 2 | \`## Title\` | \`<h2>Title</h2>\` |
+| Heading 3 | \`### Title\` | \`<h3>Title</h3>\` |
+| Bold | \`**text**\` | \`<strong>text</strong>\` |
+| Italic | \`*text*\` | \`<em>text</em>\` |
+| Link | \`[text](url)\` | \`<a href="url">text</a>\` |
+| Image | \`![alt](src)\` | \`<img src="src" alt="alt" />\` |
+| Inline Code | \`\`code\`\` | \`<code>code</code>\` |
+| Code Block | \`\`\`\`language\`\`\`\` | \`<pre><code class="language-...">...</code></pre>\` |
+| Unordered List | \`- item\` | \`<ul><li>item</li></ul>\` |
+| Ordered List | \`1. item\` | \`<ol><li>item</li></ol>\` |
+| Blockquote | \`> quote\` | \`<blockquote><p>quote</p></blockquote>\` |
+| Horizontal Rule | \`---\` | \`<hr />\` |
+| Paragraph | (blank line separated) | \`<p>text</p>\` |
+
+Most Markdown processors also support extended syntax like tables, task lists, strikethrough, and automatic URL linking. The exact feature set depends on the processor (CommonMark, GitHub Flavored Markdown, etc.). If you need to check a conversion, use our [free Markdown to HTML converter](/tools/markdown-to-html) for instant results.
+
+### How Markdown Conversion Works
+
+Converting Markdown to HTML follows a straightforward pipeline:
+
+\`\`\`
+Markdown Input
+      ↓
+    Parser (lexer + tokenizer)
+      ↓
+   Abstract Syntax Tree (AST)
+      ↓
+    HTML Renderer
+      ↓
+   HTML Output
+\`\`\`
+
+**Stage 1: Lexing.** The Markdown processor reads the raw text and breaks it into tokens — lexical units like "heading marker", "text span", "link start", "code fence". Each token carries metadata about its type and position.
+
+**Stage 2: Parsing.** The tokens are assembled into an Abstract Syntax Tree (AST), a hierarchical data structure that represents the document's structure. A heading containing bold text becomes a node tree: \`HeadingNode → StrongNode → TextNode("bold text")\`. This intermediate representation is key — it allows processors to support extensions, custom renderers, and output formats beyond HTML.
+
+**Stage 3: Rendering.** The AST is traversed and each node is serialized to its HTML equivalent. A \`HeadingNode(h1)\` produces \`<h1>\` tags. A \`LinkNode\` produces \`<a>\` tags. The result is valid, nested HTML.
+
+This three-stage architecture is what makes Markdown extensible. Tools like [marked](https://marked.js.org/), [markdown-it](https://github.com/markdown-it/markdown-it), and [remark](https://github.com/remarkjs/remark) all follow this pattern, with different levels of plugin support and performance characteristics.
+
+### CommonMark vs. GitHub Flavored Markdown
+
+Not all Markdown is the same. Two specifications dominate the ecosystem:
+
+**CommonMark** is a rigorous, unambiguous specification for Markdown created to resolve the inconsistencies between early implementations. It standardizes basic syntax — headings, emphasis, lists, links, and code blocks — ensuring that the same Markdown produces the same HTML everywhere. Most modern Markdown parsers are CommonMark-compliant.
+
+**GitHub Flavored Markdown (GFM)** extends CommonMark with features specific to GitHub's platform:
+
+| Feature | CommonMark | GFM |
+|---------|-----------|-----|
+| Tables | No | Yes |
+| Task lists | No | Yes |
+| Strikethrough | No | Yes |
+| Auto-linking URLs | No | Yes |
+| Fenced code blocks | Yes | Yes (with syntax highlighting) |
+| Emoji shortcodes | No | Yes |
+| Footnotes | No | No |
+
+GFM also adds some parsing rules: line breaks within a paragraph become \`<br>\` tags, and URLs are automatically converted to clickable links. When choosing between the two, CommonMark is the base that works everywhere, while GFM adds features essential for collaborative development.
+
+### Converting Markdown Programmatically
+
+If you need to convert Markdown in your own projects, here's how to do it in a few popular languages:
+
+**JavaScript / Node.js:**
+\`\`\`javascript
+import { marked } from 'marked';
+
+const markdown = '# Hello World\\n\\nThis is **bold** text.';
+const html = marked.parse(markdown);
+console.log(html);
+// <h1 id="hello-world">Hello World</h1>
+// <p>This is <strong>bold</strong> text.</p>
+\`\`\`
+
+**Python:**
+\`\`\`python
+import markdown
+
+md_text = '# Hello World\\n\\nThis is **bold** text.'
+html = markdown.markdown(md_text)
+print(html)
+# <h1>Hello World</h1>
+# <p>This is <strong>bold</strong> text.</p>
+\`\`\`
+
+**Ruby:**
+\`\`\`ruby
+require 'redcarpet'
+
+markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+html = markdown.render('# Hello World')
+puts html
+# <h1>Hello World</h1>
+\`\`\`
+
+Each of these libraries supports extensions for tables, syntax highlighting, and custom rendering. If you need to quickly test a conversion without writing code, use our [Markdown to HTML converter](/tools/markdown-to-html) — it processes everything client-side with zero server uploads.
+
+### Best Practices for Markdown
+
+1. **Always use blank lines around block elements.** Headings, lists, and code blocks should be separated from surrounding text by blank lines. This prevents parsing ambiguity and makes your raw Markdown more readable.
+
+2. **Preview before publishing.** Automatic conversion is reliable, but edge cases exist — especially with nested lists, code blocks inside lists, and raw HTML mixed with Markdown. Always preview the rendered output, or use a live converter like [/tools/markdown-to-html](/tools/markdown-to-html) to verify.
+
+3. **Use fenced code blocks with language tags.** Specifying the language after the opening triple backticks enables syntax highlighting in most renderers. Write \`\`\`\`python\`\`\`\` instead of just \`\`\`\`\`\`\`.
+
+4. **Avoid raw HTML unless necessary.** Markdown supports inline HTML, but mixing the two reduces portability. If you need complex tables or div structures, consider whether a different output format might serve better, or write the HTML directly after verifying your Markdown processor doesn't strip it.
+
+5. **Stick to CommonMark for maximum compatibility.** If your content might be rendered on different platforms (GitHub, GitLab, static site generators, forums), CommonMark-compatible Markdown ensures consistent results.
+
+6. **Escape special characters.** If you need to display a literal asterisk, backtick, or underscore, prefix it with a backslash: \`\\*not italic\\*\`.
+
+7. **Use reference-style links for readability.** Instead of inline links, define them at the bottom of your document:
+
+\`\`\`markdown
+I read [Clean Code][1] and [The Pragmatic Programmer][2].
+
+[1]: https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882
+[2]: https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/
+\`\`\`
+
+### Common Pitfalls
+
+Even experienced developers make these Markdown mistakes. Here's what to watch for:
+
+- **Mixing tabs and spaces in nested lists.** Markdown is space-sensitive. A tab might render differently on different systems. Always use spaces (2 or 4 per indentation level) for consistent results.
+- **Forgetting blank lines before code blocks.** A code block right after a paragraph without a blank line is sometimes parsed as a code span or ignored entirely.
+- **Unescaped underscores mid-word.** Writing \`my_variable_name\` might render as "my_variable_name" in some processors. Use backticks for code terms: \`\`my_variable_name\`\`.
+- **Over-nesting.** Most Markdown processors limit heading depth to 6 levels (h1-h6). Going deeper than that produces no effect. If you need more granular structure, reconsider your document hierarchy.
+- **Assume HTML is safe.** If user-generated Markdown is rendered on your site, remember that inline HTML is allowed in most processors. Sanitize the output with a library like DOMPurify before displaying it to other users.
+
+## FAQ
+
+**Q: What is the difference between Markdown and HTML?**  
+A: Markdown is a plain-text formatting syntax designed for readability and ease of writing. HTML is a markup language that describes the structure of web pages. Markdown is converted to HTML for display in browsers. You write in Markdown; browsers render HTML.
+
+**Q: Can I use HTML inside Markdown?**  
+A: Yes, most Markdown processors allow inline HTML. A \`<div>\` or \`<table>\` written in Markdown is passed through to the HTML output unchanged. However, mixing the two can reduce portability between different Markdown processors.
+
+**Q: Which Markdown processor should I use?**  
+A: For JavaScript projects, [marked](https://marked.js.org/) is lightweight and fast. For Node.js with CommonMark compliance, [markdown-it](https://github.com/markdown-it/markdown-it) offers extensive plugin support. For Python, the standard [\`markdown\`](https://python-markdown.github.io/) library works well. For Ruby, [Redcarpet](https://github.com/vmg/redcarpet) is the gold standard.
+
+**Q: Does Markdown support tables?**  
+A: Standard CommonMark Markdown does not support tables, but GitHub Flavored Markdown (GFM) and most extended processors do. Tables are created using pipes and dashes: \`| Header | Header |\` on the first line, \`|-------|--------|\` on the second, and \`| Cell | Cell |\` for rows.
+
+**Q: How do I add syntax highlighting to code blocks?**  
+A: Specify the language after the opening triple backticks: \`\`\`\`javascript\`\`\`\`. Most modern Markdown renderers (GitHub, VS Code, static site generators) automatically apply syntax highlighting based on this language tag. Try our online converter at [/tools/markdown-to-html](/tools/markdown-to-html) to see highlighted output.
+
+**Q: What is the best way to convert Markdown to HTML?**  
+A: For individual conversions, use an online tool like [/tools/markdown-to-html](/tools/markdown-to-html). For batch conversions, use a command-line tool like \`pandoc\` (\`pandoc input.md -o output.html\`). For programmatic use in your application, use a library matched to your programming language.
+
+**Q: Is Markdown safe for user-generated content?**  
+A: Not by default. Markdown processors allow inline HTML, including \`<script>\` tags and event handlers. Always sanitize the HTML output before rendering user-submitted Markdown. Libraries like DOMPurify (JavaScript) or Bleach (Python) can strip dangerous tags while preserving safe formatting.`,
+    contentZh: `## Markdown 转 HTML：语法指南、转换方法和最佳实践
+
+Markdown 是现代网络写作的事实标准。从 GitHub README 和文档站点到博客文章和内部 Wiki，Markdown 的简洁性使其成为内容创建的首选格式。但最终，网络运行在 HTML 上。理解 Markdown 如何映射到 HTML——以及如何在它们之间高效转换——是每个开发者、写作者和内容创作者的基本技能。
+
+### 什么是 Markdown？
+
+Markdown 是 John Gruber 于 2004 年创建的轻量级标记语言。它旨在原始形式下易于读写，同时仍可转换为有效的 HTML。与隐藏底层代码的所见即所得编辑器不同，Markdown 让你以纯文本方式控制结构——标题、列表、链接和强调——而无需记住复杂的 HTML 标签。
+
+原理很简单：自然书写，让转换器处理格式。标题用 # 前缀。列表项以横线或星号开头。链接写为 [文本](链接)。结果是即使转换前看起来也结构清晰的文本。
+
+### Markdown 语法参考
+
+以下是标准 Markdown 语法及其对应 HTML 输出的全面参考：
+
+| Markdown 元素 | Markdown 语法 | HTML 输出 |
+|--------------|--------------|----------|
+| 一级标题 | \`# 标题\` | \`<h1>标题</h1>\` |
+| 二级标题 | \`## 标题\` | \`<h2>标题</h2>\` |
+| 粗体 | \`**文本**\` | \`<strong>文本</strong>\` |
+| 斜体 | \`*文本*\` | \`<em>文本</em>\` |
+| 链接 | \`[文本](url)\` | \`<a href="url">文本</a>\` |
+| 图片 | \`![替代](src)\` | \`<img src="src" alt="替代" />\` |
+| 行内代码 | \`\`代码\`\` | \`<code>代码</code>\` |
+| 代码块 | \`\`\`\`语言\`\`\`\` | \`<pre><code class="language-...">...</code></pre>\` |
+| 无序列表 | \`- 项目\` | \`<ul><li>项目</li></ul>\` |
+| 有序列表 | \`1. 项目\` | \`<ol><li>项目</li></ol>\` |
+| 引用 | \`> 引用\` | \`<blockquote><p>引用</p></blockquote>\` |
+| 水平线 | \`---\` | \`<hr />\` |
+| 段落 | （空行分隔） | \`<p>文本</p>\` |
+
+大多数 Markdown 处理器还支持扩展语法，如表格、任务列表、删除线和自动 URL 链接。具体功能取决于处理器（CommonMark、GitHub Flavored Markdown 等）。如需检查转换结果，请使用我们的 [免费 Markdown 转 HTML 转换器](/tools/markdown-to-html) 即时获取结果。
+
+### Markdown 转换原理
+
+将 Markdown 转换为 HTML 遵循一个简单的流程：
+
+\`\`\`
+Markdown 输入
+      ↓
+  解析器（词法分析 + 标记化）
+      ↓
+  抽象语法树 (AST)
+      ↓
+  HTML 渲染器
+      ↓
+  HTML 输出
+\`\`\`
+
+**第一步：词法分析。** Markdown 处理器读取原始文本并将其分解为标记——如"标题标记"、"文本片段"、"链接开始"、"代码围栏"等词汇单元。每个标记携带关于其类型和位置的元数据。
+
+**第二步：解析。** 标记被组装成抽象语法树（AST），一个表示文档结构的层次数据结构。包含粗体文本的标题变成节点树：\`HeadingNode → StrongNode → TextNode("粗体文本")\`。这个中间表示是关键——它允许处理器支持扩展、自定义渲染器和 HTML 之外的输出格式。
+
+**第三步：渲染。** 遍历 AST，每个节点被序列化为对应的 HTML。\`HeadingNode(h1)\` 产生 \`<h1>\` 标签。\`LinkNode\` 产生 \`<a>\` 标签。结果是有效、嵌套的 HTML。
+
+这种三阶段架构是 Markdown 可扩展的关键。像 marked、markdown-it 和 remark 等工具都遵循这种模式，具有不同级别的插件支持和性能特性。
+
+### 常见问题
+
+**问：Markdown 和 HTML 有什么区别？**  
+答：Markdown 是一种纯文本格式化语法，设计用于可读性和易于编写。HTML 是一种描述网页结构的标记语言。Markdown 被转换为 HTML 后在浏览器中显示。你用 Markdown 书写；浏览器渲染 HTML。
+
+**问：我可以在 Markdown 中使用 HTML 吗？**  
+答：可以，大多数 Markdown 处理器允许内联 HTML。Markdown 中的 \`<div>\` 或 \`<table>\` 会原样传递到 HTML 输出中。然而，混合两者可能会降低在不同 Markdown 处理器之间的可移植性。
+
+**问：Markdown 支持表格吗？**  
+答：标准 CommonMark Markdown 不支持表格，但 GitHub Flavored Markdown (GFM) 和大多数扩展处理器支持。表格使用竖线和横线创建。
+
+**问：如何为代码块添加语法高亮？**  
+答：在开头三个反引号后指定语言：\`\`\`javascript\`\`\`。大多数现代 Markdown 渲染器（GitHub、VS Code、静态站点生成器）会根据这个语言标签自动应用语法高亮。请在 [/tools/markdown-to-html](/tools/markdown-to-html) 尝试我们的在线转换器，查看高亮输出。`
+  },
+
+  {
+    slug: "html-preview-online",
+    title: "How to Preview and Test HTML Online in Real Time",
+    titleZh: "如何在线实时预览和测试 HTML",
+    description: "Learn how to preview, test, and debug HTML code instantly in your browser with a free online HTML preview tool. Write, edit, and see results in real time without any setup.",
+    descriptionZh: "了解如何使用免费在线 HTML 预览工具在浏览器中即时预览、测试和调试 HTML 代码。无需任何设置即可编写、编辑并实时查看效果。",
+    date: "2026-05-30",
+    readTime: "7 min read",
+    category: "Developer Tools",
+    toolSlug: "html-preview",
+    content: `## How to Preview and Test HTML Online in Real Time
+
+HTML is the backbone of the web. Every webpage you visit — from a simple blog post to a complex single-page application — is rendered from HTML. Whether you're a beginner learning web development, a designer prototyping a layout, or a seasoned developer debugging a rendering issue, being able to preview HTML instantly is essential.
+
+Instead of setting up a local server, creating files, and switching between editors every time you need to test a snippet, a real-time HTML preview tool lets you write, edit, and see results all in one place. This guide explores why live HTML preview matters, what features to look for, and how to get the most out of [trytoolboxpro.com/tools/html-preview](/tools/html-preview).
+
+### Why Live HTML Preview Changes Your Workflow
+
+Previewing HTML in real time eliminates the edit-save-reload cycle that slows down front-end work. Here are the key benefits:
+
+**Instant feedback.** Every keystroke updates the rendered output immediately. You can see how a \`<div>\` layout change affects the overall page structure without leaving your editor. This tight feedback loop is especially valuable when learning CSS selectors or debugging complex nested layouts.
+
+**Zero setup required.** No need to install Apache, Nginx, or even a local dev server. No file system operations — just open the tool and start typing. This makes it ideal for quick experiments, prototyping UI components, and testing snippets from Stack Overflow or documentation sites.
+
+**Safe sandbox.** When you preview HTML in an online tool, the code runs in a sandboxed iframe. This means you can test experimental APIs, third-party embeds, or potentially unsafe markup without affecting your actual website or local environment.
+
+**Cross-device access.** An online preview tool works on any device with a browser — your laptop, tablet, or even your phone. This is invaluable when you need to test responsive layouts on different screen sizes without cloning a repo everywhere.
+
+### Key Features of a Great HTML Preview Tool
+
+Not all HTML previewers are created equal. Here's what separates a powerful tool from a basic one:
+
+| Feature | Why It Matters |
+|---------|---------------|
+| Real-time rendering | Output updates as you type, no manual refresh |
+| Syntax highlighting | Colored markup makes errors easy to spot |
+| Separate HTML/CSS/JS panels | Organize code and debug faster |
+| Responsive viewport toggle | Preview how your HTML looks on mobile, tablet, and desktop |
+| Download / copy output | Save or share your work instantly |
+| Dark mode | Reduces eye strain during long coding sessions |
+| Console output | See JavaScript errors and log messages without opening DevTools |
+
+Our tool at [/tools/html-preview](/tools/html-preview) includes all of these features and runs entirely in your browser — no data is sent to any server.
+
+### How to Use the HTML Preview Tool
+
+Using an online HTML previewer is straightforward. Here's a step-by-step guide using ToolboxPro's HTML Preview tool.
+
+#### Step 1: Open the Tool
+
+Navigate to the HTML Preview tool at [trytoolboxpro.com/tools/html-preview](/tools/html-preview). You'll see a split-screen interface: a code editor on the left and a live preview panel on the right.
+
+#### Step 2: Write Your HTML
+
+Start typing your HTML in the editor panel. The tool supports the full HTML5 specification, including semantic elements like \`<header>\`, \`<nav>\`, \`<article>\`, \`<section>\`, and \`<footer>\`. You can also embed CSS using a \`<style>\` tag and JavaScript using a \`<script>\` tag.
+
+\`\`\`html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Preview</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #f9fafb;
+      color: #111;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #6366f1;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hello, World!</h1>
+    <p id="message">This HTML is rendered live.</p>
+    <button onclick="document.getElementById('message').textContent = 'You clicked the button!'">
+      Click Me
+    </button>
+  </div>
+</body>
+</html>
+\`\`\`
+
+#### Step 3: Watch the Preview Update
+
+As soon as you type or paste the code, the right panel updates instantly. The rendered output shows a styled card with a heading, paragraph, and a working button.
+
+#### Step 4: Experiment and Edit
+
+Now tweak values and see changes immediately. Try changing the \`background\` color in the CSS from \`#f9fafb\` to \`#1e1e2e\` and the text color from \`#111\` to \`#eee\` — watch the entire preview switch to a dark theme in real time. Or change the button's \`background\` to \`#ef4444\` and see how the red accent changes the visual hierarchy.
+
+### HTML Preview vs. Local Development Server
+
+When should you use an online HTML previewer versus a full local development setup? Here's a comparison to help you decide:
+
+| Scenario | Online Preview Tool | Local Dev Server |
+|----------|-------------------|-----------------|
+| Quick snippet test | ✅ Best choice | ❌ Overkill |
+| Learning HTML/CSS | ✅ Best choice | ⚠️ Extra setup |
+| Prototyping a component | ✅ Very effective | ⚠️ Slower |
+| Full-stack application | ❌ Not suitable | ✅ Required |
+| Server-side code (PHP, Node) | ❌ Won't work | ✅ Required |
+| Working offline | ❌ Needs internet | ✅ Works locally |
+| Sharing with others | ✅ Easy (URL) | ❌ Needs deployment |
+
+### Common Use Cases for HTML Preview Tools
+
+#### 1. Learning Web Development
+
+If you're just starting with HTML and CSS, an online previewer is the fastest way to experiment. You can try new properties, see how \`<div>\` vs \`<span>\` affects layout, and understand the box model without any setup friction.
+
+\`\`\`html
+<!-- Try this to visualize the box model -->
+<div style="width: 200px; height: 100px; padding: 20px; border: 5px solid #6366f1; margin: 30px; background: #eef2ff;">
+  Content area (200px × 100px)
+</div>
+\`\`\`
+
+Paste this into [/tools/html-preview](/tools/html-preview) and see how padding, border, and margin affect the total rendered size. Try changing values and watch the output update instantly.
+
+#### 2. Testing Email Templates
+
+HTML emails are notoriously difficult to render consistently across clients. Before sending to your email marketing platform, preview the template in a browser-based HTML previewer. You can quickly check whether inline styles render correctly, \`<table>\`-based layouts hold together, and email-specific HTML patterns (like \`<!--[if mso]>\`) are properly formed.
+
+#### 3. Debugging Embed Codes
+
+When integrating third-party widgets — analytics scripts, social media embeds, chatbot widgets — you often need to test the embed code before adding it to your production site. Paste the embed HTML into the preview tool first. If it breaks the layout or throws JavaScript errors, you'll see the problem immediately instead of on your live site.
+
+#### 4. Prototyping Landing Page Sections
+
+Designers and front-end developers frequently prototype individual sections of a landing page — a hero section, a pricing table, a testimonial carousel — before integrating them into a larger framework. An HTML preview tool is perfect for this: you can iterate on the markup and styles in isolation, then copy the final HTML into your project.
+
+### Frequently Asked Questions
+
+**Q: Does the HTML preview tool support JavaScript?**  
+A: Yes. You can write JavaScript inside a \`<script>\` tag and it will execute in the iframe preview. Console output from your JavaScript code is also captured and displayed.
+
+**Q: Can I use external libraries like React or Tailwind CSS?**  
+A: Absolutely. You can load external libraries via \`<script src="...">\` or \`<link>\` tags from CDNs like unpkg.com, cdnjs.com, or jsdelivr.net. For example, add \`<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>\` to use React in your preview.
+
+**Q: Is my code saved or transmitted anywhere?**  
+A: No. The ToolboxPro HTML Preview tool runs entirely in your browser. Your HTML, CSS, and JavaScript code never leaves your device. There are no server requests, no data logging, and no sessions. Refresh the page and your code is gone.
+
+**Q: Can I preview HTML that uses server-side includes or PHP?**  
+A: No. The tool runs client-side only. Server-side languages like PHP, Python, Ruby, or Node.js cannot execute in a browser-based preview. For those, you need a full local development environment.
+
+**Q: Can I download the rendered output?**  
+A: Yes. Most HTML preview tools, including ToolboxPro's, let you download your HTML file with a single click. You can also copy the rendered HTML or the full source code.
+
+**Q: Does the preview support mobile viewport testing?**  
+A: Yes. You can toggle between desktop, tablet, and mobile viewport sizes to see how your HTML renders responsively. This is essential for testing media queries and responsive design patterns.
+
+### Conclusion
+
+A real-time HTML preview tool is one of the most practical additions to any web developer's toolkit. Whether you're learning the basics, prototyping a component, debugging a layout issue, or testing an embed code, the ability to write HTML and see the result instantly saves time and reduces frustration.
+
+Try the free HTML Preview tool at [trytoolboxpro.com/tools/html-preview](/tools/html-preview) — no sign-up, no installation, no data sent to servers. Just you, your code, and instant results.
+\`,
+    contentZh: `## 如何在线实时预览和测试 HTML
+
+HTML 是网络的基石。你访问的每个网页——从简单的博客文章到复杂的单页应用——都是由 HTML 渲染而成的。无论你是学习 Web 开发的初学者、设计布局的设计师，还是调试渲染问题的资深开发者，能够即时预览 HTML 都至关重要。
+
+无需每次测试代码片段时都搭建本地服务器、创建文件并在编辑器之间切换，实时 HTML 预览工具让你可以在一个地方编写、编辑和查看结果。本指南将探讨实时 HTML 预览为何重要、需要关注哪些功能，以及如何充分利用 [trytoolboxpro.com/tools/html-preview](/tools/html-preview)。
+
+### 实时 HTML 预览如何改变你的工作流程
+
+实时预览 HTML 消除了拖慢前端工作的编辑-保存-刷新循环。以下是主要优势：
+
+**即时反馈。** 每次按键都会立即更新渲染输出。你可以看到 \`<div>\` 布局变化如何影响整体页面结构，而无需离开编辑器。这种紧密的反馈循环在学习 CSS 选择器或调试复杂嵌套布局时尤为有价值。
+
+**无需任何设置。** 无需安装 Apache、Nginx 甚至本地开发服务器。无需文件系统操作——只需打开工具即可开始编写。这使其非常适合快速实验、UI 组件原型设计以及测试来自 Stack Overflow 或文档网站的代码片段。
+
+**安全的沙箱环境。** 当你在在线工具中预览 HTML 时，代码在沙箱化的 iframe 中运行。这意味着你可以测试实验性 API、第三方嵌入或潜在不安全的标记，而不会影响你的实际网站或本地环境。
+
+**跨设备访问。** 在线预览工具可在任何带有浏览器的设备上使用——笔记本电脑、平板甚至手机。当你需要在不同屏幕尺寸上测试响应式布局时，这非常有用，无需到处克隆仓库。
+
+### 优秀 HTML 预览工具的关键功能
+
+并非所有 HTML 预览器都一样。以下是一个强大的工具与基础工具的区别：
+
+| 功能特性 | 为何重要 |
+|---------|---------|
+| 实时渲染 | 输入时输出即时更新，无需手动刷新 |
+| 语法高亮 | 彩色标记使错误一目了然 |
+| 独立的 HTML/CSS/JS 面板 | 组织代码并更快调试 |
+| 响应式视口切换 | 预览 HTML 在手机、平板和桌面上的显示效果 |
+| 下载/复制输出 | 即时保存或分享你的工作 |
+| 深色模式 | 减少长时间编码时的眼睛疲劳 |
+| 控制台输出 | 无需打开 DevTools 即可查看 JavaScript 错误和日志信息 |
+
+我们在 [/tools/html-preview](/tools/html-preview) 的工具包含以上所有功能，并且完全在浏览器中运行——不会向任何服务器发送数据。
+
+### 如何使用 HTML 预览工具
+
+使用在线 HTML 预览器非常简单。以下是使用 ToolboxPro HTML 预览工具的逐步指南。
+
+#### 第一步：打开工具
+
+导航至 [trytoolboxpro.com/tools/html-preview](/tools/html-preview) 的 HTML 预览工具。你会看到一个分屏界面：左侧是代码编辑器，右侧是实时预览面板。
+
+#### 第二步：编写 HTML
+
+在编辑器面板中输入你的 HTML。该工具支持完整的 HTML5 规范，包括 \`<header>\`、\`<nav>\`、\`<article>\`、\`<section>\` 和 \`<footer>\` 等语义化元素。你还可以使用 \`<style>\` 标签嵌入 CSS，使用 \`<script>\` 标签嵌入 JavaScript。
+
+\`\`\`html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Preview</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #f9fafb;
+      color: #111;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #6366f1;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hello, World!</h1>
+    <p id="message">This HTML is rendered live.</p>
+    <button onclick="document.getElementById('message').textContent = 'You clicked the button!'">
+      Click Me
+    </button>
+  </div>
+</body>
+</html>
+\`\`\`
+
+#### 第三步：查看预览更新
+
+当你输入或粘贴代码后，右侧面板会立即更新。渲染输出显示一个带有标题、段落和可用按钮的样式化卡片。
+
+#### 第四步：试验和编辑
+
+现在调整值并立即查看变化。尝试将 CSS 中的 \`background\` 颜色从 \`#f9fafb\` 改为 \`#1e1e2e\`，文字颜色从 \`#111\` 改为 \`#eee\`——观察整个预览实时切换到深色主题。或者将按钮的 \`background\` 改为 \`#ef4444\`，看看红色强调色如何改变视觉层次。
+
+### HTML 预览 vs. 本地开发服务器
+
+何时使用在线 HTML 预览器，何时使用完整的本地开发环境？以下对比可帮助你决定：
+
+| 场景 | 在线预览工具 | 本地开发服务器 |
+|----------|-------------------|-----------------|
+| 快速测试代码片段 | ✅ 最佳选择 | ❌ 杀鸡用牛刀 |
+| 学习 HTML/CSS | ✅ 最佳选择 | ⚠️ 需要额外设置 |
+| 组件原型设计 | ✅ 非常高效 | ⚠️ 较慢 |
+| 全栈应用开发 | ❌ 不适合 | ✅ 必需 |
+| 服务器端代码（PHP、Node） | ❌ 无法运行 | ✅ 必需 |
+| 离线工作 | ❌ 需要网络 | ✅ 本地可用 |
+| 与他人分享 | ✅ 轻松（URL） | ❌ 需要部署 |
+
+### HTML 预览工具的常见使用场景
+
+#### 1. 学习 Web 开发
+
+如果你刚开始学习 HTML 和 CSS，在线预览器是最快的实验方式。你可以尝试新属性，了解 \`<div>\` 与 \`<span>\` 如何影响布局，并理解盒模型，而没有任何设置障碍。
+
+\`\`\`html
+<!-- 尝试此代码以可视化盒模型 -->
+<div style="width: 200px; height: 100px; padding: 20px; border: 5px solid #6366f1; margin: 30px; background: #eef2ff;">
+  内容区域 (200px × 100px)
+</div>
+\`\`\`
+
+将其粘贴到 [/tools/html-preview](/tools/html-preview)，查看 padding、border 和 margin 如何影响总渲染尺寸。尝试更改值并观察输出即时更新。
+
+#### 2. 测试电子邮件模板
+
+众所周知，HTML 电子邮件在不同客户端中难以保持一致的渲染效果。在发送到电子邮件营销平台之前，先在基于浏览器的 HTML 预览器中预览模板。你可以快速检查内联样式是否正确渲染、基于 \`<table>\` 的布局是否稳定，以及电子邮件特定的 HTML 模式（如 \`<!--[if mso]>\`）是否格式正确。
+
+#### 3. 调试嵌入代码
+
+当集成第三方小部件时——分析脚本、社交媒体嵌入、聊天机器人的小部件——你通常需要在将其添加到生产站点之前测试嵌入代码。先将嵌入的 HTML 粘贴到预览工具中。如果它破坏了布局或抛出 JavaScript 错误，你会立即看到问题，而不是在正式网站上才发现。
+
+#### 4. 原型设计着陆页部分
+
+设计师和前端开发人员经常在将着陆页的各个部分集成到更大的框架之前，先单独进行原型设计——例如英雄区域、定价表、推荐轮播。HTML 预览工具非常适合这个场景：你可以独立迭代标记和样式，然后将最终的 HTML 复制到项目中。
+
+### 常见问题解答
+
+**问：HTML 预览工具是否支持 JavaScript？**  
+答：是的。你可以在 \`<script>\` 标签内编写 JavaScript，它将在 iframe 预览中执行。你的 JavaScript 代码的控制台输出也会被捕获并显示。
+
+**问：我可以使用 React 或 Tailwind CSS 等外部库吗？**  
+答：完全可以。你可以通过来自 unpkg.com、cdnjs.com 或 jsdelivr.net 等 CDN 的 \`<script src="...">\` 或 \`<link>\` 标签加载外部库。例如，添加 \`<script src="https://unpkg.com/react@18/umd/react.production.min.js">\`</script>\` 即可在预览中使用 React。
+
+**问：我的代码会被保存或传输到任何地方吗？**  
+答：不会。ToolboxPro HTML 预览工具完全在你的浏览器中运行。你的 HTML、CSS 和 JavaScript 代码永远不会离开你的设备。没有服务器请求，没有数据记录，也没有会话。刷新页面后，你的代码就会消失。
+
+**问：我可以预览使用服务器端包含或 PHP 的 HTML 吗？**  
+答：不可以。该工具仅运行客户端代码。PHP、Python、Ruby 或 Node.js 等服务器端语言无法在基于浏览器的预览器中执行。对于这些情况，你需要完整的本地开发环境。
+
+**问：我可以下载渲染后的输出吗？**  
+答：可以。大多数 HTML 预览工具，包括 ToolboxPro 的，都允许你一键下载 HTML 文件。你还可以复制渲染后的 HTML 或完整的源代码。
+
+**问：预览工具是否支持移动视口测试？**  
+答：支持。你可以在桌面、平板和移动视口尺寸之间切换，查看 HTML 的响应式渲染效果。这对于测试媒体查询和响应式设计模式至关重要。
+
+### 结论
+
+实时 HTML 预览工具是任何 Web 开发者工具箱中最实用的工具之一。无论你是在学习基础知识、原型设计组件、调试布局问题还是测试嵌入代码，编写 HTML 并即时查看结果的能力都能节省时间并减少挫败感。
+
+立即尝试 [trytoolboxpro.com/tools/html-preview](/tools/html-preview) 的免费 HTML 预览工具——无需注册、无需安装、不会向服务器发送任何数据。只有你、你的代码和即时结果。
+\`,
+  },
+  {
+    slug: "sql-formatting-guide",
+    title: "Format SQL Queries Online: Best Practices and Tools",
+    titleZh: "SQL格式化在线工具：最佳实践与指南",
+    description: "Learn SQL formatting best practices — indentation, keyword casing, and clause alignment. Format and beautify SQL queries online for free with ToolboxPro.",
+    descriptionZh: "学习SQL格式化的最佳实践——缩进、关键字大小写和子句对齐。使用ToolboxPro免费在线格式化和美化SQL查询。",
+    date: "2026-05-30",
+    readTime: "6 min read",
+    category: "Developer Tools",
+    toolSlug: "sql-formatter",
+    content: `## Format SQL Queries Online: Best Practices and Tools
+
+SQL is the backbone of modern data management, but raw SQL queries written under deadline pressure can quickly become unreadable spaghetti. A single complex query — with multiple JOINs, nested subqueries, aggregate functions, and WHERE conditions — can span hundreds of characters on a single line. Formatting that query properly transforms it from a wall of text into a readable, maintainable, and debuggable piece of code.
+
+This guide covers SQL formatting best practices, common conventions across database dialects, and how the free [ToolboxPro SQL Formatter](/tools/sql-formatter) can keep your queries clean.
+
+### Why SQL Formatting Matters
+
+Unformatted SQL is more than an aesthetic problem. It directly impacts productivity, collaboration, and correctness:
+
+- **Readability.** A well-formatted query reveals its logical structure at a glance. You can see which columns belong to which table, which conditions filter the result, and how subqueries nest.
+- **Debugging speed.** Misplaced parentheses, missing join conditions, and incorrect filter logic are far easier to spot when the query is broken into lines and indented consistently.
+- **Code review.** Teammates reviewing a formatted SQL query spend their energy on the logic, not on parsing the formatting.
+- **Onboarding.** New developers inheriting formatted queries can understand the data model and query intent without first untangling the formatting.
+- **Copy-paste accuracy.** Formatted SQL reduces the chance of truncating or missing parts of a query when moving it between tools, editors, and documentation.
+
+### Industry SQL Formatting Conventions
+
+While every team has its own style guide, most follow a common set of conventions rooted in readability and maintainability. Here is a comparison of the most widely adopted rules:
+
+| Convention | Common Practice | Example |
+|---|---|---|
+| Keyword casing | UPPERCASE for SQL keywords | \\`SELECT\\`, \\`FROM\\`, \\`WHERE\\`, \\`JOIN\\` |
+| Column/table casing | lowercase or snake\\_case | \\`user\\_id\\`, \\`order\\_total\\` |
+| Clause alignment | Each major clause on its own line | \\`SELECT\\`, \\`FROM\\`, \\`WHERE\\` on separate lines |
+| Column separation | One column per line for 3+ columns | Indented under \\`SELECT\\` |
+| Join alignment | \\`JOIN\\` indented at clause level | Aligned with \\`FROM\\` |
+| Parentheses nesting | Indented inside open parens | Subqueries get one extra indent level |
+| Boolean operators | Operators at line start (not end) | \\`AND\\` / \\`OR\\` at beginning of line |
+| Comma placement | Leading commas (some teams) or trailing | Leading: easier to spot missing columns |
+
+### Manual Formatting vs. Automated Tools
+
+Formatting SQL manually is possible — but impractical for anything beyond trivial queries. Consider a production query with twelve JOINs, five CTEs, three window functions, and a \\`CASE\\` expression spanning twenty branches. Manually indenting and aligning that query is error-prone and time-consuming.
+
+Automated formatting tools handle these cases consistently:
+
+- They apply rules deterministically — the same input always produces the same output.
+- They handle edge cases like nested subqueries, string literals containing SQL-like text, and dialect-specific syntax (\\`LIMIT\\` vs. \\`TOP\\`, \\`ILIKE\\` vs. \\`LIKE\\`, array operators, JSON functions).
+- They normalize whitespace, remove accidental extra spaces, and preserve comments.
+- They support multiple SQL dialects — MySQL, PostgreSQL, SQL Server, Oracle, SQLite, and others.
+
+### Before and After: A Real Example
+
+Here is a typical unformatted query that might come from a production codebase or a generated ORM dump:
+
+\`\`\`sql
+SELECT u.id,u.name,u.email,o.id as order_id,o.total,o.created_at,oi.product_name,oi.quantity,oi.price,p.category,c.name as category_name FROM users u INNER JOIN orders o ON u.id=o.user_id INNER JOIN order_items oi ON o.id=oi.order_id INNER JOIN products p ON oi.product_id=p.id LEFT JOIN categories c ON p.category=c.id WHERE o.total>100 AND o.created_at>='2026-01-01' AND (p.category IS NOT NULL OR c.name IS NOT NULL) ORDER BY o.created_at DESC LIMIT 50;
+\`\`\`
+
+And here is the same query after automated formatting:
+
+\`\`\`sql
+SELECT
+  u.id,
+  u.name,
+  u.email,
+  o.id AS order_id,
+  o.total,
+  o.created_at,
+  oi.product_name,
+  oi.quantity,
+  oi.price,
+  p.category,
+  c.name AS category_name
+FROM
+  users u
+  INNER JOIN orders o ON u.id = o.user_id
+  INNER JOIN order_items oi ON o.id = oi.order_id
+  INNER JOIN products p ON oi.product_id = p.id
+  LEFT JOIN categories c ON p.category = c.id
+WHERE
+  o.total > 100
+  AND o.created_at >= '2026-01-01'
+  AND (
+    p.category IS NOT NULL
+    OR c.name IS NOT NULL
+  )
+ORDER BY
+  o.created_at DESC
+LIMIT 50;
+\`\`\`
+
+The difference is night and day. The formatted version reveals the query structure immediately: it selects eleven columns from four joined tables, filters by two conditions plus a nested OR group, and orders by a single column. A developer reading the unformatted version has to mentally parse the entire query to understand its shape.
+
+### Key SQL Formatting Rules You Should Follow
+
+#### 1. Capitalize SQL Keywords
+
+Always write SQL reserved words in UPPERCASE: \\`SELECT\\`, \\`FROM\\`, \\`WHERE\\`, \\`AND\\`, \\`OR\\`, \\`INNER JOIN\\`, \\`LEFT JOIN\\`, \\`GROUP BY\\`, \\`HAVING\\`, \\`ORDER BY\\`, \\`LIMIT\\`, \\`OFFSET\\`, \\`INSERT INTO\\`, \\`VALUES\\`, \\`UPDATE\\`, \\`SET\\`, \\`DELETE FROM\\`, \\`CREATE TABLE\\`, \\`ALTER TABLE\\`, \\`DROP TABLE\\`, \\`CREATE INDEX\\`, \\`CREATE VIEW\\`, \\`UNION\\`, \\`INTERSECT\\`, \\`EXCEPT\\`.
+
+This visually distinguishes keywords from identifiers (column names, table names, aliases) making the query easier to scan.
+
+#### 2. One Major Clause Per Line
+
+Each major clause of a query should start on a new line. This is the single highest-impact formatting change you can make:
+
+\`\`\`sql
+SELECT
+  column1,
+  column2
+FROM
+  table1
+  INNER JOIN table2 ON table1.id = table2.table1_id
+WHERE
+  condition1
+  AND condition2
+GROUP BY
+  column1,
+  column2
+HAVING
+  aggregate_condition
+ORDER BY
+  column1 DESC
+LIMIT
+  100;
+\`\`\`
+
+#### 3. Indent Subqueries and Parenthesized Expressions
+
+When a subquery or complex expression appears inside parentheses, indent it to show the nesting level:
+
+\`\`\`sql
+SELECT
+  u.name,
+  (
+    SELECT
+      COUNT(*)
+    FROM
+      orders o
+    WHERE
+      o.user_id = u.id
+      AND o.status = 'completed'
+  ) AS completed_orders
+FROM
+  users u
+WHERE
+  EXISTS (
+    SELECT
+      1
+    FROM
+      orders o
+    WHERE
+      o.user_id = u.id
+  );
+\`\`\`
+
+#### 4. Alias Tables Clearly
+
+Table aliases reduce repetition but should be meaningful. Avoid single-letter aliases like \\`a\\`, \\`b\\`, \\`c\\` unless the query is trivial. Use abbreviations that reflect the table name: \\`users \\-> u\\`, \\`order\\_items \\-> oi\\`, \\`product\\_categories \\-> pc\\`.
+
+Most SQL formatters preserve aliases while formatting the rest of the query structure.
+
+#### 5. Use Consistent Comma Placement
+
+Two schools exist:
+
+- **Trailing commas (traditional):** The comma follows each column. This matches most programming language conventions.
+- **Leading commas (modern):** The comma precedes each column. Advocates argue this makes it easier to spot a missing column and simplifies reordering columns.
+
+Both are valid. Choose one and apply it consistently. A SQL formatter can enforce whichever style you prefer.
+
+### Common SQL Formatting Pitfalls
+
+**Pitfall 1: Inline Functions Break Flow.** Long function calls like \\`ROW\\_NUMBER() OVER (PARTITION BY ... ORDER BY ...)\\` inside a SELECT clause can break line alignment. The fix: put each window function on its own line with its \\`OVER\\` clause on the same line or indented below.
+
+**Pitfall 2: Long IN Lists.** An \\`IN (...)\\` clause with fifty IDs should never appear on one line. Break it across lines:
+
+\`\`\`sql
+WHERE
+  user_id IN (
+    1001,
+    1002,
+    1003,
+    1004,
+    1005
+  );
+\`\`\`
+
+**Pitfall 3: String Literals Containing SQL.** When formatting SQL in a codebase (inside Python f-strings, JavaScript template literals, or Java prepared statements), format the SQL in isolation first, then embed it.
+
+**Pitfall 4: Dialect-Specific Syntax.** Not all SQL formatters support every dialect's extensions. PostgreSQL's \\`->>\\` JSON operator, MySQL's \\`\\`\\` backtick quoting, and SQL Server's square brackets all require dialect-aware formatting.
+
+### Using the ToolboxPro SQL Formatter
+
+The free [SQL Formatter tool at trytoolboxpro.com](/tools/sql-formatter) provides everything you need to clean up SQL queries:
+
+- **Multiple dialect support** — MySQL, PostgreSQL, SQL Server, Oracle, SQLite, and ANSI SQL.
+- **Customizable indentation** — spaces or tabs, configurable width (2, 4, or 8 spaces).
+- **Keyword casing options** — UPPERCASE (preferred), lowercase, or preserve original.
+- **Comma style** — trailing or leading, to match your team's convention.
+- **Real-time formatting** — paste your query and see the formatted result instantly, with no page reload.
+- **Copy with one click** — copy the formatted SQL to your clipboard for use in your editor, database client, or documentation.
+- **Privacy** — all formatting happens in your browser. Your SQL queries never leave your device.
+
+### Frequently Asked Questions
+
+**Q: Will the formatter preserve my SQL comments?**  
+A: Yes. Single-line comments (\\`-- comment\\`) and block comments (\\`/* comment */\\`) are preserved. The formatter only modifies whitespace and indentation.
+
+**Q: Can I format a \\`CREATE TABLE\\` statement?**  
+A: Absolutely. The formatter handles DDL (\\`CREATE\\`, \\`ALTER\\`, \\`DROP\\`) alongside DML (\\`SELECT\\`, \\`INSERT\\`, \\`UPDATE\\`, \\`DELETE\\`). Column definitions, constraints, and indexes are all indented consistently.
+
+**Q: Does it support PostgreSQL-specific syntax like \\`SELECT DISTINCT ON\\` or \\`RETURNING\\`?**  
+A: Yes. The PostgreSQL dialect mode handles PostgreSQL-specific keywords, operators (\\`->>\\`, \\`@>\\`, \\`<@\\`, \\`?\\`), array syntax, and JSON functions.
+
+**Q: What about very large queries — is there a size limit?**  
+A: The tool handles most production-sized queries comfortably. Since it runs entirely in your browser, the practical limit depends on your device's memory.
+
+**Q: Can I use it to format SQL inside a CI/CD pipeline?**  
+A: While the online tool is interactive, the same formatting logic can be adapted for programmatic use. The online formatter is ideal for one-off formatting needs, code review cleanup, and learning formatting conventions.
+
+### Conclusion
+
+Formatting SQL is not optional for serious development work. Clean, consistent SQL queries are easier to read, debug, review, and maintain. Whether you are a data analyst writing ad-hoc queries, a backend developer maintaining a production codebase, or a DBA auditing slow queries, adopting a formatting standard — and using an automated tool to enforce it — will save you time and reduce errors.
+
+The ToolboxPro SQL Formatter makes it trivial to clean up any SQL query. Paste your query, choose your dialect and style preferences, and get perfectly formatted SQL in seconds. No registration, no installation, no data leaving your machine.
+
+Try the free [SQL Formatter tool at trytoolboxpro.com/tools/sql-formatter](/tools/sql-formatter) on your next query.
+    |,
+
+    contentZh: `## 在线格式化SQL查询：最佳实践与工具指南
+
+SQL是现代数据管理的基石，但在时间压力下编写的原始SQL查询很快就会变成难以阅读的意大利面条式代码。一个包含多个JOIN、嵌套子查询、聚合函数和WHERE条件的复杂查询，可能单行就长达数百个字符。正确地格式化查询可以将其从一堵文字墙转变为可读、可维护、可调试的代码。
+
+本指南涵盖了SQL格式化的最佳实践、跨数据库方言的通用约定，以及如何使用免费的ToolboxPro SQL格式化工具来保持查询整洁。
+
+### 为什么SQL格式化很重要
+
+未格式化的SQL不仅仅是美观问题，它直接影响生产力、协作和正确性：
+
+- **可读性。** 格式良好的查询一目了然地揭示其逻辑结构。你可以看到哪些列属于哪个表，哪些条件过滤结果，以及子查询如何嵌套。
+- **调试速度。** 当查询被分解成多行并保持一致缩进时，放错位置的括号、缺失的连接条件和错误的过滤逻辑更容易被发现。
+- **代码审查。** 审查格式化SQL查询的团队成员可以将精力集中在逻辑上，而不是解析格式。
+- **新人上手。** 继承格式化查询的新开发者可以理解数据模型和查询意图，而无需先理清格式。
+- **复制粘贴准确性。** 格式化的SQL在工具、编辑器和文档之间移动时，减少了截断或遗漏查询部分的可能性。
+
+### 行业SQL格式化约定
+
+虽然每个团队都有自己的风格指南，但大多数遵循一套基于可读性和可维护性的通用约定。以下是广泛采用的规则对比：
+
+| 约定 | 常见做法 | 示例 |
+|---|---|---|
+| 关键字大小写 | SQL关键字使用大写 | \\\\`SELECT\\\\`、\\\\`FROM\\\\`、\\\\`WHERE\\\\`、\\\\`JOIN\\\\` |
+| 列/表大小写 | 小写或蛇形命名 | \\\\`user\\\\_id\\\\`、\\\\`order\\\\_total\\\\` |
+| 子句对齐 | 每个主要子句独占一行 | \\\\`SELECT\\\\`、\\\\`FROM\\\\`、\\\\`WHERE\\\\`各占一行 |
+| 列分隔 | 3列以上每列一行 | 在\\\\`SELECT\\\\`下缩进 |
+| JOIN对齐 | \\\\`JOIN\\\\`在子句级别缩进 | 与\\\\`FROM\\\\`对齐 |
+| 括号嵌套 | 在左括号内缩进 | 子查询增加一个缩进级别 |
+| 布尔运算符 | 运算符在行首（不在行尾） | \\\\`AND\\\\`/\\\\`OR\\\\`在行首 |
+| 逗号位置 | 前导逗号（部分团队）或尾随逗号 | 前导：更容易发现缺失的列 |
+
+### 手动格式化 vs. 自动化工具
+
+手动格式化SQL是可能的——但除了简单查询外都不实用。想象一个包含十二个JOIN、五个CTE、三个窗口函数和一个跨越二十个分支的CASE表达式的生产查询。手动缩进和对齐该查询既容易出错又耗时。
+
+自动化格式化工具可以一致地处理这些情况：
+
+- 它们确定性地应用规则——相同的输入总是产生相同的输出。
+- 它们处理边缘情况，如嵌套子查询、包含类似SQL文本的字符串字面量以及方言特定语法（\\\\`LIMIT\\\\` vs. \\\\`TOP\\\\`、\\\\`ILIKE\\\\` vs. \\\\`LIKE\\\\`、数组运算符、JSON函数）。
+- 它们规范化空白字符、删除意外的多余空格并保留注释。
+- 它们支持多种SQL方言——MySQL、PostgreSQL、SQL Server、Oracle、SQLite等。
+
+### 格式化前后：真实示例
+
+以下是一个典型的未格式化查询，可能来自生产代码库或生成的ORM导出：
+
+\\`\\`\\`sql
+SELECT u.id,u.name,u.email,o.id as order_id,o.total,o.created_at,oi.product_name,oi.quantity,oi.price,p.category,c.name as category_name FROM users u INNER JOIN orders o ON u.id=o.user_id INNER JOIN order_items oi ON o.id=oi.order_id INNER JOIN products p ON oi.product_id=p.id LEFT JOIN categories c ON p.category=c.id WHERE o.total>100 AND o.created_at>='2026-01-01' AND (p.category IS NOT NULL OR c.name IS NOT NULL) ORDER BY o.created_at DESC LIMIT 50;
+\\`\\`\\`
+
+以下是经过自动化格式化后的相同查询：
+
+\\`\\`\\`sql
+SELECT
+  u.id,
+  u.name,
+  u.email,
+  o.id AS order_id,
+  o.total,
+  o.created_at,
+  oi.product_name,
+  oi.quantity,
+  oi.price,
+  p.category,
+  c.name AS category_name
+FROM
+  users u
+  INNER JOIN orders o ON u.id = o.user_id
+  INNER JOIN order_items oi ON o.id = oi.order_id
+  INNER JOIN products p ON oi.product_id = p.id
+  LEFT JOIN categories c ON p.category = c.id
+WHERE
+  o.total > 100
+  AND o.created_at >= '2026-01-01'
+  AND (
+    p.category IS NOT NULL
+    OR c.name IS NOT NULL
+  )
+ORDER BY
+  o.created_at DESC
+LIMIT 50;
+\\`\\`\\`
+
+差异天壤之别。格式化版本立即揭示了查询结构：它从四个连接表中选择了十一列，按两个条件加上一个嵌套的OR分组进行过滤，并按单个列排序。阅读未格式化版本的开发者必须通过心智解析整个查询才能理解其结构。
+
+### 你应该遵循的关键SQL格式化规则
+
+#### 1. 大写SQL关键字
+
+始终将SQL保留字写成大写：\\\\`SELECT\\\\`、\\\\`FROM\\\\`、\\\\`WHERE\\\\`、\\\\`AND\\\\`、\\\\`OR\\\\`、\\\\`INNER JOIN\\\\`、\\\\`LEFT JOIN\\\\`、\\\\`GROUP BY\\\\`、\\\\`HAVING\\\\`、\\\\`ORDER BY\\\\`、\\\\`LIMIT\\\\`、\\\\`OFFSET\\\\`、\\\\`INSERT INTO\\\\`、\\\\`VALUES\\\\`、\\\\`UPDATE\\\\`、\\\\`SET\\\\`、\\\\`DELETE FROM\\\\`、\\\\`CREATE TABLE\\\\`、\\\\`ALTER TABLE\\\\`、\\\\`DROP TABLE\\\\`、\\\\`CREATE INDEX\\\\`、\\\\`CREATE VIEW\\\\`、\\\\`UNION\\\\`、\\\\`INTERSECT\\\\`、\\\\`EXCEPT\\\\`。
+
+这从视觉上将关键字与标识符（列名、表名、别名）区分开来，使查询更容易扫描。
+
+#### 2. 每个主要子句独占一行
+
+查询的每个主要子句应在新行开始。这是你能做出的影响最大的单一格式化更改：
+
+\\`\\`\\`sql
+SELECT
+  column1,
+  column2
+FROM
+  table1
+  INNER JOIN table2 ON table1.id = table2.table1_id
+WHERE
+  condition1
+  AND condition2
+GROUP BY
+  column1,
+  column2
+HAVING
+  aggregate_condition
+ORDER BY
+  column1 DESC
+LIMIT
+  100;
+\\`\\`\\`
+
+#### 3. 缩进子查询和括号表达式
+
+当子查询或复杂表达式出现在括号内时，缩进以显示嵌套级别：
+
+\\`\\`\\`sql
+SELECT
+  u.name,
+  (
+    SELECT
+      COUNT(*)
+    FROM
+      orders o
+    WHERE
+      o.user_id = u.id
+      AND o.status = 'completed'
+  ) AS completed_orders
+FROM
+  users u
+WHERE
+  EXISTS (
+    SELECT
+      1
+    FROM
+      orders o
+    WHERE
+      o.user_id = u.id
+  );
+\\`\\`\\`
+
+#### 4. 清晰命名表别名
+
+表别名可以减少重复，但应具有意义。除非查询非常简单，否则避免使用单字母别名如\\\\`a\\\\`、\\\\`b\\\\`、\\\\`c\\\\`。使用反映表名的缩写：\\\\`users -> u\\\\`、\\\\`order_items -> oi\\\\`、\\\\`product_categories -> pc\\\\`。
+
+大多数SQL格式化工具在格式化查询其余结构的同时会保留别名。
+
+#### 5. 使用一致的逗号位置
+
+存在两种做法：
+
+- **尾随逗号（传统）：** 逗号跟在每列后面。这符合大多数编程语言的约定。
+- **前导逗号（现代）：** 逗号放在每列前面。支持者认为这更容易发现缺失的列，也便于重新排序列。
+
+两种方式都有效。选择一种并一致地应用。SQL格式化工具可以强制执行你偏好的风格。
+
+### 常见的SQL格式化陷阱
+
+**陷阱1：内联函数破坏排版。** SELECT子句中像\\\\`ROW_NUMBER() OVER (PARTITION BY ... ORDER BY ...)\\\\`这样的长函数调用可能破坏行对齐。解决方法：将每个窗口函数放在单独的行上，其\\\\`OVER\\\\`子句在同一行或缩进在下方。
+
+**陷阱2：过长的IN列表。** 包含五十个ID的\\\\`IN (...)\\\\`子句绝不应出现在一行上。应跨行书写：
+
+\\`\\`\\`sql
+WHERE
+  user_id IN (
+    1001,
+    1002,
+    1003,
+    1004,
+    1005
+  );
+\\`\\`\\`
+
+**陷阱3：包含SQL的字符串字面量。** 在代码库中格式化SQL时（如在Python f-string、JavaScript模板字面量或Java预编译语句中），先单独格式化SQL，然后再嵌入。
+
+**陷阱4：方言特定语法。** 并非所有SQL格式化工具都支持每种方言的扩展。PostgreSQL的\\\\`->>\\\\` JSON运算符、MySQL的反引号引用和SQL Server的方括号都需要方言感知的格式化。
+
+### 使用ToolboxPro SQL格式化工具
+
+免费的SQL格式化工具（trytoolboxpro.com）提供了你需要的所有SQL查询清理功能：
+
+- **多种方言支持**——MySQL、PostgreSQL、SQL Server、Oracle、SQLite和ANSI SQL。
+- **可自定义的缩进**——空格或制表符，可配置宽度（2、4或8个空格）。
+- **关键字大小写选项**——大写（推荐）、小写或保留原始大小写。
+- **逗号风格**——尾随或前导，以匹配你团队的约定。
+- **实时格式化**——粘贴你的查询并立即看到格式化结果，无需页面刷新。
+- **一键复制**——将格式化后的SQL复制到剪贴板，用于你的编辑器、数据库客户端或文档。
+- **隐私保护**——所有格式化都在你的浏览器中完成。你的SQL查询永远不会离开你的设备。
+
+### 常见问题
+
+**问：格式化工具会保留我的SQL注释吗？**
+答：会。单行注释（\\\\`-- comment\\\\`）和块注释（\\\\`/* comment */\\\\`）都会被保留。格式化工具只修改空白和缩进。
+
+**问：我可以格式化CREATE TABLE语句吗？**
+答：完全可以。该工具处理DDL（\\\\`CREATE\\\\`、\\\\`ALTER\\\\`、\\\\`DROP\\\\`）以及DML（\\\\`SELECT\\\\`、\\\\`INSERT\\\\`、\\\\`UPDATE\\\\`、\\\\`DELETE\\\\`）。列定义、约束和索引都一致缩进。
+
+**问：它支持PostgreSQL特定的语法如\\\\`SELECT DISTINCT ON\\\\`或\\\\`RETURNING\\\\`吗？**
+答：支持。PostgreSQL方言模式处理PostgreSQL特定的关键字、运算符（\\\\`->>\\\\`、\\\\`@>\\\\`、\\\\`<@\\\\`、\\\\`?\\\\`）、数组语法和JSON函数。
+
+**问：非常大的查询呢——有大小限制吗？**
+答：该工具可以轻松处理大多数生产级查询。由于它完全在你的浏览器中运行，实际限制取决于你设备的内存。
+
+**问：我可以在CI/CD流水线中使用它格式化SQL吗？**
+答：虽然在线工具是交互式的，但相同的格式化逻辑可以适配为程序化使用。在线格式化工具非常适合一次性格式化需求、代码审查清理以及学习格式化约定。
+
+### 结论
+
+对于严肃的开发工作来说，格式化SQL不是可选项。整洁、一致的SQL查询更容易阅读、调试、审查和维护。无论你是编写临时查询的数据分析师、维护生产代码库的后端开发者，还是审计慢查询的DBA，采用格式化标准——并使用自动化工具来执行它——都将为你节省时间并减少错误。
+
+ToolboxPro SQL格式化工具让清理任何SQL查询变得轻而易举。粘贴你的查询，选择你的方言和样式偏好，几秒钟内即可获得完美格式化的SQL。无需注册，无需安装，数据不会离开你的设备。
+
+立即在下一个查询中试试免费的SQL格式化工具：trytoolboxpro.com/tools/sql-formatter。
+    |,
+  },
+  {
+    slug: "color-picker-online-guide",
+    title: "How to Pick Colors Online: A Complete Guide to Color Selection",
+    titleZh: "在线取色完全指南：颜色选择与调色技巧",
+    description: "Master color picking online with this complete guide. Learn HEX, RGB, HSL formats, color theory basics, and how to use a free color picker tool to select the perfect palette for your projects.",
+    descriptionZh: "掌握在线取色的完整指南。了解HEX、RGB、HSL颜色格式、色彩理论基础，以及如何使用免费取色工具为你的项目选择完美配色。",
+    date: "2026-05-30",
+    readTime: "7 min read",
+    category: "Developer Tools",
+    toolSlug: "color-picker",
+    content: `## How to Pick Colors Online: A Complete Guide to Color Selection
+
+Color is one of the most powerful tools in a designer's or developer's arsenal. The right color palette can make a website feel polished and professional, while a mismatched scheme can confuse visitors and drive them away. Whether you're building a brand identity, designing a user interface, or debugging CSS styles, knowing how to pick and manipulate colors efficiently is an essential skill.
+
+This guide covers everything you need to know about selecting colors online — from understanding color formats and color theory basics to practical workflows using free tools like [ToolboxPro's Color Picker](/tools/color-picker).
+
+### Understanding Color Formats
+
+Before you can pick colors effectively, you need to understand the different ways colors are represented on the web. Each format has its strengths, and knowing when to use which one will make you more productive.
+
+#### HEX (Hexadecimal)
+
+HEX is the most common color format on the web. It consists of a hash symbol followed by six hexadecimal digits, where the first two represent red, the middle two green, and the last two blue.
+
+\`\`\`
+#FF5733  →  Red: FF (255), Green: 57 (87), Blue: 33 (51)
+#000000  →  Black
+#FFFFFF  →  White
+#6366F1  →  Indigo (popular Tailwind color)
+\`\`\`
+
+HEX also supports a shorthand three-digit form when each channel uses duplicate digits: \`#F00\` is equivalent to \`#FF0000\` (pure red). Some modern browsers also support 8-digit HEX (\`#RRGGBBAA\`) for alpha transparency.
+
+#### RGB (Red, Green, Blue)
+
+RGB uses decimal values from 0 to 255 for each channel. The syntax is \`rgb(red, green, blue)\`.
+
+\`\`\`css
+/* Same colors as above, in RGB */
+rgb(255, 87, 51)   /* #FF5733 */
+rgb(0, 0, 0)       /* Black */
+rgb(255, 255, 255) /* White */
+rgb(99, 102, 241)  /* Indigo */
+\`\`\`
+
+RGB is more intuitive to adjust programmatically since it uses base-10 numbers. The \`rgba()\` variant adds an alpha channel for opacity: \`rgba(99, 102, 241, 0.5)\`.
+
+#### HSL (Hue, Saturation, Lightness)
+
+HSL describes colors in a way that's closer to how humans think about them. The syntax is \`hsl(hue, saturation%, lightness%)\`:
+
+- **Hue**: Position on the color wheel (0-360). 0 is red, 120 is green, 240 is blue.
+- **Saturation**: Intensity of the color (0% = gray, 100% = full color).
+- **Lightness**: Brightness (0% = black, 50% = pure color, 100% = white).
+
+\`\`\`css
+hsl(9, 100%, 60%)    /* #FF5733 — vibrant orange-red */
+hsl(0, 0%, 0%)       /* Black */
+hsl(0, 0%, 100%)     /* White */
+hsl(239, 84%, 67%)   /* #6366F1 — indigo */
+\`\`\`
+
+HSL is invaluable for creating color palettes because you can keep the same hue and just vary saturation and lightness for a cohesive look. Use \`hsla()\` for alpha transparency.
+
+### Color Format Comparison
+
+| Format | Best For | Pros | Cons |
+|--------|----------|------|------|
+| HEX | CSS values, design handoffs | Compact, universally supported | Hard to read and adjust manually |
+| RGB | Programmatic color manipulation | Base-10 numbers, easy to compute | Verbose syntax |
+| HSL | Creating color palettes, theming | Human-readable, intuitive adjustments | Less common in design tools |
+| CMYK | Print design, physical media | Matches printer ink behavior | Not supported in CSS |
+| LAB/OKLCH | Perceptually uniform gradients | Most accurate to human vision | Limited browser support |
+
+### Why Use an Online Color Picker?
+
+An online color picker brings together all of these formats in one interface, letting you:
+
+1. **Convert between formats instantly** — See the HEX, RGB, HSL, and even CMYK representations of any color side by side.
+2. **Preview colors visually** — See the actual color on screen instead of guessing from numeric values.
+3. **Copy values in your preferred format** — Grab the code in the exact syntax your framework or CSS needs.
+4. **Pick colors from your screen** — Advanced tools let you sample colors from images, websites, or anywhere on your display.
+
+The [ToolboxPro Color Picker](/tools/color-picker) does all of this and more. It's a free, browser-based tool that requires no downloads or sign-ups.
+
+### How to Use the Color Picker Tool
+
+Using an online color picker is straightforward. Here's a step-by-step guide:
+
+#### Step 1: Open the Tool
+
+Navigate to [trytoolboxpro.com/tools/color-picker](/tools/color-picker). You'll see a visually rich interface with a color canvas (usually a hue-saturation square) and a hue slider.
+
+#### Step 2: Select a Color
+
+Click anywhere on the canvas to choose a color. Drag the hue slider to change the base color. As you move the cursor, the displayed color updates in real time, along with all the format values below.
+
+#### Step 3: Read the Values
+
+Once you've found your color, look at the output panel. It typically shows:
+
+- **HEX value**: Ready to paste into CSS
+- **RGB value**: Useful for programmatic use
+- **HSL value**: Great for creating related colors
+
+The tool also shows a preview swatch of the selected color.
+
+#### Step 4: Fine-Tune
+
+Use the precise input fields to adjust individual channels. If you know you want a specific red value, type it directly. Most color pickers also include a color history so you can revisit recently selected colors.
+
+#### Step 5: Copy and Use
+
+Click the copy button next to your preferred format. The value is copied to your clipboard, ready to paste into your CSS file, design tool, or application.
+
+\`\`\`css
+/* After picking from the tool, your CSS might look like this */
+.btn-primary {
+background-color: #6366F1;       /* Copied HEX */
+color: #FFFFFF;
+border: 2px solid hsl(239, 84%, 67%); /* Copied HSL — same color */
+}
+
+.btn-primary:hover {
+background-color: rgb(79, 82, 193); /* Darker shade for hover */
+}
+\`\`\`
+
+### Color Theory Basics for Developers
+
+You don't need to be a designer to pick good colors, but understanding a few basics will dramatically improve your results.
+
+#### The Color Wheel
+
+The color wheel arranges hues in a circle. Primary colors (red, yellow, blue) are evenly spaced. Secondary colors (orange, green, purple) sit between them. Tertiary colors fill the remaining gaps.
+
+Common color schemes derived from the wheel include:
+
+| Scheme | Description | Example |
+|--------|-------------|---------|
+| Monochromatic | One hue at varying lightness/saturation | Light blue → Medium blue → Dark blue |
+| Analogous | Three adjacent hues | Blue → Blue-green → Green |
+| Complementary | Opposite hues | Blue ↔ Orange (high contrast) |
+| Triadic | Three evenly spaced hues | Red → Yellow → Blue |
+| Split-Complementary | One hue + two neighboring its complement | Blue + Yellow-orange + Red-orange |
+
+#### 60-30-10 Rule
+
+A simple rule for UI color proportions:
+- **60%** — Dominant/neutral color (backgrounds, large areas)
+- **30%** — Secondary color (headers, navigation)
+- **10%** — Accent color (buttons, links, call-to-action)
+
+This creates visual hierarchy without overwhelming the user. Use your chosen tool at [/tools/color-picker](/tools/color-picker) to find shades that work together within each proportion.
+
+#### Accessibility and Contrast
+
+Color selection isn't just about aesthetics — it's also about usability. The Web Content Accessibility Guidelines (WCAG) require:
+
+- **AA standard**: Contrast ratio of at least 4.5:1 for normal text, 3:1 for large text
+- **AAA standard**: Contrast ratio of at least 7:1 for normal text, 4.5:1 for large text
+
+When you pick a color, pair it with a contrasting foreground. A common mistake is using light gray text (#999) on white backgrounds — that's only about 2.7:1 contrast, well below AA compliance.
+
+\`\`\`
+/* Good contrast combination */
+body {
+background: #FFFFFF;       /* White */
+color: #1F2937;            /* Dark gray — ~16:1 contrast ✓ */
+}
+
+/* Poor contrast combination */
+body {
+background: #FFFFFF;       /* White */
+color: #9CA3AF;            /* Light gray — ~2.7:1 contrast ✗ */
+}
+\`\`\`
+
+### Practical Workflows Using an Online Color Picker
+
+#### 1. Extracting Colors from a Brand Logo
+
+If you're building a website for a client and only have their logo image, use the color picker to sample the dominant colors. Most online pickers let you upload an image or use an eyedropper tool to click on any pixel. Once you have the primary HEX values, create a full palette using the HSL adjustments in the same tool.
+
+#### 2. Building a Theme System
+
+Start with one "brand" color. Use the color picker to find its HSL values. Then, generate a full scale by adjusting lightness while keeping hue and saturation constant:
+
+\`\`\`
+Brand: hsl(239, 84%, 67%)     /* #6366F1 — your base */
+Lighter: hsl(239, 84%, 90%)   /* #E0E7FF — backgrounds */
+Light: hsl(239, 84%, 77%)     /* #A5B4FC — hover states */
+Dark: hsl(239, 84%, 45%)      /* #4338CA — active states */
+Darker: hsl(239, 84%, 25%)    /* #1E1B4B — text on light bg */
+\`\`\`
+
+Many modern frameworks like Tailwind CSS use exactly this approach for their color scales.
+
+#### 3. Debugging CSS Color Issues
+
+Sometimes your CSS looks wrong and you're not sure why. Maybe the \`#F5F5F5\` you chose is too close to \`#FFFFFF\`. Open the color picker, enter both values, and see them side by side. The tool instantly reveals how similar (or different) they actually are. You can then tweak one value while keeping the other locked and see the relationship update in real time.
+
+### Frequently Asked Questions
+
+**Q: What's the difference between HEX and RGB?**  
+A: HEX is a base-16 shorthand that's more compact (\`#FF5733\` vs. \`rgb(255, 87, 51)\`). RGB uses base-10 numbers that are easier to adjust programmatically. They represent exactly the same color space.
+
+**Q: Can I pick colors from images with an online tool?**  
+A: Yes. The [ToolboxPro Color Picker](/tools/color-picker) includes an eyedropper feature that lets you click on any pixel in your browser window or uploaded image to capture its exact color value.
+
+**Q: Is HSL better than HEX for theming?**  
+A: Generally yes. HSL makes it trivial to create lighter and darker variants of the same color by adjusting just the lightness value. With HEX, you'd need to compute new values manually for each shade.
+
+**Q: Are online color pickers accurate enough for professional work?**  
+A: Absolutely. Color pickers work with the same sRGB color space used by monitors and web browsers. For print work, you may need CMYK-specific tools, but for digital design and development, online color pickers are production-ready.
+
+**Q: What is a color picker's eyedropper tool?**  
+A: An eyedropper (or color sampler) lets you click anywhere on your screen or on an uploaded image to capture the exact pixel color. It's one of the most useful features for reverse-engineering colors from existing designs or images.
+
+### Conclusion
+
+Color selection is a fundamental skill for anyone building for the web. Whether you're a seasoned designer crafting a brand system or a developer debugging why a button looks off, having a reliable color picker at your fingertips saves time and improves results.
+
+Understanding the differences between HEX, RGB, and HSL gives you the flexibility to work in whatever format suits your task. Applying basic color theory — the color wheel, the 60-30-10 rule, and contrast requirements — elevates your work from functional to polished. And using a free, instant online tool like the [ToolboxPro Color Picker](/tools/color-picker) means you can experiment, validate, and execute your color decisions in seconds.
+
+No sign-up, no installation, no cost. Open the tool, pick a color, and start creating.
+    |,
+    contentZh: `## 在线取色完全指南：颜色选择与调色技巧
+
+颜色是设计师和开发者工具箱中最强大的工具之一。正确的配色方案能让网站看起来精致专业，而搭配不当的色彩则会使用户感到困惑并流失。无论你是在构建品牌标识、设计用户界面，还是调试 CSS 样式，掌握高效选取和操作颜色的能力都是一项基本技能。
+
+本指南涵盖了你需要了解的在线颜色选择的所有知识——从理解颜色格式和色彩理论基础，到使用 [ToolboxPro 的取色器](/tools/color-picker) 等免费工具的实际工作流程。
+
+### 理解颜色格式
+
+在你能有效取色之前，需要先了解颜色在网页上的不同表示方式。每种格式都有其优势，知道何时使用哪种格式会让你更高效。
+
+#### HEX（十六进制）
+
+HEX 是网页上最常见的颜色格式。它由一个井号后跟六个十六进制数字组成，前两位代表红色，中间两位代表绿色，最后两位代表蓝色。
+
+\`\`\`
+#FF5733  →  红色：FF（255），绿色：57（87），蓝色：33（51）
+#000000  →  黑色
+#FFFFFF  →  白色
+#6366F1  →  靛蓝色（流行的 Tailwind 颜色）
+\`\`\`
+
+当每个通道使用重复数字时，HEX 还支持三位缩写形式：\`#F00\` 等同于 \`#FF0000\`（纯红色）。一些现代浏览器还支持 8 位 HEX（\`#RRGGBBAA\`）用于 alpha 透明度。
+
+#### RGB（红、绿、蓝）
+
+RGB 对每个通道使用 0 到 255 的十进制数值。语法为 \`rgb(红色, 绿色, 蓝色)\`。
+
+\`\`\`css
+/* 上面的相同颜色，使用 RGB 表示 */
+rgb(255, 87, 51)   /* #FF5733 */
+rgb(0, 0, 0)       /* 黑色 */
+rgb(255, 255, 255) /* 白色 */
+rgb(99, 102, 241)  /* 靛蓝色 */
+\`\`\`
+
+RGB 使用十进制数，在编程调整时更直观。\`rgba()\` 变体添加了透明度通道：\`rgba(99, 102, 241, 0.5)\`。
+
+#### HSL（色相、饱和度、亮度）
+
+HSL 以更接近人类思维的方式来描述颜色。语法为 \`hsl(色相, 饱和度%, 亮度%)\`：
+
+- **色相（Hue）**：色轮上的位置（0-360）。0 为红色，120 为绿色，240 为蓝色。
+- **饱和度（Saturation）**：颜色的鲜艳程度（0% = 灰色，100% = 纯色）。
+- **亮度（Lightness）**：明暗程度（0% = 黑色，50% = 纯色，100% = 白色）。
+
+\`\`\`css
+hsl(9, 100%, 60%)    /* #FF5733 — 鲜艳的橙红色 */
+hsl(0, 0%, 0%)       /* 黑色 */
+hsl(0, 0%, 100%)     /* 白色 */
+hsl(239, 84%, 67%)   /* #6366F1 — 靛蓝色 */
+\`\`\`
+
+HSL 在创建配色方案时非常有用，因为你可以保持相同的色相，只需调整饱和度和亮度就能获得统一的视觉效果。使用 \`hsla()\` 支持透明度。
+
+### 颜色格式对比
+
+| 格式 | 最适合 | 优点 | 缺点 |
+|--------|----------|------|------|
+| HEX | CSS 值、设计交付 | 简洁，通用支持 | 手动阅读和调整困难 |
+| RGB | 程序化颜色操作 | 十进制数，易于计算 | 语法冗长 |
+| HSL | 创建配色方案、主题设计 | 可读性强，调整直观 | 在设计工具中较少见 |
+| CMYK | 印刷设计、物理媒体 | 符合打印机墨水行为 | CSS 不支持 |
+| LAB/OKLCH | 感知均匀渐变 | 最接近人眼视觉 | 浏览器支持有限 |
+
+### 为什么使用在线取色器？
+
+在线取色器将所有这些格式汇集在一个界面中，让你能够：
+
+1. **即时转换格式**——并排查看任何颜色的 HEX、RGB、HSL 甚至 CMYK 表示。
+2. **直观预览颜色**——在屏幕上看到实际颜色，而不是从数值中猜测。
+3. **以首选格式复制值**——以框架或 CSS 所需的确切语法获取代码。
+4. **从屏幕取色**——高级工具允许你从图片、网站或屏幕上的任意位置取样颜色。
+
+[ToolboxPro 取色器](/tools/color-picker) 能做到以上所有功能甚至更多。这是一个免费的、基于浏览器的工具，无需下载或注册。
+
+### 如何使用取色器工具
+
+使用在线取色器非常简单。以下是分步指南：
+
+#### 第 1 步：打开工具
+
+导航到 [trytoolboxpro.com/tools/color-picker](/tools/color-picker)。你会看到一个丰富的视觉界面，包含一个颜色画布（通常是色相-饱和度方块）和一个色相滑块。
+
+#### 第 2 步：选择颜色
+
+在画布上任意位置点击选择一种颜色。拖拽色相滑块来改变基础颜色。当移动光标时，显示的颜色以及下面所有的格式值都会实时更新。
+
+#### 第 3 步：读取值
+
+找到颜色后，查看输出面板。通常显示：
+
+- **HEX 值**：可直接粘贴到 CSS 中
+- **RGB 值**：适合程序化使用
+- **HSL 值**：非常适合创建相关颜色
+
+该工具还会显示所选颜色的预览色块。
+
+#### 第 4 步：微调
+
+使用精确的输入框调整各个通道。如果你知道需要某个特定的红色值，直接输入即可。大多数取色器还包含颜色历史记录，方便你查看最近选择的颜色。
+
+#### 第 5 步：复制并使用
+
+点击首选格式旁边的复制按钮。该值就被复制到剪贴板，可以直接粘贴到你的 CSS 文件、设计工具或应用程序中。
+
+\`\`\`css
+/* 从工具取色后，你的 CSS 可能看起来是这样的 */
+.btn-primary {
+background-color: #6366F1;       /* 复制的 HEX */
+color: #FFFFFF;
+border: 2px solid hsl(239, 84%, 67%); /* 复制的 HSL — 相同的颜色 */
+}
+
+.btn-primary:hover {
+background-color: rgb(79, 82, 193); /* 悬停时的深色 */
+}
+\`\`\`
+
+### 面向开发者的色彩理论基础
+
+你不必成为设计师也能选择好的颜色，但理解一些基础知识将显著提升你的效果。
+
+#### 色轮
+
+色轮以色环形式排列色相。原色（红、黄、蓝）均匀分布。间色（橙、绿、紫）位于它们之间。复色填充了其余的空隙。
+
+基于色轮的常见配色方案包括：
+
+| 方案 | 描述 | 示例 |
+|--------|-------------|---------|
+| 单色（Monochromatic） | 一种色相，不同亮度/饱和度 | 浅蓝 → 中蓝 → 深蓝 |
+| 类似色（Analogous） | 三种相邻色相 | 蓝色 → 蓝绿 → 绿色 |
+| 互补色（Complementary） | 相对的色相 | 蓝色 ↔ 橙色（高对比度） |
+| 三等分色（Triadic） | 三种均匀分布的色相 | 红色 → 黄色 → 蓝色 |
+| 分裂互补色（Split-Complementary） | 一种色相 + 其互补色相邻的两种颜色 | 蓝色 + 黄橙色 + 红橙色 |
+
+#### 60-30-10 法则
+
+UI 颜色比例的简单规则：
+- **60%**——主色/中性色（背景、大面积区域）
+- **30%**——次要色（标题、导航）
+- **10%**——强调色（按钮、链接、行动号召）
+
+这创造了视觉层次而不让用户感到杂乱。使用 [/tools/color-picker](/tools/color-picker) 工具为每个比例找到协调的色调。
+
+#### 可访问性与对比度
+
+颜色选择不仅关乎美观——还关乎可用性。Web 内容无障碍指南（WCAG）要求：
+
+- **AA 标准**：普通文本对比度至少 4.5:1，大号文本至少 3:1
+- **AAA 标准**：普通文本对比度至少 7:1，大号文本至少 4.5:1
+
+选择颜色时，搭配对比度合适的前景色。一个常见错误是在白色背景上使用浅灰色文字（#999）——那只有约 2.7:1 的对比度，远低于 AA 标准。
+
+\`\`\`
+/* 良好的对比度组合 */
+body {
+background: #FFFFFF;       /* 白色 */
+color: #1F2937;            /* 深灰色 — 约 16:1 对比度 ✓ */
+}
+
+/* 糟糕的对比度组合 */
+body {
+background: #FFFFFF;       /* 白色 */
+color: #9CA3AF;            /* 浅灰色 — 约 2.7:1 对比度 ✗ */
+}
+\`\`\`
+
+### 使用在线取色器的实际工作流程
+
+#### 1. 从品牌 Logo 中提取颜色
+
+如果你正在为客户建站，手上只有他们的 Logo 图片，使用取色器提取主色调。大多数在线取色器允许你上传图片或使用吸管工具点击任意像素。获取主要 HEX 值后，在同一工具中使用 HSL 调整创建完整的配色板。
+
+#### 2. 构建主题系统
+
+从一个"品牌"颜色开始。使用取色器找到其 HSL 值。然后，在保持色相和饱和度不变的情况下，通过调整亮度生成完整的色阶：
+
+\`\`\`
+品牌色: hsl(239, 84%, 67%)     /* #6366F1 — 你的基础色 */
+更浅色: hsl(239, 84%, 90%)     /* #E0E7FF — 背景色 */
+浅色:   hsl(239, 84%, 77%)     /* #A5B4FC — 悬停状态 */
+深色:   hsl(239, 84%, 45%)     /* #4338CA — 激活状态 */
+更深色: hsl(239, 84%, 25%)     /* #1E1B4B — 浅色背景上的文字 */
+\`\`\`
+
+许多现代框架如 Tailwind CSS 正是采用这种方法来构建它们的色阶系统。
+
+#### 3. 调试 CSS 颜色问题
+
+有时你的 CSS 看起来不对，但你不确定原因。也许你选择的 \`#F5F5F5\` 太接近 \`#FFFFFF\` 了。打开取色器，输入这两个值，并排查看。工具会立即揭示它们实际上有多相似（或不同）。然后你可以调整其中一个值，同时锁定另一个，实时观察关系变化。
+
+### 常见问题
+
+**问：HEX 和 RGB 有什么区别？**  
+答：HEX 是更紧凑的十六进制简写（\`#FF5733\` 对比 \`rgb(255, 87, 51)\`）。RGB 使用十进制数，在程序化调整时更方便。它们表示完全相同的色彩空间。
+
+**问：可以用在线工具从图片中取色吗？**  
+答：可以。[ToolboxPro 取色器](/tools/color-picker) 包含吸管功能，可以点击浏览器窗口或上传图片中的任意像素，捕获其精确的颜色值。
+
+**问：HSL 比 HEX 更适合主题设计吗？**  
+答：通常情况下是的。HSL 只需调整亮度值就能轻松创建同一颜色的更浅和更深变体。使用 HEX，你需要为每种色调手动计算新值。
+
+**问：在线取色器对专业工作来说足够精确吗？**  
+答：绝对够。取色器使用与显示器和网页浏览器相同的 sRGB 色彩空间。对于印刷工作，你可能需要 CMYK 专用工具，但对于数字设计和开发，在线取色器已达到生产级水准。
+
+**问：取色器的吸管工具是什么？**  
+答：吸管（或称颜色取样器）允许你在屏幕上的任意位置或上传的图片上点击，以捕获精确的像素颜色。这是从现有设计或图片中反推颜色时最有用的功能之一。
+
+### 结论
+
+颜色选择是为网页构建内容的每个人都必备的基本技能。无论你是经验丰富的设计师正在构建品牌系统，还是开发者在调试为什么按钮看起来不对，手边有一个可靠的取色器都可以节省时间并改善效果。
+
+理解 HEX、RGB 和 HSL 之间的差异，让你可以灵活地使用适合当前任务的任何格式。应用基本的色彩理论——色轮、60-30-10 法则和对比度要求——能让你的作品从功能完善提升到精致美观。使用免费的即时在线工具如 [ToolboxPro 取色器](/tools/color-picker)，你可以即时实验、验证并执行你的颜色决策。
+
+无需注册、无需安装、无需费用。打开工具，选取颜色，开始创作。
+    |,
+  },
+  {
+    slug: "resize-images-online",
+    title: "How to Resize Images Online Without Losing Quality",
+    titleZh: "如何在线调整图片大小而不损失画质",
+    description: "Learn how to resize images online without sacrificing quality — perfect for web developers, designers, and content creators who need optimized images fast.",
+    descriptionZh: "学习如何在不牺牲画质的情况下在线调整图片大小——非常适合需要快速优化图片的网页开发者、设计师和内容创作者。",
+    date: "2026-05-30",
+    readTime: "7 min read",
+    category: "Image Tools",
+    toolSlug: "image-resizer",
+    content: `## How to Resize Images Online Without Losing Quality
+
+Resizing images seems simple — just make them smaller, right? But anyone who has stretched a thumbnail into a blurry mess or compressed a product photo until it looks pixelated knows that resizing done wrong can ruin an image. The challenge is reducing dimensions or file size while keeping the image crisp, detailed, and professional.
+
+Whether you're optimizing images for a website, preparing assets for social media, or resizing photos for email, getting the balance between dimensions and quality is essential. This guide covers the principles of high-quality image resizing, the best techniques to avoid quality loss, and how to use the free [online Image Resizer](/tools/image-resizer) to get perfect results every time.
+
+### What Happens When You Resize an Image?
+
+Understanding what goes on under the hood helps you make better decisions when resizing.
+
+**Downsampling** (making an image smaller) involves removing pixels. The challenge is deciding which pixels to keep and which to discard. A naive algorithm simply drops every other pixel, resulting in jagged edges and a harsh, aliased look. A good resizing algorithm (interpolation) analyzes groups of pixels and creates new, averaged pixel values that preserve the visual information.
+
+**Upsampling** (making an image larger) involves creating new pixels where none existed. This is fundamentally harder — you're trying to invent detail that isn't there. No algorithm can truly add resolution; the best you can do is a smooth, believable interpolation. That's why upsampling more than 2x always degrades quality noticeably.
+
+| Operation | Information Change | Quality Risk |
+|-----------|------------------|-------------|
+| Downsample (reduce size) | Data discarded | Low — good algorithms preserve appearance |
+| Upsample (enlarge) | New data synthesized | High — detail cannot be created from nothing |
+| Change aspect ratio | Distortion risk | Medium — requires proper cropping first |
+| Change resolution only (DPI) | Metadata only | None — pixel dimensions unchanged |
+
+### The Key to Quality Resizing: Interpolation Algorithms
+
+The single most important factor in quality resizing is the interpolation algorithm. Different algorithms suit different types of images and scaling factors. Here are the most common ones and when to use them:
+
+**Nearest Neighbor** — The simplest algorithm. It picks the closest pixel value without any averaging. Results are blocky and pixelated. Use only for pixel art or images where you want to preserve hard, single-pixel boundaries.
+
+**Bilinear Interpolation** — Averages the 2x2 nearest pixels. It's fast and produces smoother results than nearest neighbor, but can look soft or slightly blurry, especially when downsampling significantly.
+
+**Bicubic Interpolation** — Averages the 4x4 nearest pixels with weighted influence. It's the standard choice for most photo editing and produces sharp, natural-looking results. Bicubic is the default in Photoshop and most professional tools.
+
+**Lanczos Interpolation** — A more sophisticated algorithm that uses an 8x8 pixel window with a sinc-based weighting function. Lanczos produces the sharpest results with the least aliasing, making it ideal for reducing high-resolution photographs. It's slightly slower than bicubic but delivers the best quality.
+
+\`\`\`
+Algorithm Quality Ranking (best to worst):
+1. Lanczos — Sharpest, least artifacts
+2. Bicubic — Great all-rounder, slightly softer
+3. Bilinear — Smooth but can be blurry
+4. Nearest Neighbor — Pixelated, artifacts
+\`\`\`
+
+| Algorithm | Best For | Speed | Quality |
+|-----------|---------|-------|---------|
+| Nearest Neighbor | Pixel art, retro graphics | Fastest | Lowest |
+| Bilinear | Quick previews, thumbnails | Fast | Low-Medium |
+| Bicubic | Photos, general use | Moderate | High |
+| Lanczos | High-quality downsampling, prints | Slowest | Highest |
+
+When you use [/tools/image-resizer](/tools/image-resizer), Lanczos interpolation is used by default, so your downsized images retain maximum sharpness and detail.
+
+### Resizing for the Web: Best Practices
+
+#### 1. Always Resize to Display Dimensions
+
+Serving a 4000x3000 pixel image when it's displayed at 400x300 is the #1 performance mistake on the web. The browser still downloads the full-resolution image, decodes it into memory, and then scales it down — all of which wastes bandwidth and CPU.
+
+**Correct approach:** resize the image to its intended display size (or 2x for Retina/HiDPI displays) before uploading.
+
+\`\`\`html
+<!-- Bad: serves 4000x3000 image for a 400x300 display -->
+<img src="photo.jpg" width="400" height="300" />
+
+<!-- Good: resize photo to 800x600 (2x for Retina), then serve -->
+<img src="photo-800x600.jpg" width="400" height="300" />
+\`\`\`
+
+Run your images through [/tools/image-resizer](/tools/image-resizer) to create display-sized versions before uploading to your site. A properly resized image can be 90% smaller than the original with zero visible quality loss.
+
+#### 2. Maintain Aspect Ratio
+
+Stretching an image to fit non-matching dimensions distorts the subject. Always lock the aspect ratio when resizing. If you need a specific target dimension (e.g., a square 800x800 thumbnail for a product listing), crop the image to the correct aspect ratio first, then resize.
+
+**Common aspect ratios for web:**
+
+| Use Case | Recommended Dimensions | Aspect Ratio |
+|----------|----------------------|-------------|
+| Blog featured image | 1200x628 | 1.91:1 |
+| Social media (OG image) | 1200x630 | 1.91:1 |
+| Product thumbnail | 800x800 | 1:1 (square) |
+| Hero banner (desktop) | 1920x800 | 2.4:1 |
+| Profile photo | 400x400 | 1:1 (square) |
+| Email header | 600x200 | 3:1 |
+
+#### 3. Choose the Right Output Format
+
+Resizing is just one part of image optimization. The combination of correct dimensions and the right format multiplies your savings:
+
+- **JPEG** — Best for photos and complex images with smooth gradients. Quality 75-85 is visually lossless for most content.
+- **PNG** — Use for screenshots, logos, diagrams, and images requiring transparency. Combine with proper sizing.
+- **WebP** — Modern replacement for both JPEG and PNG. WebP at quality 80 typically matches JPEG quality 85 at 30% smaller file size.
+- **GIF** — Only for simple animations. For animated resizing, use WebP or video formats instead.
+
+### Step-by-Step: Resizing Images on ToolboxPro
+
+The [Image Resizer](/tools/image-resizer) on ToolboxPro makes high-quality resizing simple:
+
+1. **Upload your image** — Drag and drop or click to select from your device. Supported formats: JPEG, PNG, WebP, GIF, BMP, TIFF.
+2. **Enter target dimensions** — Set width, height, or both. The tool preserves aspect ratio automatically by default, or you can customize independently.
+3. **Choose output format** — Select JPEG, PNG, or WebP as your output format. Keep it the same as the original or convert as part of the resize.
+4. **Set quality** — Adjust the quality slider from 1-100. For web use, quality 75-85 offers the best balance of visual fidelity and file size.
+5. **Download the result** — Your resized, re-encoded image is ready in seconds. No uploads to a server, no sign-ups, no watermarks.
+
+The entire process runs locally in your browser, so your images never leave your device.
+
+### FAQ
+
+**Q: Can I enlarge a small image without losing quality?**  
+A: No algorithm can truly add detail that wasn't captured. Upscaling always reduces perceived sharpness. For best results, limit upsampling to 2x or less and use Lanczos interpolation. AI upscaling tools (like ESRGAN or Topaz Gigapixel) can synthesize plausible detail, but they change the image content and can introduce artifacts.
+
+**Q: What's the best resolution for web images in 2026?**  
+A: For standard displays, use the exact display size. For Retina/HiDPI displays, use 2x the display size. A common approach: serve 1920px-wide hero images for 1920px screens (standard) and 3840px for Retina. Use \`<srcset>\` to serve different resolutions to different devices.
+
+**Q: Does resizing reduce image quality if I use Lanczos interpolation?**  
+A: Downsampling with a good interpolation algorithm like Lanczos preserves visual quality extremely well. The perceived sharpness and detail remain intact even at 50% or 25% of original dimensions, because the algorithm intelligently averages pixel groups rather than discarding them arbitrarily.
+
+**Q: Should I resize before or after applying image filters?**  
+A: Resize last. Apply filters, color corrections, and other edits at the original resolution, then resize as the final step. This preserves the maximum detail for your edits and avoids interpolating filtered pixels twice.
+
+**Q: What's the difference between resizing and cropping?**  
+A: Resizing changes the pixel dimensions of the entire image (e.g., 4000x3000 → 800x600). Cropping removes a section of the image to change the visible area (e.g., extracting a 800x800 square from the center). For best results, crop to your desired aspect ratio first, then resize to your target dimensions.
+
+**Q: Can I resize multiple images at once?**  
+A: The [Image Resizer](/tools/image-resizer) processes one image at a time. For batch resizing, consider using desktop tools like ImageMagick (\`mogrify -resize 800x600 *.jpg\`) or integrate resizing into your build pipeline with sharp or squoosh-cli.
+
+### Conclusion
+
+Resizing images online without losing quality is entirely achievable when you understand the fundamentals: choose the right interpolation algorithm, maintain aspect ratio, resize to display dimensions, and pair resizing with the correct output format. The combination of Lanczos interpolation, proper dimensions, and quality-aware format selection will give you images that look great and load fast.
+
+The next time you need to resize an image, try the free [Image Resizer at ToolboxPro](/tools/image-resizer) — it runs entirely in your browser, uses Lanczos interpolation for maximum quality, and gives you full control over dimensions, format, and compression level.
+
+No quality sacrificed.
+`,
+    contentZh: `## 如何在线调整图片大小而不损失画质
+
+调整图片大小看似简单——缩小尺寸不就行了？但任何曾把缩略图拉伸成一团模糊，或把产品照片压缩到像素化的人都知道，错误的缩放会毁掉一张图片。真正的挑战在于，在缩小尺寸或文件大小的同时，保持图片清晰、细节丰富且专业。
+
+无论你是为网站优化图片、准备社交媒体素材，还是为邮件调整照片，在尺寸和质量之间找到平衡都至关重要。本指南涵盖了高质量图片缩放的原则、避免画质损失的最佳技巧，以及如何使用免费的[在线图片调整工具](/tools/image-resizer)每次都获得完美的效果。
+
+### 缩放图片时发生了什么？
+
+了解底层机制能帮助你在缩放时做出更明智的决策。
+
+**降采样**（缩小图片）涉及移除像素。挑战在于决定保留哪些像素、丢弃哪些像素。一个简单的算法会直接丢弃每隔一个像素，导致边缘锯齿和粗糙的混叠效果。而好的缩放算法（插值）会分析像素组，创建新的、平均化的像素值，从而保留视觉信息。
+
+**升采样**（放大图片）涉及在原本没有像素的地方创造新像素。这从根本上更难——你在试图创造本来不存在的细节。没有任何算法能真正增加分辨率；你最多能做到的是平滑、可信的插值。这就是为什么超过2倍的放大总会明显降低画质。
+
+| 操作 | 信息变化 | 质量风险 |
+|-----------|------------------|-------------|
+| 降采样（缩小尺寸） | 数据被丢弃 | 低——好的算法能保留外观 |
+| 升采样（放大） | 合成新数据 | 高——无法从无中生有创造细节 |
+| 更改宽高比 | 有失真风险 | 中——需要先正确裁剪 |
+| 仅更改分辨率（DPI） | 仅元数据 | 无——像素尺寸不变 |
+
+### 高质量缩放的关键：插值算法
+
+影响缩放质量的单一最重要因素是插值算法。不同的算法适用于不同类型的图片和缩放比例。以下是最常见的几种及其适用场景：
+
+**最近邻插值** — 最简单的算法。它直接选取最近的像素值，不做任何平均。结果呈现块状和像素化。仅用于像素艺术或需要保留硬边缘的图片。
+
+**双线性插值** — 对最近的2×2像素取平均值。速度快，结果比最近邻更平滑，但在大幅降采样时可能显得模糊。
+
+**双三次插值** — 对最近的4×4像素进行加权平均。这是大多数照片编辑的标准选择，能产生清晰、自然的结果。双三次插值是Photoshop和大多数专业工具的默认选项。
+
+**Lanczos插值** — 一种更复杂的算法，使用8×8像素窗口和基于sinc函数的加权。Lanczos能产生最清晰的结果且混叠最少，非常适合缩小高分辨率照片。它比双三次稍慢，但质量最佳。
+
+\`\`\`
+算法质量排名（从优到劣）：
+1. Lanczos — 最清晰，伪影最少
+2. 双三次 — 全能型选手，稍柔和
+3. 双线性 — 平滑但可能模糊
+4. 最近邻 — 像素化，有伪影
+\`\`\`
+
+| 算法 | 最佳用途 | 速度 | 质量 |
+|-----------|---------|-------|---------|
+| 最近邻 | 像素艺术、复古图形 | 最快 | 最低 |
+| 双线性 | 快速预览、缩略图 | 快 | 低-中 |
+| 双三次 | 照片、一般用途 | 中等 | 高 |
+| Lanczos | 高质量降采样、打印 | 最慢 | 最高 |
+
+当你使用[/tools/image-resizer](/tools/image-resizer)时，默认使用Lanczos插值，因此缩小后的图片能保留最大的锐利度和细节。
+
+### 网页缩放最佳实践
+
+#### 1. 始终缩放到显示尺寸
+
+在需要以400×300显示时，使用4000×3000像素的图片是网页上排名第一的性能错误。浏览器仍然会下载全分辨率图片、解码到内存中，然后进行缩放——所有这些都浪费了带宽和CPU。
+
+**正确做法：** 在上传之前，将图片缩放到实际显示尺寸（对于Retina/HiDPI显示屏则为2倍）。
+
+\`\`\`html
+<!-- 错误：为400x300的显示提供4000x3000的图片 -->
+<img src="photo.jpg" width="400" height="300" />
+
+<!-- 正确：将图片缩放到800x600（Retina的2倍），然后提供服务 -->
+<img src="photo-800x600.jpg" width="400" height="300" />
+\`\`\`
+
+在上传到你的网站之前，通过[/tools/image-resizer](/tools/image-resizer)创建显示尺寸版本的图片。一张正确缩放的图片可以比原始图片小90%，且没有可见的画质损失。
+
+#### 2. 保持宽高比
+
+拉伸图片以适应不匹配的尺寸会扭曲主题。缩放时务必锁定宽高比。如果你需要特定的目标尺寸（例如产品列表中的800×800正方形缩略图），先裁剪到正确的宽高比，然后再缩放。
+
+**网页常用宽高比：**
+
+| 使用场景 | 推荐尺寸 | 宽高比 |
+|----------|----------------------|-------------|
+| 博客特色图片 | 1200×628 | 1.91:1 |
+| 社交媒体（OG图片） | 1200×630 | 1.91:1 |
+| 产品缩略图 | 800×800 | 1:1（正方形） |
+| 主横幅（桌面端） | 1920×800 | 2.4:1 |
+| 个人头像 | 400×400 | 1:1（正方形） |
+| 邮件头部 | 600×200 | 3:1 |
+
+#### 3. 选择正确的输出格式
+
+缩放只是图片优化的一部分。正确的尺寸加上合适的格式能成倍地节省资源：
+
+- **JPEG** — 最适合照片和带有平滑渐变效果的复杂图片。质量75-85对大多数内容来说是视觉无损的。
+- **PNG** — 用于截图、Logo、图表和需要透明背景的图片。配合适当的尺寸调整一起使用。
+- **WebP** — JPEG和PNG的现代替代品。质量80的WebP通常与质量85的JPEG画质相当，而文件大小小30%。
+- **GIF** — 仅用于简单动画。对于动画缩放，请使用WebP或视频格式。
+
+### 在ToolboxPro上缩放图片的步骤指南
+
+ToolboxPro上的[图片缩放工具](/tools/image-resizer)让高质量缩放变得简单：
+
+1. **上传图片** — 拖放或点击从设备中选择。支持的格式：JPEG、PNG、WebP、GIF、BMP、TIFF。
+2. **输入目标尺寸** — 设置宽度、高度或两者。工具默认自动保持宽高比，你也可以独立自定义。
+3. **选择输出格式** — 选择JPEG、PNG或WebP作为输出格式。保持与原始格式相同，或在缩放时进行转换。
+4. **设置质量** — 从1-100调整质量滑块。用于网页时，质量75-85在视觉保真度和文件大小之间提供了最佳平衡。
+5. **下载结果** — 缩放和重新编码后的图片在几秒内即可使用。无需上传到服务器、无需注册、无水印。
+
+整个过程在浏览器本地运行，因此你的图片永远不会离开你的设备。
+
+### 常见问题解答
+
+**问：我可以在不损失画质的情况下放大小图片吗？**  
+答：没有任何算法能真正添加未捕获到的细节。放大总会降低感知锐利度。为获得最佳效果，将放大限制在2倍以内并使用Lanczos插值。AI放大工具（如ESRGAN或Topaz Gigapixel）可以合成合理的细节，但会改变图片内容并可能引入伪影。
+
+**问：2026年网页图片的最佳分辨率是多少？**  
+答：对于标准显示屏，使用精确的显示尺寸。对于Retina/HiDPI显示屏，使用显示尺寸的2倍。一种常见做法：为1920px屏幕提供1920px宽的横幅图片（标准），为Retina提供3840px。使用\`<srcset>\`为不同设备提供不同的分辨率。
+
+**问：如果我使用Lanczos插值，缩放会降低图片质量吗？**  
+答：使用好的插值算法（如Lanczos）进行降采样能很好地保留视觉质量。即使在原始尺寸的50%或25%，感知到的锐利度和细节仍能保留，因为该算法会智能地对像素组进行平均，而不是随意丢弃它们。
+
+**问：我应该先缩放还是先应用图片滤镜？**  
+答：最后再进行缩放。先在原始分辨率下应用滤镜、颜色校正和其他编辑，然后将缩放作为最后一步。这能为你的编辑保留最大程度的细节，并避免对已过滤的像素进行两次插值。
+
+**问：缩放和裁剪有什么区别？**  
+答：缩放改变整个图片的像素尺寸（例如4000×3000 → 800×600）。裁剪移除图片的一部分以改变可视区域（例如从中心提取一个800×800的正方形）。为获得最佳效果，先裁剪到所需的宽高比，然后再缩放到目标尺寸。
+
+**问：我可以一次缩放多张图片吗？**  
+答：[图片缩放工具](/tools/image-resizer)一次处理一张图片。对于批量缩放，请考虑使用ImageMagick（\`mogrify -resize 800x600 *.jpg\`）等桌面工具，或通过sharp或squoosh-cli将缩放集成到你的构建流程中。
+
+### 结论
+
+当你理解了基本原理后，在线缩放图片而不损失画质是完全可行的：选择正确的插值算法、保持宽高比、缩放到显示尺寸，并将缩放与正确的输出格式配对。Lanczos插值、合适的尺寸和质量感知格式选择的组合，将为你提供视觉效果出色且加载快速的图片。
+
+下次你需要缩放图片时，试试免费的[ToolboxPro图片缩放工具](/tools/image-resizer)——它完全在你的浏览器中运行，使用Lanczos插值以获得最高质量，并让你完全控制尺寸、格式和压缩级别。
+
+不牺牲任何画质。
+`,
   },
 ];

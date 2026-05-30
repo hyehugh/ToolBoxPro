@@ -18,7 +18,7 @@ export const tools: Tool[] = [
   {
     slug: "json-formatter",
     name: "JSON Formatter & Validator",
-    description: "Format, validate, and beautify JSON in seconds",
+    description: "Format, validate, and beautify JSON data instantly. Fix syntax errors and make your JSON readable with intelligent auto-formatting and tree view.",
     category: "developer",
     icon: "{}",
     searchKeywords: "json formatter json validator prettify json",
@@ -26,7 +26,7 @@ export const tools: Tool[] = [
   {
     slug: "base64-encode-decode",
     name: "Base64 Encoder/Decoder",
-    description: "Encode text or files to Base64 and decode back",
+    description: "Encode text, files, or images to Base64 format and decode them back. Perfect for inline data URIs and API testing workflows.",
     category: "developer",
     icon: "B64",
     searchKeywords: "base64 encode decode base64 converter",
@@ -42,7 +42,7 @@ export const tools: Tool[] = [
   {
     slug: "color-converter",
     name: "Color Converter",
-    description: "Convert between HEX, RGB, HSL, and more",
+    description: "Convert colors between HEX, RGB, HSL, CMYK, and HSV formats instantly. Preview colors, get hex codes, and generate harmonious palettes.",
     category: "developer",
     icon: "#",
     searchKeywords: "color converter hex to rgb rgb to hex color picker",
@@ -50,7 +50,7 @@ export const tools: Tool[] = [
   {
     slug: "url-encoder-decoder",
     name: "URL Encoder/Decoder",
-    description: "Encode and decode URL components instantly",
+    description: "Encode and decode URL components, query strings, and full URLs. Fix broken links and prepare URLs for API requests safely.",
     category: "developer",
     icon: "URL",
     searchKeywords: "url encoder url decoder percent encoding",
@@ -58,7 +58,7 @@ export const tools: Tool[] = [
   {
     slug: "uuid-generator",
     name: "UUID Generator",
-    description: "Generate random UUIDs v4 for unique identifiers",
+    description: "Generate random UUID v4 identifiers instantly. Bulk generate unique IDs for databases, APIs, distributed systems, and test data.",
     category: "developer",
     icon: "ID",
     searchKeywords: "uuid generator guid generator unique id",
@@ -74,7 +74,7 @@ export const tools: Tool[] = [
   {
     slug: "hash-generator",
     name: "Hash Generator",
-    description: "Generate MD5, SHA-1, SHA-256, SHA-512 hashes",
+    description: "Generate MD5, SHA-1, SHA-256, SHA-512 hashes for any text or file. Compare checksums and verify data integrity with multiple hash algorithms.",
     category: "developer",
     icon: "#H",
     searchKeywords: "hash generator md5 sha256 sha1 sha512 hash online",
@@ -99,7 +99,7 @@ export const tools: Tool[] = [
   {
     slug: "image-compressor",
     name: "Image Compressor",
-    description: "Compress images without losing quality",
+    description: "Compress JPEG, PNG, WebP images without losing visible quality. Reduce file sizes by up to 80% for faster website loading.",
     category: "image",
     icon: "🖼",
     searchKeywords: "image compressor compress jpg png webp",
@@ -107,7 +107,7 @@ export const tools: Tool[] = [
   {
     slug: "image-converter",
     name: "Image Format Converter",
-    description: "Convert images between JPG, PNG, WebP, and more",
+    description: "Convert images between JPG, PNG, WebP, AVIF, GIF, and BMP formats. Batch convert with custom quality and dimension settings.",
     category: "image",
     icon: "↔",
     searchKeywords: "image converter jpg to png png to webp",
@@ -116,7 +116,7 @@ export const tools: Tool[] = [
   {
     slug: "pdf-merger",
     name: "PDF Merger",
-    description: "Merge multiple PDFs into one document",
+    description: "Merge multiple PDF files into a single document instantly. Combine pages, reorder, and create unified PDFs without installing software.",
     category: "pdf",
     icon: "📄",
     searchKeywords: "pdf merger combine pdf merge pdf files",
@@ -141,7 +141,7 @@ export const tools: Tool[] = [
   {
     slug: "lorem-ipsum-generator",
     name: "Lorem Ipsum Generator",
-    description: "Generate placeholder text for mockups and designs",
+    description: "Generate placeholder text for design mockups, website wireframes, and print layouts. Customize paragraph count, word length, and format.",
     category: "text",
     icon: "¶",
     searchKeywords: "lorem ipsum generator placeholder text dummy text",
@@ -149,7 +149,7 @@ export const tools: Tool[] = [
   {
     slug: "text-diff-checker",
     name: "Text Diff Checker",
-    description: "Compare two texts and highlight the differences",
+    description: "Compare two blocks of text side by side and highlight every difference. Perfect for code reviews, document revisions, and plagiarism checks.",
     category: "text",
     icon: "±",
     searchKeywords: "text diff checker compare text difference online",
@@ -157,7 +157,7 @@ export const tools: Tool[] = [
   {
     slug: "text-repeater",
     name: "Text Repeater",
-    description: "Repeat text multiple times with custom separators",
+    description: "Repeat any text multiple times with custom separators, line breaks, or prefixes. Generate test data, patterns, and repeated strings instantly.",
     category: "text",
     icon: "↻",
     searchKeywords: "text repeater repeat text multiple times string generator",
@@ -183,7 +183,7 @@ export const tools: Tool[] = [
   {
     slug: "css-minifier",
     name: "CSS Minifier",
-    description: "Minify and compress CSS code to reduce file size",
+    description: "Minify and compress CSS code to reduce file size and improve page load speed. Remove whitespace, comments, and redundant rules safely.",
     category: "developer",
     icon: "CSS",
     searchKeywords: "css minifier css compressor css minify online",
@@ -199,7 +199,7 @@ export const tools: Tool[] = [
   {
     slug: "json-to-yaml",
     name: "JSON to YAML Converter",
-    description: "Convert JSON data to YAML format and vice versa",
+    description: "Convert JSON data to clean YAML format and vice versa. Preserve nested structures, arrays, and data types during conversion.",
     category: "developer",
     icon: "JY",
     searchKeywords: "json to yaml yaml to json converter online",
@@ -207,7 +207,7 @@ export const tools: Tool[] = [
   {
     slug: "string-escaper",
     name: "String Escaper/Unescaper",
-    description: "Escape and unescape special characters in strings",
+    description: "Escape and unescape special characters in strings for JSON, HTML, URLs, SQL, and JavaScript. Handle all common escaping formats.",
     category: "developer",
     icon: "\\n",
     searchKeywords: "string escaper unescape text escape special characters",
@@ -280,7 +280,7 @@ export const tools: Tool[] = [
   {
     slug: "text-to-slug",
     name: "Text to URL Slug",
-    description: "Convert text into clean, SEO-friendly URL slugs",
+    description: "Convert any text into clean, SEO-friendly URL slugs. Remove special characters, normalize spaces, and generate optimized permalinks.",
     category: "text",
     icon: "🔗",
     searchKeywords: "url slug generator text to slug seo friendly url",
@@ -288,7 +288,7 @@ export const tools: Tool[] = [
   {
     slug: "text-sorter",
     name: "Text Sorter",
-    description: "Sort lines alphabetically, reverse, or by length",
+    description: "Sort text lines alphabetically (A-Z or Z-A), by line length, or in reverse order. Remove duplicates and organize lists instantly.",
     category: "text",
     icon: "AZ",
     searchKeywords: "text sorter sort lines alphabetically online",
@@ -304,7 +304,7 @@ export const tools: Tool[] = [
   {
     slug: "text-reverser",
     name: "Text Reverser",
-    description: "Reverse text, words, or lines instantly",
+    description: "Reverse text, words, sentences, or entire lines instantly. Useful for creating mirrored text, solving puzzles, or formatting data.",
     category: "text",
     icon: "↩",
     searchKeywords: "text reverser reverse string reverse words online",
@@ -328,7 +328,7 @@ export const tools: Tool[] = [
   {
     slug: "morse-code-converter",
     name: "Morse Code Converter",
-    description: "Convert text to Morse code and Morse code to text",
+    description: "Convert text to Morse code and decode Morse code back to readable text. Learn Morse alphabet with visual audio playback support.",
     category: "text",
     icon: "•-",
     searchKeywords: "morse code converter text to morse morse to text",
@@ -337,7 +337,7 @@ export const tools: Tool[] = [
   {
     slug: "temperature-converter",
     name: "Temperature Converter",
-    description: "Convert between Celsius, Fahrenheit, and Kelvin",
+    description: "Convert temperatures between Celsius, Fahrenheit, and Kelvin scales instantly. Perfect for cooking, science, weather, and travel calculations.",
     category: "conversion",
     icon: "🌡",
     searchKeywords: "temperature converter celsius fahrenheit kelvin",
@@ -361,7 +361,7 @@ export const tools: Tool[] = [
   {
     slug: "data-size-converter",
     name: "Data Size Converter",
-    description: "Convert between bytes, KB, MB, GB, TB, and more",
+    description: "Convert between bytes, kilobytes, megabytes, gigabytes, terabytes and more. Compare file sizes, storage capacity, and data transfer amounts.",
     category: "conversion",
     icon: "💾",
     searchKeywords: "data size converter mb to gb bytes converter online",
@@ -369,7 +369,7 @@ export const tools: Tool[] = [
   {
     slug: "speed-converter",
     name: "Speed Converter",
-    description: "Convert between km/h, mph, knots, m/s and more",
+    description: "Convert speed between km/h, mph, knots, m/s, and mach. Useful for driving, aviation, marine navigation, and physics calculations.",
     category: "conversion",
     icon: "🚀",
     searchKeywords: "speed converter kmh to mph knots converter online",
@@ -394,7 +394,7 @@ export const tools: Tool[] = [
   {
     slug: "random-number-generator",
     name: "Random Number Generator",
-    description: "Generate random numbers within a custom range",
+    description: "Generate random numbers within a custom range. Perfect for lotteries, giveaways, statistical sampling, and game development.",
     category: "utilities",
     icon: "🎲",
     searchKeywords: "random number generator random number online",
@@ -419,7 +419,7 @@ export const tools: Tool[] = [
   {
     slug: "pdf-rotator",
     name: "PDF Rotator",
-    description: "Rotate PDF pages by 90, 180, or 270 degrees",
+    description: "Rotate PDF pages by 90, 180, or 270 degrees. Fix scanned documents, correct page orientation, and rearrange your PDF layouts.",
     category: "pdf",
     icon: "🔄",
     searchKeywords: "pdf rotator rotate pdf pages online",
@@ -427,7 +427,7 @@ export const tools: Tool[] = [
   {
     slug: "pdf-page-remover",
     name: "PDF Page Remover",
-    description: "Remove unwanted pages from your PDF documents",
+    description: "Remove unwanted pages from your PDF documents quickly. Extract specific pages, delete blank sheets, and trim bulky files.",
     category: "pdf",
     icon: "🗑",
     searchKeywords: "pdf page remover delete pdf pages online",
@@ -468,7 +468,7 @@ export const tools: Tool[] = [
   {
     slug: "gif-maker",
     name: "GIF Maker",
-    description: "Create animated GIFs from multiple images",
+    description: "Create animated GIFs from multiple images or video clips. Set frame delay, resize output, and optimize for web or social media.",
     category: "image",
     icon: "🎞",
     searchKeywords: "gif maker create gif from images animated online",
@@ -493,7 +493,7 @@ export const tools: Tool[] = [
   {
     slug: "image-splitter",
     name: "Image Splitter",
-    description: "Split an image into tiles by rows and columns",
+    description: "Split a single image into multiple tiles by rows and columns. Perfect for creating sprite sheets, grid layouts, and image segments.",
     category: "image",
     icon: "⊟",
     searchKeywords: "image splitter split image into tiles grid online",
@@ -501,7 +501,7 @@ export const tools: Tool[] = [
   {
     slug: "image-flip",
     name: "Image Flip & Rotate",
-    description: "Flip horizontally, vertically, or rotate images",
+    description: "Flip images horizontally or vertically and rotate by 90-degree increments. Mirror selfies, correct orientation, and transform photos instantly.",
     category: "image",
     icon: "🔄",
     searchKeywords: "image flip mirror rotate image horizontally vertically",
@@ -509,7 +509,7 @@ export const tools: Tool[] = [
   {
     slug: "image-border",
     name: "Image Border",
-    description: "Add customizable borders and frames to images",
+    description: "Add customizable borders, frames, and padding to images. Choose colors, widths, corner radius, and shadow effects for polished photos.",
     category: "image",
     icon: "▫",
     searchKeywords: "image border photo frame add border to image online",
@@ -525,7 +525,7 @@ export const tools: Tool[] = [
   {
     slug: "image-to-sketch",
     name: "Image to Sketch",
-    description: "Convert photos into pencil sketch drawings",
+    description: "Convert photos into pencil sketch drawings and line art. Apply artistic filters to create realistic hand-drawn effects from your images.",
     category: "image",
     icon: "✏️",
     searchKeywords: "image to sketch photo to pencil drawing sketch effect",
@@ -550,7 +550,7 @@ export const tools: Tool[] = [
   {
     slug: "caesar-cipher",
     name: "Caesar Cipher",
-    description: "Encode and decode text using Caesar shift cipher",
+    description: "Encode and decode text using the classic Caesar shift cipher. Choose shift values, try brute force decoding, and learn cryptography basics.",
     category: "text",
     icon: "🔐",
     searchKeywords: "caesar cipher encoder decoder shift cipher online",
@@ -584,7 +584,7 @@ export const tools: Tool[] = [
   {
     slug: "timezone-converter",
     name: "Time Zone Converter",
-    description: "Convert time between different world time zones",
+    description: "Convert time between different world time zones instantly. Schedule meetings across time zones and compare clocks worldwide.",
     category: "utilities",
     icon: "🌍",
     searchKeywords: "timezone converter time zone converter online",
@@ -601,7 +601,7 @@ export const tools: Tool[] = [
   {
     slug: "image-invert",
     name: "Image Invert",
-    description: "Invert or negate colors in an image instantly",
+    description: "Invert or negate colors in any image instantly. Create negative effects, X-ray looks, and artistic color reversals with one click.",
     category: "image",
     icon: "🎞",
     searchKeywords: "image invert negative photo colors reverse online",
@@ -609,7 +609,7 @@ export const tools: Tool[] = [
   {
     slug: "image-collage",
     name: "Photo Collage Maker",
-    description: "Combine multiple photos into a beautiful collage",
+    description: "Combine multiple photos into a beautiful collage grid. Choose layouts, spacing, background colors, and export in high resolution.",
     category: "image",
     icon: "🖼",
     searchKeywords: "photo collage maker combine pictures online",
@@ -618,7 +618,7 @@ export const tools: Tool[] = [
   {
     slug: "css-gradient",
     name: "CSS Gradient Generator",
-    description: "Create beautiful linear and radial CSS gradients",
+    description: "Create beautiful linear and radial CSS gradients visually. Copy the generated CSS code for backgrounds, buttons, and UI elements.",
     category: "developer",
     icon: "🎨",
     searchKeywords: "css gradient generator linear radial background online",
@@ -634,7 +634,7 @@ export const tools: Tool[] = [
   {
     slug: "json-to-typescript",
     name: "JSON to TypeScript",
-    description: "Convert JSON objects into TypeScript interfaces",
+    description: "Convert JSON objects into TypeScript interfaces automatically. Generate type definitions from API responses and configuration files instantly.",
     category: "developer",
     icon: "TS",
     searchKeywords: "json to typescript interface generator online",
@@ -642,7 +642,7 @@ export const tools: Tool[] = [
   {
     slug: "html-to-jsx",
     name: "HTML to JSX Converter",
-    description: "Convert HTML code into React JSX syntax",
+    description: "Convert plain HTML code into React JSX syntax. Handle inline styles, class attributes, self-closing tags, and event handlers automatically.",
     category: "developer",
     icon: "⚛",
     searchKeywords: "html to jsx converter react html transform online",
@@ -659,7 +659,7 @@ export const tools: Tool[] = [
   {
     slug: "roman-numeral",
     name: "Roman Numeral Converter",
-    description: "Convert between Roman numerals and Arabic numbers",
+    description: "Convert between Roman numerals and Arabic numbers instantly. Works with values from 1 to 3999, including common numeral combinations.",
     category: "utilities",
     icon: "IV",
     searchKeywords: "roman numeral converter number to roman online",
@@ -683,7 +683,7 @@ export const tools: Tool[] = [
   {
     slug: "age-calculator",
     name: "Age Calculator",
-    description: "Calculate exact age in years, months, and days",
+    description: "Calculate exact age in years, months, weeks, and days. Find your age on any future date or count down to your next birthday.",
     category: "utilities",
     icon: "🎂",
     searchKeywords: "age calculator birthday age difference online",
@@ -699,7 +699,7 @@ export const tools: Tool[] = [
   {
     slug: "countdown-timer",
     name: "Countdown Timer",
-    description: "Set a countdown to any date and time",
+    description: "Set a countdown to any date and time with days, hours, minutes, and seconds. Perfect for events, deadlines, and special occasions.",
     category: "utilities",
     icon: "⏱",
     searchKeywords: "countdown timer online days hours minutes seconds",
@@ -707,7 +707,7 @@ export const tools: Tool[] = [
   {
     slug: "dice-roller",
     name: "Dice Roller",
-    description: "Roll virtual dice with various sides (d4 to d20)",
+    description: "Roll virtual dice with 4, 6, 8, 10, 12, and 20 sides. Roll multiple dice at once for tabletop games, RPGs, and classrooms.",
     category: "utilities",
     icon: "🎲",
     searchKeywords: "dice roller virtual dice roll d20 d6 online",
@@ -724,7 +724,7 @@ export const tools: Tool[] = [
   {
     slug: "audio-cutter",
     name: "Audio Cutter",
-    description: "Trim and cut audio files with waveform preview",
+    description: "Trim and cut audio files with an interactive waveform preview. Extract clips from MP3, WAV, and other formats right in your browser.",
     category: "audio",
     icon: "🎧",
     searchKeywords: "audio cutter trim mp3 wav online",
@@ -732,7 +732,7 @@ export const tools: Tool[] = [
   {
     slug: "audio-merger",
     name: "Audio Merger",
-    description: "Combine multiple audio files into one track",
+    description: "Combine multiple audio files into one seamless track. Merge songs, recordings, or voice clips in any order with crossfade support.",
     category: "audio",
     icon: "🎤",
     searchKeywords: "audio merger join combine mp3 online",
@@ -749,7 +749,7 @@ export const tools: Tool[] = [
   {
     slug: "dns-lookup",
     name: "DNS Lookup",
-    description: "Look up DNS records: A, AAAA, MX, NS, TXT, CNAME",
+    description: "Look up DNS records for any domain including A, AAAA, MX, NS, TXT, and CNAME. Debug domain configuration and email routing issues.",
     category: "network",
     icon: "🌐",
     searchKeywords: "dns lookup dns check domain records online",
@@ -766,7 +766,7 @@ export const tools: Tool[] = [
   {
     slug: "svg-to-png",
     name: "SVG to PNG Converter",
-    description: "Convert SVG code or files to PNG images",
+    description: "Convert SVG vector code or files into PNG images with custom dimensions, background colors, and scaling options for any use case.",
     category: "conversion",
     icon: "🖼",
     searchKeywords: "svg to png converter svg to image online",
@@ -806,7 +806,7 @@ export const tools: Tool[] = [
   {
     slug: "qr-reader",
     name: "QR Code Reader",
-    description: "Decode QR codes from uploaded images",
+    description: "Decode QR codes from uploaded images instantly. Scan any QR code image to reveal the embedded URL, text, or contact information.",
     category: "conversion",
     icon: "▦",
     searchKeywords: "qr code reader decoder scan qr image online",
@@ -822,7 +822,7 @@ export const tools: Tool[] = [
   {
     slug: "online-notepad",
     name: "Online Notepad",
-    description: "A simple browser-based notepad with auto-save",
+    description: "A clean, distraction-free browser-based notepad with auto-save. Write notes, code snippets, and lists that persist in your browser storage.",
     category: "text",
     icon: "📝",
     searchKeywords: "online notepad text editor notes browser online",
