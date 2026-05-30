@@ -4,18 +4,111 @@ import { useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLocale } from '@/lib/i18n/context';
 
-interface WhoisData {
-  domain?: string;
-  registrar?: string;
-  creationDate?: string;
-  expiryDate?: string;
-  updatedDate?: string;
-  nameServers?: string[];
-  registrantName?: string;
-  registrantOrganization?: string;
+interface RdapEntity {
+  objectClassName?: string;
+  roles?: string[];
+  vcardArray?: [string, Array<[string, Record<string, unknown>, string, string]>];
+  handle?: string;
+  entities?: RdapEntity[];
+}
+
+interface RdapEvent {
+  eventAction: string;
+  eventDate: string;
+}
+
+interface RdapNameserver {
+  ldhName: string;
+}
+
+interface RdapResponse {
+  ldhName?: string;
   status?: string[];
+  entities?: RdapEntity[];
+  events?: RdapEvent[];
+  nameservers?: RdapNameserver[];
   raw?: string;
-  [key: string]: unknown;
+}
+
+interface WhoisData {
+  domain: string;
+  registrar: string;
+  creationDate: string;
+  expiryDate: string;
+  updatedDate: string;
+  nameServers: string[];
+  status: string[];
+  registrantOrg: string;
+  raw: string;
+}
+
+function extractVcardFn(entity: RdapEntity): string {
+  if (!entity.vcardArray || entity.vcardArray[0] !== 'vcard') return '';
+  const entries = entity.vcardArray[1];
+  for (const entry of entries) {
+    if (entry[0] === 'fn') return entry[3] || '';
+  }
+  return '';
+}
+
+function parseRdap(json: RdapResponse, domain: string): WhoisData {
+  // Extract registrar
+  let registrar = '';
+  if (json.entities) {
+    for (const entity of json.entities) {
+      if (entity.roles?.includes('registrar')) {
+        registrar = extractVcardFn(entity);
+        break;
+      }
+    }
+  }
+
+  // Extract events
+  let creationDate = '';
+  let expiryDate = '';
+  let updatedDate = '';
+  if (json.events) {
+    for (const event of json.events) {
+      if (event.eventAction === 'registration') creationDate = event.eventDate;
+      if (event.eventAction === 'expiration') expiryDate = event.eventDate;
+      if (event.eventAction === 'last changed') updatedDate = event.eventDate;
+    }
+  }
+
+  // Extract nameservers
+  const nameServers = (json.nameservers || []).map((ns) => ns.ldhName || '');
+
+  // Extract registrant org
+  let registrantOrg = '';
+  if (json.entities) {
+    for (const entity of json.entities) {
+      if (entity.roles?.includes('registrant')) {
+        registrantOrg = extractVcardFn(entity);
+        break;
+      }
+      // Also check nested entities
+      if (entity.entities) {
+        for (const nested of entity.entities) {
+          if (nested.roles?.includes('registrant')) {
+            registrantOrg = extractVcardFn(nested);
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return {
+    domain: json.ldhName || domain,
+    registrar,
+    creationDate,
+    expiryDate,
+    updatedDate,
+    nameServers,
+    status: json.status || [],
+    registrantOrg,
+    raw: JSON.stringify(json, null, 2),
+  };
 }
 
 export function WhoisLookupTool() {
@@ -48,24 +141,28 @@ export function WhoisLookupTool() {
 
     try {
       const res = await fetch(
-        `https://api.dev-tools.maxy.sh/v1/whois?domain=${encodeURIComponent(cleanDomain)}`,
+        `/api/whois?domain=${encodeURIComponent(cleanDomain)}`,
         { signal: controller.signal }
       );
 
-      if (!res.ok) {
-        throw new Error(`WHOIS lookup failed (${res.status})`);
+      if (res.status === 404) {
+        throw new Error(`Domain "${cleanDomain}" not found in RDAP database.`);
       }
 
-      const json = await res.json();
-      setData(json);
+      if (!res.ok) {
+        throw new Error(`RDAP lookup failed (${res.status})`);
+      }
+
+      const json: RdapResponse = await res.json();
+      setData(parseRdap(json, cleanDomain));
     } catch (err) {
       if (err instanceof DOMException && err.name === 'AbortError') {
-        setError('WHOIS lookup timed out after 15 seconds. Please try again.');
+        setError('Lookup timed out after 15 seconds. Please try again.');
       } else {
         setError(
           err instanceof Error
             ? err.message
-            : 'Failed to lookup WHOIS information. Check the domain and try again.'
+            : 'Failed to lookup domain information. Check the domain and try again.'
         );
       }
     } finally {
@@ -74,7 +171,7 @@ export function WhoisLookupTool() {
     }
   }, [domain]);
 
-  const formatDate = (dateStr: string | undefined): string => {
+  const formatDate = (dateStr: string): string => {
     if (!dateStr) return 'N/A';
     try {
       const d = new Date(dateStr);
@@ -88,76 +185,6 @@ export function WhoisLookupTool() {
       return dateStr;
     }
   };
-
-  const getValue = (key: string): string | string[] | undefined => {
-    if (!data) return undefined;
-
-    // Try direct property first
-    const val = data[key];
-    if (val !== undefined) return typeof val === 'string' ? val : undefined;
-
-    // Try common variations
-    const variations = [
-      key,
-      key.replace(/([A-Z])/g, '_$1').toLowerCase(),
-      key.toLowerCase(),
-      key.charAt(0).toLowerCase() + key.slice(1),
-    ];
-
-    for (const v of variations) {
-      if (data[v] !== undefined) return typeof data[v] === 'string' ? (data[v] as string) : undefined;
-    }
-
-    // Try to find in a nested 'whoisData' or similar
-    if (data.whoisData && typeof data.whoisData === 'object') {
-      const wd = data.whoisData as Record<string, unknown>;
-      for (const v of variations) {
-        if (wd[v] !== undefined) return typeof wd[v] === 'string' ? (wd[v] as string) : undefined;
-      }
-    }
-
-    // Try to find in 'result' or 'data' nested
-    for (const nestedKey of ['result', 'data', 'records']) {
-      const nested = data[nestedKey];
-      if (nested && typeof nested === 'object') {
-        const obj = nested as Record<string, unknown>;
-        for (const v of variations) {
-          if (obj[v] !== undefined) return typeof obj[v] === 'string' ? (obj[v] as string) : undefined;
-        }
-      }
-    }
-
-    return undefined;
-  };
-
-  const getNameServers = (): string[] => {
-    if (!data) return [];
-    // Try various paths for nameservers
-    const paths = ['nameServers', 'name_servers', 'nameservers', 'ns', 'nameServer'];
-    for (const p of paths) {
-      const val = data[p];
-      if (Array.isArray(val)) return val;
-      if (typeof val === 'string') return val.split(',').map((s) => s.trim());
-    }
-    // Check nested
-    if (data.whoisData && typeof data.whoisData === 'object') {
-      const wd = data.whoisData as Record<string, unknown>;
-      for (const p of paths) {
-        const val = wd[p];
-        if (Array.isArray(val)) return val;
-        if (typeof val === 'string') return val.split(',').map((s) => s.trim());
-      }
-    }
-    return [];
-  };
-
-  const registrar = getValue('registrar') as string | undefined;
-  const creationDate = getValue('creationDate') as string | undefined;
-  const expiryDate = getValue('expiryDate') as string | undefined;
-  const updatedDate = getValue('updatedDate') as string | undefined;
-  const nameServers = getNameServers();
-  const registrantName = getValue('registrantName') as string | undefined;
-  const registrantOrg = getValue('registrantOrganization') as string | undefined;
 
   return (
     <div className="space-y-4">
@@ -195,55 +222,64 @@ export function WhoisLookupTool() {
         <div className="space-y-3">
           <div>
             <h3 className="text-xs text-muted-foreground mb-1">{t('toolCommon.whois.domain')}</h3>
-            <p className="font-mono text-sm">{data.domain || domain}</p>
+            <p className="font-mono text-sm">{data.domain}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="rounded-md border bg-card p-3">
               <div className="text-xs text-muted-foreground">{t('toolCommon.whois.registrar')}</div>
-              <div className="text-sm font-medium">{registrar || 'N/A'}</div>
+              <div className="text-sm font-medium">{data.registrar || 'N/A'}</div>
             </div>
-            <div className="rounded-md border bg-card p-3">
-              <div className="text-xs text-muted-foreground">Registrant</div>
-              <div className="text-sm font-medium">
-                {[registrantName, registrantOrg].filter(Boolean).join(' / ') || 'N/A'}
+            {data.registrantOrg && (
+              <div className="rounded-md border bg-card p-3">
+                <div className="text-xs text-muted-foreground">Registrant</div>
+                <div className="text-sm font-medium">{data.registrantOrg}</div>
               </div>
-            </div>
+            )}
             <div className="rounded-md border bg-card p-3">
               <div className="text-xs text-muted-foreground">{t('toolCommon.whois.created')}</div>
-              <div className="text-sm font-medium">{formatDate(creationDate)}</div>
+              <div className="text-sm font-medium">{formatDate(data.creationDate)}</div>
             </div>
             <div className="rounded-md border bg-card p-3">
               <div className="text-xs text-muted-foreground">{t('toolCommon.whois.expires')}</div>
-              <div className="text-sm font-medium">{formatDate(expiryDate)}</div>
+              <div className="text-sm font-medium">{formatDate(data.expiryDate)}</div>
             </div>
-            {updatedDate && (
+            {data.updatedDate && (
               <div className="rounded-md border bg-card p-3">
                 <div className="text-xs text-muted-foreground">Last Updated</div>
-                <div className="text-sm font-medium">{formatDate(updatedDate)}</div>
+                <div className="text-sm font-medium">{formatDate(data.updatedDate)}</div>
               </div>
             )}
           </div>
 
-          {nameServers.length > 0 && (
+          {data.nameServers.length > 0 && (
             <div className="rounded-md border bg-card p-3">
               <div className="text-xs text-muted-foreground mb-1">Name Servers</div>
               <div className="space-y-1">
-                {nameServers.map((ns, i) => (
+                {data.nameServers.map((ns, i) => (
                   <div key={i} className="text-sm font-mono">{ns}</div>
                 ))}
               </div>
             </div>
           )}
 
-          {data.raw && (
-            <details className="rounded-md border bg-card p-3">
-              <summary className="text-xs text-muted-foreground cursor-pointer">Raw WHOIS Data</summary>
-              <pre className="mt-2 text-xs font-mono whitespace-pre-wrap max-h-48 overflow-y-auto">
-                {data.raw}
-              </pre>
-            </details>
+          {data.status.length > 0 && (
+            <div className="rounded-md border bg-card p-3">
+              <div className="text-xs text-muted-foreground mb-1">Status</div>
+              <div className="flex flex-wrap gap-1">
+                {data.status.map((s, i) => (
+                  <span key={i} className="text-xs px-2 py-0.5 rounded-full bg-muted">{s}</span>
+                ))}
+              </div>
+            </div>
           )}
+
+          <details className="rounded-md border bg-card p-3">
+            <summary className="text-xs text-muted-foreground cursor-pointer">Raw RDAP Data</summary>
+            <pre className="mt-2 text-xs font-mono whitespace-pre-wrap max-h-48 overflow-y-auto">
+              {data.raw}
+            </pre>
+          </details>
         </div>
       )}
 
