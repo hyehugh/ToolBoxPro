@@ -1,0 +1,1674 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "ToolboxPro",
+    "languages": [
+      "typescript",
+      "python",
+      "markdown",
+      "css"
+    ],
+    "frameworks": [
+      "nextjs",
+      "react",
+      "tailwindcss"
+    ],
+    "description": "100+ free client-side online tools across 8 categories. Zero server processing — everything runs in the browser via JavaScript/Canvas/WebAssembly. Built with Next.js 15, React 19, TypeScript, and Tailwind CSS v4. Bilingual (EN/ZH) with 30+ blog posts for SEO.",
+    "analyzedAt": "2026-06-17T00:23:00.859704+00:00",
+    "gitCommitHash": "2e8928708d928f2f85cc09e74665892cabc78fb7"
+  },
+  "nodes": [
+    {
+      "id": "file:app/page.tsx",
+      "type": "file",
+      "name": "Home Page",
+      "summary": "Client-side home page with Hero section, PopularTools pills, Category grid, All tools grid, Latest blog posts, Why ToolboxPro section. Uses i18n for all text.",
+      "tags": [
+        "nextjs",
+        "home",
+        "client-component"
+      ],
+      "filePath": "app/page.tsx"
+    },
+    {
+      "id": "file:app/tools/[slug]/page.tsx",
+      "type": "file",
+      "name": "Tool Page (Server)",
+      "summary": "Server component for individual tool pages. Generates static params for all tools, dynamic metadata per tool. Delegates rendering to ToolPageContent.",
+      "tags": [
+        "nextjs",
+        "server-component",
+        "tool",
+        "static-generation"
+      ],
+      "filePath": "app/tools/[slug]/page.tsx"
+    },
+    {
+      "id": "file:app/tools/[slug]/tool-page-content.tsx",
+      "type": "file",
+      "name": "Tool Page Content",
+      "summary": "Client component that imports and dynamically renders 100+ tool components via getToolComponent(). Shows breadcrumb, tool widget, related tools, related blog posts.",
+      "tags": [
+        "nextjs",
+        "client-component",
+        "tool",
+        "component-map"
+      ],
+      "filePath": "app/tools/[slug]/tool-page-content.tsx"
+    },
+    {
+      "id": "file:app/blog/[slug]/page.tsx",
+      "type": "file",
+      "name": "Blog Post Page (Server)",
+      "summary": "Server component for blog posts. Generates static params, dynamic metadata with article schema. Delegates to BlogPostContent.",
+      "tags": [
+        "nextjs",
+        "server-component",
+        "blog",
+        "static-generation"
+      ],
+      "filePath": "app/blog/[slug]/page.tsx"
+    },
+    {
+      "id": "file:lib/i18n/context.tsx",
+      "type": "file",
+      "name": "i18n Context",
+      "summary": "React context for internationalization. Provides locale state (en/zh), setLocale, and t() translation function with dot-notation key lookup and parameter interpolation. Persists to localStorage.",
+      "tags": [
+        "react",
+        "context",
+        "i18n",
+        "internationalization"
+      ],
+      "filePath": "lib/i18n/context.tsx"
+    },
+    {
+      "id": "file:components/layout/header.tsx",
+      "type": "file",
+      "name": "Header Component",
+      "summary": "Sticky header with logo, category navigation (desktop), blog link, language switcher (EN/ZH toggle), dark mode toggle, mobile menu. Uses lucide-react icons.",
+      "tags": [
+        "react",
+        "layout",
+        "navigation",
+        "responsive"
+      ],
+      "filePath": "components/layout/header.tsx"
+    },
+    {
+      "id": "file:components/layout/footer.tsx",
+      "type": "file",
+      "name": "Footer Component",
+      "summary": "Multi-column footer with featured tools, more tools, company links (about, contact, blog, privacy, terms), tagline, copyright, visitor counter, theme toggle.",
+      "tags": [
+        "react",
+        "layout",
+        "footer"
+      ],
+      "filePath": "components/layout/footer.tsx"
+    },
+    {
+      "id": "file:components/theme-provider.tsx",
+      "type": "file",
+      "name": "Theme Provider",
+      "summary": "next-themes wrapper for dark/light mode. Provides useTheme() hook to read and toggle theme state.",
+      "tags": [
+        "react",
+        "theme",
+        "dark-mode"
+      ],
+      "filePath": "components/theme-provider.tsx"
+    },
+    {
+      "id": "file:components/error-boundary.tsx",
+      "type": "file",
+      "name": "Error Boundary",
+      "summary": "React error boundary component that catches rendering errors in tool components and shows a fallback UI instead of crashing the page.",
+      "tags": [
+        "react",
+        "error-handling",
+        "boundary"
+      ],
+      "filePath": "components/error-boundary.tsx"
+    },
+    {
+      "id": "file:components/cookie-banner.tsx",
+      "type": "file",
+      "name": "Cookie Banner",
+      "summary": "GDPR-compliant cookie consent banner. Shows on first visit, stores consent in localStorage.",
+      "tags": [
+        "compliance",
+        "gdpr",
+        "client-component"
+      ],
+      "filePath": "components/cookie-banner.tsx"
+    },
+    {
+      "id": "file:components/favorites.tsx",
+      "type": "file",
+      "name": "Favorites",
+      "summary": "Tool favorites management. Stores favorite tool slugs in localStorage, provides add/remove/check functions.",
+      "tags": [
+        "localStorage",
+        "favorites",
+        "client-component"
+      ],
+      "filePath": "components/favorites.tsx"
+    },
+    {
+      "id": "file:components/visitor-counter.tsx",
+      "type": "file",
+      "name": "Visitor Counter",
+      "summary": "Client-side visitor counter using Vercel KV store. Displays visit count in the footer.",
+      "tags": [
+        "vercel-kv",
+        "analytics",
+        "client-component"
+      ],
+      "filePath": "components/visitor-counter.tsx"
+    },
+    {
+      "id": "file:components/tools/tool-widget.tsx",
+      "type": "file",
+      "name": "Tool Widget",
+      "summary": "Reusable wrapper component for individual tool pages. Provides consistent card styling with title, border, shadow effects.",
+      "tags": [
+        "react",
+        "component",
+        "tool-ui"
+      ],
+      "filePath": "components/tools/tool-widget.tsx"
+    },
+    {
+      "id": "file:components/ads/ad-unit.tsx",
+      "type": "file",
+      "name": "Ad Unit",
+      "summary": "Google AdSense ad component. Uses NEXT_PUBLIC_ADSENSE_CLIENT env var for ad client ID. Responsive ad slots.",
+      "tags": [
+        "adsense",
+        "monetization",
+        "client-component"
+      ],
+      "filePath": "components/ads/ad-unit.tsx"
+    },
+    {
+      "id": "file:app/tools/[slug]/_components/json-formatter.tsx",
+      "type": "file",
+      "name": "JSON Formatter Tool",
+      "summary": "Client-side JSON formatter and validator. Parses, beautifies, minifies JSON with error highlighting.",
+      "tags": [
+        "tool",
+        "json",
+        "client-side"
+      ],
+      "filePath": "app/tools/[slug]/_components/json-formatter.tsx"
+    },
+    {
+      "id": "file:app/tools/[slug]/_components/base64.tsx",
+      "type": "file",
+      "name": "Base64 Tool",
+      "summary": "Client-side Base64 encoder/decoder for text and file content.",
+      "tags": [
+        "tool",
+        "base64",
+        "client-side"
+      ],
+      "filePath": "app/tools/[slug]/_components/base64.tsx"
+    },
+    {
+      "id": "file:app/tools/[slug]/_components/image-compressor.tsx",
+      "type": "file",
+      "name": "Image Compressor Tool",
+      "summary": "Client-side image compression using Canvas API. Supports JPG, PNG, WebP formats.",
+      "tags": [
+        "tool",
+        "image",
+        "canvas",
+        "client-side"
+      ],
+      "filePath": "app/tools/[slug]/_components/image-compressor.tsx"
+    },
+    {
+      "id": "file:app/tools/[slug]/_components/pdf-merger.tsx",
+      "type": "file",
+      "name": "PDF Merger Tool",
+      "summary": "Client-side PDF merging using pdf-lib library. Combines multiple PDF files into one.",
+      "tags": [
+        "tool",
+        "pdf",
+        "pdf-lib",
+        "client-side"
+      ],
+      "filePath": "app/tools/[slug]/_components/pdf-merger.tsx"
+    },
+    {
+      "id": "file:app/tools/[slug]/_components/qr-generator.tsx",
+      "type": "file",
+      "name": "QR Code Generator Tool",
+      "summary": "Client-side QR code generation for URLs, text, WiFi credentials.",
+      "tags": [
+        "tool",
+        "qr-code",
+        "client-side"
+      ],
+      "filePath": "app/tools/[slug]/_components/qr-generator.tsx"
+    },
+    {
+      "id": "file:app/tools/page.tsx",
+      "type": "file",
+      "name": "Tools Listing Page",
+      "summary": "Server component that renders ToolsPageContent. Wraps in Suspense boundary.",
+      "tags": [
+        "nextjs",
+        "server-component",
+        "tools-listing"
+      ],
+      "filePath": "app/tools/page.tsx"
+    },
+    {
+      "id": "file:app/tools/tools-page-content.tsx",
+      "type": "file",
+      "name": "Tools Page Content",
+      "summary": "Client component for tools listing. Shows category filter, tool search, and grid of all tools.",
+      "tags": [
+        "nextjs",
+        "client-component",
+        "tools-listing"
+      ],
+      "filePath": "app/tools/tools-page-content.tsx"
+    },
+    {
+      "id": "file:app/blog/page.tsx",
+      "type": "file",
+      "name": "Blog Listing Page",
+      "summary": "Server component for blog listing. Renders BlogContent with all posts.",
+      "tags": [
+        "nextjs",
+        "server-component",
+        "blog-listing"
+      ],
+      "filePath": "app/blog/page.tsx"
+    },
+    {
+      "id": "file:app/blog/blog-content.tsx",
+      "type": "file",
+      "name": "Blog Content",
+      "summary": "Client component for blog listing. Shows blog posts in grid with category filter and search.",
+      "tags": [
+        "nextjs",
+        "client-component",
+        "blog-listing"
+      ],
+      "filePath": "app/blog/blog-content.tsx"
+    },
+    {
+      "id": "file:app/about/page.tsx",
+      "type": "file",
+      "name": "About Page",
+      "summary": "Static about page with project information and mission statement.",
+      "tags": [
+        "nextjs",
+        "static-page",
+        "legal"
+      ],
+      "filePath": "app/about/page.tsx"
+    },
+    {
+      "id": "file:app/contact/page.tsx",
+      "type": "file",
+      "name": "Contact Page",
+      "summary": "Static contact page with email (hyehugh520@gmail.com) and contact form/info.",
+      "tags": [
+        "nextjs",
+        "static-page",
+        "contact"
+      ],
+      "filePath": "app/contact/page.tsx"
+    },
+    {
+      "id": "file:app/privacy/page.tsx",
+      "type": "file",
+      "name": "Privacy Page",
+      "summary": "Privacy policy page. AdSense-compliant privacy policy covering client-side processing, no data collection, cookies.",
+      "tags": [
+        "nextjs",
+        "static-page",
+        "legal",
+        "privacy"
+      ],
+      "filePath": "app/privacy/page.tsx"
+    },
+    {
+      "id": "file:app/terms/page.tsx",
+      "type": "file",
+      "name": "Terms Page",
+      "summary": "Terms of service page with usage terms and disclaimers.",
+      "tags": [
+        "nextjs",
+        "static-page",
+        "legal"
+      ],
+      "filePath": "app/terms/page.tsx"
+    },
+    {
+      "id": "file:app/robots.ts",
+      "type": "file",
+      "name": "Robots.txt Generator",
+      "summary": "Next.js robots.ts route handler that generates dynamic robots.txt.",
+      "tags": [
+        "nextjs",
+        "seo",
+        "robots"
+      ],
+      "filePath": "app/robots.ts"
+    },
+    {
+      "id": "file:app/sitemap.ts",
+      "type": "file",
+      "name": "Sitemap Generator",
+      "summary": "Next.js sitemap.ts route handler that generates sitemap with all tool pages, blog posts, and static pages.",
+      "tags": [
+        "nextjs",
+        "seo",
+        "sitemap"
+      ],
+      "filePath": "app/sitemap.ts"
+    },
+    {
+      "id": "file:app/globals.css",
+      "type": "file",
+      "name": "Global Styles",
+      "summary": "Tailwind CSS v4 global styles with CSS custom properties for theming (light/dark), card shadows, utility classes.",
+      "tags": [
+        "css",
+        "tailwind",
+        "theming"
+      ],
+      "filePath": "app/globals.css"
+    },
+    {
+      "id": "file:next.config.ts",
+      "type": "file",
+      "name": "Next.js Config",
+      "summary": "Next.js configuration with image formats (AVIF/WebP), security headers (X-Frame-Options, CSP, etc.).",
+      "tags": [
+        "nextjs",
+        "configuration",
+        "security"
+      ],
+      "filePath": "next.config.ts"
+    },
+    {
+      "id": "file:tsconfig.json",
+      "type": "file",
+      "name": "TypeScript Config",
+      "summary": "TypeScript configuration with path aliases (@/*), strict mode, React 19 JSX settings.",
+      "tags": [
+        "typescript",
+        "configuration"
+      ],
+      "filePath": "tsconfig.json"
+    },
+    {
+      "id": "file:postcss.config.mjs",
+      "type": "file",
+      "name": "PostCSS Config",
+      "summary": "PostCSS configuration with Tailwind CSS v4 PostCSS plugin.",
+      "tags": [
+        "postcss",
+        "tailwind",
+        "configuration"
+      ],
+      "filePath": "postcss.config.mjs"
+    },
+    {
+      "id": "file:package.json",
+      "type": "file",
+      "name": "Package Manifest",
+      "summary": "npm package manifest. Dependencies: next@15, react@19, pdf-lib, @vercel/kv, lucide-react, next-themes. Dev deps: typescript, @types/*, tailwindcss@4, @tailwindcss/postcss.",
+      "tags": [
+        "npm",
+        "dependencies",
+        "configuration"
+      ],
+      "filePath": "package.json"
+    },
+    {
+      "id": "file:.env.example",
+      "type": "file",
+      "name": "Environment Example",
+      "summary": "Example environment variables file listing NEXT_PUBLIC_ADSENSE_CLIENT, NEXT_PUBLIC_GA_ID, KV_URL.",
+      "tags": [
+        "environment",
+        "configuration"
+      ],
+      "filePath": ".env.example"
+    },
+    {
+      "id": "file:.github/workflows/ci.yml",
+      "type": "file",
+      "name": "CI Pipeline",
+      "summary": "GitHub Actions CI workflow for build verification on push/PR.",
+      "tags": [
+        "ci-cd",
+        "github-actions"
+      ],
+      "filePath": ".github/workflows/ci.yml"
+    },
+    {
+      "id": "file:lib/utils.ts",
+      "type": "file",
+      "name": "Utility Functions",
+      "summary": "Shared utility functions including cn() (clsx + tailwind-merge) for conditional class names.",
+      "tags": [
+        "utility",
+        "typescript"
+      ],
+      "filePath": "lib/utils.ts"
+    },
+    {
+      "id": "file:app/home-search.tsx",
+      "type": "file",
+      "name": "Home Search",
+      "summary": "Search input component on home page. Filters tools by search keywords in real-time.",
+      "tags": [
+        "react",
+        "search",
+        "client-component"
+      ],
+      "filePath": "app/home-search.tsx"
+    },
+    {
+      "id": "file:app/popular-tools.tsx",
+      "type": "file",
+      "name": "Popular Tools Pills",
+      "summary": "Trending tools display as minimal pill tags on home page, between Hero and Categories sections.",
+      "tags": [
+        "react",
+        "home",
+        "client-component"
+      ],
+      "filePath": "app/popular-tools.tsx"
+    },
+    {
+      "id": "file:app/tools/tools-filter.tsx",
+      "type": "file",
+      "name": "Tools Filter",
+      "summary": "Category filter component for tools listing page. Filters tools by selected category.",
+      "tags": [
+        "react",
+        "filter",
+        "client-component"
+      ],
+      "filePath": "app/tools/tools-filter.tsx"
+    },
+    {
+      "id": "file:app/blog/blog-search.tsx",
+      "type": "file",
+      "name": "Blog Search",
+      "summary": "Search input component for blog listing. Filters posts by title and description.",
+      "tags": [
+        "react",
+        "search",
+        "blog",
+        "client-component"
+      ],
+      "filePath": "app/blog/blog-search.tsx"
+    },
+    {
+      "id": "file:components/ui/button.tsx",
+      "type": "file",
+      "name": "Button Component",
+      "summary": "Shared button component using class-variance-authority for variant/size variants (default, ghost, icon, sm).",
+      "tags": [
+        "react",
+        "ui",
+        "component"
+      ],
+      "filePath": "components/ui/button.tsx"
+    },
+    {
+      "id": "file:components/layout/footer-theme-toggle.tsx",
+      "type": "file",
+      "name": "Footer Theme Toggle",
+      "summary": "Theme toggle button in footer. Mirrors header theme toggle for convenience.",
+      "tags": [
+        "react",
+        "theme",
+        "footer"
+      ],
+      "filePath": "components/layout/footer-theme-toggle.tsx"
+    },
+    {
+      "id": "file:app/not-found.tsx",
+      "type": "file",
+      "name": "404 Page",
+      "summary": "Custom 404 not found page with link back to home.",
+      "tags": [
+        "nextjs",
+        "error-page"
+      ],
+      "filePath": "app/not-found.tsx"
+    },
+    {
+      "id": "file:app/tools/[slug]/loading.tsx",
+      "type": "file",
+      "name": "Tool Loading Skeleton",
+      "summary": "Loading skeleton for tool pages during client-side navigation.",
+      "tags": [
+        "nextjs",
+        "loading",
+        "skeleton"
+      ],
+      "filePath": "app/tools/[slug]/loading.tsx"
+    },
+    {
+      "id": "file:app/tools/loading.tsx",
+      "type": "file",
+      "name": "Tools Loading Skeleton",
+      "summary": "Loading skeleton for tools listing page.",
+      "tags": [
+        "nextjs",
+        "loading",
+        "skeleton"
+      ],
+      "filePath": "app/tools/loading.tsx"
+    },
+    {
+      "id": "file:app/blog/loading.tsx",
+      "type": "file",
+      "name": "Blog Loading Skeleton",
+      "summary": "Loading skeleton for blog listing page.",
+      "tags": [
+        "nextjs",
+        "loading",
+        "skeleton"
+      ],
+      "filePath": "app/blog/loading.tsx"
+    },
+    {
+      "id": "file:app/blog/[slug]/blog-post-content.tsx",
+      "type": "file",
+      "name": "Blog Post Content",
+      "summary": "Client component for rendering blog post content with markdown support, images, and related tools.",
+      "tags": [
+        "nextjs",
+        "blog",
+        "client-component"
+      ],
+      "filePath": "app/blog/[slug]/blog-post-content.tsx"
+    },
+    {
+      "id": "file:app/api/visitor/route.ts",
+      "type": "file",
+      "name": "Visitor API Route",
+      "summary": "Serverless API route for incrementing and returning visitor count via Vercel KV.",
+      "tags": [
+        "nextjs",
+        "api",
+        "serverless",
+        "vercel-kv"
+      ],
+      "filePath": "app/api/visitor/route.ts"
+    },
+    {
+      "id": "file:_gen_tools.py",
+      "type": "file",
+      "name": "Tool Generator Script",
+      "summary": "Python script for generating tool component files and updating data.ts with new tool entries.",
+      "tags": [
+        "python",
+        "tooling",
+        "automation"
+      ],
+      "filePath": "_gen_tools.py"
+    },
+    {
+      "id": "file:_insert_zh.py",
+      "type": "file",
+      "name": "Chinese Content Insert Script",
+      "summary": "Python script for inserting Chinese translations into blog content and translation files.",
+      "tags": [
+        "python",
+        "i18n",
+        "automation"
+      ],
+      "filePath": "_insert_zh.py"
+    },
+    {
+      "id": "file:scripts/translate-posts.mjs",
+      "type": "file",
+      "name": "Translate Posts Script",
+      "summary": "Node.js script for batch translating blog posts to Chinese.",
+      "tags": [
+        "nodejs",
+        "i18n",
+        "automation"
+      ],
+      "filePath": "scripts/translate-posts.mjs"
+    },
+    {
+      "id": "file:scripts/translate-posts.cjs",
+      "type": "file",
+      "name": "Translate Posts Script (CJS)",
+      "summary": "CommonJS version of translate-posts for environments without ESM support.",
+      "tags": [
+        "nodejs",
+        "i18n"
+      ],
+      "filePath": "scripts/translate-posts.cjs"
+    },
+    {
+      "id": "file:scripts/translate_posts.py",
+      "type": "file",
+      "name": "Translate Posts Script (Python)",
+      "summary": "Python version of translation script for blog post content.",
+      "tags": [
+        "python",
+        "i18n"
+      ],
+      "filePath": "scripts/translate_posts.py"
+    },
+    {
+      "id": "file:scripts/check_endings.py",
+      "type": "file",
+      "name": "Check File Endings",
+      "summary": "Python script to check line endings (CRLF vs LF) in project files.",
+      "tags": [
+        "python",
+        "tooling"
+      ],
+      "filePath": "scripts/check_endings.py"
+    },
+    {
+      "id": "file:scripts/debug_endings.py",
+      "type": "file",
+      "name": "Debug File Endings",
+      "summary": "Python script for debugging line ending issues in project files.",
+      "tags": [
+        "python",
+        "tooling"
+      ],
+      "filePath": "scripts/debug_endings.py"
+    },
+    {
+      "id": "file:add_zh.py",
+      "type": "file",
+      "name": "Add Chinese Script",
+      "summary": "Python script for adding Chinese content to project files.",
+      "tags": [
+        "python",
+        "i18n"
+      ],
+      "filePath": "add_zh.py"
+    },
+    {
+      "id": "file:add_zh_content.py",
+      "type": "file",
+      "name": "Add Chinese Content Script",
+      "summary": "Python script for bulk adding Chinese translations.",
+      "tags": [
+        "python",
+        "i18n"
+      ],
+      "filePath": "add_zh_content.py"
+    },
+    {
+      "id": "file:check_cats.py",
+      "type": "file",
+      "name": "Check Categories Script",
+      "summary": "Python script to verify tool categories and counts in data.ts.",
+      "tags": [
+        "python",
+        "tooling"
+      ],
+      "filePath": "check_cats.py"
+    },
+    {
+      "id": "file:find_posts.py",
+      "type": "file",
+      "name": "Find Posts Script",
+      "summary": "Python script for finding and listing blog posts.",
+      "tags": [
+        "python",
+        "blog"
+      ],
+      "filePath": "find_posts.py"
+    },
+    {
+      "id": "file:reorg.py",
+      "type": "file",
+      "name": "Reorganize Script",
+      "summary": "Python script for reorganizing project files or content.",
+      "tags": [
+        "python",
+        "tooling"
+      ],
+      "filePath": "reorg.py"
+    },
+    {
+      "id": "dir:app/tools/[slug]/_components/",
+      "type": "file",
+      "name": "Tool Components Directory",
+      "summary": "Directory containing 100+ individual tool React components. Each tool is a client-side component handling its own logic.",
+      "tags": [
+        "tools",
+        "components",
+        "client-side"
+      ],
+      "filePath": "app/tools/[slug]/_components/"
+    },
+    {
+      "id": "dir:lib/blog/zh/",
+      "type": "file",
+      "name": "Chinese Blog Directory",
+      "summary": "Directory containing Chinese translations of blog posts. 40+ .md files with translated content.",
+      "tags": [
+        "blog",
+        "i18n",
+        "chinese"
+      ],
+      "filePath": "lib/blog/zh/"
+    },
+    {
+      "id": "dir:public/blog/",
+      "type": "file",
+      "name": "Blog Images Directory",
+      "summary": "Directory containing screenshot images for blog posts. ~30 .png files.",
+      "tags": [
+        "images",
+        "blog",
+        "public"
+      ],
+      "filePath": "public/blog/"
+    },
+    {
+      "id": "dir:_promotion/",
+      "type": "file",
+      "name": "Promotion Materials",
+      "summary": "Directory containing promotional content for Hacker News, Reddit, Product Hunt, Dev.to, Twitter.",
+      "tags": [
+        "marketing",
+        "promotion"
+      ],
+      "filePath": "_promotion/"
+    },
+    {
+      "id": "file:README.md",
+      "type": "file",
+      "name": "Project README",
+      "summary": "Project documentation describing ToolboxPro features, tech stack, privacy architecture, SEO content, and local development setup.",
+      "tags": [
+        "documentation",
+        "readme"
+      ],
+      "filePath": "README.md"
+    },
+    {
+      "id": "file:app/api/whois/route.ts",
+      "type": "file",
+      "name": "WHOIS API Route",
+      "filePath": "app/api/whois/route.ts",
+      "summary": "Next.js API route proxying RDAP lookups. Accepts domain query, fetches rdap.org with 10s timeout, returns JSON.",
+      "tags": [
+        "api",
+        "whois",
+        "rdap",
+        "network",
+        "proxy"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/layout.tsx",
+      "type": "file",
+      "name": "Root Layout",
+      "filePath": "app/layout.tsx",
+      "summary": "Next.js App Router root layout. Global metadata (SEO, OpenGraph, JSON-LD), Inter font, shell: ThemeProvider>LocaleProvider>GA+AdSense+Header+main+Footer+CookieBanner.",
+      "tags": [
+        "layout",
+        "metadata",
+        "seo",
+        "structured-data",
+        "providers"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/tools/[slug]/_components/whois-lookup.tsx",
+      "type": "file",
+      "name": "WHOIS Lookup Tool",
+      "filePath": "app/tools/[slug]/_components/whois-lookup.tsx",
+      "summary": "Client React component for WHOIS/RDAP lookup. RDAP interfaces, parses JSON for registrar/dates/nameservers/status. Form with i18n.",
+      "tags": [
+        "component",
+        "whois",
+        "rdap",
+        "network",
+        "form",
+        "i18n"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:components/adsense.tsx",
+      "type": "file",
+      "name": "AdSense Component",
+      "filePath": "components/adsense.tsx",
+      "summary": "Client component loading Google AdSense auto-ads script.",
+      "tags": [
+        "component",
+        "ads",
+        "monetization",
+        "adsense"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:components/google-analytics.tsx",
+      "type": "file",
+      "name": "Google Analytics Component",
+      "filePath": "components/google-analytics.tsx",
+      "summary": "Client component loading GA4 gtag.js with ID G-ZYHZ3FW9SL.",
+      "tags": [
+        "component",
+        "analytics",
+        "tracking",
+        "ga4"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/blog/data.ts",
+      "type": "file",
+      "name": "Blog Post Data",
+      "filePath": "lib/blog/data.ts",
+      "summary": "Large data file (~10,879 lines) with all blog post definitions. BlogPost interface + blogPosts array, 35+ posts.",
+      "tags": [
+        "data",
+        "blog",
+        "content",
+        "seo"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:lib/blog/images.ts",
+      "type": "file",
+      "name": "Blog Image Mapping",
+      "filePath": "lib/blog/images.ts",
+      "summary": "BlogImage interface + blogImages array mapping slugs to featured images. 40+ mappings.",
+      "tags": [
+        "data",
+        "blog",
+        "images",
+        "mapping"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/i18n/en.ts",
+      "type": "file",
+      "name": "English Translations",
+      "filePath": "lib/i18n/en.ts",
+      "summary": "English translation dictionary (~1,200 lines). Nested keys for actions, tool labels, navigation, UI.",
+      "tags": [
+        "i18n",
+        "translations",
+        "localization",
+        "english"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/i18n/zh.ts",
+      "type": "file",
+      "name": "Chinese Translations",
+      "filePath": "lib/i18n/zh.ts",
+      "summary": "Chinese translation dictionary (~1,098 lines). Mirrors English structure.",
+      "tags": [
+        "i18n",
+        "translations",
+        "localization",
+        "chinese"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/tools/data.ts",
+      "type": "file",
+      "name": "Tool Definitions",
+      "filePath": "lib/tools/data.ts",
+      "summary": "Core data file (~857 lines) defining all tools and categories. 100+ tools, 8 categories.",
+      "tags": [
+        "data",
+        "tools",
+        "categories",
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:public/ads.txt",
+      "type": "config",
+      "name": "Ads.txt",
+      "filePath": "public/ads.txt",
+      "summary": "IAB ads.txt declaring authorized sellers. Google AdSense entry.",
+      "tags": [
+        "config",
+        "ads",
+        "monetization",
+        "adsense"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:app/page.tsx",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "file:lib/blog/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "file:lib/blog/images.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "file:app/home-search.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "file:app/popular-tools.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "file:lib/i18n/context.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/page.tsx",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/page.tsx",
+      "target": "file:app/tools/[slug]/tool-page-content.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:lib/blog/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:components/tools/tool-widget.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:components/error-boundary.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:lib/i18n/context.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:app/tools/[slug]/_components/json-formatter.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:app/tools/[slug]/_components/base64.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:app/tools/[slug]/_components/image-compressor.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:app/tools/[slug]/_components/pdf-merger.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/[slug]/tool-page-content.tsx",
+      "target": "file:app/tools/[slug]/_components/qr-generator.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/blog/[slug]/page.tsx",
+      "target": "file:lib/blog/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/blog/[slug]/page.tsx",
+      "target": "file:app/blog/[slug]/blog-post-content.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/page.tsx",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/page.tsx",
+      "target": "file:app/tools/tools-page-content.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/blog/page.tsx",
+      "target": "file:lib/blog/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/blog/page.tsx",
+      "target": "file:app/blog/blog-content.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/layout/header.tsx",
+      "target": "file:components/theme-provider.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/layout/header.tsx",
+      "target": "file:lib/i18n/context.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/layout/header.tsx",
+      "target": "file:components/ui/button.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/layout/header.tsx",
+      "target": "file:lib/utils.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/layout/footer.tsx",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/layout/footer.tsx",
+      "target": "file:lib/i18n/context.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/layout/footer.tsx",
+      "target": "file:components/layout/footer-theme-toggle.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:components/layout/footer.tsx",
+      "target": "file:components/visitor-counter.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/home-search.tsx",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/home-search.tsx",
+      "target": "file:lib/i18n/context.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/tools-page-content.tsx",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/tools-page-content.tsx",
+      "target": "file:lib/i18n/context.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/tools-filter.tsx",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/tools/tools-filter.tsx",
+      "target": "file:lib/i18n/context.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/blog/blog-search.tsx",
+      "target": "file:lib/blog/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/blog/blog-search.tsx",
+      "target": "file:lib/i18n/context.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/i18n/context.tsx",
+      "target": "file:lib/i18n/en.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/i18n/context.tsx",
+      "target": "file:lib/i18n/zh.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "dir:app/tools/[slug]/_components/",
+      "type": "related",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/page.tsx",
+      "target": "dir:public/blog/",
+      "type": "related",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/api/visitor/route.ts",
+      "target": "file:.env.example",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "file:components/ads/ad-unit.tsx",
+      "target": "file:.env.example",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "file:app/sitemap.ts",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/sitemap.ts",
+      "target": "file:lib/blog/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/robots.ts",
+      "target": "file:lib/tools/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/robots.ts",
+      "target": "file:lib/blog/data.ts",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "dir:_promotion/",
+      "target": "file:README.md",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "file:_gen_tools.py",
+      "target": "file:lib/tools/data.ts",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "file:_insert_zh.py",
+      "target": "file:lib/blog/data.ts",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "file:scripts/translate-posts.mjs",
+      "target": "file:lib/blog/data.ts",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "file:app/api/whois/route.ts",
+      "target": "file:app/tools/[slug]/_components/whois-lookup.tsx",
+      "type": "routes",
+      "weight": 0.8,
+      "label": "WHOIS API consumed by"
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:components/theme-provider.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:components/google-analytics.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:components/adsense.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:components/cookie-banner.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:components/layout/header.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:components/layout/footer.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:lib/i18n/context.tsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:app/globals.css",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:next.config.ts",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:tsconfig.json",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:package.json",
+      "type": "depends_on",
+      "weight": 0.6
+    },
+    {
+      "source": "file:app/layout.tsx",
+      "target": "file:README.md",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/tools/[slug]/_components/whois-lookup.tsx",
+      "target": "file:lib/i18n/en.ts",
+      "type": "imports",
+      "weight": 0.6
+    },
+    {
+      "source": "file:app/tools/[slug]/_components/whois-lookup.tsx",
+      "target": "file:lib/i18n/zh.ts",
+      "type": "imports",
+      "weight": 0.6
+    },
+    {
+      "source": "file:components/google-analytics.tsx",
+      "target": "file:.env.example",
+      "type": "configures",
+      "weight": 0.5
+    },
+    {
+      "source": "file:lib/blog/images.ts",
+      "target": "file:lib/blog/data.ts",
+      "type": "related",
+      "weight": 0.5,
+      "label": "complementary blog data"
+    },
+    {
+      "source": "file:lib/i18n/zh.ts",
+      "target": "file:lib/i18n/en.ts",
+      "type": "related",
+      "weight": 0.8,
+      "label": "parallel translation files"
+    },
+    {
+      "source": "file:public/ads.txt",
+      "target": "file:components/adsense.tsx",
+      "type": "configures",
+      "weight": 0.5,
+      "label": "AdSense authorization"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:app-pages",
+      "name": "App Pages",
+      "description": "Next.js App Router pages — home, tools listing, individual tool pages, blog listing, blog posts, static pages (about, contact, privacy, terms)",
+      "nodeIds": [
+        "file:app/page.tsx",
+        "file:app/tools/page.tsx",
+        "file:app/tools/[slug]/page.tsx",
+        "file:app/blog/page.tsx",
+        "file:app/blog/[slug]/page.tsx",
+        "file:app/about/page.tsx",
+        "file:app/contact/page.tsx",
+        "file:app/privacy/page.tsx",
+        "file:app/terms/page.tsx",
+        "file:app/not-found.tsx"
+      ]
+    },
+    {
+      "id": "layer:app-content",
+      "name": "App Content Components",
+      "description": "Client-side content components for pages — search, filters, blog content, tool page content, loading skeletons",
+      "nodeIds": [
+        "file:app/home-search.tsx",
+        "file:app/popular-tools.tsx",
+        "file:app/tools/tools-page-content.tsx",
+        "file:app/tools/tools-filter.tsx",
+        "file:app/blog/blog-content.tsx",
+        "file:app/blog/blog-search.tsx",
+        "file:app/tools/[slug]/tool-page-content.tsx",
+        "file:app/blog/[slug]/blog-post-content.tsx",
+        "file:app/tools/[slug]/loading.tsx",
+        "file:app/tools/loading.tsx",
+        "file:app/blog/loading.tsx"
+      ]
+    },
+    {
+      "id": "layer:tool-components",
+      "name": "Tool Components",
+      "description": "Individual tool React components — 100+ client-side tools for JSON, Base64, image processing, PDF manipulation, QR codes, converters, etc.",
+      "nodeIds": [
+        "dir:app/tools/[slug]/_components/",
+        "file:app/tools/[slug]/_components/json-formatter.tsx",
+        "file:app/tools/[slug]/_components/base64.tsx",
+        "file:app/tools/[slug]/_components/image-compressor.tsx",
+        "file:app/tools/[slug]/_components/pdf-merger.tsx",
+        "file:app/tools/[slug]/_components/qr-generator.tsx",
+        "file:app/tools/[slug]/_components/whois-lookup.tsx"
+      ]
+    },
+    {
+      "id": "layer:layout-components",
+      "name": "Layout Components",
+      "description": "Shared layout components — Header, Footer, FooterThemeToggle, ThemeProvider",
+      "nodeIds": [
+        "file:components/layout/header.tsx",
+        "file:components/layout/footer.tsx",
+        "file:components/layout/footer-theme-toggle.tsx"
+      ]
+    },
+    {
+      "id": "layer:shared-components",
+      "name": "Shared Components",
+      "description": "Reusable components — Button, ErrorBoundary, ToolWidget, AdUnit, CookieBanner, Favorites, GoogleAnalytics, VisitorCounter",
+      "nodeIds": [
+        "file:components/ui/button.tsx",
+        "file:components/error-boundary.tsx",
+        "file:components/tools/tool-widget.tsx",
+        "file:components/ads/ad-unit.tsx",
+        "file:components/cookie-banner.tsx",
+        "file:components/favorites.tsx",
+        "file:components/google-analytics.tsx",
+        "file:components/visitor-counter.tsx",
+        "file:components/theme-provider.tsx",
+        "file:components/adsense.tsx"
+      ]
+    },
+    {
+      "id": "layer:data-layer",
+      "name": "Data Layer",
+      "description": "Central data files — tools catalog, blog posts, translations (EN/ZH), blog images, utility functions",
+      "nodeIds": [
+        "file:lib/tools/data.ts",
+        "file:lib/blog/data.ts",
+        "file:lib/i18n/context.tsx",
+        "file:lib/i18n/en.ts",
+        "file:lib/i18n/zh.ts",
+        "file:lib/blog/images.ts",
+        "file:lib/utils.ts"
+      ]
+    },
+    {
+      "id": "layer:api-routes",
+      "name": "API Routes",
+      "description": "Serverless API routes — visitor counter via Vercel KV",
+      "nodeIds": [
+        "file:app/api/visitor/route.ts",
+        "file:app/api/whois/route.ts"
+      ]
+    },
+    {
+      "id": "layer:seo",
+      "name": "SEO Configuration",
+      "description": "SEO-related files — robots.txt generator, sitemap generator, root layout metadata",
+      "nodeIds": [
+        "file:app/robots.ts",
+        "file:app/sitemap.ts",
+        "file:app/layout.tsx"
+      ]
+    },
+    {
+      "id": "layer:configuration",
+      "name": "Configuration",
+      "description": "Build and project configuration — Next.js config, TypeScript, PostCSS, package.json, environment variables, CI pipeline",
+      "nodeIds": [
+        "file:next.config.ts",
+        "file:tsconfig.json",
+        "file:postcss.config.mjs",
+        "file:package.json",
+        "file:.env.example",
+        "file:.github/workflows/ci.yml",
+        "file:app/globals.css"
+      ]
+    },
+    {
+      "id": "layer:scripts",
+      "name": "Build/Dev Scripts",
+      "description": "Python and Node.js scripts for content generation, translation, category checking, file management",
+      "nodeIds": [
+        "file:_gen_tools.py",
+        "file:_insert_zh.py",
+        "file:add_zh.py",
+        "file:add_zh_content.py",
+        "file:check_cats.py",
+        "file:find_posts.py",
+        "file:reorg.py",
+        "file:scripts/translate-posts.mjs",
+        "file:scripts/translate-posts.cjs",
+        "file:scripts/translate_posts.py",
+        "file:scripts/check_endings.py",
+        "file:scripts/debug_endings.py"
+      ]
+    },
+    {
+      "id": "layer:content-assets",
+      "name": "Content & Assets",
+      "description": "Static content — Chinese blog translations, blog screenshots, promotional materials",
+      "nodeIds": [
+        "dir:lib/blog/zh/",
+        "dir:public/blog/",
+        "dir:_promotion/",
+        "file:public/ads.txt"
+      ]
+    },
+    {
+      "id": "layer:documents",
+      "name": "Documentation",
+      "description": "Project documentation and README",
+      "nodeIds": [
+        "file:README.md"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Project Overview",
+      "description": "ToolboxPro is a Next.js 15 website with 100+ client-side tools across 8 categories. Everything runs in the browser — no server processing. Built with React 19, TypeScript, and Tailwind CSS v4.",
+      "nodeIds": [
+        "file:README.md",
+        "file:package.json"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Root Layout & Providers",
+      "description": "The app starts with the root layout at app/layout.tsx which wraps everything in ThemeProvider, LocaleProvider, and renders Header/Footer. SEO metadata is defined here.",
+      "nodeIds": [
+        "file:app/layout.tsx",
+        "file:components/theme-provider.tsx",
+        "file:lib/i18n/context.tsx"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Navigation System",
+      "description": "Header component provides category navigation, blog link, language switcher (EN/ZH), and dark mode toggle. Footer shows tool links, company pages, and visitor counter.",
+      "nodeIds": [
+        "file:components/layout/header.tsx",
+        "file:components/layout/footer.tsx"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Home Page",
+      "description": "The home page (app/page.tsx) displays a hero section with search, popular tools pills, category grid, all tools grid, latest blog posts, and value proposition sections.",
+      "nodeIds": [
+        "file:app/page.tsx",
+        "file:app/home-search.tsx",
+        "file:app/popular-tools.tsx"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Tools Architecture",
+      "description": "Tools are defined in lib/tools/data.ts with slug, name, category, icon, and searchKeywords. Each tool has a dedicated page at /tools/[slug] with its own React component in _components/.",
+      "nodeIds": [
+        "file:lib/tools/data.ts",
+        "file:app/tools/[slug]/page.tsx",
+        "dir:app/tools/[slug]/_components/"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Individual Tool Pages",
+      "description": "Tool pages use a server component (page.tsx) for static generation and metadata, then delegate to a client component (tool-page-content.tsx) that imports the specific tool component via a component map.",
+      "nodeIds": [
+        "file:app/tools/[slug]/page.tsx",
+        "file:app/tools/[slug]/tool-page-content.tsx"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "Blog System",
+      "description": "Blog posts are stored in lib/blog/data.ts with bilingual content. Each post links to a tool via toolSlug. Pages at /blog and /blog/[slug] use static generation.",
+      "nodeIds": [
+        "file:lib/blog/data.ts",
+        "file:app/blog/page.tsx",
+        "file:app/blog/[slug]/page.tsx",
+        "dir:lib/blog/zh/"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "Internationalization",
+      "description": "i18n uses React Context with English and Chinese dictionaries. The t() function supports dot-notation keys and parameter interpolation. Locale is persisted in localStorage.",
+      "nodeIds": [
+        "file:lib/i18n/context.tsx",
+        "file:lib/i18n/en.ts",
+        "file:lib/i18n/zh.ts"
+      ]
+    },
+    {
+      "order": 9,
+      "title": "Static Pages & SEO",
+      "description": "Static pages (about, contact, privacy, terms) serve legal/compliance needs. SEO is handled via Next.js metadata API, sitemap.ts, robots.ts, and schema.org JSON-LD in the root layout.",
+      "nodeIds": [
+        "file:app/privacy/page.tsx",
+        "file:app/terms/page.tsx",
+        "file:app/sitemap.ts",
+        "file:app/robots.ts"
+      ]
+    },
+    {
+      "order": 10,
+      "title": "Build & Dev Tooling",
+      "description": "Python scripts automate tool generation, content translation, and category management. Node.js scripts handle blog translation. CI pipeline verifies builds on GitHub.",
+      "nodeIds": [
+        "file:_gen_tools.py",
+        "file:scripts/translate-posts.mjs",
+        "file:.github/workflows/ci.yml"
+      ]
+    }
+  ]
+}
