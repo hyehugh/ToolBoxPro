@@ -51,7 +51,7 @@ export default function HomePage() {
       <MouseGlow />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 text-center relative">
+      <section className="pt-16 md:pt-24 pb-6 text-center relative">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] dark:from-[#2a2422] to-transparent rounded-3xl mx-4" />
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
           {t("home.heroTitle")}
@@ -64,7 +64,7 @@ export default function HomePage() {
         <HomeSearch />
 
         {/* Random Tool Button */}
-        <div className="mt-6">
+        <div className="mt-4">
           <button
             onClick={handleRandomTool}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border bg-card card-shadow hover:bg-accent transition-all duration-200 text-sm font-medium"
