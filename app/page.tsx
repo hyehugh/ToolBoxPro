@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { tools, categories } from "@/lib/tools/data";
 import { blogPosts } from "@/lib/blog/data";
@@ -10,6 +10,7 @@ import { PopularTools } from "./popular-tools";
 import { useLocale } from "@/lib/i18n/context";
 import { useRecentTools } from "@/lib/hooks/use-recent-tools";
 import { useFavorites } from "@/lib/hooks/use-favorites";
+import { useMagneticCard } from "@/lib/hooks/use-magnetic-card";
 import dynamic from "next/dynamic";
 
 const AdUnit = dynamic(
@@ -19,6 +20,21 @@ const AdUnit = dynamic(
 
 const MouseGlow = dynamic(
   () => import("@/components/mouse-glow").then((m) => m.MouseGlow),
+  { ssr: false }
+);
+
+const ClickEffects = dynamic(
+  () => import("@/components/click-effects").then((m) => m.ClickEffects),
+  { ssr: false }
+);
+
+const GridParallax = dynamic(
+  () => import("@/components/grid-parallax").then((m) => m.GridParallax),
+  { ssr: false }
+);
+
+const ToolCard = dynamic(
+  () => import("@/components/tool-card").then((m) => m.ToolCard),
   { ssr: false }
 );
 
@@ -49,14 +65,16 @@ export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl px-4">
       <MouseGlow />
+      <GridParallax />
+      <ClickEffects />
 
       {/* Hero */}
       <section className="pt-16 md:pt-24 pb-6 text-center relative">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] dark:from-[#2a2422] to-transparent rounded-3xl mx-4" />
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-          {t("home.heroTitle")}
+          <span className="typewriter-line">{t("home.heroTitle")}</span>
           <br />
-          <span className="text-primary">{t("home.heroTagline")}</span>
+          <span className="typewriter-sub text-primary">{t("home.heroTagline")}</span>
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
           {t("home.heroDesc").replace("{count}", String(tools.length))}
@@ -155,32 +173,13 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {tools.map((tool) => (
-            <Link
+            <ToolCard
               key={tool.slug}
-              href={`/tools/${tool.slug}`}
-              className="tool-card relative flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <div className="shimmer rounded-lg" />
-              <span className="text-xl mt-1 font-mono">{tool.icon}</span>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-medium">{t(`toolList.${tool.slug}.name`)}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {t(`toolList.${tool.slug}.desc`)}
-                </p>
-              </div>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleFavorite(tool.slug);
-                }}
-                className={`favorite-btn mt-1 text-lg flex-shrink-0 ${
-                  isFavorite(tool.slug) ? "active" : "text-muted-foreground"
-                }`}
-                title={isFavorite(tool.slug) ? (locale === "zh" ? "取消收藏" : "Unfavorite") : (locale === "zh" ? "收藏" : "Favorite")}
-              >
-                {isFavorite(tool.slug) ? "❤️" : "🤍"}
-              </button>
-            </Link>
+              slug={tool.slug}
+              icon={tool.icon}
+              name={t(`toolList.${tool.slug}.name`)}
+              desc={t(`toolList.${tool.slug}.desc`)}
+            />
           ))}
         </div>
       </section>
