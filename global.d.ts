@@ -6,4 +6,5 @@ declare function gtag(...args: any[]): void;
 
 interface Window {
   dataLayer?: any[];
+  gtag?: (...args: any[]) => void;
 }
