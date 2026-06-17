@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tools, getTool, type Tool } from "@/lib/tools/data";
 import Link from "next/link";
 import { useLocale } from "@/lib/i18n/context";
@@ -561,7 +561,7 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
   const scenarios = getToolScenarios(slug);
 
   // Track as recently used
-  useState(() => { addRecent(slug); });
+  useEffect(() => { addRecent(slug); }, [slug]);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
