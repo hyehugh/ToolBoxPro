@@ -18,21 +18,6 @@ const AdUnit = dynamic(
   { ssr: false }
 );
 
-const MouseGlow = dynamic(
-  () => import("@/components/mouse-glow").then((m) => m.MouseGlow),
-  { ssr: false }
-);
-
-const ClickEffects = dynamic(
-  () => import("@/components/click-effects").then((m) => m.ClickEffects),
-  { ssr: false }
-);
-
-const GridParallax = dynamic(
-  () => import("@/components/grid-parallax").then((m) => m.GridParallax),
-  { ssr: false }
-);
-
 const ToolCard = dynamic(
   () => import("@/components/tool-card").then((m) => m.ToolCard),
   { ssr: false }
@@ -69,10 +54,6 @@ export default function HomePage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4">
-      <MouseGlow />
-      <GridParallax />
-      <ClickEffects />
-
       {/* Hero */}
       <section className="pt-16 md:pt-24 pb-6 text-center relative">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] dark:from-[#2a2422] to-transparent rounded-3xl mx-4" />

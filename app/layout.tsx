@@ -7,6 +7,7 @@ import { LocaleProvider } from "@/lib/i18n/context";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { AdSense } from "@/components/adsense";
 import { CookieBanner } from "@/components/cookie-banner";
+import { GlobalEffects } from "@/components/global-effects";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
@@ -107,6 +108,7 @@ export default function RootLayout({
             <GoogleAnalytics />
             <AdSense />
             <Header />
+            <GlobalEffects />
             <main className="flex-1">{children}</main>
             <Footer />
             <CookieBanner />
