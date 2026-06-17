@@ -281,6 +281,8 @@ export const zh: Record<string, any> = {
       "Utilities": "实用工具",
       "Conversion Tools": "转换工具",
       "Conversion": "转换",
+      "Productivity": "效率工具",
+      "Design": "设计工具",
     },
     minRead: "{count} 分钟阅读",
     tryIt: "用我们的免费在线工具试试：",
