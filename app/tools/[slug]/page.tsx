@@ -18,9 +18,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${tool.name} — Free Online Tool`,
     description: `Free online ${tool.name}. ${tool.description}. No signup, no upload, privacy first.`,
+    alternates: {
+      canonical: `https://trytoolboxpro.com/tools/${slug}`,
+    },
     openGraph: {
       title: `${tool.name} | ToolboxPro`,
       description: tool.description,
+      url: `https://trytoolboxpro.com/tools/${slug}`,
     },
   };
 }
@@ -30,5 +34,62 @@ export default async function ToolPage({ params }: Props) {
   const tool = getTool(slug);
   if (!tool) notFound();
 
-  return <ToolPageContent slug={slug} />;
+  const appJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: tool.name,
+    description: tool.description,
+    url: `https://trytoolboxpro.com/tools/${slug}`,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any (Web Browser)",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "ToolboxPro",
+      url: "https://trytoolboxpro.com",
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://trytoolboxpro.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Tools",
+        item: "https://trytoolboxpro.com/tools",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: tool.name,
+        item: `https://trytoolboxpro.com/tools/${slug}`,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ToolPageContent slug={slug} />
+    </>
+  );
 }

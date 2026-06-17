@@ -635,7 +635,7 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
 
       {relatedPosts.length > 0 && (
         <section className="mt-10">
-          <h2 className="text-xl font-bold mb-4">{t("blog.relatedTools")}</h2>
+          <h2 className="text-xl font-bold mb-4">{t("blog.relatedArticles")}</h2>
           <div className="space-y-3">
             {relatedPosts.map((post) => (
               <Link

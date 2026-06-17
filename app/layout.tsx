@@ -49,39 +49,37 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
+    canonical: "https://trytoolboxpro.com",
     languages: {
       en: "https://trytoolboxpro.com",
       zh: "https://trytoolboxpro.com",
     },
   },
-  other: {
-    "application/ld+json": JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: "ToolboxPro",
-        url: "https://trytoolboxpro.com",
-        description:
-          "100+ free online tools for developers, designers, and everyday tasks. No signup required.",
-        potentialAction: {
-          "@type": "SearchAction",
-          target:
-            "https://trytoolboxpro.com/tools?q={search_term_string}",
-          "query-input": "required name=search_term_string",
-        },
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "ToolboxPro",
-        url: "https://trytoolboxpro.com",
-        contactPoint: {
-          "@type": "ContactPoint",
-          email: "hyehugh520@gmail.com",
-          contactType: "customer support",
-        },
-      },
-    ]),
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "ToolboxPro",
+  url: "https://trytoolboxpro.com",
+  description:
+    "100+ free online tools for developers, designers, and everyday tasks. No signup required.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://trytoolboxpro.com/tools?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "ToolboxPro",
+  url: "https://trytoolboxpro.com",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "hyehugh520@gmail.com",
+    contactType: "customer support",
   },
 };
 
@@ -94,6 +92,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <ThemeProvider>

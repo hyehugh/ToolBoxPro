@@ -270,6 +270,7 @@ export const zh: Record<string, any> = {
     metaDesc: "学习如何高效使用在线工具。面向开发者、设计师和日常用户的教程、指南和技巧。",
     subtitle: "教程、指南和技巧，帮您充分利用在线工具。",
     relatedTools: "相关工具",
+    relatedArticles: "相关文章",
     categories: {
       "Developer Tools": "开发者工具",
       "Image Tools": "图片工具",

@@ -18,10 +18,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: `https://trytoolboxpro.com/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
       type: "article",
+      url: `https://trytoolboxpro.com/blog/${slug}`,
       publishedTime: post.date,
     },
   };
