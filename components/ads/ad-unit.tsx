@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+
+const ADSENSE_CLIENT = (process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "pub-6323528813462144").trim();
+
 interface AdUnitProps {
   slot: string;
   format?: "auto" | "rectangle" | "horizontal" | "vertical";
@@ -12,15 +15,14 @@ export function AdUnit({ slot, format = "auto", className = "" }: AdUnitProps) {
   useEffect(() => {
     if (initialized.current) return;
     initialized.current = true;
-    const clientId = (process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "").trim();
-    if (!clientId || clientId === "ca-pub-0000000000000000") return;
+    if (!ADSENSE_CLIENT || ADSENSE_CLIENT === "ca-pub-0000000000000000") return;
     try {
       if (!(window as any).adsbygoogle) {
         const script = document.createElement("script");
         script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
         script.async = true;
         script.crossOrigin = "anonymous";
-        script.setAttribute("data-ad-client", `ca-${clientId}`);
+        script.setAttribute("data-ad-client", `ca-${ADSENSE_CLIENT}`);
         document.head.appendChild(script);
       }
       setTimeout(() => {
@@ -31,15 +33,14 @@ export function AdUnit({ slot, format = "auto", className = "" }: AdUnitProps) {
       }, 500);
     } catch (e) { console.warn("AdSense init failed:", e); }
   }, []);
-  const clientId = (process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "").trim();
-  if (!clientId || clientId === "ca-pub-0000000000000000") return null;
+  if (!ADSENSE_CLIENT || ADSENSE_CLIENT === "ca-pub-0000000000000000") return null;
   return (
     <div className={`ad-container my-6 ${className}`} ref={adRef}>
       <p className="text-xs text-muted-foreground mb-1 text-center">Sponsored</p>
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
-        data-ad-client={`ca-${clientId}`}
+        data-ad-client={`ca-${ADSENSE_CLIENT}`}
         data-ad-slot={slot}
         data-ad-format={format}
         data-full-width-responsive="true"
