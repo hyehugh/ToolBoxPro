@@ -2,10 +2,10 @@
 
 import Script from "next/script";
 
-const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "";
+const ADSENSE_CLIENT = (process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "").trim();
 
 export function AdSense() {
-  if (!ADSENSE_CLIENT) return null;
+  if (!ADSENSE_CLIENT || ADSENSE_CLIENT === "ca-pub-0000000000000000") return null;
 
   return (
     <Script
