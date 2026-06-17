@@ -274,3 +274,4 @@
 .tool-card a {
   cursor: pointer;
 }
+.fix-height-v2 { display: block; }
