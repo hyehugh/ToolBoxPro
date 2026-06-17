@@ -24,9 +24,9 @@ export function ToolsPageContent() {
 
 function ToolsGridSkeleton() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="h-24 rounded-lg bg-muted animate-pulse" />
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      {Array.from({ length: 8 }).map((_, i) => (
+        <div key={i} className="h-20 rounded-lg bg-muted animate-pulse" />
       ))}
     </div>
   );

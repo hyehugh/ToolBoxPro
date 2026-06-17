@@ -5,6 +5,12 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { type Tool, type Category } from "@/lib/tools/data";
 import { useLocale } from "@/lib/i18n/context";
+import dynamic from "next/dynamic";
+
+const ToolCard = dynamic(
+  () => import("@/components/tool-card").then((m) => m.ToolCard),
+  { ssr: false }
+);
 
 interface Props {
   tools: Tool[];
@@ -24,11 +30,6 @@ export default function ToolsFilter({ tools, categories }: Props) {
   const filteredTools = selectedCategory
     ? tools.filter((t) => t.category === selectedCategory)
     : tools;
-
-  const getCategoryName = (catId: string) => {
-    const cat = categories.find((c) => c.id === catId);
-    return cat?.name || catId;
-  };
 
   return (
     <>
@@ -59,22 +60,16 @@ export default function ToolsFilter({ tools, categories }: Props) {
         ))}
       </div>
 
-      {/* Tool grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Tool grid — same 4-column layout as homepage */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-fr">
         {filteredTools.map((tool) => (
-          <Link
+          <ToolCard
             key={tool.slug}
-            href={`/tools/${tool.slug}`}
-            className="flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            <span className="text-xl mt-1 font-mono">{tool.icon}</span>
-            <div>
-              <h3 className="font-medium">{t(`toolList.${tool.slug}.name`)}</h3>
-              <p className="text-sm text-muted-foreground">
-                {t(`toolList.${tool.slug}.desc`)}
-              </p>
-            </div>
-          </Link>
+            slug={tool.slug}
+            icon={tool.icon}
+            name={t(`toolList.${tool.slug}.name`)}
+            desc={t(`toolList.${tool.slug}.desc`)}
+          />
         ))}
       </div>
 
