@@ -33,11 +33,6 @@ const GridParallax = dynamic(
   { ssr: false }
 );
 
-const TypewriterHero = dynamic(
-  () => import("@/components/typewriter-hero").then((m) => m.TypewriterHero),
-  { ssr: false }
-);
-
 const ToolCard = dynamic(
   () => import("@/components/tool-card").then((m) => m.ToolCard),
   { ssr: false }
@@ -76,10 +71,11 @@ export default function HomePage() {
       {/* Hero */}
       <section className="pt-16 md:pt-24 pb-6 text-center relative">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] dark:from-[#2a2422] to-transparent rounded-3xl mx-4" />
-        <TypewriterHero
-          line1={t("home.heroTitle")}
-          line2={t("home.heroTagline")}
-        />
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          {t("home.heroTitle")}
+          <br />
+          <span className="text-primary">{t("home.heroTagline")}</span>
+        </h1>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
           {t("home.heroDesc").replace("{count}", String(tools.length))}
         </p>
