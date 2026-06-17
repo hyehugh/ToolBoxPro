@@ -8,6 +8,11 @@ import { ToolWidget } from "@/components/tools/tool-widget";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { blogPosts } from "@/lib/blog/data";
 
+const AdUnit = dynamic(
+  () => import("@/components/ads/ad-unit").then((m) => m.AdUnit),
+  { ssr: false }
+);
+
 // Loading fallback for dynamic components
 const LoadingFallback = () => (
   <div className="flex items-center justify-center p-8">
@@ -555,6 +560,9 @@ export function ToolPageContent({ slug }: { slug: string }) {
           {ToolComponent ? <ToolComponent /> : <p className="text-muted-foreground">{t("common.loading")}</p>}
         </ToolWidget>
       </ErrorBoundary>
+
+      {/* Tool Page Ad */}
+      <AdUnit slot="2800459707" format="horizontal" className="max-w-4xl mx-auto" />
 
       {/* Related tools */}
       {related.length > 0 && (

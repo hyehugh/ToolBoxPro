@@ -7,6 +7,12 @@ import { getBlogImage } from "@/lib/blog/images";
 import HomeSearch from "./home-search";
 import { PopularTools } from "./popular-tools";
 import { useLocale } from "@/lib/i18n/context";
+import dynamic from "next/dynamic";
+
+const AdUnit = dynamic(
+  () => import("@/components/ads/ad-unit").then((m) => m.AdUnit),
+  { ssr: false }
+);
 
 export default function HomePage() {
   const { t, locale } = useLocale();
@@ -30,6 +36,9 @@ export default function HomePage() {
 
       {/* Popular Tools */}
       <PopularTools />
+
+      {/* Homepage Banner Ad */}
+      <AdUnit slot="5913749762" format="horizontal" className="max-w-4xl mx-auto" />
 
       {/* Category Grid */}
       <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">

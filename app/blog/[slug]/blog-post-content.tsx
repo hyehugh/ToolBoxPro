@@ -4,6 +4,12 @@ import { blogPosts, type BlogPost } from "@/lib/blog/data";
 import { getBlogImage } from "@/lib/blog/images";
 import Link from "next/link";
 import { useLocale } from "@/lib/i18n/context";
+import dynamic from "next/dynamic";
+
+const AdUnit = dynamic(
+  () => import("@/components/ads/ad-unit").then((m) => m.AdUnit),
+  { ssr: false }
+);
 
 // Simple markdown renderer
 function renderMarkdown(md: string) {
@@ -208,6 +214,9 @@ export function BlogPostContent({ slug }: { slug: string }) {
           </div>
         )}
       </article>
+
+      {/* Blog In-Article Ad */}
+      <AdUnit slot="8703564630" format="horizontal" className="max-w-3xl mx-auto" />
 
       {/* Related posts */}
       <section className="mt-12 pt-8 border-t">
