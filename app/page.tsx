@@ -38,6 +38,11 @@ const ToolCard = dynamic(
   { ssr: false }
 );
 
+const CategoryCard = dynamic(
+  () => import("@/components/category-card").then((m) => m.CategoryCard),
+  { ssr: false }
+);
+
 export default function HomePage() {
   const { t, locale } = useLocale();
   const { recent } = useRecentTools();
@@ -145,19 +150,15 @@ export default function HomePage() {
         {categories.map((cat) => {
           const count = tools.filter((t) => t.category === cat.id).length;
           return (
-            <Link
+            <CategoryCard
               key={cat.id}
-              href={`/tools?category=${cat.id}`}
-              className="flex flex-col items-center gap-2 p-6 rounded-lg border bg-card card-shadow hover:bg-accent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <span className="text-3xl">{cat.icon}</span>
-              <span className="font-medium text-sm text-center">{t(`categories.${cat.id}`)}</span>
-              <span className="text-xs text-muted-foreground">
-                {count === 1
-                  ? t("home.toolCount").replace("{count}", String(count))
-                  : t("home.toolCountPlural").replace("{count}", String(count))}
-              </span>
-            </Link>
+              id={cat.id}
+              icon={cat.icon}
+              name={t(`categories.${cat.id}`)}
+              count={count === 1
+                ? t("home.toolCount").replace("{count}", String(count))
+                : t("home.toolCountPlural").replace("{count}", String(count))}
+            />
           );
         })}
       </section>
