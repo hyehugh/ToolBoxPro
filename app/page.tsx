@@ -178,6 +178,7 @@ export default function HomePage() {
               slug={tool.slug}
               icon={tool.icon}
               name={t(`toolList.${tool.slug}.name`)}
+              desc={t(`toolList.${tool.slug}.desc`)}
             />
           ))}
         </div>
