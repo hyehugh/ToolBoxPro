@@ -150,6 +150,10 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   transform-style: preserve-3d;
   perspective: 800px;
+  min-height: 88px;
+}
+.tool-card a {
+  min-height: 88px;
 }
 .tool-card:hover {
   transform: translateY(-2px) scale(1.01);
