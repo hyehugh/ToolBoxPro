@@ -26,7 +26,7 @@ export function PasswordGeneratorTool() {
     if (!chars) return;
     let pwd = "";
     for (let i = 0; i < length; i++) {
-      pwd += chars[Math.floor(Math.random() * chars.length)];
+      pwd += chars[crypto.getRandomValues(new Uint32Array(1))[0] % chars.length];
     }
     setPassword(pwd);
   }, [length, useUpper, useLower, useNumbers, useSymbols]);

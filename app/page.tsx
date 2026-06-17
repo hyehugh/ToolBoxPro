@@ -32,7 +32,7 @@ export default function HomePage() {
       <PopularTools />
 
       {/* Category Grid */}
-      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
         {categories.map((cat) => {
           const count = tools.filter((t) => t.category === cat.id).length;
           return (

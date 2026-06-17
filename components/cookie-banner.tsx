@@ -11,7 +11,16 @@ export function CookieBanner() {
 
   useEffect(() => {
     const consented = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+    // Google Consent Mode v2: set default consent to denied on first visit
     if (!consented) {
+      if (typeof window !== 'undefined' && typeof gtag === 'function') {
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
+      }
       const timer = setTimeout(() => setVisible(true), 1000);
       return () => clearTimeout(timer);
     }
@@ -19,11 +28,27 @@ export function CookieBanner() {
 
   const accept = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+    // Google Consent Mode v2: grant all consent
+    if (typeof window !== 'undefined' && typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+      });
+    }
     setVisible(false);
   };
 
   const decline = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, "declined");
+    // Google Consent Mode v2: deny all consent
+    if (typeof window !== 'undefined' && typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+    }
     setVisible(false);
   };
 

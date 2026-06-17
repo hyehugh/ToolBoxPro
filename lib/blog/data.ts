@@ -2366,7 +2366,6 @@ const seconds = Math.floor(Date.now() / 1000); // 1716451200
 
 // Convert back
 const date = new Date(1716451200000);
-console.log(date.toISOString());  // "2026-05-23T00:00:00.000Z"
 \`\`\`
 
 \`\`\`python
@@ -2413,7 +2412,6 @@ Timestamps are always UTC. The conversion to local time is purely display logic:
 \`\`\`javascript
 // Always UTC internally
 const utc = new Date("2026-05-23T12:00:00Z");
-console.log(utc.getTime());  // Same value everywhere
 
 // Display in any timezone
 const tokyo = utc.toLocaleString("en-US", { timeZone: "Asia/Tokyo" });
@@ -2486,7 +2484,6 @@ const seconds = Math.floor(Date.now() / 1000); // 1716451200
 
 // 转换回来
 const date = new Date(1716451200000);
-console.log(date.toISOString());  // "2026-05-23T00:00:00.000Z"
 \`\`\`
 
 \`\`\`python
@@ -2533,7 +2530,6 @@ SELECT FROM_UNIXTIME(1716451200);           -- 时间戳转日期时间
 \`\`\`javascript
 // 内部始终使用 UTC
 const utc = new Date("2026-05-23T12:00:00Z");
-console.log(utc.getTime());  // 任何地方都是相同的值
 
 // 在任何时区显示
 const tokyo = utc.toLocaleString("en-US", { timeZone: "Asia/Tokyo" });
@@ -3328,7 +3324,6 @@ function decodeJWT(token) {
 
 const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.";
 const decoded = decodeJWT(token);
-console.log(decoded);
 \`\`\`
 
 ## Common JWT Vulnerabilities
@@ -3482,7 +3477,6 @@ function decodeJWT(token) {
 
 const token = "eyJhbG...wIn0.";
 const decoded = decodeJWT(token);
-console.log(decoded);
 \`\`\`
 
 ## 常见 JWT 漏洞
@@ -8906,7 +8900,6 @@ function generatePassword(length = 16) {
   return password.join('');
 }
 
-console.log(generatePassword(20));
 // Example output: "K8m\$pL9xQ!vN2jR%tW5"
 \`\`\`
 
@@ -9045,7 +9038,6 @@ function generatePassword(length = 16) {
   return password.join('');
 }
 
-console.log(generatePassword(20));
 // 示例输出："K8m\\$pL9xQ!vN2jR%tW5"
 \`\`\`
 
@@ -9209,7 +9201,6 @@ import { marked } from 'marked';
 
 const markdown = '# Hello World\\n\\nThis is **bold** text.';
 const html = marked.parse(markdown);
-console.log(html);
 // <h1 id="hello-world">Hello World</h1>
 // <p>This is <strong>bold</strong> text.</p>
 \`\`\`

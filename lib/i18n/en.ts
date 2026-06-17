@@ -333,6 +333,12 @@ export const en: Record<string, any> = {
       original: "Original",
       compressed: "Compressed",
       preview: "Preview",
+      dropImage: "Drop an image here or click to upload",
+      supportedFormats: "Supports JPG, PNG, WebP, AVIF, GIF",
+      newImage: "New Image",
+      compressing: "Compressing...",
+      smaller: "smaller",
+      loadFailed: "Failed to load image",
     },
     // Unit converters
     converter: {

@@ -321,6 +321,12 @@ export const zh: Record<string, any> = {
       original: "原始",
       compressed: "压缩后",
       preview: "预览",
+      dropImage: "拖拽图片到此处或点击上传",
+      supportedFormats: "支持 JPG, PNG, WebP, AVIF, GIF",
+      newImage: "新图片",
+      compressing: "压缩中...",
+      smaller: "减小",
+      loadFailed: "图片加载失败",
     },
     converter: {
       value: "数值",

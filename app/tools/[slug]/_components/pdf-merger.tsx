@@ -15,6 +15,7 @@ export function PdfMergerTool() {
   const [pdfs, setPdfs] = useState<PdfFile[]>([]);
   const [merged, setMerged] = useState<Uint8Array | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [dragIndex, setDragIndex] = useState<number | null>(null);
   const { t } = useLocale();
 
@@ -41,6 +42,7 @@ export function PdfMergerTool() {
   const merge = async () => {
     if (pdfs.length < 2) return;
     setLoading(true);
+    setError("");
 
     try {
       // Dynamic import pdf-lib for WASM-based PDF merging
@@ -59,6 +61,7 @@ export function PdfMergerTool() {
       setMerged(mergedBytes as Uint8Array);
     } catch (e) {
       console.error("PDF merge failed:", e);
+      setError(e instanceof Error ? e.message : 'Merge failed');
     }
 
     setLoading(false);
@@ -116,11 +119,15 @@ export function PdfMergerTool() {
             <Button onClick={merge} disabled={pdfs.length < 2 || loading}>
               {loading ? t('common.loading') : `${t('common.merge')} ${pdfs.length} PDFs`}
             </Button>
-            <Button variant="ghost" onClick={() => { setPdfs([]); setMerged(null); }}>
+            <Button variant="ghost" onClick={() => { setPdfs([]); setMerged(null); setError(""); }}>
               {t('common.clear')}
             </Button>
           </div>
         </div>
+      )}
+
+      {error && (
+        <p className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">{error}</p>
       )}
 
       {merged && (

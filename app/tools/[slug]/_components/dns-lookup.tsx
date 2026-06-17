@@ -36,43 +36,45 @@ export function DnsLookupTool() {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-    const allRecords: DnsRecord[] = [];
+    const promises = RECORD_TYPES.map((type) => {
+      const url = `https://dns.google/resolve?name=${encodeURIComponent(domainName)}&type=${type}`;
+      return fetch(url, { signal: controller.signal })
+        .then((res) => res.json())
+        .catch(() => null);
+    });
+
+    const results = await Promise.allSettled(promises);
+    clearTimeout(timeoutId);
+
     let hasError = false;
+    const allRecords: DnsRecord[] = [];
 
-    for (const type of RECORD_TYPES) {
-      try {
-        const url = `https://dns.google/resolve?name=${encodeURIComponent(domainName)}&type=${type}`;
-        const response = await fetch(url, { signal: controller.signal });
-        const data = await response.json();
-
-        if (data.Status === 0 && data.Answer) {
-          for (const answer of data.Answer) {
-            // Deduplicate
-            allRecords.push({
-              type: answer.type === 1 ? 'A' :
-                    answer.type === 28 ? 'AAAA' :
-                    answer.type === 15 ? 'MX' :
-                    answer.type === 2 ? 'NS' :
-                    answer.type === 16 ? 'TXT' :
-                    answer.type === 5 ? 'CNAME' :
-                    answer.type === 6 ? 'SOA' :
-                    `TYPE${answer.type}`,
-              name: answer.name,
-              data: answer.data,
-              ttl: answer.TTL,
-            });
-          }
+    for (const result of results) {
+      if (result.status === 'rejected' || !result.value) {
+        hasError = true;
+        continue;
+      }
+      const data = result.value;
+      if (data.Status === 0 && data.Answer) {
+        for (const answer of data.Answer) {
+          allRecords.push({
+            type: answer.type === 1 ? 'A' :
+                  answer.type === 28 ? 'AAAA' :
+                  answer.type === 15 ? 'MX' :
+                  answer.type === 2 ? 'NS' :
+                  answer.type === 16 ? 'TXT' :
+                  answer.type === 5 ? 'CNAME' :
+                  answer.type === 6 ? 'SOA' :
+                  `TYPE${answer.type}`,
+            name: answer.name,
+            data: answer.data,
+            ttl: answer.TTL,
+          });
         }
-      } catch (e) {
-        if ((e as Error).name === 'AbortError') {
-          hasError = true;
-          break;
-        }
+      } else {
         hasError = true;
       }
     }
-
-    clearTimeout(timeoutId);
 
     if (allRecords.length === 0 && hasError) {
       setError(t('toolCommon.dns.timeout'));
@@ -113,8 +115,8 @@ export function DnsLookupTool() {
       </div>
 
       {error && (
-        <div className="rounded-md border border-red-200 bg-red-50 p-3">
-          <p className="text-sm text-red-600">{error}</p>
+        <div className="rounded-md border border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-950/30 p-3">
+          <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
         </div>
       )}
 
