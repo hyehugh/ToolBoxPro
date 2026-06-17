@@ -79,18 +79,17 @@ export default function HomePage() {
         <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
           {t("home.heroDesc").replace("{count}", String(tools.length))}
         </p>
-        <HomeSearch />
-
-        {/* Random Tool Button */}
-        <div className="mt-4">
-          <button
-            onClick={handleRandomTool}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border bg-card card-shadow hover:bg-accent transition-all duration-200 text-sm font-medium"
-          >
-            <span className={`inline-block text-lg ${rolling ? "dice-roll" : ""}`}>🎲</span>
-            {locale === "zh" ? "随机工具" : "Random Tool"}
-          </button>
-        </div>
+        <HomeSearch
+          rightAction={
+            <button
+              onClick={handleRandomTool}
+              className="h-11 px-4 rounded-lg border bg-card card-shadow hover:bg-accent transition-all duration-200 text-sm font-medium whitespace-nowrap flex items-center gap-1.5"
+            >
+              <span className={`inline-block ${rolling ? "dice-roll" : ""}`}>🎲</span>
+              {locale === "zh" ? "随机" : "Random"}
+            </button>
+          }
+        />
       </section>
 
       {/* Recent Tools */}
