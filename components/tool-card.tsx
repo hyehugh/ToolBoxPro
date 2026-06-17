@@ -27,14 +27,14 @@ export function ToolCard({ slug, icon, name, desc }: ToolCardProps) {
     >
       <Link
         href={`/tools/${slug}`}
-        className="flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring h-full"
       >
         <div className="shimmer rounded-lg" />
         {/* Icon with 3D micro-tracking via CSS */}
         <span className="tool-icon text-xl mt-1 font-mono">{icon}</span>
         <div className="flex-1 min-w-0">
           <h3 className="font-medium">{name}</h3>
-          <p className="text-sm text-muted-foreground">{desc}</p>
+          <p className="text-sm text-muted-foreground tool-desc">{desc}</p>
         </div>
       </Link>
       <button
