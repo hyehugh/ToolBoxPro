@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { tools, categories } from "@/lib/tools/data";
 import { blogPosts } from "@/lib/blog/data";
@@ -7,6 +8,8 @@ import { getBlogImage } from "@/lib/blog/images";
 import HomeSearch from "./home-search";
 import { PopularTools } from "./popular-tools";
 import { useLocale } from "@/lib/i18n/context";
+import { useRecentTools } from "@/lib/hooks/use-recent-tools";
+import { useFavorites } from "@/lib/hooks/use-favorites";
 import dynamic from "next/dynamic";
 
 const AdUnit = dynamic(
@@ -14,14 +17,41 @@ const AdUnit = dynamic(
   { ssr: false }
 );
 
+const MouseGlow = dynamic(
+  () => import("@/components/mouse-glow").then((m) => m.MouseGlow),
+  { ssr: false }
+);
+
 export default function HomePage() {
   const { t, locale } = useLocale();
+  const { recent } = useRecentTools();
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const [rolling, setRolling] = useState(false);
+
+  const recentTools = useMemo(
+    () => recent.map((slug) => tools.find((tool) => tool.slug === slug)).filter(Boolean),
+    [recent]
+  );
+
+  const favoriteTools = useMemo(
+    () => favorites.map((slug) => tools.find((tool) => tool.slug === slug)).filter(Boolean),
+    [favorites]
+  );
+
+  const handleRandomTool = () => {
+    setRolling(true);
+    setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * tools.length);
+      window.location.href = `/tools/${tools[randomIndex].slug}`;
+    }, 500);
+  };
 
   return (
     <div className="mx-auto max-w-6xl px-4">
+      <MouseGlow />
+
       {/* Hero */}
       <section className="py-16 md:py-24 text-center relative">
-        {/* Warm ambient background */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#f5ece4] dark:from-[#2a2422] to-transparent rounded-3xl mx-4" />
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
           {t("home.heroTitle")}
@@ -32,7 +62,60 @@ export default function HomePage() {
           {t("home.heroDesc").replace("{count}", String(tools.length))}
         </p>
         <HomeSearch />
+
+        {/* Random Tool Button */}
+        <div className="mt-6">
+          <button
+            onClick={handleRandomTool}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border bg-card card-shadow hover:bg-accent transition-all duration-200 text-sm font-medium"
+          >
+            <span className={`inline-block text-lg ${rolling ? "dice-roll" : ""}`}>🎲</span>
+            {locale === "zh" ? "随机工具" : "Random Tool"}
+          </button>
+        </div>
       </section>
+
+      {/* Recent Tools */}
+      {recentTools.length > 0 && (
+        <section className="mb-8">
+          <h2 className="text-lg font-bold mb-4 text-muted-foreground">
+            {locale === "zh" ? "🕐 最近使用" : "🕐 Recent"}
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {recentTools.map((tool) => tool && (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}`}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-card card-shadow hover:bg-accent transition-all duration-200 text-sm"
+              >
+                <span className="font-mono">{tool.icon}</span>
+                <span>{t(`toolList.${tool.slug}.name`)}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Favorites */}
+      {favoriteTools.length > 0 && (
+        <section className="mb-8">
+          <h2 className="text-lg font-bold mb-4 text-muted-foreground">
+            {locale === "zh" ? "⭐ 我的收藏" : "⭐ Favorites"}
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {favoriteTools.map((tool) => tool && (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}`}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-card card-shadow hover:bg-accent transition-all duration-200 text-sm"
+              >
+                <span className="font-mono">{tool.icon}</span>
+                <span>{t(`toolList.${tool.slug}.name`)}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Popular Tools */}
       <PopularTools />
@@ -64,21 +147,39 @@ export default function HomePage() {
 
       {/* All Tools Grid */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-6">{t("home.allTools")}</h2>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold">{t("home.allTools")}</h2>
+          <Link href="/guides" className="text-sm text-primary hover:underline">
+            {locale === "zh" ? "📖 工具指南" : "📖 Guides"}
+          </Link>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {tools.map((tool) => (
             <Link
               key={tool.slug}
               href={`/tools/${tool.slug}`}
-              className="flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="tool-card relative flex items-start gap-4 p-4 rounded-lg border bg-card card-shadow card-shadow-hover hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
+              <div className="shimmer rounded-lg" />
               <span className="text-xl mt-1 font-mono">{tool.icon}</span>
-              <div>
+              <div className="flex-1 min-w-0">
                 <h3 className="font-medium">{t(`toolList.${tool.slug}.name`)}</h3>
                 <p className="text-sm text-muted-foreground">
                   {t(`toolList.${tool.slug}.desc`)}
                 </p>
               </div>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFavorite(tool.slug);
+                }}
+                className={`favorite-btn mt-1 text-lg flex-shrink-0 ${
+                  isFavorite(tool.slug) ? "active" : "text-muted-foreground"
+                }`}
+                title={isFavorite(tool.slug) ? (locale === "zh" ? "取消收藏" : "Unfavorite") : (locale === "zh" ? "收藏" : "Favorite")}
+              >
+                {isFavorite(tool.slug) ? "❤️" : "🤍"}
+              </button>
             </Link>
           ))}
         </div>

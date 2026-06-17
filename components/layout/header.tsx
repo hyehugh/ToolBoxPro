@@ -48,6 +48,12 @@ export function Header() {
           >
             {t("nav.blog")}
           </Link>
+          <Link
+            href="/guides"
+            className="hover:text-foreground transition-colors"
+          >
+            {locale === "zh" ? "指南" : "Guides"}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-1">
@@ -103,6 +109,13 @@ export function Header() {
             onClick={() => setMobileOpen(false)}
           >
             {t("nav.blog")}
+          </Link>
+          <Link
+            href="/guides"
+            className="py-1 text-muted-foreground hover:text-foreground"
+            onClick={() => setMobileOpen(false)}
+          >
+            {locale === "zh" ? "指南" : "Guides"}
           </Link>
         </nav>
       </div>

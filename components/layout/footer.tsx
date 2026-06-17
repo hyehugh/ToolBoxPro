@@ -7,7 +7,7 @@ import { FooterThemeToggle } from "./footer-theme-toggle";
 import { VisitorCounter } from "@/components/visitor-counter";
 
 export function Footer() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const featuredTools = tools.slice(0, 5);
   const moreTools = tools.slice(5, 10);
 
@@ -45,6 +45,7 @@ export function Footer() {
               <li><Link href="/about" className="hover:text-foreground transition-colors">{t("footer.about")}</Link></li>
               <li><Link href="/contact" className="hover:text-foreground transition-colors">{t("footer.contact")}</Link></li>
               <li><Link href="/blog" className="hover:text-foreground transition-colors">{t("footer.blog")}</Link></li>
+              <li><Link href="/guides" className="hover:text-foreground transition-colors">{locale === "zh" ? "指南" : "Guides"}</Link></li>
               <li><Link href="/privacy" className="hover:text-foreground transition-colors">{t("footer.privacy")}</Link></li>
               <li><Link href="/terms" className="hover:text-foreground transition-colors">{t("footer.terms")}</Link></li>
             </ul>
