@@ -171,7 +171,7 @@ export default function HomePage() {
             {locale === "zh" ? "📖 工具指南" : "📖 Guides"}
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
           {tools.map((tool) => (
             <ToolCard
               key={tool.slug}
