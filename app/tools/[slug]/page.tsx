@@ -2,6 +2,7 @@ import { tools, getTool } from "@/lib/tools/data";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ToolPageContent } from "./tool-page-content";
+import { getToolFaqs, generateFaqSchema } from "@/lib/tools/faq";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -33,6 +34,9 @@ export default async function ToolPage({ params }: Props) {
   const { slug } = await params;
   const tool = getTool(slug);
   if (!tool) notFound();
+
+  const faqs = getToolFaqs(slug);
+  const faqSchema = generateFaqSchema(faqs);
 
   const appJsonLd = {
     "@context": "https://schema.org",
@@ -89,6 +93,12 @@ export default async function ToolPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <ToolPageContent slug={slug} />
     </>
   );

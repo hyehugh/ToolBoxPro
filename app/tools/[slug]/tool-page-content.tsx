@@ -11,6 +11,8 @@ import { useRecentTools } from "@/lib/hooks/use-recent-tools";
 import { useFavorites } from "@/lib/hooks/use-favorites";
 import { getToolScenarios } from "@/lib/tools/scenarios";
 import { toolComponents } from "@/lib/tools/registry";
+import { getToolFaqs } from "@/lib/tools/faq";
+import { FaqSection } from "@/components/faq-section";
 
 import dynamic from "next/dynamic";
 
@@ -46,6 +48,7 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
   const { addRecent } = useRecentTools();
   const { toggleFavorite, isFavorite } = useFavorites();
   const scenarios = getToolScenarios(slug);
+  const faqs = getToolFaqs(slug);
 
   // Track as recently used
   useEffect(() => { addRecent(slug); }, [slug]);
@@ -98,6 +101,9 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
           ))}
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FaqSection faqs={faqs} />
 
       {/* Tool Page Ad */}
       <AdUnit slot="2800459707" format="horizontal" className="max-w-4xl mx-auto" />
