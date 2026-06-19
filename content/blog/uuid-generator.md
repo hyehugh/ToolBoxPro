@@ -1,0 +1,123 @@
+---
+slug: uuid-generator
+title: "How to Generate UUIDs Online — Complete Guide to UUID v4"
+titleZh: "如何在线生成 UUID——UUID v4 完整指南"
+description: "Learn everything about UUIDs: what they are, UUID v4 vs v7, how to generate them instantly online, and best practices for using UUIDs as primary keys and identifiers."
+descriptionZh: "了解 UUID 的一切：什么是 UUID、UUID v4 vs v7、如何在线即时生成以及使用 UUID 作为主键的最佳实践。"
+date: 2026-05-23
+readTime: "5 min read"
+category: "Developer Tools"
+toolSlug: "uuid-generator"
+---
+
+## What is a UUID?
+
+A **UUID** (Universally Unique Identifier) is a 128-bit identifier standardized by the Open Software Foundation (OSF). It's designed to be unique across space and time — no central authority needed.
+
+UUIDs look like this:
+
+\`\`\`
+550e8400-e29b-41d4-a716-446655440000
+\`\`\`
+
+That's 32 hexadecimal characters arranged in 5 groups: 8-4-4-4-12.
+
+## Why Use UUIDs?
+
+### 1. Distributed Systems
+
+Auto-increment IDs break when you have multiple databases generating IDs simultaneously. Two servers could both generate ID 42. UUIDs eliminate collisions entirely.
+
+### 2. Security Through Obscurity
+
+Sequential IDs (1, 2, 3...) let anyone guess how many users or orders you have. UUIDs are unpredictable — no one can guess a valid ID.
+
+### 3. Offline Generation
+
+UUIDs can be generated without a database or central server. Your mobile app can create UUIDs offline and sync later with zero conflicts.
+
+### 4. Database Migration Friendly
+
+Merging two databases with auto-increment IDs is a nightmare of re-mapping foreign keys. UUIDs never conflict, so merging is trivial.
+
+## UUID Versions Explained
+
+### UUID v4 (Random)
+
+The most common version. All bits except 6 are randomly generated:
+
+\`\`\`
+xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
+\`\`\`
+
+- The \`4\` at position 13 marks it as v4
+- \`y\` indicates the variant (8, 9, a, or b)
+- 122 bits of randomness → 5.3 × 10^36 possible values
+
+**Collision probability:** You'd need to generate 2.71 trillion UUIDs to have a 50% chance of a single collision. In practice: zero.
+
+### UUID v7 (Time-Ordered)
+
+Newer version (RFC 9562) that's time-sortable. The first 48 bits are a Unix timestamp in milliseconds:
+
+\`\`\`
+018f3a6e-1b3c-7d45-a123-456789abcdef
+\`\`\`
+
+**Why v7 matters:** Database indexes on UUIDs were slow because random ordering caused page splits. Time-ordered UUIDs solve this — new rows go to the end of the index, just like auto-increment.
+
+## How to Generate UUIDs
+
+### Using ToolboxPro
+
+Visit our [UUID Generator](/tools/uuid-generator) and:
+
+1. Choose the UUID version (v4 or v7)
+2. Select how many to generate (1 to 1000)
+3. Click **Generate**
+4. Choose your output format — lowercase, uppercase, or without hyphens
+5. Copy with one click
+
+### The Bulk Generation Feature
+
+Need 500 UUIDs for seeding a database? Set the count to 500, click Generate, and copy them all at once. Each UUID is cryptographically random — no patterns, no collisions.
+
+## UUID Best Practices
+
+### As Database Primary Keys
+
+\`\`\`sql
+-- PostgreSQL has a native UUID type
+CREATE TABLE users (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+-- MySQL use CHAR(36) or BINARY(16)
+CREATE TABLE users (
+    id BINARY(16) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+\`\`\`
+
+### Storage Optimization
+
+- **Text format (36 chars):** Readable, debuggable, but larger
+- **Binary format (16 bytes):** Compact, faster, but harder to read
+- **Base64 encoded (22 chars):** URL-safe, compact
+
+### When NOT to Use UUIDs
+
+- **Tiny databases** — auto-increment is simpler and faster
+- **Human-readable IDs** — order numbers like "ORD-1001" are more user-friendly
+- **Performance-critical OLTP** — binary UUIDs are still slower than integers for joins
+
+## FAQ
+
+**Can two UUIDs be the same?** Theoretically yes, but practically no. The odds are so astronomically low that you'd win the lottery 50 times in a row first.
+
+**What's the difference between UUID and GUID?** Nothing — GUID is Microsoft's implementation of the UUID standard. They're interchangeable.
+
+**Are UUIDs cryptographically secure?** UUID v4 uses random bytes. On most systems these are cryptographically strong (JavaScript's crypto.randomUUID() uses the OS CSPRNG).
+
+**How many UUIDs can I generate per second?** Unlimited — our tool generates them client-side in milliseconds. Try generating 10,000 and see for yourself.

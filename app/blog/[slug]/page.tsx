@@ -1,4 +1,4 @@
-import { blogPosts } from "@/lib/blog/data";
+import { getBlogPostWithContent, getAllBlogPosts } from "@/lib/blog/loader";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { BlogPostContent } from "./blog-post-content";
@@ -8,12 +8,12 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  return getAllBlogPosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = getBlogPostWithContent(slug);
   if (!post) return {};
   return {
     title: post.title,
@@ -33,8 +33,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = getBlogPostWithContent(slug);
   if (!post) notFound();
 
-  return <BlogPostContent slug={slug} />;
+  return (
+    <BlogPostContent
+      slug={slug}
+      content={post.content}
+      contentZh={post.contentZh}
+    />
+  );
 }

@@ -151,19 +151,25 @@ function renderMarkdown(md: string) {
   return elements;
 }
 
-export function BlogPostContent({ slug }: { slug: string }) {
+interface BlogPostContentProps {
+  slug: string;
+  content: string;
+  contentZh?: string;
+}
+
+export function BlogPostContent({ slug, content, contentZh }: BlogPostContentProps) {
   const { t, locale } = useLocale();
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return null;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-      <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
         <Link href="/" className="hover:text-foreground">{t("notFound.backHome")}</Link>
-        <span>/</span>
+        <span aria-hidden="true">/</span>
         <Link href="/blog" className="hover:text-foreground">{t("nav.blog")}</Link>
-        <span>/</span>
-        <span className="text-foreground truncate">{post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title}</span>
+        <span aria-hidden="true">/</span>
+        <span className="text-foreground truncate" aria-current="page">{post.titleZh ? (locale === 'zh' ? post.titleZh : post.title) : post.title}</span>
       </nav>
 
       <article>
@@ -172,9 +178,9 @@ export function BlogPostContent({ slug }: { slug: string }) {
             <span className="px-2 py-0.5 rounded-full bg-secondary text-xs font-medium">
               {t(`blog.categories.${post.category}`)}
             </span>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <time>{post.date}</time>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <span>{t("blog.minRead", { count: post.readTime.split(" ")[0] })}</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
@@ -197,7 +203,7 @@ export function BlogPostContent({ slug }: { slug: string }) {
         )}
 
         <div className="prose-custom">
-          {renderMarkdown(post.contentZh ? (locale === "zh" ? post.contentZh : post.content) : post.content)}
+          {renderMarkdown(contentZh ? (locale === "zh" ? contentZh : content) : content)}
         </div>
 
         {post.toolSlug && (
@@ -219,8 +225,8 @@ export function BlogPostContent({ slug }: { slug: string }) {
       <AdUnit slot="8703564630" format="horizontal" className="max-w-3xl mx-auto" />
 
       {/* Related posts */}
-      <section className="mt-12 pt-8 border-t">
-        <h2 className="text-xl font-bold mb-4">{t("blog.title")}</h2>
+      <section className="mt-12 pt-8 border-t" aria-labelledby="related-posts-heading">
+        <h2 id="related-posts-heading" className="text-xl font-bold mb-4">{t("blog.title")}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {blogPosts
             .filter((p) => p.slug !== slug)
