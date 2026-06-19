@@ -42,7 +42,8 @@ export function ToolCard({ slug, icon, name, desc }: ToolCardProps) {
         className={`favorite-btn absolute top-2 right-2 text-sm flex-shrink-0 z-10 ${
           isFavorite(slug) ? "active" : "text-muted-foreground"
         }`}
-        title={isFavorite(slug) ? "Unfavorite" : "Favorite"}
+        aria-label={isFavorite(slug) ? `Remove ${name} from favorites` : `Add ${name} to favorites`}
+        aria-pressed={isFavorite(slug)}
       >
         {isFavorite(slug) ? "❤️" : "🤍"}
       </button>

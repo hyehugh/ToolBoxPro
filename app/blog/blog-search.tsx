@@ -30,11 +30,13 @@ export function BlogSearch({ posts }: { posts: BlogPost[] }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="w-full h-10 pl-4 pr-10 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+          aria-label={locale === "zh" ? "搜索文章" : "Search articles"}
         />
         {query && (
           <button
             onClick={() => setQuery("")}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground text-sm"
+            aria-label={locale === "zh" ? "清除搜索" : "Clear search"}
           >
             ✕
           </button>

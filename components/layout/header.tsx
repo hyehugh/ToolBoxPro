@@ -63,13 +63,13 @@ export function Header() {
             size="sm"
             onClick={() => setLocale(locale === "en" ? "zh" : "en")}
             className="text-xs gap-1 px-2"
-            title={t("locale.language")}
+            aria-label={t("locale.language")}
           >
             <Languages size={14} />
             <span className="hidden sm:inline">{locale === "en" ? "中文" : "English"}</span>
           </Button>
 
-          <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+          <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
             {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
           </Button>
 
@@ -79,6 +79,9 @@ export function Header() {
             size="icon"
             className="md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </Button>
@@ -86,13 +89,14 @@ export function Header() {
       </div>
 
       {/* Mobile nav */}
-      <div
+      <nav
+        id="mobile-nav"
         className={cn(
           "md:hidden overflow-hidden transition-all duration-200 border-t",
           mobileOpen ? "max-h-80" : "max-h-0"
         )}
       >
-        <nav className="flex flex-col px-4 py-3 gap-3 text-sm">
+        <div className="flex flex-col px-4 py-3 gap-3 text-sm">
           {categories.map((cat) => (
             <Link
               key={cat.nameKey}
@@ -117,8 +121,8 @@ export function Header() {
           >
             {locale === "zh" ? "指南" : "Guides"}
           </Link>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
   );
 }
