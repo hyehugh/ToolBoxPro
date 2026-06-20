@@ -1,10 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Button } from '@/components/ui/button';
 import { useLocale } from '@/lib/i18n/context';
-
-const VOWELS = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
 
 interface TextStats {
   totalChars: number;

@@ -10,10 +10,7 @@ export function GifMakerTool() {
   const [delay, setDelay] = useState(500);
   const [resultUrl, setResultUrl] = useState<string>("");
   const [loading, setLoading] = useState(false);
-  const [canvasWidth, setCanvasWidth] = useState(0);
-  const [canvasHeight, setCanvasHeight] = useState(0);
   const offscreenRef = useRef<HTMLCanvasElement>(null);
-  const displayCanvasRef = useRef<HTMLCanvasElement>(null);
   const previewTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [previewIndex, setPreviewIndex] = useState(0);
   const [previewRunning, setPreviewRunning] = useState(false);
@@ -82,8 +79,6 @@ export function GifMakerTool() {
 
     const maxW = Math.max(...loadedImages.map((img) => img.width));
     const maxH = Math.max(...loadedImages.map((img) => img.height));
-    setCanvasWidth(maxW);
-    setCanvasHeight(maxH);
 
     const offscreen = offscreenRef.current!;
     const ctx = offscreen.getContext("2d")!;
@@ -126,7 +121,7 @@ export function GifMakerTool() {
       gif.addFrame(ctx, { copy: true, delay });
     }
 
-    gif.on("progress", (p: number) => {
+    gif.on("progress", () => {
       // could show progress
     });
 

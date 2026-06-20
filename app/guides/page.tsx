@@ -12,7 +12,7 @@ const categoryColors: Record<string, string> = {
 };
 
 export default function GuidesPage() {
-  const { t, locale } = useLocale();
+  const { locale } = useLocale();
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">

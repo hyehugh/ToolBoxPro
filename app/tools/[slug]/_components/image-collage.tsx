@@ -2,7 +2,6 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { useLocale } from "@/lib/i18n/context";
 
 type Layout = "2-grid" | "3-grid" | "4-grid";
 
@@ -15,7 +14,6 @@ const LAYOUTS: { key: Layout; label: string; cols: number; rows: number }[] = [
 const MAX_IMAGES = 4;
 
 export function ImageCollageTool() {
-  const { t } = useLocale();
   const [images, setImages] = useState<(string | null)[]>(
     Array(MAX_IMAGES).fill(null)
   );

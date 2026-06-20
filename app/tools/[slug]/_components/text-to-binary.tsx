@@ -41,12 +41,6 @@ export function TextToBinaryTool() {
     }
   };
 
-  const toggleMode = () => {
-    setMode((prev) => (prev === "toBinary" ? "toText" : "toBinary"));
-    setInput("");
-    setOutput("");
-  };
-
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-2">

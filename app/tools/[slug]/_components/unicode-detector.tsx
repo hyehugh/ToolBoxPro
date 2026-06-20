@@ -11,42 +11,6 @@ interface CharInfo {
   name: string;
 }
 
-function getCategoryDisplay(cat: string): string {
-  const map: Record<string, string> = {
-    Lu: 'Uppercase Letter',
-    Ll: 'Lowercase Letter',
-    Lt: 'Titlecase Letter',
-    Lm: 'Modifier Letter',
-    Lo: 'Other Letter',
-    Mn: 'Nonspacing Mark',
-    Mc: 'Spacing Mark',
-    Me: 'Enclosing Mark',
-    Nd: 'Decimal Number',
-    Nl: 'Letter Number',
-    No: 'Other Number',
-    Pc: 'Connector Punctuation',
-    Pd: 'Dash Punctuation',
-    Ps: 'Open Punctuation',
-    Pe: 'Close Punctuation',
-    Pi: 'Initial Punctuation',
-    Pf: 'Final Punctuation',
-    Po: 'Other Punctuation',
-    Sm: 'Math Symbol',
-    Sc: 'Currency Symbol',
-    Sk: 'Modifier Symbol',
-    So: 'Other Symbol',
-    Zs: 'Space Separator',
-    Zl: 'Line Separator',
-    Zp: 'Paragraph Separator',
-    Cc: 'Control',
-    Cf: 'Format',
-    Cs: 'Surrogate',
-    Co: 'Private Use',
-    Cn: 'Unassigned',
-  };
-  return map[cat] || cat;
-}
-
 export function UnicodeDetectorTool() {
   const { t } = useLocale();
   const [input, setInput] = useState('');
@@ -136,41 +100,6 @@ export function UnicodeDetectorTool() {
   );
 }
 
-// Helper: get Unicode general category from the first code point
-function getCharCategory(ch: string): string {
-  const code = ch.codePointAt(0)!;
-  if (code >= 0x0041 && code <= 0x005a) return 'Lu';
-  if (code >= 0x0061 && code <= 0x007a) return 'Ll';
-  if (code >= 0x0030 && code <= 0x0039) return 'Nd';
-  if (code === 0x0020) return 'Zs';
-  if (code === 0x000a || code === 0x000d) return 'Cc';
-  if (code >= 0x1F600 && code <= 0x1F64F) return 'So';
-  if (code >= 0x1F300 && code <= 0x1F5FF) return 'So';
-  if (code >= 0x1F680 && code <= 0x1F6FF) return 'So';
-  if (code >= 0x2600 && code <= 0x26FF) return 'So';
-  if (code >= 0x2700 && code <= 0x27BF) return 'So';
-  if (code >= 0x2000 && code <= 0x206F) return 'Cf';
-  if (code >= 0x2100 && code <= 0x214F) return 'So';
-  if (code >= 0x2C00 && code <= 0x2C5F) return 'Lu';
-  if (code >= 0x2C60 && code <= 0x2C7F) return 'Ll';
-  if (code >= 0x0400 && code <= 0x04FF) return 'Lo';
-  if (code >= 0x4E00 && code <= 0x9FFF) return 'Lo';
-  if (code >= 0x3040 && code <= 0x309F) return 'Lo';
-  if (code >= 0x30A0 && code <= 0x30FF) return 'Lo';
-  if (code >= 0xAC00 && code <= 0xD7AF) return 'Lo';
-  if (code >= 0x0600 && code <= 0x06FF) return 'Lo';
-  // Punctuation
-  if (code === 0x0021 || code === 0x0022 || code === 0x0027 || code === 0x0028 || code === 0x0029 || code === 0x002C || code === 0x002E || code === 0x003A || code === 0x003B || code === 0x003F) return 'Po';
-  if (code === 0x002D) return 'Pd';
-  if (code === 0x005F) return 'Pc';
-  // Default based on range
-  if (code > 0x7F) return 'Lo';
-  if (code >= 0x01 && code <= 0x1F) return 'Cc';
-  if (code >= 0x30 && code <= 0x39) return 'Nd';
-  if (code >= 0x41 && code <= 0x5A) return 'Lu';
-  if (code >= 0x61 && code <= 0x7A) return 'Ll';
-  return 'Lo';
-}
 
 // Helper: get Unicode character name from codepoint
 function getCharName(code: number): string {

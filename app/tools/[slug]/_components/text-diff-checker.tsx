@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Button } from "@/components/ui/button";
 import { useLocale } from "@/lib/i18n/context";
 
 export function TextDiffCheckerTool() {

@@ -30,7 +30,7 @@ function parseColor(input: string): { r: number; g: number; b: number } | null {
   // HSL
   const hsl = input.match(/hsl\s*\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i);
   if (hsl) {
-    let h = +hsl[1] / 360, s = +hsl[2] / 100, l = +hsl[3] / 100;
+    const h = +hsl[1] / 360, s = +hsl[2] / 100, l = +hsl[3] / 100;
     const c = (1 - Math.abs(2 * l - 1)) * s;
     const x = c * (1 - Math.abs((h * 6) % 2 - 1));
     const m = l - c / 2;
@@ -58,7 +58,8 @@ function toRgb(r: number, g: number, b: number) {
 function toHsl(r: number, g: number, b: number) {
   r /= 255; g /= 255; b /= 255;
   const max = Math.max(r, g, b), min = Math.min(r, g, b);
-  let h = 0, s = 0, l = (max + min) / 2;
+  let h = 0, s = 0;
+  const l = (max + min) / 2;
   if (max !== min) {
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);

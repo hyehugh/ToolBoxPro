@@ -1,6 +1,6 @@
 "use client";
 
-import { blogPosts, type BlogPost } from "@/lib/blog/data";
+import { blogPosts } from "@/lib/blog/data";
 import { getBlogImage } from "@/lib/blog/images";
 import Link from "next/link";
 import { useLocale } from "@/lib/i18n/context";
@@ -17,7 +17,6 @@ function renderMarkdown(md: string) {
   const elements: React.ReactNode[] = [];
   let inCodeBlock = false;
   let codeLines: string[] = [];
-  let codeLang = "";
   let inTable = false;
   let tableRows: string[][] = [];
 
@@ -72,7 +71,6 @@ function renderMarkdown(md: string) {
         flushCode();
       } else {
         inCodeBlock = true;
-        codeLang = line.slice(3).trim();
       }
       continue;
     }

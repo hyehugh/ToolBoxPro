@@ -1,5 +1,3 @@
-import { tools, categories } from "@/lib/tools/data";
-import { Suspense } from "react";
 import { ToolsPageContent } from "./tools-page-content";
 import type { Metadata } from "next";
 

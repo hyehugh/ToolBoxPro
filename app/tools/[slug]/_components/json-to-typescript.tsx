@@ -125,7 +125,6 @@ function convertToInterface(obj: unknown, name: string, depth = 0): string {
     return `type ${name} = ${getTsType(obj, name)};`;
   }
 
-  const indent = "  ".repeat(depth);
   const childIndent = "  ".repeat(depth + 1);
   const closingIndent = "  ".repeat(depth);
 

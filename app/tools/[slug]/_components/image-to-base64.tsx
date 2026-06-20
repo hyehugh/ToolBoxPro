@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useLocale } from "@/lib/i18n/context";
 
 export function ImageToBase64Tool() {
-  const { t } = useLocale();
   const [base64, setBase64] = useState("");
   const [preview, setPreview] = useState("");
   const [fileName, setFileName] = useState("");

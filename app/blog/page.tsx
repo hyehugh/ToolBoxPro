@@ -1,4 +1,3 @@
-import { blogPosts } from "@/lib/blog/data";
 import type { Metadata } from "next";
 import { BlogContent } from "./blog-content";
 

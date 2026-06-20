@@ -22,7 +22,6 @@ const AdUnit = dynamic(
 );
 
 export function ToolPageContent({ slug }: { slug: string }) {
-  const { t, locale } = useLocale();
   const tool = getTool(slug);
   if (!tool) return null;
 
@@ -80,7 +79,7 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
 
       <ErrorBoundary>
         <ToolWidget title={t(`toolList.${tool.slug}.name`)}>
-          {ToolComponent ? <ToolWidgetWithTooltip Component={ToolComponent} slug={slug} /> : <p className="text-muted-foreground">{t("common.loading")}</p>}
+          {ToolComponent ? <ToolWidgetWithTooltip Component={ToolComponent} /> : <p className="text-muted-foreground">{t("common.loading")}</p>}
         </ToolWidget>
       </ErrorBoundary>
 
@@ -156,7 +155,7 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
   );
 }
 
-function ToolWidgetWithTooltip({ Component, slug }: { Component: React.ComponentType; slug: string }) {
+function ToolWidgetWithTooltip({ Component }: { Component: React.ComponentType }) {
   const { locale } = useLocale();
   return (
     <div className="tooltip-trigger relative">

@@ -142,7 +142,6 @@ export function AudioCutterTool() {
     const x = e.clientX - rect.left;
     const clickTime = (x / rect.width) * duration;
 
-    const mid = (startTime + endTime) / 2;
     if (Math.abs(clickTime - startTime) < Math.abs(clickTime - endTime)) {
       setStartTime(Math.max(0, Math.min(clickTime, endTime - 0.1)));
     } else {

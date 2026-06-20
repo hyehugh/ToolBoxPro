@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect, ReactNode } from "react";
+import { useState, useRef, useEffect, ReactNode } from "react";
 import Link from "next/link";
 import { tools } from "@/lib/tools/data";
 import { useLocale } from "@/lib/i18n/context";

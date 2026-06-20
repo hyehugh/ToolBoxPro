@@ -2,10 +2,8 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { useLocale } from "@/lib/i18n/context";
 
 export function ImageToPdfTool() {
-  const { t } = useLocale();
   const [images, setImages] = useState<{ file: File; url: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -25,7 +23,7 @@ export function ImageToPdfTool() {
     if (images.length === 0) return;
     setLoading(true);
     try {
-      const { PDFDocument, rgb } = await import("pdf-lib");
+      const { PDFDocument } = await import("pdf-lib");
       const pdfDoc = await PDFDocument.create();
 
       for (const img of images) {

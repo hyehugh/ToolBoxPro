@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { tools, categories } from "@/lib/tools/data";
 import { blogPosts } from "@/lib/blog/data";
@@ -10,7 +10,6 @@ import { PopularTools } from "./popular-tools";
 import { useLocale } from "@/lib/i18n/context";
 import { useRecentTools } from "@/lib/hooks/use-recent-tools";
 import { useFavorites } from "@/lib/hooks/use-favorites";
-import { useMagneticCard } from "@/lib/hooks/use-magnetic-card";
 import dynamic from "next/dynamic";
 
 const AdUnit = dynamic(
@@ -31,7 +30,7 @@ const CategoryCard = dynamic(
 export default function HomePage() {
   const { t, locale } = useLocale();
   const { recent } = useRecentTools();
-  const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const { favorites } = useFavorites();
   const [rolling, setRolling] = useState(false);
 
   const recentTools = useMemo(

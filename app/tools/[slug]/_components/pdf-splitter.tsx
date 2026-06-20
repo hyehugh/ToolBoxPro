@@ -60,7 +60,7 @@ export function PdfSplitterTool() {
       <div
         className="border-2 border-dashed border-input rounded-lg p-8 text-center cursor-pointer hover:border-primary transition-colors"
         onDragOver={(e) => e.preventDefault()}
-        onDrop={(e) => { e.preventDefault(); e.dataTransfer.files[0] && loadFile(e.dataTransfer.files[0]); }}
+        onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); }}
         onClick={() => {
           const input = document.createElement("input");
           input.type = "file"; input.accept = "application/pdf";
@@ -83,7 +83,7 @@ export function PdfSplitterTool() {
           <label className="text-sm block">
             Page range{pageCount > 0 ? ` (1-${pageCount})` : ""}:
             <br />
-            <span className="text-xs text-muted-foreground">e.g. "1-3,5,7-9" or "1-5"</span>
+            <span className="text-xs text-muted-foreground">e.g. &quot;1-3,5,7-9&quot; or &quot;1-5&quot;</span>
           </label>
           <input
             value={ranges}

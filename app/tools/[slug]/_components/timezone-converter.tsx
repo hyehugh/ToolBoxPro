@@ -116,9 +116,6 @@ export function TimezoneConverterTool() {
           if (ampm === 'AM' && hours === 12) hours = 0;
 
           now.setHours(hours, minutes, seconds, 0);
-          const fromDate = new Date(
-            now.toLocaleString('en-US', { timeZone: fromTz })
-          );
           // We need to work with the input as being in the from timezone
           // Create a date string that the system interprets correctly
           const inputStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}T${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
@@ -177,7 +174,7 @@ export function TimezoneConverterTool() {
         }).format(fromDate) +
           ` (${toTz})`
       );
-    } catch (e) {
+    } catch {
       setError('Conversion failed. Please check your input.');
     }
   };

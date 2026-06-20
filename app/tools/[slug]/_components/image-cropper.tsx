@@ -2,10 +2,8 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { useLocale } from "@/lib/i18n/context";
 
 export function ImageCropperTool() {
-  const { t } = useLocale();
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [croppedUrl, setCroppedUrl] = useState<string>("");
@@ -14,7 +12,6 @@ export function ImageCropperTool() {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [dragEnd, setDragEnd] = useState({ x: 0, y: 0 });
   const [hasSelection, setHasSelection] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -63,7 +60,6 @@ export function ImageCropperTool() {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
 
-    const containerRect = containerRef.current!.getBoundingClientRect();
     const imgRect = img.getBoundingClientRect();
 
     const scaleX = img.naturalWidth / imgRect.width;

@@ -38,7 +38,7 @@ export function PdfRotatorTool() {
       <div
         className="border-2 border-dashed border-input rounded-lg p-8 text-center cursor-pointer hover:border-primary transition-colors"
         onDragOver={(e) => e.preventDefault()}
-        onDrop={(e) => { e.preventDefault(); e.dataTransfer.files[0] && setFile(e.dataTransfer.files[0]); }}
+        onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files[0]) setFile(e.dataTransfer.files[0]); }}
         onClick={() => {
           const input = document.createElement("input");
           input.type = "file"; input.accept = "application/pdf";

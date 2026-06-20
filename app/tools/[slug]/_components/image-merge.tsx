@@ -2,12 +2,10 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { useLocale } from "@/lib/i18n/context";
 
 type MergeLayout = "horizontal" | "vertical" | "grid";
 
 export function ImageMergeTool() {
-  const { t } = useLocale();
   const [images, setImages] = useState<{ file: File; url: string }[]>([]);
   const [layout, setLayout] = useState<MergeLayout>("horizontal");
   const [resultUrl, setResultUrl] = useState<string>("");
@@ -103,7 +101,7 @@ export function ImageMergeTool() {
       <div
         className="border-2 border-dashed border-input rounded-lg p-8 text-center cursor-pointer hover:border-primary transition-colors"
         onDragOver={(e) => e.preventDefault()}
-        onDrop={(e) => { e.preventDefault(); e.dataTransfer.files.length > 0 && handleFiles(e.dataTransfer.files); }}
+        onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files.length > 0) handleFiles(e.dataTransfer.files); }}
         onClick={() => {
           const input = document.createElement("input");
           input.type = "file";

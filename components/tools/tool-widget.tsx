@@ -10,7 +10,7 @@ interface ToolWidgetProps {
   className?: string;
 }
 
-export function ToolWidget({ title, children, className }: ToolWidgetProps) {
+export function ToolWidget({ children, className }: ToolWidgetProps) {
   const { t } = useLocale();
 
   return (
