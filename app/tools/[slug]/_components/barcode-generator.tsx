@@ -6,7 +6,30 @@ import { useLocale } from "@/lib/i18n/context";
 
 type BarcodeType = 'code128' | 'ean13' | 'code39' | 'upca';
 
-// Code128 encoding table (simplified)
+// Code128 (Code Set B) encoding table (ISO/IEC 15417).
+// Each entry is a 6-digit BSW string: widths of 3 bars + 3 spaces (alternating,
+// each 1-4 modules), indexed by symbol value 0-106.
+// Stop (106) has 7 digits: the final 2 is the extra termination bar.
+const CODE128_PATTERNS: string[] = [
+  '212222', '222122', '222221', '121223', '121322', '131222', '122213',
+  '122312', '132212', '221213', '221312', '231212', '112232', '122132',
+  '122231', '113222', '123122', '123221', '223211', '221132', '221231',
+  '213212', '223112', '312131', '311222', '321122', '321221', '312212',
+  '322112', '322211', '212123', '212321', '232121', '111323', '131123',
+  '131321', '112313', '132113', '132311', '211313', '231113', '231311',
+  '112133', '112331', '132131', '113123', '113321', '133121', '313121',
+  '211331', '231131', '213113', '213311', '213131', '311123', '311321',
+  '331121', '312113', '312311', '332111', '314111', '221411', '431111',
+  '111224', '111422', '121124', '121421', '141122', '141221', '112214',
+  '112412', '122114', '122411', '142112', '142211', '241211', '221114',
+  '413111', '241112', '134111', '111242', '121142', '121241', '114212',
+  '124112', '124211', '411212', '421112', '421211', '212141', '214121',
+  '412121', '111143', '111341', '131141', '114113', '114311', '411113',
+  '411311', '113141', '114131', '311141', '411131', '211412', '211214',
+  '211232', '2331112',
+];
+
+// Start Code B (value 104) supports full printable ASCII (32-126): upper+lower case.
 const CODE128_START = 104;
 const CODE128_STOP = 106;
 
@@ -40,20 +63,32 @@ const CODE39_PATTERNS: Record<string, string> = {
 };
 
 function generateCode128(text: string): number[] {
+  // Build symbol-value sequence: Start B + data chars + checksum + Stop
   const codes = [CODE128_START];
   for (const ch of text) {
     const code = CODE128_MAP[ch];
     if (code === undefined) return [];
     codes.push(code);
   }
-  // Checksum
+  // Checksum (Code 128): Start value counts at weight 1, first data char at weight 1,
+  // incrementing. Verified against the canonical "PJJ123C" → check digit 54 example.
   let checksum = CODE128_START;
   for (let i = 1; i < codes.length; i++) {
     checksum += codes[i] * i;
   }
   codes.push(checksum % 103);
   codes.push(CODE128_STOP);
-  return codes;
+
+  // Expand each symbol value into its 6 alternating bar/space widths (1-4 modules),
+  // producing a [bar,space,bar,space,...] array compatible with the drawing loop.
+  const bars: number[] = [];
+  for (const code of codes) {
+    const pattern = CODE128_PATTERNS[code];
+    for (const w of pattern) {
+      bars.push(Number(w));
+    }
+  }
+  return bars;
 }
 
 function generateCode39(text: string): string {
