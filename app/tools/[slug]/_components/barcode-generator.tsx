@@ -102,50 +102,100 @@ function generateCode39(text: string): string {
   return result;
 }
 
+// EAN-13 / UPC-A encoding tables (GS1 standard). Each digit → 7 modules.
+// L = odd parity, G = even parity (left half); R = L bitwise-inverted (right half).
+const L_CODES: string[] = [
+  '0001101', '0011001', '0010011', '0111101', '0100011',
+  '0110001', '0101111', '0111011', '0110111', '0001011',
+];
+const G_CODES: string[] = [
+  '0100111', '0110011', '0011011', '0100001', '0011101',
+  '0111001', '0000101', '0010001', '0001001', '0010111',
+];
+const R_CODES: string[] = L_CODES.map((p) => p.split('').map((b) => (b === '0' ? '1' : '0')).join(''));
+
+// Parity pattern for the left 6 digits, indexed by the first (implicit) digit.
+// Index 0 → LLLLLL (this is exactly UPC-A).
+const EAN13_PARITY: string[] = [
+  'LLLLLL', 'LLGLGG', 'LLGGLG', 'LLGGGL', 'LGLLGG',
+  'LGGLLG', 'LGGGLL', 'LGLGLG', 'LGLGGL', 'LGGLGL',
+];
+
+/**
+ * Convert a run-length 0/1 string into a [bar,space,bar,space,...] width array
+ * compatible with the drawing loop. The string MUST start with '1' (black) so
+ * that index 0 is a bar, matching the loop's i%2===0 → black convention.
+ */
+function bitsToBars(bits: string): number[] {
+  const bars: number[] = [];
+  let run = 1;
+  for (let i = 1; i < bits.length; i++) {
+    if (bits[i] === bits[i - 1]) {
+      run++;
+    } else {
+      bars.push(run);
+      run = 1;
+    }
+  }
+  bars.push(run);
+  return bars;
+}
+
+function ean13CheckDigit(twelve: number[]): number {
+  // GS1 Modulo-10: odd positions (1st,3rd,...) ×1, even positions ×3.
+  let sum = 0;
+  for (let i = 0; i < 12; i++) {
+    sum += twelve[i] * (i % 2 === 0 ? 1 : 3);
+  }
+  return (10 - (sum % 10)) % 10;
+}
+
 function generateEAN13(text: string): number[] {
-  const digits = text.replace(/\D/g, '').slice(0, 13).split('').map(Number);
+  const digits = text.replace(/\D/g, '').slice(0, 12).split('').map(Number);
   if (digits.length < 12) return [];
 
-  const result: number[] = [];
-  result.push(1, 1, 1);
+  const check = ean13CheckDigit(digits);
+  const full = [...digits, check]; // 13 digits: [first, left6..., right5..., check]
+  const first = full[0];
+
+  // Build the full 0/1 module string: start guard + left 6 + center + right 6 + stop guard.
+  let bits = '101'; // start guard (bar-space-bar)
+  const parity = EAN13_PARITY[first] ?? 'LLLLLL';
   for (let i = 0; i < 6; i++) {
-    const d = digits[i];
-    result.push(d % 2 === 0 ? 1 : 3, d % 3 === 0 ? 1 : 3, d < 5 ? 1 : 3, d % 2 === 0 ? 3 : 1);
+    const d = full[i + 1];
+    bits += parity[i] === 'G' ? G_CODES[d] : L_CODES[d];
   }
-  result.push(1, 1, 1, 1, 1);
-  for (let i = 6; i < 12; i++) {
-    const d = digits[i];
-    result.push(d % 2 === 0 ? 3 : 1, d % 3 === 0 ? 3 : 1, d < 5 ? 3 : 1, d % 2 === 0 ? 1 : 3);
+  bits += '01010'; // center guard
+  for (let i = 0; i < 6; i++) {
+    bits += R_CODES[full[i + 7]];
   }
-  result.push(1, 1, 1);
-  return result;
+  bits += '101'; // stop guard
+  return bitsToBars(bits);
 }
 
 function generateUPCA(text: string): number[] {
-  const digits = text.replace(/\D/g, '').slice(0, 12).split('').map(Number);
+  // UPC-A is EAN-13 with a leading 0 (first digit 0 → left half all L-codes).
+  const digits = text.replace(/\D/g, '').slice(0, 11).split('').map(Number);
   if (digits.length < 11) return [];
 
-  const L_PATTERNS: number[][] = [
-    [3,2,1,1], [2,2,2,1], [2,1,2,2], [1,4,1,1], [1,1,3,2],
-    [1,2,3,1], [1,1,1,4], [1,3,1,2], [1,2,1,3], [3,1,1,2],
-  ];
-  const R_PATTERNS: number[][] = [
-    [1,1,2,3], [1,2,2,2], [2,2,1,2], [1,1,4,1], [2,3,1,1],
-    [1,2,1,3], [4,1,1,1], [2,1,3,1], [3,1,2,1], [2,1,1,3],
-  ];
+  const check = upcaCheckDigit(digits);
+  const full = [...digits, check]; // 12 digits
 
-  const result: number[] = [];
-  result.push(1, 1, 1);
-  for (let i = 0; i < 6; i++) {
-    result.push(...L_PATTERNS[digits[i]]);
+  let bits = '101'; // start guard
+  for (let i = 0; i < 6; i++) bits += L_CODES[full[i]];
+  bits += '01010'; // center guard
+  for (let i = 6; i < 12; i++) bits += R_CODES[full[i]];
+  bits += '101'; // stop guard
+  return bitsToBars(bits);
+}
+
+function upcaCheckDigit(eleven: number[]): number {
+  // UPC-A Modulo-10: odd positions (1st,3rd,...) ×3, even positions ×1.
+  let sum = 0;
+  for (let i = 0; i < 11; i++) {
+    sum += eleven[i] * (i % 2 === 0 ? 3 : 1);
   }
-  result.push(1, 1, 1, 1, 1);
-  for (let i = 6; i < 11; i++) {
-    result.push(...R_PATTERNS[digits[i]]);
-  }
-  result.push(...R_PATTERNS[digits[11] || 0]);
-  result.push(1, 1, 1);
-  return result;
+  return (10 - (sum % 10)) % 10;
 }
 
 export function BarcodeGeneratorTool() {
