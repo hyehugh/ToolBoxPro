@@ -203,18 +203,21 @@ export function BarcodeGeneratorTool() {
   const [text, setText] = useState('');
   const [type, setType] = useState<BarcodeType>('code128');
   const [barcodeDataUrl, setBarcodeDataUrl] = useState('');
+  const [error, setError] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { t } = useLocale();
 
   const generate = useCallback(() => {
     if (!text.trim()) return;
+    setError('');
+    setBarcodeDataUrl('');
 
     // QR Code — generated locally in the browser (no external request),
     // consistent with the site's "files never leave your browser" promise.
     if (type === 'qr') {
       QRCode.toDataURL(text, { width: 300, margin: 1, errorCorrectionLevel: 'M' })
-        .then(setBarcodeDataUrl)
-        .catch(() => setBarcodeDataUrl(''));
+        .then((url) => { setBarcodeDataUrl(url); })
+        .catch(() => setError(t('toolCommon.barcode.errorQr')));
       return;
     }
 
@@ -230,17 +233,25 @@ export function BarcodeGeneratorTool() {
     let bars: number[] = [];
     if (type === 'code128') {
       bars = generateCode128(text);
-      if (bars.length === 0) return;
+      if (bars.length === 0) { setError(t('toolCommon.barcode.errorCode128')); return; }
     } else if (type === 'code39') {
       const pattern = generateCode39(text);
-      if (!pattern) return;
+      if (!pattern) { setError(t('toolCommon.barcode.errorCode39')); return; }
       bars = pattern.split('').map(Number);
     } else if (type === 'ean13') {
       bars = generateEAN13(text);
-      if (bars.length === 0) return;
+      if (bars.length === 0) {
+        const n = text.replace(/\D/g, '').length;
+        setError(t('toolCommon.barcode.errorEan13', { n }));
+        return;
+      }
     } else if (type === 'upca') {
       bars = generateUPCA(text);
-      if (bars.length === 0) return;
+      if (bars.length === 0) {
+        const n = text.replace(/\D/g, '').length;
+        setError(t('toolCommon.barcode.errorUpca', { n }));
+        return;
+      }
     }
 
     const totalWidth = bars.reduce((a, b) => a + b, 0) * BAR_WIDTH;
@@ -288,7 +299,7 @@ export function BarcodeGeneratorTool() {
               key={t}
               variant={type === t ? 'default' : 'outline'}
               size="sm"
-              onClick={() => { setType(t); setBarcodeDataUrl(''); }}
+              onClick={() => { setType(t); setBarcodeDataUrl(''); setError(''); }}
             >
               {t === 'qr' ? 'QR Code' : t.toUpperCase()}
             </Button>
@@ -301,7 +312,7 @@ export function BarcodeGeneratorTool() {
         <input
           type="text"
           value={text}
-          onChange={(e) => { setText(e.target.value); setBarcodeDataUrl(''); }}
+          onChange={(e) => { setText(e.target.value); setBarcodeDataUrl(''); setError(''); }}
           placeholder={
             type === 'qr' ? 'Enter URL or text for QR code...' :
             type === 'code128' ? `${t('common.text')}...` :
@@ -316,6 +327,10 @@ export function BarcodeGeneratorTool() {
       <Button onClick={generate} disabled={!text.trim()}>
         {t('toolCommon.barcode.generateBarcode')}
       </Button>
+
+      {error && (
+        <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+      )}
 
       <canvas ref={canvasRef} className="hidden" />
 

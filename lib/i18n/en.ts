@@ -578,6 +578,11 @@ export const en: Record<string, any> = {
       data: "Data",
       width: "Width",
       height: "Height",
+      errorEan13: "EAN-13 needs 12 digits (the 13th check digit is auto-calculated). You entered {n}.",
+      errorUpca: "UPC-A needs 11 digits (the 12th check digit is auto-calculated). You entered {n}.",
+      errorCode39: "Code 39 only supports A-Z, 0-9, and the symbols - . $ / + % space.",
+      errorCode128: "Code 128 only supports standard ASCII characters (codes 32-126).",
+      errorQr: "Could not generate the QR code. Please try different content.",
     },
     // CSV
     csv: {

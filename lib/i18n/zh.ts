@@ -531,6 +531,11 @@ export const zh: Record<string, any> = {
       data: "数据",
       width: "宽度",
       height: "高度",
+      errorEan13: "EAN-13 需要 12 位数字（第 13 位校验位会自动计算）。你输入了 {n} 位。",
+      errorUpca: "UPC-A 需要 11 位数字（第 12 位校验位会自动计算）。你输入了 {n} 位。",
+      errorCode39: "Code 39 仅支持 A-Z、0-9 以及符号 - . $ / + % 和空格。",
+      errorCode128: "Code 128 仅支持标准 ASCII 字符（编码 32-126）。",
+      errorQr: "无法生成二维码，请尝试其他内容。",
     },
     csv: {
       separator: "分隔符",
