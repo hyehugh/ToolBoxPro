@@ -4,7 +4,7 @@ import { useState, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLocale } from "@/lib/i18n/context";
 
-type BarcodeType = 'code128' | 'ean13' | 'code39' | 'upca';
+type BarcodeType = 'code128' | 'ean13' | 'code39' | 'upca' | 'qr';
 
 // Code128 (Code Set B) encoding table (ISO/IEC 15417).
 // Each entry is a 6-digit BSW string: widths of 3 bars + 3 spaces (alternating,
@@ -158,6 +158,13 @@ export function BarcodeGeneratorTool() {
   const generate = useCallback(() => {
     if (!text.trim()) return;
 
+    // QR Code generation via API
+    if (type === 'qr') {
+      const encoded = encodeURIComponent(text);
+      setBarcodeDataUrl(`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encoded}`);
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -214,7 +221,7 @@ export function BarcodeGeneratorTool() {
     if (!barcodeDataUrl) return;
     const a = document.createElement('a');
     a.href = barcodeDataUrl;
-    a.download = `barcode-${type}.png`;
+    a.download = type === 'qr' ? 'qrcode.png' : `barcode-${type}.png`;
     a.click();
   };
 
@@ -223,14 +230,14 @@ export function BarcodeGeneratorTool() {
       <div className="space-y-2">
         <label className="text-xs text-muted-foreground">{t('common.type')}</label>
         <div className="flex flex-wrap gap-2">
-          {(['code128', 'ean13', 'code39', 'upca'] as BarcodeType[]).map((t) => (
+          {(['code128', 'ean13', 'code39', 'upca', 'qr'] as BarcodeType[]).map((t) => (
             <Button
               key={t}
               variant={type === t ? 'default' : 'outline'}
               size="sm"
               onClick={() => { setType(t); setBarcodeDataUrl(''); }}
             >
-              {t.toUpperCase()}
+              {t === 'qr' ? 'QR Code' : t.toUpperCase()}
             </Button>
           ))}
         </div>
@@ -243,6 +250,7 @@ export function BarcodeGeneratorTool() {
           value={text}
           onChange={(e) => { setText(e.target.value); setBarcodeDataUrl(''); }}
           placeholder={
+            type === 'qr' ? 'Enter URL or text for QR code...' :
             type === 'code128' ? `${t('common.text')}...` :
             type === 'code39' ? 'Alphanumeric...' :
             type === 'ean13' ? '12-13 digit EAN code...' :
