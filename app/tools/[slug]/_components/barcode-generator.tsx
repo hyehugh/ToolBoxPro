@@ -205,7 +205,7 @@ export function BarcodeGeneratorTool() {
   const [barcodeDataUrl, setBarcodeDataUrl] = useState('');
   const [error, setError] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   const generate = useCallback(() => {
     if (!text.trim()) return;
@@ -279,7 +279,7 @@ export function BarcodeGeneratorTool() {
     ctx.fillText(text, canvas.width / 2, HEIGHT + 20);
 
     setBarcodeDataUrl(canvas.toDataURL('image/png'));
-  }, [text, type]);
+  }, [text, type, t]);
 
   const handleDownload = () => {
     if (!barcodeDataUrl) return;
@@ -294,14 +294,14 @@ export function BarcodeGeneratorTool() {
       <div className="space-y-2">
         <label className="text-xs text-muted-foreground">{t('common.type')}</label>
         <div className="flex flex-wrap gap-2">
-          {(['code128', 'ean13', 'code39', 'upca', 'qr'] as BarcodeType[]).map((t) => (
+          {(['code128', 'ean13', 'code39', 'upca', 'qr'] as BarcodeType[]).map((bt) => (
             <Button
-              key={t}
-              variant={type === t ? 'default' : 'outline'}
+              key={bt}
+              variant={type === bt ? 'default' : 'outline'}
               size="sm"
-              onClick={() => { setType(t); setBarcodeDataUrl(''); setError(''); }}
+              onClick={() => { setType(bt); setBarcodeDataUrl(''); setError(''); }}
             >
-              {t === 'qr' ? 'QR Code' : t.toUpperCase()}
+              {bt === 'qr' ? 'QR Code' : bt.toUpperCase()}
             </Button>
           ))}
         </div>
@@ -314,11 +314,11 @@ export function BarcodeGeneratorTool() {
           value={text}
           onChange={(e) => { setText(e.target.value); setBarcodeDataUrl(''); setError(''); }}
           placeholder={
-            type === 'qr' ? 'Enter URL or text for QR code...' :
+            type === 'qr' ? (locale === 'zh' ? '输入 URL 或文本生成二维码...' : 'Enter URL or text for QR code...') :
             type === 'code128' ? `${t('common.text')}...` :
-            type === 'code39' ? 'Alphanumeric...' :
-            type === 'ean13' ? '12-13 digit EAN code...' :
-            '11-12 digit UPC code...'
+            type === 'code39' ? (locale === 'zh' ? '字母数字...' : 'Alphanumeric...') :
+            type === 'ean13' ? (locale === 'zh' ? '12-13 位 EAN 代码...' : '12-13 digit EAN code...') :
+            (locale === 'zh' ? '11-12 位 UPC 代码...' : '11-12 digit UPC code...')
           }
           className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
         />

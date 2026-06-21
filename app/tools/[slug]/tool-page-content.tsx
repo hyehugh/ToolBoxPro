@@ -93,9 +93,9 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
             <div key={s.title} className="scenario-card p-4 rounded-lg border bg-card">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg" aria-hidden="true">{s.icon}</span>
-                <h3 className="font-medium text-sm">{s.title}</h3>
+                <h3 className="font-medium text-sm">{locale === "zh" ? s.titleZh : s.title}</h3>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">{s.description}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{locale === "zh" ? s.descriptionZh : s.description}</p>
             </div>
           ))}
         </div>

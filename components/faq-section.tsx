@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "@/lib/i18n/context";
 import type { FaqItem } from "@/lib/tools/faq";
 
 interface FaqSectionProps {
@@ -9,13 +10,14 @@ interface FaqSectionProps {
 
 export function FaqSection({ faqs }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { locale } = useLocale();
 
   if (faqs.length === 0) return null;
 
   return (
     <section className="mt-10" aria-labelledby="faq-heading">
       <h2 id="faq-heading" className="text-xl font-bold mb-4">
-        Frequently Asked Questions
+        {locale === "zh" ? "常见问题" : "Frequently Asked Questions"}
       </h2>
       <div className="space-y-2">
         {faqs.map((faq, i) => (
@@ -26,7 +28,7 @@ export function FaqSection({ faqs }: FaqSectionProps) {
               aria-expanded={openIndex === i}
               aria-controls={`faq-answer-${i}`}
             >
-              <span>{faq.question}</span>
+              <span>{locale === "zh" ? faq.questionZh : faq.question}</span>
               <span
                 className={`ml-2 flex-shrink-0 transition-transform duration-200 ${
                   openIndex === i ? "rotate-180" : ""
@@ -43,7 +45,7 @@ export function FaqSection({ faqs }: FaqSectionProps) {
                 aria-labelledby={`faq-question-${i}`}
                 className="px-4 pb-3 text-sm text-muted-foreground"
               >
-                {faq.answer}
+                {locale === "zh" ? faq.answerZh : faq.answer}
               </div>
             )}
           </div>
