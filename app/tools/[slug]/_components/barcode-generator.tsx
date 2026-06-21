@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLocale } from "@/lib/i18n/context";
+import QRCode from 'qrcode';
 
 type BarcodeType = 'code128' | 'ean13' | 'code39' | 'upca' | 'qr';
 
@@ -208,10 +209,12 @@ export function BarcodeGeneratorTool() {
   const generate = useCallback(() => {
     if (!text.trim()) return;
 
-    // QR Code generation via API
+    // QR Code — generated locally in the browser (no external request),
+    // consistent with the site's "files never leave your browser" promise.
     if (type === 'qr') {
-      const encoded = encodeURIComponent(text);
-      setBarcodeDataUrl(`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encoded}`);
+      QRCode.toDataURL(text, { width: 300, margin: 1, errorCorrectionLevel: 'M' })
+        .then(setBarcodeDataUrl)
+        .catch(() => setBarcodeDataUrl(''));
       return;
     }
 
