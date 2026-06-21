@@ -789,11 +789,11 @@ export const tools: Tool[] = [
   },
   {
     slug: "barcode-generator",
-    name: "Barcode Generator",
+    name: "Barcode & QR Code Generator",
     description: "Generate barcodes in Code128, EAN-13, Code39 formats",
     category: "conversion",
     icon: "▌▌",
-    searchKeywords: "barcode generator code128 ean13 code39 online",
+    searchKeywords: "barcode generator qr code code128 ean13 code39 upca online",
   },
   {
     slug: "aspect-ratio-calculator",

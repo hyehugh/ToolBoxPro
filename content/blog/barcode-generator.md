@@ -1,6 +1,6 @@
 ---
 slug: barcode-generator
-title: "Barcode Generator: How to Create CODE128, EAN13 & More Online"
+title: "Barcode & QR Code Generator: How to Create CODE128, EAN13 & QR Codes Online"
 titleZh: "条形码生成器：如何在线创建 CODE128、EAN13 等"
 description: "Generate professional barcodes for products, inventory, ISBN, and logistics. Supports CODE128, EAN-13, UPC-A, QR codes, and more."
 descriptionZh: "为产品、库存、ISBN 和物流生成专业条形码。支持 CODE128、EAN-13、UPC-A、二维码等。"

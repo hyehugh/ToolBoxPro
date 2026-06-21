@@ -1097,7 +1097,7 @@ export const zh: Record<string, any> = {
     "svg-to-png": { name: "SVG 转 PNG", desc: "将 SVG 代码或文件转换为 PNG 图片" },
     "days-between": { name: "日期计算器", desc: "精确计算两个日期之间的天数" },
     "password-strength": { name: "密码强度检测", desc: "使用实时分析测试您的密码强度" },
-    "barcode-generator": { name: "条形码生成器", desc: "生成 Code128、EAN-13、Code39 格式条形码" },
+    "barcode-generator": { name: "条码与二维码生成器", desc: "生成条形码 (Code128、EAN-13、Code39、UPC-A) 和二维码" },
     "aspect-ratio-calculator": { name: "宽高比计算", desc: "从尺寸或预设值计算宽高比" },
     "qr-reader": { name: "二维码读取", desc: "从上传的图片中解码二维码" },
     "color-blindness-simulator": { name: "色盲模拟器", desc: "模拟不同类型色盲下的图像效果" },

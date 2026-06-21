@@ -1206,7 +1206,7 @@ export const en: Record<string, any> = {
     "svg-to-png": { name: "SVG to PNG Converter", desc: "Convert SVG code or files to PNG images" },
     "days-between": { name: "Days Between Dates", desc: "Calculate the exact number of days between two dates" },
     "password-strength": { name: "Password Strength Checker", desc: "Test how strong your password is with real-time analysis" },
-    "barcode-generator": { name: "Barcode Generator", desc: "Generate barcodes in Code128, EAN-13, Code39 formats" },
+    "barcode-generator": { name: "Barcode & QR Code Generator", desc: "Generate barcodes (Code128, EAN-13, Code39, UPC-A) and QR codes" },
     "aspect-ratio-calculator": { name: "Aspect Ratio Calculator", desc: "Calculate aspect ratios from dimensions or presets" },
     "qr-reader": { name: "QR Code Reader", desc: "Decode QR codes from uploaded images" },
     "color-blindness-simulator": { name: "Color Blindness Simulator", desc: "Simulate how images look with various color blindness types" },
