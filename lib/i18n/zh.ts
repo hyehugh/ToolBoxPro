@@ -1021,7 +1021,6 @@ export const zh: Record<string, any> = {
     "lorem-ipsum-generator": { name: "Lorem Ipsum 生成器", desc: "为设计稿生成占位文本" },
     "text-diff-checker": { name: "文本差异对比", desc: "比较两段文本并高亮差异" },
     "text-repeater": { name: "文本重复器", desc: "使用自定义分隔符重复文本多次" },
-    "qr-code-generator": { name: "二维码生成器", desc: "为网址、文本、WiFi 等创建自定义二维码" },
     "html-entity-converter": { name: "HTML 实体转换", desc: "编码和解码 &amp;、&lt; 等 HTML 实体" },
     "css-minifier": { name: "CSS 压缩器", desc: "压缩 CSS 代码以减少文件体积" },
     "sql-formatter": { name: "SQL 格式化", desc: "格式化 SQL 查询语句，提高可读性" },

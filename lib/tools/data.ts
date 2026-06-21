@@ -164,14 +164,6 @@ export const tools: Tool[] = [
   },
   // === Conversion Tools (2) ===
   {
-    slug: "qr-code-generator",
-    name: "QR Code Generator",
-    description: "Create custom QR codes for URLs, text, WiFi, and more",
-    category: "conversion",
-    icon: "▦",
-    searchKeywords: "qr code generator create qr code qr maker",
-  },
-  {
     slug: "html-entity-converter",
     name: "HTML Entity Converter",
     description: "Encode and decode HTML entities like &amp; and &lt;",

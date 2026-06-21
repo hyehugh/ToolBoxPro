@@ -7,7 +7,7 @@ descriptionZh: "使用自定义颜色、Logo 和纠错生成专业二维码。�
 date: 2026-05-22
 readTime: "5 min read"
 category: "Conversion"
-toolSlug: "qr-code-generator"
+toolSlug: "barcode-generator"
 ---
 
 ## What Is a QR Code and How It Works
@@ -40,7 +40,7 @@ QR codes use Reed-Solomon error correction with four levels:
 - **Level Q (Quartile)** — 25% recovery. For codes exposed to wear — shipping labels and outdoor signage.
 - **Level H (High)** — 30% recovery. Maximum durability. Allows reading with up to 30% surface area obscured. Recommended when adding a logo or printing on rough surfaces.
 
-Higher error correction means larger QR codes for the same data. Experiment with settings in a [QR code generator](/tools/qr-code-generator) to find the right balance.
+Higher error correction means larger QR codes for the same data. Experiment with settings in a [QR code generator](/tools/barcode-generator) to find the right balance.
 
 ### How QR Code Scanning Works
 
@@ -56,7 +56,7 @@ Modern smartphones scan QR codes through the built-in camera decoder (iOS 11+ an
 
 **Marketing and Tracking** — QR codes on print ads and packaging link to UTM-tagged landing pages, allowing marketers to measure scan-to-visit conversion.
 
-If you need to generate custom QR codes with your brand colors or a logo in the center, a [custom QR code maker](/tools/qr-code-customizer) can handle that while maintaining readability by adjusting error correction appropriately. For bulk generation, use a dedicated [QR code generator](/tools/qr-code-generator).
+If you need to generate custom QR codes with your brand colors or a logo in the center, a [custom QR code maker](/tools/qr-code-customizer) can handle that while maintaining readability by adjusting error correction appropriately. For bulk generation, use a dedicated [QR code generator](/tools/barcode-generator).
 
 ### QR Code Security Considerations
 

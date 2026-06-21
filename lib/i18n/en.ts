@@ -1130,7 +1130,6 @@ export const en: Record<string, any> = {
     "lorem-ipsum-generator": { name: "Lorem Ipsum Generator", desc: "Generate placeholder text for mockups and designs" },
     "text-diff-checker": { name: "Text Diff Checker", desc: "Compare two texts and highlight the differences" },
     "text-repeater": { name: "Text Repeater", desc: "Repeat text multiple times with custom separators" },
-    "qr-code-generator": { name: "QR Code Generator", desc: "Create custom QR codes for URLs, text, WiFi, and more" },
     "html-entity-converter": { name: "HTML Entity Converter", desc: "Encode and decode HTML entities like &amp; and &lt;" },
     "css-minifier": { name: "CSS Minifier", desc: "Minify and compress CSS code to reduce file size" },
     "sql-formatter": { name: "SQL Formatter", desc: "Format and beautify SQL queries for better readability" },

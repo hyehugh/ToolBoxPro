@@ -11,7 +11,7 @@ export const blogImages: BlogImage[] = [
   { blog: "hex-to-rgb-color-conversion", toolSlug: "color-converter", image: "/blog/color-converter.png" },
   { blog: "compress-images-without-losing-quality", toolSlug: "image-compressor", image: "/blog/image-compressor.png" },
   { blog: "merge-pdf-files-free", toolSlug: "pdf-merger", image: "/blog/pdf-merger.png" },
-  { blog: "create-custom-qr-codes", toolSlug: "qr-code-generator", image: "/blog/qr-code-generator.png" },
+  { blog: "create-custom-qr-codes", toolSlug: "barcode-generator", image: "/blog/qr-code-generator.png" },
   { blog: "word-counter-character-count", toolSlug: "word-counter", image: "/blog/word-counter.png" },
   { blog: "url-encoding-101", toolSlug: "url-encoder-decoder", image: "/blog/url-encoder-decoder.png" },
   { blog: "best-free-developer-tools-2026", toolSlug: "image-converter", image: "/blog/image-converter.png" },

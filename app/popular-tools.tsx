@@ -13,7 +13,7 @@ const popularSlugs = new Set([
   "password-generator",
   "image-compressor",
   "pdf-merger",
-  "qr-code-generator",
+  "barcode-generator",
   "word-counter",
 ]);
 

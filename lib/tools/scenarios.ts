@@ -24,7 +24,7 @@ export const toolScenarios: Record<string, { title: string; icon: string; descri
     { title: "Email Attachments", icon: "📎", description: "Shrink image file sizes to stay within email attachment limits." },
     { title: "Social Media Uploads", icon: "📱", description: "Reduce file sizes while maintaining quality for faster uploads." },
   ],
-  "qr-code-generator": [
+  "barcode-generator": [
     { title: "WiFi Sharing", icon: "📶", description: "Create QR codes for WiFi credentials so guests can connect instantly." },
     { title: "Business Cards", icon: "💼", description: "Add QR codes linking to your portfolio or LinkedIn profile." },
     { title: "Event Check-in", icon: "📋", description: "Generate QR codes for event registration or ticket validation." },

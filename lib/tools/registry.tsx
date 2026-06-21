@@ -96,7 +96,6 @@ export const toolComponents: Record<string, React.ComponentType> = {
   "color-palette":            tool("color-palette",            () => import("@/app/tools/[slug]/_components/color-palette").then(m => m.ColorPaletteTool)),
   "color-blindness-simulator":tool("color-blindness-simulator",() => import("@/app/tools/[slug]/_components/color-blindness-simulator").then(m => m.ColorBlindnessSimulatorTool)),
   "barcode-generator":        tool("barcode-generator",        () => import("@/app/tools/[slug]/_components/barcode-generator").then(m => m.BarcodeGeneratorTool)),
-  "qr-code-generator":        tool("qr-code-generator",        () => import("@/app/tools/[slug]/_components/qr-generator").then(m => m.QrGeneratorTool)),
   "qr-reader":                tool("qr-reader",                () => import("@/app/tools/[slug]/_components/qr-reader").then(m => m.QrReaderTool)),
 
   // === PDF Tools ===

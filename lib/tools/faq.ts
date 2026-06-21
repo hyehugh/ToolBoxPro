@@ -91,7 +91,7 @@ const toolFaqs: ToolFaq[] = [
     ],
   },
   {
-    slug: "qr-code-generator",
+    slug: "barcode-generator",
     faqs: [
       { question: "What data can I encode in a QR code?", answer: "You can encode text, URLs, email addresses, phone numbers, WiFi credentials, and contact information. The tool supports multiple QR code data types." },
       { question: "Can I customize the QR code appearance?", answer: "Yes. You can change the colors, size, and error correction level. Higher error correction makes the QR code more resilient to damage." },

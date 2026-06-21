@@ -88,7 +88,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-05-22",
     readTime: "5 min read",
     category: "Conversion",
-    toolSlug: "qr-code-generator",
+    toolSlug: "barcode-generator",
   },
   {
     slug: "word-counter-character-count",
