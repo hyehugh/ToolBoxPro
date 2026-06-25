@@ -13,6 +13,7 @@ import { getToolScenarios } from "@/lib/tools/scenarios";
 import { toolComponents } from "@/lib/tools/registry";
 import { getToolFaqs } from "@/lib/tools/faq";
 import { FaqSection } from "@/components/faq-section";
+import { getToolGuide } from "@/lib/tools/guides";
 
 import dynamic from "next/dynamic";
 
@@ -83,6 +84,9 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
         </ToolWidget>
       </ErrorBoundary>
 
+      {/* Tool Usage Guide — server-rendered text for SEO & user value */}
+      <ToolGuideSection slug={slug} locale={locale} />
+
       {/* Usage Scenarios */}
       <section className="mt-10" aria-labelledby="scenarios-heading">
         <h2 id="scenarios-heading" className="text-lg font-bold mb-4 text-muted-foreground">
@@ -152,6 +156,26 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
         </section>
       )}
     </div>
+  );
+}
+
+function ToolGuideSection({ slug, locale }: { slug: string; locale: string }) {
+  const guide = getToolGuide(slug);
+  if (!guide) return null;
+
+  const text = locale === "zh" ? guide.zh : guide.en;
+  if (!text) return null;
+
+  return (
+    <section className="mt-8 p-6 rounded-xl border bg-card/50" aria-labelledby="guide-heading">
+      <h2 id="guide-heading" className="text-lg font-bold mb-3 flex items-center gap-2">
+        <span aria-hidden="true">📖</span>
+        {locale === "zh" ? "使用指南" : "How to Use This Tool"}
+      </h2>
+      <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none text-muted-foreground leading-relaxed whitespace-pre-line">
+        {text}
+      </div>
+    </section>
   );
 }
 

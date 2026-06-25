@@ -5,6 +5,9 @@ export interface Tool {
   category: "developer" | "text" | "image" | "pdf" | "audio" | "network" | "conversion" | "utilities";
   icon: string;
   searchKeywords: string;
+  /** Detailed usage guide text (rendered on tool page for SEO & user value) */
+  guide?: string;
+  guideZh?: string;
 }
 
 export interface Category {

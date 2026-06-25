@@ -33,3 +33,83 @@ While every team has its own style guide, most follow a common set of convention
 | Convention | Common Practice | Example |
 |---|---|---|
 | Keyword casing | UPPERCASE for SQL keywords | \`SELECT\
+
+## Why SQL Formatting Matters
+
+Unformatted SQL queries are hard to read, debug, and maintain. A single long line of SQL with nested subqueries and multiple JOINs becomes nearly impossible to understand. Proper formatting:
+
+- **Improves readability** — spot errors and logic issues quickly
+- **Eases debugging** — identify which clause has the problem
+- **Facilitates collaboration** — team members can follow your query logic
+- **Reduces mistakes** — well-structured queries are less likely to have syntax errors
+
+## SQL Formatting Best Practices
+
+### Capitalize Keywords
+Always capitalize SQL keywords: `SELECT`, `FROM`, `WHERE`, `JOIN`, `ORDER BY`, `GROUP BY`. This creates visual separation between keywords and your identifiers.
+
+### One Clause Per Line
+Put each major clause on its own line:
+```sql
+SELECT
+    u.name,
+    u.email,
+    COUNT(o.id) AS order_count
+FROM users u
+LEFT JOIN orders o ON o.user_id = u.id
+WHERE u.created_at > '2024-01-01'
+GROUP BY u.id, u.name, u.email
+HAVING COUNT(o.id) > 5
+ORDER BY order_count DESC;
+```
+
+### Indent Subqueries
+Nested queries should be indented to show hierarchy:
+```sql
+SELECT *
+FROM products
+WHERE category_id IN (
+    SELECT id
+    FROM categories
+    WHERE parent_id = 5
+);
+```
+
+### Align Columns
+Align SELECT columns for easy scanning:
+```sql
+SELECT
+    first_name,
+    last_name,
+    email,
+    created_at
+```
+
+## Common SQL Formatting Mistakes
+
+1. **Missing semicolons** — always end statements with `;`
+2. **Inconsistent aliasing** — pick `AS` or space aliasing and stick with it
+3. **Over-nesting** — consider CTEs (Common Table Expressions) instead of deep subqueries
+4. **Missing indexes** — formatted queries still need proper indexes for performance
+5. **Ignoring case sensitivity** — some databases treat identifiers as case-sensitive
+
+## Using CTEs for Complex Queries
+
+Common Table Expressions (CTEs) make complex queries much more readable:
+```sql
+WITH monthly_sales AS (
+    SELECT
+        DATE_TRUNC('month', order_date) AS month,
+        SUM(amount) AS total
+    FROM orders
+    GROUP BY 1
+)
+SELECT *
+FROM monthly_sales
+WHERE total > 10000
+ORDER BY month;
+```
+
+## Using ToolboxPro's SQL Formatter
+
+Our [SQL Formatter](/tools/sql-formatter) automatically formats your SQL queries with proper indentation, keyword capitalization, and clause alignment. Paste your unformatted query and get a clean, readable version instantly.

@@ -57,3 +57,59 @@ Client-side PDF processing has genuine limitations:
 ### The Verdict
 
 For **95% of daily PDF tasks** — merging, splitting, rotating, converting images to PDF — client-side tools like ToolboxPro are faster, more private, and more reliable.
+
+## The Privacy Problem with Server-Side PDF Tools
+
+Most online PDF tools upload your files to their servers for processing. This creates several risks:
+
+- **Data exposure** — sensitive documents (contracts, tax forms, medical records) are transmitted and stored on third-party servers
+- **Privacy violations** — some services claim rights to scan or use your uploaded content
+- **Compliance issues** — uploading regulated data may violate GDPR, HIPAA, or company policies
+- **Permanent storage** — many services don't delete uploaded files promptly
+
+## What Are Client-Side PDF Tools?
+
+Client-side tools process your PDF files entirely in your browser using JavaScript. The file never leaves your device — no upload, no server processing, no storage. Technologies like PDF.js and pdf-lib enable this:
+
+- **PDF.js** — Mozilla's library for rendering and reading PDFs in the browser
+- **pdf-lib** — JavaScript library for creating and modifying PDFs
+- **WebAssembly** — enables running native PDF libraries at near-native speed in the browser
+
+## Comparison: Client-Side vs Server-Side
+
+| Feature | Client-Side | Server-Side |
+|---------|------------|-------------|
+| Privacy | ✅ Files stay on device | ❌ Files uploaded to server |
+| Speed | ✅ Instant (no upload time) | ⚠️ Depends on connection |
+| File Size | ⚠️ Limited by browser memory | ✅ Can handle large files |
+| Features | ⚠️ Basic operations | ✅ Advanced editing possible |
+| Offline Use | ✅ Works offline after first load | ❌ Requires internet |
+| Cost | ✅ Usually free | ⚠️ Often requires subscription |
+
+## When to Use Client-Side Tools
+
+Client-side PDF tools are ideal for:
+- **Personal documents** — tax returns, IDs, personal contracts
+- **Sensitive business files** — contracts, financial reports, legal documents
+- **Quick operations** — merging, splitting, rotating, page removal
+- **Offline work** — processing files without internet access
+
+## When Server-Side Might Be Necessary
+
+Server-side processing is better for:
+- **Very large files** (100MB+) that exceed browser memory limits
+- **Advanced editing** — adding form fields, digital signatures, OCR
+- **Batch processing** — processing hundreds of files at once
+- **Cloud storage integration** — direct Google Drive/Dropbox access
+
+## Using ToolboxPro's PDF Tools
+
+ToolboxPro offers a complete suite of client-side PDF tools:
+
+- [PDF Merger](/tools/pdf-merger) — combine multiple PDFs into one document
+- [PDF Splitter](/tools/pdf-splitter) — extract specific pages or split by ranges
+- [PDF Rotator](/tools/pdf-rotator) — fix rotated scanned documents
+- [PDF Page Remover](/tools/pdf-page-remover) — delete unwanted pages
+- [Image to PDF](/tools/image-to-pdf) — convert images to PDF format
+
+All processing happens in your browser — your files never leave your device.
