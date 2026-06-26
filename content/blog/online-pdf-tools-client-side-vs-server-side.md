@@ -6,7 +6,7 @@ description: "A technical and practical comparison of browser-based vs server-ba
 descriptionZh: "基于浏览器的 PDF 工具与基于服务器的 PDF 工具的技术和实用对比。了解处理位置对速度、隐私、可靠性和成本的影响。"
 date: 2026-05-24
 readTime: "7 min read"
-category: "Comparison"
+category: "General"
 toolSlug: "pdf-merger"
 ---
 

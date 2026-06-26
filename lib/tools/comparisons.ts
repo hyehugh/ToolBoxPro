@@ -181,34 +181,22 @@ const comparisons: Record<string, ToolComparison> = {
     toolName: "PDF Splitter",
     competitors: [
       {
-        name: "Smallpdf Split",
-        url: "https://smallpdf.com/split-pdf",
-        pros: ["Visual page selection", "Cloud integration"],
-        cons: ["2 free tasks/day", "Uploads to server", "Requires account for full features"],
-      },
-      {
         name: "iLovePDF Split",
         url: "https://ilovepdf.com/split_pdf",
-        pros: ["Multiple split modes"],
-        cons: ["File size limits", "Server processing", "Daily limits"],
+        pros: ["Multiple split modes", "Clean interface"],
+        cons: ["File size limits", "Server processing", "Daily limits on free tier"],
       },
     ],
     toolboxProAdvantages: [
       "Unlimited splits — no daily limits",
       "Files never leave your browser",
-      "Extract specific pages or page ranges",
+      "Extract specific pages or ranges",
       "No account required",
     ],
   },
   "image-resizer": {
     toolName: "Image Resizer",
     competitors: [
-      {
-        name: "ResizeImage.net",
-        url: "https://resizeimage.net",
-        pros: ["Multiple output formats"],
-        cons: ["Slow", "Heavy ads", "Uploads to server"],
-      },
       {
         name: "Birme",
         url: "https://birme.net",
@@ -232,18 +220,301 @@ const comparisons: Record<string, ToolComparison> = {
         pros: ["Multiple algorithms"],
         cons: ["Dated interface", "No file hashing", "Ads"],
       },
-      {
-        name: "HashTool",
-        url: "https://hashtool.net",
-        pros: ["Simple interface"],
-        cons: ["Server-side processing", "File upload required", "Limited algorithms"],
-      },
     ],
     toolboxProAdvantages: [
       "SHA-256, SHA-384, SHA-512 support",
       "Hash text or files — both supported",
       "Client-side processing for privacy",
       "Instant results with one-click copy",
+    ],
+  },
+  "uuid-generator": {
+    toolName: "UUID Generator",
+    competitors: [
+      {
+        name: "UUIDGenerator.net",
+        url: "https://uuidgenerator.net",
+        pros: ["Simple interface", "Batch generation"],
+        cons: ["Server-side generation", "Ads", "Limited format options"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Generates v4 UUIDs using Web Crypto API",
+      "Bulk generation up to 1000 UUIDs",
+      "Copy individual or all UUIDs",
+      "No data sent to servers",
+    ],
+  },
+  "case-converter": {
+    toolName: "Text Case Converter",
+    competitors: [
+      {
+        name: "ConvertCase.net",
+        url: "https://convertcase.net",
+        pros: ["Multiple case types"],
+        cons: ["Heavy ads", "Slow loading", "Server processing"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Instant conversion — no waiting",
+      "UPPER, lower, Title, camelCase, snake_case, and more",
+      "No ads, no tracking",
+      "Works offline after first load",
+    ],
+  },
+  "text-diff-checker": {
+    toolName: "Text Diff Checker",
+    competitors: [
+      {
+        name: "DiffChecker.com",
+        url: "https://diffchecker.com",
+        pros: ["File upload support", "PDF diff"],
+        cons: ["Requires account for history", "Server processing", "Limited free features"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "No account needed — use immediately",
+      "Files never leave your browser",
+      "Line-by-line and character-by-character diff",
+      "Copy diff results with one click",
+    ],
+  },
+  "css-gradient": {
+    toolName: "CSS Gradient Generator",
+    competitors: [
+      {
+        name: "CSSGradient.io",
+        url: "https://cssgradient.io",
+        pros: ["Visual editor", "Gradient library"],
+        cons: ["Complex interface for beginners", "Some features require signup"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Simple, intuitive gradient builder",
+      "Linear and radial gradients",
+      "Copy CSS with one click",
+      "Real-time preview",
+    ],
+  },
+  "csv-viewer": {
+    toolName: "CSV Viewer & Formatter",
+    competitors: [
+      {
+        name: "CSVViewer.net",
+        url: "https://csvviewer.net",
+        pros: ["Basic viewing"],
+        cons: ["No editing", "Ads", "Limited format support"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Auto-detect delimiters and encoding",
+      "Sort, filter, and search CSV data",
+      "Export to different formats",
+      "Handles large files efficiently",
+    ],
+  },
+  "lorem-ipsum-generator": {
+    toolName: "Lorem Ipsum Generator",
+    competitors: [
+      {
+        name: "Lipsum.com",
+        url: "https://lipsum.com",
+        pros: ["Classic generator", "Multiple languages"],
+        cons: ["Dated design", "Limited customization", "No paragraph control"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Custom paragraph count and word count",
+      "Start with or without Lorem ipsum",
+      "Include HTML tags option",
+      "Copy with one click",
+    ],
+  },
+  "markdown-to-html": {
+    toolName: "Markdown to HTML Converter",
+    competitors: [
+      {
+        name: "MarkdownHere",
+        url: "https://markdown-here.com",
+        pros: ["Browser extension", "Email friendly"],
+        cons: ["Requires extension install", "Limited formatting options"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "No installation required — browser-based",
+      "Real-time preview as you type",
+      "Supports GitHub Flavored Markdown",
+      "Copy HTML or download as file",
+    ],
+  },
+  "html-entity-converter": {
+    toolName: "HTML Entity Converter",
+    competitors: [
+      {
+        name: "FreeFormatter.com",
+        url: "https://freeformatter.com/html-entity-encoder.html",
+        pros: ["Multiple encoding types"],
+        cons: ["Heavy page", "Many ads", "Slow loading"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Instant encode/decode toggle",
+      "Handles all HTML entities",
+      "Clean, fast interface",
+      "One-click copy",
+    ],
+  },
+  "timestamp-converter": {
+    toolName: "Timestamp Converter",
+    competitors: [
+      {
+        name: "EpochConverter.com",
+        url: "https://epochconverter.com",
+        pros: ["Calendar view", "Multiple formats"],
+        cons: ["Ads", "Dated design", "Limited timezone support"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Convert timestamp to date and back",
+      "Supports multiple date formats",
+      "Timezone-aware conversions",
+      "No ads, instant results",
+    ],
+  },
+  "jwt-decoder": {
+    toolName: "JWT Decoder",
+    competitors: [
+      {
+        name: "jwt.io",
+        url: "https://jwt.io",
+        pros: ["Industry standard", "Debug features"],
+        cons: ["Server-side (sends token)", "Complex interface", "Security concern with sensitive tokens"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "100% client-side — token never leaves browser",
+      "Clear header/payload/signature display",
+      "No security risk for sensitive tokens",
+      "Supports all JWT algorithms",
+    ],
+  },
+  "ip-calculator": {
+    toolName: "IP Subnet Calculator",
+    competitors: [
+      {
+        name: "ipaddressguide.com",
+        url: "https://ipaddressguide.com",
+        pros: ["Simple interface"],
+        cons: ["IPv4 only", "Ads", "No bulk calculation"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Supports both IPv4 and IPv6",
+      "Calculate subnet, broadcast, host range",
+      "CIDR notation support",
+      "Clean, ad-free interface",
+    ],
+  },
+  "color-picker": {
+    toolName: "Color Picker from Image",
+    competitors: [
+      {
+        name: "ColorPicker.com",
+        url: "https://colorpicker.com",
+        pros: ["Wheel interface"],
+        cons: ["No image upload", "Limited export formats"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Pick colors from uploaded images",
+      "Get HEX, RGB, HSL values instantly",
+      "Zoom into pixels for precise picking",
+      "No upload to servers — all local",
+    ],
+  },
+  "dice-roller": {
+    toolName: "Dice Roller",
+    competitors: [
+      {
+        name: "DiceRoller.com",
+        url: "https://diceroller.com",
+        pros: ["Multiple dice types"],
+        cons: ["Ads", "No animation", "Limited statistics"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Roll D4, D6, D8, D10, D12, D20",
+      "Roll multiple dice at once",
+      "Track roll history and statistics",
+      "Smooth roll animation",
+    ],
+  },
+  "password-strength": {
+    toolName: "Password Strength Checker",
+    competitors: [
+      {
+        name: "HowSecureIsMyPassword.net",
+        url: "https://howsecureismypassword.net",
+        pros: ["Crack time estimate"],
+        cons: ["Sends password to server", "Privacy risk", "Limited analysis"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Password never leaves your browser",
+      "Real-time strength analysis",
+      "Shows crack time estimate",
+      "Suggestions for improvement",
+    ],
+  },
+  "percentage-calculator": {
+    toolName: "Percentage Calculator",
+    competitors: [
+      {
+        name: "Calculator.net",
+        url: "https://calculator.net/percent-calculator.html",
+        pros: ["Multiple calculators"],
+        cons: ["Many ads", "Slow page", "Confusing interface"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Calculate percentages, increases, decreases",
+      "What-if scenarios",
+      "Instant results — no page reload",
+      "Clean, focused interface",
+    ],
+  },
+  "bmi-calculator": {
+    toolName: "BMI Calculator",
+    competitors: [
+      {
+        name: "CDC BMI Calculator",
+        url: "https://cdc.gov/bmi",
+        pros: ["Government source", "Reliable"],
+        cons: ["Basic interface", "US-centric", "No history tracking"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Metric and Imperial units",
+      "Health category with recommendations",
+      "Clean, modern interface",
+      "Mobile-friendly design",
+    ],
+  },
+  "dns-lookup": {
+    toolName: "DNS Lookup",
+    competitors: [
+      {
+        name: "MXToolbox",
+        url: "https://mxtoolbox.com",
+        pros: ["Comprehensive tools", "Email diagnostics"],
+        cons: ["Rate limits", "Requires signup for full features", "Server-side"],
+      },
+    ],
+    toolboxProAdvantages: [
+      "Query A, AAAA, MX, NS, TXT, CAA, SOA records",
+      "No rate limits",
+      "No account required",
+      "Instant results",
     ],
   },
 };

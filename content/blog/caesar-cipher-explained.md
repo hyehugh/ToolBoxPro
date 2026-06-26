@@ -2,7 +2,7 @@
 title: "Caesar Cipher Explained: The Classic Encryption Method"
 description: "Understand the Caesar cipher encryption method. History, how it works, cracking techniques, and online encoder/decoder."
 date: "2026-06-26"
-category: "Cryptography"
+category: "Developer Tools"
 readTime: "11 min read"
 toolSlug: "caesar-cipher"
 ---

@@ -6,7 +6,7 @@ description: "Learn how to create strong passwords with our complete security gu
 descriptionZh: "学习如何通过我们的完整安全指南创建强密码。了解密码强度技巧、常见攻击方法和在线密码安全的最佳实践。"
 date: 2026-05-30
 readTime: "7 min read"
-category: "Security"
+category: "Security & Privacy"
 toolSlug: "password-generator"
 ---
 

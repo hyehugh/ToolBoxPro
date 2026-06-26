@@ -6,7 +6,7 @@ description: "Check SSL certificate details, expiration dates, and chain validit
 descriptionZh: "检查任何域名的 SSL 证书详情、过期日期和链有效性。确保您的网站安全可信。"
 date: 2026-05-23
 readTime: "7 min read"
-category: "Network Tools"
+category: "Developer Tools"
 toolSlug: "ssl-checker"
 ---
 

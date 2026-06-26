@@ -6,7 +6,7 @@ description: "Test password strength instantly. Analyze length, complexity, and 
 descriptionZh: "即时测试密码强度。分析长度、复杂度和对暴力破解的抵抗力。学习如何创建牢不可破的密码。"
 date: 2026-05-23
 readTime: "7 min read"
-category: "Utilities"
+category: "General"
 toolSlug: "password-strength"
 ---
 

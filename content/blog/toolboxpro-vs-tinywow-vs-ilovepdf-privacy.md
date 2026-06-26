@@ -6,7 +6,7 @@ description: "We compare the three most popular free online tool websites on pri
 descriptionZh: "我们在隐私保护、文件处理、功能和性能方面对比三个最受欢迎的免费在线工具网站。找出哪个能保护您的数据安全。"
 date: 2026-05-24
 readTime: "8 min read"
-category: "Comparison"
+category: "General"
 toolSlug: "pdf-protector"
 ---
 

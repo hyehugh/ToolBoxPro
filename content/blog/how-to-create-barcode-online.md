@@ -2,7 +2,7 @@
 title: "How to Create Barcodes Online for Free — Complete Guide"
 description: "Generate barcodes online with this step-by-step guide. Compare Code128, EAN-13, Code39, and QR code formats."
 date: "2026-06-26"
-category: "Productivity"
+category: "General"
 readTime: "12 min read"
 toolSlug: "barcode-generator"
 ---

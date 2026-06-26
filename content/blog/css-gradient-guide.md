@@ -2,7 +2,7 @@
 title: "CSS Gradient Guide: How to Create Linear and Radial Gradients"
 description: "Master CSS gradients with this complete guide. Learn linear, radial, and conic gradients with live examples."
 date: "2026-06-26"
-category: "CSS & Design"
+category: "Image Tools"
 readTime: "9 min read"
 toolSlug: "css-gradient"
 ---

@@ -6,7 +6,7 @@ description: "We compare the top free online JSON formatters side by side — JS
 descriptionZh: "我们并排对比顶级免费在线 JSON 格式化工具——JSONLint、JSON Formatter and Validator 以及 ToolboxPro。包括格式化、验证、压缩和隐私分析。"
 date: 2026-05-24
 readTime: "6 min read"
-category: "Comparison"
+category: "General"
 toolSlug: "json-formatter"
 ---
 

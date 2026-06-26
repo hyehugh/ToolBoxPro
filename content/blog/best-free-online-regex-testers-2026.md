@@ -6,7 +6,7 @@ description: "Compare the best free online regex testers including regex101, Reg
 descriptionZh: "对比最好的免费在线正则测试工具，包括 regex101、RegExr、Debuggex 和 ToolboxPro。功能、速度、隐私和用户体验并排对比。"
 date: 2026-05-24
 readTime: "6 min read"
-category: "Comparison"
+category: "General"
 toolSlug: "regex-tester"
 ---
 

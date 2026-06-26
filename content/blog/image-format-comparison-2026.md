@@ -2,7 +2,7 @@
 title: "Image Format Comparison 2026: JPG vs PNG vs WebP vs AVIF"
 description: "Comprehensive comparison of image formats for web developers. Which format to choose for speed, quality, and compatibility."
 date: "2026-06-26"
-category: "Web Development"
+category: "Developer Tools"
 readTime: "10 min read"
 toolSlug: "image-converter"
 ---

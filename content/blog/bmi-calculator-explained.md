@@ -2,7 +2,7 @@
 title: "BMI Calculator: How Body Mass Index Works and What Your Score Means"
 description: "Understand BMI calculation, categories, limitations, and how to interpret your results. Free online BMI calculator."
 date: "2026-06-26"
-category: "Health & Wellness"
+category: "General"
 readTime: "8 min read"
 toolSlug: "bmi-calculator"
 ---

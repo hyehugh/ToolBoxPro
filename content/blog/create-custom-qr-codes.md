@@ -6,7 +6,7 @@ description: "Generate professional QR codes with custom colors, logos, and erro
 descriptionZh: "使用自定义颜色、Logo 和纠错生成专业二维码。适用于营销、菜单和活动。"
 date: 2026-05-22
 readTime: "5 min read"
-category: "Conversion"
+category: "General"
 toolSlug: "barcode-generator"
 ---
 

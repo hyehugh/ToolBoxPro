@@ -2,7 +2,7 @@
 title: "How to Crop Images Online Without Photoshop"
 description: "Crop images online for free. Learn aspect ratios, common sizes for social media, and how to crop without losing quality."
 date: "2026-06-26"
-category: "Design"
+category: "Image Tools"
 readTime: "10 min read"
 toolSlug: "image-cropper"
 ---

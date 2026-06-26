@@ -6,7 +6,7 @@ description: "We test the top free image compressors on compression ratio, visua
 descriptionZh: "我们在压缩率、视觉质量、隐私和速度方面测试顶级免费图片压缩工具。包括 ToolboxPro、TinyPNG、Compressor.io 和 Squoosh。"
 date: 2026-05-24
 readTime: "7 min read"
-category: "Comparison"
+category: "General"
 toolSlug: "image-compressor"
 ---
 

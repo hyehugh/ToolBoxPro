@@ -6,7 +6,7 @@ description: "Free online percentage calculator for discounts, tips, taxes, and 
 descriptionZh: "免费在线百分比计算器，用于折扣、小费、税费和数据分析。几秒内计算百分比增减等。"
 date: 2026-05-23
 readTime: "5 min read"
-category: "Conversion Tools"
+category: "General"
 toolSlug: "percentage-calculator"
 ---
 

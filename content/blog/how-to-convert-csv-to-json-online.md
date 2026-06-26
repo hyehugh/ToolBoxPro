@@ -2,7 +2,7 @@
 title: "How to Convert CSV to JSON Online — Complete Guide"
 description: "Learn how to convert CSV files to JSON format online. Step-by-step guide with examples, use cases, and free tools."
 date: "2026-06-26"
-category: "Data Conversion"
+category: "General"
 readTime: "8 min read"
 toolSlug: "csv-viewer"
 ---

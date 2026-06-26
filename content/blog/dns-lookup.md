@@ -6,7 +6,7 @@ description: "Look up DNS records including A, AAAA, CNAME, MX, NS, TXT, and SOA
 descriptionZh: "查询 A、AAAA、CNAME、MX、NS、TXT、SOA 等 DNS 记录。诊断 DNS 问题并验证域名配置。"
 date: 2026-05-23
 readTime: "6 min read"
-category: "Network Tools"
+category: "Developer Tools"
 toolSlug: "dns-lookup"
 ---
 

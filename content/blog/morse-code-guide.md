@@ -2,7 +2,7 @@
 title: "Morse Code Guide: How to Send and Decode Messages"
 description: "Learn Morse code with this complete guide. History, alphabet, numbers, and how to encode/decode messages online."
 date: "2026-06-26"
-category: "Communication"
+category: "General"
 readTime: "11 min read"
 toolSlug: "morse-code-converter"
 ---

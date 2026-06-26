@@ -2,7 +2,7 @@
 title: "What Is URL Encoding? Why Every Developer Needs to Understand It"
 description: "URL encoding explained simply. Learn why URLs need encoding, how percent-encoding works, and common use cases."
 date: "2026-06-26"
-category: "Web Development"
+category: "Developer Tools"
 readTime: "10 min read"
 toolSlug: "url-encoder-decoder"
 ---
