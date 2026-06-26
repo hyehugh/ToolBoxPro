@@ -32,84 +32,170 @@ While every team has its own style guide, most follow a common set of convention
 
 | Convention | Common Practice | Example |
 |---|---|---|
-| Keyword casing | UPPERCASE for SQL keywords | \`SELECT\
+| Keyword casing | UPPERCASE for SQL keywords | `SELECT`, `FROM`, `WHERE` |
+| Identifier casing | lowercase or lowercase_with_underscores | `user_name`, `created_at` |
+| Indentation | 2 or 4 spaces (never tabs) | Nested clauses indented |
+| Line breaks | One clause per line | `SELECT` / `FROM` / `WHERE` on separate lines |
+| Comma position | Leading comma (before column) | `, column_name` |
+| JOIN alignment | Each JOIN on its own line | `INNER JOIN` / `LEFT JOIN` separated |
+| Subquery indentation | Extra indent for nested queries | 4-space indent inside parentheses |
 
-## Why SQL Formatting Matters
+The [ToolboxPro SQL Formatter](/tools/sql-formatter) applies these conventions automatically, transforming messy one-liners into clean, readable queries in seconds.
 
-Unformatted SQL queries are hard to read, debug, and maintain. A single long line of SQL with nested subqueries and multiple JOINs becomes nearly impossible to understand. Proper formatting:
+## How to Format SQL Queries Online
 
-- **Improves readability** — spot errors and logic issues quickly
-- **Eases debugging** — identify which clause has the problem
-- **Facilitates collaboration** — team members can follow your query logic
-- **Reduces mistakes** — well-structured queries are less likely to have syntax errors
+The [ToolboxPro SQL Formatter](/tools/sql-formatter) is a free, browser-based tool that instantly beautifies SQL queries. Here's how to use it effectively.
 
-## SQL Formatting Best Practices
+### Step 1: Paste Your Query
 
-### Capitalize Keywords
-Always capitalize SQL keywords: `SELECT`, `FROM`, `WHERE`, `JOIN`, `ORDER BY`, `GROUP BY`. This creates visual separation between keywords and your identifiers.
+Copy your raw SQL from your IDE, terminal, or database client and paste it into the formatter. It doesn't matter if the query is a single line, has inconsistent spacing, or uses mixed casing — the formatter handles all of it.
 
-### One Clause Per Line
-Put each major clause on its own line:
+### Step 2: Click Format
+
+The formatter parses your SQL using a proper SQL parser (not just string manipulation), then outputs a consistently formatted version with proper indentation, keyword casing, and line breaks.
+
+### Step 3: Review and Adjust
+
+The formatted output preserves your original logic. Review it to ensure the structure matches your intent. If a query uses unusual nesting or complex CTEs, you may want to manually adjust indentation for clarity.
+
+### Common Formatting Tasks
+
+Here are before-and-after examples of what the formatter handles:
+
+**Before (unformatted):**
+```sql
+select u.id,u.name,u.email,o.id,o.total,o.created_at from users u inner join orders o on u.id=o.user_id where o.created_at > '2026-01-01' and o.total > 100 order by o.total desc limit 50
+```
+
+**After (formatted):**
 ```sql
 SELECT
-    u.name,
-    u.email,
-    COUNT(o.id) AS order_count
+  u.id,
+  u.name,
+  u.email,
+  o.id,
+  o.total,
+  o.created_at
 FROM users u
-LEFT JOIN orders o ON o.user_id = u.id
-WHERE u.created_at > '2024-01-01'
-GROUP BY u.id, u.name, u.email
-HAVING COUNT(o.id) > 5
-ORDER BY order_count DESC;
+  INNER JOIN orders o ON u.id = o.user_id
+WHERE
+  o.created_at > '2026-01-01'
+  AND o.total > 100
+ORDER BY o.total DESC
+LIMIT 50
 ```
 
-### Indent Subqueries
-Nested queries should be indented to show hierarchy:
+The formatted version reveals the query's structure immediately: it's joining users to orders, filtering by date and amount, and returning the top 50 most expensive recent orders. Without formatting, you'd have to mentally parse the entire line to understand this.
+
+## SQL Formatting Across Different Dialects
+
+Not all SQL is created equal. Different database systems have slight syntax variations that affect how queries should be formatted.
+
+### MySQL
+
+MySQL uses backticks for identifier quoting (`\`table_name\``) and supports `LIMIT` directly. It also has non-standard syntax like `IFNULL()` and `GROUP_CONCAT()`. When formatting MySQL queries, ensure the formatter preserves backtick quoting and handles MySQL-specific functions.
+
+### PostgreSQL
+
+PostgreSQL uses double quotes for identifiers (`"table_name"`) and supports advanced features like CTEs (Common Table Expressions), window functions, and lateral joins. CTEs especially benefit from formatting — a query with multiple CTEs and a final SELECT can be 100+ lines, and consistent indentation makes the dependency chain clear.
+
+### SQL Server (T-SQL)
+
+T-SQL uses square brackets for identifiers (`[table_name]`) and has unique syntax like `TOP N` instead of `LIMIT`, `ISNULL()` instead of `COALESCE()`, and `PIVOT`/`UNPIVOT` operators. Formatters need to handle bracket-quoted identifiers without breaking them.
+
+### SQLite
+
+SQLite is lenient with types and has minimal syntax. Its simplicity means formatting is mostly about structural clarity rather than dialect-specific concerns. The [ToolboxPro SQL Formatter](/tools/sql-formatter) handles all major dialects correctly.
+
+## Advanced Formatting: CTEs, Subqueries, and Window Functions
+
+As queries grow in complexity, formatting becomes even more critical. Here's how to handle the most challenging structures.
+
+### Common Table Expressions (CTEs)
+
+CTEs (introduced in the `WITH` clause) let you break complex queries into named, logical blocks. Each CTE should be formatted as a complete mini-query, separated by commas:
+
 ```sql
-SELECT *
-FROM products
-WHERE category_id IN (
-    SELECT id
-    FROM categories
-    WHERE parent_id = 5
-);
+WITH active_users AS (
+  SELECT
+    user_id,
+    COUNT(*) AS order_count,
+    SUM(total) AS lifetime_value
+  FROM orders
+  WHERE created_at > NOW() - INTERVAL '1 year'
+  GROUP BY user_id
+),
+top_products AS (
+  SELECT
+    product_id,
+    SUM(quantity) AS units_sold
+  FROM order_items
+  GROUP BY product_id
+  ORDER BY units_sold DESC
+  LIMIT 10
+)
+SELECT
+  u.name,
+  au.order_count,
+  au.lifetime_value
+FROM active_users au
+  INNER JOIN users u ON u.id = au.user_id
+ORDER BY au.lifetime_value DESC;
 ```
 
-### Align Columns
-Align SELECT columns for easy scanning:
+Notice how each CTE is self-contained and independently readable. This formatting pattern makes it easy to test individual CTEs in isolation.
+
+### Window Functions
+
+Window functions (like `ROW_NUMBER()`, `RANK()`, `LEAD()`, `LAG()`) add another layer of complexity. Format the `OVER` clause on a new line with its components indented:
+
 ```sql
 SELECT
-    first_name,
-    last_name,
-    email,
-    created_at
+  department,
+  employee_name,
+  salary,
+  ROW_NUMBER() OVER (
+    PARTITION BY department
+    ORDER BY salary DESC
+  ) AS rank_in_dept
+FROM employees;
 ```
 
-## Common SQL Formatting Mistakes
+### Nested Subqueries
 
-1. **Missing semicolons** — always end statements with `;`
-2. **Inconsistent aliasing** — pick `AS` or space aliasing and stick with it
-3. **Over-nesting** — consider CTEs (Common Table Expressions) instead of deep subqueries
-4. **Missing indexes** — formatted queries still need proper indexes for performance
-5. **Ignoring case sensitivity** — some databases treat identifiers as case-sensitive
+When subqueries are unavoidable, indent each nesting level consistently:
 
-## Using CTEs for Complex Queries
-
-Common Table Expressions (CTEs) make complex queries much more readable:
 ```sql
-WITH monthly_sales AS (
-    SELECT
-        DATE_TRUNC('month', order_date) AS month,
-        SUM(amount) AS total
-    FROM orders
-    GROUP BY 1
-)
 SELECT *
-FROM monthly_sales
-WHERE total > 10000
-ORDER BY month;
+FROM (
+  SELECT
+    user_id,
+    COUNT(*) AS order_count
+  FROM orders
+  WHERE order_id IN (
+    SELECT order_id
+    FROM order_items
+    WHERE product_id = 42
+  )
+  GROUP BY user_id
+) AS user_stats
+WHERE order_count > 5;
 ```
 
-## Using ToolboxPro's SQL Formatter
+The [ToolboxPro SQL Formatter](/tools/sql-formatter) handles nested structures automatically, maintaining consistent indentation at every level.
 
-Our [SQL Formatter](/tools/sql-formatter) automatically formats your SQL queries with proper indentation, keyword capitalization, and clause alignment. Paste your unformatted query and get a clean, readable version instantly.
+## Tips for Writing Better SQL from the Start
+
+While formatting tools clean up existing queries, building good habits from the start saves time:
+
+- **Write one clause per line** from the beginning. It's easier to maintain formatted code than to fix unformatted code later.
+- **Use aliases consistently.** If you alias `users` as `u`, use `u` everywhere — don't switch between `users` and `u` within the same query.
+- **Comment complex logic.** A `-- Filter to active users only` comment above a WHERE clause is worth its weight in gold three months later.
+- **Break complex queries into CTEs.** Even if the query works as a single statement, CTEs make it readable and testable in parts.
+- **Use a linter.** Many SQL editors (like SQLFluff, sqlfmt, or pgFormatter) can enforce formatting rules automatically.
+
+## Related Tools
+
+- [SQL Formatter](/tools/sql-formatter) — Format and beautify SQL queries online for free
+- [JSON Formatter & Validator](/tools/json-formatter) — Format and validate JSON data for API responses
+- [Text Diff Checker](/tools/text-diff-checker) — Compare two versions of a query to spot changes

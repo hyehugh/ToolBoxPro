@@ -14,6 +14,8 @@ import { toolComponents } from "@/lib/tools/registry";
 import { getToolFaqs } from "@/lib/tools/faq";
 import { FaqSection } from "@/components/faq-section";
 import { getToolGuide } from "@/lib/tools/guides";
+import { getToolComparison } from "@/lib/tools/comparisons";
+import { ToolComparisonSection } from "@/components/tool-comparison";
 
 import dynamic from "next/dynamic";
 
@@ -87,6 +89,9 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
       {/* Tool Usage Guide — server-rendered text for SEO & user value */}
       <ToolGuideSection slug={slug} locale={locale} />
 
+      {/* Tool Comparison — how it stacks up against alternatives */}
+      <ToolComparisonSectionWithSlug slug={slug} />
+
       {/* Usage Scenarios */}
       <section className="mt-10" aria-labelledby="scenarios-heading">
         <h2 id="scenarios-heading" className="text-lg font-bold mb-4 text-muted-foreground">
@@ -157,6 +162,12 @@ function ToolPageInner({ slug, tool, ToolComponent, related, relatedPosts }: {
       )}
     </div>
   );
+}
+
+function ToolComparisonSectionWithSlug({ slug }: { slug: string }) {
+  const comparison = getToolComparison(slug);
+  if (!comparison) return null;
+  return <ToolComparisonSection comparison={comparison} />;
 }
 
 function ToolGuideSection({ slug, locale }: { slug: string; locale: string }) {
