@@ -1,12 +1,10 @@
 "use client";
 
-import { use } from "react";
 import Link from "next/link";
 import { getGuideBySlug, guides } from "@/lib/guides/data";
 import { useLocale } from "@/lib/i18n/context";
 
 export function GuideDetailContent({ slug }: { slug: string }) {
-  const params = Promise.resolve({ slug });
   const { locale } = useLocale();
   const guide = getGuideBySlug(slug);
 
