@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -12,7 +12,18 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://trytoolboxpro.com"),
   title: {
     default: "ToolboxPro — Free Online Tools, Privacy First",
     template: "%s | ToolboxPro",
@@ -38,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "ToolboxPro",
     images: [
       {
-        url: "https://trytoolboxpro.com/og-default.svg",
+        url: "/og-default.png",
         width: 1200,
         height: 630,
         alt: "ToolboxPro — 100+ Free Online Tools",

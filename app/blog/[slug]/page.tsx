@@ -27,6 +27,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       url: `https://trytoolboxpro.com/blog/${slug}`,
       publishedTime: post.date,
+      images: post.toolSlug
+        ? [
+            {
+              url: `/api/og-image?slug=${post.toolSlug}`,
+              width: 1200,
+              height: 630,
+              alt: post.title,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
     },
   };
 }
@@ -36,11 +51,40 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getBlogPostWithContent(slug);
   if (!post) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    url: `https://trytoolboxpro.com/blog/${slug}`,
+    author: {
+      "@type": "Organization",
+      name: "ToolboxPro",
+      url: "https://trytoolboxpro.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "ToolboxPro",
+      url: "https://trytoolboxpro.com",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://trytoolboxpro.com/blog/${slug}`,
+    },
+  };
+
   return (
-    <BlogPostContent
-      slug={slug}
-      content={post.content}
-      contentZh={post.contentZh}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BlogPostContent
+        slug={slug}
+        content={post.content}
+        contentZh={post.contentZh}
+      />
+    </>
   );
 }
