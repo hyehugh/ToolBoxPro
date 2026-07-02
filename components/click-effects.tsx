@@ -44,8 +44,8 @@ type FireworkType = "peony" | "chrysanthemum" | "willow" | "ring" | "heart";
 
 /* ──────────────────────────── Constants ──────────────────────────── */
 
-const GRAVITY = 0.06;
-const TRAIL_LENGTH = 8;
+const GRAVITY = 0.035;
+const TRAIL_LENGTH = 12;
 
 const FIREWORK_TYPES: FireworkType[] = [
   "peony", "chrysanthemum", "willow", "ring", "heart",
@@ -99,8 +99,8 @@ export function ClickEffects() {
       rocketsRef.current.push({
         x: startX,
         y: startY,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: -8 - Math.random() * 3, // Strong upward velocity
+        vx: (Math.random() - 0.5) * 1.0,
+        vy: -6 - Math.random() * 2, // Moderate upward velocity
         trail: [],
         hue,
         hue2,
@@ -118,23 +118,23 @@ export function ClickEffects() {
       switch (rocket.type) {
         case "ring":
           count = 50;
-          baseSpeed = 4.5;
+          baseSpeed = 3.2;
           break;
         case "chrysanthemum":
           count = 70;
-          baseSpeed = 5;
+          baseSpeed = 3.5;
           break;
         case "willow":
           count = 55;
-          baseSpeed = 3.5;
+          baseSpeed = 2.5;
           break;
         case "heart":
           count = 60;
-          baseSpeed = 4;
+          baseSpeed = 2.8;
           break;
         default: // peony
           count = 60 + Math.floor(Math.random() * 20);
-          baseSpeed = 4 + Math.random() * 2;
+          baseSpeed = 2.8 + Math.random() * 1.5;
       }
 
       for (let i = 0; i < count; i++) {
@@ -180,7 +180,7 @@ export function ClickEffects() {
         }
 
         const hue = palette[Math.floor(Math.random() * palette.length)] + (Math.random() - 0.5) * 20;
-        const maxLife = 50 + Math.random() * 30;
+        const maxLife = 120 + Math.random() * 60;
 
         particlesRef.current.push({
           x: rocket.x,
@@ -226,8 +226,9 @@ export function ClickEffects() {
     /* ─── Main animation loop ─── */
     const animate = () => {
       // Fade the canvas instead of clearing — creates natural motion-blur trails
+      // Lower alpha = longer persistence = particles stay visible longer
       ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Use additive blending for all particles — creates realistic glow
@@ -297,7 +298,7 @@ export function ClickEffects() {
           alpha = Math.min(1, alpha + 0.3);
         }
 
-        const size = p.size * (0.3 + lifeRatio * 0.7);
+        const size = p.size * (0.15 + lifeRatio * 0.85);
 
         // Draw trail
         for (let i = 0; i < p.trail.length - 1; i++) {
@@ -332,8 +333,8 @@ export function ClickEffects() {
       });
 
       // Cap particles to prevent performance issues
-      if (particlesRef.current.length > 800) {
-        particlesRef.current = particlesRef.current.slice(-800);
+      if (particlesRef.current.length > 1200) {
+        particlesRef.current = particlesRef.current.slice(-1200);
       }
 
       rafRef.current = requestAnimationFrame(animate);
