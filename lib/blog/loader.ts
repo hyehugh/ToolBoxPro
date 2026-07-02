@@ -14,7 +14,7 @@ const CONTENT_DIR = path.join(process.cwd(), "content/blog");
  * Get a blog post with its full MD content loaded.
  * Used by server components (generateMetadata, page rendering).
  */
-export function getBlogPostWithContent(slug: string): (BlogPost & { content: string }) | null {
+export function getBlogPostWithContent(slug: string): (BlogPost & { content: string; contentZh?: string }) | null {
   const meta = blogPosts.find((p) => p.slug === slug);
   if (!meta) return null;
 
@@ -26,7 +26,16 @@ export function getBlogPostWithContent(slug: string): (BlogPost & { content: str
   // Strip frontmatter (between --- delimiters)
   const content = raw.replace(/^---[\s\S]*?---\n/, "").trim();
 
-  return { ...meta, content };
+  // Load Chinese content if available (for language toggle)
+  const zhDir = path.join(process.cwd(), "lib/blog/zh");
+  const zhPath = path.join(zhDir, `${slug}.md`);
+  let contentZh: string | undefined;
+  if (fs.existsSync(zhPath)) {
+    const rawZh = fs.readFileSync(zhPath, "utf-8");
+    contentZh = rawZh.replace(/^---[\s\S]*?---\n/, "").trim();
+  }
+
+  return { ...meta, content, contentZh };
 }
 
 /**
