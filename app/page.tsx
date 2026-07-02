@@ -28,7 +28,7 @@ const CategoryCard = dynamic(
 );
 
 export default function HomePage() {
-  const { t, locale } = useLocale();
+  const { t, tRaw, locale } = useLocale();
   const { recent } = useRecentTools();
   const { favorites } = useFavorites();
   const [rolling, setRolling] = useState(false);
@@ -214,7 +214,7 @@ export default function HomePage() {
       <section className="mb-16">
         <h2 className="text-2xl font-bold text-center mb-8">{t("home.whyTitle")}</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {(t("home.whyItems") as { title: string; desc: string }[]).map(
+          {(tRaw("home.whyItems") as { title: string; desc: string }[]).map(
             (item: { title: string; desc: string }) => (
               <div
                 key={item.title}

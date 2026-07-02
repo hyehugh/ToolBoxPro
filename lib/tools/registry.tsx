@@ -12,6 +12,7 @@ const LoadingFallback = () => (
   </div>
 );
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function tool(slug: string, importFn: () => Promise<any>) {
   return dynamic(importFn, { ssr: false, loading: LoadingFallback });
 }

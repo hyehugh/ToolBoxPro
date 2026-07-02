@@ -3,7 +3,7 @@
 import { useLocale } from "@/lib/i18n/context";
 
 export function TermsContent() {
-  const { t } = useLocale();
+  const { t, tArray } = useLocale();
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
@@ -20,7 +20,7 @@ export function TermsContent() {
         <h2 className="text-lg font-bold text-foreground mt-6">{t("terms.section3Title")}</h2>
         <p>{t("terms.section3Body")}</p>
         <ul className="list-disc pl-6 space-y-1">
-          {(t("terms.section3Items") as string[]).map((item: string, i: number) => (
+          {(tArray("terms.section3Items")).map((item: string, i: number) => (
             <li key={i}>{item}</li>
           ))}
         </ul>

@@ -20,8 +20,9 @@ export function OnlineNotepadTool() {
       if (saved !== null) {
         setText(saved);
       }
-    } catch {
-      // localStorage might be unavailable
+    } catch (e) {
+      // localStorage might be unavailable (private browsing, quota exceeded)
+      console.warn("Failed to load notepad from localStorage:", e);
     }
     setIsLoaded(true);
   }, []);
@@ -33,8 +34,9 @@ export function OnlineNotepadTool() {
       try {
         localStorage.setItem(STORAGE_KEY, text);
         setSavedAt(new Date().toLocaleTimeString());
-      } catch {
+      } catch (e) {
         // storage full or unavailable
+        console.warn("Failed to save notepad to localStorage:", e);
       }
     }, 500);
     return () => clearTimeout(timer);
@@ -44,8 +46,9 @@ export function OnlineNotepadTool() {
     setText('');
     try {
       localStorage.removeItem(STORAGE_KEY);
-    } catch {
-      // ignore
+    } catch (e) {
+      // ignore quota errors
+      console.warn("Failed to clear notepad localStorage:", e);
     }
     setShowClearConfirm(false);
     setSavedAt(null);

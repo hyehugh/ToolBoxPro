@@ -3,7 +3,7 @@
 import { useLocale } from "@/lib/i18n/context";
 
 export function PrivacyContent() {
-  const { t } = useLocale();
+  const { t, tArray } = useLocale();
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
@@ -18,7 +18,7 @@ export function PrivacyContent() {
         <p>{t("privacy.section2Body")}</p>
         <p dangerouslySetInnerHTML={{ __html: t("privacy.section2NoCollect") }} />
         <ul className="list-disc pl-6 space-y-1">
-          {(t("privacy.section2NoCollectItems") as string[]).map((item: string, i: number) => (
+          {(tArray("privacy.section2NoCollectItems")).map((item: string, i: number) => (
             <li key={i}>{item}</li>
           ))}
         </ul>
@@ -40,7 +40,7 @@ export function PrivacyContent() {
         <h2 className="text-lg font-bold text-foreground mt-6">{t("privacy.section5Title")}</h2>
         <p>{t("privacy.section5Body")}</p>
         <ul className="list-disc pl-6 space-y-1">
-          {(t("privacy.section5Items") as string[]).map((item: string, i: number) => (
+          {(tArray("privacy.section5Items")).map((item: string, i: number) => (
             <li key={i}>{item}</li>
           ))}
         </ul>

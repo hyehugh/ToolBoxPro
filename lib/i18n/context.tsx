@@ -9,14 +9,18 @@ type Locale = "en" | "zh";
 interface LocaleContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
-  t: (key: string, params?: Record<string, any>) => any;
+  t: (key: string, params?: Record<string, string | number>) => string;
+  tArray: (key: string) => string[];
+  tRaw: (key: string) => unknown;
 }
 
 const LocaleContext = createContext<LocaleContextType | null>(null);
 
 const STORAGE_KEY = "toolboxpro_locale";
 
-const dictionaries: Record<Locale, Record<string, any>> = { en, zh };
+type DictValue = string | { [key: string]: DictValue };
+type Dictionary = Record<string, DictValue>;
+const dictionaries: Record<Locale, Dictionary> = { en, zh };
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
@@ -35,34 +39,64 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     setDict(dictionaries[newLocale]);
     try {
       localStorage.setItem(STORAGE_KEY, newLocale);
-    } catch {}
+    } catch (e) {
+      console.warn("Failed to save locale preference:", e);
+    }
     document.documentElement.lang = newLocale;
   }, []);
 
-  const t = useCallback(
-    (key: string, params?: Record<string, any>): any => {
+  const getValue = useCallback(
+    (key: string): DictValue | undefined => {
       const keys = key.split(".");
-      let value: any = dict;
+      let value: DictValue | undefined = dict as DictValue;
       for (const k of keys) {
         if (value && typeof value === "object" && k in value) {
           value = value[k];
         } else {
           console.warn(`[i18n] Missing key: ${key}`);
-          return key;
+          return undefined;
         }
       }
-      if (typeof value === "string" && params) {
-        for (const [k, v] of Object.entries(params)) {
-          value = value.replace(`{${k}}`, String(v));
-        }
-      }
-      return typeof value === "string" ? value : value;
+      return value;
     },
     [dict]
   );
 
+  const t = useCallback(
+    (key: string, params?: Record<string, string | number>): string => {
+      const result = getValue(key);
+      if (typeof result === "string") {
+        if (params) {
+          let s = result;
+          for (const [k, v] of Object.entries(params)) {
+            s = s.replace(`{${k}}`, String(v));
+          }
+          return s;
+        }
+        return result;
+      }
+      return key;
+    },
+    [dict]
+  );
+
+  const tArray = useCallback(
+    (key: string): string[] => {
+      const result = getValue(key);
+      if (Array.isArray(result)) return result as string[];
+      console.warn(`[i18n] Missing array key: ${key}`);
+      return [];
+    },
+    [dict]
+  );
+
+  const tRaw = useCallback(
+    (key: string): unknown => getValue(key),
+    [dict]
+  );
+
   return (
-    <LocaleContext.Provider value={{ locale, setLocale, t }}>
+    <LocaleContext.Provider value={{ locale, setLocale, t, tArray, tRaw }}>
       {children}
     </LocaleContext.Provider>
   );

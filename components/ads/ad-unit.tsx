@@ -17,7 +17,7 @@ export function AdUnit({ slot, format = "auto", className = "" }: AdUnitProps) {
     initialized.current = true;
     if (!ADSENSE_CLIENT || ADSENSE_CLIENT === "ca-pub-0000000000000000") return;
     try {
-      if (!(window as any).adsbygoogle) {
+      if (!(window as unknown as Record<string, unknown>).adsbygoogle) {
         const script = document.createElement("script");
         script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
         script.async = true;
@@ -27,8 +27,10 @@ export function AdUnit({ slot, format = "auto", className = "" }: AdUnitProps) {
       }
       setTimeout(() => {
         try {
-          (window as any).adsbygoogle = (window as any).adsbygoogle || [];
-          (window as any).adsbygoogle.push({});
+          const w = window as unknown as Record<string, unknown>;
+          const adsbygoogle = (w.adsbygoogle ?? []) as Record<string, unknown>[];
+          adsbygoogle.push({});
+          w.adsbygoogle = adsbygoogle;
         } catch (e) { console.warn("AdSense push failed:", e); }
       }, 500);
     } catch (e) { console.warn("AdSense init failed:", e); }
