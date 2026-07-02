@@ -103,7 +103,7 @@ Set your desired password length (8–64 characters), toggle character types (up
 Password generation happens entirely in your browser. No password is ever transmitted, logged, or stored, making this safe for creating credentials for banking, email, and work accounts.`,
     zh: `Password Generator 是一款免费在线工具，使用 Web Crypto API 生成密码学安全的随机密码。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -167,11 +167,11 @@ Click the file picker or drop one or more photos onto the workspace, then move t
 Every byte of compression logic runs inside your browser tab — the original photos and their slimmed-down versions never travel across the network. That matters most when you are optimizing confidential screenshots or client product images that should not leave your machine.`,
     zh: `Image Compressor 是一款免费在线工具，在保持视觉质量的同时将图片文件大小减小 50-80%，支持 JPEG、PNG 和 WebP。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-converter": {
     en: `A free browser-based image tool that convert images between jpg, png, webp, avif, gif, and bmp formats. batch convert with custom quality and dimension settings. Process your photos and graphics directly in your browser without uploading to any server.
@@ -183,31 +183,31 @@ The converter supports six major formats — JPEG, PNG, WebP, AVIF, GIF, and BMP
 Select a target format from the dropdown, optionally cap the maximum width or height, and pick a quality level for lossy outputs. Drop in a handful of files at once and each one is converted independently, with download links appearing the instant each job finishes.
 
 Format re-encoding happens on-device using the browser's native image decoders and encoders. Your source files and the newly converted copies remain in local memory and are never transmitted to a remote endpoint.`,
-    zh: `图片格式转换器 是一款免费在线工具，在图片格式之间转换 JPG, PNG, WebP, AVIF, GIF, and BMP formats. 使用自定义质量和尺寸设置进行批量转换。。
+    zh: `图片格式转换器 是一款免费在线工具，在图片格式之间转换 JPG, PNG, WebP, AVIF, GIF, and BMP formats. 使用自定义质量和尺寸设置进行批量转换。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "pdf-merger": {
     en: `A free browser-based image tool that combine multiple PDF files into a single document with page reordering. Process your photos and graphics directly in your browser without uploading to any server.
 
 Stitching separate PDFs into one cohesive document typically requires dedicated PDF editing software or an online service that uploads your files. This merger assembles multiple PDFs into a single file entirely on your device, preserving every page in the original quality.
 
-Drag PDFs into the tool in any order, rearrange pages with simple drag-and-drop, and merge them into a single document with a live page-count preview. The output is a standards-compliant PDF that opens correctly in every reader, from Adobe Acrobat to browser viewers.
+Drag PDFs into the tool in any order, rearrange pages with simple drop, and merge them into a single document with a live page-count preview. The output is a standards-compliant PDF that opens correctly in every reader, from Adobe Acrobat to browser viewers.
 
 Add PDF files through the file browser or by dropping them into the workspace, then rearrange their order by dragging the thumbnail tiles. The combined page count updates as you go, and clicking merge produces a download-ready document in seconds.
 
 Merging is performed locally with a lightweight PDF library that runs in the browser. Your documents — contracts, invoices, reports — never leave your computer, so sensitive business paperwork stays private.`,
     zh: `PDF Merger 是一款免费在线工具，将多个 PDF 文件合并为一个文档，支持页面重新排序。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "word-counter": {
     en: `A free online text processing tool that count words, characters, sentences, paragraphs, and estimate reading time. Transform, analyze, and manipulate text instantly in your browser.
@@ -221,7 +221,7 @@ Paste or type your text and the counters update live as you type — no button t
 All counting happens locally in your browser. Your text never leaves your device, making this safe for drafts, essays, and confidential documents.`,
     zh: `Word & Character Counter 是一款免费在线工具，统计字数、字符数、句子数、段落数并估算阅读时间。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -241,7 +241,7 @@ Paste your text and pick a case mode — UPPERCASE, lowercase, Title Case, camel
 All conversion happens locally in your browser. Your text is never uploaded, making this safe for source code, variable names, and sensitive content.`,
     zh: `文本大小写转换器 是一款免费在线工具，在文本格式之间转换 UPPER, lower, Title, camel大小写等。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -259,9 +259,9 @@ Generate between 1 and 100 paragraphs or sentences, with an option to start with
 Choose how many paragraphs or sentences you need, optionally start with the classic 'Lorem ipsum' opening, and click Generate. Copy the placeholder text directly into your design mockup or wireframe.
 
 Generation runs entirely client-side. No content is stored or tracked — useful when generating filler text for client mockups.`,
-    zh: `Lorem Ipsum 生成器 是一款免费在线工具，为设计稿、网站线框图和打印布局生成占位文本。 自定义段落数量、词长和格式。。
+    zh: `Lorem Ipsum 生成器 是一款免费在线工具，为设计稿、网站线框图和打印布局生成占位文本。 自定义段落数量、词长和格式。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -279,9 +279,9 @@ The side-by-side view highlights inserted lines in green, deleted lines in red, 
 Paste your original text in the left pane and the modified text in the right pane. Added lines, removed lines, and changed words are highlighted in different colors instantly as you type.
 
 All comparison happens locally in your browser. Your text is never uploaded, making this safe for comparing contracts, legal documents, and source code revisions.`,
-    zh: `文本差异检查器 是一款免费在线工具，并排比较两段文本，高亮显示所有差异。 非常适合代码审查、文档修订和抄袭检查。。
+    zh: `文本差异检查器 是一款免费在线工具，并排比较两段文本，高亮显示所有差异。 非常适合代码审查、文档修订和抄袭检查。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -299,9 +299,9 @@ Set a repeat count from 1 to 10,000, choose a separator (newline, comma, space, 
 Enter the text to repeat, set the repeat count, choose a separator (newline, comma, space, or custom), and click Repeat. The output appears instantly for one-click copying.
 
 All repetition happens locally. Your input text never leaves your browser — safe for generating test data from sensitive templates.`,
-    zh: `Text Repeater 是一款免费在线工具，使用自定义分隔符、换行符或前缀重复任意文本。 即时生成测试数据、模式和重复字符串。。
+    zh: `Text Repeater 是一款免费在线工具，使用自定义分隔符、换行符或前缀重复任意文本。 即时生成测试数据、模式和重复字符串。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -397,7 +397,7 @@ Type or paste text in the input box to see its binary representation below. Swit
 All conversion happens in your browser. Neither your text nor binary data is sent anywhere — safe for encoding private messages or learning exercises.`,
     zh: `文本转二进制转换器 是一款免费在线工具，将文本转为二进制代码，二进制转为文本。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -447,9 +447,9 @@ The slugifier strips accents and diacritics, converts to lowercase, replaces spa
 Type a title or heading and the tool generates a URL-safe slug instantly — lowercase, hyphens for spaces, special characters stripped. Toggle between hyphen and underscore separators as needed.
 
 All slug generation happens locally. Your text is never uploaded — safe for working with unpublished article titles or internal page names.`,
-    zh: `Text to URL Slug 是一款免费在线工具，将任意文本转换为干净的、 SEO-friendly URL slugs. 移除特殊字符、规范化空格，生成优化的永久链接。。
+    zh: `Text to URL Slug 是一款免费在线工具，将任意文本转换为干净的、 SEO-friendly URL slugs. 移除特殊字符、规范化空格，生成优化的永久链接。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -467,9 +467,9 @@ Four sort modes cover alphabetical ascending, alphabetical descending, line-leng
 Paste your list of lines, pick a sort mode (alphabetical A–Z, reverse Z–A, by line length, or reverse order), and optionally remove duplicates. The sorted output appears instantly.
 
 All sorting happens locally in your browser. Your text stays on your device — safe for sorting mailing lists, log entries, or confidential data.`,
-    zh: `Text Sorter 是一款免费在线工具，按字母顺序排列文本行（A-Z or Z-A), 按行长或倒序排列. 即时移除重复项并整理列表。。
+    zh: `Text Sorter 是一款免费在线工具，按字母顺序排列文本行（A-Z or Z-A), 按行长或倒序排列. 即时移除重复项并整理列表。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -489,7 +489,7 @@ Paste lines that may contain duplicates and the tool instantly returns only uniq
 All deduplication happens locally. Your text never leaves your browser — safe for cleaning up customer lists, email addresses, or sensitive records.`,
     zh: `Line Deduplicator 是一款免费在线工具，移除文本中的重复行，同时保持顺序。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -507,9 +507,9 @@ Three reversal modes are available: reverse all characters, reverse the order of
 Enter text and choose a reverse mode: reverse characters, reverse word order, or reverse line order. The result appears instantly for one-click copying.
 
 All reversal happens locally. Your text never leaves your device — safe for puzzles, data formatting, and sensitive content.`,
-    zh: `Text Reverser 是一款免费在线工具，Reverse text, words, sentences, 或整行即时反转。 适用于创建镜像文字、解谜或格式化数据。。
+    zh: `Text Reverser 是一款免费在线工具，Reverse text, words, sentences, 或整行即时反转。 适用于创建镜像文字、解谜或格式化数据。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -577,7 +577,7 @@ Enter a value in Celsius, Fahrenheit, Kelvin, or Rankine and all four scales upd
 Enter a value in Celsius, Fahrenheit, Kelvin, or Rankine and all four scales update instantly. Decimal precision is adjustable up to 4 places for scientific accuracy, and the interface highlights which scale you are editing so there is no ambiguity about the source unit.
 
 Every temperature conversion is computed through pure JavaScript arithmetic on your device. Readings from medical thermometers or industrial sensors never leave the browser, keeping sensitive health and operational data fully contained.`,
-    zh: `Temperature Converter 是一款免费在线工具，在摄氏度、 Fahrenheit, 和开尔文温标即时转换. 非常适合烹饪、科学、天气和旅行计算。。
+    zh: `Temperature Converter 是一款免费在线工具，在摄氏度、 Fahrenheit, 和开尔文温标即时转换. 非常适合烹饪、科学、天气和旅行计算。
 
 单位换算 在日常烹饪、工程、旅行、科学和生活中经常需要. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
@@ -637,7 +637,7 @@ Convert between bits and bytes in both decimal (KB = 1000 bytes) and binary (KiB
 Enter a value in bytes, kilobytes, megabytes, gigabytes, terabytes, or petabytes and toggle between binary (1024-based) and decimal (1000-based) conventions. The converter clearly labels each system so you never confuse a kibibyte with a kilobyte again.
 
 Storage unit conversions are pure arithmetic executed in the browser's JavaScript engine — no server round-trips. This matters when evaluating infrastructure capacity for projects under embargo or computing storage costs for unreleased product specifications.`,
-    zh: `数据大小转换器 是一款免费在线工具，在字节、千字节、兆字节、吉字节、太字节等单位之间转换。 比较文件大小、存储容量和数据传输量。。
+    zh: `数据大小转换器 是一款免费在线工具，在字节、千字节、兆字节、吉字节、太字节等单位之间转换。 比较文件大小、存储容量和数据传输量。
 
 单位换算 在日常烹饪、工程、旅行、科学和生活中经常需要. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
@@ -657,7 +657,7 @@ Translate between km/h, mph, knots, meters per second, feet per second, and Mach
 Type any speed value and instantly see equivalents in km/h, mph, knots, m/s, feet per second, and Mach. The converter preserves high decimal precision for physics calculations while rounding sensibly for everyday driving and running context.
 
 Velocity conversions are computed entirely on your device through JavaScript. Navigation speeds and physics experiment data are never transmitted, preserving the confidentiality of sensitive flight or research parameters.`,
-    zh: `Speed Converter 是一款免费在线工具，在公里/小时、英里/小时、节、米/秒和马赫之间转换速度。 适用于驾驶、航空、航海导航和物理计算。。
+    zh: `Speed Converter 是一款免费在线工具，在公里/小时、英里/小时、节、米/秒和马赫之间转换速度。 适用于驾驶、航空、航海导航和物理计算。
 
 单位换算 在日常烹饪、工程、旅行、科学和生活中经常需要. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
@@ -699,11 +699,11 @@ Choose a file from disk or paste an image from your clipboard, and the encoded s
 The entire encoding pipeline runs through your browser's FileReader and btoa APIs. Neither the original binary nor the resulting string is sent anywhere, which is important when embedding private diagrams or internal screenshots into code.`,
     zh: `Image to Base64 是一款免费在线工具，将图片转换为 Base64 data URI 以便内嵌使用。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "random-number-generator": {
     en: `A free online utility tool that generate random numbers within a custom range. perfect for lotteries, giveaways, statistical sampling, and game development. Simple, fast, and completely private — just open and use.
@@ -715,7 +715,7 @@ Set a min/max range, choose how many numbers to generate (1–1000), and toggle 
 Set the minimum and maximum values for your range, choose how many numbers to generate, and optionally enable unique-only mode. Click Generate for instant results.
 
 All generation happens locally using your browser's random source. No values are stored or tracked — safe for lotteries, raffles, and statistical sampling.`,
-    zh: `随机数生成器 是一款免费在线工具，在自定义范围内生成随机数。 非常适合抽奖、赠送、统计抽样和游戏开发。。
+    zh: `随机数生成器 是一款免费在线工具，在自定义范围内生成随机数。 非常适合抽奖、赠送、统计抽样和游戏开发。
 
 日常任务 比如生成密码、创建 QR codes, rolling dice, or checking BMI shouldn't 需要安装软件或创建账户. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's 非常适合需要快速出结果而不想安装专业软件的一次性任务.
 
@@ -737,11 +737,11 @@ Add images one by one or in a batch, drag them into the desired page sequence, a
 Page composition and PDF generation are executed locally in your browser using a client-side PDF writer. Your photos remain on your device throughout, so personal or confidential pictures never pass through a third-party server.`,
     zh: `Image to PDF 是一款免费在线工具，Convert images (JPG, PNG) into a single PDF document。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "pdf-splitter": {
     en: `A free browser-based image tool that split pdf 按页码范围或提取特定页面. Process your photos and graphics directly in your browser without uploading to any server.
@@ -755,11 +755,11 @@ Open a PDF and the tool renders a thumbnail of every page. Enter the page number
 All parsing and page extraction happen on your machine via a browser-based PDF library. Because the source document never gets uploaded, splitting sensitive contracts or financial statements carries zero privacy risk.`,
     zh: `PDF Splitter 是一款免费在线工具，Split PDF 按页码范围或提取特定页面。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "pdf-rotator": {
     en: `A free online PDF tool that rotate pdf pages by 90, 180, or 270 degrees. fix scanned documents, correct page orientation, and rearrange your pdf layouts. Work with your PDF files directly in the browser — no uploads, no waiting, no risk.
@@ -771,11 +771,11 @@ Each page appears as a thumbnail in a visual grid where you can select individua
 Drag your PDF onto the tool, select the pages you want to rotate, choose 90°, 180°, or 270°, and click Rotate. Download the corrected PDF instantly.
 
 All rotation happens locally in your browser using pdf-lib. Your PDF is never uploaded — critical for contracts, medical records, and financial statements.`,
-    zh: `PDF Rotator 是一款免费在线工具，Rotate PDF pages by 90, 180, or 270 degrees. 修复扫描文档、更正页面方向，重新排列你的 PDF layouts.。
+    zh: `PDF Rotator 是一款免费在线工具，Rotate PDF pages by 90, 180, or 270 degrees. 修复扫描文档、更正页面方向，重新排列你的 PDF layouts。
 
 PDF 处理 传统上需要 Adobe Acrobat 等昂贵软件 或会上传敏感文档的有风险的在线服务。 这款工具可以合并、拆分、旋转或转换 PDF 全部在浏览器中使用 pdf-lib 完成。 你的财务报表、法律文件和个人文件永远不会离开你的device, 让你完全掌控隐私.
 
-主要特点包括 drag-and-拖放上传、可视化页面预览便于选择、拖拽重排页面、精确页码范围拆分、支持加密 PDF. 工具处理任意大小的文档（在浏览器内存限制内），并生成干净、符合标准、在任何 PDF reader.
+主要特点包括 拖放上传、可视化页面预览便于选择、拖拽重排页面、精确页码范围拆分、支持加密 PDF. 工具处理任意大小的文档（在浏览器内存限制内），并生成干净、符合标准、在任何 PDF reader.
 
 将 PDF 拖入工具，选择要旋转的页面，选择 90°、180° 或 270°，点击旋转即可下载修正后的 PDF。
 
@@ -791,11 +791,11 @@ A thumbnail view of every page lets you click-to-select individual pages for del
 Upload your PDF, preview each page visually, select the pages you want to delete, and click Remove. Download the trimmed PDF instantly.
 
 All page removal happens locally in your browser using pdf-lib. Your document never leaves your device — critical for sensitive PDFs like tax returns or legal filings.`,
-    zh: `PDF Page Remover 是一款免费在线工具，从你的文档中删除不需要的页面 PDF documents quickly. 提取特定页面、删除空白页，精简臃肿的文件。。
+    zh: `PDF Page Remover 是一款免费在线工具，从你的文档中删除不需要的页面 PDF documents quickly. 提取特定页面、删除空白页，精简臃肿的文件。
 
 PDF 处理 传统上需要 Adobe Acrobat 等昂贵软件 或会上传敏感文档的有风险的在线服务。 这款工具可以合并、拆分、旋转或转换 PDF 全部在浏览器中使用 pdf-lib 完成。 你的财务报表、法律文件和个人文件永远不会离开你的device, 让你完全掌控隐私.
 
-主要特点包括 drag-and-拖放上传、可视化页面预览便于选择、拖拽重排页面、精确页码范围拆分、支持加密 PDF. 工具处理任意大小的文档（在浏览器内存限制内），并生成干净、符合标准、在任何 PDF reader.
+主要特点包括 拖放上传、可视化页面预览便于选择、拖拽重排页面、精确页码范围拆分、支持加密 PDF. 工具处理任意大小的文档（在浏览器内存限制内），并生成干净、符合标准、在任何 PDF reader.
 
 上传 PDF，可视化预览每页，选择要删除的页面，点击删除即可下载裁剪后的 PDF。
 
@@ -813,11 +813,11 @@ Drag the crop handles to define the region, or lock to a preset ratio such as 1:
 Crop coordinates are calculated and the region is extracted using the browser's built-in canvas APIs. Nothing about your image — original or cropped — is ever transmitted over the network.`,
     zh: `Image Cropper 是一款免费在线工具，通过在画布上拖拽选择区域来裁剪图片。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-resizer": {
     en: `A free browser-based image tool that resize images to exact dimensions with aspect ratio lock. Process your photos and graphics directly in your browser without uploading to any server.
@@ -831,11 +831,11 @@ Type the target width or height in pixels or as a percentage, and the other dime
 Pixel resampling is carried out by your browser's canvas drawing routines, so the original photo and its resized copy both stay in local memory. No image data leaves your device at any point.`,
     zh: `Image Resizer 是一款免费在线工具，按精确尺寸调整图片大小，锁定宽高比。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-filters": {
     en: `A free browser-based image tool that apply grayscale, sepia, blur, brightness, 和对比度滤镜. Process your photos and graphics directly in your browser without uploading to any server.
@@ -849,11 +849,11 @@ Pick from filter presets like sepia, blur, sharpen, brightness, and contrast, th
 Every filter is computed through canvas pixel manipulation in your browser. The photo you load and its filtered version are processed entirely on your device with no server round-trip.`,
     zh: `Image Filters 是一款免费在线工具，Apply grayscale, sepia, blur, brightness, 和对比度滤镜。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "color-picker": {
     en: `A free browser-based image tool that pick colors from uploaded images or use the color selector. Process your photos and graphics directly in your browser without uploading to any server.
@@ -867,11 +867,11 @@ Load an image and move your cursor across it to see the color under the pointer 
 Color sampling is done by reading individual pixels from an in-browser canvas. Your image stays in local memory the entire time, so picking colors from confidential designs or client mockups is completely private.`,
     zh: `图片取色器 是一款免费在线工具，从上传的图片中拾取颜色或使用颜色选择器。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "gif-maker": {
     en: `A free browser-based image tool that create animated gifs from multiple images or video clips. set frame delay, resize output, and optimize for web or social media. Process your photos and graphics directly in your browser without uploading to any server.
@@ -885,11 +885,11 @@ Add the frames in the order you want them to play, set a delay per frame in mill
 Frame encoding into the GIF format is handled by a client-side encoder running in your browser. The source images and the assembled animation never leave your device during the process.`,
     zh: `GIF Maker 是一款免费在线工具，Create animated GI支持从多张图片或视频片段生成。 设置帧延迟、调整输出尺寸，为网页或社交媒体进行优化。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-watermark": {
     en: `A free browser-based image tool that add text watermark to images with position and opacity control. Process your photos and graphics directly in your browser without uploading to any server.
@@ -903,11 +903,11 @@ Type your watermark text or upload a transparent PNG logo, then use the position
 Watermark compositing is performed through canvas blending operations in your browser. Because the original photos and stamped copies are processed locally, your unwatermarked files are never exposed to a server.`,
     zh: `Image Watermark 是一款免费在线工具，为图片添加文字水印，控制位置和透明度。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-merge": {
     en: `A free browser-based image tool that combine multiple images into one side by side or grid. Process your photos and graphics directly in your browser without uploading to any server.
@@ -921,11 +921,11 @@ Add the images you want to combine, choose a horizontal or vertical layout, and 
 The composite canvas is assembled using browser-native canvas drawing operations. All input images and the resulting merged file remain on your device with no network transfer.`,
     zh: `Image Merger 是一款免费在线工具，将多张图片并排或按网格合并为一张。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-splitter": {
     en: `A free browser-based image tool that split a single image into multiple tiles by rows and columns. perfect for creating sprite sheets, grid layouts, and image segments. Process your photos and graphics directly in your browser without uploading to any server.
@@ -937,16 +937,16 @@ Define the number of rows and columns to slice a single image into a uniform gri
 Load an image and set the number of rows and columns for the grid — for example 3 columns for a three-tile carousel. The tool previews the slice boundaries and lets you download every tile as an individual file or as a ZIP archive.
 
 Grid slicing is executed through canvas region extraction in your browser. Neither the original image nor any of the generated tiles are ever sent to a remote server.`,
-    zh: `Image Splitter 是一款免费在线工具，按行和列将单张图片切分为多个区块。 非常适合创建精灵表、网格布局和图片切片。。
+    zh: `Image Splitter 是一款免费在线工具，按行和列将单张图片切分为多个区块。 非常适合创建精灵表、网格布局和图片切片。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-flip": {
-    en: `A free browser-based image tool that flip images horizontally or vertically and rotate by 90-degree increments. mirror selfies, correct orientation, 并即时转换照片. Process your photos and graphics directly in your browser without uploading to any server.
+    en: `A free browser-based image tool that flip images horizontally or vertically and rotate by 90-degree increments. mirror 自拍、校正方向，并即时转换照片。 Process your photos and graphics directly in your browser without uploading to any server.
 
 Mirroring an image horizontally or vertically is a basic transformation that surprisingly few lightweight tools do well without launching a full editor. This flipper reflects your image along either axis instantly in the browser, preserving full resolution and color depth.
 
@@ -955,16 +955,16 @@ One-click buttons flip the image horizontally or vertically, and rotation contro
 Open an image and choose horizontal, vertical, or both as the flip direction. The mirrored preview appears immediately, and you can download the result in the original format with a single click.
 
 Pixel reflection is a mathematically simple operation carried out by canvas transform functions in your browser. The image data never leaves your device, so flipping confidential or personal photos is risk-free.`,
-    zh: `Image Flip & Rotate 是一款免费在线工具，水平或垂直翻转图片并旋转 90-degree increments. Mirror selfies, correct orientation, 并即时转换照片.。
+    zh: `Image Flip & Rotate 是一款免费在线工具，水平或垂直翻转图片并旋转 90-degree increments. Mirror 自拍、校正方向，并即时转换照片。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-border": {
-    en: `A free browser-based image tool that add customizable borders, frames, and padding to images. choose colors, widths, corner radius, and shadow effects for polished photos. Process your photos and graphics directly in your browser without uploading to any server.
+    en: `A free browser-based image tool that add customizable borders, frames, and padding to images. choose colors, widths, corner radius, and shadow effects for polish的照片。 Process your photos and graphics directly in your browser without uploading to any server.
 
 Adding a decorative frame or solid-color border around a photo is a quick way to make thumbnails stand out, but doing it precisely usually means opening a design program. This border tool draws clean outlines around your image with adjustable width, color, and style — all in the browser.
 
@@ -973,13 +973,13 @@ Customize border width, color, corner radius, and optional drop shadow with a li
 Enter a border width in pixels, pick a color from the swatch picker, and choose a style such as solid, dashed, or double. A live preview shows the framing effect, and batch mode applies the same border to a folder of images at once.
 
 Border drawing is handled by canvas stroke operations running locally in your browser. Your images and their framed versions stay on your device throughout the process.`,
-    zh: `Image Border 是一款免费在线工具，为图片添加可自定义的边框、框架和内边距。选择颜色、宽度、圆角半径和阴影效果来美化ed photos.。
+    zh: `Image Border 是一款免费在线工具，为图片添加可自定义的边框、框架和内边距。选择颜色、宽度、圆角半径和阴影效果来美化的照片。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "meme-generator": {
     en: `A free browser-based image tool that create memes by adding top and bottom text to images. Process your photos and graphics directly in your browser without uploading to any server.
@@ -993,11 +993,11 @@ Upload a background image or pick a stock template, then type your top and botto
 Caption rendering is done with canvas text-drawing operations inside your browser. The background photo and the completed meme are never uploaded, so you can use personal images without any privacy concerns.`,
     zh: `Meme Generator 是一款免费在线工具，通过在图片上添加顶部和底部文字来制作表情包。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-to-sketch": {
     en: `A free browser-based image tool that convert photos into pencil sketch drawings and line art. apply artistic filters to create realistic hand-drawn effects from your images. Process your photos and graphics directly in your browser without uploading to any server.
@@ -1009,13 +1009,13 @@ Choose from multiple sketch styles — pencil, charcoal, and line art — with a
 Load a photo and adjust the edge-intensity and shading sliders until the sketch effect matches the level of detail you want. A split preview shows the original alongside the sketch so you can compare before downloading.
 
 The sketch effect is generated through canvas convolution and pixel manipulation in your browser. The source photo and its sketched rendition stay on your device with no server involvement.`,
-    zh: `Image to Sketch 是一款免费在线工具，将照片转换为铅笔素描和线条画。 应用艺术滤镜，从图片创建逼真的手绘效果。。
+    zh: `Image to Sketch 是一款免费在线工具，将照片转换为铅笔素描和线条画。 应用艺术滤镜，从图片创建逼真的手绘效果。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "emoji-remover": {
     en: `A free online text processing tool that remove all emoji characters from text while keeping words. Transform, analyze, and manipulate text instantly in your browser.
@@ -1029,7 +1029,7 @@ Paste text containing emoji and the tool instantly strips all emoji characters w
 All processing happens locally. Your text never leaves your browser — safe for cleaning up messages, form submissions, or database content.`,
     zh: `Emoji Remover 是一款免费在线工具，移除文本中所有 emoji 字符，同时保留文字。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -1049,7 +1049,7 @@ Paste any text and the tool breaks it down character by character, showing each 
 All analysis happens locally in your browser. Your text is never uploaded — safe for inspecting log files, debug output, or sensitive data.`,
     zh: `Unicode Character Detector 是一款免费在线工具，查看 Unicode 字符的码点和类别信息。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -1077,7 +1077,7 @@ Paste your original JSON in the left pane and the modified JSON in the right pan
 All comparison happens locally. Your JSON data never leaves your browser — safe for comparing API responses, config files, and sensitive payloads.`,
     zh: `JSON Diff 是一款免费在线工具，Compare two JSON 对象并高亮差异。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -1115,7 +1115,7 @@ Pick a source city or timezone and a target timezone to see the converted time i
 Pick any source city or UTC offset and the tool displays the corresponding local time across all major world zones side by side. A visual timeline highlights overlapping working hours, and DST adjustments apply automatically based on each region's current rules.
 
 Timezone offset logic — including the IANA timezone database rules — is resolved entirely in-browser through JavaScript. Meeting schedules and participant locations never reach a server, keeping confidential calendar coordination private.`,
-    zh: `时区转换器 是一款免费在线工具，即时在不同世界时区之间转换时间。 跨时区安排会议并比较全球时钟。。
+    zh: `时区转换器 是一款免费在线工具，即时在不同世界时区之间转换时间。 跨时区安排会议并比较全球时钟。
 
 单位换算 在日常烹饪、工程、旅行、科学和生活中经常需要. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
@@ -1137,7 +1137,7 @@ Paste binary digits (space-separated 8-bit groups or a continuous stream) in the
 All conversion happens in your browser. Neither your text nor binary data is sent anywhere — safe for decoding private messages or learning exercises.`,
     zh: `Binary to Text 是一款免费在线工具，将二进制代码转为文本，文本转为二进制。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -1155,16 +1155,16 @@ A single click inverts every pixel's color to produce a photographic negative, u
 Open an image and toggle the invert control to produce an instant negative. You can invert all channels at once or target individual red, green, or blue channels, with a live preview reflecting each change.
 
 Color-channel inversion is computed by iterating over pixel data in a browser canvas. The image you load and its inverted output are processed locally and never transmitted to a server.`,
-    zh: `Image Invert 是一款免费在线工具，即时反转或取反任意图片的颜色。 创建负片效果, X-ray looks, 一键实现艺术色彩反转.。
+    zh: `Image Invert 是一款免费在线工具，即时反转或取反任意图片的颜色。 创建负片效果、X 光效果，一键实现艺术色彩反转。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "image-collage": {
-    en: `A free browser-based image tool that combine multiple photos into a beautiful collage grid. choose layouts, spacing, background colors, 并以高分辨率导出. Process your photos and graphics directly in your browser without uploading to any server.
+    en: `A free browser-based image tool that combine multiple photos into a beautiful collage grid. choose layouts, 间距、背景颜色，并以高分辨率导出。 Process your photos and graphics directly in your browser without uploading to any server.
 
 Assembling a visually appealing collage from multiple photos traditionally requires scrapbooking software or a design application with layout templates. This collage maker arranges several images into a polished grid or freestyle layout directly in the browser, ready for social media or printing.
 
@@ -1173,13 +1173,13 @@ Select from grid layouts (2x2, 3x3, mosaics), set spacing between photos, choose
 Choose a collage template or start from a blank canvas, then drop images into each slot and drag them into position. Adjust spacing, corner rounding, and background color, and swap layouts on the fly with an instant preview before exporting.
 
 Collage composition is rendered entirely through canvas operations in your browser. Every photo you add and the finished collage remain on your device, making it safe to use personal or family pictures.`,
-    zh: `照片拼贴制作器 是一款免费在线工具，将多张照片合并为精美的拼贴网格。 Choose layouts, spacing, background colors, 并以高分辨率导出.。
+    zh: `照片拼贴制作器 是一款免费在线工具，将多张照片合并为精美的拼贴网格。 Choose layouts, 间距、背景颜色，并以高分辨率导出。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "css-gradient": {
     en: `A free online CSS gradient generator that lets you build linear, radial, and conic gradients through a visual editor — then exports ready-to-paste CSS for your stylesheets. Drag color stops along the gradient bar, adjust the angle in degrees, and fine-tune opacity and blending to produce the exact effect you want.
@@ -1196,7 +1196,7 @@ Designers use it to prototype hero backgrounds, button hover states, loading spi
 
 Box shadows are one of the most versatile tools in CSS for creating depth, elevation, and visual hierarchy. A soft, low-offset shadow gives a card the feeling of floating above the page — the kind of effect Material Design popularized. A sharp, zero-blur shadow creates a retro, sticker-like outline. Inset shadows simulate pressed buttons and inset form fields, while multiple stacked shadows at increasing blur radii produce smooth, realistic elevation used by modern component libraries like Radix and Shadcn.
 
-This editor goes beyond a single shadow: stack as many layers as you need, reorder them with drag-and-drop, and fine-tune each independently. The live preview updates pixel-by-pixel as you drag sliders or type values. Toggle between light and dark background modes to see how your shadow reads on different surfaces. Color supports hex, rgba, and hsla formats with an alpha slider for translucency.
+This editor goes beyond a single shadow: stack as many layers as you need, reorder them with drop, and fine-tune each independently. The live preview updates pixel-by-pixel as you drag sliders or type values. Toggle between light and dark background modes to see how your shadow reads on different surfaces. Color supports hex, rgba, and hsla formats with an alpha slider for translucency.
 
 Copy the generated box-shadow property, vendor-ready, into Tailwind arbitrary values, CSS modules, or inline styles.`,
     zh: `免费在线 CSS box-shadow 生成器，可视化构建多层阴影并导出精确的 CSS 代码。可调节水平偏移、垂直偏移、模糊半径、扩展半径、阴影颜色（含透明度），并切换外阴影与内阴影。盒阴影是 CSS 中营造层次感和视觉层级的核心手段：低偏移柔阴影让卡片有悬浮感（Material Design 风格），零模糊硬阴影打造复古贴纸轮廓，内阴影模拟按钮按下效果。支持多层叠加、拖拽排序、逐层独立调整，实时预览随滑动即时更新。可切换明暗背景查看效果。颜色支持 hex、rgba、hsla 格式。生成的代码可直接粘贴到 Tailwind 自定义值、CSS 模块或内联样式中。`,
@@ -1251,7 +1251,7 @@ Enter any number from 1 to 3999 to get its Roman numeral equivalent, or type a R
 Type any number from 1 to 3999 and the Roman numeral equivalent appears instantly — or paste a Roman numeral and get its Arabic value with validation that flags invalid combinations. The converter handles standard subtractive notation and explains the breakdown of each symbol.
 
 Numeral conversion logic runs as pure JavaScript in your browser with no external API calls. This keeps the tool instantly available offline, which is useful in classrooms and exam settings where network access may be restricted.`,
-    zh: `罗马数字转换器 是一款免费在线工具，即时在罗马数字和阿拉伯数字之间转换。 支持以下范围的数值： 1 to 3999, 包括常见数字组合.。
+    zh: `罗马数字转换器 是一款免费在线工具，即时在罗马数字和阿拉伯数字之间转换。 支持以下范围的数值： 1 to 3999, 包括常见数字组合。
 
 单位换算 在日常烹饪、工程、旅行、科学和生活中经常需要. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
@@ -1301,7 +1301,7 @@ Enter a birth date and optionally a target date to see the exact age broken down
 Enter a birth date and optionally a target date to receive a precise breakdown in years, months, weeks, and days. The calculator also shows total days lived and the next birthday countdown, with leap-year logic handled automatically.
 
 Age computation runs entirely through JavaScript's native Date object in your browser. Personal birth dates and identity-related information never leave your device, which is essential for privacy-sensitive eligibility and documentation tasks.`,
-    zh: `Age Calculator 是一款免费在线工具，精确计算年龄，显示年、月、周和天。 查看未来某天的年龄，或倒数到下一个生日。。
+    zh: `Age Calculator 是一款免费在线工具，精确计算年龄，显示年、月、周和天。 查看未来某天的年龄，或倒数到下一个生日。
 
 单位换算 在日常烹饪、工程、旅行、科学和生活中经常需要. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
@@ -1361,7 +1361,7 @@ Select from six dice types (d4, d6, d8, d10, d12, d20), roll up to 20 dice at on
 Choose a dice type (d4, d6, d8, d10, d12, or d20), set the number of dice to roll, and click Roll. Results appear instantly with individual rolls and a total sum.
 
 All rolling happens locally using your browser's random source. No results are stored or tracked — perfect for tabletop RPGs and classroom activities.`,
-    zh: `Dice Roller 是一款免费在线工具，掷自定义面数的 4, 6, 8, 10, 12, and 20 sides. 为桌游一次掷多个骰子， RPGs, and classrooms.。
+    zh: `Dice Roller 是一款免费在线工具，掷自定义面数的 4, 6, 8, 10, 12, and 20 sides. 为桌游一次掷多个骰子， RPGs, and classrooms。
 
 日常任务 比如生成密码、创建 QR codes, rolling dice, or checking BMI shouldn't 需要安装软件或创建账户. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's 非常适合需要快速出结果而不想安装专业软件的一次性任务.
 
@@ -1401,7 +1401,7 @@ Key features include 可视化波形显示精确编辑、拖放文件上传、�
 Upload your 音频文件——拖拽到工具上或使用文件选择器. 使用波形显示选择要保留的部分（用于裁剪）或排列多个文件（用于合并）。 预览编辑结果，按需调整设置，点击导出按钮下载处理后的音频。
 
 All audio processing 全部在浏览器中使用 Web Audio API. Your music and sound files are never uploaded to any server. This ensures complete privacy for personal recordings, music projects, and sensitive audio content. No account required.`,
-    zh: `Audio Cutter 是一款免费在线工具，通过交互式波形预览来裁剪和切割音频文件。 从 MP3, WAV, 等格式，全部在浏览器中完成.。
+    zh: `Audio Cutter 是一款免费在线工具，通过交互式波形预览来裁剪和切割音频文件。 从 MP3, WAV, 等格式，全部在浏览器中完成。
 
 音频编辑 传统上需要 Audacity 等桌面软件 或 Adobe Audition 对于简单任务来说过于复杂且占用资源。 这款工具为浏览器带来了核心音频处理能力，可以即时裁剪、合并或转换音频文件。 It's 非常适合快速编辑、格式转换或为项目准备音频.
 
@@ -1412,7 +1412,7 @@ All audio processing 全部在浏览器中使用 Web Audio API. Your music and s
 所有音频处理 全部在浏览器中使用 Web Audio API. 你的音乐和音频文件永远不会上传到任何服务器。 这确保了个人录音、音乐项目和敏感音频内容的完全隐私。 No account required.`,
   },
   "audio-merger": {
-    en: `A free browser-based image tool that combine multiple audio files into one seamless track. merge songs, recordings, 或语音片段，支持任意排列和交叉淡入淡出. Process your photos and graphics directly in your browser without uploading to any server.
+    en: `A free browser-based image tool that combine multiple audio files into one seamless track. merge songs, recordings, 或语音片段，支持任意排列和交叉淡入淡出。 Process your photos and graphics directly in your browser without uploading to any server.
 
 Joining multiple audio clips into one continuous track is a job normally reserved for digital audio workstation software with complex timelines. This audio merger concatenates WAV and MP3 files into a single track right in the browser, with no plug-ins or uploads.
 
@@ -1421,13 +1421,13 @@ Arrange audio clips in any order on a timeline, add optional crossfade transitio
 Add audio files in the order you want them to play, optionally trimming the start and end of each clip. Choose an output format, preview the combined timeline, and download the merged track when it sounds right.
 
 Audio concatenation is handled by the browser's Web Audio API and encoder libraries. Your sound files and the resulting track are processed entirely on your device and are never sent to a remote server.`,
-    zh: `Audio Merger 是一款免费在线工具，将多个音频文件合并为一个无缝音轨。 Merge songs, recordings, 或语音片段，支持任意排列和交叉淡入淡出.。
+    zh: `Audio Merger 是一款免费在线工具，将多个音频文件合并为一个无缝音轨。 Merge songs, recordings, 或语音片段，支持任意排列和交叉淡入淡出。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "audio-converter": {
     en: `A free online conversion calculator that convert audio between wav 格式和采样率. Get accurate results instantly without any software installation.
@@ -1531,7 +1531,7 @@ Type or paste a password and the tool scores its strength in real time — analy
 All analysis happens locally in your browser. Your password is never transmitted, logged, or stored — safe for testing real credentials.`,
     zh: `密码强度检查器 是一款免费在线工具，通过实时分析测试密码强度。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -1589,7 +1589,7 @@ Drag or upload any image containing a QR code and the decoder extracts the embed
 Drag a QR code image onto the tool or use the file picker. The embedded URL, text, or contact data is decoded and displayed instantly — copy it with one click.
 
 All decoding happens locally in your browser. Your image is never uploaded — safe for scanning QR codes containing personal or financial information.`,
-    zh: `QR Code Reader 是一款免费在线工具，Decode QR 从上传的图片中即时. Scan any QR 码图片以显示嵌入的 URL, text, or contact information.。
+    zh: `QR Code Reader 是一款免费在线工具，Decode QR 从上传的图片中即时. Scan any QR 码图片以显示嵌入的 URL, text, or contact information。
 
 日常任务 比如生成密码、创建 QR codes, rolling dice, or checking BMI shouldn't 需要安装软件或创建账户. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's 非常适合需要快速出结果而不想安装专业软件的一次性任务.
 
@@ -1611,11 +1611,11 @@ Load an image and select a deficiency type from the dropdown — deuteranopia, p
 Color-matrix transformations for each deficiency type are applied to pixel data through canvas operations in your browser. The image you are testing is never uploaded, so you can safely evaluate confidential designs or client work.`,
     zh: `色盲模拟器 是一款免费在线工具，模拟不同色盲类型下图片的视觉效果。
 
-图片处理 通常需要 Photoshop 等 GIMP, 对于简单任务来说既昂贵又复杂. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
+图片处理 通常需要 Photoshop 或 GIMP 等桌面软件，但对于简单任务来说既昂贵又复杂。 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
+主要特点包括 拖放上传便于文件管理、应用前实时预览、支持多种图片格式（JPEG、PNG、WebP、GIF、BMP）、可调质量和尺寸设置精确控制、支持多文件批量处理. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
+上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
   "online-notepad": {
     en: `A free online text processing tool that a clean, distraction-免费的浏览器记事本，支持自动保存. write notes, code snippets, 和列表持久保存在浏览器存储中. Transform, analyze, and manipulate text instantly in your browser.
@@ -1627,9 +1627,9 @@ Typing auto-saves to localStorage on every keystroke — no save button, no sync
 Start typing immediately — no setup required. Your notes auto-save to your browser's local storage as you type, surviving page refreshes and browser restarts. Export to a .txt file anytime.
 
 All notes are stored exclusively in your browser's local storage — never uploaded to any server. Clear your notes with one click to wipe them permanently from your device.`,
-    zh: `Online Notepad 是一款免费在线工具，A clean, distraction-免费的浏览器记事本，支持自动保存. Write notes, code snippets, 和列表持久保存在浏览器存储中.。
+    zh: `Online Notepad 是一款免费在线工具，A clean, distraction-免费的浏览器记事本，支持自动保存. Write notes, code snippets, 和列表持久保存在浏览器存储中。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
@@ -1649,7 +1649,7 @@ Paste or type text and the tool displays a detailed breakdown: total letters, vo
 All analysis happens locally in your browser. Your text is never uploaded — safe for analyzing essays, reports, and confidential documents.`,
     zh: `Text Statistics 是一款免费在线工具，详细文本分析: letters, vowels, unique words, and more。
 
-写作者、开发者, 和内容创作者经常需要处理文本 — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
+写作者、开发者, 和内容创作者经常需要处理文本 — 统计字数, 转换大小写, 检查差异, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
 主要特点包括 real-实时输入即处理、支持大文本输入（最大 100,000 characters), 多种输出格式和选项、一键复制到剪贴板、清晰的视觉反馈显示变更和结果. 工具正确处理 Unicode，支持任何语言的文本。
 
