@@ -100,18 +100,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Set your desired password length (8–64 characters), toggle character types (uppercase, lowercase, numbers, symbols), and click Generate. Each password is created with the Web Crypto API's cryptographically secure random number generator — copy it instantly with one click.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+Password generation happens entirely in your browser. No password is ever transmitted, logged, or stored, making this safe for creating credentials for banking, email, and work accounts.`,
     zh: `Password Generator 是一款免费在线工具，使用 Web Crypto API 生成密码学安全的随机密码。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+设置密码长度（8–64 位），勾选字符类型（大写、小写、数字、符号），点击生成即可。每个密码均由 Web Crypto API 的密码学安全随机数生成器产生，一键复制。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+密码生成全部在浏览器本地完成，不会传输、记录或存储任何密码。适合为银行、邮箱、工作账号创建凭证。`,
   },
   "hash-generator": {
     en: `Hash Generator computes cryptographic digests — SHA-1, SHA-256, SHA-384, SHA-512, and MD5 — for any text or file you provide. The same input always produces the same fixed-length hex string, which is why hashes are the backbone of data integrity checks, password storage, and digital signatures.
@@ -224,18 +224,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste or type your text and the counters update live as you type — no button to click. Word count, character count, sentence count, paragraph count, and estimated reading time all recalculate instantly.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All counting happens locally in your browser. Your text never leaves your device, making this safe for drafts, essays, and confidential documents.`,
     zh: `Word & Character Counter 是一款免费在线工具，统计字数、字符数、句子数、段落数并估算阅读时间。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+粘贴或输入文本，字数、字符数、句子数、段落数和预估阅读时间实时更新，无需点击任何按钮。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有统计在浏览器本地完成，文本不会离开你的设备，适合处理草稿、论文和机密文档。`,
   },
   "case-converter": {
     en: `A free online text processing tool that convert text between upper, lower, title, camelcase and more. Transform, analyze, and manipulate text instantly in your browser.
@@ -244,18 +244,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste your text and pick a case mode — UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, or CONSTANT_CASE. The converted text appears instantly; click Copy to grab it.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All conversion happens locally in your browser. Your text is never uploaded, making this safe for source code, variable names, and sensitive content.`,
     zh: `Text Case Converter 是一款免费在线工具，Convert text between UPPER, lower, Title, camelCase and more。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+粘贴文本，选择转换模式（全大写、全小写、标题格、驼峰命名、贛费命名等），转换结果即时显示，一键复制。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有转换在浏览器本地完成，文本不会上传，适合处理源代码、变量名和敏感内容。`,
   },
   "lorem-ipsum-generator": {
     en: `A free online text processing tool that generate placeholder text for design mockups, website wireframes, and print layouts. customize paragraph count, word length, and format. Transform, analyze, and manipulate text instantly in your browser.
@@ -264,18 +264,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Choose how many paragraphs or sentences you need, optionally start with the classic 'Lorem ipsum' opening, and click Generate. Copy the placeholder text directly into your design mockup or wireframe.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+Generation runs entirely client-side. No content is stored or tracked — useful when generating filler text for client mockups.`,
     zh: `Lorem Ipsum Generator 是一款免费在线工具，Generate placeholder text for design mockups, website wireframes, and print layouts. Customize paragraph count, word length, and format.。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+设置段落或句子数量，可选择是否以经典“Lorem ipsum”开头，点击生成即可复制到设计稿或线框图中。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+生成全部在客户端完成，不存储或追踪任何内容。`,
   },
   "text-diff-checker": {
     en: `A free online text processing tool that compare two blocks of text side by side and highlight every difference. perfect for code reviews, document revisions, and plagiarism checks. Transform, analyze, and manipulate text instantly in your browser.
@@ -284,18 +284,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste your original text in the left pane and the modified text in the right pane. Added lines, removed lines, and changed words are highlighted in different colors instantly as you type.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All comparison happens locally in your browser. Your text is never uploaded, making this safe for comparing contracts, legal documents, and source code revisions.`,
     zh: `Text Diff Checker 是一款免费在线工具，Compare two blocks of text side by side and highlight every difference. Perfect for code reviews, document revisions, and plagiarism checks.。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+在左侧粘贴原始文本，右侧粘贴修改后的文本，新增、删除和修改的内容会实时高亮显示。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有比较在浏览器本地完成，文本不会上传，适合比较合同、法律文书和代码修订。`,
   },
   "text-repeater": {
     en: `A free online text processing tool that repeat any text multiple times with custom separators, line breaks, or prefixes. generate test data, patterns, and repeated strings instantly. Transform, analyze, and manipulate text instantly in your browser.
@@ -304,18 +304,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Enter the text to repeat, set the repeat count, choose a separator (newline, comma, space, or custom), and click Repeat. The output appears instantly for one-click copying.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All repetition happens locally. Your input text never leaves your browser — safe for generating test data from sensitive templates.`,
     zh: `Text Repeater 是一款免费在线工具，Repeat any text multiple times with custom separators, line breaks, or prefixes. Generate test data, patterns, and repeated strings instantly.。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+输入要重复的文本，设置重复次数，选择分隔符（换行、逗号、空格或自定义），点击重复即可一键复制。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有重复操作在本地完成，输入文本不会离开浏览器，适合从敏感模板生成测试数据。`,
   },
   "html-entity-converter": {
     en: `HTML Entity Converter switches text between its raw form and HTML-entity-encoded form — the &amp; &lt; &gt; &quot; and &#NNNN; sequences that prevent characters from being interpreted as HTML markup. The five characters that always need encoding inside HTML content are & < > " and ', and this tool handles all of them correctly.
@@ -346,124 +346,52 @@ The before-and-after byte counts are shown so you can quantify the savings, and 
 本工具是手动逃生通道：为无法使用构建工具的邮件模板压缩 CSS 片段、压缩内联 style 属性、减小动态注入 style 标签的载荷、或检查打包器压缩器的实际产出。保留 CSS 自定义属性（变量）、calc() 表达式、以及旧压缩器会损坏的 @layer 和 :has() 等现代特性。压缩前后字节数一目了然，输出为有效 CSS，可直接粘贴到 <style> 标签或 .css 文件。`,
   },
   "sql-formatter": {
-    en: `A developer-focused online tool that format and beautify sql queries for better readability. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A SQL formatting tool that transforms messy, minified, or inconsistently indented SQL queries into clean, readable code. Paste a query from a production log or an ORM-generated string, and the formatter applies standard keyword capitalization (SELECT, FROM, WHERE, JOIN), aligns columns, and adds consistent indentation.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+Developers working with raw SQL often encounter queries that are difficult to read — long single-line strings from application logs, ORM-generated SQL with nested subqueries, or legacy stored procedures with no formatting. This tool solves that by parsing your SQL and applying formatting rules based on the SQL dialect you select.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `SQL Formatter 是一款免费在线工具，Format and beautify SQL queries for better readability。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+The formatter handles complex constructs including CTEs (WITH clauses), window functions, CASE expressions, and nested subqueries. You can choose between different indentation styles (2-space, 4-space, tab) and toggle keyword capitalization. The minify mode does the reverse — compressing formatted SQL into a single line for embedding in application code or API requests.`,
+    zh: `SQL 格式化工具，将杂乱的 SQL 查询转换为清晰可读的代码。支持关键字大写、列对齐和缩进，可处理 CTE、窗口函数和嵌套子查询。提供压缩模式将 SQL 压缩为单行。`,
   },
   "json-to-yaml": {
-    en: `A developer-focused online tool that convert json data to clean yaml format and vice versa. preserve nested structures, arrays, and data types during conversion. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A bidirectional converter between JSON and YAML formats. YAML is widely used in configuration files (Docker Compose, Kubernetes, CI/CD pipelines, Ansible) where its human-readable indentation-based structure is preferred over JSON's braces and brackets.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+Paste JSON data and the tool produces clean YAML with proper nesting, quoted strings where necessary, and correct handling of arrays and nested objects. Paste YAML and get back minified or formatted JSON. The converter handles edge cases like multi-line strings (YAML block scalars), special characters that need quoting, and null values represented differently in each format.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `JSON to YAML Converter 是一款免费在线工具，Convert JSON data to clean YAML format and vice versa. Preserve nested structures, arrays, and data types during conversion.。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+Common use cases: converting API response JSON to YAML for a Kubernetes ConfigMap, transforming a Docker Compose YAML file into JSON for programmatic processing, or switching between configuration formats when migrating between tools.`,
+    zh: `JSON 与 YAML 双向转换工具。适用于 Docker Compose、Kubernetes、CI/CD 等 YAML 配置场景。处理多行字符串、特殊字符引号和 null 值等边界情况。`,
   },
   "string-escaper": {
-    en: `A developer-focused online tool that escape and unescape special characters in strings for json, html, urls, sql, and javascript. handle all common escaping formats. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A string escaping and unescaping tool that handles special characters across multiple contexts. Different programming languages and data formats require different escape sequences — a string that's valid in HTML needs different escaping than one destined for JSON, a URL, or a SQL query.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+The tool supports five escaping modes: HTML entities, JSON string escaping (backslash sequences), URL percent-encoding, SQL string escaping (doubling single quotes), and JavaScript/Regex escaping. Switch between modes with a single click — useful when moving data between systems.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `String Escaper/Unescaper 是一款免费在线工具，Escape and unescape special characters in strings for JSON, HTML, URLs, SQL, and JavaScript. Handle all common escaping formats.。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+Example: a product name like 'O'Brien "Premium" Coffee' needs different escaping for a JSON API response, an HTML page, and a SQL INSERT statement. Each context requires different escaping, and getting it wrong causes bugs or security vulnerabilities like SQL injection or XSS.`,
+    zh: `字符串转义工具，支持 HTML 实体、JSON、URL、SQL 和 JavaScript/Regex 五种转义模式。一键切换，适用于跨系统数据传递场景。`,
   },
   "html-tag-stripper": {
-    en: `A developer-focused online tool that remove all html tags from text, keeping only content. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `An HTML tag remover that extracts plain text from HTML markup. Paste content from a WYSIWYG editor, a web page source, or an email template, and the tool strips all HTML tags while preserving the readable text content.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+Unlike simple regex-based strippers that can mangle edge cases, this tool uses a proper HTML parser to handle nested tags correctly. It processes self-closing tags (like <br> and <img>), script and style blocks (removes their content entirely), HTML entities (decodes them), and malformed HTML gracefully.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `HTML Tag Stripper 是一款免费在线工具，Remove all HTML tags from text, keeping only content。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+Useful when extracting article text from a CMS export, cleaning up copy-pasted content from Word or Google Docs, preparing email content for a plain-text fallback, or removing markup before feeding text into a search index.`,
+    zh: `HTML 标签移除工具，从 HTML 中提取纯文本。使用正确的 HTML 解析器处理嵌套标签、自闭合标签、script/style 块和 HTML 实体。`,
   },
   "jwt-decoder": {
-    en: `A developer-focused online tool that decode jwt tokens and inspect header, payload, and signature. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A JWT (JSON Web Token) decoder that inspects the contents of authentication tokens. Paste a JWT string (three Base64URL-encoded segments separated by dots) and the tool instantly decodes the header and payload into readable JSON.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+The decoded view shows all standard claims: subject, issuer, audience, expiration, issued-at, and not-before — with human-readable timestamps converted from Unix epoch. The tool highlights expired tokens and shows exactly how much time remains until expiration.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `JWT Decoder 是一款免费在线工具，Decode JWT tokens and inspect header, payload, and signature。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+Developers use this tool when debugging authentication failures: checking why a token is rejected, verifying claim values match expected configuration, or comparing tokens issued by different auth providers. The tool also detects the signature algorithm (HS256, RS256, etc.) and warns about insecure algorithms like 'none'.`,
+    zh: `JWT 解码器，无需密钥即可检查认证令牌内容。解码 header 和 payload，显示标准声明，高亮过期令牌，检测签名算法。`,
   },
   "cron-parser": {
-    en: `A developer-focused online tool that parse cron expressions and get human-readable schedules. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A cron expression parser that translates scheduling syntax into human-readable descriptions. Cron expressions like '0 9 * * 1-5' are powerful but hard to read — this tool tells you exactly when a job will run next and shows the upcoming execution schedule.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+The parser supports standard 5-field cron plus Quartz extensions including seconds (6-field), last day of month (L), nearest weekday (W), and specific occurrence (#). Enter your expression and see: a plain-English description, the next 5 execution times, and any syntax errors highlighted.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `Cron Expression Parser 是一款免费在线工具，Parse cron expressions and get human-readable schedules。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+Common scenarios: verifying a Jenkins job schedule before deploying, debugging why a cron-triggered task runs at unexpected times, or explaining a schedule to a non-technical teammate.`,
+    zh: `Cron 表达式解析器，将定时任务语法转换为可读描述。支持标准 5 字段和 Quartz 扩展（L/W/#），显示下次执行时间。`,
   },
   "text-to-binary": {
     en: `A free online text processing tool that convert text to binary code and binary back to text. Transform, analyze, and manipulate text instantly in your browser.
@@ -472,98 +400,50 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Type or paste text in the input box to see its binary representation below. Switch to decode mode to paste space-separated 8-bit binary groups and recover the original text.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All conversion happens in your browser. Neither your text nor binary data is sent anywhere — safe for encoding private messages or learning exercises.`,
     zh: `Text to Binary Converter 是一款免费在线工具，Convert text to binary code and binary back to text。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+在输入框中输入或粘贴文本，即可在下方看到二进制表示。切换到解码模式可粘贴空格分隔的8位二进制还原文本。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有转换在浏览器中完成，文本和二进制数据均不会外传。`,
   },
   "html-preview": {
-    en: `A developer-focused online tool that write and preview html code in real-time in a sandbox. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A live HTML preview tool with a split-screen editor: write HTML/CSS/JS on the left, see the rendered result on the right in real-time. Every keystroke updates the preview — no save button, no page refresh.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+The preview runs inside a sandboxed iframe that isolates your code from the host page, making it safe to test experimental CSS, third-party embeds, or JavaScript that manipulates the DOM. Include external libraries via CDN script tags — useful for prototyping React components, Bootstrap layouts, or D3 visualizations without a build pipeline.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `HTML Preview 是一款免费在线工具，Write and preview HTML code in real-time in a sandbox。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+Use the viewport toggle to test responsive layouts at mobile, tablet, and desktop widths. JavaScript console output appears in a dedicated panel — see errors and log messages without opening browser DevTools.`,
+    zh: `实时 HTML 预览工具，分屏编辑器即时渲染。支持 CDN 库引入、响应式视口切换、控制台输出和沙箱隔离。`,
   },
   "csv-viewer": {
-    en: `A developer-focused online tool that view csv data in a formatted table with auto-detection. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A CSV viewer and formatter that renders comma-separated data as an interactive table. Paste raw CSV text — from a database export, a log file, or spreadsheet copy-paste — and the tool parses it into a sortable, filterable grid with proper column alignment.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+The parser handles RFC 4180 compliant CSV including quoted fields containing commas, multi-line fields wrapped in quotes, and different delimiters (comma, semicolon, tab, pipe). It auto-detects the delimiter and handles encoding issues (UTF-8 BOM, GBK for Chinese-language exports).
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `CSV Viewer & Formatter 是一款免费在线工具，View CSV data in a formatted table with auto-detection。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+Features include: click any column header to sort, search across all cells, toggle between table view and raw text view, and export as clean CSV or convert to JSON. Useful for inspecting data exports or quickly scanning large CSV files without Excel.`,
+    zh: `CSV 查看器和格式化工具，将 CSV 数据渲染为可排序的交互式表格。支持 RFC 4180 标准、多种分隔符和编码自动检测。`,
   },
   "ip-calculator": {
-    en: `A developer-focused online tool that calculate network subnet, cidr, broadcast, and host range. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `An IP subnet calculator that computes network parameters from CIDR notation (e.g., 192.168.1.0/24). Enter an IP address with subnet mask and the tool calculates: network address, broadcast address, usable host range, total host count, wildcard mask, and binary representation.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+Supports both IPv4 and IPv6. For IPv4, it handles all mask sizes from /0 to /32, including the unusual /31 point-to-point links defined in RFC 3021. For IPv6, it computes the prefix, identifies the interface ID portion, and shows the compressed representation.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `IP Subnet Calculator 是一款免费在线工具，Calculate network subnet, CIDR, broadcast, and host range。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+Network engineers use this tool when designing subnet structures for a VPC, verifying that two IPs are in the same subnet, planning IP allocation for containers, or troubleshooting routing issues.`,
+    zh: `IP 子网计算器，从 CIDR 表示法计算网络参数。支持 IPv4/IPv6，计算网络地址、广播地址、主机范围和通配符掩码。`,
   },
   "jwt-generator": {
-    en: `A developer-focused online tool that generate jwt tokens with custom header and payload. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A JWT generator that creates valid authentication tokens for testing and development. Define the header (algorithm and type), specify payload claims (sub, iss, exp, custom fields), provide a secret key, and the tool generates a signed JWT string ready for API requests.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+Supports three signing algorithms: HS256 (HMAC with SHA-256), RS256 (RSA signature), and ES256 (ECDSA). The tool uses the Web Crypto API for cryptographic operations — key generation and signing happen entirely in your browser.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `JWT Generator 是一款免费在线工具，Generate JWT tokens with custom header and payload。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+The payload editor includes helpers for standard claims: click to insert current timestamp, calculate expiration from a duration dropdown, and add custom claims as key-value pairs. Useful for testing API authentication, generating tokens for integration tests, or verifying JWT structure before implementing auth in your backend.`,
+    zh: `JWT 生成器，用于创建测试用认证令牌。支持 HS256/RS256/ES256 算法，使用 Web Crypto API 在浏览器中签名。包含标准声明辅助工具。`,
   },
   "text-to-slug": {
     en: `A free online text processing tool that convert any text into clean, seo-friendly url slugs. remove special characters, normalize spaces, and generate optimized permalinks. Transform, analyze, and manipulate text instantly in your browser.
@@ -572,18 +452,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Type a title or heading and the tool generates a URL-safe slug instantly — lowercase, hyphens for spaces, special characters stripped. Toggle between hyphen and underscore separators as needed.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All slug generation happens locally. Your text is never uploaded — safe for working with unpublished article titles or internal page names.`,
     zh: `Text to URL Slug 是一款免费在线工具，Convert any text into clean, SEO-friendly URL slugs. Remove special characters, normalize spaces, and generate optimized permalinks.。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+输入标题或文本，工具即时生成 URL 安全的 slug（小写、空格转连字符、去除特殊字符）。可切换连字符或下划线分隔符。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有 slug 生成在本地完成，文本不会上传，适合处理未发布的文章标题或内部页面名称。`,
   },
   "text-sorter": {
     en: `A free online text processing tool that sort text lines alphabetically (a-z or z-a), by line length, or in reverse order. remove duplicates and organize lists instantly. Transform, analyze, and manipulate text instantly in your browser.
@@ -592,18 +472,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste your list of lines, pick a sort mode (alphabetical A–Z, reverse Z–A, by line length, or reverse order), and optionally remove duplicates. The sorted output appears instantly.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All sorting happens locally in your browser. Your text stays on your device — safe for sorting mailing lists, log entries, or confidential data.`,
     zh: `Text Sorter 是一款免费在线工具，Sort text lines alphabetically (A-Z or Z-A), by line length, or in reverse order. Remove duplicates and organize lists instantly.。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+粘贴行列表，选择排序模式（字母升序、降序、按行长、反序），可选去除重复行，排序结果即时显示。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有排序在浏览器本地完成，文本保留在设备上，适合排序邮件列表、日志或机密数据。`,
   },
   "text-deduplicator": {
     en: `A free online text processing tool that remove duplicate lines from text while preserving order. Transform, analyze, and manipulate text instantly in your browser.
@@ -612,18 +492,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste lines that may contain duplicates and the tool instantly returns only unique lines, preserving their original order. Toggle case-sensitive mode if needed.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All deduplication happens locally. Your text never leaves your browser — safe for cleaning up customer lists, email addresses, or sensitive records.`,
     zh: `Line Deduplicator 是一款免费在线工具，Remove duplicate lines from text while preserving order。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+粘贴可能含有重复的行，工具即时返回仅包含唯一行的结果，保持原始顺序。可切换大小写敏感模式。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有去重在本地完成，文本不会离开浏览器，适合清理客户列表、邮箱地址或敏感记录。`,
   },
   "text-reverser": {
     en: `A free online text processing tool that reverse text, words, sentences, or entire lines instantly. useful for creating mirrored text, solving puzzles, or formatting data. Transform, analyze, and manipulate text instantly in your browser.
@@ -632,18 +512,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Enter text and choose a reverse mode: reverse characters, reverse word order, or reverse line order. The result appears instantly for one-click copying.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All reversal happens locally. Your text never leaves your device — safe for puzzles, data formatting, and sensitive content.`,
     zh: `Text Reverser 是一款免费在线工具，Reverse text, words, sentences, or entire lines instantly. Useful for creating mirrored text, solving puzzles, or formatting data.。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+输入文本，选择反转模式（字符反转、单词顺序反转、行顺序反转），结果即时显示，一键复制。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有反转在本地完成，文本不会离开设备，适合解谜、格式化数据和敏感内容。`,
   },
   "random-string-generator": {
     en: `A free online utility tool that generate random strings with custom characters and length. Simple, fast, and completely private — just open and use.
@@ -652,18 +532,18 @@ Everyday tasks like generating passwords, creating QR codes, rolling dice, or ch
 
 Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-Open the tool, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+Set the string length, pick which character types to include (letters, digits, symbols), and click Generate. Copy the result instantly, or regenerate for a new random string.
 
-All processing happens locally in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+Generation uses your browser's native random source — no strings are stored or transmitted. Safe for generating API keys, tokens, or test identifiers.`,
     zh: `Random String Generator 是一款免费在线工具，Generate random strings with custom characters and length。
 
 日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
 主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-打开工具, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+设置字符串长度，选择字符类型（字母、数字、符号），点击生成即可一键复制，或重新生成新的随机字符串。
 
-所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+生成使用浏览器原生随机源，不存储或传输任何字符串，适合生成 API 密钥、令牌或测试标识符。`,
   },
   "palindrome-checker": {
     en: `A free online utility tool that check if text reads the same forwards and backwards. Simple, fast, and completely private — just open and use.
@@ -672,18 +552,18 @@ Everyday tasks like generating passwords, creating QR codes, rolling dice, or ch
 
 Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-Open the tool, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+Type or paste any text and the checker instantly tells you whether it reads the same forwards and backwards, ignoring spaces and punctuation by default.
 
-All processing happens locally in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+All checking happens locally in your browser. Your text is never sent anywhere — safe for verifying private messages or code snippets.`,
     zh: `Palindrome Checker 是一款免费在线工具，Check if text reads the same forwards and backwards。
 
 日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
 主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-打开工具, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+输入或粘贴任意文本，工具即时判断它是否为回文（正反读相同），默认忽略空格和标点。
 
-所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+所有检查在浏览器本地完成，文本不会外传，适合验证私密消息或代码片段。`,
   },
   "morse-code-converter": {
     en: `A free online Morse code translator that converts plain text into dots and dashes — and decodes Morse signals back into readable words. Perfect for ham radio operators, scouting activities, cryptography students, and anyone fascinated by this 1800s communication system that's still in active use today.
@@ -842,18 +722,18 @@ Everyday tasks like generating passwords, creating QR codes, rolling dice, or ch
 
 Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-Open the tool, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+Set the minimum and maximum values for your range, choose how many numbers to generate, and optionally enable unique-only mode. Click Generate for instant results.
 
-All processing happens locally in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+All generation happens locally using your browser's random source. No values are stored or tracked — safe for lotteries, raffles, and statistical sampling.`,
     zh: `Random Number Generator 是一款免费在线工具，Generate random numbers within a custom range. Perfect for lotteries, giveaways, statistical sampling, and game development.。
 
 日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
 主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-打开工具, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+设置最小和最大值，选择生成数量，可选开启仅唯一值模式，点击生成即可获得结果。
 
-所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+所有生成在本地使用浏览器随机源完成，不存储或追踪任何值，适合抽奖、统计抽样等场景。`,
   },
   "image-to-pdf": {
     en: `A free browser-based image tool that convert images (jpg, png) into a single pdf document. Process your photos and graphics directly in your browser without uploading to any server.
@@ -902,18 +782,18 @@ PDF manipulation traditionally requires expensive software like Adobe Acrobat or
 
 Key features include drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. The tool handles documents of any size (within browser memory limits) and produces clean, standards-compliant output that opens correctly in any PDF reader.
 
-Upload your PDF files by dragging them onto the tool or using the file picker. For merging, add multiple files and arrange them in your desired order. For splitting, select the page ranges you want to extract. For rotating, choose the rotation angle. Preview the result, then click the action button to process and download the output file.
+Drag your PDF onto the tool, select the pages you want to rotate, choose 90°, 180°, or 270°, and click Rotate. Download the corrected PDF instantly.
 
-All PDF processing happens locally in your browser using pdf-lib (a pure JavaScript library). Your documents are never uploaded to any server. This is critical for sensitive documents like contracts, tax returns, medical records, and financial statements. No account required, no file storage, no risk of data exposure.`,
+All rotation happens locally in your browser using pdf-lib. Your PDF is never uploaded — critical for contracts, medical records, and financial statements.`,
     zh: `PDF Rotator 是一款免费在线工具，Rotate PDF pages by 90, 180, or 270 degrees. Fix scanned documents, correct page orientation, and rearrange your PDF layouts.。
 
 PDF 处理 traditionally requires expensive software like Adobe Acrobat or risky online services that upload your sensitive documents. This tool lets you merge, split, rotate, or convert PDFs entirely in your browser using pdf-lib. Your financial statements, legal documents, and personal files never leave your device, giving you complete control over your privacy.
 
 主要特点包括 drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. The tool handles documents of any size (within browser memory limits) and produces clean, standards-compliant output that opens correctly in any PDF reader.
 
-上传您的 PDF files by dragging them onto the tool or using the file picker. For merging, add multiple files and arrange them in your desired order. For splitting, select the page ranges you want to extract. For rotating, choose the rotation angle. Preview the result, then click the action button to process and download the output file.
+将 PDF 拖入工具，选择要旋转的页面，选择 90°、180° 或 270°，点击旋转即可下载修正后的 PDF。
 
-所有 PDF 处理 happens locally in your browser using pdf-lib (a pure JavaScript library). Your documents are never uploaded to any server. This is critical for sensitive documents like contracts, tax returns, medical records, and financial statements. No account required, no file storage, no risk of data exposure.`,
+所有旋转操作在浏览器本地使用 pdf-lib 完成，PDF 不会上传，对合同、医疗记录和财务报表至关重要。`,
   },
   "pdf-page-remover": {
     en: `A free online PDF tool that remove unwanted pages from your pdf documents quickly. extract specific pages, delete blank sheets, and trim bulky files. Work with your PDF files directly in the browser — no uploads, no waiting, no risk.
@@ -922,18 +802,18 @@ PDF manipulation traditionally requires expensive software like Adobe Acrobat or
 
 Key features include drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. The tool handles documents of any size (within browser memory limits) and produces clean, standards-compliant output that opens correctly in any PDF reader.
 
-Upload your PDF files by dragging them onto the tool or using the file picker. For merging, add multiple files and arrange them in your desired order. For splitting, select the page ranges you want to extract. For rotating, choose the rotation angle. Preview the result, then click the action button to process and download the output file.
+Upload your PDF, preview each page visually, select the pages you want to delete, and click Remove. Download the trimmed PDF instantly.
 
-All PDF processing happens locally in your browser using pdf-lib (a pure JavaScript library). Your documents are never uploaded to any server. This is critical for sensitive documents like contracts, tax returns, medical records, and financial statements. No account required, no file storage, no risk of data exposure.`,
+All page removal happens locally in your browser using pdf-lib. Your document never leaves your device — critical for sensitive PDFs like tax returns or legal filings.`,
     zh: `PDF Page Remover 是一款免费在线工具，Remove unwanted pages from your PDF documents quickly. Extract specific pages, delete blank sheets, and trim bulky files.。
 
 PDF 处理 traditionally requires expensive software like Adobe Acrobat or risky online services that upload your sensitive documents. This tool lets you merge, split, rotate, or convert PDFs entirely in your browser using pdf-lib. Your financial statements, legal documents, and personal files never leave your device, giving you complete control over your privacy.
 
 主要特点包括 drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. The tool handles documents of any size (within browser memory limits) and produces clean, standards-compliant output that opens correctly in any PDF reader.
 
-上传您的 PDF files by dragging them onto the tool or using the file picker. For merging, add multiple files and arrange them in your desired order. For splitting, select the page ranges you want to extract. For rotating, choose the rotation angle. Preview the result, then click the action button to process and download the output file.
+上传 PDF，可视化预览每页，选择要删除的页面，点击删除即可下载裁剪后的 PDF。
 
-所有 PDF 处理 happens locally in your browser using pdf-lib (a pure JavaScript library). Your documents are never uploaded to any server. This is critical for sensitive documents like contracts, tax returns, medical records, and financial statements. No account required, no file storage, no risk of data exposure.`,
+所有删除操作在浏览器本地使用 pdf-lib 完成，文档不会离开设备，对税务报告、法律文件等敏感 PDF 至关重要。`,
   },
   "image-cropper": {
     en: `A free browser-based image tool that crop images by dragging a selection area on canvas. Process your photos and graphics directly in your browser without uploading to any server.
@@ -1182,18 +1062,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste text containing emoji and the tool instantly strips all emoji characters while preserving the surrounding words and punctuation. Copy the clean text with one click.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All processing happens locally. Your text never leaves your browser — safe for cleaning up messages, form submissions, or database content.`,
     zh: `Emoji Remover 是一款免费在线工具，Remove all emoji characters from text while keeping words。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+粘贴含有 emoji 的文本，工具即时剔除所有 emoji 字符，同时保留周围的文字和标点，一键复制纯文本。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有处理在本地完成，文本不会离开浏览器，适合清理消息、表单提交或数据库内容。`,
   },
   "unicode-detector": {
     en: `A free online text processing tool that inspect unicode characters with codepoint and category info. Transform, analyze, and manipulate text instantly in your browser.
@@ -1202,18 +1082,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste any text and the tool breaks it down character by character, showing each character's Unicode codepoint, name, category (letter, digit, symbol, etc.), and UTF-8 byte encoding.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All analysis happens locally in your browser. Your text is never uploaded — safe for inspecting log files, debug output, or sensitive data.`,
     zh: `Unicode Character Detector 是一款免费在线工具，Inspect Unicode characters with codepoint and category info。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+粘贴任意文本，工具逐字符拆解，显示每个字符的 Unicode 码点、名称、类别（字母、数字、符号等）和 UTF-8 字节编码。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有分析在浏览器本地完成，文本不会上传，适合检查日志文件、调试输出或敏感数据。`,
   },
   "caesar-cipher": {
     en: `A free online Caesar cipher tool that shifts each letter in your text by a fixed number of positions through the alphabet. Named after Julius Caesar — who used a shift of 3 to protect military correspondence — this is one of the oldest and simplest encryption methods, making it a staple of introductory cryptography courses and CTF puzzle challenges.
@@ -1230,18 +1110,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste your original JSON in the left pane and the modified JSON in the right pane. Added, removed, and changed keys and values are highlighted side by side instantly.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All comparison happens locally. Your JSON data never leaves your browser — safe for comparing API responses, config files, and sensitive payloads.`,
     zh: `JSON Diff 是一款免费在线工具，Compare two JSON objects and highlight differences。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+在左侧粘贴原始 JSON，右侧粘贴修改后的 JSON，新增、删除和修改的键值对即时并排高亮显示。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有比较在本地完成，JSON 数据不会离开浏览器，适合比较 API 响应、配置文件和敏感载荷。`,
   },
   "http-status-codes": {
     en: `A free online reference that lists every HTTP status code defined by IANA — from the familiar 200 OK and 404 Not Found to the nuanced 418 I'm a Teapot and the HTTP/2-specific 425 Too Early. Search by number or keyword and immediately see the category, official description, and typical use scenario.
@@ -1290,18 +1170,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste binary digits (space-separated 8-bit groups or a continuous stream) in the input box and the decoded text appears instantly below. Switch to encode mode to convert text back to binary.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All conversion happens in your browser. Neither your text nor binary data is sent anywhere — safe for decoding private messages or learning exercises.`,
     zh: `Binary to Text 是一款免费在线工具，Convert binary code to text and text back to binary。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+在输入框粘贴二进制数字（空格分隔的8位组或连续流），解码后的文本即时显示。切换到编码模式可将文本转回二进制。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有转换在浏览器中完成，文本和二进制数据均不会外传。`,
   },
   "image-invert": {
     en: `A free browser-based image tool that invert or negate colors in any image instantly. create negative effects, x-ray looks, and artistic color reversals with one click. Process your photos and graphics directly in your browser without uploading to any server.
@@ -1390,18 +1270,18 @@ Everyday tasks like generating passwords, creating QR codes, rolling dice, or ch
 
 Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-Open the tool, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+Pick a base color using the color picker or enter a hex value, then choose a harmony type (complementary, analogous, triadic, tetradic, or monochromatic). Click any swatch to copy its hex code.
 
-All processing happens locally in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+All palette generation happens locally. No colors or preferences are stored or tracked.`,
     zh: `Color Palette Generator 是一款免费在线工具，Generate color schemes: monochromatic, complementary, and more。
 
 日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
 主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-打开工具, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+使用拾色器选择基色或输入十六进制值，选择配色类型（互补、类似、三分、四分或单色），点击任意色块复制其 hex 值。
 
-所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+所有调色板生成在本地完成，不存储或追踪任何颜色或偏好。`,
   },
   "roman-numeral": {
     en: `A free online conversion calculator that convert between roman numerals and arabic numbers instantly. works with values from 1 to 3999, including common numeral combinations. Get accurate results instantly without any software installation.
@@ -1500,18 +1380,18 @@ Everyday tasks like generating passwords, creating QR codes, rolling dice, or ch
 
 Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-Open the tool, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+Set your target date and time, optionally add a label, and the countdown begins instantly — showing days, hours, minutes, and seconds remaining. The timer keeps running even if you navigate away.
 
-All processing happens locally in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+The countdown runs entirely in your browser. Your target date is stored locally only if you choose to save it — nothing is uploaded or tracked.`,
     zh: `Countdown Timer 是一款免费在线工具，Set a countdown to any date and time with days, hours, minutes, and seconds. Perfect for events, deadlines, and special occasions.。
 
 日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
 主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-打开工具, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+设置目标日期和时间，可选添加标签，倒计时即开始——显示剩余天、时、分、秒。即使离开页面计时器仍继续运行。
 
-所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+倒计时完全在浏览器中运行，目标日期仅在你选择保存时才存储在本地，不会上传或被追踪。`,
   },
   "dice-roller": {
     en: `A free online utility tool that roll virtual dice with 4, 6, 8, 10, 12, and 20 sides. roll multiple dice at once for tabletop games, rpgs, and classrooms. Simple, fast, and completely private — just open and use.
@@ -1520,18 +1400,18 @@ Everyday tasks like generating passwords, creating QR codes, rolling dice, or ch
 
 Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-Open the tool, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+Choose a dice type (d4, d6, d8, d10, d12, or d20), set the number of dice to roll, and click Roll. Results appear instantly with individual rolls and a total sum.
 
-All processing happens locally in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+All rolling happens locally using your browser's random source. No results are stored or tracked — perfect for tabletop RPGs and classroom activities.`,
     zh: `Dice Roller 是一款免费在线工具，Roll virtual dice with 4, 6, 8, 10, 12, and 20 sides. Roll multiple dice at once for tabletop games, RPGs, and classrooms.。
 
 日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
 主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-打开工具, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+选择骰子类型（d4、d6、d8、d10、d12、d20），设置骰子数量，点击滚动。结果即时显示各骰点数和总和。
 
-所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+所有滚动在本地使用浏览器随机源完成，不存储或追踪任何结果，适合桌游 RPG 和课堂活动。`,
   },
   "decision-maker": {
     en: `A free online utility tool that let fate decide — pick a random option from your list. Simple, fast, and completely private — just open and use.
@@ -1540,18 +1420,18 @@ Everyday tasks like generating passwords, creating QR codes, rolling dice, or ch
 
 Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-Open the tool, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+Enter your options (one per line or separated by commas) and click Decide. The tool picks one option at random — re-click for a new decision.
 
-All processing happens locally in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+All selection happens locally in your browser. Your options are never stored or transmitted — safe for personal or sensitive decisions.`,
     zh: `Decision Maker 是一款免费在线工具，Let fate decide — pick a random option from your list。
 
 日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
 主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-打开工具, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+输入选项（每行一个或用逗号分隔），点击决定。工具随机选出一个选项，可重新点击获得新结果。
 
-所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+所有选择在浏览器本地完成，选项不会被存储或传输，适合个人或敏感决策。`,
   },
   "audio-cutter": {
     en: `A free browser-based audio tool that trim and cut audio files with an interactive waveform preview. extract clips from mp3, wav, and other formats right in your browser. Process your music and sound files without uploading to any server.
@@ -1690,18 +1570,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Type or paste a password and the tool scores its strength in real time — analyzing length, character variety, entropy, and common-pattern vulnerability. Suggestions appear as you type.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All analysis happens locally in your browser. Your password is never transmitted, logged, or stored — safe for testing real credentials.`,
     zh: `Password Strength Checker 是一款免费在线工具，Test how strong your password is with real-time analysis。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+输入或粘贴密码，工具实时评分其强度——分析长度、字符多样性、熵值和常见模式漏洞，并实时给出建议。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有分析在浏览器本地完成，密码不会被传输、记录或存储，适合测试真实凭证。`,
   },
   "barcode-generator": {
     en: `A free online utility tool that generate barcodes in Code128, EAN-13, Code39 formats and QR codes. Simple, fast, and completely private — just open and use.
@@ -1710,18 +1590,18 @@ Everyday tasks like generating passwords, creating QR codes, rolling dice, or ch
 
 Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-Open the tool, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+Enter your data (text, URL, or number), choose a barcode format (Code128, EAN-13, Code39, or QR Code), adjust size if needed, and click Generate. Download the image as PNG or SVG.
 
-All processing happens locally in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+All generation happens locally in your browser. Your data is never uploaded — safe for creating barcodes for internal product codes or private links.`,
     zh: `Barcode & QR Code Generator 是一款免费在线工具，生成 Code128、EAN-13、Code39 格式条码和二维码。
 
 日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
 主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-打开工具, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+输入数据（文本、URL 或数字），选择条码格式（Code128、EAN-13、Code39 或 QR Code），可调整尺寸，点击生成即可下载 PNG 或 SVG 图片。
 
-所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+所有生成在浏览器本地完成，数据不会上传，适合为内部产品代码或私密链接生成条码。`,
   },
   "aspect-ratio-calculator": {
     en: `A free online conversion calculator that calculate aspect ratios from dimensions or presets. Get accurate results instantly without any software installation.
@@ -1750,18 +1630,18 @@ Everyday tasks like generating passwords, creating QR codes, rolling dice, or ch
 
 Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-Open the tool, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+Drag a QR code image onto the tool or use the file picker. The embedded URL, text, or contact data is decoded and displayed instantly — copy it with one click.
 
-All processing happens locally in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+All decoding happens locally in your browser. Your image is never uploaded — safe for scanning QR codes containing personal or financial information.`,
     zh: `QR Code Reader 是一款免费在线工具，Decode QR codes from uploaded images instantly. Scan any QR code image to reveal the embedded URL, text, or contact information.。
 
 日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
 主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
 
-打开工具, configure your options if needed (such as length, format, or range), and click the action button. Results appear immediately. Copy the output to your clipboard, download it, or generate a new result with different settings. The entire workflow takes seconds.
+将 QR 码图片拖入工具或使用文件选择器，嵌入的 URL、文本或联系人数据即时解码并显示，一键复制。
 
-所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
+所有解码在浏览器本地完成，图片不会上传，适合扫描含有个人或财务信息的 QR 码。`,
   },
   "color-blindness-simulator": {
     en: `A free browser-based image tool that simulate how images look with various color blindness types. Process your photos and graphics directly in your browser without uploading to any server.
@@ -1790,18 +1670,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Start typing immediately — no setup required. Your notes auto-save to your browser's local storage as you type, surviving page refreshes and browser restarts. Export to a .txt file anytime.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All notes are stored exclusively in your browser's local storage — never uploaded to any server. Clear your notes with one click to wipe them permanently from your device.`,
     zh: `Online Notepad 是一款免费在线工具，A clean, distraction-free browser-based notepad with auto-save. Write notes, code snippets, and lists that persist in your browser storage.。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+直接开始输入即可，无需设置。笔记在输入时自动保存到浏览器本地存储，刷新页面或重启浏览器后仍然保留。可随时导出为 .txt 文件。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有笔记仅存储在浏览器的本地存储中，不会上传到任何服务器。一键清除可永久删除设备上的笔记。`,
   },
   "text-statistics": {
     en: `A free online text processing tool that detailed text analysis: letters, vowels, unique words, and more. Transform, analyze, and manipulate text instantly in your browser.
@@ -1810,18 +1690,18 @@ Writers, developers, and content creators frequently need to process text — co
 
 Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+Paste or type text and the tool displays a detailed breakdown: total letters, vowels, consonants, syllables, unique words, word frequency, and average word length — all updating live as you type.
 
-All text processing happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+All analysis happens locally in your browser. Your text is never uploaded — safe for analyzing essays, reports, and confidential documents.`,
     zh: `Text Statistics 是一款免费在线工具，Detailed text analysis: letters, vowels, unique words, and more。
 
 写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
 主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
 
-Paste or type your text into the input area. The tool processes it automatically in real-time, or click the action button if manual triggering is needed. Results appear instantly below the input. Use the copy button to grab the output, or clear everything to start a new task. The responsive interface works well on both desktop and mobile.
+粘贴或输入文本，工具显示详细分析：字母总数、元音、辅音、音节、独特单词、词频和平均词长——全部实时更新。
 
-所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
+所有分析在浏览器本地完成，文本不会上传，适合分析论文、报告和机密文档。`,
   },
 };
 
