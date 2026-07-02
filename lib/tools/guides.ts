@@ -160,13 +160,13 @@ Large values up to 53-bit precision (JavaScript's safe integer limit) are suppor
   "image-compressor": {
     en: `A free browser-based image tool that reduce image file size by 50-80% while maintaining visual quality for JPEG, PNG, and WebP. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Shrinking image file sizes used to mean firing up a dedicated optimization app and fiddling with export presets. This compressor handles that work entirely in the browser, applying smart quantization to strip redundant data while keeping the visual appearance crisp — no installs, no subscriptions.
 
 A quality slider lets you choose the trade-off between file size and visual fidelity, with side-by-side before/after comparison so you can see exactly what compression does to your image. Batch mode processes an entire folder of photos at once — ideal for preparing web assets or meeting email attachment size limits.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Click the file picker or drop one or more photos onto the workspace, then move the quality slider to dial in the size-versus-clarity trade-off. A live before-and-after panel shows the visual difference, and the current file size updates with every adjustment so you can stop the moment you hit your target.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Every byte of compression logic runs inside your browser tab — the original photos and their slimmed-down versions never travel across the network. That matters most when you are optimizing confidential screenshots or client product images that should not leave your machine.`,
     zh: `Image Compressor 是一款免费在线工具，在保持视觉质量的同时将图片文件大小减小 50-80%，支持 JPEG、PNG 和 WebP。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -180,13 +180,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-converter": {
     en: `A free browser-based image tool that convert images between jpg, png, webp, avif, gif, and bmp formats. batch convert with custom quality and dimension settings. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Switching an image from one format to another — say a transparency-heavy PNG to a compact WebP — normally calls for desktop conversion software with a learning curve. This converter performs that transformation entirely in the browser, re-encoding pixel data into whichever of six supported formats you choose.
 
 The converter supports six major formats — JPEG, PNG, WebP, AVIF, GIF, and BMP — with per-file quality and dimension overrides so each image can be tuned individually during batch conversion. Output files retain their original color profiles for accurate cross-application rendering.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Select a target format from the dropdown, optionally cap the maximum width or height, and pick a quality level for lossy outputs. Drop in a handful of files at once and each one is converted independently, with download links appearing the instant each job finishes.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Format re-encoding happens on-device using the browser's native image decoders and encoders. Your source files and the newly converted copies remain in local memory and are never transmitted to a remote endpoint.`,
     zh: `Image Format Converter 是一款免费在线工具，Convert images between JPG, PNG, WebP, AVIF, GIF, and BMP formats. Batch convert with custom quality and dimension settings.。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -200,13 +200,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "pdf-merger": {
     en: `A free browser-based image tool that combine multiple PDF files into a single document with page reordering. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Stitching separate PDFs into one cohesive document typically requires dedicated PDF editing software or an online service that uploads your files. This merger assembles multiple PDFs into a single file entirely on your device, preserving every page in the original quality.
 
 Drag PDFs into the tool in any order, rearrange pages with simple drag-and-drop, and merge them into a single document with a live page-count preview. The output is a standards-compliant PDF that opens correctly in every reader, from Adobe Acrobat to browser viewers.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Add PDF files through the file browser or by dropping them into the workspace, then rearrange their order by dragging the thumbnail tiles. The combined page count updates as you go, and clicking merge produces a download-ready document in seconds.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Merging is performed locally with a lightweight PDF library that runs in the browser. Your documents — contracts, invoices, reports — never leave your computer, so sensitive business paperwork stays private.`,
     zh: `PDF Merger 是一款免费在线工具，将多个 PDF 文件合并为一个文档，支持页面重新排序。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -698,13 +698,13 @@ All calculations happen locally in your browser using JavaScript. No data is sen
   "image-to-base64": {
     en: `A free browser-based image tool that convert images to base64 data uri for inline embedding. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Embedding an image directly inside HTML, CSS, or a JSON payload usually means hunting down a command-line tool to generate the data URI. This encoder turns any image into a ready-to-paste Base64 string right in the browser, complete with the correct MIME-type prefix.
 
 The tool outputs a ready-to-paste Base64 data URI string (prefixed with the correct MIME type) as well as raw Base64, so you can drop it straight into an img src attribute, a CSS background-image property, or a JSON payload. File size and character count are displayed alongside the output.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Choose a file from disk or paste an image from your clipboard, and the encoded string appears instantly in a text area with copy and download buttons. Toggle between raw Base64 and the full data: URI scheme depending on whether you need it for an img tag or an API field.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+The entire encoding pipeline runs through your browser's FileReader and btoa APIs. Neither the original binary nor the resulting string is sent anywhere, which is important when embedding private diagrams or internal screenshots into code.`,
     zh: `Image to Base64 是一款免费在线工具，Convert images to Base64 data URI for inline embedding。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -738,13 +738,13 @@ All generation happens locally using your browser's random source. No values are
   "image-to-pdf": {
     en: `A free browser-based image tool that convert images (jpg, png) into a single pdf document. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Turning a folder of photos into a shareable PDF often involves desktop publishing software or a sketchy upload-based converter. This tool wraps each image onto its own page and bundles them into a standards-compliant PDF, all without sending a single pixel to a server.
 
 Multiple images can be combined into a single multi-page PDF, with page size and orientation options that adapt to each image's dimensions. The output PDF is lightweight and compatible with all standard PDF readers.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Add images one by one or in a batch, drag them into the desired page sequence, and choose a page orientation and margin size. A thumbnail strip shows the running page order, and the final PDF is ready to download once you are happy with the arrangement.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Page composition and PDF generation are executed locally in your browser using a client-side PDF writer. Your photos remain on your device throughout, so personal or confidential pictures never pass through a third-party server.`,
     zh: `Image to PDF 是一款免费在线工具，Convert images (JPG, PNG) into a single PDF document。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -758,13 +758,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "pdf-splitter": {
     en: `A free browser-based image tool that split pdf by page ranges or extract specific pages. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Extracting a few pages from a large PDF usually means installing a full-featured PDF editor or trusting an online service with the entire file. This splitter lets you carve a PDF into individual pages or custom ranges entirely within the browser, handing back clean, standalone documents.
 
 Enter page ranges like '1-3, 5, 7-10' to extract exactly the pages you need, or split a document into individual single-page PDFs. A live page thumbnail strip helps you identify the right pages before splitting.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Open a PDF and the tool renders a thumbnail of every page. Enter the page numbers or ranges you want extracted — for example 1–3 and 7 — then click split to download each resulting file or a combined subset.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+All parsing and page extraction happen on your machine via a browser-based PDF library. Because the source document never gets uploaded, splitting sensitive contracts or financial statements carries zero privacy risk.`,
     zh: `PDF Splitter 是一款免费在线工具，Split PDF by page ranges or extract specific pages。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -818,13 +818,13 @@ PDF 处理 traditionally requires expensive software like Adobe Acrobat or risky
   "image-cropper": {
     en: `A free browser-based image tool that crop images by dragging a selection area on canvas. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Trimming an image to a specific aspect ratio or focus area is a routine task that desktop photo editors handle with heavyweight toolbars and layers. This cropper gives you a clean, adjustable selection rectangle right in the browser, ideal for quick social-media thumbnails or product-shot framing.
 
 An interactive crop overlay lets you drag and resize the selection rectangle directly on the canvas, with optional aspect-ratio presets for common social media sizes (1:1, 4:3, 16:9, and more). The cropped output is generated at full resolution.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Drag the crop handles to define the region, or lock to a preset ratio such as 1:1, 16:9, or 4:3 from the dropdown. The selection dimensions display in real time, and applying the crop produces an instant preview before you download.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Crop coordinates are calculated and the region is extracted using the browser's built-in canvas APIs. Nothing about your image — original or cropped — is ever transmitted over the network.`,
     zh: `Image Cropper 是一款免费在线工具，Crop images by dragging a selection area on canvas。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -838,13 +838,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-resizer": {
     en: `A free browser-based image tool that resize images to exact dimensions with aspect ratio lock. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Changing the pixel dimensions of a photo is one of the most common editing tasks, yet many people still open a full image editor just to do it. This resizer adjusts width and height in the browser, applying high-quality interpolation without any software install.
 
 Enter exact pixel dimensions or scale by percentage, with an optional aspect-ratio lock that prevents accidental distortion. Common preset sizes for social media, banners, and thumbnails speed up the workflow.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Type the target width or height in pixels or as a percentage, and the other dimension updates automatically when the aspect-ratio lock is on. Choose a resampling filter for sharp or smooth results, then download the resized image immediately.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Pixel resampling is carried out by your browser's canvas drawing routines, so the original photo and its resized copy both stay in local memory. No image data leaves your device at any point.`,
     zh: `Image Resizer 是一款免费在线工具，Resize images to exact dimensions with aspect ratio lock。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -858,13 +858,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-filters": {
     en: `A free browser-based image tool that apply grayscale, sepia, blur, brightness, and contrast filters. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Applying a vintage, grayscale, or high-contrast look to a photo traditionally means loading it into a desktop photo editor with complex adjustment layers. This filter tool applies a dozen common effects instantly in the browser and lets you compare them side by side.
 
 Eight adjustable filter effects — grayscale, sepia, blur, brightness, contrast, saturation, hue rotation, and invert — can be combined and fine-tuned with live sliders. The canvas preview updates instantly as you drag each control.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Pick from filter presets like sepia, blur, sharpen, brightness, and contrast, then fine-tune each effect's intensity with a dedicated slider. The preview refreshes as you move each control, and you can chain multiple filters before downloading.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Every filter is computed through canvas pixel manipulation in your browser. The photo you load and its filtered version are processed entirely on your device with no server round-trip.`,
     zh: `Image Filters 是一款免费在线工具，Apply grayscale, sepia, blur, brightness, and contrast filters。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -878,13 +878,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "color-picker": {
     en: `A free browser-based image tool that pick colors from uploaded images or use the color selector. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Grabbing the exact color value from a specific spot in an image usually requires a desktop screen-color utility or a design application's eyedropper. This picker reads pixel colors directly from any image you open, returning HEX, RGB, and HSL values on the spot.
 
 Click anywhere on your uploaded image to sample the exact pixel color, with the HEX, RGB, and HSL values displayed side by side. A magnifier loupe helps you target individual pixels precisely, and a history panel keeps your recently picked colors.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Load an image and move your cursor across it to see the color under the pointer update in real time. Click to lock in a sample, then copy the value in your preferred notation or add it to a saved palette for later.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Color sampling is done by reading individual pixels from an in-browser canvas. Your image stays in local memory the entire time, so picking colors from confidential designs or client mockups is completely private.`,
     zh: `Color Picker from Image 是一款免费在线工具，Pick colors from uploaded images or use the color selector。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -898,13 +898,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "gif-maker": {
     en: `A free browser-based image tool that create animated gifs from multiple images or video clips. set frame delay, resize output, and optimize for web or social media. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Building an animated GIF from a sequence of frames typically calls for specialized animation software with timeline controls and export settings. This GIF assembler stitches your images into a looping animation entirely in the browser, no installation required.
 
 Arrange multiple images into an animated sequence with per-frame delay control, loop options (once, infinite, or custom count), and output dimension scaling. The generated GIF is optimized for web with reduced file size through color quantization.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Add the frames in the order you want them to play, set a delay per frame in milliseconds, and choose whether the animation loops once or repeatedly. A live preview plays the sequence so you can adjust timing before downloading the final file.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Frame encoding into the GIF format is handled by a client-side encoder running in your browser. The source images and the assembled animation never leave your device during the process.`,
     zh: `GIF Maker 是一款免费在线工具，Create animated GIFs from multiple images or video clips. Set frame delay, resize output, and optimize for web or social media.。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -918,13 +918,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-watermark": {
     en: `A free browser-based image tool that add text watermark to images with position and opacity control. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Protecting images with a text or logo overlay is a task professional photographers usually do in batch inside a desktop editor. This watermark tool stamps your images right in the browser, letting you position, scale, and style the overlay with live feedback.
 
 Position the text watermark anywhere on the image using nine placement presets or custom x/y coordinates, then adjust font size, color, opacity, and rotation angle. The watermark renders crisply at the source image's full resolution.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Type your watermark text or upload a transparent PNG logo, then use the position grid and sliders to set placement, size, opacity, and rotation. The overlay renders on a live preview, and batch mode applies the same watermark to every image you load.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Watermark compositing is performed through canvas blending operations in your browser. Because the original photos and stamped copies are processed locally, your unwatermarked files are never exposed to a server.`,
     zh: `Image Watermark 是一款免费在线工具，Add text watermark to images with position and opacity control。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -938,13 +938,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-merge": {
     en: `A free browser-based image tool that combine multiple images into one side by side or grid. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Combining two or more images into a single canvas — whether side by side or stacked vertically — normally requires a layout tool or a photo editor with manual positioning. This merger arranges multiple images on a shared canvas directly in the browser.
 
 Combine two or more images horizontally, vertically, or in a grid layout, with adjustable spacing, background color, and automatic dimension matching. The tool calculates the output canvas size based on your arrangement choices.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Add the images you want to combine, choose a horizontal or vertical layout, and set the gap and background color between them. The merged dimensions are calculated automatically, and a preview shows the final composition before you download.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+The composite canvas is assembled using browser-native canvas drawing operations. All input images and the resulting merged file remain on your device with no network transfer.`,
     zh: `Image Merger 是一款免费在线工具，Combine multiple images into one side by side or grid。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -958,13 +958,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-splitter": {
     en: `A free browser-based image tool that split a single image into multiple tiles by rows and columns. perfect for creating sprite sheets, grid layouts, and image segments. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Dividing a single image into a grid of smaller tiles is useful for Instagram carousels, contact sheets, or print layouts, yet most people resort to manual cropping in a desktop editor. This splitter slices an image into rows and columns automatically, right in the browser.
 
 Define the number of rows and columns to slice a single image into a uniform grid of tiles, each exported as an individual file. Perfect for creating Instagram grid layouts, sprite sheets, or puzzle pieces.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Load an image and set the number of rows and columns for the grid — for example 3 columns for a three-tile carousel. The tool previews the slice boundaries and lets you download every tile as an individual file or as a ZIP archive.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Grid slicing is executed through canvas region extraction in your browser. Neither the original image nor any of the generated tiles are ever sent to a remote server.`,
     zh: `Image Splitter 是一款免费在线工具，Split a single image into multiple tiles by rows and columns. Perfect for creating sprite sheets, grid layouts, and image segments.。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -978,13 +978,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-flip": {
     en: `A free browser-based image tool that flip images horizontally or vertically and rotate by 90-degree increments. mirror selfies, correct orientation, and transform photos instantly. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Mirroring an image horizontally or vertically is a basic transformation that surprisingly few lightweight tools do well without launching a full editor. This flipper reflects your image along either axis instantly in the browser, preserving full resolution and color depth.
 
 One-click buttons flip the image horizontally or vertically, and rotation controls work in 90-degree increments for quick orientation fixes. The tool processes at the original resolution with no quality loss.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Open an image and choose horizontal, vertical, or both as the flip direction. The mirrored preview appears immediately, and you can download the result in the original format with a single click.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Pixel reflection is a mathematically simple operation carried out by canvas transform functions in your browser. The image data never leaves your device, so flipping confidential or personal photos is risk-free.`,
     zh: `Image Flip & Rotate 是一款免费在线工具，Flip images horizontally or vertically and rotate by 90-degree increments. Mirror selfies, correct orientation, and transform photos instantly.。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -998,13 +998,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-border": {
     en: `A free browser-based image tool that add customizable borders, frames, and padding to images. choose colors, widths, corner radius, and shadow effects for polished photos. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Adding a decorative frame or solid-color border around a photo is a quick way to make thumbnails stand out, but doing it precisely usually means opening a design program. This border tool draws clean outlines around your image with adjustable width, color, and style — all in the browser.
 
 Customize border width, color, corner radius, and optional drop shadow with a live preview that shows exactly how the frame will look. Padding between the image and border can be adjusted independently.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Enter a border width in pixels, pick a color from the swatch picker, and choose a style such as solid, dashed, or double. A live preview shows the framing effect, and batch mode applies the same border to a folder of images at once.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Border drawing is handled by canvas stroke operations running locally in your browser. Your images and their framed versions stay on your device throughout the process.`,
     zh: `Image Border 是一款免费在线工具，Add customizable borders, frames, and padding to images. Choose colors, widths, corner radius, and shadow effects for polished photos.。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -1018,13 +1018,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "meme-generator": {
     en: `A free browser-based image tool that create memes by adding top and bottom text to images. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Creating a captioned meme image conventionally means using a meme website that uploads your photo to its servers, or wrestling with text layers in a desktop editor. This generator overlays bold top and bottom captions onto any image right in the browser, in the classic Impact-font style.
 
 Type top and bottom captions in the classic Impact font, adjust font size and stroke width, and preview the meme instantly on your uploaded image. Preset meme templates are included alongside custom image upload.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Upload a background image or pick a stock template, then type your top and bottom captions. Adjust the font size and stroke width, drag the text to reposition it, and download the finished meme as a single image.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Caption rendering is done with canvas text-drawing operations inside your browser. The background photo and the completed meme are never uploaded, so you can use personal images without any privacy concerns.`,
     zh: `Meme Generator 是一款免费在线工具，Create memes by adding top and bottom text to images。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -1038,13 +1038,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-to-sketch": {
     en: `A free browser-based image tool that convert photos into pencil sketch drawings and line art. apply artistic filters to create realistic hand-drawn effects from your images. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Turning a photograph into a pencil-sketch or pencil-drawing style used to require artistic skill or specialized filter software. This sketch converter applies edge-detection and shading algorithms to produce a hand-drawn look from any photo, entirely in the browser.
 
 Choose from multiple sketch styles — pencil, charcoal, and line art — with adjustable intensity and edge-detection sensitivity. The artistic effect renders in real time as you move the sliders.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Load a photo and adjust the edge-intensity and shading sliders until the sketch effect matches the level of detail you want. A split preview shows the original alongside the sketch so you can compare before downloading.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+The sketch effect is generated through canvas convolution and pixel manipulation in your browser. The source photo and its sketched rendition stay on your device with no server involvement.`,
     zh: `Image to Sketch 是一款免费在线工具，Convert photos into pencil sketch drawings and line art. Apply artistic filters to create realistic hand-drawn effects from your images.。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -1186,13 +1186,13 @@ All conversion happens in your browser. Neither your text nor binary data is sen
   "image-invert": {
     en: `A free browser-based image tool that invert or negate colors in any image instantly. create negative effects, x-ray looks, and artistic color reversals with one click. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Inverting the colors of an image — producing a negative — is a simple yet useful transformation for analyzing scans, creating artistic effects, or checking contrast accessibility. Rather than opening a full image editor, this inverter flips every color channel with one click in the browser.
 
 A single click inverts every pixel's color to produce a photographic negative, useful for checking film negatives, creating artistic effects, or previewing how dark UI themes render under inverted imagery.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Open an image and toggle the invert control to produce an instant negative. You can invert all channels at once or target individual red, green, or blue channels, with a live preview reflecting each change.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Color-channel inversion is computed by iterating over pixel data in a browser canvas. The image you load and its inverted output are processed locally and never transmitted to a server.`,
     zh: `Image Invert 是一款免费在线工具，Invert or negate colors in any image instantly. Create negative effects, X-ray looks, and artistic color reversals with one click.。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -1206,13 +1206,13 @@ All image processing happens locally in your browser using Canvas API and JavaSc
   "image-collage": {
     en: `A free browser-based image tool that combine multiple photos into a beautiful collage grid. choose layouts, spacing, background colors, and export in high resolution. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Assembling a visually appealing collage from multiple photos traditionally requires scrapbooking software or a design application with layout templates. This collage maker arranges several images into a polished grid or freestyle layout directly in the browser, ready for social media or printing.
 
 Select from grid layouts (2x2, 3x3, mosaics), set spacing between photos, choose a background color, and drag images into position. Export resolutions go up to 4K for print-quality collages.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Choose a collage template or start from a blank canvas, then drop images into each slot and drag them into position. Adjust spacing, corner rounding, and background color, and swap layouts on the fly with an instant preview before exporting.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Collage composition is rendered entirely through canvas operations in your browser. Every photo you add and the finished collage remain on your device, making it safe to use personal or family pictures.`,
     zh: `Photo Collage Maker 是一款免费在线工具，Combine multiple photos into a beautiful collage grid. Choose layouts, spacing, background colors, and export in high resolution.。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -1456,13 +1456,13 @@ All audio processing happens locally in your browser using the Web Audio API. Yo
   "audio-merger": {
     en: `A free browser-based image tool that combine multiple audio files into one seamless track. merge songs, recordings, or voice clips in any order with crossfade support. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Joining multiple audio clips into one continuous track is a job normally reserved for digital audio workstation software with complex timelines. This audio merger concatenates WAV and MP3 files into a single track right in the browser, with no plug-ins or uploads.
 
 Arrange audio clips in any order on a timeline, add optional crossfade transitions between tracks, and export as a single continuous file. The tool preserves the original sample rate and bitrate for maximum fidelity.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Add audio files in the order you want them to play, optionally trimming the start and end of each clip. Choose an output format, preview the combined timeline, and download the merged track when it sounds right.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Audio concatenation is handled by the browser's Web Audio API and encoder libraries. Your sound files and the resulting track are processed entirely on your device and are never sent to a remote server.`,
     zh: `Audio Merger 是一款免费在线工具，Combine multiple audio files into one seamless track. Merge songs, recordings, or voice clips in any order with crossfade support.。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
@@ -1646,13 +1646,13 @@ All decoding happens locally in your browser. Your image is never uploaded — s
   "color-blindness-simulator": {
     en: `A free browser-based image tool that simulate how images look with various color blindness types. Process your photos and graphics directly in your browser without uploading to any server.
 
-Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+Understanding how your designs appear to users with color vision deficiencies is an accessibility step that once required specialized simulation plug-ins. This simulator re-renders any image through the lens of eight common color-blindness types, all in real time within the browser.
 
 Switch between eight simulation modes — protanopia, deuteranopia, tritanopia, achromatopsia, and their anomalous variants — to see your image through each type of color vision deficiency. A split-view comparison shows the original alongside the simulated result.
 
-Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
+Load an image and select a deficiency type from the dropdown — deuteranopia, protanopia, tritanopia, or achromatopsia, among others. The simulated view appears immediately, and a side-by-side toggle lets you compare it against the original color perception.
 
-All image processing happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+Color-matrix transformations for each deficiency type are applied to pixel data through canvas operations in your browser. The image you are testing is never uploaded, so you can safely evaluate confidential designs or client work.`,
     zh: `Color Blindness Simulator 是一款免费在线工具，Simulate how images look with various color blindness types。
 
 图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
