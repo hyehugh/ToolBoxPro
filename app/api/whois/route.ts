@@ -1,6 +1,24 @@
+import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
+
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
+  // Rate limit: 5 requests per minute per IP (whois is expensive)
+  const ip = getClientIP(request);
+  const rateLimit = await checkRateLimit(ip, 5);
+  if (!rateLimit.success) {
+    return Response.json(
+      { error: "Rate limit exceeded. Please wait before trying again." },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": "60",
+          "X-RateLimit-Remaining": "0",
+        },
+      }
+    );
+  }
+
   const { searchParams } = new URL(request.url);
   const domain = searchParams.get("domain");
 

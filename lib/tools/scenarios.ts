@@ -57,6 +57,453 @@ export const toolScenarios: Record<string, ToolScenario[]> = {
     { title: "Test Data Creation", titleZh: "创建测试数据", icon: "🧪", description: "Bulk generate UUIDs for load testing and data seeding.", descriptionZh: "批量生成 UUID，用于负载测试和数据填充。" },
     { title: "Session Tokens", titleZh: "会话令牌", icon: "🎫", description: "Create unique session identifiers for web application authentication.", descriptionZh: "为 Web 应用认证创建唯一会话标识符。" },
   ],
+
+  // --- Additional scenarios ---
+  "age-calculator": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "area-converter": [
+    { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
+    { title: "Engineering Calculations", titleZh: "工程计算", icon: "🔧", description: "Convert units for technical specifications and engineering documentation.", descriptionZh: "为技术规格和工程文档转换单位。" },
+    { title: "Travel Planning", titleZh: "旅行规划", icon: "✈️", description: "Convert currencies, distances, and temperatures for international travel.", descriptionZh: "为国际旅行转换货币、距离和温度。" },
+  ],
+  "aspect-ratio-calculator": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "audio-converter": [
+    { title: "Edit Podcasts", titleZh: "编辑播客", icon: "🎙️", description: "Trim silence, merge segments, and export audio for publishing.", descriptionZh: "裁剪静音、合并片段并导出音频以供发布。" },
+    { title: "Create Ringtones", titleZh: "制作铃声", icon: "📱", description: "Cut audio to the perfect length and convert to the right format.", descriptionZh: "将音频裁剪到合适长度并转换为正确格式。" },
+    { title: "Convert Formats", titleZh: "转换格式", icon: "🔄", description: "Switch between MP3, WAV, and other formats without quality loss.", descriptionZh: "在 MP3、WAV 等格式之间切换且不损失质量。" },
+  ],
+  "audio-cutter": [
+    { title: "Edit Podcasts", titleZh: "编辑播客", icon: "🎙️", description: "Trim silence, merge segments, and export audio for publishing.", descriptionZh: "裁剪静音、合并片段并导出音频以供发布。" },
+    { title: "Create Ringtones", titleZh: "制作铃声", icon: "📱", description: "Cut audio to the perfect length and convert to the right format.", descriptionZh: "将音频裁剪到合适长度并转换为正确格式。" },
+    { title: "Convert Formats", titleZh: "转换格式", icon: "🔄", description: "Switch between MP3, WAV, and other formats without quality loss.", descriptionZh: "在 MP3、WAV 等格式之间切换且不损失质量。" },
+  ],
+  "audio-merger": [
+    { title: "Edit Podcasts", titleZh: "编辑播客", icon: "🎙️", description: "Trim silence, merge segments, and export audio for publishing.", descriptionZh: "裁剪静音、合并片段并导出音频以供发布。" },
+    { title: "Create Ringtones", titleZh: "制作铃声", icon: "📱", description: "Cut audio to the perfect length and convert to the right format.", descriptionZh: "将音频裁剪到合适长度并转换为正确格式。" },
+    { title: "Convert Formats", titleZh: "转换格式", icon: "🔄", description: "Switch between MP3, WAV, and other formats without quality loss.", descriptionZh: "在 MP3、WAV 等格式之间切换且不损失质量。" },
+  ],
+  "binary-to-text": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "bmi-calculator": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "caesar-cipher": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "case-converter": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "color-blindness-simulator": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "color-palette": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "color-picker": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "countdown-timer": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "cron-parser": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "css-gradient": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "css-minifier": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "css-shadow": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "csv-viewer": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "data-size-converter": [
+    { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
+    { title: "Engineering Calculations", titleZh: "工程计算", icon: "🔧", description: "Convert units for technical specifications and engineering documentation.", descriptionZh: "为技术规格和工程文档转换单位。" },
+    { title: "Travel Planning", titleZh: "旅行规划", icon: "✈️", description: "Convert currencies, distances, and temperatures for international travel.", descriptionZh: "为国际旅行转换货币、距离和温度。" },
+  ],
+  "days-between": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "decision-maker": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "dice-roller": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "dns-lookup": [
+    { title: "Troubleshoot DNS", titleZh: "排查 DNS", icon: "🌐", description: "Look up DNS records and diagnose domain resolution issues.", descriptionZh: "查询 DNS 记录并诊断域名解析问题。" },
+    { title: "Plan Network Architecture", titleZh: "规划网络架构", icon: "🏗️", description: "Calculate subnets, CIDR blocks, and IP ranges for network design.", descriptionZh: "计算子网、CIDR 块和 IP 范围用于网络设计。" },
+    { title: "Verify Domain Ownership", titleZh: "验证域名所有权", icon: "✅", description: "Check WHOIS records and RDAP data to confirm domain registration details.", descriptionZh: "检查 WHOIS 记录和 RDAP 数据以确认域名注册详情。" },
+  ],
+  "emoji-remover": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "gif-maker": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "hash-generator": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "html-entity-converter": [
+    { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
+    { title: "Engineering Calculations", titleZh: "工程计算", icon: "🔧", description: "Convert units for technical specifications and engineering documentation.", descriptionZh: "为技术规格和工程文档转换单位。" },
+    { title: "Travel Planning", titleZh: "旅行规划", icon: "✈️", description: "Convert currencies, distances, and temperatures for international travel.", descriptionZh: "为国际旅行转换货币、距离和温度。" },
+  ],
+  "html-preview": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "html-tag-stripper": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "html-to-jsx": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "http-status-codes": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "image-border": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-collage": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-converter": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-cropper": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-filters": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-flip": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-invert": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-merge": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-resizer": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-splitter": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-to-base64": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-to-pdf": [
+    { title: "Merge Documents", titleZh: "合并文档", icon: "📄", description: "Combine multiple PDFs into a single file for easy sharing.", descriptionZh: "将多个 PDF 合并为一个文件便于分享。" },
+    { title: "Split and Extract", titleZh: "拆分提取", icon: "✂️", description: "Extract specific pages or split large PDFs into smaller sections.", descriptionZh: "提取特定页面或将大型 PDF 拆分为较小部分。" },
+    { title: "Prepare for Printing", titleZh: "打印准备", icon: "🖨️", description: "Rotate pages, remove blank sheets, and organize documents for printing.", descriptionZh: "旋转页面、删除空白页并整理文档以供打印。" },
+  ],
+  "image-to-sketch": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "image-watermark": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "ip-calculator": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "json-diff": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "json-to-typescript": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "json-to-yaml": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "jwt-decoder": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "jwt-generator": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "length-converter": [
+    { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
+    { title: "Engineering Calculations", titleZh: "工程计算", icon: "🔧", description: "Convert units for technical specifications and engineering documentation.", descriptionZh: "为技术规格和工程文档转换单位。" },
+    { title: "Travel Planning", titleZh: "旅行规划", icon: "✈️", description: "Convert currencies, distances, and temperatures for international travel.", descriptionZh: "为国际旅行转换货币、距离和温度。" },
+  ],
+  "lorem-ipsum-generator": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "markdown-to-html": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "meme-generator": [
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Compress, resize, and convert images to reduce page load times.", descriptionZh: "压缩、调整大小并转换图片以减少页面加载时间。" },
+    { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
+    { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
+  ],
+  "morse-code-converter": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "number-base-converter": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "online-notepad": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "palindrome-checker": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "password-strength": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "pdf-merger": [
+    { title: "Merge Documents", titleZh: "合并文档", icon: "📄", description: "Combine multiple PDFs into a single file for easy sharing.", descriptionZh: "将多个 PDF 合并为一个文件便于分享。" },
+    { title: "Split and Extract", titleZh: "拆分提取", icon: "✂️", description: "Extract specific pages or split large PDFs into smaller sections.", descriptionZh: "提取特定页面或将大型 PDF 拆分为较小部分。" },
+    { title: "Prepare for Printing", titleZh: "打印准备", icon: "🖨️", description: "Rotate pages, remove blank sheets, and organize documents for printing.", descriptionZh: "旋转页面、删除空白页并整理文档以供打印。" },
+  ],
+  "pdf-page-remover": [
+    { title: "Merge Documents", titleZh: "合并文档", icon: "📄", description: "Combine multiple PDFs into a single file for easy sharing.", descriptionZh: "将多个 PDF 合并为一个文件便于分享。" },
+    { title: "Split and Extract", titleZh: "拆分提取", icon: "✂️", description: "Extract specific pages or split large PDFs into smaller sections.", descriptionZh: "提取特定页面或将大型 PDF 拆分为较小部分。" },
+    { title: "Prepare for Printing", titleZh: "打印准备", icon: "🖨️", description: "Rotate pages, remove blank sheets, and organize documents for printing.", descriptionZh: "旋转页面、删除空白页并整理文档以供打印。" },
+  ],
+  "pdf-rotator": [
+    { title: "Merge Documents", titleZh: "合并文档", icon: "📄", description: "Combine multiple PDFs into a single file for easy sharing.", descriptionZh: "将多个 PDF 合并为一个文件便于分享。" },
+    { title: "Split and Extract", titleZh: "拆分提取", icon: "✂️", description: "Extract specific pages or split large PDFs into smaller sections.", descriptionZh: "提取特定页面或将大型 PDF 拆分为较小部分。" },
+    { title: "Prepare for Printing", titleZh: "打印准备", icon: "🖨️", description: "Rotate pages, remove blank sheets, and organize documents for printing.", descriptionZh: "旋转页面、删除空白页并整理文档以供打印。" },
+  ],
+  "pdf-splitter": [
+    { title: "Merge Documents", titleZh: "合并文档", icon: "📄", description: "Combine multiple PDFs into a single file for easy sharing.", descriptionZh: "将多个 PDF 合并为一个文件便于分享。" },
+    { title: "Split and Extract", titleZh: "拆分提取", icon: "✂️", description: "Extract specific pages or split large PDFs into smaller sections.", descriptionZh: "提取特定页面或将大型 PDF 拆分为较小部分。" },
+    { title: "Prepare for Printing", titleZh: "打印准备", icon: "🖨️", description: "Rotate pages, remove blank sheets, and organize documents for printing.", descriptionZh: "旋转页面、删除空白页并整理文档以供打印。" },
+  ],
+  "percentage-calculator": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "qr-reader": [
+    { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
+    { title: "Engineering Calculations", titleZh: "工程计算", icon: "🔧", description: "Convert units for technical specifications and engineering documentation.", descriptionZh: "为技术规格和工程文档转换单位。" },
+    { title: "Travel Planning", titleZh: "旅行规划", icon: "✈️", description: "Convert currencies, distances, and temperatures for international travel.", descriptionZh: "为国际旅行转换货币、距离和温度。" },
+  ],
+  "random-number-generator": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "random-string-generator": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "roman-numeral": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "speed-converter": [
+    { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
+    { title: "Engineering Calculations", titleZh: "工程计算", icon: "🔧", description: "Convert units for technical specifications and engineering documentation.", descriptionZh: "为技术规格和工程文档转换单位。" },
+    { title: "Travel Planning", titleZh: "旅行规划", icon: "✈️", description: "Convert currencies, distances, and temperatures for international travel.", descriptionZh: "为国际旅行转换货币、距离和温度。" },
+  ],
+  "sql-formatter": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "string-escaper": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "svg-to-png": [
+    { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
+    { title: "Engineering Calculations", titleZh: "工程计算", icon: "🔧", description: "Convert units for technical specifications and engineering documentation.", descriptionZh: "为技术规格和工程文档转换单位。" },
+    { title: "Travel Planning", titleZh: "旅行规划", icon: "✈️", description: "Convert currencies, distances, and temperatures for international travel.", descriptionZh: "为国际旅行转换货币、距离和温度。" },
+  ],
+  "temperature-converter": [
+    { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
+    { title: "Engineering Calculations", titleZh: "工程计算", icon: "🔧", description: "Convert units for technical specifications and engineering documentation.", descriptionZh: "为技术规格和工程文档转换单位。" },
+    { title: "Travel Planning", titleZh: "旅行规划", icon: "✈️", description: "Convert currencies, distances, and temperatures for international travel.", descriptionZh: "为国际旅行转换货币、距离和温度。" },
+  ],
+  "text-deduplicator": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "text-diff-checker": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "text-repeater": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "text-reverser": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "text-sorter": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "text-statistics": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "text-to-binary": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "text-to-slug": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "timestamp-converter": [
+    { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
+    { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
+    { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "timezone-converter": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "tip-calculator": [
+    { title: "Daily Calculations", titleZh: "日常计算", icon: "📊", description: "Quickly compute percentages, tips, and ratios without opening a calculator app.", descriptionZh: "无需打开计算器应用即可快速计算百分比、小费和比率。" },
+    { title: "Track Important Dates", titleZh: "追踪重要日期", icon: "📅", description: "Calculate time between events, count down to deadlines, and track milestones.", descriptionZh: "计算事件之间的时间、倒计时截止日期并追踪里程碑。" },
+    { title: "Make Quick Decisions", titleZh: "快速决策", icon: "🎲", description: "Use random generators and decision tools to break ties and pick options.", descriptionZh: "使用随机生成器和决策工具来打破平局并选择选项。" },
+  ],
+  "unicode-detector": [
+    { title: "Clean Up Content", titleZh: "清理内容", icon: "🧹", description: "Remove unwanted characters, sort lines, and format text for publishing.", descriptionZh: "移除多余字符、排序行并格式化文本以供发布。" },
+    { title: "Process Data Files", titleZh: "处理数据文件", icon: "📋", description: "Deduplicate entries, reverse text, or extract specific patterns from large text.", descriptionZh: "去除重复项、反转文本或从大段文本中提取特定模式。" },
+    { title: "Prepare Documentation", titleZh: "准备文档", icon: "📝", description: "Count words, check formatting, and transform text for technical writing.", descriptionZh: "统计字数、检查格式并转换文本用于技术写作。" },
+  ],
+  "weight-converter": [
+    { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
+    { title: "Engineering Calculations", titleZh: "工程计算", icon: "🔧", description: "Convert units for technical specifications and engineering documentation.", descriptionZh: "为技术规格和工程文档转换单位。" },
+    { title: "Travel Planning", titleZh: "旅行规划", icon: "✈️", description: "Convert currencies, distances, and temperatures for international travel.", descriptionZh: "为国际旅行转换货币、距离和温度。" },
+  ],
+  "whois-lookup": [
+    { title: "Troubleshoot DNS", titleZh: "排查 DNS", icon: "🌐", description: "Look up DNS records and diagnose domain resolution issues.", descriptionZh: "查询 DNS 记录并诊断域名解析问题。" },
+    { title: "Plan Network Architecture", titleZh: "规划网络架构", icon: "🏗️", description: "Calculate subnets, CIDR blocks, and IP ranges for network design.", descriptionZh: "计算子网、CIDR 块和 IP 范围用于网络设计。" },
+    { title: "Verify Domain Ownership", titleZh: "验证域名所有权", icon: "✅", description: "Check WHOIS records and RDAP data to confirm domain registration details.", descriptionZh: "检查 WHOIS 记录和 RDAP 数据以确认域名注册详情。" },
+  ],
 };
 
 export function getToolScenarios(slug: string): ToolScenario[] {

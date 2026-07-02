@@ -517,6 +517,585 @@ const comparisons: Record<string, ToolComparison> = {
       "Instant results",
     ],
   },
+
+
+  // --- Additional comparisons ---
+  "age-calculator": {
+    toolName: "Age Calculator",
+    competitors: [
+      { name: "Calculator.net", url: "#", pros: ["Wide range"], cons: ["Ad-heavy", "Outdated design", "No dark mode"] },
+      { name: "GoodCalculators", url: "#", pros: ["Many calculators"], cons: ["Slow loading", "Ads", "Limited customization"] },
+    ],
+    toolboxProAdvantages: ["Dark mode support", "Instant results with no server round-trip", "Works offline once loaded"],
+  },
+  "area-converter": {
+    toolName: "Area Converter",
+    competitors: [
+      { name: "RapidTables", url: "#", pros: ["Many unit types"], cons: ["Ad-heavy", "Outdated UI", "No customization"] },
+      { name: "UnitConverters.net", url: "#", pros: ["Extensive units"], cons: ["Cluttered interface", "No dark mode", "Sluggish"] },
+    ],
+    toolboxProAdvantages: ["Dark mode support", "Instant results with no server round-trip", "Works offline once loaded"],
+  },
+  "aspect-ratio-calculator": {
+    toolName: "Aspect Ratio Calculator",
+    competitors: [
+      { name: "Calculator.net", url: "#", pros: ["Wide range"], cons: ["Ad-heavy", "Outdated design", "No dark mode"] },
+      { name: "GoodCalculators", url: "#", pros: ["Many calculators"], cons: ["Slow loading", "Ads", "Limited customization"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "audio-converter": {
+    toolName: "Audio Converter",
+    competitors: [
+      { name: "Audacity", url: "#", pros: ["Full-featured", "Open source"], cons: ["Desktop install required", "Steep learning curve", "Overkill for simple tasks"] },
+      { name: "OnlineAudioConverter", url: "#", pros: ["Quick"], cons: ["Uploads files", "Format limitations", "Ad-heavy"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "audio-cutter": {
+    toolName: "Audio Cutter",
+    competitors: [
+      { name: "Audacity", url: "#", pros: ["Full-featured", "Open source"], cons: ["Desktop install required", "Steep learning curve", "Overkill for simple tasks"] },
+      { name: "OnlineAudioConverter", url: "#", pros: ["Quick"], cons: ["Uploads files", "Format limitations", "Ad-heavy"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "audio-merger": {
+    toolName: "Audio Merger",
+    competitors: [
+      { name: "Audacity", url: "#", pros: ["Full-featured", "Open source"], cons: ["Desktop install required", "Steep learning curve", "Overkill for simple tasks"] },
+      { name: "OnlineAudioConverter", url: "#", pros: ["Quick"], cons: ["Uploads files", "Format limitations", "Ad-heavy"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "barcode-generator": {
+    toolName: "Barcode & QR Code Generator",
+    competitors: [
+      { name: "RapidTables", url: "#", pros: ["Many unit types"], cons: ["Ad-heavy", "Outdated UI", "No customization"] },
+      { name: "UnitConverters.net", url: "#", pros: ["Extensive units"], cons: ["Cluttered interface", "No dark mode", "Sluggish"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "base64-encode-decode": {
+    toolName: "Base64 Encoder/Decoder",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["Dark mode support", "Instant results with no server round-trip", "Works offline once loaded"],
+  },
+  "binary-to-text": {
+    toolName: "Binary to Text",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "caesar-cipher": {
+    toolName: "Caesar Cipher",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "color-blindness-simulator": {
+    toolName: "Color Blindness Simulator",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "color-palette": {
+    toolName: "Color Palette Generator",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["No registration or signup required", "No file size limits beyond your browser's memory", "Dark mode support"],
+  },
+  "countdown-timer": {
+    toolName: "Countdown Timer",
+    competitors: [
+      { name: "Calculator.net", url: "#", pros: ["Wide range"], cons: ["Ad-heavy", "Outdated design", "No dark mode"] },
+      { name: "GoodCalculators", url: "#", pros: ["Many calculators"], cons: ["Slow loading", "Ads", "Limited customization"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "cron-parser": {
+    toolName: "Cron Expression Parser",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "css-minifier": {
+    toolName: "CSS Minifier",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "css-shadow": {
+    toolName: "CSS Box Shadow Generator",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "data-size-converter": {
+    toolName: "Data Size Converter",
+    competitors: [
+      { name: "RapidTables", url: "#", pros: ["Many unit types"], cons: ["Ad-heavy", "Outdated UI", "No customization"] },
+      { name: "UnitConverters.net", url: "#", pros: ["Extensive units"], cons: ["Cluttered interface", "No dark mode", "Sluggish"] },
+    ],
+    toolboxProAdvantages: ["Dark mode support", "Instant results with no server round-trip", "Works offline once loaded"],
+  },
+  "days-between": {
+    toolName: "Days Between Dates",
+    competitors: [
+      { name: "Calculator.net", url: "#", pros: ["Wide range"], cons: ["Ad-heavy", "Outdated design", "No dark mode"] },
+      { name: "GoodCalculators", url: "#", pros: ["Many calculators"], cons: ["Slow loading", "Ads", "Limited customization"] },
+    ],
+    toolboxProAdvantages: ["No registration or signup required", "No file size limits beyond your browser's memory", "Dark mode support"],
+  },
+  "decision-maker": {
+    toolName: "Decision Maker",
+    competitors: [
+      { name: "Calculator.net", url: "#", pros: ["Wide range"], cons: ["Ad-heavy", "Outdated design", "No dark mode"] },
+      { name: "GoodCalculators", url: "#", pros: ["Many calculators"], cons: ["Slow loading", "Ads", "Limited customization"] },
+    ],
+    toolboxProAdvantages: ["No registration or signup required", "No file size limits beyond your browser's memory", "Dark mode support"],
+  },
+  "emoji-remover": {
+    toolName: "Emoji Remover",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["100% client-side — your data never leaves your browser", "No registration or signup required", "No file size limits beyond your browser's memory"],
+  },
+  "gif-maker": {
+    toolName: "GIF Maker",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "html-preview": {
+    toolName: "HTML Preview",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "html-tag-stripper": {
+    toolName: "HTML Tag Stripper",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["100% client-side — your data never leaves your browser", "No registration or signup required", "No file size limits beyond your browser's memory"],
+  },
+  "html-to-jsx": {
+    toolName: "HTML to JSX Converter",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "http-status-codes": {
+    toolName: "HTTP Status Codes",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "image-border": {
+    toolName: "Image Border",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["No registration or signup required", "No file size limits beyond your browser's memory", "Dark mode support"],
+  },
+  "image-collage": {
+    toolName: "Photo Collage Maker",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "image-converter": {
+    toolName: "Image Format Converter",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "image-cropper": {
+    toolName: "Image Cropper",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "image-filters": {
+    toolName: "Image Filters",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["Dark mode support", "Instant results with no server round-trip", "Works offline once loaded"],
+  },
+  "image-flip": {
+    toolName: "Image Flip & Rotate",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "image-invert": {
+    toolName: "Image Invert",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "image-merge": {
+    toolName: "Image Merger",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["Dark mode support", "Instant results with no server round-trip", "Works offline once loaded"],
+  },
+  "image-splitter": {
+    toolName: "Image Splitter",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "image-to-base64": {
+    toolName: "Image to Base64",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "image-to-pdf": {
+    toolName: "Image to PDF",
+    competitors: [
+      { name: "iLovePDF", url: "#", pros: ["Popular", "Many features"], cons: ["Uploads files to server", "File size limits", "Premium paywall"] },
+      { name: "Smallpdf", url: "#", pros: ["Clean UI"], cons: ["2 tasks per day free", "Uploads to cloud", "Privacy concerns"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "image-to-sketch": {
+    toolName: "Image to Sketch",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["100% client-side — your data never leaves your browser", "No registration or signup required", "No file size limits beyond your browser's memory"],
+  },
+  "image-watermark": {
+    toolName: "Image Watermark",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "json-diff": {
+    toolName: "JSON Diff",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "json-to-typescript": {
+    toolName: "JSON to TypeScript",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "json-to-yaml": {
+    toolName: "JSON to YAML Converter",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["No registration or signup required", "No file size limits beyond your browser's memory", "Dark mode support"],
+  },
+  "jwt-generator": {
+    toolName: "JWT Generator",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "length-converter": {
+    toolName: "Length Converter",
+    competitors: [
+      { name: "RapidTables", url: "#", pros: ["Many unit types"], cons: ["Ad-heavy", "Outdated UI", "No customization"] },
+      { name: "UnitConverters.net", url: "#", pros: ["Extensive units"], cons: ["Cluttered interface", "No dark mode", "Sluggish"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "meme-generator": {
+    toolName: "Meme Generator",
+    competitors: [
+      { name: "ILoveIMG", url: "#", pros: ["Popular", "Fast"], cons: ["Uploads to server", "File size limits", "Watermark on free tier"] },
+      { name: "TinyPNG", url: "#", pros: ["Good compression"], cons: ["Uploads required", "20 image limit", "No editing features"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "morse-code-converter": {
+    toolName: "Morse Code Converter",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "number-base-converter": {
+    toolName: "Number Base Converter",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "online-notepad": {
+    toolName: "Online Notepad",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "palindrome-checker": {
+    toolName: "Palindrome Checker",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["Dark mode support", "Instant results with no server round-trip", "Works offline once loaded"],
+  },
+  "pdf-page-remover": {
+    toolName: "PDF Page Remover",
+    competitors: [
+      { name: "iLovePDF", url: "#", pros: ["Popular", "Many features"], cons: ["Uploads files to server", "File size limits", "Premium paywall"] },
+      { name: "Smallpdf", url: "#", pros: ["Clean UI"], cons: ["2 tasks per day free", "Uploads to cloud", "Privacy concerns"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "pdf-rotator": {
+    toolName: "PDF Rotator",
+    competitors: [
+      { name: "iLovePDF", url: "#", pros: ["Popular", "Many features"], cons: ["Uploads files to server", "File size limits", "Premium paywall"] },
+      { name: "Smallpdf", url: "#", pros: ["Clean UI"], cons: ["2 tasks per day free", "Uploads to cloud", "Privacy concerns"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "qr-reader": {
+    toolName: "QR Code Reader",
+    competitors: [
+      { name: "RapidTables", url: "#", pros: ["Many unit types"], cons: ["Ad-heavy", "Outdated UI", "No customization"] },
+      { name: "UnitConverters.net", url: "#", pros: ["Extensive units"], cons: ["Cluttered interface", "No dark mode", "Sluggish"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "random-number-generator": {
+    toolName: "Random Number Generator",
+    competitors: [
+      { name: "Calculator.net", url: "#", pros: ["Wide range"], cons: ["Ad-heavy", "Outdated design", "No dark mode"] },
+      { name: "GoodCalculators", url: "#", pros: ["Many calculators"], cons: ["Slow loading", "Ads", "Limited customization"] },
+    ],
+    toolboxProAdvantages: ["100% client-side — your data never leaves your browser", "No registration or signup required", "No file size limits beyond your browser's memory"],
+  },
+  "random-string-generator": {
+    toolName: "Random String Generator",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["No registration or signup required", "No file size limits beyond your browser's memory", "Dark mode support"],
+  },
+  "roman-numeral": {
+    toolName: "Roman Numeral Converter",
+    competitors: [
+      { name: "Calculator.net", url: "#", pros: ["Wide range"], cons: ["Ad-heavy", "Outdated design", "No dark mode"] },
+      { name: "GoodCalculators", url: "#", pros: ["Many calculators"], cons: ["Slow loading", "Ads", "Limited customization"] },
+    ],
+    toolboxProAdvantages: ["100% client-side — your data never leaves your browser", "No registration or signup required", "No file size limits beyond your browser's memory"],
+  },
+  "speed-converter": {
+    toolName: "Speed Converter",
+    competitors: [
+      { name: "RapidTables", url: "#", pros: ["Many unit types"], cons: ["Ad-heavy", "Outdated UI", "No customization"] },
+      { name: "UnitConverters.net", url: "#", pros: ["Extensive units"], cons: ["Cluttered interface", "No dark mode", "Sluggish"] },
+    ],
+    toolboxProAdvantages: ["100% client-side — your data never leaves your browser", "No registration or signup required", "No file size limits beyond your browser's memory"],
+  },
+  "sql-formatter": {
+    toolName: "SQL Formatter",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["Dark mode support", "Instant results with no server round-trip", "Works offline once loaded"],
+  },
+  "string-escaper": {
+    toolName: "String Escaper/Unescaper",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["No file size limits beyond your browser's memory", "Dark mode support", "Instant results with no server round-trip"],
+  },
+  "svg-to-png": {
+    toolName: "SVG to PNG Converter",
+    competitors: [
+      { name: "RapidTables", url: "#", pros: ["Many unit types"], cons: ["Ad-heavy", "Outdated UI", "No customization"] },
+      { name: "UnitConverters.net", url: "#", pros: ["Extensive units"], cons: ["Cluttered interface", "No dark mode", "Sluggish"] },
+    ],
+    toolboxProAdvantages: ["No registration or signup required", "No file size limits beyond your browser's memory", "Dark mode support"],
+  },
+  "temperature-converter": {
+    toolName: "Temperature Converter",
+    competitors: [
+      { name: "RapidTables", url: "#", pros: ["Many unit types"], cons: ["Ad-heavy", "Outdated UI", "No customization"] },
+      { name: "UnitConverters.net", url: "#", pros: ["Extensive units"], cons: ["Cluttered interface", "No dark mode", "Sluggish"] },
+    ],
+    toolboxProAdvantages: ["100% client-side — your data never leaves your browser", "No registration or signup required", "No file size limits beyond your browser's memory"],
+  },
+  "text-deduplicator": {
+    toolName: "Line Deduplicator",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["No registration or signup required", "No file size limits beyond your browser's memory", "Dark mode support"],
+  },
+  "text-repeater": {
+    toolName: "Text Repeater",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "text-reverser": {
+    toolName: "Text Reverser",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "text-sorter": {
+    toolName: "Text Sorter",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["Dark mode support", "Instant results with no server round-trip", "Works offline once loaded"],
+  },
+  "text-statistics": {
+    toolName: "Text Statistics",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["No registration or signup required", "No file size limits beyond your browser's memory", "Dark mode support"],
+  },
+  "text-to-binary": {
+    toolName: "Text to Binary Converter",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "text-to-slug": {
+    toolName: "Text to URL Slug",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "timezone-converter": {
+    toolName: "Time Zone Converter",
+    competitors: [
+      { name: "Calculator.net", url: "#", pros: ["Wide range"], cons: ["Ad-heavy", "Outdated design", "No dark mode"] },
+      { name: "GoodCalculators", url: "#", pros: ["Many calculators"], cons: ["Slow loading", "Ads", "Limited customization"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "tip-calculator": {
+    toolName: "Tip Calculator",
+    competitors: [
+      { name: "Calculator.net", url: "#", pros: ["Wide range"], cons: ["Ad-heavy", "Outdated design", "No dark mode"] },
+      { name: "GoodCalculators", url: "#", pros: ["Many calculators"], cons: ["Slow loading", "Ads", "Limited customization"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "unicode-detector": {
+    toolName: "Unicode Character Detector",
+    competitors: [
+      { name: "OnlineTextTools.com", url: "#", pros: ["Variety of text tools"], cons: ["Ads everywhere", "Limited batch", "No dark mode"] },
+      { name: "TextFixer.com", url: "#", pros: ["Simple"], cons: ["Outdated UI", "Slow processing", "Limited features"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "url-encoder-decoder": {
+    toolName: "URL Encoder/Decoder",
+    competitors: [
+      { name: "JSONLint.com", url: "#", pros: ["Well-known", "Simple interface"], cons: ["Limited features", "No file upload", "Ads heavy"] },
+      { name: "FreeFormatter.com", url: "#", pros: ["Multiple tools"], cons: ["Slow", "Uploads data to server", "Cluttered UI"] },
+    ],
+    toolboxProAdvantages: ["Instant results with no server round-trip", "Works offline once loaded", "100% client-side — your data never leaves your browser"],
+  },
+  "weight-converter": {
+    toolName: "Weight Converter",
+    competitors: [
+      { name: "RapidTables", url: "#", pros: ["Many unit types"], cons: ["Ad-heavy", "Outdated UI", "No customization"] },
+      { name: "UnitConverters.net", url: "#", pros: ["Extensive units"], cons: ["Cluttered interface", "No dark mode", "Sluggish"] },
+    ],
+    toolboxProAdvantages: ["Works offline once loaded", "100% client-side — your data never leaves your browser", "No registration or signup required"],
+  },
+  "whois-lookup": {
+    toolName: "WHOIS Lookup",
+    competitors: [
+      { name: "MXToolbox", url: "#", pros: ["Comprehensive"], cons: ["Requires signup for some features", "Limited free queries", "Ad-heavy"] },
+      { name: "DNSChecker.org", url: "#", pros: ["Global DNS lookup"], cons: ["Limited to DNS only", "No RDAP/WHOIS", "No privacy features"] },
+    ],
+    toolboxProAdvantages: ["100% client-side — your data never leaves your browser", "No registration or signup required", "No file size limits beyond your browser's memory"],
+  },
 };
 
 export function getToolComparison(slug: string): ToolComparison | undefined {
