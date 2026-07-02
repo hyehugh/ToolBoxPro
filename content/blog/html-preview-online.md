@@ -54,4 +54,78 @@ Navigate to the HTML Preview tool at [trytoolboxpro.com/tools/html-preview](/too
 
 #### Step 2: Write Your HTML
 
-Start typing your HTML in the editor panel. The tool supports the full HTML5 specification, including semantic elements like \`<header>\
+Start typing your HTML in the editor panel. The tool supports the full HTML5 specification, including semantic elements like `<header>`, `<nav>`, `<article>`, `<section>`, and `<footer>`. You can also include inline CSS in `<style>` tags and JavaScript in `<script>` tags — everything renders together in the preview panel.
+
+Try this example to get started:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Page</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    h1 { color: #2563eb; }
+    .card { border: 1px solid #ddd; padding: 1rem; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Hello, World!</h1>
+  <div class="card">
+    <p>This is a live preview of my HTML code.</p>
+  </div>
+</body>
+</html>
+```
+
+As you type, the preview panel on the right updates instantly. No need to save or click a button — every character you type is reflected immediately.
+
+#### Step 3: Add CSS Styling
+
+Insert a `<style>` block in the `<head>` section to style your HTML. The preview updates in real time as you adjust colors, spacing, fonts, and layout. Try changing the `color` property on `h1` or adjusting the `border-radius` — you'll see the changes appear the moment you type them.
+
+This instant feedback loop is especially useful when fine-tuning responsive layouts. You can quickly test different flexbox configurations, grid templates, or media queries without the overhead of a full development environment.
+
+#### Step 4: Add JavaScript Interactivity
+
+Include a `<script>` tag to add interactivity. The preview sandbox safely executes JavaScript, so you can test event listeners, DOM manipulation, and API calls. If there's a JavaScript error, the console output panel will display the error message — no need to open browser DevTools.
+
+```html
+<script>
+  document.querySelector('button').addEventListener('click', () => {
+    alert('Button clicked!');
+  });
+</script>
+```
+
+#### Step 5: Test Responsive Layouts
+
+Use the viewport toggle to switch between mobile, tablet, and desktop widths. This lets you verify that your responsive design works correctly across different screen sizes — all without resizing your browser window or using external tools.
+
+#### Step 6: Copy or Download
+
+Once you're happy with the result, use the copy button to grab the HTML to your clipboard, or download it as a `.html` file. This is perfect for quickly sharing prototypes with teammates or saving snippets for future use.
+
+### Common Use Cases
+
+**Learning web development.** Beginners can experiment with HTML tags, CSS properties, and JavaScript without installing any tools. The instant visual feedback accelerates learning — you see exactly what each tag and property does.
+
+**Prototyping UI components.** Designers and frontend developers can quickly mock up buttons, cards, navigation bars, or entire page layouts. Test how elements look and behave before committing them to a production codebase.
+
+**Debugging HTML rendering issues.** If a webpage looks wrong in production, paste the HTML into the preview tool to isolate the problem. Strip away backend templates and server logic — focus purely on the markup and styles.
+
+**Testing code snippets from documentation.** When a tutorial or Stack Overflow answer includes HTML code, paste it into the preview tool to see exactly what it produces. No need to create temporary files or set up a project.
+
+**Sharing quick demos.** Need to show a client or teammate a layout idea? Build it in the preview tool and share the downloaded HTML file. No environment setup required on their end.
+
+### Privacy and Security
+
+The HTML Preview tool processes everything locally in your browser using a sandboxed iframe. Your code is never sent to any server, making it safe to test proprietary layouts, internal tools, or sensitive markup. The sandbox also prevents malicious scripts from affecting your browser or accessing your data.
+
+### Conclusion
+
+A real-time HTML preview tool eliminates the friction of traditional web development workflows. No servers to set up, no files to manage, no reload cycles — just pure, instant feedback on your code. Whether you're learning HTML for the first time or prototyping a complex layout, the live preview approach saves time and makes development more enjoyable.
+
+Ready to try it? Head over to our [HTML Preview tool](/tools/html-preview) and start building.

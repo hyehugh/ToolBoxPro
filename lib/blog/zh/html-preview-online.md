@@ -42,4 +42,78 @@ HTML 是 Web 的基石。你访问的每一个网页 —— 从简单的博客�
 
 #### 第二步：编写 HTML
 
-在编辑器面板中开始输入你的 HTML。该工具支持完整的 HTML5 规范，包括 `<header>` 等语义化元素。
+在编辑器面板中开始输入你的 HTML。该工具支持完整的 HTML5 规范，包括 `<header>`、`<nav>`、`<article>`、`<section>`、`<footer>` 等语义化元素。你还可以在 `<style>` 标签中包含内联 CSS，在 `<script>` 标签中包含 JavaScript —— 所有内容都会一起在预览面板中渲染。
+
+试试这个示例代码：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Page</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    h1 { color: #2563eb; }
+    .card { border: 1px solid #ddd; padding: 1rem; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Hello, World!</h1>
+  <div class="card">
+    <p>This is a live preview of my HTML code.</p>
+  </div>
+</body>
+</html>
+```
+
+当你输入时，右侧的预览面板会即时更新。无需保存或点击按钮 —— 你输入的每个字符都会立即反映出来。
+
+#### 第三步：添加 CSS 样式
+
+在 `<head>` 部分插入 `<style>` 块来为 HTML 添加样式。当你调整颜色、间距、字体和布局时，预览会实时更新。试着改变 `h1` 的 `color` 属性或调整 `border-radius` —— 你会看到变化在你输入的那一刻就出现了。
+
+这种即时反馈循环在微调响应式布局时特别有用。你可以快速测试不同的 flexbox 配置、grid 模板或媒体查询，而无需搭建完整的开发环境。
+
+#### 第四步：添加 JavaScript 交互
+
+加入 `<script>` 标签来添加交互功能。预览沙箱会安全地执行 JavaScript，因此你可以测试事件监听器、DOM 操作和 API 调用。如果出现 JavaScript 错误，控制台输出面板会显示错误信息 —— 无需打开浏览器开发者工具。
+
+```html
+<script>
+  document.querySelector('button').addEventListener('click', () => {
+    alert('Button clicked!');
+  });
+</script>
+```
+
+#### 第五步：测试响应式布局
+
+使用视口切换功能在手机、平板和桌面宽度之间切换。这让你可以验证响应式设计在不同屏幕尺寸下是否正常工作 —— 全程无需调整浏览器窗口大小或使用外部工具。
+
+#### 第六步：复制或下载
+
+对结果满意后，使用复制按钮将 HTML 复制到剪贴板，或将其下载为 `.html` 文件。这非常适合快速与团队成员分享原型或保存代码片段供将来使用。
+
+### 常见使用场景
+
+**学习 Web 开发。** 初学者可以尝试 HTML 标签、CSS 属性和 JavaScript，无需安装任何工具。即时视觉反馈加速了学习过程 —— 你可以清楚地看到每个标签和属性的作用。
+
+**原型化 UI 组件。** 设计师和前端开发者可以快速制作按钮、卡片、导航栏或整个页面布局的原型。在将元素提交到生产代码库之前，先测试它们的外观和行为。
+
+**调试 HTML 渲染问题。** 如果某个网页在生产环境中显示不正常，将 HTML 粘贴到预览工具中可以隔离问题。去掉后端模板和服务器逻辑 —— 只专注于标记和样式。
+
+**测试文档中的代码片段。** 当教程或 Stack Overflow 回答中包含 HTML 代码时，将其粘贴到预览工具中，看看它实际会产生什么效果。无需创建临时文件或搭建项目。
+
+**分享快速演示。** 需要向客户或同事展示布局想法？在预览工具中构建它，然后分享下载的 HTML 文件。对方不需要任何环境配置。
+
+### 隐私与安全
+
+HTML 预览工具在浏览器中使用沙箱化 iframe 本地处理所有内容。你的代码永远不会发送到任何服务器，因此可以安全地测试专有布局、内部工具或敏感标记。沙箱还能防止恶意脚本影响你的浏览器或访问你的数据。
+
+### 结论
+
+实时 HTML 预览工具消除了传统 Web 开发工作流程中的摩擦。无需搭建服务器、无需管理文件、无需刷新循环 —— 只需对代码的纯粹即时反馈。无论你是第一次学习 HTML 还是正在原型化复杂布局，实时预览的方式都能节省时间，让开发过程更愉快。
+
+准备好尝试了吗？前往我们的 [HTML 预览工具](/tools/html-preview)，开始构建吧。
