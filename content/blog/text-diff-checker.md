@@ -132,3 +132,72 @@ Modern implementations also use **Myers' algorithm**, which is optimized for cod
 **Are my texts uploaded to a server?** No. Everything runs in your browser using JavaScript. Your data never leaves your device.
 
 **What's the difference between unified diff and side-by-side?** Unified diff shows changes in a single column with context lines. Side-by-side (which our tool uses) shows both versions simultaneously — easier to read for most use cases.
+
+## Diff Algorithms: A Brief Introduction
+
+Understanding the algorithm behind your diff tool helps you interpret results. The two most common approaches are:
+
+### Longest Common Subsequence (LCS)
+
+LCS finds the longest sequence of lines (or characters) that appear in both texts in the same relative order. Everything not in that sequence is marked as added or removed. LCS is intuitive but can produce noisy diffs when lines are reordered — a moved block shows as a deletion plus an addition rather than a move.
+
+### Myers' Algorithm
+
+Developed by Eugene Myers in 1986, this algorithm finds the shortest edit script (minimum insertions and deletions) between two sequences. Git uses Myers' algorithm by default because it produces clean, contiguous diff blocks — it prefers grouping changes together rather than scattering single-line diffs across the output. Most modern diff tools, including ours, use a Myers-based implementation for readability.
+
+### Patience Diff
+
+A lesser-known variant that anchors on unique matching lines (lines that appear exactly once in both texts) and then recursively diffs between those anchors. Patience diff excels at reordering changes — moved functions or paragraphs show up cleanly rather than as delete-then-add pairs. It's available as `git diff --patience` and is preferred for refactoring commits.
+
+## Code Review Best Practices with Diff Tools
+
+1. **Review in small batches** — Studies show developers miss defects when reviewing more than 400 lines of diff at once. Break large PRs into reviewable chunks (under 300 lines changed) so each diff is scannable in under 15 minutes.
+
+2. **Focus on logic, not style** — Use the diff to spot logic errors, missing edge cases, and security issues. Style nitpicks should be handled by linters (ESLint, Prettier, RuboCop) configured to run automatically, not by human reviewers staring at highlighted lines.
+
+3. **Check the "why," not just the "what"** — A diff shows *what* changed. The PR description and commit messages should explain *why*. If a diff removes error handling, the reviewer needs context on whether it's intentional (dead code cleanup) or accidental.
+
+4. **Verify tests cover changed code** — Green-highlighted additions should include corresponding test additions. If new code appears without tests, flag it in review.
+
+## Version Control Integration
+
+Standalone diff checkers complement Git without replacing it. Here's how they fit into a version control workflow:
+
+- **Pre-commit review** — Paste your working copy against `HEAD` in a diff checker before committing. Catch unintended changes (debug prints, config tweaks) before they enter the repository.
+- **Conflict resolution** — During a merge conflict, use a side-by-side diff to compare both branches' versions of a conflicted file. It's faster than reading Git's `<<<<<<<` markers inline.
+- **Changelog generation** — Diff the current release tag against the previous one. The highlighted additions form the basis of your changelog entries.
+
+```bash
+# Generate a diff file for offline comparison
+git diff main..feature-branch > changes.diff
+# Paste changes.diff into a diff checker for readable review
+```
+
+## Common Mistakes to Avoid
+
+1. **Comparing with mismatched line endings** — If one text uses CRLF (Windows) and the other uses LF (Unix), every line shows as changed. Normalize line endings before comparing: run `dos2unix` or configure your editor to use consistent endings.
+
+2. **Ignoring whitespace-only changes** — Tabs vs. spaces, trailing whitespace, and indentation shifts create false positives. Enable "ignore whitespace" mode if your diff tool supports it, or run a formatter on both texts first.
+
+3. **Comparing out of order** — If you paste the new version on the left and the old on the right, additions appear as deletions and vice versa. Always put the original on the left, modified on the right.
+
+## Real-World Examples
+
+### Detecting Plagiarism in Student Submissions
+
+Paste two essays side by side. Matching paragraphs show as unchanged (white), while paraphrased sections show as modified (yellow word-level highlights). This visual approach is faster than manual reading for spotting copied-and-lightly-edited content.
+
+### Auditing Configuration File Changes
+
+Compare yesterday's `nginx.conf` against today's. A single changed character in a `server_name` or `proxy_pass` directive can break production. The character-level diff catches it instantly.
+
+## Comparison: Diff Checkers vs. Git Diff vs. IDE Diff
+
+| Tool | Best For | Speed | Setup Required |
+|------|----------|-------|----------------|
+| **Online Diff Checker** | Quick one-off comparisons, no repo | Instant | None |
+| **Git Diff** | Versioned code, commit history | Fast | Git repository |
+| **IDE Diff (VS Code, IntelliJ)** | Local file comparison, merge conflicts | Fast | IDE open |
+| **Meld / Beyond Compare** | Folder-level diffs, 3-way merges | Medium | Desktop install |
+
+**When to use what:** Reach for an online diff checker for quick, ad-hoc text comparisons (no setup, works on any device). Use Git diff for versioned code review. Use IDE diff tools for local file comparisons and merge conflict resolution within your development environment.

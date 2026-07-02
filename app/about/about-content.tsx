@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useLocale } from "@/lib/i18n/context";
 
 export function AboutContent() {
-  const { t, locale } = useLocale();
+  const { locale } = useLocale();
   const isZh = locale === "zh";
 
   return (

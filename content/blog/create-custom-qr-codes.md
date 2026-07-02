@@ -77,3 +77,38 @@ QR codes can be exploited for "quishing" (QR + phishing) attacks — malicious c
 **What colors can a QR code be?** Any dark color on a light background works — the scanner detects contrast, not specific colors. Minimum contrast ratio is 3:1 (recommended 4.5:1).
 
 **Are QR codes patent-protected?** No. Denso Wave chose not to enforce its patents. QR codes are an open standard (ISO/IEC 18004) free to generate and scan without licensing.
+
+## Advanced Tips
+
+### Error Correction Level Selection
+
+QR codes use Reed-Solomon error correction with four levels. Understanding when to use each one is critical for production output:
+
+- **Level L (7% recovery):** Use only for clean digital environments — screen-to-screen scanning with no risk of physical damage. Smallest module footprint, fastest encoding.
+- **Level M (15% recovery):** The default in most generators. Good balance for standard printed QR codes on business cards, flyers, and product packaging where moderate wear is expected.
+- **Level Q (25% recovery):** Required when embedding a logo. The error correction compensates for the data modules obscured by the logo image. Also recommended for industrial environments where the code may accumulate dust or minor scratches.
+- **Level H (30% recovery):** Use for outdoor signage, warehouse labels, or any surface exposed to weather, chemicals, or abrasion. Also the safest choice when you plan heavy visual customization (inverted colors, rounded modules, artistic patterns).
+
+### Logo Embedding Best Practices
+
+To embed a logo without breaking scannability: crop the logo to a square, center it, and keep its footprint under **20% of the total QR area** (15% is safer). Convert the logo to a monochrome or limited-color version — full-color logos with gradients reduce contrast against the QR modules. Add a **quiet zone** (white margin) of at least 4 modules around the entire code, and a solid white background patch behind the logo so it doesn't blend into the data pattern. Test with at least three different scanner apps after embedding.
+
+### Scanning Distance Optimization
+
+The relationship between physical size and scannable distance follows a **10:1 rule** — the scanning distance is roughly 10 times the QR code's physical width. A 2-inch QR code scans reliably from about 20 inches (50 cm). For a billboard scanned from 5 meters away, you need a code at least 50 cm wide. Module density also matters: Version 10 (57×57 modules) requires more physical space per module than Version 4 (33×33) for the same scanning distance. When in doubt, generate a smaller version and scale the physical print larger rather than cramming more data into a small print.
+
+## Common Mistakes
+
+- **Using dark backgrounds with light codes** — inverted QR codes fail on many scanners. Always use dark modules on a light background.
+- **Forgetting the quiet zone** — placing the code flush against text or graphics causes scan failures. Leave 4 modules of whitespace on every side.
+- **Linking to non-mobile URLs** — if the destination page isn't mobile-friendly, the QR campaign wastes the scan. Always test the landing page on a phone.
+- **Scaling raster images** — exporting as PNG then enlarging causes pixelation. Export as SVG or generate at the target print resolution (300 DPI minimum).
+- **Not testing on real printed material** — on-screen testing misses reflection, texture, and lighting issues. Always scan a physical proof before mass production.
+
+## Real-World Use Cases
+
+- **Restaurant menus:** Generate a static QR linking to a menu URL, print on table tents. Use Level Q for coffee spills and frequent handling.
+- **Event ticketing:** Dynamic QR codes with unique IDs per ticket. The server validates each scan and rejects duplicates — perfect for anti-counterfeiting.
+- **Equipment maintenance tags:** Industrial QR codes on machinery linking to service logs, manuals, and parts lists. Use Level H and laminate for longevity.
+- **Real estate signage:** Large-format QR on "For Sale" signs linking to virtual tours. Size for 2–3 meter scanning distance (at least 15 cm wide).
+- **Wi-Fi sharing:** Encode `WIFI:T:WPA;S:NetworkName;P:password;;` so guests scan to auto-join. No typing required.

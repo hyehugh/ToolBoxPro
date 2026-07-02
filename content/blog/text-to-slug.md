@@ -150,3 +150,43 @@ function slugify(text) {
 **Can I change a slug after publishing?** You can, but you should set up a 301 redirect from the old URL to the new one. Otherwise, any links to the old URL will break.
 
 **Does casing matter in URLs?** While web servers typically treat URLs case-insensitively, lowercase slugs are the universal convention. Mixed-case URLs can cause duplicate content issues.
+
+## Advanced Tips
+
+### Multilingual and Unicode Slug Handling
+
+Generating slugs from non-ASCII text is more nuanced than it appears. Each language has different transliteration rules, and getting them wrong breaks both SEO and usability.
+
+- **Arabic, Hebrew, Cyrillic:** Strip diacritics and transliterate characters. Arabic "مقال" should become a transliterated slug like `maqal`, not raw Unicode that percent-encodes into unreadable strings like `%D9%85%D9%82%D8%A7%D9%84`.
+- **Chinese, Japanese, Korean:** Romanization libraries like `pinyin` (Chinese) or `romaji` (Japanese) convert CJK characters into ASCII-readable slugs. If your CMS doesn't support this, falling back to numeric IDs (`/posts/42`) is safer than raw Unicode.
+- **Spanish, French, German:** Replace accented characters with ASCII equivalents — `ñ`→`n`, `é`→`e`, `ü`→`ue`. The npm `slugify` library and Python `python-slugify` both handle this automatically.
+- **Thai, Arabic, Hindi:** These scripts have no clean ASCII transliteration. Best practice is to use an English keyword-based slug for the article and keep the native title only in the visible H1 and meta title.
+
+Libraries like `@sindresorhus/slugify` (Node) and `python-slugify` (Python) handle most Unicode edge cases out of the box by normalizing to NFKD form before stripping non-ASCII characters.
+
+### SEO Best Practices for URL Structure
+
+- **Put the keyword early:** `/seo-guide-for-beginners` outranks `/2026/03/beginners-guide-to-search-engine-optimization` because the keyword appears at the start of the path.
+- **Avoid stop words:** Strip articles and prepositions — `how-format-json-online` is preferable to `how-to-format-json-online`. Modern search engines ignore them anyway, and shorter URLs get higher click-through rates.
+- **Use hyphens, never underscores:** Google treats hyphens as word separators but underscores as part of the word. `text_to_slug` is read as a single token `texttoslug`.
+- **Keep depth shallow:** URLs deeper than 3 levels (`/blog/category/subcategory/post`) dilute link equity. Flatten to `/blog/post-slug` whenever possible.
+
+### URL Structure Optimization
+
+When migrating or restructuring, map old slugs to new ones with **301 redirects** at the server level (Nginx `return 301`, Apache `Redirect 301`, or Cloudflare Page Rules). Use a canonical tag (`<link rel="canonical">`) on every page to tell search engines which URL is the authoritative version. For pagination, use `?page=2` query strings rather than `/page/2/` path segments — query strings don't fragment crawl budget the way path depth does.
+
+## Common Mistakes
+
+- **Using dates in slugs** — `/2026/03/15/my-post` dates your content and hurts evergreen rankings. Remove the date unless the article is time-sensitive.
+- **Changing slugs without redirects** — every URL change without a 301 loses accumulated link juice and breaks bookmarks.
+- **Too many keywords** — keyword stuffing in slugs (`best-seo-tool-2026-cheap-free-online`) triggers spam signals. One focus keyword is enough.
+- **Inconsistent trailing slashes** — `/about/` and `/about` are treated as duplicate pages. Pick one convention and enforce it server-side with redirects or canonical tags.
+- **Leaving default slugs** — WordPress `?p=123` or Ghost's auto-generated UUID slugs tell search engines nothing about the content.
+
+## Real-World Use Cases
+
+- **E-commerce product pages:** `/products/wireless-mechanical-keyboard` — descriptive, keyword-rich, easy to share.
+- **Multilingual sites:** Use `hreflang` tags with locale-prefixed slugs — `/es/como-hacer-pan`, `/fr/comment-faire-du-pain` — each pointing to the canonical English version.
+- **Documentation sites:** Keep slugs versioned — `/docs/v3/api-reference` — so old links survive major version bumps.
+- **News publications:** Date-based slugs are acceptable here — `/news/2026/07/breaking-story` — because recency is a ranking factor for news queries.
+- **Affiliate review sites:** `/reviews/best-vacuum-2026` — includes the year for freshness signals and the product category for topical relevance.

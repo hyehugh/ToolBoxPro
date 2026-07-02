@@ -193,3 +193,46 @@ Your password **never leaves your device**. Our tool:
 **What does "pwned" mean?** Your password has appeared in a known data breach. Change it immediately and use a unique password for that account.
 
 **Can I use spaces in passwords?** Yes — most systems allow spaces. Passphrases with spaces are excellent. Some legacy systems may strip them, so test first on important accounts.
+
+## Advanced Tips
+
+### Password Manager Comparison
+
+A password manager is the single highest-ROI security tool you can adopt. It generates strong, unique passwords for every site and fills them automatically — you only remember one master password. Here's how the major options compare:
+
+- **Bitwarden:** Open-source, audited, and free for personal use. Premium ($10/year) adds hardware key (YubiKey) support, encrypted file storage, and TOTP code generation. Self-hosting option for full control. Best overall value.
+- **1Password:** Polished cross-platform apps with "Travel Mode" (removes sensitive vaults when crossing borders) and Watchtower (alerts on breached passwords). Subscription-only, starting at $2.99/month. Best for non-technical users who want zero configuration.
+- **KeePassXC:** Fully offline, open-source, stores encrypted database as a local file. No cloud sync — you manage file syncing yourself (Syncthing, Nextcloud). Maximum control, zero subscription cost. Best for privacy-focused power users.
+- **Apple Passwords / Google Password Manager:** Built into iOS/macOS and Chrome/Android respectively. Free and frictionless but limited — no secure notes, no cross-platform sync between Apple and Google, weak sharing features. Fine as a starting point, upgrade to a full manager for serious security.
+
+Whichever you choose, enable the browser extension for auto-fill and use the password generator for every new account. Never reuse a password across sites.
+
+### Two-Factor Authentication (2FA) Setup Guide
+
+2FA adds a second verification step beyond your password. Even if your password leaks, attackers can't log in without the second factor.
+
+**Step 1 — Choose an authenticator app over SMS.** SMS codes are vulnerable to SIM-swapping attacks, where an attacker convinces your carrier to port your number to their device. Use TOTP apps like **Aegis** (Android, open-source), **Raivo** (iOS), or **2FAS** (cross-platform). These generate 30-second codes locally — no network needed.
+
+**Step 2 — Save backup codes.** Every service that offers 2FA also provides one-time backup codes. Print them or store them in your password manager's secure notes. If you lose your phone, these codes are your only way back in.
+
+**Step 3 — Consider a hardware key.** For critical accounts (email, banking, password manager master), a **FIDO2 hardware key** (YubiKey, Google Titan) provides phishing-resistant 2FA. The key verifies the domain, so even a convincing fake login page can't capture your second factor. Hardware keys cost $25–50 and last for years.
+
+### Checking for Password Leaks
+
+Use **Have I Been Pwned** (`haveibeenpwned.com`) — enter your email address to see which data breaches have exposed it. For password checking without sending the actual password to any server, use HIBP's Pwned Passwords API with the k-anonymity model: only the first 5 characters of the password's SHA-1 hash are sent, and the server returns all matching suffixes. Your full password never leaves your device. Many password managers (Bitwarden, 1Password) integrate this check natively — they flag any password that appears in known breach databases and prompt you to change it.
+
+## Common Mistakes
+
+- **Reusing the master password elsewhere** — if any other site leaks it, your entire vault is compromised. The master password must be unique and a long passphrase (4+ random words).
+- **Using SMS for 2FA on high-value accounts** — SIM-swapping attacks are common and effective. Switch to TOTP or hardware keys for email and banking.
+- **Not exporting backup codes** — losing your 2FA device without backup codes means permanent account lockout. Some services (Google) have recovery flows; many don't.
+- **Storing passwords in browser autofill only** — browser-stored passwords are accessible to anyone with physical or malware access to your device. A password manager with a master password adds encryption.
+- **Ignoring breach notifications** — when HIBP or a service emails you about a breach, change that password immediately across all accounts that share it.
+
+## Real-World Use Cases
+
+- **Family security setup:** Set up Bitwarden for the whole family with a shared vault for streaming services and a personal vault for each member. Use the "Organizations" feature to share specific items securely.
+- **Small business access management:** A shared password manager vault lets you revoke access instantly when an employee leaves — no need to change every password. Track who has access to what.
+- **Developer secrets management:** Store API keys, database credentials, and deploy tokens in a password manager with team sharing. Never hardcode secrets in repositories or Slack messages.
+- **Travel security:** Enable Travel Mode (1Password) or temporarily move sensitive items to a local-only vault before crossing borders. Keep a hardware key on your physical keychain.
+- **Account recovery planning:** Designate an emergency contact in your password manager (Bitwarden, 1Password support this). If something happens to you, they gain vault access after a waiting period — no legal battle required.

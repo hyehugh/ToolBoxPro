@@ -78,3 +78,107 @@ Automation scripts (using Python's PyMuPDF, qpdf CLI, or Ghostscript) can merge 
 **How many PDFs can I merge at once?** Online tools typically limit you to 2–10 files. Desktop tools and CLI utilities can merge hundreds or thousands, limited only by system memory and disk space.
 
 **What is the maximum file size for a merged PDF?** Online tools cap at 50–200 MB. Desktop tools support larger files limited only by system resources. PDF/A standards recommend staying under 100 MB for portability.
+
+## Advanced Page Ordering Techniques
+
+Getting page order right before merging saves a post-merge reorganization step:
+
+### Naming Conventions for Predictable Order
+
+Name your source files so they sort alphabetically in the correct sequence:
+
+```
+01_cover_page.pdf
+02_table_of_contents.pdf
+03_introduction.pdf
+04_chapter_1.pdf
+05_chapter_2.pdf
+06_appendix.pdf
+```
+
+Most merge tools process files in the order you add them. Zero-padded numbers (`01_`, `02_`) ensure proper sorting — without padding, `10_` sorts before `2_` alphabetically.
+
+### Interleaving Pages from Multiple Sources
+
+Sometimes you need to alternate pages from different documents (e.g., inserting a translation page after each original page). While most visual merge tools don't support automatic interleaving, command-line tools do:
+
+```bash
+# Interleave pages of two PDFs using qpdf
+qpdf --empty --pages doc1.pdf 1-z,doc2.pdf 1-z -- output.pdf
+```
+
+### Reordering After Merging
+
+If the merged result has pages in the wrong order, you don't need to re-merge from scratch. Use a PDF page reordering tool or qpdf:
+
+```bash
+# Move page 5 to position 2
+qpdf --empty --pages merged.pdf 1,5,2-4,6-z -- reordered.pdf
+```
+
+## File Size Optimization
+
+Merged PDFs often end up larger than necessary. Here's how to keep them lean:
+
+### Before Merging: Source File Optimization
+
+1. **Compress individual PDFs first** — Run each source file through a PDF compressor before merging. Compressing the merged result is less effective because the tool must re-process the entire large file.
+2. **Remove unnecessary pages** — Strip blank pages, cover sheets, or duplicate sections from each source PDF before merging using a split/extract tool.
+3. **Subset-embed fonts** — If creating PDFs from Word or other editors, enable "subset fonts" so only the characters actually used are embedded, not the entire font file.
+
+### After Merging: Compression Strategies
+
+| Compression Level | Size Reduction | Quality Impact | Best For |
+|-------------------|---------------|----------------|----------|
+| **Lossless** | 10–30% | None | Text-heavy documents, legal files |
+| **Medium (150 DPI)** | 40–60% | Minimal (screen viewing) | Email attachments, web sharing |
+| **High (72 DPI)** | 60–80% | Noticeable (fine print blurs) | Archival, quick reference |
+| **JPEG image recompression** | 30–50% | Varies by quality setting | Image-heavy PDFs, scanned docs |
+
+### Tools for Post-Merge Compression
+
+- **Ghostscript** (command-line) — Most powerful, supports granular DPI and image quality control:
+
+```bash
+# Compress to 150 DPI with JPEG quality 80
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+   -dPDFSETTINGS=/ebook -dJPEGQ=80 \
+   -dDownsampleColorImages=true -dColorImageResolution=150 \
+   -o compressed.pdf merged.pdf
+```
+
+- **Online compressors** — Convenient but upload files to servers. Avoid for sensitive documents.
+- **Browser-based tools** — Process locally in the browser, combining privacy with convenience.
+
+## Common Mistakes to Avoid
+
+1. **Merging without checking page orientations** — If one source PDF is landscape and another is portrait, the merged result has jarring orientation flips. Rotate mismatched pages to a consistent orientation before merging using a rotate tool.
+
+2. **Ignoring duplicate cover pages** — When merging reports from different authors, each may include their own cover page or table of contents. Review thumbnails before merging and remove duplicates.
+
+3. **Merging then compressing (instead of compressing then merging)** — Compressing source files individually is faster and more effective. A 50MB file compresses better as five pre-compressed 2MB files than as one merged 10MB file.
+
+4. **Forgetting to verify bookmark navigation** — After merging, open the PDF and test internal links and bookmarks. Some merge tools break cross-document hyperlinks or nest bookmarks incorrectly.
+
+## Real-World Examples
+
+### Assembling a Client Proposal
+
+A consulting firm merges a cover letter (2 pages), company profile (5 pages), project scope (8 pages), pricing table (2 pages), and signed NDA (3 pages) into a single 20-page proposal. They name files with zero-padded prefixes, set all pages to Portrait A4, and compress the result from 18MB to 4MB before emailing — well under most email attachment limits.
+
+### Combining Scanned Medical Records
+
+A patient merges 12 separate scan PDFs (blood test, X-ray report, consultation notes, etc.) into one chronological record for a new doctor. They reorder pages by date, remove duplicate cover sheets from the scanning software, and compress at 150 DPI — clear enough for the doctor to read while keeping the file under 10MB for the patient portal upload limit.
+
+## Comparison: PDF Merging Tools
+
+| Tool | Privacy | File Limit | Page Reordering | Compression | Cost |
+|------|---------|-----------|----------------|-------------|------|
+| **ToolboxPro Merge** | Full (browser-only) | No hard limit | Yes (drag & drop) | No | Free |
+| **ILovePDF** | Server upload | 100 MB | Yes | Yes | Freemium |
+| **PDFsam Basic** | Full (desktop) | None | Yes | No | Free |
+| **Adobe Acrobat Pro** | Full (desktop) | None | Advanced | Yes | Paid |
+| **qpdf (CLI)** | Full | None | Scriptable | No | Free |
+| **Ghostscript** | Full | None | Limited | Yes | Free |
+
+**Recommendation:** For everyday merging with privacy and visual reordering, use a browser-based tool. For batch automation or scripting, qpdf is unmatched. For maximum quality control (compression, OCR, advanced page manipulation), Adobe Acrobat Pro or PDFsam Enhanced are worth the investment for frequent users.

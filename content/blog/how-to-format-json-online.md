@@ -74,4 +74,54 @@ Each serialization format has strengths and weaknesses. Here's a practical compa
 
 **XML** is verbose but powerful. It supports attributes, namespaces, schema validation (XSD), comments, and mixed content (text + child elements). XML excels in document-centric use cases (XHTML, SVG, RSS feeds, SOAP APIs) and environments requiring rigorous validation. The trade-off is significantly more verbose syntax — a simple person record might take 30% more characters than JSON.
 
-**YAML** prioritizes human readability. It uses indentation-based structure (like Python), supports comments, multi-line strings (literal and folded blocks), anchors and aliases (for DRY configs), and native date/time types. YAML is popular for configuration files (Kubernetes, Docker Compose, CI/CD pipelines) but has notorious edge cases — the \`NO\` string being parsed as \`false\
+**YAML** prioritizes human readability. It uses indentation-based structure (like Python), supports comments, multi-line strings (literal and folded blocks), anchors and aliases (for DRY configs), and native date/time types. YAML is popular for configuration files (Kubernetes, Docker Compose, CI/CD pipelines) but has notorious edge cases — the `NO` string being parsed as `false` — that require explicit quoting.
+
+## Advanced Tips
+
+### JSON Schema Validation
+
+Formatting checks syntax but not semantics. JSON Schema lets you define the expected structure — required fields, data types, value ranges — and validate any JSON document against it. A minimal schema for a user object:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "email": { "type": "string", "format": "email" },
+    "age": { "type": "integer", "minimum": 0, "maximum": 150 }
+  },
+  "required": ["name", "email"]
+}
+```
+
+Use `ajv` (Node), `jsonschema` (Python), or online validators like `jsonschemavalidator.net` to test documents. In production APIs, validate every incoming request body against a schema before processing — it catches malformed data at the edge instead of deep in your business logic.
+
+### Handling Large JSON Files
+
+Browser-based formatters choke on files over 5 MB due to `JSON.parse()` memory limits and DOM rendering overhead. Strategies for large payloads:
+
+- **Stream parsing:** Use `oboe.js` or `stream-json` to process events incrementally instead of loading the entire document into memory.
+- **jq for CLI:** Pipe large files through `jq '.'` — it handles gigabyte-scale JSON without loading everything into RAM: `cat huge.json | jq '.' > formatted.json`.
+- **Selective extraction:** If you only need specific fields, use JSONPath or jq filters to extract a subset before formatting: `jq '.users[] | {name, email}' data.json`.
+- **Split arrays:** Break large top-level arrays into chunked files for parallel processing. Each chunk becomes independently parseable.
+
+### API Debugging Workflow
+
+When debugging API responses, a structured workflow saves hours. First, copy the raw response from your browser DevTools (Network tab → right-click → Copy response) or from `curl`. Paste into the formatter and beautify with 2-space indentation. Next, collapse nested objects to understand the top-level structure — most APIs return a wrapper object with `data`, `meta`, and `errors` keys. Drill into `data` to find the actual payload. If the response includes timestamps, scan for ISO 8601 format (`2026-07-03T12:00:00Z`) and verify timezone handling. Finally, compare against your expected schema — any missing or unexpected keys indicate a version mismatch between your client and the server.
+
+## Common Mistakes
+
+- **Trailing commas** — `{ "a": 1, }` is invalid JSON. Most formatters highlight this, but some lenient parsers (Python's `json.loads` with custom decoders) silently accept it, causing interop failures.
+- **Single quotes** — `{'key': 'value'}` is valid JavaScript object literal syntax but invalid JSON. JSON requires double quotes for all strings and keys.
+- **Comments in JSON** — `// comment` and `/* comment */` are not part of the JSON spec. Use JSONC (VS Code settings) or JSON5 if you need comments.
+- **Unescaped special characters** — tabs, newlines, and backslashes inside strings must be escaped (`\t`, `\n`, `\\`). Raw control characters break parsers silently.
+- **Mixing data types in arrays** — `[1, "two", true]` is valid JSON but often indicates a schema design problem. Homogeneous arrays are easier to consume.
+
+## Real-World Use Cases
+
+- **Postman collection exports:** Postman exports collections as minified JSON. Beautify them before committing to version control so diffs are readable.
+- **Database seeding:** Format large seed files before importing — makes them diffable in code review and easier to edit manually.
+- **Webhook payload debugging:** When a third-party webhook fails, beautify the captured payload to find the field that's missing or incorrectly typed.
+- **Configuration files:** `tsconfig.json`, `package.json`, `.eslintrc.json` — all benefit from consistent formatting for clean git history.
+- **Log analysis:** Structured JSON logs from applications can be piped through a formatter for quick visual scanning during incident response.

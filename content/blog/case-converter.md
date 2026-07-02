@@ -188,4 +188,89 @@ user2, item3_name   // ✅ valid
 
 **What's the difference between camelCase and PascalCase?** PascalCase capitalizes the first letter too: \`CamelCase\` vs \`camelCase\`. Use PascalCase for classes and React components, camelCase for variables and functions.
 
-**Which case should I use for database column names?** Most databases use snake_case (\`user_name\
+**Which case should I use for database column names?** Most databases use snake_case (\`user_name\`, \`created_at\`) because it's SQL-standard and case-insensitive in most engines. PostgreSQL folds unquoted identifiers to lowercase, so \`UserName\` becomes \`username\` — a common source of confusion.
+
+## Naming Conventions Across Languages Compared
+
+Different ecosystems have deeply entrenched conventions. Violating them makes your code feel foreign to other developers:
+
+| Language | Variables | Functions | Classes | Constants | Files |
+|----------|-----------|-----------|---------|-----------|-------|
+| **JavaScript/TS** | camelCase | camelCase | PascalCase | SCREAMING_SNAKE | kebab-case |
+| **Python** | snake_case | snake_case | PascalCase | SCREAMING_SNAKE | snake_case |
+| **Java** | camelCase | camelCase | PascalCase | SCREAMING_SNAKE | PascalCase |
+| **Go** | camelCase | PascalCase (exported) | PascalCase | SCREAMING_SNAKE | snake_case |
+| **Rust** | snake_case | snake_case | PascalCase | SCREAMING_SNAKE | snake_case |
+| **C#** | camelCase | PascalCase | PascalCase | PascalCase | PascalCase |
+| **Ruby** | snake_case | snake_case | PascalCase | SCREAMING_SNAKE | snake_case |
+
+**Go's convention is unique:** exported (public) identifiers use PascalCase, unexported (private) ones use camelCase. The case of the first letter IS the visibility modifier — there are no \`public\` or \`private\` keywords.
+
+### When Languages Collide
+
+Full-stack projects often span multiple conventions. A typical setup: Python backend with \`user_name\` in the API → JavaScript frontend expecting \`userName\`. Two solutions:
+
+1. **Transform at the API boundary** — convert all keys to camelCase in your API response layer before sending to the frontend.
+2. **Use a shared schema** — generate types from OpenAPI/Swagger and let code generators handle the conversion.
+
+\`\`\`javascript
+// Converting API response keys from snake_case to camelCase
+function toCamelCase(obj) {
+  return Object.fromEntries(
+    Object.entries(obj).map(([key, value]) => [
+      key.replace(/_([a-z])/g, (_, c) => c.toUpperCase()),
+      value
+    ])
+  );
+}
+\`\`\`
+
+## Bulk Renaming Tools and Techniques
+
+When refactoring a codebase from one naming convention to another, manual find-and-replace is error-prone. Here are reliable approaches:
+
+### VS Code (Built-in)
+
+Use **Find and Replace** with regex (Ctrl+H, enable regex with \`.*\` icon):
+
+- **snake_case → camelCase:** Find \`_([a-z])\`, Replace with \`$1\` after uppercasing — use the "Preserve Case" toggle.
+- **camelCase → snake_case:** Find \`([a-z])([A-Z])\`, Replace with \`$1_$2\`, then lowercase the result.
+
+### Command-Line Tools
+
+\`\`\`bash
+# Install the 'change-case' CLI tool
+npm install -g change-case
+
+# Batch rename files in a directory
+for f in *.js; do
+  new_name=$(echo "$f" | sed -E 's/([a-z])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
+  mv "$f" "$new_name"
+done
+\`\`\`
+
+### IDE Refactoring (Safest)
+
+IntelliJ, WebStorm, and VS Code's TypeScript language server support **Rename Symbol** (F2), which renames all references across the project. This is safer than text-based find-and-replace because it understands scope.
+
+## SEO and URL Case Sensitivity
+
+URLs are technically case-sensitive after the domain, but the convention matters for SEO:
+
+- **Google treats URLs as case-sensitive.** \`/About-Us\` and \`/about-us\` are different pages. If both return content, you have duplicate content issues.
+- **Use kebab-case for URLs.** \`/blog/how-to-use-regex\` is more readable and SEO-friendly than \`/blog/howToUseRegex\` or \`/blog/how_to_use_regex\`.
+- **Redirect uppercase to lowercase.** Add a 301 redirect so any uppercase URL variants point to the canonical lowercase version:
+
+\`\`\`nginx
+# Nginx: force lowercase URLs
+if ($request_uri ~ [A-Z]) {
+  return 301 https://$host$request_uri; # then lowercase via rewrite map
+}
+\`\`\`
+
+## Advanced Tips
+
+- **Be consistent within a file, not just a project.** Mixing \`fetchUserData\` and \`get_user_data\` in the same module signals sloppy refactoring. Linters like ESLint and Ruff can enforce naming rules automatically.
+- **Use SCREAMING_SNAKE_CASE for environment variables.** Every CI/CD platform, Docker setup, and shell convention expects \`DATABASE_URL\`, not \`databaseUrl\`. Breaking this convention causes subtle config-loading bugs.
+- **Prefix boolean variables with \`is\`, \`has\`, or \`should\`.** \`isLoading\`, \`hasPermission\`, \`shouldRedirect\` — these read as questions and make conditional logic self-documenting.
+- **Avoid abbreviations in public APIs.** \`usr\` instead of \`user\` saves 2 characters but confuses every consumer. Internal private variables can be abbreviated; public interfaces should be explicit.

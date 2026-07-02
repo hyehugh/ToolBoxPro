@@ -181,3 +181,61 @@ function applyGrayscale(imageData) {
 **Can I apply multiple filters at once?** Yes. Apply them one at a time and each builds on the previous result. The undo stack lets you step back through individual filter applications.
 
 **Are my images uploaded to a server?** No. All filter processing runs in your browser using the Canvas API. Your images stay on your device.
+
+## Advanced Tips
+
+### The CSS `filter` Property Explained
+
+Browser-based image filters use the same `filter` CSS property you can apply to any DOM element. Understanding the underlying functions lets you replicate filter effects in your own web projects:
+
+```css
+.image-vintage {
+  filter: sepia(0.4) contrast(1.1) brightness(0.95) saturate(1.3);
+}
+```
+
+Each function takes a value between 0 and 1 (or higher for amplification):
+
+- **`brightness(1.2)`** — multiplies pixel luminance. 1.0 is original, 0 is black, 2.0 is doubled.
+- **`contrast(1.5)`** — pushes pixels away from mid-gray. High contrast deepens shadows and brightens highlights.
+- **`saturate(1.4)`** — amplifies color intensity. 0 produces grayscale; values above 1 make colors more vivid.
+- **`hue-rotate(90deg)`** — shifts all colors around the color wheel. 90deg turns reds to greens, greens to blues.
+- **`sepia(0.6)`** — applies a warm brown tone. Useful for vintage effects; 0 is off, 1 is full sepia.
+- **`blur(2px)`** — Gaussian blur. Useful for depth-of-field effects or obscuring backgrounds.
+
+Chain multiple filters by space-separating them — order matters. `sepia() saturate()` produces a different result than `saturate() sepia()` because each operates on the output of the previous.
+
+### Performance Optimization for Filtered Images
+
+Filtering large images in the browser can cause jank — dropped frames that make the UI feel sluggish. Optimize with these techniques:
+
+- **Downscale before filtering:** If the display size is 800×600, don't filter a 4000×3000 source image. Resize to display dimensions first using a canvas drawImage with target dimensions, then apply filters. This reduces pixel operations by 25×.
+- **Use `will-change: filter`** on elements that animate filter changes — it hints the browser to GPU-accelerate the layer.
+- **Debounce slider input:** When users drag a brightness slider, don't re-render on every pixel of mouse movement. Debounce by 50–100ms so the filter only applies when the user pauses.
+- **OffscreenCanvas for workers:** Move heavy filter processing to a Web Worker via `OffscreenCanvas`. The main thread stays responsive while the worker crunches pixels in the background.
+- **Cache filter results:** If a user toggles between the same filter presets, cache the processed ImageData instead of recomputing.
+
+### Responsive Image Strategy
+
+Different viewports need different image treatments. A hero image that looks stunning at 1920px wide is wasteful and slow on a 375px mobile screen.
+
+- **`srcset` for resolution switching:** Serve different source files based on viewport width. `<img srcset="small.jpg 480w, medium.jpg 1024w, large.jpg 1920w" sizes="(max-width: 600px) 480px, 100vw">` lets the browser pick the right file.
+- **Apply filters via CSS, not baked into the file:** If you apply a sepia filter in an editor and export, you can't undo it later. Apply the filter as a CSS class on the `<img>` element — the original file stays clean, and you can change the effect without re-exporting.
+- **`<picture>` for art direction:** Use the `<picture>` element with `<source>` tags to serve different crops or filters for different screen sizes — a wide landscape crop on desktop, a square crop on mobile.
+- **Lazy-load below-the-fold images:** Add `loading="lazy"` to images outside the initial viewport. The browser defers loading until the user scrolls near them, saving bandwidth and CPU on initial page load.
+
+## Common Mistakes
+
+- **Baking filters into the source file** — destroys the original. Always keep an unedited master copy and apply filters non-destructively via CSS or a separate export.
+- **Filtering then upscaling** — applying a blur or noise reduction to a small image, then scaling it up, produces muddy results. Filter at the target resolution.
+- **Over-filtering** — stacking sepia, vignette, grain, and high contrast creates a visually noisy image. Pick one or two effects and apply them subtly.
+- **Ignoring file format** — filters that reduce color depth (heavy desaturation, posterization) benefit from PNG. Photographic filters (brightness, contrast) are fine as JPEG or WebP.
+- **Not testing on different screens** — a filter that looks great on a calibrated monitor may look washed out on a cheap phone display. Test across devices.
+
+## Real-World Use Cases
+
+- **E-commerce product photography:** Apply consistent brightness and contrast adjustments across a product catalog so all items look uniformly lit. Automate with a batch processor.
+- **Social media thumbnails:** Pre-apply a subtle vignette and saturation boost to make images pop in crowded feeds. Keep the effect under 20% intensity — over-filtered images look spammy.
+- **Blog hero images:** Apply a slight desaturation and darkening (`brightness(0.8) saturate(0.7)`) to hero images so white text overlays remain readable without a separate gradient overlay.
+- **Accessibility — high contrast mode:** Offer a high-contrast filter preset (`contrast(1.8) brightness(1.1)`) for users with low vision. Apply it as a CSS class toggle so users can switch it on demand.
+- **Print preparation:** Convert images to grayscale and increase contrast before printing black-and-white documents. This avoids muddy mid-tones that look fine on screen but print poorly.

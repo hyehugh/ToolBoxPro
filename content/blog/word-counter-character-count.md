@@ -67,3 +67,105 @@ A healthy keyword density range is 1–3%. Below 1% and you might not signal rel
 **What is a good average sentence length?** 15–20 words per sentence is ideal for most readers. Technical or academic writing can go to 20–25 words, while marketing copy often targets 10–15 words for punch and clarity.
 
 **Is there a recommended meta description length?** Google typically displays the first 150–160 characters of a meta description. Staying within that range ensures your full description appears in search results.
+
+## Character and Word Limits Across Platforms
+
+Every publishing platform enforces its own limits. Knowing them prevents truncation, rejected submissions, and wasted effort:
+
+| Platform | Limit Type | Limit | Notes |
+|----------|-----------|-------|-------|
+| **Twitter/X** | Characters (with spaces) | 280 | Premium accounts: 25,000. CJK counts as 2 chars per symbol. |
+| **SMS** | Characters | 160 (GSM-7) / 70 (UCS-2) | Emojis and non-Latin scripts switch to UCS-2 encoding, halving the limit. |
+| **Instagram caption** | Characters | 2,200 | Feed truncates after ~125 chars with "more." |
+| **Facebook post** | Characters | 63,206 | But engagement drops sharply after 80–100 chars. |
+| **LinkedIn post** | Characters | 3,000 | Optimal engagement: 1,000–1,500 chars. |
+| **Meta title (SEO)** | Characters | ~60 (512px) | Google truncates at ~512 pixels, roughly 55–60 chars. |
+| **Meta description** | Characters | ~155–160 | Google displays up to ~960px on desktop (~155 chars). |
+| **YouTube title** | Characters | 100 | Truncated at ~70 chars in search results. |
+| **App Store title** | Characters | 30 (iOS) / 50 (Android) | Extremely tight — every character counts. |
+
+### Platform-Specific Gotchas
+
+- **Twitter CJK counting** — Chinese, Japanese, and Korean characters count as 2 each against the 280 limit, effectively halving it to 140 for CJK content.
+- **SMS encoding** — A message with a single emoji switches from GSM-7 (160 chars) to UCS-2 (70 chars). Long messages get split into multiple segments, increasing cost.
+- **Instagram hashtags** — Up to 30 hashtags allowed, but they count toward the 2,200-character caption limit.
+
+## SEO Title and Meta Description Optimization
+
+Character count directly impacts click-through rates from search results. Here's how to optimize:
+
+### Title Tags (55–60 Characters)
+
+Google displays titles based on pixel width (~512px), not a strict character count. Wide characters (W, M) take more space than narrow ones (i, l). Practical guidelines:
+
+- **Target 55–60 characters** — This is safe for most fonts.
+- **Front-load primary keywords** — Put the most important words first; Google may truncate the end.
+- **Include brand name at the end** — Format: `Primary Keyword - Secondary | Brand Name` (total under 60 chars).
+
+```
+✅ Good:  "Word Counter Tool — Free Online Character Counter | ToolboxPro" (57 chars)
+❌ Bad:   "The Ultimate Comprehensive Guide to Counting Words and Characters" (66 chars — truncated)
+```
+
+### Meta Descriptions (150–160 Characters)
+
+- **Target 150–160 characters** — Beyond this, Google truncates with an ellipsis (…).
+- **Include a call to action** — "Learn how," "Discover," "Try free" — action words improve CTR.
+- **Match search intent** — If the query is informational, describe the content. If transactional, highlight the offering.
+
+```
+✅ Good:  "Free online word counter and character count tool. Check word count,
+          reading time, and keyword density instantly. No signup required." (139 chars)
+❌ Bad:   "This tool helps you count words and characters in your text. It is very
+          useful for writers, students, SEO professionals, and anyone who needs..." (truncated)
+```
+
+## Academic Writing Word Count Standards
+
+Different academic contexts have strict word count expectations. Exceeding or falling short can impact grades or acceptance:
+
+| Document Type | Typical Word Count | Tolerance |
+|---------------|-------------------|-----------|
+| **Abstract** | 150–300 words | Strict (journals enforce hard limits) |
+| **Conference paper** | 6,000–8,000 words | ±10% |
+| **Journal article** | 8,000–12,000 words | Varies by journal |
+| **Master's thesis** | 15,000–40,000 words | Institution-specific |
+| **PhD dissertation** | 70,000–100,000 words | Institution-specific |
+| **College essay** | 250–650 words (US) | Common App: 250–650 |
+| **Blog post (SEO)** | 1,500–2,500 words | Longer ranks better |
+
+### Tips for Academic Writers
+
+- **Count excludes references and appendices** — Most institutions count only the main body text. Check your style guide (APA, MLA, Chicago) for specific rules.
+- **Footnotes may or may not count** — APA excludes footnotes; some UK universities include them. Clarify with your supervisor.
+- **Use a consistent counter** — Different tools count differently (see FAQ above). Stick with one tool throughout your document to ensure consistent reporting.
+
+## Common Mistakes to Avoid
+
+1. **Counting characters when the platform counts words** — Most CMS platforms (WordPress, Ghost) use word count for reading time estimates, but social platforms use character count. Know which metric each platform enforces.
+
+2. **Ignoring pixel-based truncation** — Google truncates titles at ~512px, not 60 characters. A 58-character title with many wide letters (W, M, O) may still get cut off. Preview titles in Google's SERP simulator.
+
+3. **Stuffing keywords to hit a word count** — Adding filler to reach 2,000 words hurts readability and SEO. Google's helpful content guidelines penalize thin, padded content. Write naturally first, then check the count.
+
+## Real-World Examples
+
+### Optimizing a Blog Post for SEO
+
+A content writer drafts a 1,800-word article on "remote work productivity." They check the meta title (58 chars — within limit), meta description (152 chars — perfect), and keyword density for "remote work" (2.1% — within the 1–3% healthy range). The reading time displays as "7 min read," setting reader expectations accurately.
+
+### Hitting a College Essay Limit
+
+A student writes a Common Application essay. The platform enforces a 650-word limit. Using a word counter, they trim from 720 to 648 words by removing redundant adjectives and tightening transitions — without losing the essay's core message.
+
+## Comparison: Word Counting Tools
+
+| Tool | Platform | Real-Time | Extra Metrics | Free |
+|------|----------|-----------|---------------|------|
+| **ToolboxPro Word Counter** | Web (browser) | Yes | Reading time, keyword density, sentences | Yes |
+| **Microsoft Word** | Desktop | Yes | Detailed (incl. footnotes, headers) | Paid |
+| **Google Docs** | Web | Yes | Basic (word, character count) | Free |
+| **Grammarly** | Web/Extension | Yes | Readability score, suggestions | Freemium |
+| **Hemingway Editor** | Web/Desktop | Yes | Grade level, passive voice | Free/Paid |
+
+**Recommendation:** Use a browser-based word counter for quick checks across devices. Use Microsoft Word or Google Docs for integrated writing workflows. Use Grammarly or Hemingway when you need readability analysis alongside raw counts.

@@ -121,3 +121,86 @@ CREATE TABLE users (
 **Are UUIDs cryptographically secure?** UUID v4 uses random bytes. On most systems these are cryptographically strong (JavaScript's crypto.randomUUID() uses the OS CSPRNG).
 
 **How many UUIDs can I generate per second?** Unlimited — our tool generates them client-side in milliseconds. Try generating 10,000 and see for yourself.
+
+## UUID Collision Probability: The Real Numbers
+
+The math behind UUID uniqueness is worth understanding because it directly affects your architecture decisions.
+
+For UUID v4 with 122 random bits, the **birthday paradox** tells us when a collision becomes likely:
+
+| UUIDs Generated | Collision Probability | Real-World Equivalent |
+|-----------------|----------------------|----------------------|
+| 2.71 × 10³ (2,710) | 1 in 10¹⁸ | Winning the lottery twice |
+| 103 trillion | 1 in a billion | Being struck by lightning |
+| 2.71 × 10¹⁸ | 50% chance | Heat death of the universe first |
+
+To hit a 50% collision chance, you'd need to generate **1 billion UUIDs per second for 85 years**. For any practical application, collisions do not happen.
+
+### When Collisions CAN Happen
+
+- **Broken RNG:** If your system's random number generator is seeded poorly (e.g., a container with low entropy at boot), UUIDs can repeat. Always use \`crypto.getRandomValues()\` or \`/dev/urandom\`, never \`Math.random()\`.
+- **Seeded test data:** Generating UUIDs from a fixed seed in test suites produces identical UUIDs across runs — fine for tests, catastrophic in production.
+
+## UUID v4 vs v7: Which to Choose
+
+| Aspect | UUID v4 | UUID v7 |
+|--------|---------|---------|
+| Ordering | Random | Time-sorted (ms precision) |
+| Database index performance | Poor (random page splits) | Excellent (append-friendly) |
+| Sortability | Impossible | Natural chronological order |
+| Predictability | Fully random | Timestamp is extractable |
+| Adoption | Universal | Growing (RFC 9562, 2024) |
+| Best for | Tokens, opaque IDs | Primary keys, event logs |
+
+**Practical recommendation:** Use v7 for database primary keys in new projects. The index performance difference is measurable — benchmarks show 2-3x faster inserts at scale compared to v4, because B-tree pages fill sequentially instead of fragmenting.
+
+\`\`\`javascript
+// Generate v7 (if your environment supports it)
+import { v7 } from 'uuid';
+const id = v7(); // 018f3a6e-1b3c-7d45-a123-456789abcdef
+\`\`\`
+
+## Database Primary Key Selection Guide
+
+Choosing between auto-increment integers, UUID v4, and UUID v7 depends on your system:
+
+| Use Case | Recommended Key | Why |
+|----------|----------------|-----|
+| Single-server CRUD app | Auto-increment \`BIGINT\` | Simplest, fastest, smallest |
+| Distributed / microservices | UUID v7 | No coordination needed, sortable |
+| Multi-tenant SaaS | UUID v7 | Tenant isolation, no ID leakage |
+| Event sourcing / audit logs | UUID v7 | Natural time ordering |
+| Public-facing API tokens | UUID v4 | Unpredictable, no timing info |
+| Offline-first mobile app | UUID v4 or v7 | Generate locally, sync later |
+
+### Storage Format Decision
+
+\`\`\`sql
+-- Option A: Native UUID type (PostgreSQL)
+-- 16 bytes, indexed natively, readable in queries
+id UUID DEFAULT gen_random_uuid() PRIMARY KEY
+
+-- Option B: BINARY(16) (MySQL)
+-- 16 bytes, compact, but queries show hex blobs
+id BINARY(16) PRIMARY KEY
+
+-- Option C: CHAR(36) — human readable but 2.25x larger
+id CHAR(36) PRIMARY KEY
+\`\`\`
+
+For PostgreSQL, always use the native \`UUID\` type — it's stored as 16 bytes and the database handles formatting. For MySQL, \`BINARY(16)\` is the right choice; avoid \`VARCHAR(36)\` unless you need maximum debuggability.
+
+## Common Mistakes to Avoid
+
+- **Using \`Math.random()\` to generate UUIDs.** It's not cryptographically secure. Two tabs in the same browser can produce identical "random" UUIDs because they share the same PRNG state. Always use \`crypto.randomUUID()\`.
+- **Storing UUIDs as VARCHAR(36).** This wastes 20 bytes per row compared to binary storage, slows down index scans, and bloats foreign key tables exponentially.
+- **Passing UUIDs through URL query parameters without encoding.** While hyphens are URL-safe, some legacy systems strip or mangle them. Use the braced format or Base62 encoding if you control both ends.
+- **Assuming UUIDs are secret.** A UUID is an identifier, not a security token. If someone guesses a valid UUID, they can access that resource unless you have proper authorization checks. Use separate tokens for access control.
+
+## Real-World Examples
+
+**Example 1 — Multi-region database sync.** A SaaS company runs PostgreSQL in us-east-1 and eu-west-1. Both regions insert rows simultaneously. With auto-increment IDs, merge replication fails on conflicting primary keys. Switching to UUID v7 eliminated all conflicts while maintaining chronological sort order for debugging.
+
+**Example 2 — Offline mobile app.** A field service app lets technicians create work orders without internet access. Each order gets a UUID v4 generated locally. When connectivity returns, the app syncs — no conflict resolution logic needed, because every UUID is globally unique by construction.
+
+**Example 3 — Event log deduplication.** A message queue delivers events "at least once," meaning consumers may receive duplicates. Using UUIDs as event IDs lets consumers store \`processed_ids\` and skip duplicates with a simple existence check.

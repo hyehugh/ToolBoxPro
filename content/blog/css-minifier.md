@@ -167,3 +167,155 @@ background: #000;  /* 4 chars */
 **Can I unminify CSS?** Partially — you can add whitespace back, but comments and original structure are lost forever. Always keep your source files.
 
 **Is CSS minification the same as HTML/JS minification?** Similar concept, but CSS has specific optimizations (color shortening, property merging) that HTML/JS minifiers don't do.
+
+## Gzip vs Minification: Why You Need Both
+
+Many developers assume that enabling gzip on their server makes CSS minification unnecessary. This is a costly mistake — the two optimizations work at different layers and compound multiplicatively:
+
+| Optimization Layer | What It Does | Typical Reduction | Applies To |
+|-------------------|-------------|-------------------|------------|
+| **Minification** | Removes unnecessary source characters | 50-70% | CSS source files |
+| **Gzip compression** | Encodes the transfer with DEFLATE | Additional 70-80% | Any text response |
+| **Brotli compression** | Modern alternative to gzip | Additional 75-85% | Any text response |
+| **Combined** | Minify THEN compress | 85-95% total | Best case |
+
+### The Math
+
+A 100KB CSS file becomes ~40KB after minification. Gzip then compresses that 40KB to ~10KB on the wire. If you skip minification and only gzip, the original 100KB compresses to ~18KB — nearly **double** the transfer size. Brotli on the minified file gets it down to ~8KB.
+
+\`\`\`nginx
+# Enable Brotli in Nginx (better than gzip for text)
+brotli on;
+brotli_types text/css application/javascript text/html;
+brotli_comp_level 6;
+\`\`\`
+
+\`\`\`apache
+# Apache: enable both compression levels
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/css
+</IfModule>
+\`\`\`
+
+### Checking Your Setup
+
+Use [BrowserLink's Brotli test](https://tools.keycdn.com/brotli.test) or check response headers in DevTools:
+
+\`\`\`
+Content-Encoding: br       ← Brotli (best)
+Content-Encoding: gzip     ← Gzip (good)
+(no header)                 ← Uncompressed (fix this immediately)
+\`\`\`
+
+## Automating CSS Minification in Build Pipelines
+
+Manual minification doesn't scale. Here's how to integrate minification into common build setups:
+
+### Vite (Zero Config)
+
+Vite minifies CSS automatically in production builds. No configuration needed:
+
+\`\`\`bash
+vite build    # CSS is minified, tree-shaken, and hashed automatically
+\`\`\`
+
+### Webpack (Explicit Config)
+
+\`\`\`javascript
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  module: {
+    rules: [{
+      test: /\\.css$/,
+      use: [MiniCssExtractPlugin.loader, 'css-loader'],
+    }],
+  },
+  optimization: {
+    minimizer: [new CssMinimizerPlugin()],
+  },
+  plugins: [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })],
+};
+\`\`\`
+
+### PostCSS (Granular Control)
+
+\`\`\`javascript
+// postcss.config.js
+module.exports = {
+  plugins: [
+    require('cssnano')({
+      preset: ['advanced', {
+        discardComments: { removeAll: true },
+        normalizeUrl: false,
+      }],
+    }),
+  ],
+};
+\`\`\`
+
+### CI/CD Pipeline Check
+
+Add a size budget to your CI pipeline so CSS bloat gets caught before deployment:
+
+\`\`\`yaml
+# GitHub Actions: fail if CSS exceeds 50KB
+- name: Check CSS bundle size
+  run: |
+    SIZE=$(wc -c < dist/assets/*.css | awk '{print $1}')
+    if [ "$SIZE" -gt 51200 ]; then
+      echo "CSS bundle is \${SIZE} bytes — exceeds 50KB limit"
+      exit 1
+    fi
+\`\`\`
+
+## CSS Custom Properties (Variables) Optimization
+
+CSS variables (\`--custom-property\`) behave differently from preprocessor variables (\`$sass-var\`) and need special minification consideration:
+
+### What Minifiers Cannot Optimize
+
+\`\`\`css
+/* These CANNOT be shortened by minifiers */
+:root {
+  --brand-color: #3498db;
+  --spacing: 16px;
+}
+
+/* Minifiers leave custom properties intact because they're runtime-dynamic */
+.button { background: var(--brand-color); padding: var(--spacing); }
+\`\`\`
+
+Minifiers must preserve custom properties because they can be changed at runtime via JavaScript:
+
+\`\`\`javascript
+// This works at runtime — minifiers can't predict it
+document.documentElement.style.setProperty('--brand-color', '#e74c3c');
+\`\`\`
+
+### When Custom Properties Hurt Performance
+
+- **Excessive variables in selectors with high specificity** — the browser recalculates styles for every matching element when a variable changes.
+- **Variables in \`@keyframes\`** — animated custom properties cause layout thrashing.
+- **Thousands of variables on \`:root\`** — each variable is a global lookup. Group theme variables into a single \`[data-theme]\` selector instead.
+
+### What You CAN Optimize
+
+\`\`\`css
+/* ❌ Before: redundant variable definitions */
+.card { --padding: 16px; padding: var(--padding); }
+.box { --padding: 16px; padding: var(--padding); }
+.sidebar { --padding: 16px; padding: var(--padding); }
+
+/* ✅ After: define once, reuse everywhere */
+:root { --space-md: 16px; }
+.card, .box, .sidebar { padding: var(--space-md); }
+\`\`\`
+
+## Advanced Tips
+
+- **Use \`contenthash\` in filenames.** This enables aggressive long-term caching (\`Cache-Control: max-age=31536000\`) because the filename changes only when the content changes.
+- **Inline critical CSS.** Extract the CSS needed for above-the-fold rendering and inline it in \`<style>\` tags. Defer-load the rest. This improves FCP by 1-2 seconds on mobile.
+- **Purge unused CSS.** Frameworks like Tailwind and Bootstrap ship thousands of unused selectors. Run PurgeCSS or Tailwind's JIT mode to strip selectors that don't appear in your HTML.
+- **Split CSS by route.** Load only the CSS needed for the current page. Code-splitting CSS reduces the initial payload by 60-80% on large applications.

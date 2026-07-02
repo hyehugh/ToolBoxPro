@@ -157,3 +157,70 @@ This means:
 **Can I add text or annotations?** This tool converts images to PDF without editing. For annotations, edit the images first, then convert.
 
 **Does the PDF retain EXIF data?** EXIF data from images is not preserved in the PDF output. The visual content is embedded at full resolution.
+
+## Advanced Tips for Page Layout Control
+
+1. **Match page size to image aspect ratio** — For a photo collage where each image has a different shape, use the **Auto (Fit)** page size. This prevents awkward white borders. For documents intended for printing, stick to **A4** or **Letter** so the output feeds standard printers without scaling issues.
+
+2. **Add consistent margins for print** — When creating PDFs for physical printing, leave a 10–15mm margin on all sides. Most browsers' PDF rendering doesn't add margins automatically, so images placed edge-to-edge may get clipped by the printer's hardware margins. If your tool doesn't support margins, place images on a slightly smaller canvas within each page.
+
+3. **Control DPI for print quality** — For print-ready PDFs, ensure source images are at least 300 DPI at the intended print size. A 4×6 inch photo needs a source image of at least 1200×1800 pixels. Screen-only PDFs (for on-screen viewing) are fine at 72–150 DPI.
+
+4. **Use consistent orientation across mixed content** — When combining portrait documents and landscape images, pick a dominant orientation and rotate the minority. A PDF that flips between portrait and landscape on every page is disorienting for readers and print drivers alike.
+
+## Batch Conversion Techniques
+
+Converting large numbers of images efficiently requires a structured approach:
+
+- **Group by category first** — Sort images into folders (e.g., `receipts/`, `photos/`, `screenshots/`) before converting. This lets you apply category-specific settings (receipts at A4 Portrait, photos at Auto Fit) rather than a one-size-fits-all approach.
+
+- **Process in chunks of 20–30 images** — Browsers have memory limits. Loading 100 high-resolution photos simultaneously can crash the tab. Process in batches, download each PDF, then merge them if needed using a [PDF merge tool](/tools/merge-pdf).
+
+- **Pre-resize before uploading** — A folder of 50 photos at 6000×4000px (each ~8MB) totals 400MB. Resize them to 2000px on the longest side using a batch image resizer first. The conversion will be 10× faster and the resulting PDF will be a fraction of the size with no visible quality loss for screen viewing.
+
+```bash
+# Batch resize with ImageMagick before conversion
+mogrify -resize 2000x2000> -quality 85 *.jpg
+# Now upload the resized images to the converter
+```
+
+## Quality Optimization
+
+Balancing file size and visual quality is the key challenge in image-to-PDF conversion:
+
+| Image Type | Recommended Quality | Format | Rationale |
+|------------|-------------------|--------|-----------|
+| Text documents (scanned) | 90–100% | PNG or JPG | Text needs sharpness; compression artifacts make it unreadable |
+| Photos for screen | 70–80% | JPG | Good balance; artifacts invisible at normal viewing distance |
+| Photos for print | 90–100% | JPG or PNG | Print reveals compression artifacts |
+| Screenshots with text | 100% | PNG | PNG preserves pixel-perfect edges; JPG blurs text |
+| Line art / diagrams | 100% | PNG | JPG creates halos around sharp lines |
+
+## Common Mistakes to Avoid
+
+1. **Using JPG for text-heavy screenshots** — JPG compression introduces artifacts around text edges, making it blurry. Always use PNG for screenshots containing text, code, or UI elements.
+
+2. **Ignoring image order before converting** — Once the PDF is generated, reordering pages requires a separate tool. Take 30 seconds to drag thumbnails into the correct sequence before clicking "Convert."
+
+3. **Not checking the output page size** — An A4 page with a Letter-sized expectation (or vice versa) causes content to be cut off or surrounded by excessive white space when printed. Verify the page size setting matches your region's standard.
+
+## Real-World Examples
+
+### Expense Report with Scanned Receipts
+
+A freelancer converts 15 receipt photos into a single PDF for a monthly expense report. They set the page size to **A4 Portrait**, arrange receipts chronologically, and use **80% JPEG quality** — small enough to email, clear enough for the client's accounting team to read every line item.
+
+### Real Estate Listing Packet
+
+An agent combines 20 property photos, a floor plan PNG, and a scanned disclosure form into one PDF. They use **Auto (Fit)** so each image fills its page without distortion, resulting in a professional-looking listing packet they can email to prospective buyers.
+
+## Comparison: Image-to-PDF Approaches
+
+| Method | Privacy | Speed | Quality Control | Batch Support |
+|--------|---------|-------|----------------|---------------|
+| **Browser-based (ToolboxPro)** | Full (no upload) | Fast | High (page size, quality, order) | Yes |
+| **Desktop software (Adobe, Foxit)** | Full | Fast | Very High | Yes |
+| **Mobile scanning apps** | Partial (cloud sync) | Medium | Medium (auto-crop, filters) | Limited |
+| **Command-line (ImageMagick + img2pdf)** | Full | Fast for scripts | Low (manual config) | Excellent |
+
+**Recommendation:** For quick, private conversions with full layout control, a browser-based tool is ideal. For automated, recurring batch jobs (e.g., daily invoice archiving), set up a command-line pipeline with `img2pdf` and schedule it via cron or Task Scheduler.

@@ -153,3 +153,104 @@ Protected PDFs work with:
 **Can I add a password to a PDF I already encrypted?** Yes — but you'll need the existing password to remove protection first, then apply a new password.
 
 **What's the difference between PDF passwords and digital signatures?** A password restricts access. A digital signature verifies authenticity and integrity. For sensitive documents, use both.
+
+## Encryption Types Compared
+
+Choosing the right encryption standard affects both security and compatibility. Here's a detailed breakdown:
+
+| Feature | RC4 (Legacy) | AES-128 | AES-256 |
+|---------|-------------|---------|---------|
+| **Key Length** | 40–128-bit | 128-bit | 256-bit |
+| **Security** | Broken — vulnerable to attacks | Strong | Very strong |
+| **Adoption** | Deprecated, old PDFs only | Universal (PDF 1.5+) | Modern (PDF 1.7 Ext. Level 3+) |
+| **Performance** | Fastest | Fast | Slightly slower (negligible) |
+| **Best For** | Nothing — avoid | General business documents | Highly sensitive/legal documents |
+| **Reader Support** | All readers | All modern readers | Adobe Acrobat 7+, most modern readers |
+
+**Recommendation:** Always default to **AES-256** for new documents. The only reason to drop to AES-128 is if recipients use ancient PDF readers (pre-2010) that don't support 256-bit encryption. RC4 should never be used for new files — it has known cryptographic weaknesses.
+
+### User Password vs. Owner Password: Key Differences
+
+| Aspect | User Password | Owner Password |
+|--------|--------------|----------------|
+| **Purpose** | Opens and views the document | Changes permissions (print, copy, edit) |
+| **Who needs it** | Anyone who should read the PDF | The document author/administrator |
+| **Without it** | Can't open the file at all | Can view but can't perform restricted actions |
+| **Common scenario** | Sharing a confidential report externally | Preventing employees from copying content |
+
+A PDF can have both passwords set simultaneously. The user password lets recipients open and read; the owner password lets you (the author) unlock full permissions when needed.
+
+## Password Recovery Risks and Reality
+
+PDF encryption is designed to be unbreakable without the password — there is no vendor backdoor. However, "recovery" is possible in specific scenarios:
+
+### When Recovery Might Work
+
+1. **Dictionary attacks on weak passwords** — If the password is a common word or short pattern (under 8 characters), brute-force tools like hashcat or John the Ripper can crack it in minutes to hours. This is why strong passwords matter.
+
+2. **Owner password removal without the user password** — Some tools can strip owner-level restrictions (print/copy locks) without knowing the owner password, because restriction enforcement happens in the PDF reader, not at the encryption level. The document content itself remains encrypted.
+
+3. **Known password reuse** — If you use the same password across documents and remember it for a different file, it likely works here too.
+
+### When Recovery Is Impossible
+
+- **AES-256 with a 12+ character random password** — No known method can crack this within practical timeframes (millions of years at current computing power).
+- **No password hints or records anywhere** — If the password exists only in your memory and you've forgotten it, the document is permanently inaccessible.
+
+**Takeaway:** There is no "forgot password" link for PDFs. Always store passwords in a password manager (1Password, Bitwarden, KeePass) at the moment you create them.
+
+## Enterprise Document Security Best Practices
+
+Organizations handling sensitive PDFs at scale should implement layered security beyond simple password protection:
+
+### 1. Password Policy Enforcement
+
+Mandate minimum standards across the organization:
+- Minimum 12 characters, mixed case + digits + symbols
+- Generated and stored via enterprise password manager
+- Unique per document category (don't reuse the contract password for HR files)
+- Periodic rotation for long-lived documents (quarterly for active projects)
+
+### 2. Combine Encryption with DRM
+
+Passwords alone don't prevent a recipient from sharing an unlocked PDF. Enterprise DRM (Digital Rights Management) solutions like Adobe LiveCycle, Vitrium, or Locklizard add:
+- Revocation — remotely revoke access even after the file is downloaded
+- Watermarking — stamp recipient name/email on every page to deter sharing
+- Access logging — track who opened the document and when
+- Expiration dates — auto-lock documents after a set period
+
+### 3. Secure Distribution Channels
+
+Don't email password-protected PDFs with the password in the same email. Common secure patterns:
+- Send the PDF via email, share the password through a separate channel (SMS, phone call, secure messaging app)
+- Use a secure file-sharing platform (ShareFile, Box, OneDrive with expiring links) instead of email attachments
+- For regulated industries (HIPAA, GDPR, SOX), use platforms with audit trails and compliance certifications
+
+## Common Mistakes to Avoid
+
+1. **Using AES-256 with an older PDF reader** — Recipients using Adobe Reader 6 or earlier can't open AES-256 PDFs. Verify your audience's software before encrypting, or fall back to AES-128 for broader compatibility.
+
+2. **Setting only the owner password** — Without a user password, anyone can open and read the document. The owner password alone only restricts actions like printing and copying — it doesn't prevent viewing.
+
+3. **Emailing the password with the document** — If an attacker intercepts the email, they get both the locked PDF and the key. Always use a separate communication channel for the password.
+
+## Real-World Examples
+
+### Law Firm Sharing Settlement Documents
+
+A law firm encrypts a settlement agreement with AES-256, sets a user password shared verbally with the client, and restricts printing and copying via the owner password. The client can read the document on any device but cannot redistribute or alter it.
+
+### HR Distributing Salary Reviews
+
+An HR department password-protects individual salary review PDFs with each employee's unique PIN. Each file uses AES-128 (for compatibility with older company laptops) and restricts copying to prevent salary information from being pasted into other documents.
+
+## Comparison: PDF Protection Methods
+
+| Method | Security Level | Prevents Viewing | Prevents Copying | Prevents Sharing | Cost |
+|--------|---------------|-----------------|-----------------|-----------------|------|
+| **Password (AES-256)** | High | Yes | Yes (owner pw) | No | Free |
+| **DRM (Locklizard, Vitrium)** | Very High | Yes | Yes | Yes (revocation) | Paid |
+| **Digital Signature** | Medium | No | No | No | Free–Paid |
+| **Watermarking** | Low | No | No | Deters only | Free–Paid |
+
+**Recommendation:** Password protection with AES-256 is sufficient for most use cases. For documents where redistribution prevention is critical (trade secrets, confidential client data), invest in a DRM solution rather than relying on passwords alone.

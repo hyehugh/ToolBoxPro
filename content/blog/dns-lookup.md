@@ -210,4 +210,43 @@ This says: "Only Google's servers can send email for this domain. Others should 
 
 **What's the difference between public DNS and authoritative DNS?** Public DNS resolvers (like Google 8.8.8.8) answer queries from users. Authoritative DNS servers hold the actual zone records. Our tool queries authoritative servers for the most accurate results.
 
-**Can I look up DNS for internal/private domains?** No — private DNS zones that aren't published to public DNS servers won't be visible. Use local command-line tools (\`nslookup\
+**Can I look up DNS for internal/private domains?** No — private DNS zones that aren't published to public DNS servers won't be visible. Use local command-line tools (`nslookup` or `dig`) pointed at your internal resolver.
+
+## Advanced Tips
+
+### DNS Propagation: What Really Happens
+
+"DNS propagation" is a widely misunderstood term. There is no global push — it's pull-based caching. When you change a DNS record, recursive resolvers around the world keep serving the old cached value until the **TTL (Time to Live)** expires. If your previous TTL was 3600 seconds (1 hour), most resolvers will pick up the change within an hour. But some ISPs and public resolvers ignore TTL and cache longer — Cloudflare's 1.1.1.1 generally respects TTL, while some cellular providers cache aggressively to reduce lookup traffic.
+
+Before a planned migration, **lower your TTL to 300 seconds (5 minutes) at least 24 hours in advance**. This ensures that by the time you flip the switch, resolvers worldwide are already checking back frequently. After the migration is confirmed stable, raise the TTL back to 3600 or higher to reduce lookup latency.
+
+Use `whatsmydns.net` or `dig @8.8.8.8 example.com` from multiple regions to track propagation in real time. If you see inconsistent results across regions after the TTL window, some resolver is caching aggressively — there's nothing you can do except wait.
+
+### TTL Settings Best Practices
+
+- **A/AAAA records (website):** 3600 seconds (1 hour) balances freshness with performance. Use 300 during migrations.
+- **MX records (email):** 14400 seconds (4 hours) or higher. Email routing changes are infrequent, and high TTL reduces lookup overhead on every message.
+- **TXT records (SPF/DKIM/DMARC):** 3600 seconds. You may need to update these when adding new email providers or verification services.
+- **CNAME records:** Match the TTL of the target A record for consistency.
+
+### DNSSEC Basics
+
+DNSSEC adds cryptographic signatures to DNS records, preventing cache poisoning and spoofing attacks. When enabled, the authoritative server signs each record with a private key. Resolvers verify signatures using the public key published in the DNS zone, chained back to the root's trust anchor.
+
+To check if a domain has DNSSEC enabled: `dig +dnssec example.com` — look for the `ad` flag (Authenticated Data) in the response. Enable DNSSEC through your registrar or DNS provider (Cloudflare, Route 53, and most major providers support it with one click). You'll get DS (Delegation Signer) records to publish at the parent zone. Never let DNSSEC keys expire — expired keys take your domain offline for DNSSEC-validating resolvers (which now include most major ISPs).
+
+## Common Mistakes
+
+- **Forgetting to lower TTL before migration** — results in hours of inconsistent traffic hitting the old server.
+- **Using very low TTL permanently** — increases DNS lookup volume and latency for users. Keep TTL at 3600+ in steady state.
+- **Mismatched SPF and MX records** — if MX points to `mail.example.com` but SPF doesn't include that server, legitimate email gets marked as spam.
+- **Pointing root domain with CNAME** — the root (apex) domain can't be a CNAME per RFC 1033. Use an A record or your provider's CNAME flattening (Cloudflare, Route 53 ALIAS).
+- **Not setting DMARC to reject** — `p=none` only monitors. Without `p=reject` or `p=quarantine`, spoofed emails from your domain still reach inboxes.
+
+## Real-World Use Cases
+
+- **Website migration to new hosting:** Lower TTL to 300, wait 24h, update A record, verify with `whatsmydns.net`, then raise TTL back.
+- **Email provider switch (Google Workspace → Microsoft 365):** Update MX, SPF, and DKIM in coordinated batches. Test with `mail-tester.com` before going live.
+- **Subdomain takeover prevention:** Regularly scan for dangling CNAME records pointing to decommissioned services (Heroku, GitHub Pages, S3). Attackers can claim those service names and host content on your subdomain.
+- **Geo-routing with DNS:** Use geo-aware DNS (Route 53 geolocation routing, Cloudflare) to route EU users to a European server and US users to a North American server — reducing latency by 100+ ms.
+- **Failover and load balancing:** Configure DNS health checks to automatically failover to a backup server when the primary goes down. TTL of 60 seconds ensures fast recovery.

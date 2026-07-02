@@ -128,3 +128,78 @@ echo $(($(date +%s%N)/1000000))
 \`\`\`
 
 **What is ISO 8601?** A date format like \`2026-05-23T14:30:00+08:00\`. It's human-readable and includes timezone offset. Our tool shows both formats.
+
+## Timestamp Handling Across Programming Languages
+
+Each language has its own quirks. Knowing the differences prevents subtle bugs:
+
+| Language | Unit | API | Gotcha |
+|----------|------|-----|--------|
+| **JavaScript** | Milliseconds | \`Date.now()\` | Divide by 1000 for seconds |
+| **Python** | Seconds (float) | \`time.time()\` | Float precision can lose sub-ms |
+| **Java** | Milliseconds | \`System.currentTimeMillis()\` | No built-in seconds method |
+| **Go** | Nanoseconds | \`time.Now().UnixNano()\` | Divide by 1e9 for seconds |
+| **Ruby** | Seconds (float) | \`Time.now.to_i\` | \`to_i\` truncates to integer |
+| **PHP** | Seconds | \`time()\` | Integer only, no sub-second |
+| **C#** | Ticks (100ns) | \`DateTime.UtcNow.Ticks\` | Offset from year 0001, not epoch |
+
+**Key takeaway:** Always check whether a timestamp is in seconds, milliseconds, or nanoseconds before using it. If a date lands in 1970, you likely divided when you shouldn't have. If it lands in 1970 + a few days, you probably used seconds where milliseconds were expected.
+
+## Common Timezone Traps
+
+### Trap 1: DST Gaps and Overlaps
+
+When daylight saving time kicks in, clocks "spring forward" — creating a gap where 2:00 AM to 3:00 AM never exists. When DST ends, clocks "fall back" — 1:30 AM occurs twice. If your code schedules events during these windows, you'll get silent bugs:
+
+\`\`\`javascript
+// This can fail on DST transition days
+const meeting = new Date('2026-03-08T02:30:00'); // Invalid in US EST!
+\`\`\`
+
+**Fix:** Always schedule in UTC. Convert to local time only for display.
+
+### Trap 2: Server Timezone Defaults
+
+Cloud servers default to UTC, but on-premise or Docker containers may inherit the host timezone. A cron job that runs at "2:00 AM" will fire at different absolute times depending on the container's \`TZ\` setting.
+
+\`\`\`dockerfile
+# Pin the timezone in Docker
+ENV TZ=UTC
+\`\`\`
+
+### Trap 3: Off-by-One in Date Arithmetic
+
+Adding 24 hours to a timestamp is NOT the same as adding one calendar day:
+
+\`\`\`javascript
+// Wrong: DST transition makes this 23 or 25 hours
+const tomorrow = now + 86400000;
+
+// Right: use date arithmetic
+const tomorrow = new Date(now);
+tomorrow.setDate(tomorrow.getDate() + 1);
+\`\`\`
+
+## Log Analysis with Timestamps
+
+When parsing logs, timestamps are your primary filter and sort key. Here's a practical workflow:
+
+**Step 1 — Normalize all timestamps to ISO 8601.** Mixed formats (\`2026/05/23\`, \`May 23 14:30:01\`, epoch seconds) make sorting impossible. Convert everything to \`2026-05-23T14:30:01Z\`.
+
+**Step 2 — Use relative time for triage.** When debugging, "5 minutes ago" is more useful than \`1716450900\`. Our converter shows relative time alongside absolute time.
+
+**Step 3 — Bucket by time windows.** Group log entries into 1-minute or 5-minute buckets to spot traffic spikes or error bursts:
+
+\`\`\`bash
+# Count errors per minute from a log file
+grep "ERROR" app.log | awk '{print $1}' | cut -d: -f1,2 | sort | uniq -c
+\`\`\`
+
+**Step 4 — Verify timezone alignment.** If your application servers and database report different timestamps for "now," you have a configuration problem. Run \`SELECT NOW()\` in your database and compare it to \`date -u\` on your server — they should match.
+
+## Advanced Tips
+
+- **Store creation and update timestamps separately.** \`created_at\` should be immutable; \`updated_at\` changes on every write. Mixing them leads to data loss.
+- **Use monotonic clocks for measuring durations.** \`performance.now()\` in JavaScript and \`time.monotonic()\` in Python are immune to system clock adjustments.
+- **Index your timestamp columns.** Queries filtering on \`created_at\` are among the most common in any application. A B-tree index on this column is almost always worth it.
+- **Log with millisecond precision.** When debugging race conditions, second-level timestamps are too coarse. Milliseconds let you reconstruct event ordering.

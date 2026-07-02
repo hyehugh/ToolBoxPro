@@ -205,4 +205,130 @@ function Page({ user, posts }) {
 
 **What about inline event handlers like onclick="alert()"?** These become \`onClick={() => alert()}\` in JSX. The value must be a function expression, not a string.
 
-**Does JSX support all HTML attributes?** Most, but with renamed versions: \`class\` → \`className\
+**Does JSX support all HTML attributes?** Most, but with renamed versions: \`class\` → \`className\`, \`for\` → \`htmlFor\`, \`tabindex\` → \`tabIndex\`. Any \`data-*\` and \`aria-*\` attributes work as-is.
+
+## Advanced JSX Migration Tips
+
+### 1. Handling className Composition
+
+The biggest trap when converting HTML to JSX isn't a single \`class\` → \`className\` rename — it's composing multiple conditional classes. HTML lets you concatenate class strings freely. In JSX, you're in JavaScript, so string concatenation gets messy fast:
+
+\`\`\`jsx
+// ❌ Error-prone: manual string concatenation
+<div className={'card ' + (isActive ? 'active ' : '') + (isLarge ? 'large' : '')}>
+
+// ✅ Better: template literals
+<div className={\`card \${isActive ? 'active' : ''} \${isLarge ? 'large' : ''}\`}>
+
+// ✅ Best: use the clsx/classnames library
+import clsx from 'clsx';
+<div className={clsx('card', { active: isActive, large: isLarge })}>
+\`\`\`
+
+The \`clsx\` library handles edge cases you'll forget about — falsy values, arrays, nested objects — and keeps your render logic readable.
+
+### 2. Converting Conditional Rendering
+
+HTML has no concept of "if" — you show or hide elements with CSS or by toggling \`hidden\`. JSX brings JavaScript into the template, which means conditional rendering patterns change entirely:
+
+\`\`\`jsx
+// HTML approach (don't do this in JSX):
+<div style={{ display: showError ? 'block' : 'none' }}>Error message</div>
+
+// ✅ JSX approach: short-circuit rendering
+{showError && <div className="error">Error message</div>}
+
+// ✅ Ternary for mutually exclusive options
+{isLoading ? <Spinner /> : <Content data={data} />}
+
+// ✅ IIFE for multi-statement conditions
+{(() => {
+  if (!user) return <LoginPrompt />;
+  if (!user.verified) return <VerifyEmail />;
+  return <Dashboard user={user} />;
+})()}
+\`\`\`
+
+### 3. Event Handler Differences
+
+JSX event handlers are not the same as HTML \`onclick\` attributes. Understanding the differences prevents common bugs:
+
+| Aspect | HTML | JSX |
+|--------|------|-----|
+| Attribute name | \`onclick\` | \`onClick\` |
+| Value | String (executed via eval) | Function reference |
+| \`this\` binding | Global window | Component instance (with arrow functions) |
+| Event object | \`window.event\` | Synthetic event passed as first argument |
+| Default prevention | \`return false\` | \`e.preventDefault()\` |
+
+\`\`\`jsx
+// HTML: onclick="return false" prevents default AND stops propagation
+// JSX: must be explicit
+<a href="/external" onClick={(e) => {
+  e.preventDefault();      // stop navigation
+  e.stopPropagation();     // stop bubbling (optional)
+  handleAnalytics();
+}}>
+\`\`\`
+
+### 4. Lists and Keys
+
+Converting a list of HTML elements to JSX requires adding \`key\` props — something HTML doesn't have:
+
+\`\`\`jsx
+// HTML
+<ul>
+  <li>Apple</li>
+  <li>Banana</li>
+</ul>
+
+// JSX — keys are required when rendering from arrays
+<ul>
+  {fruits.map(fruit => (
+    <li key={fruit.id}>{fruit.name}</li>
+  ))}
+</ul>
+\`\`\`
+
+Never use the array index as a key if the list can reorder. Use a stable unique ID from your data.
+
+## Common Mistakes to Avoid
+
+- **Forgetting to self-close void tags.** \`<img>\` and \`<input>\` without \`/>\` cause JSX compilation errors. Our converter handles this automatically, but when writing JSX by hand, it's the #1 error.
+- **Using \`style\` as a string.** \`<div style="color: red">\` works in HTML but silently fails in JSX. It must be an object: \`<div style={{ color: 'red' }}>\`.
+- **Passing \`false\` to disabled.** In HTML, \`disabled="false"\` still disables the element (any attribute presence means true). In JSX, \`disabled={false}\` correctly enables it. Always use boolean values.
+- **Forgetting \`key\` on conditional siblings.** Even a single \`{condition && <Element />}\` inside a fragment can trigger React key warnings if siblings are added dynamically.
+
+## Real-World Migration Example
+
+Converting a Bootstrap navigation bar. The original HTML:
+
+\`\`\`html
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#">MyApp</a>
+  <button class="navbar-toggler" onclick="toggleMenu()" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+\`\`\`
+
+Becomes:
+
+\`\`\`jsx
+function Navbar({ onToggleMenu }) {
+  return (
+    <nav className="navbar navbar-expand-lg">
+      <a className="navbar-brand" href="#">MyApp</a>
+      <button
+        className="navbar-toggler"
+        onClick={onToggleMenu}
+        type="button"
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
+    </nav>
+  );
+}
+\`\`\`
+
+Notice: \`onclick\` became \`onClick={onToggleMenu}\` (function reference, not string), \`class\` became \`className\`, and \`<span>\` self-closed.
