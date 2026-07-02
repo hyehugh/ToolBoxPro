@@ -8,64 +8,46 @@ export type ToolGuideData = { en: string; zh: string };
 
 export const toolGuides: Record<string, ToolGuideData> = {
   "json-formatter": {
-    en: `A developer-focused online tool that format, validate, and beautify JSON data with syntax error detection and tree view. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `JSON Formatter & Validator takes minified or messy JSON and restructures it into properly indented, color-coded output that you can actually read. Paste a webhook payload from Stripe, a GraphQL response, or a Kubernetes manifest and the tool immediately tells you whether the structure is valid — and if not, exactly which line and character broke.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+The parser surfaces specific error types: missing commas, trailing commas, unquoted keys, single-quote strings, and unescaped control characters. Each error message points to the exact position, so you spend seconds debugging instead of scanning hundreds of lines. The tree view lets you collapse nested objects and arrays, which is invaluable when navigating deep API responses from services like AWS or GitHub.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
+Use cases come up constantly during development: inspecting fetch() responses in the browser console, verifying config files before deployment, comparing API request and response bodies, preparing fixture data for unit tests, or cleaning up JSON exported from a database. The indentation width is adjustable (2, 4, or tab), and you can minify output back to a single line for production payloads where byte count matters.
 
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
+Everything runs through the browser's native JSON.parse — no external libraries, no network calls. Large payloads from production APIs work without freezing. Copy the formatted result with one keystroke or download it as a .json file for your test suite.`,
+    zh: `JSON 格式化工具将压缩或混乱的 JSON 重新缩进、着色，让结构一目了然。粘贴 Stripe webhook、GraphQL 响应或 Kubernetes 配置，工具会立即告诉你 JSON 是否有效——如果有错误，精确定位到具体行和字符。
 
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `JSON Formatter & Validator 是一款免费在线工具，格式化、验证和美化 JSON 数据，支持语法错误检测和树状视图。
+解析器识别多种错误类型：缺少逗号、多余逗号、未加引号的键、单引号字符串、未转义控制字符。树状视图支持折叠嵌套对象和数组，浏览 AWS、GitHub 等深层 API 响应时非常实用。
 
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+常见场景：检查 fetch 响应、部署前验证配置、对比请求与响应体、准备测试数据、清理数据库导出。缩进宽度可选 2/4/Tab，也可将输出压缩为单行用于生产环境。全部基于浏览器原生 JSON.parse，无需联网，大体积生产 API 数据也能流畅处理。一键复制或下载 .json 文件。`,
   },
   "base64-encode-decode": {
-    en: `A developer-focused online tool that encode text, images, and binary files to Base64 and decode them back. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `Base64 Encoder/Decoder converts between raw text or binary and Base64 notation — the encoding that embeds binary data inside JSON, HTML, CSS, and URLs without breaking their syntax. The tool handles UTF-8 text correctly, so strings with emoji, CJK characters, and accented letters round-trip without mojibake.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+Encoding is something developers reach for in surprisingly many situations: embedding a small logo as a data URI in CSS to avoid an extra HTTP request, passing binary file content through a JSON API field, storing image uploads in localStorage, authorizing HTTP Basic Auth headers (which are Base64-encoded "user:password"), or transferring email attachments via MIME. The tool also decodes JWT payload segments, which are Base64url-encoded.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
+Drop a file onto the input and get its Base64 representation instantly, useful for building data-URI sprites or testing API endpoints that accept inline binary. The decoder accepts both standard Base64 and the URL-safe variant (using - and _ instead of + and /), and strips whitespace/newlines that often wrap long Base64 blobs in email and certificate exports.
 
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
+The entire conversion runs in JavaScript using the browser's built-in btoa/atob and TextEncoder APIs. Nothing is uploaded, which matters when you're encoding API credentials or decoding tokens that carry personal data.`,
+    zh: `Base64 编解码工具在原始文本/二进制与 Base64 表示之间互转——这种编码方式让二进制数据能嵌入 JSON、HTML、CSS、URL 而不破坏语法。工具正确处理 UTF-8 文本，emoji、中日韩字符、重音字母均能无损往返。
 
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `Base64 Encoder/Decoder 是一款免费在线工具，将文本、图片和二进制文件编码为 Base64 并解码还原。
+常见场景：将小 logo 编码为 CSS data URI 以减少 HTTP 请求、通过 JSON API 字段传递二进制内容、在 localStorage 存储图片、构造 HTTP Basic Auth 头（即 Base64 编码的"用户:密码"）、解码 JWT payload 段（Base64url 编码）。
 
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+拖拽文件即可获得其 Base64 表示，适用于构建 data-URI 雪碧图或测试接受内联二进制的 API 端点。解码器同时接受标准 Base64 和 URL 安全变体，并自动去除邮件/证书导出中常见的换行和空白。全部基于浏览器原生 btoa/atob 和 TextEncoder，无任何上传，处理 API 凭证或携带个人信息的 token 时更安全。`,
   },
   "regex-tester": {
-    en: `A developer-focused online tool that test regular expressions against sample text with real-time match highlighting. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `Regex Tester lets you write a pattern and immediately see which parts of your sample text it matches, with each match highlighted in a distinct color. Toggle the standard flags — global (g), case-insensitive (i), multiline (m), dot-all (s), sticky (y), and unicode (u) — and the match set updates as you flip each switch.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+The tool draws on JavaScript's native RegExp engine, so results match what your code will actually do at runtime. That matters because regex flavors differ across languages: a pattern that works in Python's re module or Java's java.util.regex may behave differently in a browser. Testing here removes that guesswork before you ship.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
+Practical scenarios show up everywhere: validating email addresses and phone numbers in form inputs, extracting all URLs from a block of HTML, parsing log lines into structured fields, stripping markdown formatting, finding duplicate words in a document, or splitting a CSV-like string on delimiters that may or may not be quoted. Capture groups are displayed individually, so you can confirm that your parentheses grabbed exactly the substring you expected.
 
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
+Each match shows its index position, the full matched text, and the contents of every capture group. Invalid patterns produce a clear syntax error pointing to the problematic token, rather than failing silently.`,
+    zh: `正则表达式测试工具让你编写模式后立即看到示例文本中的匹配部分，每个匹配以不同颜色高亮。可切换标准标志——全局(g)、忽略大小写(i)、多行(m)、dot-all(s)、sticky(y)、unicode(u)——切换时匹配结果实时更新。
 
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `Regex Tester 是一款免费在线工具，对示例文本测试正则表达式，实时高亮显示匹配结果。
+工具基于 JavaScript 原生 RegExp 引擎，结果与代码运行时行为一致。这点很关键，因为不同语言的正则风格不同：Python re 或 Java 模式在浏览器中可能表现不同，在此测试可消除猜测。
 
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+常见场景：表单邮箱/手机号验证、从 HTML 中提取所有 URL、将日志行解析为结构化字段、去除 Markdown 格式、查找文档中重复单词、按可能带引号的分隔符拆分 CSV 字符串。捕获组单独显示，确认括号抓取了预期子串。每个匹配显示索引位置、完整匹配文本和各捕获组内容。无效模式会给出指向问题 token 的明确语法错误。`,
   },
   "color-converter": {
     en: `A free online conversion calculator that convert colors between HEX, RGB, HSL, CMYK, and HSV with a visual picker. Get accurate results instantly without any software installation.
@@ -1278,24 +1260,12 @@ Paste or type your text into the input area. The tool processes it automatically
 所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
   },
   "caesar-cipher": {
-    en: `A developer-focused online tool that encode and decode text using the classic caesar shift cipher. choose shift values, try brute force decoding, and learn cryptography basics. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A free online Caesar cipher tool that shifts each letter in your text by a fixed number of positions through the alphabet. Named after Julius Caesar — who used a shift of 3 to protect military correspondence — this is one of the oldest and simplest encryption methods, making it a staple of introductory cryptography courses and CTF puzzle challenges.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+Set the shift key (1–25) and every letter moves that many places forward: with a shift of 3, A becomes D, HELLO becomes KHOOR. To decrypt, apply the same shift in reverse. The tool handles uppercase and lowercase separately and leaves numbers and symbols untouched. A brute-force mode cycles through all 25 possible shifts at once, displaying every candidate plaintext side by side — invaluable when you don't know the key and need to eyeball which result reads like real language.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `Caesar Cipher 是一款免费在线工具，Encode and decode text using the classic Caesar shift cipher. Choose shift values, try brute force decoding, and learn cryptography basics.。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+This brute-force approach works precisely because Caesar's design is weak by modern standards: with only 25 possible keys, a human can crack it in seconds. That makes it an excellent teaching tool for understanding why stronger ciphers like AES replaced classical substitution. Use it to build escape-room clues, add hidden messages to games, teach the fundamentals of symmetric encryption, or analyze historical ciphers. Nothing leaves your browser.`,
+    zh: `免费在线凯撒密码工具，将文本中每个字母按固定位移量在字母表中移动。以尤利乌斯·凯撒命名——他用位移3来加密军事信件，这是最古老的加密方式之一，也是密码学入门和CTF比赛的经典题型。设置位移密钥（1–25），每个字母即向前移动对应位数；解密时反向移动即可。暴力破解模式会同时显示全部25种可能结果，方便在没有密钥时找出可读明文。适用于密室逃脱谜题、游戏隐藏信息、密码学教学和历史密码分析。所有操作均在浏览器中完成。`,
   },
   "json-diff": {
     en: `A free online text processing tool that compare two json objects and highlight differences. Transform, analyze, and manipulate text instantly in your browser.
@@ -1318,24 +1288,14 @@ Paste or type your text into the input area. The tool processes it automatically
 所有文本处理 happens locally in your browser. Your text is never sent to any server, making this tool safe for processing sensitive documents, personal notes, or confidential content. No signup, no tracking, no data collection.`,
   },
   "http-status-codes": {
-    en: `A developer-focused online tool that browse and search all http status codes with descriptions. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A free online reference that lists every HTTP status code defined by IANA — from the familiar 200 OK and 404 Not Found to the nuanced 418 I'm a Teapot and the HTTP/2-specific 425 Too Early. Search by number or keyword and immediately see the category, official description, and typical use scenario.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+HTTP status codes are grouped into five families. 1xx codes carry provisional information, 2xx signals success, 3xx handles redirects and caching, 4xx flags client errors (bad requests, missing auth, rate limits), and 5xx indicates the server ran into trouble. Knowing these families lets you triage problems fast — a 502 Bad Gateway points upstream, while a 401 Unauthorized points at your credentials.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
+Developers reach for this reference daily: choosing the right code when designing a REST API (should a soft delete return 200 or 204?), diagnosing why a fetch call failed (is it CORS, a bad token, or a server crash?), or writing middleware that maps errors to appropriate responses. Each entry explains whether the code is standardized, which browsers and frameworks support it, and how it differs from similar codes — for instance, 403 Forbidden versus 401 Unauthorized, or 301 versus 302 redirects.
 
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `HTTP Status Codes 是一款免费在线工具，Browse and search all HTTP status codes with descriptions。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+The entire lookup runs in your browser with an offline-capable database, so it's handy even on flaky connections.`,
+    zh: `免费在线 HTTP 状态码速查表，列出 IANA 定义的所有状态码——从常见的 200 OK、404 Not Found 到 418 I'm a Teapot 和 HTTP/2 专用的 425 Too Early。按数字或关键词搜索即可查看分类、官方描述和典型使用场景。状态码分为五类：1xx 临时信息、2xx 成功、3xx 重定向与缓存、4xx 客户端错误、5xx 服务器错误。每日 API 设计、请求调试、中间件开发均可快速查阅，如 403 与 401 的区别、301 与 302 重定向差异等。内置离线数据库，弱网环境同样可用。`,
   },
   "markdown-to-html": {
     en: `A developer-focused online tool that convert markdown text to formatted html in real-time. Built for speed and accuracy, it processes your input instantly without any server uploads.
