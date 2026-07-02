@@ -54,7 +54,7 @@ Each match shows its index position, the full matched text, and the contents of 
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Type a HEX, RGB, HSL, CMYK, or HSV value and all five formats update simultaneously, with a large color swatch previewing the result. The conversion handles wide-gamut values and flags out-of-sRGB-range colors.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -98,7 +98,7 @@ UUID 解决真实的分布式系统问题。PostgreSQL 表若用 SERIAL 主键�
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Length ranges from 8 to 64 characters with granular toggles for uppercase, lowercase, digits, and symbols, plus an option to exclude ambiguous characters like l, 1, O, and 0. Each generated password is scored for entropy so you can compare strength at a glance.
 
 Set your desired password length (8–64 characters), toggle character types (uppercase, lowercase, numbers, symbols), and click Generate. Each password is created with the Web Crypto API's cryptographically secure random number generator — copy it instantly with one click.
 
@@ -162,7 +162,7 @@ Large values up to 53-bit precision (JavaScript's safe integer limit) are suppor
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+A quality slider lets you choose the trade-off between file size and visual fidelity, with side-by-side before/after comparison so you can see exactly what compression does to your image. Batch mode processes an entire folder of photos at once — ideal for preparing web assets or meeting email attachment size limits.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -182,7 +182,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+The converter supports six major formats — JPEG, PNG, WebP, AVIF, GIF, and BMP — with per-file quality and dimension overrides so each image can be tuned individually during batch conversion. Output files retain their original color profiles for accurate cross-application rendering.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -202,7 +202,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Drag PDFs into the tool in any order, rearrange pages with simple drag-and-drop, and merge them into a single document with a live page-count preview. The output is a standards-compliant PDF that opens correctly in every reader, from Adobe Acrobat to browser viewers.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -222,7 +222,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Live counters update on every keystroke to show word count, character count (with and without spaces), sentence count, paragraph count, and estimated reading time based on average words-per-minute. Results remain accurate even with mixed CJK and Latin text.
 
 Paste or type your text and the counters update live as you type — no button to click. Word count, character count, sentence count, paragraph count, and estimated reading time all recalculate instantly.
 
@@ -242,7 +242,7 @@ All counting happens locally in your browser. Your text never leaves your device
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Seven case modes are available — UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, and CONSTANT_CASE — each applied instantly with proper handling of abbreviations and compound words.
 
 Paste your text and pick a case mode — UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, or CONSTANT_CASE. The converted text appears instantly; click Copy to grab it.
 
@@ -262,7 +262,7 @@ All conversion happens locally in your browser. Your text is never uploaded, mak
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Generate between 1 and 100 paragraphs or sentences, with an option to start with the canonical 'Lorem ipsum dolor sit amet' opening and toggle between word lists of varying average length. Output is ready to paste into Figma or HTML mockups.
 
 Choose how many paragraphs or sentences you need, optionally start with the classic 'Lorem ipsum' opening, and click Generate. Copy the placeholder text directly into your design mockup or wireframe.
 
@@ -282,7 +282,7 @@ Generation runs entirely client-side. No content is stored or tracked — useful
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+The side-by-side view highlights inserted lines in green, deleted lines in red, and modified lines in yellow, with word-level granularity showing exactly which words changed within each line.
 
 Paste your original text in the left pane and the modified text in the right pane. Added lines, removed lines, and changed words are highlighted in different colors instantly as you type.
 
@@ -302,7 +302,7 @@ All comparison happens locally in your browser. Your text is never uploaded, mak
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Set a repeat count from 1 to 10,000, choose a separator (newline, comma, space, pipe, or custom string), and optionally append a prefix or suffix to each repetition. The output updates instantly for immediate copying.
 
 Enter the text to repeat, set the repeat count, choose a separator (newline, comma, space, or custom), and click Repeat. The output appears instantly for one-click copying.
 
@@ -398,7 +398,7 @@ Common scenarios: verifying a Jenkins job schedule before deploying, debugging w
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Each character is converted to its 8-bit ASCII/UTF-8 binary representation with space-separated formatting for readability. Decode mode accepts both space-separated groups and continuous bitstreams.
 
 Type or paste text in the input box to see its binary representation below. Switch to decode mode to paste space-separated 8-bit binary groups and recover the original text.
 
@@ -450,7 +450,7 @@ The payload editor includes helpers for standard claims: click to insert current
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+The slugifier strips accents and diacritics, converts to lowercase, replaces spaces with your chosen separator (hyphen or underscore), and removes all non-alphanumeric characters. CJK and Cyrillic text is transliterated for URL-safe output.
 
 Type a title or heading and the tool generates a URL-safe slug instantly — lowercase, hyphens for spaces, special characters stripped. Toggle between hyphen and underscore separators as needed.
 
@@ -470,7 +470,7 @@ All slug generation happens locally. Your text is never uploaded — safe for wo
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Four sort modes cover alphabetical ascending, alphabetical descending, line-length ascending, and reverse order — with an optional duplicate-line removal toggle that cleans up your list in the same pass.
 
 Paste your list of lines, pick a sort mode (alphabetical A–Z, reverse Z–A, by line length, or reverse order), and optionally remove duplicates. The sorted output appears instantly.
 
@@ -490,7 +490,7 @@ All sorting happens locally in your browser. Your text stays on your device — 
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Duplicate detection runs in linear time using a hash set, preserving the first occurrence of each line and removing all subsequent copies. A case-sensitivity toggle lets you treat 'Hello' and 'hello' as identical or distinct.
 
 Paste lines that may contain duplicates and the tool instantly returns only unique lines, preserving their original order. Toggle case-sensitive mode if needed.
 
@@ -510,7 +510,7 @@ All deduplication happens locally. Your text never leaves your browser — safe 
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Three reversal modes are available: reverse all characters, reverse the order of words while keeping each word intact, or reverse the order of lines. Each mode processes instantly with Unicode-safe handling.
 
 Enter text and choose a reverse mode: reverse characters, reverse word order, or reverse line order. The result appears instantly for one-click copying.
 
@@ -530,7 +530,7 @@ All reversal happens locally. Your text never leaves your device — safe for pu
 
 Everyday tasks like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+Choose exact character sets (a–z, A–Z, 0–9, special symbols), set lengths from 1 to 1000 characters, and generate single strings or batches of up to 100 at once. Each string uses the browser's cryptographic random source.
 
 Set the string length, pick which character types to include (letters, digits, symbols), and click Generate. Copy the result instantly, or regenerate for a new random string.
 
@@ -550,7 +550,7 @@ Generation uses your browser's native random source — no strings are stored or
 
 Everyday tasks like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+The checker normalizes input by optionally ignoring spaces, punctuation, and capitalization, then compares the string forward and backward character by character. A clear yes/no result is displayed with the normalized version highlighted.
 
 Type or paste any text and the checker instantly tells you whether it reads the same forwards and backwards, ignoring spaces and punctuation by default.
 
@@ -580,7 +580,7 @@ Practical uses include encoding hidden messages in puzzles and escape rooms, bui
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Enter a value in Celsius, Fahrenheit, Kelvin, or Rankine and all four scales update instantly. Decimal precision is adjustable up to 4 places for scientific accuracy.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -600,7 +600,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+The converter handles kilograms, grams, milligrams, pounds, ounces, stones, metric tons, and carats — covering everything from cooking measurements to precious-metal weighing. Results round to sensible precision per unit.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -620,7 +620,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Switch between metric units (nm, µm, mm, cm, m, km) and imperial units (inch, foot, yard, mile, nautical mile) with a single input field that updates all units at once. Engineering and surveying precisions are supported.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -640,7 +640,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Convert between bits and bytes in both decimal (KB = 1000 bytes) and binary (KiB = 1024 bytes) conventions, covering the full range from bits to petabytes. A note clarifies which standard each result uses to prevent the common KB/KiB confusion.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -660,7 +660,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Translate between km/h, mph, knots, meters per second, feet per second, and Mach number — with context-aware precision that matters for driving (1 decimal), aviation (2 decimals), and physics calculations (4 decimals).
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -680,7 +680,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Convert between square meters, square kilometers, square feet, square yards, acres, hectares, and square miles. The tool is useful for real estate listings, agricultural planning, and land surveying.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -700,7 +700,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+The tool outputs a ready-to-paste Base64 data URI string (prefixed with the correct MIME type) as well as raw Base64, so you can drop it straight into an img src attribute, a CSS background-image property, or a JSON payload. File size and character count are displayed alongside the output.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -720,7 +720,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Everyday tasks like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+Set a min/max range, choose how many numbers to generate (1–1000), and toggle a unique-only mode that guarantees no repeats — ideal for raffles, lotteries, and statistical sampling without replacement.
 
 Set the minimum and maximum values for your range, choose how many numbers to generate, and optionally enable unique-only mode. Click Generate for instant results.
 
@@ -740,7 +740,7 @@ All generation happens locally using your browser's random source. No values are
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Multiple images can be combined into a single multi-page PDF, with page size and orientation options that adapt to each image's dimensions. The output PDF is lightweight and compatible with all standard PDF readers.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -760,7 +760,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Enter page ranges like '1-3, 5, 7-10' to extract exactly the pages you need, or split a document into individual single-page PDFs. A live page thumbnail strip helps you identify the right pages before splitting.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -780,7 +780,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 PDF manipulation traditionally requires expensive software like Adobe Acrobat or risky online services that upload your sensitive documents. This tool lets you merge, split, rotate, or convert PDFs entirely in your browser using pdf-lib. Your financial statements, legal documents, and personal files never leave your device, giving you complete control over your privacy.
 
-Key features include drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. The tool handles documents of any size (within browser memory limits) and produces clean, standards-compliant output that opens correctly in any PDF reader.
+Each page appears as a thumbnail in a visual grid where you can select individual pages or ranges, then apply 90°, 180°, or 270° rotation with a single click. A live preview shows the corrected orientation before you download.
 
 Drag your PDF onto the tool, select the pages you want to rotate, choose 90°, 180°, or 270°, and click Rotate. Download the corrected PDF instantly.
 
@@ -800,7 +800,7 @@ PDF 处理 traditionally requires expensive software like Adobe Acrobat or risky
 
 PDF manipulation traditionally requires expensive software like Adobe Acrobat or risky online services that upload your sensitive documents. This tool lets you merge, split, rotate, or convert PDFs entirely in your browser using pdf-lib. Your financial statements, legal documents, and personal files never leave your device, giving you complete control over your privacy.
 
-Key features include drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. The tool handles documents of any size (within browser memory limits) and produces clean, standards-compliant output that opens correctly in any PDF reader.
+A thumbnail view of every page lets you click-to-select individual pages for deletion, or use range input for bulk removal. The trimmed PDF is generated instantly with accurate page renumbering.
 
 Upload your PDF, preview each page visually, select the pages you want to delete, and click Remove. Download the trimmed PDF instantly.
 
@@ -820,7 +820,7 @@ PDF 处理 traditionally requires expensive software like Adobe Acrobat or risky
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+An interactive crop overlay lets you drag and resize the selection rectangle directly on the canvas, with optional aspect-ratio presets for common social media sizes (1:1, 4:3, 16:9, and more). The cropped output is generated at full resolution.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -840,7 +840,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Enter exact pixel dimensions or scale by percentage, with an optional aspect-ratio lock that prevents accidental distortion. Common preset sizes for social media, banners, and thumbnails speed up the workflow.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -860,7 +860,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Eight adjustable filter effects — grayscale, sepia, blur, brightness, contrast, saturation, hue rotation, and invert — can be combined and fine-tuned with live sliders. The canvas preview updates instantly as you drag each control.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -880,7 +880,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Click anywhere on your uploaded image to sample the exact pixel color, with the HEX, RGB, and HSL values displayed side by side. A magnifier loupe helps you target individual pixels precisely, and a history panel keeps your recently picked colors.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -900,7 +900,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Arrange multiple images into an animated sequence with per-frame delay control, loop options (once, infinite, or custom count), and output dimension scaling. The generated GIF is optimized for web with reduced file size through color quantization.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -920,7 +920,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Position the text watermark anywhere on the image using nine placement presets or custom x/y coordinates, then adjust font size, color, opacity, and rotation angle. The watermark renders crisply at the source image's full resolution.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -940,7 +940,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Combine two or more images horizontally, vertically, or in a grid layout, with adjustable spacing, background color, and automatic dimension matching. The tool calculates the output canvas size based on your arrangement choices.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -960,7 +960,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Define the number of rows and columns to slice a single image into a uniform grid of tiles, each exported as an individual file. Perfect for creating Instagram grid layouts, sprite sheets, or puzzle pieces.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -980,7 +980,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+One-click buttons flip the image horizontally or vertically, and rotation controls work in 90-degree increments for quick orientation fixes. The tool processes at the original resolution with no quality loss.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -1000,7 +1000,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Customize border width, color, corner radius, and optional drop shadow with a live preview that shows exactly how the frame will look. Padding between the image and border can be adjusted independently.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -1020,7 +1020,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Type top and bottom captions in the classic Impact font, adjust font size and stroke width, and preview the meme instantly on your uploaded image. Preset meme templates are included alongside custom image upload.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -1040,7 +1040,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Choose from multiple sketch styles — pencil, charcoal, and line art — with adjustable intensity and edge-detection sensitivity. The artistic effect renders in real time as you move the sliders.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -1060,7 +1060,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+The tool strips emoji and pictographic Unicode characters using the latest emoji property ranges, while preserving standard punctuation, symbols, and text. A removed-character count shows how many emoji were cleaned.
 
 Paste text containing emoji and the tool instantly strips all emoji characters while preserving the surrounding words and punctuation. Copy the clean text with one click.
 
@@ -1080,7 +1080,7 @@ All processing happens locally. Your text never leaves your browser — safe for
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Each character in your text is decomposed into its Unicode codepoint (U+XXXX), official name, general category, block, and UTF-8 byte sequence. The output table helps debug encoding issues and invisible characters.
 
 Paste any text and the tool breaks it down character by character, showing each character's Unicode codepoint, name, category (letter, digit, symbol, etc.), and UTF-8 byte encoding.
 
@@ -1108,7 +1108,7 @@ This brute-force approach works precisely because Caesar's design is weak by mod
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+The comparison performs a deep structural diff that traverses nested objects and arrays, highlighting added keys, removed keys, and changed values with their old and new content. JSONPath notation pinpoints exactly where each difference lives.
 
 Paste your original JSON in the left pane and the modified JSON in the right pane. Added, removed, and changed keys and values are highlighted side by side instantly.
 
@@ -1148,7 +1148,7 @@ Writers use it to draft newsletter issues, developers to preview README changes 
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Pick a source city or timezone and a target timezone to see the converted time instantly, with a visual overlap indicator showing business-hour compatibility. Daylight Saving Time transitions are handled automatically using the IANA timezone database.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -1168,7 +1168,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Decode mode accepts 8-bit binary groups separated by spaces or as one continuous bitstream, automatically detecting and handling both ASCII and extended character sets. The decoded text supports UTF-8 multi-byte sequences.
 
 Paste binary digits (space-separated 8-bit groups or a continuous stream) in the input box and the decoded text appears instantly below. Switch to encode mode to convert text back to binary.
 
@@ -1188,7 +1188,7 @@ All conversion happens in your browser. Neither your text nor binary data is sen
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+A single click inverts every pixel's color to produce a photographic negative, useful for checking film negatives, creating artistic effects, or previewing how dark UI themes render under inverted imagery.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -1208,7 +1208,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Select from grid layouts (2x2, 3x3, mosaics), set spacing between photos, choose a background color, and drag images into position. Export resolutions go up to 4K for print-quality collages.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -1268,7 +1268,7 @@ Common scenarios: migrating an existing HTML site to React piece by piece, conve
 
 Everyday tasks like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+Pick a base color via the picker or hex input, then choose from five harmony rules — complementary, analogous, triadic, tetradic, and monochromatic — to generate a coordinated five-swatch palette. Each swatch copies its hex code on click.
 
 Pick a base color using the color picker or enter a hex value, then choose a harmony type (complementary, analogous, triadic, tetradic, or monochromatic). Click any swatch to copy its hex code.
 
@@ -1288,7 +1288,7 @@ All palette generation happens locally. No colors or preferences are stored or t
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Enter any number from 1 to 3999 to get its Roman numeral equivalent, or type a Roman numeral to convert back to Arabic. The tool validates subtractive notation rules (IV, IX, XL, XC, CD, CM) and flags invalid combinations.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -1308,7 +1308,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Three calculation modes cover 'X% of Y', 'X is what % of Y', and 'percentage increase/decrease from X to Y' — each updating instantly as you type the inputs.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -1338,7 +1338,7 @@ The calculator handles edge cases like tax-inclusive vs exclusive totals, uneven
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Enter a birth date and optionally a target date to see the exact age broken down into years, months, weeks, days, hours, and even seconds. A next-birthday countdown shows days remaining until the next milestone.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -1358,7 +1358,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Enter height and weight in metric or imperial units, and the tool computes BMI to one decimal place, classifies the result (underweight, normal, overweight, or obese), and shows the healthy weight range for your height.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -1378,7 +1378,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Everyday tasks like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+Set a target date and time down to the second, optionally add a custom label, and the countdown displays days, hours, minutes, and seconds remaining in real time. The timer persists across page refreshes using localStorage.
 
 Set your target date and time, optionally add a label, and the countdown begins instantly — showing days, hours, minutes, and seconds remaining. The timer keeps running even if you navigate away.
 
@@ -1398,7 +1398,7 @@ The countdown runs entirely in your browser. Your target date is stored locally 
 
 Everyday tasks like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+Select from six dice types (d4, d6, d8, d10, d12, d20), roll up to 20 dice at once, and see individual results plus a computed total. Modifier support adds or subtracts a flat bonus — perfect for D&D and other tabletop RPGs.
 
 Choose a dice type (d4, d6, d8, d10, d12, or d20), set the number of dice to roll, and click Roll. Results appear instantly with individual rolls and a total sum.
 
@@ -1418,7 +1418,7 @@ All rolling happens locally using your browser's random source. No results are s
 
 Everyday tasks like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+Enter options separated by newlines or commas, then click to let the tool pick one at random. A spinning-wheel animation adds suspense before revealing the choice, and you can re-roll as many times as needed.
 
 Enter your options (one per line or separated by commas) and click Decide. The tool picks one option at random — re-click for a new decision.
 
@@ -1458,7 +1458,7 @@ All audio processing happens locally in your browser using the Web Audio API. Yo
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Arrange audio clips in any order on a timeline, add optional crossfade transitions between tracks, and export as a single continuous file. The tool preserves the original sample rate and bitrate for maximum fidelity.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -1478,7 +1478,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Adjust sample rate (8 kHz to 48 kHz), bit depth (8/16/24/32-bit), and channel configuration (mono/stereo) for WAV file conversion. The output preserves audio fidelity while matching the target application's requirements.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -1548,7 +1548,7 @@ Designers use it to generate favicon sets, produce social preview images from ve
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Pick two dates and the tool calculates the exact day count, plus a breakdown showing weeks and months for context. Business-day mode optionally excludes weekends for project planning and contract deadlines.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -1568,7 +1568,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+The analyzer evaluates entropy in bits, checks against a database of common passwords, detects sequential and repeated patterns, and rates the result on a 0–100 scale with actionable suggestions for improvement.
 
 Type or paste a password and the tool scores its strength in real time — analyzing length, character variety, entropy, and common-pattern vulnerability. Suggestions appear as you type.
 
@@ -1588,7 +1588,7 @@ All analysis happens locally in your browser. Your password is never transmitted
 
 Everyday tasks like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+Supports four formats — Code128 (universal), EAN-13 (retail products), Code39 (industrial), and QR Code (URLs and text) — with adjustable module size, margin, and output as PNG or SVG. QR codes can encode up to 2,953 bytes.
 
 Enter your data (text, URL, or number), choose a barcode format (Code128, EAN-13, Code39, or QR Code), adjust size if needed, and click Generate. Download the image as PNG or SVG.
 
@@ -1608,7 +1608,7 @@ All generation happens locally in your browser. Your data is never uploaded — 
 
 Unit conversions are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
 
-Key features include support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+Enter any two dimensions (width and height) to get the simplified ratio, or choose a common preset (16:9, 4:3, 21:9, 1:1) and calculate the matching dimensions for any target resolution. Pixel-perfect results for video, display, and print.
 
 Enter your value in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
 
@@ -1628,7 +1628,7 @@ All calculations happen locally in your browser using JavaScript. No data is sen
 
 Everyday tasks like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-Key features include instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+Drag or upload any image containing a QR code and the decoder extracts the embedded URL, plain text, vCard contact, or Wi-Fi credentials instantly. The tool works entirely offline and supports QR codes embedded in photos or screenshots.
 
 Drag a QR code image onto the tool or use the file picker. The embedded URL, text, or contact data is decoded and displayed instantly — copy it with one click.
 
@@ -1648,7 +1648,7 @@ All decoding happens locally in your browser. Your image is never uploaded — s
 
 Image processing usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
 
-Key features include drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+Switch between eight simulation modes — protanopia, deuteranopia, tritanopia, achromatopsia, and their anomalous variants — to see your image through each type of color vision deficiency. A split-view comparison shows the original alongside the simulated result.
 
 Upload your image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
 
@@ -1668,7 +1668,7 @@ All image processing happens locally in your browser using Canvas API and JavaSc
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+Typing auto-saves to localStorage on every keystroke — no save button, no sync, no account. A word count and character count are displayed in the footer, and the content survives browser restarts and accidental tab closures.
 
 Start typing immediately — no setup required. Your notes auto-save to your browser's local storage as you type, surviving page refreshes and browser restarts. Export to a .txt file anytime.
 
@@ -1688,7 +1688,7 @@ All notes are stored exclusively in your browser's local storage — never uploa
 
 Writers, developers, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
 
-Key features include real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+The analysis breaks down total characters, letters, vowels, consonants, syllables (estimated), unique words, total words, average word length, and the ten most frequent words with counts. Every metric recalculates live as you type.
 
 Paste or type text and the tool displays a detailed breakdown: total letters, vowels, consonants, syllables, unique words, word frequency, and average word length — all updating live as you type.
 
