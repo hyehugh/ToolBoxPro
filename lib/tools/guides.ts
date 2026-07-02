@@ -748,24 +748,14 @@ All processing happens locally in your browser. No data is uploaded, stored, or 
 所有处理都在浏览器本地完成 in your browser. No data is uploaded, stored, or tracked. Your inputs and results are completely private. No account required, no cookies, no analytics beyond basic page views.`,
   },
   "morse-code-converter": {
-    en: `A developer-focused online tool that convert text to morse code and decode morse code back to readable text. learn morse alphabet with visual audio playback support. Built for speed and accuracy, it processes your input instantly without any server uploads.
+    en: `A free online Morse code translator that converts plain text into dots and dashes — and decodes Morse signals back into readable words. Perfect for ham radio operators, scouting activities, cryptography students, and anyone fascinated by this 1800s communication system that's still in active use today.
 
-Developers often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
+Morse code assigns short signals (dots) and long signals (dashes) to each letter and number. SOS, the universal distress signal, is universally recognized as three dots, three dashes, three dots (··· ─── ···). Knowing even a few letters can be genuinely useful in emergencies where voice communication isn't possible.
 
-Key features include real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
+Type your message and the tool translates it character by character, handling letters A–Z, digits 0–9, and common punctuation. Spaces between words become slash separators for readability. Paste Morse sequences back in and recover the original text. A built-in audio player lets you hear the rhythm of each character, which is how operators originally learned the code — by ear, not by memorizing charts.
 
-Simply paste or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-All processing happens locally in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
-    zh: `Morse Code Converter 是一款免费在线工具，Convert text to Morse code and decode Morse code back to readable text. Learn Morse alphabet with visual audio playback support.。
-
-开发者 often need quick conversions, validations, or formatting while coding. Instead of installing heavy desktop software or writing custom scripts, this tool provides instant results right in your browser. Whether you're debugging an API response, validating configuration files, or testing regex patterns, having a reliable browser-based tool saves precious development time.
-
-主要特点包括 real-time processing with instant feedback, support for common edge cases and error handling, a clean distraction-free interface designed for productivity, and the ability to copy results with a single click. The tool handles input of any reasonable size and provides clear, formatted output that's easy to read and use.
-
-只需粘贴 or type your data into the input area, configure any available options (such as output format or processing mode), and click the action button. Results appear instantly below the input. You can copy the output to your clipboard, download it as a file, or clear the input to start fresh. The interface works identically on desktop and mobile browsers.
-
-所有处理都在浏览器本地完成 in your browser using JavaScript — your data is never sent to any server. This makes the tool safe for processing sensitive information like API keys, configuration files, or proprietary code. No account, no signup, no tracking.`,
+Practical uses include encoding hidden messages in puzzles and escape rooms, building educational demos for STEM classes, practicing for amateur radio licensing exams, or simply exploring one of the oldest digital encoding systems ever invented. Every conversion runs entirely in your browser with no data sent anywhere.`,
+    zh: `免费在线摩尔斯电码翻译器，将文字转换为点和划，也能将摩尔斯信号解码为可读文字。适合业余无线电操作员、童子军活动、密码学学习和紧急通讯爱好者使用。输入文字后逐字符翻译，支持字母、数字和标点；粘贴摩尔斯序列即可还原原文。内置音频播放器可播放每个字符的节奏，帮助你像早期操作员那样靠听觉学习。适用于谜题设计、STEM教学演示、业余无线电执照考试练习等场景。全部转换在浏览器本地完成。`,
   },
   "temperature-converter": {
     en: `A free online conversion calculator that convert temperatures between celsius, fahrenheit, and kelvin scales instantly. perfect for cooking, science, weather, and travel calculations. Get accurate results instantly without any software installation.
