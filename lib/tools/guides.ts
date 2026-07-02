@@ -59,13 +59,13 @@ Type a HEX, RGB, HSL, CMYK, or HSV value and all five formats update simultaneou
 Color conversion math — including gamut mapping and perceptual lightness calculations — runs entirely through JavaScript in your browser session. No palette data or brand colors are transmitted externally, which matters when working with pre-launch product designs under NDA.`,
     zh: `Color Converter 是一款免费在线工具，在 HEX、RGB、HSL、CMYK 和 HSV 颜色格式之间转换，带可视化选择器。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "url-encoder-decoder": {
     en: `URL Encoder/Decoder applies percent-encoding to any string so that reserved characters — spaces, ampersands, equals signs, slashes, Unicode — become safe for use inside a URL. Drop in a query string like "q=hello world&lang=zh-CN" and watch each unsafe character get replaced with its %XX equivalent. Decoding reverses the process, turning %20 back into a space and %2F into a slash.
@@ -103,9 +103,9 @@ Set your desired password length (8–64 characters), toggle character types (up
 Password generation happens entirely in your browser. No password is ever transmitted, logged, or stored, making this safe for creating credentials for banking, email, and work accounts.`,
     zh: `Password Generator 是一款免费在线工具，使用 Web Crypto API 生成密码学安全的随机密码。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 设置密码长度（8–64 位），勾选字符类型（大写、小写、数字、符号），点击生成即可。每个密码均由 Web Crypto API 的密码学安全随机数生成器产生，一键复制。
 
@@ -167,13 +167,11 @@ Click the file picker or drop one or more photos onto the workspace, then move t
 Every byte of compression logic runs inside your browser tab — the original photos and their slimmed-down versions never travel across the network. That matters most when you are optimizing confidential screenshots or client product images that should not leave your machine.`,
     zh: `Image Compressor 是一款免费在线工具，在保持视觉质量的同时将图片文件大小减小 50-80%，支持 JPEG、PNG 和 WebP。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-converter": {
     en: `A free browser-based image tool that convert images between jpg, png, webp, avif, gif, and bmp formats. batch convert with custom quality and dimension settings. Process your photos and graphics directly in your browser without uploading to any server.
@@ -185,15 +183,13 @@ The converter supports six major formats — JPEG, PNG, WebP, AVIF, GIF, and BMP
 Select a target format from the dropdown, optionally cap the maximum width or height, and pick a quality level for lossy outputs. Drop in a handful of files at once and each one is converted independently, with download links appearing the instant each job finishes.
 
 Format re-encoding happens on-device using the browser's native image decoders and encoders. Your source files and the newly converted copies remain in local memory and are never transmitted to a remote endpoint.`,
-    zh: `Image Format Converter 是一款免费在线工具，Convert images between JPG, PNG, WebP, AVIF, GIF, and BMP formats. Batch convert with custom quality and dimension settings.。
+    zh: `Image Format Converter 是一款免费在线工具，Convert images between JPG, PNG, WebP, AVIF, GIF, and BMP formats. 使用自定义质量和尺寸设置进行批量转换。。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "pdf-merger": {
     en: `A free browser-based image tool that combine multiple PDF files into a single document with page reordering. Process your photos and graphics directly in your browser without uploading to any server.
@@ -207,13 +203,11 @@ Add PDF files through the file browser or by dropping them into the workspace, t
 Merging is performed locally with a lightweight PDF library that runs in the browser. Your documents — contracts, invoices, reports — never leave your computer, so sensitive business paperwork stays private.`,
     zh: `PDF Merger 是一款免费在线工具，将多个 PDF 文件合并为一个文档，支持页面重新排序。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "word-counter": {
     en: `A free online text processing tool that count words, characters, sentences, paragraphs, and estimate reading time. Transform, analyze, and manipulate text instantly in your browser.
@@ -227,9 +221,9 @@ Paste or type your text and the counters update live as you type — no button t
 All counting happens locally in your browser. Your text never leaves your device, making this safe for drafts, essays, and confidential documents.`,
     zh: `Word & Character Counter 是一款免费在线工具，统计字数、字符数、句子数、段落数并估算阅读时间。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 粘贴或输入文本，字数、字符数、句子数、段落数和预估阅读时间实时更新，无需点击任何按钮。
 
@@ -247,9 +241,9 @@ Paste your text and pick a case mode — UPPERCASE, lowercase, Title Case, camel
 All conversion happens locally in your browser. Your text is never uploaded, making this safe for source code, variable names, and sensitive content.`,
     zh: `Text Case Converter 是一款免费在线工具，Convert text between UPPER, lower, Title, camelCase and more。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 粘贴文本，选择转换模式（全大写、全小写、标题格、驼峰命名、贛费命名等），转换结果即时显示，一键复制。
 
@@ -265,11 +259,11 @@ Generate between 1 and 100 paragraphs or sentences, with an option to start with
 Choose how many paragraphs or sentences you need, optionally start with the classic 'Lorem ipsum' opening, and click Generate. Copy the placeholder text directly into your design mockup or wireframe.
 
 Generation runs entirely client-side. No content is stored or tracked — useful when generating filler text for client mockups.`,
-    zh: `Lorem Ipsum Generator 是一款免费在线工具，Generate placeholder text for design mockups, website wireframes, and print layouts. Customize paragraph count, word length, and format.。
+    zh: `Lorem Ipsum Generator 是一款免费在线工具，为设计稿、网站线框图和打印布局生成占位文本。 自定义段落数量、词长和格式。。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 设置段落或句子数量，可选择是否以经典“Lorem ipsum”开头，点击生成即可复制到设计稿或线框图中。
 
@@ -285,11 +279,11 @@ The side-by-side view highlights inserted lines in green, deleted lines in red, 
 Paste your original text in the left pane and the modified text in the right pane. Added lines, removed lines, and changed words are highlighted in different colors instantly as you type.
 
 All comparison happens locally in your browser. Your text is never uploaded, making this safe for comparing contracts, legal documents, and source code revisions.`,
-    zh: `Text Diff Checker 是一款免费在线工具，Compare two blocks of text side by side and highlight every difference. Perfect for code reviews, document revisions, and plagiarism checks.。
+    zh: `Text Diff Checker 是一款免费在线工具，并排比较两段文本，高亮显示所有差异。 非常适合代码审查、文档修订和抄袭检查。。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 在左侧粘贴原始文本，右侧粘贴修改后的文本，新增、删除和修改的内容会实时高亮显示。
 
@@ -305,11 +299,11 @@ Set a repeat count from 1 to 10,000, choose a separator (newline, comma, space, 
 Enter the text to repeat, set the repeat count, choose a separator (newline, comma, space, or custom), and click Repeat. The output appears instantly for one-click copying.
 
 All repetition happens locally. Your input text never leaves your browser — safe for generating test data from sensitive templates.`,
-    zh: `Text Repeater 是一款免费在线工具，Repeat any text multiple times with custom separators, line breaks, or prefixes. Generate test data, patterns, and repeated strings instantly.。
+    zh: `Text Repeater 是一款免费在线工具，使用自定义分隔符、换行符或前缀重复任意文本。 即时生成测试数据、模式和重复字符串。。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 输入要重复的文本，设置重复次数，选择分隔符（换行、逗号、空格或自定义），点击重复即可一键复制。
 
@@ -401,11 +395,11 @@ Each character is converted to its 8-bit ASCII/UTF-8 binary representation with 
 Type or paste text in the input box to see its binary representation below. Switch to decode mode to paste space-separated 8-bit binary groups and recover the original text.
 
 All conversion happens in your browser. Neither your text nor binary data is sent anywhere — safe for encoding private messages or learning exercises.`,
-    zh: `Text to Binary Converter 是一款免费在线工具，Convert text to binary code and binary back to text。
+    zh: `文本转二进制转换器 是一款免费在线工具，将文本转为二进制代码，二进制转为文本。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 在输入框中输入或粘贴文本，即可在下方看到二进制表示。切换到解码模式可粘贴空格分隔的8位二进制还原文本。
 
@@ -453,11 +447,11 @@ The slugifier strips accents and diacritics, converts to lowercase, replaces spa
 Type a title or heading and the tool generates a URL-safe slug instantly — lowercase, hyphens for spaces, special characters stripped. Toggle between hyphen and underscore separators as needed.
 
 All slug generation happens locally. Your text is never uploaded — safe for working with unpublished article titles or internal page names.`,
-    zh: `Text to URL Slug 是一款免费在线工具，Convert any text into clean, SEO-friendly URL slugs. Remove special characters, normalize spaces, and generate optimized permalinks.。
+    zh: `Text to URL Slug 是一款免费在线工具，将任意文本转换为干净的、 SEO-friendly URL slugs. 移除特殊字符、规范化空格，生成优化的永久链接。。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 输入标题或文本，工具即时生成 URL 安全的 slug（小写、空格转连字符、去除特殊字符）。可切换连字符或下划线分隔符。
 
@@ -473,11 +467,11 @@ Four sort modes cover alphabetical ascending, alphabetical descending, line-leng
 Paste your list of lines, pick a sort mode (alphabetical A–Z, reverse Z–A, by line length, or reverse order), and optionally remove duplicates. The sorted output appears instantly.
 
 All sorting happens locally in your browser. Your text stays on your device — safe for sorting mailing lists, log entries, or confidential data.`,
-    zh: `Text Sorter 是一款免费在线工具，Sort text lines alphabetically (A-Z or Z-A), by line length, or in reverse order. Remove duplicates and organize lists instantly.。
+    zh: `Text Sorter 是一款免费在线工具，按字母顺序排列文本行（A-Z or Z-A), by line length, or in reverse order. 即时移除重复项并整理列表。。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 粘贴行列表，选择排序模式（字母升序、降序、按行长、反序），可选去除重复行，排序结果即时显示。
 
@@ -493,11 +487,11 @@ Duplicate detection runs in linear time using a hash set, preserving the first o
 Paste lines that may contain duplicates and the tool instantly returns only unique lines, preserving their original order. Toggle case-sensitive mode if needed.
 
 All deduplication happens locally. Your text never leaves your browser — safe for cleaning up customer lists, email addresses, or sensitive records.`,
-    zh: `Line Deduplicator 是一款免费在线工具，Remove duplicate lines from text while preserving order。
+    zh: `Line Deduplicator 是一款免费在线工具，移除文本中的重复行，同时保持顺序。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 粘贴可能含有重复的行，工具即时返回仅包含唯一行的结果，保持原始顺序。可切换大小写敏感模式。
 
@@ -513,11 +507,11 @@ Three reversal modes are available: reverse all characters, reverse the order of
 Enter text and choose a reverse mode: reverse characters, reverse word order, or reverse line order. The result appears instantly for one-click copying.
 
 All reversal happens locally. Your text never leaves your device — safe for puzzles, data formatting, and sensitive content.`,
-    zh: `Text Reverser 是一款免费在线工具，Reverse text, words, sentences, or entire lines instantly. Useful for creating mirrored text, solving puzzles, or formatting data.。
+    zh: `Text Reverser 是一款免费在线工具，Reverse text, words, sentences, or entire lines instantly. 适用于创建镜像文字、解谜或格式化数据。。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 输入文本，选择反转模式（字符反转、单词顺序反转、行顺序反转），结果即时显示，一键复制。
 
@@ -533,11 +527,11 @@ Choose exact character sets (a–z, A–Z, 0–9, special symbols), set lengths 
 Set the string length, pick which character types to include (letters, digits, symbols), and click Generate. Copy the result instantly, or regenerate for a new random string.
 
 Generation uses your browser's native random source — no strings are stored or transmitted. Safe for generating API keys, tokens, or test identifiers.`,
-    zh: `Random String Generator 是一款免费在线工具，Generate random strings with custom characters and length。
+    zh: `Random String Generator 是一款免费在线工具，使用自定义字符和长度生成随机字符串。
 
-日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
+日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. 工具专注于做好一件事，而且做得很快。
 
 设置字符串长度，选择字符类型（字母、数字、符号），点击生成即可一键复制，或重新生成新的随机字符串。
 
@@ -553,11 +547,11 @@ The checker normalizes input by optionally ignoring spaces, punctuation, and cap
 Type or paste any text and the checker instantly tells you whether it reads the same forwards and backwards, ignoring spaces and punctuation by default.
 
 All checking happens locally in your browser. Your text is never sent anywhere — safe for verifying private messages or code snippets.`,
-    zh: `Palindrome Checker 是一款免费在线工具，Check if text reads the same forwards and backwards。
+    zh: `Palindrome Checker 是一款免费在线工具，检查文本是否正读反读都一样。
 
-日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
+日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. 工具专注于做好一件事，而且做得很快。
 
 输入或粘贴任意文本，工具即时判断它是否为回文（正反读相同），默认忽略空格和标点。
 
@@ -583,15 +577,15 @@ Enter a value in Celsius, Fahrenheit, Kelvin, or Rankine and all four scales upd
 Enter a value in Celsius, Fahrenheit, Kelvin, or Rankine and all four scales update instantly. Decimal precision is adjustable up to 4 places for scientific accuracy, and the interface highlights which scale you are editing so there is no ambiguity about the source unit.
 
 Every temperature conversion is computed through pure JavaScript arithmetic on your device. Readings from medical thermometers or industrial sensors never leave the browser, keeping sensitive health and operational data fully contained.`,
-    zh: `Temperature Converter 是一款免费在线工具，Convert temperatures between Celsius, Fahrenheit, and Kelvin scales instantly. Perfect for cooking, science, weather, and travel calculations.。
+    zh: `Temperature Converter 是一款免费在线工具，在摄氏度、 Fahrenheit, and Kelvin scales instantly. 非常适合烹饪、科学、天气和旅行计算。。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "weight-converter": {
     en: `A free online conversion calculator that convert between kilograms, pounds, ounces, and more. Get accurate results instantly without any software installation.
@@ -603,15 +597,15 @@ The converter handles kilograms, grams, milligrams, pounds, ounces, stones, metr
 Type a value in any supported unit — kilograms, pounds, ounces, stones, or tons — and every other unit populates immediately. Precision rounds to a sensible number of decimals for everyday use, with an option to extend digits for scientific or metallurgical applications.
 
 Weight conversion factors execute as native JavaScript operations within the page, with zero network requests. Whether you are converting medication dosages or confidential shipping manifests, the input values remain on your machine.`,
-    zh: `Weight Converter 是一款免费在线工具，Convert between kilograms, pounds, ounces, and more。
+    zh: `Weight Converter 是一款免费在线工具，在千克、磅、盎司等单位之间转换。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "length-converter": {
     en: `A free online conversion calculator that convert between meters, feet, inches, kilometers, and miles. Get accurate results instantly without any software installation.
@@ -623,15 +617,15 @@ Switch between metric units (nm, µm, mm, cm, m, km) and imperial units (inch, f
 Input any measurement in meters, kilometers, miles, feet, inches, centimeters, or millimeters and see all equivalents render simultaneously. The converter supports fractional inch notation for woodworking and decimal precision toggles for engineering tolerances.
 
 Distance calculations run through client-side JavaScript with no backend calls. Architectural dimensions and proprietary survey measurements stay private to your browser, which is critical when handling confidential construction or patent data.`,
-    zh: `Length Converter 是一款免费在线工具，Convert between meters, feet, inches, kilometers, and miles。
+    zh: `Length Converter 是一款免费在线工具，在米、英尺、英寸、公里和英里之间转换。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "data-size-converter": {
     en: `A free online conversion calculator that convert between bytes, kilobytes, megabytes, gigabytes, terabytes and more. compare file sizes, storage capacity, and data transfer amounts. Get accurate results instantly without any software installation.
@@ -643,15 +637,15 @@ Convert between bits and bytes in both decimal (KB = 1000 bytes) and binary (KiB
 Enter a value in bytes, kilobytes, megabytes, gigabytes, terabytes, or petabytes and toggle between binary (1024-based) and decimal (1000-based) conventions. The converter clearly labels each system so you never confuse a kibibyte with a kilobyte again.
 
 Storage unit conversions are pure arithmetic executed in the browser's JavaScript engine — no server round-trips. This matters when evaluating infrastructure capacity for projects under embargo or computing storage costs for unreleased product specifications.`,
-    zh: `Data Size Converter 是一款免费在线工具，Convert between bytes, kilobytes, megabytes, gigabytes, terabytes and more. Compare file sizes, storage capacity, and data transfer amounts.。
+    zh: `Data Size Converter 是一款免费在线工具，在字节、千字节、兆字节、吉字节、太字节等单位之间转换。 比较文件大小、存储容量和数据传输量。。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "speed-converter": {
     en: `A free online conversion calculator that convert speed between km/h, mph, knots, m/s, and mach. useful for driving, aviation, marine navigation, and physics calculations. Get accurate results instantly without any software installation.
@@ -663,15 +657,15 @@ Translate between km/h, mph, knots, meters per second, feet per second, and Mach
 Type any speed value and instantly see equivalents in km/h, mph, knots, m/s, feet per second, and Mach. The converter preserves high decimal precision for physics calculations while rounding sensibly for everyday driving and running context.
 
 Velocity conversions are computed entirely on your device through JavaScript. Navigation speeds and physics experiment data are never transmitted, preserving the confidentiality of sensitive flight or research parameters.`,
-    zh: `Speed Converter 是一款免费在线工具，Convert speed between km/h, mph, knots, m/s, and mach. Useful for driving, aviation, marine navigation, and physics calculations.。
+    zh: `Speed Converter 是一款免费在线工具，在公里/小时、英里/小时、节、米/秒和马赫之间转换速度。 适用于驾驶、航空、航海导航和物理计算。。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "area-converter": {
     en: `A free online conversion calculator that convert between square meters, acres, hectares, sq ft. Get accurate results instantly without any software installation.
@@ -683,15 +677,15 @@ Convert between square meters, square kilometers, square feet, square yards, acr
 Enter an area in square meters, square feet, acres, hectares, square yards, or square miles and all units update in concert. The interface supports both imperial and metric systems simultaneously, with precision adjustable for surveying or rough estimation.
 
 Area conversion math executes locally in your browser via JavaScript. Property dimensions and land valuations remain on your device, which is essential when evaluating real-estate deals before public announcement.`,
-    zh: `Area Converter 是一款免费在线工具，Convert between square meters, acres, hectares, sq ft。
+    zh: `Area Converter 是一款免费在线工具，在平方米、英亩、公顷、平方英尺之间转换。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "image-to-base64": {
     en: `A free browser-based image tool that convert images to base64 data uri for inline embedding. Process your photos and graphics directly in your browser without uploading to any server.
@@ -703,15 +697,13 @@ The tool outputs a ready-to-paste Base64 data URI string (prefixed with the corr
 Choose a file from disk or paste an image from your clipboard, and the encoded string appears instantly in a text area with copy and download buttons. Toggle between raw Base64 and the full data: URI scheme depending on whether you need it for an img tag or an API field.
 
 The entire encoding pipeline runs through your browser's FileReader and btoa APIs. Neither the original binary nor the resulting string is sent anywhere, which is important when embedding private diagrams or internal screenshots into code.`,
-    zh: `Image to Base64 是一款免费在线工具，Convert images to Base64 data URI for inline embedding。
+    zh: `Image to Base64 是一款免费在线工具，将图片转换为 Base64 data URI for inline embedding。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "random-number-generator": {
     en: `A free online utility tool that generate random numbers within a custom range. perfect for lotteries, giveaways, statistical sampling, and game development. Simple, fast, and completely private — just open and use.
@@ -723,11 +715,11 @@ Set a min/max range, choose how many numbers to generate (1–1000), and toggle 
 Set the minimum and maximum values for your range, choose how many numbers to generate, and optionally enable unique-only mode. Click Generate for instant results.
 
 All generation happens locally using your browser's random source. No values are stored or tracked — safe for lotteries, raffles, and statistical sampling.`,
-    zh: `Random Number Generator 是一款免费在线工具，Generate random numbers within a custom range. Perfect for lotteries, giveaways, statistical sampling, and game development.。
+    zh: `Random Number Generator 是一款免费在线工具，在自定义范围内生成随机数。 非常适合抽奖、赠送、统计抽样和游戏开发。。
 
-日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
+日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. 工具专注于做好一件事，而且做得很快。
 
 设置最小和最大值，选择生成数量，可选开启仅唯一值模式，点击生成即可获得结果。
 
@@ -745,13 +737,11 @@ Add images one by one or in a batch, drag them into the desired page sequence, a
 Page composition and PDF generation are executed locally in your browser using a client-side PDF writer. Your photos remain on your device throughout, so personal or confidential pictures never pass through a third-party server.`,
     zh: `Image to PDF 是一款免费在线工具，Convert images (JPG, PNG) into a single PDF document。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "pdf-splitter": {
     en: `A free browser-based image tool that split pdf by page ranges or extract specific pages. Process your photos and graphics directly in your browser without uploading to any server.
@@ -765,29 +755,27 @@ Open a PDF and the tool renders a thumbnail of every page. Enter the page number
 All parsing and page extraction happen on your machine via a browser-based PDF library. Because the source document never gets uploaded, splitting sensitive contracts or financial statements carries zero privacy risk.`,
     zh: `PDF Splitter 是一款免费在线工具，Split PDF by page ranges or extract specific pages。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "pdf-rotator": {
     en: `A free online PDF tool that rotate pdf pages by 90, 180, or 270 degrees. fix scanned documents, correct page orientation, and rearrange your pdf layouts. Work with your PDF files directly in the browser — no uploads, no waiting, no risk.
 
-PDF manipulation traditionally requires expensive software like Adobe Acrobat or risky online services that upload your sensitive documents. This tool lets you merge, split, rotate, or convert PDFs entirely in your browser using pdf-lib. Your financial statements, legal documents, and personal files never leave your device, giving you complete control over your privacy.
+PDF manipulation traditionally requires expensive software like Adobe Acrobat or risky online services that upload your sensitive documents. This tool lets you merge, split, rotate, or convert PDFs entirely in your browser using pdf-lib. 你的财务报表、法律文件和个人文件永远不会离开你的device, giving you complete control over your privacy.
 
 Each page appears as a thumbnail in a visual grid where you can select individual pages or ranges, then apply 90°, 180°, or 270° rotation with a single click. A live preview shows the corrected orientation before you download.
 
 Drag your PDF onto the tool, select the pages you want to rotate, choose 90°, 180°, or 270°, and click Rotate. Download the corrected PDF instantly.
 
 All rotation happens locally in your browser using pdf-lib. Your PDF is never uploaded — critical for contracts, medical records, and financial statements.`,
-    zh: `PDF Rotator 是一款免费在线工具，Rotate PDF pages by 90, 180, or 270 degrees. Fix scanned documents, correct page orientation, and rearrange your PDF layouts.。
+    zh: `PDF Rotator 是一款免费在线工具，Rotate PDF pages by 90, 180, or 270 degrees. 修复扫描文档、更正页面方向，重新排列你的 PDF layouts.。
 
-PDF 处理 traditionally requires expensive software like Adobe Acrobat or risky online services that upload your sensitive documents. This tool lets you merge, split, rotate, or convert PDFs entirely in your browser using pdf-lib. Your financial statements, legal documents, and personal files never leave your device, giving you complete control over your privacy.
+PDF 处理 traditionally requires expensive software like Adobe Acrobat 或会上传敏感文档的有风险的在线服务。 这款工具可以合并、拆分、旋转或转换 PDF 全部在浏览器中使用 pdf-lib 完成。 你的财务报表、法律文件和个人文件永远不会离开你的device, giving you complete control over your privacy.
 
-主要特点包括 drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. The tool handles documents of any size (within browser memory limits) and produces clean, standards-compliant output that opens correctly in any PDF reader.
+主要特点包括 drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. 工具处理任意大小的文档（在浏览器内存限制内），并生成干净、符合标准、在任何 PDF reader.
 
 将 PDF 拖入工具，选择要旋转的页面，选择 90°、180° 或 270°，点击旋转即可下载修正后的 PDF。
 
@@ -803,11 +791,11 @@ A thumbnail view of every page lets you click-to-select individual pages for del
 Upload your PDF, preview each page visually, select the pages you want to delete, and click Remove. Download the trimmed PDF instantly.
 
 All page removal happens locally in your browser using pdf-lib. Your document never leaves your device — critical for sensitive PDFs like tax returns or legal filings.`,
-    zh: `PDF Page Remover 是一款免费在线工具，Remove unwanted pages from your PDF documents quickly. Extract specific pages, delete blank sheets, and trim bulky files.。
+    zh: `PDF Page Remover 是一款免费在线工具，从你的文档中删除不需要的页面 PDF documents quickly. 提取特定页面、删除空白页，精简臃肿的文件。。
 
-PDF 处理 traditionally requires expensive software like Adobe Acrobat or risky online services that upload your sensitive documents. This tool lets you merge, split, rotate, or convert PDFs entirely in your browser using pdf-lib. Your financial statements, legal documents, and personal files never leave your device, giving you complete control over your privacy.
+PDF 处理 traditionally requires expensive software like Adobe Acrobat 或会上传敏感文档的有风险的在线服务。 这款工具可以合并、拆分、旋转或转换 PDF 全部在浏览器中使用 pdf-lib 完成。 你的财务报表、法律文件和个人文件永远不会离开你的device, giving you complete control over your privacy.
 
-主要特点包括 drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. The tool handles documents of any size (within browser memory limits) and produces clean, standards-compliant output that opens correctly in any PDF reader.
+主要特点包括 drag-and-drop file upload, visual page preview for easy selection, drag-and-drop page reordering, precise page range selection for splitting, and support for encrypted PDFs. 工具处理任意大小的文档（在浏览器内存限制内），并生成干净、符合标准、在任何 PDF reader.
 
 上传 PDF，可视化预览每页，选择要删除的页面，点击删除即可下载裁剪后的 PDF。
 
@@ -823,15 +811,13 @@ An interactive crop overlay lets you drag and resize the selection rectangle dir
 Drag the crop handles to define the region, or lock to a preset ratio such as 1:1, 16:9, or 4:3 from the dropdown. The selection dimensions display in real time, and applying the crop produces an instant preview before you download.
 
 Crop coordinates are calculated and the region is extracted using the browser's built-in canvas APIs. Nothing about your image — original or cropped — is ever transmitted over the network.`,
-    zh: `Image Cropper 是一款免费在线工具，Crop images by dragging a selection area on canvas。
+    zh: `Image Cropper 是一款免费在线工具，通过在画布上拖拽选择区域来裁剪图片。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-resizer": {
     en: `A free browser-based image tool that resize images to exact dimensions with aspect ratio lock. Process your photos and graphics directly in your browser without uploading to any server.
@@ -843,15 +829,13 @@ Enter exact pixel dimensions or scale by percentage, with an optional aspect-rat
 Type the target width or height in pixels or as a percentage, and the other dimension updates automatically when the aspect-ratio lock is on. Choose a resampling filter for sharp or smooth results, then download the resized image immediately.
 
 Pixel resampling is carried out by your browser's canvas drawing routines, so the original photo and its resized copy both stay in local memory. No image data leaves your device at any point.`,
-    zh: `Image Resizer 是一款免费在线工具，Resize images to exact dimensions with aspect ratio lock。
+    zh: `Image Resizer 是一款免费在线工具，按精确尺寸调整图片大小，锁定宽高比。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-filters": {
     en: `A free browser-based image tool that apply grayscale, sepia, blur, brightness, and contrast filters. Process your photos and graphics directly in your browser without uploading to any server.
@@ -865,13 +849,11 @@ Pick from filter presets like sepia, blur, sharpen, brightness, and contrast, th
 Every filter is computed through canvas pixel manipulation in your browser. The photo you load and its filtered version are processed entirely on your device with no server round-trip.`,
     zh: `Image Filters 是一款免费在线工具，Apply grayscale, sepia, blur, brightness, and contrast filters。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "color-picker": {
     en: `A free browser-based image tool that pick colors from uploaded images or use the color selector. Process your photos and graphics directly in your browser without uploading to any server.
@@ -883,15 +865,13 @@ Click anywhere on your uploaded image to sample the exact pixel color, with the 
 Load an image and move your cursor across it to see the color under the pointer update in real time. Click to lock in a sample, then copy the value in your preferred notation or add it to a saved palette for later.
 
 Color sampling is done by reading individual pixels from an in-browser canvas. Your image stays in local memory the entire time, so picking colors from confidential designs or client mockups is completely private.`,
-    zh: `Color Picker from Image 是一款免费在线工具，Pick colors from uploaded images or use the color selector。
+    zh: `图片取色器 是一款免费在线工具，从上传的图片中拾取颜色或使用颜色选择器。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "gif-maker": {
     en: `A free browser-based image tool that create animated gifs from multiple images or video clips. set frame delay, resize output, and optimize for web or social media. Process your photos and graphics directly in your browser without uploading to any server.
@@ -903,15 +883,13 @@ Arrange multiple images into an animated sequence with per-frame delay control, 
 Add the frames in the order you want them to play, set a delay per frame in milliseconds, and choose whether the animation loops once or repeatedly. A live preview plays the sequence so you can adjust timing before downloading the final file.
 
 Frame encoding into the GIF format is handled by a client-side encoder running in your browser. The source images and the assembled animation never leave your device during the process.`,
-    zh: `GIF Maker 是一款免费在线工具，Create animated GIFs from multiple images or video clips. Set frame delay, resize output, and optimize for web or social media.。
+    zh: `GIF Maker 是一款免费在线工具，Create animated GI支持从多张图片或视频片段生成。 设置帧延迟、调整输出尺寸，为网页或社交媒体进行优化。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-watermark": {
     en: `A free browser-based image tool that add text watermark to images with position and opacity control. Process your photos and graphics directly in your browser without uploading to any server.
@@ -923,15 +901,13 @@ Position the text watermark anywhere on the image using nine placement presets o
 Type your watermark text or upload a transparent PNG logo, then use the position grid and sliders to set placement, size, opacity, and rotation. The overlay renders on a live preview, and batch mode applies the same watermark to every image you load.
 
 Watermark compositing is performed through canvas blending operations in your browser. Because the original photos and stamped copies are processed locally, your unwatermarked files are never exposed to a server.`,
-    zh: `Image Watermark 是一款免费在线工具，Add text watermark to images with position and opacity control。
+    zh: `Image Watermark 是一款免费在线工具，为图片添加文字水印，控制位置和透明度。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-merge": {
     en: `A free browser-based image tool that combine multiple images into one side by side or grid. Process your photos and graphics directly in your browser without uploading to any server.
@@ -943,15 +919,13 @@ Combine two or more images horizontally, vertically, or in a grid layout, with a
 Add the images you want to combine, choose a horizontal or vertical layout, and set the gap and background color between them. The merged dimensions are calculated automatically, and a preview shows the final composition before you download.
 
 The composite canvas is assembled using browser-native canvas drawing operations. All input images and the resulting merged file remain on your device with no network transfer.`,
-    zh: `Image Merger 是一款免费在线工具，Combine multiple images into one side by side or grid。
+    zh: `Image Merger 是一款免费在线工具，将多张图片并排或按网格合并为一张。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-splitter": {
     en: `A free browser-based image tool that split a single image into multiple tiles by rows and columns. perfect for creating sprite sheets, grid layouts, and image segments. Process your photos and graphics directly in your browser without uploading to any server.
@@ -963,15 +937,13 @@ Define the number of rows and columns to slice a single image into a uniform gri
 Load an image and set the number of rows and columns for the grid — for example 3 columns for a three-tile carousel. The tool previews the slice boundaries and lets you download every tile as an individual file or as a ZIP archive.
 
 Grid slicing is executed through canvas region extraction in your browser. Neither the original image nor any of the generated tiles are ever sent to a remote server.`,
-    zh: `Image Splitter 是一款免费在线工具，Split a single image into multiple tiles by rows and columns. Perfect for creating sprite sheets, grid layouts, and image segments.。
+    zh: `Image Splitter 是一款免费在线工具，按行和列将单张图片切分为多个区块。 非常适合创建精灵表、网格布局和图片切片。。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-flip": {
     en: `A free browser-based image tool that flip images horizontally or vertically and rotate by 90-degree increments. mirror selfies, correct orientation, and transform photos instantly. Process your photos and graphics directly in your browser without uploading to any server.
@@ -983,15 +955,13 @@ One-click buttons flip the image horizontally or vertically, and rotation contro
 Open an image and choose horizontal, vertical, or both as the flip direction. The mirrored preview appears immediately, and you can download the result in the original format with a single click.
 
 Pixel reflection is a mathematically simple operation carried out by canvas transform functions in your browser. The image data never leaves your device, so flipping confidential or personal photos is risk-free.`,
-    zh: `Image Flip & Rotate 是一款免费在线工具，Flip images horizontally or vertically and rotate by 90-degree increments. Mirror selfies, correct orientation, and transform photos instantly.。
+    zh: `Image Flip & Rotate 是一款免费在线工具，水平或垂直翻转图片并旋转 90-degree increments. Mirror selfies, correct orientation, and transform photos instantly.。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-border": {
     en: `A free browser-based image tool that add customizable borders, frames, and padding to images. choose colors, widths, corner radius, and shadow effects for polished photos. Process your photos and graphics directly in your browser without uploading to any server.
@@ -1003,15 +973,13 @@ Customize border width, color, corner radius, and optional drop shadow with a li
 Enter a border width in pixels, pick a color from the swatch picker, and choose a style such as solid, dashed, or double. A live preview shows the framing effect, and batch mode applies the same border to a folder of images at once.
 
 Border drawing is handled by canvas stroke operations running locally in your browser. Your images and their framed versions stay on your device throughout the process.`,
-    zh: `Image Border 是一款免费在线工具，Add customizable borders, frames, and padding to images. Choose colors, widths, corner radius, and shadow effects for polished photos.。
+    zh: `Image Border 是一款免费在线工具，为图片添加可自定义的边框、框架和内边距。选择颜色、宽度、圆角半径和阴影效果来美化ed photos.。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "meme-generator": {
     en: `A free browser-based image tool that create memes by adding top and bottom text to images. Process your photos and graphics directly in your browser without uploading to any server.
@@ -1023,15 +991,13 @@ Type top and bottom captions in the classic Impact font, adjust font size and st
 Upload a background image or pick a stock template, then type your top and bottom captions. Adjust the font size and stroke width, drag the text to reposition it, and download the finished meme as a single image.
 
 Caption rendering is done with canvas text-drawing operations inside your browser. The background photo and the completed meme are never uploaded, so you can use personal images without any privacy concerns.`,
-    zh: `Meme Generator 是一款免费在线工具，Create memes by adding top and bottom text to images。
+    zh: `Meme Generator 是一款免费在线工具，通过在图片上添加顶部和底部文字来制作表情包。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-to-sketch": {
     en: `A free browser-based image tool that convert photos into pencil sketch drawings and line art. apply artistic filters to create realistic hand-drawn effects from your images. Process your photos and graphics directly in your browser without uploading to any server.
@@ -1043,15 +1009,13 @@ Choose from multiple sketch styles — pencil, charcoal, and line art — with a
 Load a photo and adjust the edge-intensity and shading sliders until the sketch effect matches the level of detail you want. A split preview shows the original alongside the sketch so you can compare before downloading.
 
 The sketch effect is generated through canvas convolution and pixel manipulation in your browser. The source photo and its sketched rendition stay on your device with no server involvement.`,
-    zh: `Image to Sketch 是一款免费在线工具，Convert photos into pencil sketch drawings and line art. Apply artistic filters to create realistic hand-drawn effects from your images.。
+    zh: `Image to Sketch 是一款免费在线工具，将照片转换为铅笔素描和线条画。 应用艺术滤镜，从图片创建逼真的手绘效果。。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "emoji-remover": {
     en: `A free online text processing tool that remove all emoji characters from text while keeping words. Transform, analyze, and manipulate text instantly in your browser.
@@ -1063,11 +1027,11 @@ The tool strips emoji and pictographic Unicode characters using the latest emoji
 Paste text containing emoji and the tool instantly strips all emoji characters while preserving the surrounding words and punctuation. Copy the clean text with one click.
 
 All processing happens locally. Your text never leaves your browser — safe for cleaning up messages, form submissions, or database content.`,
-    zh: `Emoji Remover 是一款免费在线工具，Remove all emoji characters from text while keeping words。
+    zh: `Emoji Remover 是一款免费在线工具，移除文本中所有 emoji 字符，同时保留文字。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 粘贴含有 emoji 的文本，工具即时剔除所有 emoji 字符，同时保留周围的文字和标点，一键复制纯文本。
 
@@ -1083,11 +1047,11 @@ Each character in your text is decomposed into its Unicode codepoint (U+XXXX), o
 Paste any text and the tool breaks it down character by character, showing each character's Unicode codepoint, name, category (letter, digit, symbol, etc.), and UTF-8 byte encoding.
 
 All analysis happens locally in your browser. Your text is never uploaded — safe for inspecting log files, debug output, or sensitive data.`,
-    zh: `Unicode Character Detector 是一款免费在线工具，Inspect Unicode characters with codepoint and category info。
+    zh: `Unicode Character Detector 是一款免费在线工具，查看 Unicode 字符的码点和类别信息。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 粘贴任意文本，工具逐字符拆解，显示每个字符的 Unicode 码点、名称、类别（字母、数字、符号等）和 UTF-8 字节编码。
 
@@ -1113,9 +1077,9 @@ Paste your original JSON in the left pane and the modified JSON in the right pan
 All comparison happens locally. Your JSON data never leaves your browser — safe for comparing API responses, config files, and sensitive payloads.`,
     zh: `JSON Diff 是一款免费在线工具，Compare two JSON objects and highlight differences。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 在左侧粘贴原始 JSON，右侧粘贴修改后的 JSON，新增、删除和修改的键值对即时并排高亮显示。
 
@@ -1151,15 +1115,15 @@ Pick a source city or timezone and a target timezone to see the converted time i
 Pick any source city or UTC offset and the tool displays the corresponding local time across all major world zones side by side. A visual timeline highlights overlapping working hours, and DST adjustments apply automatically based on each region's current rules.
 
 Timezone offset logic — including the IANA timezone database rules — is resolved entirely in-browser through JavaScript. Meeting schedules and participant locations never reach a server, keeping confidential calendar coordination private.`,
-    zh: `Time Zone Converter 是一款免费在线工具，Convert time between different world time zones instantly. Schedule meetings across time zones and compare clocks worldwide.。
+    zh: `Time Zone Converter 是一款免费在线工具，即时在不同世界时区之间转换时间。 跨时区安排会议并比较全球时钟。。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "binary-to-text": {
     en: `A free online text processing tool that convert binary code to text and text back to binary. Transform, analyze, and manipulate text instantly in your browser.
@@ -1171,11 +1135,11 @@ Decode mode accepts 8-bit binary groups separated by spaces or as one continuous
 Paste binary digits (space-separated 8-bit groups or a continuous stream) in the input box and the decoded text appears instantly below. Switch to encode mode to convert text back to binary.
 
 All conversion happens in your browser. Neither your text nor binary data is sent anywhere — safe for decoding private messages or learning exercises.`,
-    zh: `Binary to Text 是一款免费在线工具，Convert binary code to text and text back to binary。
+    zh: `Binary to Text 是一款免费在线工具，将二进制代码转为文本，文本转为二进制。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 在输入框粘贴二进制数字（空格分隔的8位组或连续流），解码后的文本即时显示。切换到编码模式可将文本转回二进制。
 
@@ -1191,15 +1155,13 @@ A single click inverts every pixel's color to produce a photographic negative, u
 Open an image and toggle the invert control to produce an instant negative. You can invert all channels at once or target individual red, green, or blue channels, with a live preview reflecting each change.
 
 Color-channel inversion is computed by iterating over pixel data in a browser canvas. The image you load and its inverted output are processed locally and never transmitted to a server.`,
-    zh: `Image Invert 是一款免费在线工具，Invert or negate colors in any image instantly. Create negative effects, X-ray looks, and artistic color reversals with one click.。
+    zh: `Image Invert 是一款免费在线工具，即时反转或取反任意图片的颜色。 Create negative effects, X-ray looks, and artistic color reversals with one click.。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "image-collage": {
     en: `A free browser-based image tool that combine multiple photos into a beautiful collage grid. choose layouts, spacing, background colors, and export in high resolution. Process your photos and graphics directly in your browser without uploading to any server.
@@ -1211,15 +1173,13 @@ Select from grid layouts (2x2, 3x3, mosaics), set spacing between photos, choose
 Choose a collage template or start from a blank canvas, then drop images into each slot and drag them into position. Adjust spacing, corner rounding, and background color, and swap layouts on the fly with an instant preview before exporting.
 
 Collage composition is rendered entirely through canvas operations in your browser. Every photo you add and the finished collage remain on your device, making it safe to use personal or family pictures.`,
-    zh: `Photo Collage Maker 是一款免费在线工具，Combine multiple photos into a beautiful collage grid. Choose layouts, spacing, background colors, and export in high resolution.。
+    zh: `Photo Collage Maker 是一款免费在线工具，将多张照片合并为精美的拼贴网格。 Choose layouts, spacing, background colors, and export in high resolution.。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "css-gradient": {
     en: `A free online CSS gradient generator that lets you build linear, radial, and conic gradients through a visual editor — then exports ready-to-paste CSS for your stylesheets. Drag color stops along the gradient bar, adjust the angle in degrees, and fine-tune opacity and blending to produce the exact effect you want.
@@ -1273,9 +1233,9 @@ Pick a base color using the color picker or enter a hex value, then choose a har
 All palette generation happens locally. No colors or preferences are stored or tracked.`,
     zh: `Color Palette Generator 是一款免费在线工具，Generate color schemes: monochromatic, complementary, and more。
 
-日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
+日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. 工具专注于做好一件事，而且做得很快。
 
 使用拾色器选择基色或输入十六进制值，选择配色类型（互补、类似、三分、四分或单色），点击任意色块复制其 hex 值。
 
@@ -1291,15 +1251,15 @@ Enter any number from 1 to 3999 to get its Roman numeral equivalent, or type a R
 Type any number from 1 to 3999 and the Roman numeral equivalent appears instantly — or paste a Roman numeral and get its Arabic value with validation that flags invalid combinations. The converter handles standard subtractive notation and explains the breakdown of each symbol.
 
 Numeral conversion logic runs as pure JavaScript in your browser with no external API calls. This keeps the tool instantly available offline, which is useful in classrooms and exam settings where network access may be restricted.`,
-    zh: `Roman Numeral Converter 是一款免费在线工具，Convert between Roman numerals and Arabic numbers instantly. Works with values from 1 to 3999, including common numeral combinations.。
+    zh: `Roman Numeral Converter 是一款免费在线工具，即时在罗马数字和阿拉伯数字之间转换。 支持以下范围的数值： 1 to 3999, including common numeral combinations.。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "percentage-calculator": {
     en: `A free online conversion calculator that calculate percentages, what if, increase/decrease easily. Get accurate results instantly without any software installation.
@@ -1313,13 +1273,13 @@ Choose a calculation mode — percentage of a number, what percent X is of Y, or
 All percentage computations execute as client-side JavaScript arithmetic. Financial figures, salary data, and pricing models remain entirely within the browser session — no sensitive business metrics are ever transmitted or logged remotely.`,
     zh: `Percentage Calculator 是一款免费在线工具，Calculate percentages, what if, increase/decrease easily。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "tip-calculator": {
     en: `A free online tip calculator that splits restaurant bills, service charges, and group expenses fairly. Enter the subtotal, choose a tip percentage, set the number of diners, and instantly see the per-person share — including the tip breakdown and grand total.
@@ -1341,15 +1301,15 @@ Enter a birth date and optionally a target date to see the exact age broken down
 Enter a birth date and optionally a target date to receive a precise breakdown in years, months, weeks, and days. The calculator also shows total days lived and the next birthday countdown, with leap-year logic handled automatically.
 
 Age computation runs entirely through JavaScript's native Date object in your browser. Personal birth dates and identity-related information never leave your device, which is essential for privacy-sensitive eligibility and documentation tasks.`,
-    zh: `Age Calculator 是一款免费在线工具，Calculate exact age in years, months, weeks, and days. Find your age on any future date or count down to your next birthday.。
+    zh: `Age Calculator 是一款免费在线工具，精确计算年龄，显示年、月、周和天。 查看未来某天的年龄，或倒数到下一个生日。。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "bmi-calculator": {
     en: `A free online conversion calculator that calculate body mass index and check your health category. Get accurate results instantly without any software installation.
@@ -1361,15 +1321,15 @@ Enter height and weight in metric or imperial units, and the tool computes BMI t
 Select metric or imperial units, enter your height and weight, and the BMI value appears instantly alongside its WHO health category (underweight, normal, overweight, or obese). The interface also shows the healthy weight range for your specific height.
 
 BMI calculation runs as client-side JavaScript with no server transmission. Health and body measurements — sensitive personal data — stay completely private within your browser session, requiring no account or medical portal login.`,
-    zh: `BMI Calculator 是一款免费在线工具，Calculate Body Mass Index and check your health category。
+    zh: `BMI Calculator 是一款免费在线工具，计算身体质量指数并查看健康等级。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "countdown-timer": {
     en: `A free online utility tool that set a countdown to any date and time with days, hours, minutes, and seconds. perfect for events, deadlines, and special occasions. Simple, fast, and completely private — just open and use.
@@ -1381,11 +1341,11 @@ Set a target date and time down to the second, optionally add a custom label, an
 Set your target date and time, optionally add a label, and the countdown begins instantly — showing days, hours, minutes, and seconds remaining. The timer keeps running even if you navigate away.
 
 The countdown runs entirely in your browser. Your target date is stored locally only if you choose to save it — nothing is uploaded or tracked.`,
-    zh: `Countdown Timer 是一款免费在线工具，Set a countdown to any date and time with days, hours, minutes, and seconds. Perfect for events, deadlines, and special occasions.。
+    zh: `Countdown Timer 是一款免费在线工具，设置到任意日期和时间的倒计时，显示天、时、分、秒。 非常适合活动、截止日期和特殊场合。
 
-日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
+日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. 工具专注于做好一件事，而且做得很快。
 
 设置目标日期和时间，可选添加标签，倒计时即开始——显示剩余天、时、分、秒。即使离开页面计时器仍继续运行。
 
@@ -1401,11 +1361,11 @@ Select from six dice types (d4, d6, d8, d10, d12, d20), roll up to 20 dice at on
 Choose a dice type (d4, d6, d8, d10, d12, or d20), set the number of dice to roll, and click Roll. Results appear instantly with individual rolls and a total sum.
 
 All rolling happens locally using your browser's random source. No results are stored or tracked — perfect for tabletop RPGs and classroom activities.`,
-    zh: `Dice Roller 是一款免费在线工具，Roll virtual dice with 4, 6, 8, 10, 12, and 20 sides. Roll multiple dice at once for tabletop games, RPGs, and classrooms.。
+    zh: `Dice Roller 是一款免费在线工具，掷自定义面数的 4, 6, 8, 10, 12, and 20 sides. 为桌游一次掷多个骰子， RPGs, and classrooms.。
 
-日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
+日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. 工具专注于做好一件事，而且做得很快。
 
 选择骰子类型（d4、d6、d8、d10、d12、d20），设置骰子数量，点击滚动。结果即时显示各骰点数和总和。
 
@@ -1423,9 +1383,9 @@ Enter your options (one per line or separated by commas) and click Decide. The t
 All selection happens locally in your browser. Your options are never stored or transmitted — safe for personal or sensitive decisions.`,
     zh: `Decision Maker 是一款免费在线工具，Let fate decide — pick a random option from your list。
 
-日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
+日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. 工具专注于做好一件事，而且做得很快。
 
 输入选项（每行一个或用逗号分隔），点击决定。工具随机选出一个选项，可重新点击获得新结果。
 
@@ -1434,22 +1394,22 @@ All selection happens locally in your browser. Your options are never stored or 
   "audio-cutter": {
     en: `A free browser-based audio tool that trim and cut audio files with an interactive waveform preview. extract clips from mp3, wav, and other formats right in your browser. Process your music and sound files without uploading to any server.
 
-Audio editing traditionally requires desktop software like Audacity or Adobe Audition, which are complex and resource-heavy for simple tasks. This tool brings essential audio processing to your browser, letting you trim, merge, or convert audio files instantly. It's perfect for quick edits, format conversions, or preparing audio for projects.
+Audio editing traditionally requires desktop software like Audacity or Adobe Audition, which are complex and resource-heavy for simple tasks. 这款工具为浏览器带来了核心音频处理能力，可以即时裁剪、合并或转换音频文件。 It's perfect for quick edits, format conversions, or preparing audio for projects.
 
 Key features include visual waveform display for precise editing, drag-and-drop file upload, support for multiple audio formats (MP3, WAV, OGG, M4A), real-time preview of edits, and high-quality output with configurable bitrate and sample rate options.
 
-Upload your audio file by dragging it onto the tool or using the file picker. Use the waveform display to select the portion you want to keep (for trimming) or arrange multiple files (for merging). Preview your edits, adjust settings if needed, and click the export button to download the processed audio.
+Upload your audio file by dragging it onto the tool or using the file picker. 使用波形显示选择要保留的部分（用于裁剪）或排列多个文件（用于合并）。 预览编辑结果，按需调整设置，点击导出按钮下载处理后的音频。
 
 All audio processing happens locally in your browser using the Web Audio API. Your music and sound files are never uploaded to any server. This ensures complete privacy for personal recordings, music projects, and sensitive audio content. No account required.`,
-    zh: `Audio Cutter 是一款免费在线工具，Trim and cut audio files with an interactive waveform preview. Extract clips from MP3, WAV, and other formats right in your browser.。
+    zh: `Audio Cutter 是一款免费在线工具，通过交互式波形预览来裁剪和切割音频文件。 Extract clips from MP3, WAV, and other formats right in your browser.。
 
-音频编辑 traditionally requires desktop software like Audacity or Adobe Audition, which are complex and resource-heavy for simple tasks. This tool brings essential audio processing to your browser, letting you trim, merge, or convert audio files instantly. It's perfect for quick edits, format conversions, or preparing audio for projects.
+音频编辑 traditionally requires desktop software like Audacity 或 Adobe Audition 对于简单任务来说过于复杂且占用资源。 这款工具为浏览器带来了核心音频处理能力，可以即时裁剪、合并或转换音频文件。 It's perfect for quick edits, format conversions, or preparing audio for projects.
 
 主要特点包括 visual waveform display for precise editing, drag-and-drop file upload, support for multiple audio formats (MP3, WAV, OGG, M4A), real-time preview of edits, and high-quality output with configurable bitrate and sample rate options.
 
-上传您的 audio file by dragging it onto the tool or using the file picker. Use the waveform display to select the portion you want to keep (for trimming) or arrange multiple files (for merging). Preview your edits, adjust settings if needed, and click the export button to download the processed audio.
+上传您的 audio file by dragging it onto the tool or using the file picker. 使用波形显示选择要保留的部分（用于裁剪）或排列多个文件（用于合并）。 预览编辑结果，按需调整设置，点击导出按钮下载处理后的音频。
 
-所有音频处理 happens locally in your browser using the Web Audio API. Your music and sound files are never uploaded to any server. This ensures complete privacy for personal recordings, music projects, and sensitive audio content. No account required.`,
+所有音频处理 happens locally in your browser using the Web Audio API. 你的音乐和音频文件永远不会上传到任何服务器。 这确保了个人录音、音乐项目和敏感音频内容的完全隐私。 No account required.`,
   },
   "audio-merger": {
     en: `A free browser-based image tool that combine multiple audio files into one seamless track. merge songs, recordings, or voice clips in any order with crossfade support. Process your photos and graphics directly in your browser without uploading to any server.
@@ -1461,15 +1421,13 @@ Arrange audio clips in any order on a timeline, add optional crossfade transitio
 Add audio files in the order you want them to play, optionally trimming the start and end of each clip. Choose an output format, preview the combined timeline, and download the merged track when it sounds right.
 
 Audio concatenation is handled by the browser's Web Audio API and encoder libraries. Your sound files and the resulting track are processed entirely on your device and are never sent to a remote server.`,
-    zh: `Audio Merger 是一款免费在线工具，Combine multiple audio files into one seamless track. Merge songs, recordings, or voice clips in any order with crossfade support.。
+    zh: `Audio Merger 是一款免费在线工具，将多个音频文件合并为一个无缝音轨。 Merge songs, recordings, or voice clips in any order with crossfade support.。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "audio-converter": {
     en: `A free online conversion calculator that convert audio between wav formats and sample rates. Get accurate results instantly without any software installation.
@@ -1483,13 +1441,13 @@ Upload an audio file and select the target format, sample rate, and channel conf
 Audio processing happens entirely through the browser's Web Audio API — the file is decoded, resampled, and re-encoded without any upload to a remote server. Voice memos, interview recordings, and unreleased music tracks never leave your device.`,
     zh: `Audio Converter 是一款免费在线工具，Convert audio between WAV formats and sample rates。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "dns-lookup": {
     en: `A free online network lookup tool that query A, AAAA, MX, NS, TXT, CAA, and SOA records for any domain. Query domain information and DNS records instantly from your browser.
@@ -1521,7 +1479,7 @@ Key features include support for all major DNS record types (A, AAAA, MX, NS, TX
 Enter the domain name in the input field, select the DNS record type you want to query (or choose 'All' for a comprehensive view), and click the lookup button. Results appear instantly with formatted DNS records, WHOIS information, and any available registration details.
 
 DNS queries are performed through public DNS resolvers — no personal information is collected or stored. The tool does not track your lookups or store query history. Your network diagnostics remain completely private.`,
-    zh: `WHOIS Lookup 是一款免费在线工具，Look up domain registration and ownership information。
+    zh: `WHOIS Lookup 是一款免费在线工具，查询域名注册和所有权信息。
 
 网络管理员, web developers, and IT professionals need to look up DNS records, check domain registrations, and diagnose network issues regularly. Command-line tools like \`dig\` and \`whois\` require terminal access and technical knowledge. This tool provides the same information through an intuitive web interface, accessible from any device.
 
@@ -1551,15 +1509,15 @@ Pick two dates and the tool calculates the exact day count, plus a breakdown sho
 Select a start and end date using the calendar pickers and the tool displays the exact difference in total days, weeks, months, and years. An option to exclude weekends makes it useful for business-day and sprint-duration calculations.
 
 Date-difference arithmetic executes through JavaScript's native Date object entirely in the browser. Contract deadlines, medical timelines, and project schedules — potentially confidential — are processed locally with no server round-trip.`,
-    zh: `Days Between Dates 是一款免费在线工具，Calculate the exact number of days between two dates。
+    zh: `Days Between Dates 是一款免费在线工具，计算两个日期之间的精确天数。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "password-strength": {
     en: `A free online text processing tool that test how strong your password is with real-time analysis. Transform, analyze, and manipulate text instantly in your browser.
@@ -1571,11 +1529,11 @@ The analyzer evaluates entropy in bits, checks against a database of common pass
 Type or paste a password and the tool scores its strength in real time — analyzing length, character variety, entropy, and common-pattern vulnerability. Suggestions appear as you type.
 
 All analysis happens locally in your browser. Your password is never transmitted, logged, or stored — safe for testing real credentials.`,
-    zh: `Password Strength Checker 是一款免费在线工具，Test how strong your password is with real-time analysis。
+    zh: `Password Strength Checker 是一款免费在线工具，通过实时分析测试密码强度。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 输入或粘贴密码，工具实时评分其强度——分析长度、字符多样性、熵值和常见模式漏洞，并实时给出建议。
 
@@ -1593,9 +1551,9 @@ Enter your data (text, URL, or number), choose a barcode format (Code128, EAN-13
 All generation happens locally in your browser. Your data is never uploaded — safe for creating barcodes for internal product codes or private links.`,
     zh: `Barcode & QR Code Generator 是一款免费在线工具，生成 Code128、EAN-13、Code39 格式条码和二维码。
 
-日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
+日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. 工具专注于做好一件事，而且做得很快。
 
 输入数据（文本、URL 或数字），选择条码格式（Code128、EAN-13、Code39 或 QR Code），可调整尺寸，点击生成即可下载 PNG 或 SVG 图片。
 
@@ -1611,15 +1569,15 @@ Enter any two dimensions (width and height) to get the simplified ratio, or choo
 Enter any two dimensions or pick a common ratio preset (16:9, 4:3, 1:1, 9:16, 21:9) and the tool computes the matching width, height, and exact ratio in reduced form. A visual preview rectangle shows the proportions graphically.
 
 Ratio reduction and dimension math run as pure JavaScript arithmetic within the page. Design specifications and unreleased product dimensions are never sent to any server, keeping proprietary creative work private.`,
-    zh: `Aspect Ratio Calculator 是一款免费在线工具，Calculate aspect ratios from dimensions or presets。
+    zh: `Aspect Ratio Calculator 是一款免费在线工具，从尺寸或预设值计算宽高比。
 
-单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. While your phone has a basic calculator, it rarely handles all the units you need. This tool provides comprehensive conversion support with instant results, making it easy to switch between measurement systems without memorizing conversion factors.
+单位换算 are needed daily in cooking, engineering, travel, science, and everyday life. 虽然手机有基础计算器，但很少能处理你需要的所有单位。 这款工具提供全面的转换支持，即时出结果，无需记忆换算系数就能轻松切换计量体系。
 
-主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. The tool handles both common and specialized units.
+主要特点包括 support for dozens of unit types, instant results as you type, high-precision calculations with proper rounding, a clean interface showing multiple unit options simultaneously, and the ability to swap input and output units with one click. 工具同时支持常见和专业单位。
 
-输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. No need to click a button — results update in real-time as you type. Use the swap button to reverse the conversion direction, or select a different unit from the comprehensive list.
+输入您的数值 in the input field, select the source unit from the dropdown, and see the converted value in all other units simultaneously. 无需点击按钮 — results update in real-time as you type. 使用交换按钮反转转换方向，或从全面的列表中选择不同的单位。
 
-所有计算 happen locally in your browser using JavaScript. No data is sent to any server. Your input values and conversion results stay completely private. No account, no signup, no cookies beyond essential functionality.`,
+所有计算 happen locally in your browser using JavaScript. 不会向任何服务器发送数据。 你输入的数值和转换结果完全保密。 No account, no signup, no cookies beyond essential functionality.`,
   },
   "qr-reader": {
     en: `A free online utility tool that decode qr codes from uploaded images instantly. scan any qr code image to reveal the embedded url, text, or contact information. Simple, fast, and completely private — just open and use.
@@ -1633,9 +1591,9 @@ Drag a QR code image onto the tool or use the file picker. The embedded URL, tex
 All decoding happens locally in your browser. Your image is never uploaded — safe for scanning QR codes containing personal or financial information.`,
     zh: `QR Code Reader 是一款免费在线工具，Decode QR codes from uploaded images instantly. Scan any QR code image to reveal the embedded URL, text, or contact information.。
 
-日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. This tool provides a quick, reliable solution that works instantly in your browser. It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
+日常任务 like generating passwords, creating QR codes, rolling dice, or checking BMI shouldn't require installing software or creating accounts. 这款工具提供快速、可靠的解决方案，在浏览器中即时运行。 It's perfect for one-off tasks where you need a fast result without the overhead of specialized software.
 
-主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. The tool is designed to do one thing well and do it fast.
+主要特点包括 instant results with no loading time, a clean and intuitive interface that requires no learning curve, customizable options for fine-tuning results, one-click copy or download for output, and responsive design that works on any device. 工具专注于做好一件事，而且做得很快。
 
 将 QR 码图片拖入工具或使用文件选择器，嵌入的 URL、文本或联系人数据即时解码并显示，一键复制。
 
@@ -1651,15 +1609,13 @@ Switch between eight simulation modes — protanopia, deuteranopia, tritanopia, 
 Load an image and select a deficiency type from the dropdown — deuteranopia, protanopia, tritanopia, or achromatopsia, among others. The simulated view appears immediately, and a side-by-side toggle lets you compare it against the original color perception.
 
 Color-matrix transformations for each deficiency type are applied to pixel data through canvas operations in your browser. The image you are testing is never uploaded, so you can safely evaluate confidential designs or client work.`,
-    zh: `Color Blindness Simulator 是一款免费在线工具，Simulate how images look with various color blindness types。
+    zh: `Color Blindness Simulator 是一款免费在线工具，模拟不同色盲类型下图片的视觉效果。
 
-图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. This tool brings essential image processing capabilities to your browser. Whether you need to compress images for your website, resize photos for social media, convert between formats, or apply filters, you can do it all instantly without installing anything.
+图片处理 usually requires desktop software like Photoshop or GIMP, which are expensive and complex for simple tasks. 这款工具为浏览器带来了核心图片处理能力。 无论你需要为网站压缩图片、为社交媒体调整尺寸、转换格式还是应用滤镜，一切都能即时完成，无需安装任何软件。
 
-主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. The tool preserves image metadata and provides clean, optimized output.
+主要特点包括 drag-and-drop upload for easy file handling, real-time preview of changes before applying them, support for multiple image formats (JPEG, PNG, WebP, GIF, BMP), adjustable quality and size settings for precise control, and batch processing for multiple files at once. 工具保留图片元数据并提供干净、优化的输出。
 
-上传您的 image by dragging it onto the tool area or clicking the upload button. Adjust settings using the available controls (quality slider, dimension inputs, format selection, etc.). Preview the result in real-time, and when satisfied, click the download button to save the processed image. For batch operations, select multiple files and apply the same settings to all of them.
-
-所有图片处理 happens locally in your browser using Canvas API and JavaScript. Your images are never uploaded to any server, ensuring complete privacy. This is especially important for sensitive photos, business documents, or personal images. No account required — just open, process, and download.`,
+上传您的 image by dragging it onto the tool area or clicking the upload button. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 happens locally in your browser using Canvas API and JavaScript. 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。 No account required — just open, process, and download.`,
   },
   "online-notepad": {
     en: `A free online text processing tool that a clean, distraction-free browser-based notepad with auto-save. write notes, code snippets, and lists that persist in your browser storage. Transform, analyze, and manipulate text instantly in your browser.
@@ -1673,9 +1629,9 @@ Start typing immediately — no setup required. Your notes auto-save to your bro
 All notes are stored exclusively in your browser's local storage — never uploaded to any server. Clear your notes with one click to wipe them permanently from your device.`,
     zh: `Online Notepad 是一款免费在线工具，A clean, distraction-free browser-based notepad with auto-save. Write notes, code snippets, and lists that persist in your browser storage.。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 直接开始输入即可，无需设置。笔记在输入时自动保存到浏览器本地存储，刷新页面或重启浏览器后仍然保留。可随时导出为 .txt 文件。
 
@@ -1693,9 +1649,9 @@ Paste or type text and the tool displays a detailed breakdown: total letters, vo
 All analysis happens locally in your browser. Your text is never uploaded — safe for analyzing essays, reports, and confidential documents.`,
     zh: `Text Statistics 是一款免费在线工具，Detailed text analysis: letters, vowels, unique words, and more。
 
-写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. Desktop text editors lack these specialized features, and online alternatives often require signup or have usage limits. This tool provides unlimited, instant text processing with a clean, focused interface.
+写作者、开发者, and content creators frequently need to process text — counting words, converting case, checking diffs, or reformatting content. 桌面文本编辑器缺少这些专业功能，而在线替代方案通常需要注册或有使用限制。 这款工具提供无限、即时的文本处理，界面简洁专注。
 
-主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. The tool handles Unicode correctly and works with text in any language.
+主要特点包括 real-time processing as you type, support for large text inputs (up to 100,000 characters), multiple output formats and options, one-click copy to clipboard, and clear visual feedback for changes and results. 工具正确处理 Unicode，支持任何语言的文本。
 
 粘贴或输入文本，工具显示详细分析：字母总数、元音、辅音、音节、独特单词、词频和平均词长——全部实时更新。
 
