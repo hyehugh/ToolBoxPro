@@ -73,7 +73,6 @@ interface Rocket {
 }
 
 const G = 0.015; // Gravity — gentle arc
-const TRAIL_LEN = 14;
 
 const TYPES: { type: string; weight: number }[] = [
   { type: "peony", weight: 4 },
