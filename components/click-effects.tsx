@@ -40,7 +40,7 @@ interface Rocket {
   hue2: number;
 }
 
-type FireworkType = "peony" | "chrysanthemum" | "willow" | "ring" | "heart";
+type FireworkType = "peony" | "chrysanthemum" | "willow" | "ring";
 
 /* ──────────────────────────── Constants ──────────────────────────── */
 
@@ -48,7 +48,7 @@ const GRAVITY = 0.06;
 const TRAIL_LENGTH = 8;
 
 const FIREWORK_TYPES: FireworkType[] = [
-  "peony", "chrysanthemum", "willow", "ring", "heart",
+  "peony", "chrysanthemum", "willow", "ring",
 ];
 
 /** Festive color palettes — each explosion picks one */
@@ -118,23 +118,19 @@ export function ClickEffects() {
       switch (rocket.type) {
         case "ring":
           count = 50;
-          baseSpeed = 4.5;
+          baseSpeed = 13.5;  // ×3
           break;
         case "chrysanthemum":
           count = 70;
-          baseSpeed = 5;
+          baseSpeed = 15;    // ×3
           break;
         case "willow":
           count = 55;
-          baseSpeed = 3.5;
-          break;
-        case "heart":
-          count = 60;
-          baseSpeed = 4;
+          baseSpeed = 10.5;  // ×3
           break;
         default: // peony
           count = 60 + Math.floor(Math.random() * 20);
-          baseSpeed = 4 + Math.random() * 2;
+          baseSpeed = 12 + Math.random() * 6;  // ×3
       }
 
       for (let i = 0; i < count; i++) {
@@ -164,15 +160,6 @@ export function ClickEffects() {
             gravity = GRAVITY * 1.8;
             break;
           }
-          case "heart": {
-            // Heart shape parametric
-            const t = (Math.PI * 2 * i) / count;
-            const hx = 16 * Math.pow(Math.sin(t), 3);
-            const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-            angle = Math.atan2(hy, hx);
-            speed = baseSpeed * Math.sqrt(hx * hx + hy * hy) / 16;
-            break;
-          }
           default: { // peony
             angle = Math.random() * Math.PI * 2;
             speed = baseSpeed * (0.5 + Math.random() * 0.8);
@@ -180,7 +167,7 @@ export function ClickEffects() {
         }
 
         const hue = palette[Math.floor(Math.random() * palette.length)] + (Math.random() - 0.5) * 20;
-        const maxLife = 50 + Math.random() * 30;
+        const maxLife = 180 + Math.random() * 100;  // ×3-4 longer life
 
         particlesRef.current.push({
           x: rocket.x,
@@ -225,10 +212,8 @@ export function ClickEffects() {
 
     /* ─── Main animation loop ─── */
     const animate = () => {
-      // Fade the canvas instead of clearing — creates natural motion-blur trails
-      ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Clear completely every frame — no ghost residue
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Use additive blending for all particles — creates realistic glow
       ctx.globalCompositeOperation = "lighter";
@@ -332,8 +317,8 @@ export function ClickEffects() {
       });
 
       // Cap particles to prevent performance issues
-      if (particlesRef.current.length > 800) {
-        particlesRef.current = particlesRef.current.slice(-800);
+      if (particlesRef.current.length > 1500) {
+        particlesRef.current = particlesRef.current.slice(-1500);
       }
 
       rafRef.current = requestAnimationFrame(animate);
