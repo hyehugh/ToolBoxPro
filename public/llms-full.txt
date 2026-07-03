@@ -18,80 +18,1062 @@ This document provides a comprehensive reference for every tool available on Too
 
 | # | Category | Tool Count |
 |---|----------|------------|
-| 1 | Developer Tools | 0 |
-| 2 | Text Tools | 0 |
-| 3 | Image Tools | 0 |
-| 4 | PDF Tools | 0 |
-| 5 | Audio Tools | 0 |
-| 6 | Network Tools | 0 |
-| 7 | Unit Converters | 0 |
-| 8 | Utilities | 0 |
+| 1 | Developer Tools | 29 |
+| 2 | Text Tools | 19 |
+| 3 | Image Tools | 18 |
+| 4 | PDF Tools | 5 |
+| 5 | Audio Tools | 3 |
+| 6 | Network Tools | 2 |
+| 7 | Unit Converters | 10 |
+| 8 | Utilities | 13 |
 
 **Total**: 99 tools across 8 categories.
 
 
 ---
 
-## Developer Tools (0 tools)
+## Developer Tools (29 tools)
 
 Tools for software engineers, web developers, and DevOps teams. Format code, generate hashes, decode tokens, parse expressions, and test patterns — all in the browser.
 
+### JSON Formatter & Validator
+
+- **URL**: https://trytoolboxpro.com/tools/json-formatter
+- **Category**: Developer Tools
+- **Keywords**: json formatter json validator prettify json
+
+**Description**: Format, validate, and beautify JSON data instantly. Fix syntax errors and make your JSON readable with intelligent auto-formatting and tree view.
+
+**When to use**: Use when debugging API responses, validating JSON configuration files, or making minified JSON readable before editing.
+
+### Base64 Encoder/Decoder
+
+- **URL**: https://trytoolboxpro.com/tools/base64-encode-decode
+- **Category**: Developer Tools
+- **Keywords**: base64 encode decode base64 converter
+
+**Description**: Encode text, files, or images to Base64 format and decode them back. Perfect for inline data URIs and API testing workflows.
+
+**When to use**: Use when embedding images as data URIs, encoding credentials for HTTP Basic Auth, or decoding Base64 API payloads.
+
+### Regex Tester
+
+- **URL**: https://trytoolboxpro.com/tools/regex-tester
+- **Category**: Developer Tools
+- **Keywords**: regex tester regular expression test online
+
+**Description**: Test regular expressions with real-time highlighting
+
+**When to use**: Use when developing input validation, search patterns, or parsing logic and need to verify your regex matches expected input.
+
+### Color Converter
+
+- **URL**: https://trytoolboxpro.com/tools/color-converter
+- **Category**: Developer Tools
+- **Keywords**: color converter hex to rgb rgb to hex color picker
+
+**Description**: Convert colors between HEX, RGB, HSL, CMYK, and HSV formats instantly. Preview colors, get hex codes, and generate harmonious palettes.
+
+**When to use**: Use when translating colors between CSS formats, generating harmonious palettes for design systems, or picking the right hex code.
+
+### URL Encoder/Decoder
+
+- **URL**: https://trytoolboxpro.com/tools/url-encoder-decoder
+- **Category**: Developer Tools
+- **Keywords**: url encoder url decoder percent encoding
+
+**Description**: Encode and decode URL components, query strings, and full URLs. Fix broken links and prepare URLs for API requests safely.
+
+**When to use**: Use when constructing query strings, fixing broken URLs with special characters, or decoding URL parameters from logs.
+
+### UUID Generator
+
+- **URL**: https://trytoolboxpro.com/tools/uuid-generator
+- **Category**: Developer Tools
+- **Keywords**: uuid generator guid generator unique id
+
+**Description**: Generate random UUID v4 identifiers instantly. Bulk generate unique IDs for databases, APIs, distributed systems, and test data.
+
+**When to use**: Use when you need unique identifiers for database records, API keys, distributed systems, or test fixtures.
+
+### Hash Generator
+
+- **URL**: https://trytoolboxpro.com/tools/hash-generator
+- **Category**: Developer Tools
+- **Keywords**: hash generator md5 sha256 sha1 sha512 hash online
+
+**Description**: Generate SHA-256, SHA-384, SHA-512 hashes for any text or file. Compare checksums and verify data integrity with multiple hash algorithms.
+
+**When to use**: Use when verifying file integrity, generating checksums for downloads, or comparing data fingerprints across systems.
+
+### Timestamp Converter
+
+- **URL**: https://trytoolboxpro.com/tools/timestamp-converter
+- **Category**: Developer Tools
+- **Keywords**: timestamp converter unix timestamp epoch converter
+
+**Description**: Convert between Unix timestamps and human-readable dates
+
+**When to use**: Use when converting between Unix epoch timestamps and human-readable dates for logging, databases, or API debugging.
+
+### Number Base Converter
+
+- **URL**: https://trytoolboxpro.com/tools/number-base-converter
+- **Category**: Developer Tools
+- **Keywords**: binary converter hex converter decimal octal base converter
+
+**Description**: Convert between binary, octal, decimal, and hexadecimal
+
+**When to use**: Use when converting between binary, octal, decimal, and hex for low-level programming, debugging, or educational purposes.
+
+### CSS Minifier
+
+- **URL**: https://trytoolboxpro.com/tools/css-minifier
+- **Category**: Developer Tools
+- **Keywords**: css minifier css compressor css minify online
+
+**Description**: Minify and compress CSS code to reduce file size and improve page load speed. Remove whitespace, comments, and redundant rules safely.
+
+**When to use**: Use when optimizing website performance by reducing CSS file size before deployment.
+
+### SQL Formatter
+
+- **URL**: https://trytoolboxpro.com/tools/sql-formatter
+- **Category**: Developer Tools
+- **Keywords**: sql formatter sql beautifier format sql query
+
+**Description**: Format and beautify SQL queries for better readability
+
+**When to use**: Use when cleaning up raw SQL queries from logs, preparing queries for code review, or learning SQL syntax.
+
+### JSON to YAML Converter
+
+- **URL**: https://trytoolboxpro.com/tools/json-to-yaml
+- **Category**: Developer Tools
+- **Keywords**: json to yaml yaml to json converter online
+
+**Description**: Convert JSON data to clean YAML format and vice versa. Preserve nested structures, arrays, and data types during conversion.
+
+**When to use**: Use when converting JSON configuration (Docker Compose, Kubernetes, CI/CD pipelines) to YAML or vice versa.
+
+### String Escaper/Unescaper
+
+- **URL**: https://trytoolboxpro.com/tools/string-escaper
+- **Category**: Developer Tools
+- **Keywords**: string escaper unescape text escape special characters
+
+**Description**: Escape and unescape special characters in strings for JSON, HTML, URLs, SQL, and JavaScript. Handle all common escaping formats.
+
+**When to use**: Use when preparing strings for safe insertion into JSON, HTML, URLs, SQL queries, or JavaScript code.
+
+### HTML Tag Stripper
+
+- **URL**: https://trytoolboxpro.com/tools/html-tag-stripper
+- **Category**: Developer Tools
+- **Keywords**: html tag remover strip html tags remove html
+
+**Description**: Remove all HTML tags from text, keeping only content
+
+**When to use**: Use when extracting plain text content from HTML emails, scraped web pages, or rich-text editor output.
+
+### JWT Decoder
+
+- **URL**: https://trytoolboxpro.com/tools/jwt-decoder
+- **Category**: Developer Tools
+- **Keywords**: jwt decoder jwt debug decode jwt token online
+
+**Description**: Decode JWT tokens and inspect header, payload, and signature
+
+**When to use**: Use when debugging authentication tokens, inspecting JWT claims, or verifying token expiration and structure.
+
+### Cron Expression Parser
+
+- **URL**: https://trytoolboxpro.com/tools/cron-parser
+- **Category**: Developer Tools
+- **Keywords**: cron expression parser cron explainer cron schedule
+
+**Description**: Parse cron expressions and get human-readable schedules
+
+**When to use**: Use when documenting scheduled job expressions, verifying cron syntax before deployment, or explaining schedules to non-technical team members.
+
+### HTML Preview
+
+- **URL**: https://trytoolboxpro.com/tools/html-preview
+- **Category**: Developer Tools
+- **Keywords**: html preview html viewer html render online
+
+**Description**: Write and preview HTML code in real-time in a sandbox
+
+**When to use**: Use when prototyping HTML/CSS snippets, testing email templates, or teaching web development concepts.
+
+### CSV Viewer & Formatter
+
+- **URL**: https://trytoolboxpro.com/tools/csv-viewer
+- **Category**: Developer Tools
+- **Keywords**: csv viewer csv formatter csv table online
+
+**Description**: View CSV data in a formatted table with auto-detection
+
+**When to use**: Use when reviewing CSV exports, exploring data files, or converting comma-separated data into a readable table.
+
+### IP Subnet Calculator
+
+- **URL**: https://trytoolboxpro.com/tools/ip-calculator
+- **Category**: Developer Tools
+- **Keywords**: ip subnet calculator cidr calculator network calculator
+
+**Description**: Calculate network subnet, CIDR, broadcast, and host range
+
+**When to use**: Use when planning network architecture, configuring subnets, or validating CIDR notation for cloud infrastructure.
+
+### JWT Generator
+
+- **URL**: https://trytoolboxpro.com/tools/jwt-generator
+- **Category**: Developer Tools
+- **Keywords**: jwt generator create jwt token json web token
+
+**Description**: Generate JWT tokens with custom header and payload
+
+**When to use**: Use when creating test tokens for API development, mocking authentication flows, or generating tokens for integration testing.
+
+### JSON Diff
+
+- **URL**: https://trytoolboxpro.com/tools/json-diff
+- **Category**: Developer Tools
+- **Keywords**: json diff compare json objects online
+
+**Description**: Compare two JSON objects and highlight differences
+
+**When to use**: Use when comparing API responses, debugging configuration drift, or auditing changes between JSON snapshots.
+
+### HTTP Status Codes
+
+- **URL**: https://trytoolboxpro.com/tools/http-status-codes
+- **Category**: Developer Tools
+- **Keywords**: http status codes list 404 500 error codes online
+
+**Description**: Browse and search all HTTP status codes with descriptions
+
+**When to use**: Use when looking up HTTP response codes during API development, debugging web errors, or learning web standards.
+
+### Markdown to HTML
+
+- **URL**: https://trytoolboxpro.com/tools/markdown-to-html
+- **Category**: Developer Tools
+- **Keywords**: markdown to html converter md to html online
+
+**Description**: Convert Markdown text to formatted HTML in real-time
+
+**When to use**: Use when converting documentation, README content, or blog posts from Markdown to HTML for web publishing.
+
+### CSS Gradient Generator
+
+- **URL**: https://trytoolboxpro.com/tools/css-gradient
+- **Category**: Developer Tools
+- **Keywords**: css gradient generator linear radial background online
+
+**Description**: Create beautiful linear and radial CSS gradients visually. Copy the generated CSS code for backgrounds, buttons, and UI elements.
+
+**When to use**: Use when designing backgrounds, buttons, or UI elements with smooth color transitions and need the CSS code.
+
+### CSS Box Shadow Generator
+
+- **URL**: https://trytoolboxpro.com/tools/css-shadow
+- **Category**: Developer Tools
+- **Keywords**: css box shadow generator drop shadow online
+
+**Description**: Design and preview custom CSS box shadows visually
+
+**When to use**: Use when prototyping card effects, button depth, or layered UI components with custom box shadows.
+
+### JSON to TypeScript
+
+- **URL**: https://trytoolboxpro.com/tools/json-to-typescript
+- **Category**: Developer Tools
+- **Keywords**: json to typescript interface generator online
+
+**Description**: Convert JSON objects into TypeScript interfaces automatically. Generate type definitions from API responses and configuration files instantly.
+
+**When to use**: Use when generating TypeScript interfaces from API responses, converting JSON config to types, or bootstrapping type definitions.
+
+### HTML to JSX Converter
+
+- **URL**: https://trytoolboxpro.com/tools/html-to-jsx
+- **Category**: Developer Tools
+- **Keywords**: html to jsx converter react html transform online
+
+**Description**: Convert plain HTML code into React JSX syntax. Handle inline styles, class attributes, self-closing tags, and event handlers automatically.
+
+**When to use**: Use when converting static HTML templates or Bootstrap components into React JSX components.
+
+### Color Palette Generator
+
+- **URL**: https://trytoolboxpro.com/tools/color-palette
+- **Category**: Developer Tools
+- **Keywords**: color palette generator color scheme designer online
+
+**Description**: Generate color schemes: monochromatic, complementary, and more
+
+**When to use**: Use when building design systems, creating harmonious color schemes, or exploring complementary color combinations.
+
+### Password Strength Checker
+
+- **URL**: https://trytoolboxpro.com/tools/password-strength
+- **Category**: Developer Tools
+- **Keywords**: password strength checker test secure online
+
+**Description**: Test how strong your password is with real-time analysis
+
+**When to use**: Use when auditing password security, teaching users about password best practices, or testing password policies.
 
 
 ---
 
-## Text Tools (0 tools)
+## Text Tools (19 tools)
 
 Tools for writers, editors, content creators, and anyone who works with text. Count, transform, compare, generate, and analyze text content.
 
+### Word & Character Counter
+
+- **URL**: https://trytoolboxpro.com/tools/word-counter
+- **Category**: Text Tools
+- **Keywords**: word counter character counter word count
+
+**Description**: Count words, characters, sentences, and reading time
+
+**When to use**: Use when checking essay lengths, meeting word limits for submissions, or analyzing text density for SEO.
+
+### Text Case Converter
+
+- **URL**: https://trytoolboxpro.com/tools/case-converter
+- **Category**: Text Tools
+- **Keywords**: case converter uppercase lowercase title case camel case
+
+**Description**: Convert text between UPPER, lower, Title, camelCase and more
+
+**When to use**: Use when standardizing variable names (camelCase), formatting titles, or cleaning up inconsistent text casing.
+
+### Lorem Ipsum Generator
+
+- **URL**: https://trytoolboxpro.com/tools/lorem-ipsum-generator
+- **Category**: Text Tools
+- **Keywords**: lorem ipsum generator placeholder text dummy text
+
+**Description**: Generate placeholder text for design mockups, website wireframes, and print layouts. Customize paragraph count, word length, and format.
+
+**When to use**: Use when filling design mockups, wireframes, or print layouts with placeholder text during development.
+
+### Text Diff Checker
+
+- **URL**: https://trytoolboxpro.com/tools/text-diff-checker
+- **Category**: Text Tools
+- **Keywords**: text diff checker compare text difference online
+
+**Description**: Compare two blocks of text side by side and highlight every difference. Perfect for code reviews, document revisions, and plagiarism checks.
+
+**When to use**: Use when reviewing document revisions, comparing code snippets, or checking for plagiarism between text blocks.
+
+### Text Repeater
+
+- **URL**: https://trytoolboxpro.com/tools/text-repeater
+- **Category**: Text Tools
+- **Keywords**: text repeater repeat text multiple times string generator
+
+**Description**: Repeat any text multiple times with custom separators, line breaks, or prefixes. Generate test data, patterns, and repeated strings instantly.
+
+**When to use**: Use when generating test data, creating patterns for design, or producing repeated content for demonstrations.
+
+### Text to Binary Converter
+
+- **URL**: https://trytoolboxpro.com/tools/text-to-binary
+- **Category**: Text Tools
+- **Keywords**: text to binary binary to text converter online
+
+**Description**: Convert text to binary code and binary back to text
+
+**When to use**: Use when learning binary encoding, converting data for low-level protocols, or creating educational materials.
+
+### Text to URL Slug
+
+- **URL**: https://trytoolboxpro.com/tools/text-to-slug
+- **Category**: Text Tools
+- **Keywords**: url slug generator text to slug seo friendly url
+
+**Description**: Convert any text into clean, SEO-friendly URL slugs. Remove special characters, normalize spaces, and generate optimized permalinks.
+
+**When to use**: Use when generating clean, SEO-friendly URL slugs from article titles, product names, or blog headings.
+
+### Text Sorter
+
+- **URL**: https://trytoolboxpro.com/tools/text-sorter
+- **Category**: Text Tools
+- **Keywords**: text sorter sort lines alphabetically online
+
+**Description**: Sort text lines alphabetically (A-Z or Z-A), by line length, or in reverse order. Remove duplicates and organize lists instantly.
+
+**When to use**: Use when organizing lists alphabetically, sorting data exports, or preparing sorted output for spreadsheets.
+
+### Line Deduplicator
+
+- **URL**: https://trytoolboxpro.com/tools/text-deduplicator
+- **Category**: Text Tools
+- **Keywords**: remove duplicate lines deduplicate text online
+
+**Description**: Remove duplicate lines from text while preserving order
+
+**When to use**: Use when cleaning up mailing lists, removing duplicate entries from data exports, or deduplicating log files.
+
+### Text Reverser
+
+- **URL**: https://trytoolboxpro.com/tools/text-reverser
+- **Category**: Text Tools
+- **Keywords**: text reverser reverse string reverse words online
+
+**Description**: Reverse text, words, sentences, or entire lines instantly. Useful for creating mirrored text, solving puzzles, or formatting data.
+
+**When to use**: Use when solving puzzles, creating mirrored text for design, or reversing data for encoding purposes.
+
+### Random String Generator
+
+- **URL**: https://trytoolboxpro.com/tools/random-string-generator
+- **Category**: Text Tools
+- **Keywords**: random string generator random text online
+
+**Description**: Generate random strings with custom characters and length
+
+**When to use**: Use when generating test tokens, temporary passwords, or random IDs for testing and development.
+
+### Palindrome Checker
+
+- **URL**: https://trytoolboxpro.com/tools/palindrome-checker
+- **Category**: Text Tools
+- **Keywords**: palindrome checker palindrome test online
+
+**Description**: Check if text reads the same forwards and backwards
+
+**When to use**: Use when solving word puzzles, teaching string manipulation, or verifying palindromic sequences in data.
+
+### Morse Code Converter
+
+- **URL**: https://trytoolboxpro.com/tools/morse-code-converter
+- **Category**: Text Tools
+- **Keywords**: morse code converter text to morse morse to text
+
+**Description**: Convert text to Morse code and decode Morse code back to readable text. Learn Morse alphabet with visual audio playback support.
+
+**When to use**: Use when learning Morse code, encoding messages for ham radio, or creating educational cryptography exercises.
+
+### Emoji Remover
+
+- **URL**: https://trytoolboxpro.com/tools/emoji-remover
+- **Category**: Text Tools
+- **Keywords**: emoji remover remove emoji from text online
+
+**Description**: Remove all emoji characters from text while keeping words
+
+**When to use**: Use when cleaning text for data processing, removing emoji from form submissions, or preparing text for NLP analysis.
+
+### Unicode Character Detector
+
+- **URL**: https://trytoolboxpro.com/tools/unicode-detector
+- **Category**: Text Tools
+- **Keywords**: unicode detector character code codepoint lookup online
+
+**Description**: Inspect Unicode characters with codepoint and category info
+
+**When to use**: Use when debugging character encoding issues, inspecting special characters, or learning about Unicode codepoints.
+
+### Caesar Cipher
+
+- **URL**: https://trytoolboxpro.com/tools/caesar-cipher
+- **Category**: Text Tools
+- **Keywords**: caesar cipher encoder decoder shift cipher online
+
+**Description**: Encode and decode text using the classic Caesar shift cipher. Choose shift values, try brute force decoding, and learn cryptography basics.
+
+**When to use**: Use when learning classical cryptography, solving cipher puzzles, or teaching encryption fundamentals.
+
+### Binary to Text
+
+- **URL**: https://trytoolboxpro.com/tools/binary-to-text
+- **Category**: Text Tools
+- **Keywords**: binary to text converter binary translator online
+
+**Description**: Convert binary code to text and text back to binary
+
+**When to use**: Use when decoding binary output from systems, translating binary data, or verifying binary-to-text conversions.
+
+### Online Notepad
+
+- **URL**: https://trytoolboxpro.com/tools/online-notepad
+- **Category**: Text Tools
+- **Keywords**: online notepad text editor notes browser online
+
+**Description**: A clean, distraction-free browser-based notepad with auto-save. Write notes, code snippets, and lists that persist in your browser storage.
+
+**When to use**: Use when you need a quick, auto-saving note pad in the browser without installing an app or creating an account.
+
+### Text Statistics
+
+- **URL**: https://trytoolboxpro.com/tools/text-statistics
+- **Category**: Text Tools
+- **Keywords**: text statistics analysis letter frequency word count online
+
+**Description**: Detailed text analysis: letters, vowels, unique words, and more
+
+**When to use**: Use when analyzing text complexity, measuring readability, or gathering detailed metrics for content optimization.
 
 
 ---
 
-## Image Tools (0 tools)
+## Image Tools (18 tools)
 
 Tools for designers, photographers, content creators, and social media managers. Compress, convert, crop, filter, and manipulate images without uploading to any server.
 
+### Image Compressor
+
+- **URL**: https://trytoolboxpro.com/tools/image-compressor
+- **Category**: Image Tools
+- **Keywords**: image compressor compress jpg png webp
+
+**Description**: Compress JPEG, PNG, WebP images without losing visible quality. Reduce file sizes by up to 80% for faster website loading.
+
+**When to use**: Use when reducing image file sizes for web performance, email attachments, or storage optimization without visible quality loss.
+
+### Image Format Converter
+
+- **URL**: https://trytoolboxpro.com/tools/image-converter
+- **Category**: Image Tools
+- **Keywords**: image converter jpg to png png to webp
+
+**Description**: Convert images between JPG, PNG, WebP, AVIF, GIF, and BMP formats. Batch convert with custom quality and dimension settings.
+
+**When to use**: Use when converting images to web-friendly formats (WebP, AVIF), preparing assets for different platforms, or standardizing file types.
+
+### Image to Base64
+
+- **URL**: https://trytoolboxpro.com/tools/image-to-base64
+- **Category**: Image Tools
+- **Keywords**: image to base64 image to data uri base64 image converter
+
+**Description**: Convert images to Base64 data URI for inline embedding
+
+**When to use**: Use when embedding images directly in HTML/CSS, creating data URIs for email templates, or reducing HTTP requests.
+
+### Image Cropper
+
+- **URL**: https://trytoolboxpro.com/tools/image-cropper
+- **Category**: Image Tools
+- **Keywords**: image cropper crop image online free
+
+**Description**: Crop images by dragging a selection area on canvas
+
+**When to use**: Use when preparing images for specific aspect ratios (social media posts, profile pictures, thumbnails) or removing unwanted borders.
+
+### Image Resizer
+
+- **URL**: https://trytoolboxpro.com/tools/image-resizer
+- **Category**: Image Tools
+- **Keywords**: image resizer resize image online dimensions
+
+**Description**: Resize images to exact dimensions with aspect ratio lock
+
+**When to use**: Use when scaling images to exact pixel dimensions for web layouts, app icons, or print specifications while maintaining aspect ratio.
+
+### Image Filters
+
+- **URL**: https://trytoolboxpro.com/tools/image-filters
+- **Category**: Image Tools
+- **Keywords**: image filters photo effects grayscale sepia online
+
+**Description**: Apply grayscale, sepia, blur, brightness, and contrast filters
+
+**When to use**: Use when applying artistic effects (grayscale, sepia, blur) to photos for social media, design projects, or archival purposes.
+
+### Color Picker from Image
+
+- **URL**: https://trytoolboxpro.com/tools/color-picker
+- **Category**: Image Tools
+- **Keywords**: color picker from image eyedropper online
+
+**Description**: Pick colors from uploaded images or use the color selector
+
+**When to use**: Use when extracting exact color values from a logo, photograph, or screenshot for use in design or branding.
+
+### GIF Maker
+
+- **URL**: https://trytoolboxpro.com/tools/gif-maker
+- **Category**: Image Tools
+- **Keywords**: gif maker create gif from images animated online
+
+**Description**: Create animated GIFs from multiple images or video clips. Set frame delay, resize output, and optimize for web or social media.
+
+**When to use**: Use when creating animated GIFs for social media, tutorials, or presentations from a sequence of images.
+
+### Image Watermark
+
+- **URL**: https://trytoolboxpro.com/tools/image-watermark
+- **Category**: Image Tools
+- **Keywords**: image watermark add watermark to photo online
+
+**Description**: Add text watermark to images with position and opacity control
+
+**When to use**: Use when protecting image copyright, branding photos, or adding attribution text before publishing.
+
+### Image Merger
+
+- **URL**: https://trytoolboxpro.com/tools/image-merge
+- **Category**: Image Tools
+- **Keywords**: merge images combine photos side by side online
+
+**Description**: Combine multiple images into one side by side or grid
+
+**When to use**: Use when creating before/after comparisons, contact sheets, or combining photos into a single layout.
+
+### Image Splitter
+
+- **URL**: https://trytoolboxpro.com/tools/image-splitter
+- **Category**: Image Tools
+- **Keywords**: image splitter split image into tiles grid online
+
+**Description**: Split a single image into multiple tiles by rows and columns. Perfect for creating sprite sheets, grid layouts, and image segments.
+
+**When to use**: Use when creating sprite sheets for game development, splitting panoramic images, or preparing grid-based content.
+
+### Image Flip & Rotate
+
+- **URL**: https://trytoolboxpro.com/tools/image-flip
+- **Category**: Image Tools
+- **Keywords**: image flip mirror rotate image horizontally vertically
+
+**Description**: Flip images horizontally or vertically and rotate by 90-degree increments. Mirror selfies, correct orientation, and transform photos instantly.
+
+**When to use**: Use when correcting mirrored selfies, flipping scanned documents, or rotating images to the correct orientation.
+
+### Image Border
+
+- **URL**: https://trytoolboxpro.com/tools/image-border
+- **Category**: Image Tools
+- **Keywords**: image border photo frame add border to image online
+
+**Description**: Add customizable borders, frames, and padding to images. Choose colors, widths, corner radius, and shadow effects for polished photos.
+
+**When to use**: Use when adding decorative frames to photos, creating polaroid effects, or preparing images for print layouts.
+
+### Meme Generator
+
+- **URL**: https://trytoolboxpro.com/tools/meme-generator
+- **Category**: Image Tools
+- **Keywords**: meme generator create meme add text to image online
+
+**Description**: Create memes by adding top and bottom text to images
+
+**When to use**: Use when creating memes for social media, marketing campaigns, or humorous content with classic top/bottom text overlay.
+
+### Image to Sketch
+
+- **URL**: https://trytoolboxpro.com/tools/image-to-sketch
+- **Category**: Image Tools
+- **Keywords**: image to sketch photo to pencil drawing sketch effect
+
+**Description**: Convert photos into pencil sketch drawings and line art. Apply artistic filters to create realistic hand-drawn effects from your images.
+
+**When to use**: Use when creating artistic sketches from photos for design projects, gifts, or educational materials.
+
+### Image Invert
+
+- **URL**: https://trytoolboxpro.com/tools/image-invert
+- **Category**: Image Tools
+- **Keywords**: image invert negative photo colors reverse online
+
+**Description**: Invert or negate colors in any image instantly. Create negative effects, X-ray looks, and artistic color reversals with one click.
+
+**When to use**: Use when creating negative effects for artistic purposes, analyzing scanned film, or producing X-ray-style visuals.
+
+### Photo Collage Maker
+
+- **URL**: https://trytoolboxpro.com/tools/image-collage
+- **Category**: Image Tools
+- **Keywords**: photo collage maker combine pictures online
+
+**Description**: Combine multiple photos into a beautiful collage grid. Choose layouts, spacing, background colors, and export in high resolution.
+
+**When to use**: Use when combining multiple photos into a single image for social media, prints, or memory boards.
+
+### Color Blindness Simulator
+
+- **URL**: https://trytoolboxpro.com/tools/color-blindness-simulator
+- **Category**: Image Tools
+- **Keywords**: color blindness simulator protanopia deuteranopia online
+
+**Description**: Simulate how images look with various color blindness types
+
+**When to use**: Use when designing accessible interfaces, testing color contrast for accessibility compliance, or creating inclusive content.
 
 
 ---
 
-## PDF Tools (0 tools)
+## PDF Tools (5 tools)
 
 Tools for merging, splitting, rotating, and extracting pages from PDF documents. All PDF operations run client-side using JavaScript libraries like pdf-lib.
 
+### PDF Merger
+
+- **URL**: https://trytoolboxpro.com/tools/pdf-merger
+- **Category**: PDF Tools
+- **Keywords**: pdf merger combine pdf merge pdf files
+
+**Description**: Merge multiple PDF files into a single document instantly. Combine pages, reorder, and create unified PDFs without installing software.
+
+**When to use**: Use when combining scanned pages, merging reports, or assembling a single document from multiple PDF sources.
+
+### Image to PDF
+
+- **URL**: https://trytoolboxpro.com/tools/image-to-pdf
+- **Category**: PDF Tools
+- **Keywords**: image to pdf jpg to pdf png to pdf converter
+
+**Description**: Convert images (JPG, PNG) into a single PDF document
+
+**When to use**: Use when you need to manipulate PDF documents without installing desktop software or uploading sensitive files.
+
+### PDF Splitter
+
+- **URL**: https://trytoolboxpro.com/tools/pdf-splitter
+- **Category**: PDF Tools
+- **Keywords**: pdf splitter split pdf extract pages online
+
+**Description**: Split PDF by page ranges or extract specific pages
+
+**When to use**: Use when you need to manipulate PDF documents without installing desktop software or uploading sensitive files.
+
+### PDF Rotator
+
+- **URL**: https://trytoolboxpro.com/tools/pdf-rotator
+- **Category**: PDF Tools
+- **Keywords**: pdf rotator rotate pdf pages online
+
+**Description**: Rotate PDF pages by 90, 180, or 270 degrees. Fix scanned documents, correct page orientation, and rearrange your PDF layouts.
+
+**When to use**: Use when you need to manipulate PDF documents without installing desktop software or uploading sensitive files.
+
+### PDF Page Remover
+
+- **URL**: https://trytoolboxpro.com/tools/pdf-page-remover
+- **Category**: PDF Tools
+- **Keywords**: pdf page remover delete pdf pages online
+
+**Description**: Remove unwanted pages from your PDF documents quickly. Extract specific pages, delete blank sheets, and trim bulky files.
+
+**When to use**: Use when you need to manipulate PDF documents without installing desktop software or uploading sensitive files.
 
 
 ---
 
-## Audio Tools (0 tools)
+## Audio Tools (3 tools)
 
 Tools for podcasters, musicians, video editors, and audio enthusiasts. Cut, merge, and convert audio files directly in the browser using the Web Audio API.
 
+### Audio Cutter
+
+- **URL**: https://trytoolboxpro.com/tools/audio-cutter
+- **Category**: Audio Tools
+- **Keywords**: audio cutter trim mp3 wav online
+
+**Description**: Trim and cut audio files with an interactive waveform preview. Extract clips from MP3, WAV, and other formats right in your browser.
+
+**When to use**: Use when trimming podcasts, extracting audio clips from recordings, or cutting songs to specific lengths.
+
+### Audio Merger
+
+- **URL**: https://trytoolboxpro.com/tools/audio-merger
+- **Category**: Audio Tools
+- **Keywords**: audio merger join combine mp3 online
+
+**Description**: Combine multiple audio files into one seamless track. Merge songs, recordings, or voice clips in any order with crossfade support.
+
+**When to use**: Use when combining voice recordings, merging podcast segments, or creating seamless audio tracks with crossfades.
+
+### Audio Converter
+
+- **URL**: https://trytoolboxpro.com/tools/audio-converter
+- **Category**: Audio Tools
+- **Keywords**: audio converter wav mp3 sample rate online
+
+**Description**: Convert audio between WAV formats and sample rates
+
+**When to use**: Use when converting between audio formats or adjusting sample rates for compatibility with different systems.
 
 
 ---
 
-## Network Tools (0 tools)
+## Network Tools (2 tools)
 
 Tools for IT professionals, system administrators, and network engineers. Look up DNS records, query domain ownership information, and debug domain configurations.
 
+### DNS Lookup
+
+- **URL**: https://trytoolboxpro.com/tools/dns-lookup
+- **Category**: Network Tools
+- **Keywords**: dns lookup dns check domain records online
+
+**Description**: Look up DNS records for any domain including A, AAAA, MX, NS, TXT, and CNAME. Debug domain configuration and email routing issues.
+
+**When to use**: Use when debugging email delivery (MX records), verifying DNS propagation, or troubleshooting domain configuration.
+
+### WHOIS Lookup
+
+- **URL**: https://trytoolboxpro.com/tools/whois-lookup
+- **Category**: Network Tools
+- **Keywords**: whois lookup domain registration owner check online
+
+**Description**: Look up domain registration and ownership information
+
+**When to use**: Use when checking domain availability, investigating domain ownership, or verifying registration details before purchase.
 
 
 ---
 
-## Unit Converters (0 tools)
+## Unit Converters (10 tools)
 
 Tools for converting between units, formats, and encoding standards. Convert measurements, temperatures, file formats, and more — all instantly and accurately.
 
+### HTML Entity Converter
+
+- **URL**: https://trytoolboxpro.com/tools/html-entity-converter
+- **Category**: Unit Converters
+- **Keywords**: html entity encoder html entity decoder html escape
+
+**Description**: Encode and decode HTML entities like &amp; and &lt;
+
+**When to use**: Use when preparing text for HTML display, decoding HTML entities from scraped content, or fixing encoding issues.
+
+### Temperature Converter
+
+- **URL**: https://trytoolboxpro.com/tools/temperature-converter
+- **Category**: Unit Converters
+- **Keywords**: temperature converter celsius fahrenheit kelvin
+
+**Description**: Convert temperatures between Celsius, Fahrenheit, and Kelvin scales instantly. Perfect for cooking, science, weather, and travel calculations.
+
+**When to use**: Use when converting recipes, weather data, or scientific measurements between Celsius, Fahrenheit, and Kelvin.
+
+### Weight Converter
+
+- **URL**: https://trytoolboxpro.com/tools/weight-converter
+- **Category**: Unit Converters
+- **Keywords**: weight converter kg to lbs pounds converter online
+
+**Description**: Convert between kilograms, pounds, ounces, and more
+
+**When to use**: Use when converting between metric and imperial weight units for cooking, fitness, shipping, or international trade.
+
+### Length Converter
+
+- **URL**: https://trytoolboxpro.com/tools/length-converter
+- **Category**: Unit Converters
+- **Keywords**: length converter meters to feet inches cm converter
+
+**Description**: Convert between meters, feet, inches, kilometers, and miles
+
+**When to use**: Use when converting distances for travel, construction, sewing, or any task requiring metric-to-imperial length conversion.
+
+### Data Size Converter
+
+- **URL**: https://trytoolboxpro.com/tools/data-size-converter
+- **Category**: Unit Converters
+- **Keywords**: data size converter mb to gb bytes converter online
+
+**Description**: Convert between bytes, kilobytes, megabytes, gigabytes, terabytes and more. Compare file sizes, storage capacity, and data transfer amounts.
+
+**When to use**: Use when comparing file sizes, calculating storage requirements, or understanding bandwidth and transfer limits.
+
+### Speed Converter
+
+- **URL**: https://trytoolboxpro.com/tools/speed-converter
+- **Category**: Unit Converters
+- **Keywords**: speed converter kmh to mph knots converter online
+
+**Description**: Convert speed between km/h, mph, knots, m/s, and mach. Useful for driving, aviation, marine navigation, and physics calculations.
+
+**When to use**: Use when converting speeds for driving abroad, aviation, marine navigation, or physics calculations.
+
+### Area Converter
+
+- **URL**: https://trytoolboxpro.com/tools/area-converter
+- **Category**: Unit Converters
+- **Keywords**: area converter square meters to acres hectares online
+
+**Description**: Convert between square meters, acres, hectares, sq ft
+
+**When to use**: Use when converting land measurements for real estate, agriculture, construction, or interior design.
+
+### SVG to PNG Converter
+
+- **URL**: https://trytoolboxpro.com/tools/svg-to-png
+- **Category**: Unit Converters
+- **Keywords**: svg to png converter svg to image online
+
+**Description**: Convert SVG vector code or files into PNG images with custom dimensions, background colors, and scaling options for any use case.
+
+**When to use**: Use when rasterizing SVG icons for use in contexts that require PNG, or exporting vector graphics at specific dimensions.
+
+### Barcode & QR Code Generator
+
+- **URL**: https://trytoolboxpro.com/tools/barcode-generator
+- **Category**: Unit Converters
+- **Keywords**: barcode generator qr code code128 ean13 code39 upca online
+
+**Description**: Generate barcodes in Code128, EAN-13, Code39 formats
+
+**When to use**: Use when generating barcodes for products, shipping labels, inventory tags, or QR codes for marketing materials.
+
+### QR Code Reader
+
+- **URL**: https://trytoolboxpro.com/tools/qr-reader
+- **Category**: Unit Converters
+- **Keywords**: qr code reader decoder scan qr image online
+
+**Description**: Decode QR codes from uploaded images instantly. Scan any QR code image to reveal the embedded URL, text, or contact information.
+
+**When to use**: Use when decoding QR codes from screenshots, scanned documents, or saved images to extract URLs and contact info.
 
 
 ---
 
-## Utilities (0 tools)
+## Utilities (13 tools)
 
 Everyday tools for calculations, productivity, and quick tasks. Calculate percentages, tips, BMI, ages, and generate passwords, random numbers, or decisions.
 
+### Password Generator
+
+- **URL**: https://trytoolboxpro.com/tools/password-generator
+- **Category**: Utilities
+- **Keywords**: password generator strong password random password
+
+**Description**: Create strong, secure passwords with custom options
+
+**When to use**: Use when creating strong passwords for new accounts, rotating credentials, or generating secure keys for applications.
+
+### Random Number Generator
+
+- **URL**: https://trytoolboxpro.com/tools/random-number-generator
+- **Category**: Utilities
+- **Keywords**: random number generator random number online
+
+**Description**: Generate random numbers within a custom range. Perfect for lotteries, giveaways, statistical sampling, and game development.
+
+**When to use**: Use when running lotteries, raffles, statistical sampling, or generating random values for games and simulations.
+
+### Time Zone Converter
+
+- **URL**: https://trytoolboxpro.com/tools/timezone-converter
+- **Category**: Utilities
+- **Keywords**: timezone converter time zone converter online
+
+**Description**: Convert time between different world time zones instantly. Schedule meetings across time zones and compare clocks worldwide.
+
+**When to use**: Use when scheduling meetings across time zones, planning travel, or coordinating with remote teams worldwide.
+
+### Roman Numeral Converter
+
+- **URL**: https://trytoolboxpro.com/tools/roman-numeral
+- **Category**: Utilities
+- **Keywords**: roman numeral converter number to roman online
+
+**Description**: Convert between Roman numerals and Arabic numbers instantly. Works with values from 1 to 3999, including common numeral combinations.
+
+**When to use**: Use when converting dates, numbering book chapters, or solving Roman numeral puzzles and homework.
+
+### Percentage Calculator
+
+- **URL**: https://trytoolboxpro.com/tools/percentage-calculator
+- **Category**: Utilities
+- **Keywords**: percentage calculator percent of number online
+
+**Description**: Calculate percentages, what if, increase/decrease easily
+
+**When to use**: Use when calculating discounts, tax rates, percentage changes, or figuring out what percentage one number is of another.
+
+### Tip Calculator
+
+- **URL**: https://trytoolboxpro.com/tools/tip-calculator
+- **Category**: Utilities
+- **Keywords**: tip calculator restaurant tip split bill online
+
+**Description**: Calculate tip amount, total bill, and per-person cost
+
+**When to use**: Use when splitting restaurant bills, calculating gratuities, or dividing group expenses fairly.
+
+### Age Calculator
+
+- **URL**: https://trytoolboxpro.com/tools/age-calculator
+- **Category**: Utilities
+- **Keywords**: age calculator birthday age difference online
+
+**Description**: Calculate exact age in years, months, weeks, and days. Find your age on any future date or count down to your next birthday.
+
+**When to use**: Use when calculating exact age for forms, determining eligibility, or counting time between dates.
+
+### BMI Calculator
+
+- **URL**: https://trytoolboxpro.com/tools/bmi-calculator
+- **Category**: Utilities
+- **Keywords**: bmi calculator body mass index health weight online
+
+**Description**: Calculate Body Mass Index and check your health category
+
+**When to use**: Use when checking health metrics, tracking fitness goals, or learning about body mass index categories.
+
+### Countdown Timer
+
+- **URL**: https://trytoolboxpro.com/tools/countdown-timer
+- **Category**: Utilities
+- **Keywords**: countdown timer online days hours minutes seconds
+
+**Description**: Set a countdown to any date and time with days, hours, minutes, and seconds. Perfect for events, deadlines, and special occasions.
+
+**When to use**: Use when counting down to product launches, events, deadlines, or personal milestones.
+
+### Dice Roller
+
+- **URL**: https://trytoolboxpro.com/tools/dice-roller
+- **Category**: Utilities
+- **Keywords**: dice roller virtual dice roll d20 d6 online
+
+**Description**: Roll virtual dice with 4, 6, 8, 10, 12, and 20 sides. Roll multiple dice at once for tabletop games, RPGs, and classrooms.
+
+**When to use**: Use when playing tabletop RPGs, board games, classrooms, or any scenario requiring random dice rolls (d4–d20).
+
+### Decision Maker
+
+- **URL**: https://trytoolboxpro.com/tools/decision-maker
+- **Category**: Utilities
+- **Keywords**: decision maker random picker choice selector online
+
+**Description**: Let fate decide — pick a random option from your list
+
+**When to use**: Use when you can't decide between options — let the tool pick a random choice from your list.
+
+### Days Between Dates
+
+- **URL**: https://trytoolboxpro.com/tools/days-between
+- **Category**: Utilities
+- **Keywords**: days between dates calculator date difference online
+
+**Description**: Calculate the exact number of days between two dates
+
+**When to use**: Use when calculating project durations, counting days between events, or determining date intervals.
+
+### Aspect Ratio Calculator
+
+- **URL**: https://trytoolboxpro.com/tools/aspect-ratio-calculator
+- **Category**: Utilities
+- **Keywords**: aspect ratio calculator 16:9 4:3 resolution online
+
+**Description**: Calculate aspect ratios from dimensions or presets
+
+**When to use**: Use when calculating correct dimensions for images, videos, or screens based on standard aspect ratios like 16:9 or 4:3.
 
 
 ---

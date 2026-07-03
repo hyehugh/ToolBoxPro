@@ -24,6 +24,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://trytoolboxpro.com"),
+  verification: {
+    google: "7rfN1s_JBrSe96b9qg_thQz_QHabxH2zL59NP6DWubU",
+  },
   title: {
     default: "ToolboxPro — Free Online Tools, Privacy First",
     template: "%s | ToolboxPro",

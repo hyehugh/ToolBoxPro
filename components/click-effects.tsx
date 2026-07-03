@@ -19,11 +19,8 @@ interface Particle {
   sparkle: boolean;
   drag: number;
   gravity: number;
-  /** Wind drift — slight horizontal force */
   wind: number;
-  /** Can this particle secondary-explode? */
   canBurst: boolean;
-  /** Has it already burst? */
   burst: boolean;
 }
 
@@ -37,35 +34,32 @@ interface Rocket {
   hue2: number;
   targetY: number;
   type: string;
-  /** Wind direction for this explosion (affects all particles) */
   windX: number;
 }
 
 /* ──────────────────────────── Constants ──────────────────────────── */
 
-const GRAVITY = 0.035;
-const TRAIL_LENGTH = 12;
+// Slow & wide — realistic feel
+const GRAVITY = 0.012;       // Half the previous value
+const TRAIL_LENGTH = 16;     // Longer trails
 
-/** Realistic firework archetypes — weighted so organic shapes are more common */
 const FIREWORK_TYPES = [
-  { type: "burst", weight: 3 },       // Irregular burst (most natural)
-  { type: "peony", weight: 3 },       // Random scattered sphere
-  { type: "willow", weight: 2 },      // Drooping strands
-  { type: "palm", weight: 2 },        // Upward fan then droop
-  { type: "crossette", weight: 1 },   // Cross-pattern with secondary bursts
-  { type: "ring", weight: 1 },        // Ring (less common, more natural now)
+  { type: "burst", weight: 3 },
+  { type: "peony", weight: 3 },
+  { type: "willow", weight: 2 },
+  { type: "palm", weight: 2 },
+  { type: "crossette", weight: 1 },
+  { type: "ring", weight: 1 },
 ];
 
 const PALETTES: number[][] = [
-  [0, 30, 60],        // Warm: red, orange, yellow
-  [120, 150, 180],    // Green-teal
-  [200, 220, 260],    // Blue-purple
-  [280, 310, 340],    // Pink-magenta
-  [45, 270, 340],     // Gold + purple + pink
-  [160, 200, 50],     // Teal + blue + gold
+  [0, 30, 60],
+  [120, 150, 180],
+  [200, 220, 260],
+  [280, 310, 340],
+  [45, 270, 340],
+  [160, 200, 50],
 ];
-
-/* ──────────────────────────── Helpers ──────────────────────────── */
 
 function pickType(): string {
   const total = FIREWORK_TYPES.reduce((s, t) => s + t.weight, 0);
@@ -104,15 +98,13 @@ export function ClickEffects() {
       const hue = palette[Math.floor(Math.random() * palette.length)];
       const hue2 = palette[Math.floor(Math.random() * palette.length)];
       const type = pickType();
-
-      // Random wind direction for this explosion (affects all particles)
-      const windX = (Math.random() - 0.5) * 0.06;
+      const windX = (Math.random() - 0.5) * 0.04;
 
       rocketsRef.current.push({
         x: e.clientX + (Math.random() - 0.5) * 15,
         y: e.clientY + 20,
-        vx: (Math.random() - 0.5) * 1.2,
-        vy: -6 - Math.random() * 2.5,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: -3.5 - Math.random() * 1.5,  // Much slower rise
         trail: [],
         hue,
         hue2,
@@ -140,7 +132,7 @@ export function ClickEffects() {
         }
       ) => {
         const o = opts ?? {};
-        const maxLife = o.life ?? 120 + Math.random() * 60;
+        const maxLife = o.life ?? 240 + Math.random() * 120;  // Double life
         const pSize = o.size ?? 1.5 + Math.random() * 2;
         const hue = palette[Math.floor(Math.random() * palette.length)] + (Math.random() - 0.5) * 25;
         const offX = o.offset ? (Math.random() - 0.5) * o.offset : 0;
@@ -159,9 +151,9 @@ export function ClickEffects() {
           lightness: 55 + Math.random() * 25,
           trail: [],
           sparkle: Math.random() < 0.28,
-          drag: o.drag ?? 0.965 + Math.random() * 0.02,
+          drag: o.drag ?? 0.982 + Math.random() * 0.01,  // Higher drag = slower decel
           gravity: o.gravity ?? GRAVITY * (0.8 + Math.random() * 0.4),
-          wind: o.wind ?? rocket.windX + (Math.random() - 0.5) * 0.02,
+          wind: o.wind ?? rocket.windX + (Math.random() - 0.5) * 0.015,
           canBurst: o.canBurst ?? false,
           burst: false,
         });
@@ -170,62 +162,56 @@ export function ClickEffects() {
       const t = rocket.type;
 
       if (t === "burst") {
-        /* ── Irregular organic burst ── */
-        // Phase 1: Dense core (fast, short-lived)
+        // Dense core
         const coreCount = 20 + Math.floor(Math.random() * 15);
         for (let i = 0; i < coreCount; i++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = (1.5 + Math.random() * 2.5) * (0.8 + Math.random() * 0.4);
-          pushParticle(angle, speed, { life: 80 + Math.random() * 40, size: 1.2 + Math.random() * 1.5 });
+          const speed = (2 + Math.random() * 3) * (0.8 + Math.random() * 0.4);  // 2x wider
+          pushParticle(angle, speed, { life: 160 + Math.random() * 80, size: 1.2 + Math.random() * 1.5 });
         }
-        // Phase 2: Outer spray (slower, longer-lived, some can secondary burst)
+        // Outer spray — 2x wider range
         const outerCount = 35 + Math.floor(Math.random() * 20);
         for (let i = 0; i < outerCount; i++) {
-          // Cluster bias — particles prefer certain directions
           const baseAngle = Math.random() * Math.PI * 2;
           const spread = 0.4 + Math.random() * 0.8;
           const angle = baseAngle + (Math.random() - 0.5) * spread;
-          const speed = 2.5 + Math.random() * 2 + Math.random() * Math.random() * 2; // Non-linear for uneven distribution
+          const speed = 4 + Math.random() * 3.5 + Math.random() * Math.random() * 3;  // Much wider
           pushParticle(angle, speed, {
-            life: 140 + Math.random() * 60,
+            life: 280 + Math.random() * 120,
             size: 1.8 + Math.random() * 2.5,
-            canBurst: Math.random() < 0.08, // 8% chance of secondary burst
+            canBurst: Math.random() < 0.08,
           });
         }
-        // Phase 3: Sparse stragglers (random few in unusual directions)
+        // Sparse stragglers
         for (let i = 0; i < 8; i++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = 0.5 + Math.random() * 1.5;
-          pushParticle(angle, speed, { life: 100 + Math.random() * 40, size: 3 + Math.random() * 2 });
+          const speed = 1 + Math.random() * 2;  // Wider
+          pushParticle(angle, speed, { life: 200 + Math.random() * 80, size: 3 + Math.random() * 2 });
         }
       }
 
       else if (t === "peony") {
-        /* ── Scattered sphere — fully random angles & speeds ── */
         const count = 50 + Math.floor(Math.random() * 30);
         for (let i = 0; i < count; i++) {
-          // Use Gaussian-like distribution for more natural clustering
           const angle = Math.random() * Math.PI * 2;
           const speedRand = Math.random();
-          // Cube for uneven speed distribution (most particles medium speed, few very fast/slow)
-          const speed = (2 + speedRand * speedRand * speedRand * 2.5) * (0.9 + Math.random() * 0.2);
+          // 2x wider speed range
+          const speed = (3.5 + speedRand * speedRand * speedRand * 4) * (0.9 + Math.random() * 0.2);
           pushParticle(angle, speed, {
-            life: 120 + Math.random() * 60,
+            life: 240 + Math.random() * 120,
             canBurst: Math.random() < 0.05,
           });
         }
       }
 
       else if (t === "willow") {
-        /* ── Willow — upward then heavy droop ── */
         const count = 45 + Math.floor(Math.random() * 15);
         for (let i = 0; i < count; i++) {
-          // Bias upward, spread outward
           const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.1;
-          const speed = 2 + Math.random() * 2;
+          const speed = 3 + Math.random() * 3;  // Wider
           pushParticle(angle, speed, {
-            life: 150 + Math.random() * 60,
-            drag: 0.978 + Math.random() * 0.012,
+            life: 300 + Math.random() * 120,
+            drag: 0.988 + Math.random() * 0.008,
             gravity: GRAVITY * (1.5 + Math.random() * 0.6),
             size: 1.2 + Math.random() * 1.5,
           });
@@ -233,34 +219,30 @@ export function ClickEffects() {
       }
 
       else if (t === "palm") {
-        /* ── Palm tree — narrow upward fan then gravity droop ── */
         const count = 40 + Math.floor(Math.random() * 15);
         for (let i = 0; i < count; i++) {
-          // Concentrated upward fan
           const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.2;
-          const speed = 3 + Math.random() * 2;
+          const speed = 5 + Math.random() * 3;  // Wider
           pushParticle(angle, speed, {
-            life: 140 + Math.random() * 50,
+            life: 280 + Math.random() * 100,
             gravity: GRAVITY * 1.3,
-            drag: 0.97,
+            drag: 0.978,
           });
         }
       }
 
       else if (t === "crossette") {
-        /* ── Crossette — cross pattern, particles burst again mid-flight ── */
-        const arms = 4 + Math.floor(Math.random() * 3); // 4-6 arms
+        const arms = 4 + Math.floor(Math.random() * 3);
         const perArm = 8 + Math.floor(Math.random() * 5);
-        const armOffset = Math.random() * Math.PI; // Random rotation
+        const armOffset = Math.random() * Math.PI;
         for (let a = 0; a < arms; a++) {
           const armAngle = armOffset + (Math.PI * 2 * a) / arms;
           for (let i = 0; i < perArm; i++) {
-            // Each arm has slight scatter
             const angle = armAngle + (Math.random() - 0.5) * 0.25;
-            const speed = 2.5 + Math.random() * 1.5;
+            const speed = 4 + Math.random() * 2.5;  // Wider
             pushParticle(angle, speed, {
-              life: 100 + Math.random() * 30,
-              canBurst: true, // All crossette particles can secondary burst
+              life: 200 + Math.random() * 60,
+              canBurst: true,
               size: 2 + Math.random() * 1.5,
             });
           }
@@ -268,25 +250,22 @@ export function ClickEffects() {
       }
 
       else if (t === "ring") {
-        /* ── Ring — but with natural imperfections ── */
         const count = 45 + Math.floor(Math.random() * 10);
-        const baseSpeed = 3 + Math.random() * 0.5;
-        const ellipticalBias = (Math.random() - 0.5) * 0.4; // Slight ellipse
-        const tilt = Math.random() * Math.PI; // Random tilt of the ring
+        const baseSpeed = 5.5 + Math.random() * 1;  // Much wider ring
+        const ellipticalBias = (Math.random() - 0.5) * 0.4;
+        const tilt = Math.random() * Math.PI;
         for (let i = 0; i < count; i++) {
           const angle = (Math.PI * 2 * i) / count + tilt;
-          // Speed varies slightly per particle (not perfect circle)
           const speed = baseSpeed * (0.85 + Math.random() * 0.3);
-          // Add slight elliptical stretch
           const stretchedAngle = angle + Math.sin(angle) * ellipticalBias;
           pushParticle(stretchedAngle, speed, {
-            life: 130 + Math.random() * 40,
+            life: 260 + Math.random() * 80,
             canBurst: Math.random() < 0.06,
           });
         }
       }
 
-      /* ── Central flash — white burst particles ── */
+      /* ── Central flash ── */
       const flashCount = 6 + Math.floor(Math.random() * 4);
       for (let i = 0; i < flashCount; i++) {
         const angle = Math.random() * Math.PI * 2;
@@ -296,8 +275,8 @@ export function ClickEffects() {
           y: rocket.y,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          life: 12 + Math.random() * 8,
-          maxLife: 20,
+          life: 24 + Math.random() * 16,  // Longer flash
+          maxLife: 40,
           size: 4 + Math.random() * 4,
           hue: rocket.hue,
           saturation: 20 + Math.random() * 30,
@@ -311,31 +290,30 @@ export function ClickEffects() {
           burst: false,
         });
       }
-
     };
 
-    /* ─── Secondary burst (crossette / burst particles) ─── */
+    /* ─── Secondary burst ─── */
     const secondaryBurst = (p: Particle) => {
       p.burst = true;
-      p.life = Math.min(p.life, 20); // Kill the parent quickly
+      p.life = Math.min(p.life, 30);  // Slower fade
       const count = 4 + Math.floor(Math.random() * 4);
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = 1 + Math.random() * 1.5;
+        const speed = 1.5 + Math.random() * 2;  // Wider
         particlesRef.current.push({
           x: p.x,
           y: p.y,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          life: 40 + Math.random() * 25,
-          maxLife: 65,
+          life: 80 + Math.random() * 50,  // Longer
+          maxLife: 130,
           size: 1 + Math.random() * 1.5,
           hue: p.hue + (Math.random() - 0.5) * 30,
           saturation: p.saturation,
           lightness: p.lightness,
           trail: [],
           sparkle: Math.random() < 0.3,
-          drag: 0.96,
+          drag: 0.975,
           gravity: GRAVITY * 1.2,
           wind: p.wind,
           canBurst: false,
@@ -346,32 +324,31 @@ export function ClickEffects() {
 
     /* ─── Animation loop ─── */
     const animate = () => {
-      ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Clear completely every frame — no ghost trails / residue
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       ctx.globalCompositeOperation = "lighter";
 
       /* --- Rockets --- */
       rocketsRef.current = rocketsRef.current.filter((r) => {
         r.trail.push({ x: r.x, y: r.y });
-        if (r.trail.length > 12) r.trail.shift();
+        if (r.trail.length > 16) r.trail.shift();  // Longer rocket trail
 
         for (let i = 0; i < r.trail.length; i++) {
           const tp = r.trail[i];
           const a = (i / r.trail.length) * 0.6;
           ctx.beginPath();
-          ctx.arc(tp.x, tp.y, 1.2 + i * 0.08, 0, Math.PI * 2);
+          ctx.arc(tp.x, tp.y, 1.2 + i * 0.06, 0, Math.PI * 2);
           ctx.fillStyle = `hsla(${r.hue}, 60%, 70%, ${a})`;
           ctx.fill();
         }
 
         r.x += r.vx;
         r.y += r.vy;
-        r.vy += 0.08;
-        r.vx *= 0.99;
+        r.vy += 0.04;  // Slower rocket deceleration
+        r.vx *= 0.995;
 
-        // Bright rocket head with glow
+        // Rocket head
         ctx.beginPath();
         ctx.arc(r.x, r.y, 3, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${r.hue}, 90%, 85%, 1)`;
@@ -381,7 +358,7 @@ export function ClickEffects() {
         ctx.fillStyle = `hsla(${r.hue}, 50%, 98%, 1)`;
         ctx.fill();
 
-        if (r.vy >= -0.5 || r.y <= r.targetY) {
+        if (r.vy >= -0.3 || r.y <= r.targetY) {  // Slower apex detection
           explode(r);
           return false;
         }
@@ -393,39 +370,37 @@ export function ClickEffects() {
         p.life -= 1;
         if (p.life <= 0) return false;
 
-        // Secondary burst check
-        if (p.canBurst && !p.burst && p.life < p.maxLife * 0.5 && Math.random() < 0.04) {
+        if (p.canBurst && !p.burst && p.life < p.maxLife * 0.5 && Math.random() < 0.03) {
           secondaryBurst(p);
         }
 
         p.trail.push({ x: p.x, y: p.y });
         if (p.trail.length > TRAIL_LENGTH) p.trail.shift();
 
-        // Physics with individual drag, gravity, and wind
         p.x += p.vx;
         p.y += p.vy;
         p.vx *= p.drag;
         p.vy *= p.drag;
         p.vy += p.gravity;
-        p.vx += p.wind; // Wind drift
+        p.vx += p.wind;
 
         const lifeRatio = p.life / p.maxLife;
         const coolHue = p.hue + (1 - lifeRatio) * 15;
         let lightness = p.lightness * lifeRatio;
         let alpha = lifeRatio;
 
-        if (p.sparkle && Math.random() < 0.35) {
+        if (p.sparkle && Math.random() < 0.3) {
           lightness = Math.min(100, lightness + 30);
           alpha = Math.min(1, alpha + 0.3);
         }
 
         const size = p.size * (0.15 + lifeRatio * 0.85);
 
-        // Draw trail
+        // Trail — drawn explicitly, no canvas residue
         for (let i = 0; i < p.trail.length - 1; i++) {
           const tp = p.trail[i];
           const next = p.trail[i + 1];
-          const ta = (i / p.trail.length) * alpha * 0.35;
+          const ta = (i / p.trail.length) * alpha * 0.3;
           const ts = size * (i / p.trail.length);
           ctx.beginPath();
           ctx.moveTo(tp.x, tp.y);
@@ -442,7 +417,7 @@ export function ClickEffects() {
         ctx.fillStyle = `hsla(${coolHue}, ${p.saturation}%, ${lightness}%, ${alpha})`;
         ctx.fill();
 
-        // Bright inner core
+        // Inner core
         if (size > 1) {
           ctx.beginPath();
           ctx.arc(p.x, p.y, size * 0.4, 0, Math.PI * 2);
@@ -453,8 +428,8 @@ export function ClickEffects() {
         return true;
       });
 
-      if (particlesRef.current.length > 1400) {
-        particlesRef.current = particlesRef.current.slice(-1400);
+      if (particlesRef.current.length > 2000) {
+        particlesRef.current = particlesRef.current.slice(-2000);
       }
 
       rafRef.current = requestAnimationFrame(animate);
