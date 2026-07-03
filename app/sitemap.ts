@@ -30,7 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  // Guide pages
+  const categoryPages = categories.map((cat) => ({
+    url: `${baseUrl}/tools/category/${cat.id}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
   const guideSlugs = [
     "best-json-formatters-compared",
     "password-security-guide",
@@ -44,5 +50,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...toolPages, ...blogPages, ...guidePages];
+  return [...staticPages, ...toolPages, ...categoryPages, ...blogPages, ...guidePages];
 }

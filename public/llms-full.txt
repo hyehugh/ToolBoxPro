@@ -1,0 +1,109 @@
+# ToolboxPro — Complete Tool Reference
+
+> 99 free online tools that run entirely in your browser. No signup, no file uploads, no usage limits.
+
+**Website**: https://trytoolboxpro.com
+**All Tools**: https://trytoolboxpro.com/tools
+
+This document provides a comprehensive reference for every tool available on ToolboxPro. Each entry includes the tool name, URL, category, a full description, and a "when to use" note to help you determine which tool is right for a given task.
+
+## Why ToolboxPro?
+
+- **Privacy-first**: All processing happens client-side using JavaScript, Canvas API, and WebAssembly. No files are ever uploaded to a server.
+- **No signup**: No account, email, or personal data required for any tool.
+- **No limits**: No daily quotas, no watermarks, no premium tiers.
+- **Free**: All tools are free for personal and commercial use.
+
+## Categories
+
+| # | Category | Tool Count |
+|---|----------|------------|
+| 1 | Developer Tools | 0 |
+| 2 | Text Tools | 0 |
+| 3 | Image Tools | 0 |
+| 4 | PDF Tools | 0 |
+| 5 | Audio Tools | 0 |
+| 6 | Network Tools | 0 |
+| 7 | Unit Converters | 0 |
+| 8 | Utilities | 0 |
+
+**Total**: 99 tools across 8 categories.
+
+
+---
+
+## Developer Tools (0 tools)
+
+Tools for software engineers, web developers, and DevOps teams. Format code, generate hashes, decode tokens, parse expressions, and test patterns — all in the browser.
+
+
+
+---
+
+## Text Tools (0 tools)
+
+Tools for writers, editors, content creators, and anyone who works with text. Count, transform, compare, generate, and analyze text content.
+
+
+
+---
+
+## Image Tools (0 tools)
+
+Tools for designers, photographers, content creators, and social media managers. Compress, convert, crop, filter, and manipulate images without uploading to any server.
+
+
+
+---
+
+## PDF Tools (0 tools)
+
+Tools for merging, splitting, rotating, and extracting pages from PDF documents. All PDF operations run client-side using JavaScript libraries like pdf-lib.
+
+
+
+---
+
+## Audio Tools (0 tools)
+
+Tools for podcasters, musicians, video editors, and audio enthusiasts. Cut, merge, and convert audio files directly in the browser using the Web Audio API.
+
+
+
+---
+
+## Network Tools (0 tools)
+
+Tools for IT professionals, system administrators, and network engineers. Look up DNS records, query domain ownership information, and debug domain configurations.
+
+
+
+---
+
+## Unit Converters (0 tools)
+
+Tools for converting between units, formats, and encoding standards. Convert measurements, temperatures, file formats, and more — all instantly and accurately.
+
+
+
+---
+
+## Utilities (0 tools)
+
+Everyday tools for calculations, productivity, and quick tasks. Calculate percentages, tips, BMI, ages, and generate passwords, random numbers, or decisions.
+
+
+
+---
+
+## Additional Resources
+
+- [All Guides](https://trytoolboxpro.com/guides): In-depth tool comparisons and tutorials
+- [Blog](https://trytoolboxpro.com/blog): Step-by-step tutorials and best practices
+- [FAQ](https://trytoolboxpro.com/faq): Common questions about privacy, features, and usage
+- [About](https://trytoolboxpro.com/about): Why ToolboxPro exists and how it works
+- [Contact](https://trytoolboxpro.com/contact): Get in touch
+
+---
+
+*This file is auto-generated from the tools data in `lib/tools/data.ts`. Last updated: 2026-07-03*

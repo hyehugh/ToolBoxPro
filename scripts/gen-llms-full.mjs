@@ -1,10 +1,34 @@
 import fs from "fs";
 import path from "path";
-import { tools, categories } from "../lib/tools/data";
+
+// Read data.ts, strip TypeScript syntax, and eval to get the tools array
+const raw = fs.readFileSync("lib/tools/data.ts", "utf8");
+// Remove TypeScript type annotations and interface/export keywords
+let js = raw
+  .replace(/export\s+interface\s+Tool\s*\{[\s\S]*?\}/, "")
+  .replace(/export\s+interface\s+Category\s*\{[\s\S]*?\}/, "")
+  .replace(/export\s+function\s+getTool[\s\S]*$/m, "")
+  .replace(/export\s+function\s+getToolsByCategory[\s\S]*$/m, "")
+  .replace(/export\s+const\s+/g, "const ")
+  // strip inline type annotations like `category: "developer" | ...` — keep as-is, they're valid string unions in object literals
+  // strip `as const` assertions
+  .replace(/\s+as\s+const/g, "")
+  // Remove `/** ... */` doc comments
+  .replace(/\/\*\*[\s\S]*?\*\//g, "");
+
+// The tricky part: the Tool[] type annotation `: Tool[]` on the tools array
+// Also convert const to globalThis assignments so eval'd vars escape to module scope
+js = js
+  .replace(/const\s+tools\s*:\s*Tool\[\]\s*=/, "globalThis.tools =")
+  .replace(/const\s+categories\s*=/, "globalThis.categories =");
+
+eval(js);
+const tools = globalThis.tools;
+const categories = globalThis.categories;
 
 const BASE_URL = "https://trytoolboxpro.com";
 
-const categoryNameMap: Record<string, string> = {
+const categoryNameMap = {
   developer: "Developer Tools",
   text: "Text Tools",
   image: "Image Tools",
@@ -15,7 +39,7 @@ const categoryNameMap: Record<string, string> = {
   utilities: "Utilities",
 };
 
-const categoryIntro: Record<string, string> = {
+const categoryIntro = {
   developer:
     "Tools for software engineers, web developers, and DevOps teams. Format code, generate hashes, decode tokens, parse expressions, and test patterns — all in the browser.",
   text:
@@ -34,12 +58,9 @@ const categoryIntro: Record<string, string> = {
     "Everyday tools for calculations, productivity, and quick tasks. Calculate percentages, tips, BMI, ages, and generate passwords, random numbers, or decisions.",
 };
 
-function whenToUse(tool: (typeof tools)[number]): string {
-  const { slug, category, description, searchKeywords } = tool;
-  const kw = (searchKeywords || "").toLowerCase();
-
-  // Category-specific defaults
-  const byCategory: Record<string, string> = {
+function whenToUse(tool) {
+  const { slug, category } = tool;
+  const byCategory = {
     developer:
       "Use when you need quick, browser-based developer utilities without installing software or sending data to an external server.",
     text: "Use when you need to manipulate, analyze, or transform text content for writing, editing, or data processing tasks.",
@@ -56,8 +77,7 @@ function whenToUse(tool: (typeof tools)[number]): string {
       "Use when you need a quick everyday calculation or random generation task without a dedicated app.",
   };
 
-  // Tool-specific notes for richer context
-  const specific: Record<string, string> = {
+  const specific = {
     "json-formatter":
       "Use when debugging API responses, validating JSON configuration files, or making minified JSON readable before editing.",
     "base64-encode-decode":
@@ -253,9 +273,9 @@ function whenToUse(tool: (typeof tools)[number]): string {
   return specific[slug] || byCategory[category];
 }
 
-function renderTool(tool: (typeof tools)[number]): string {
+function renderTool(tool) {
   const url = `${BASE_URL}/tools/${tool.slug}`;
-  const lines: string[] = [];
+  let lines = [];
   lines.push(`### ${tool.name}`);
   lines.push("");
   lines.push(`- **URL**: ${url}`);
@@ -271,10 +291,10 @@ function renderTool(tool: (typeof tools)[number]): string {
   return lines.join("\n");
 }
 
-function renderCategory(catId: string, catName: string): string {
+function renderCategory(catId, catName) {
   const catTools = tools.filter((t) => t.category === catId);
-  const parts: string[] = [];
-  parts.push(`---`);
+  let parts = [];
+  parts.push("---");
   parts.push("");
   parts.push(`## ${catName} (${catTools.length} tools)`);
   parts.push("");
@@ -283,6 +303,17 @@ function renderCategory(catId: string, catName: string): string {
   parts.push(catTools.map(renderTool).join("\n"));
   return parts.join("\n");
 }
+
+const catOrder = [
+  "developer",
+  "text",
+  "image",
+  "pdf",
+  "audio",
+  "network",
+  "conversion",
+  "utilities",
+];
 
 const header = `# ToolboxPro — Complete Tool Reference
 
@@ -304,21 +335,21 @@ This document provides a comprehensive reference for every tool available on Too
 
 | # | Category | Tool Count |
 |---|----------|------------|
-${categories
+${catOrder
   .map(
     (c, i) =>
-      `| ${i + 1} | [${categoryNameMap[c.id]}](#${c.id}) | ${
-        tools.filter((t) => t.category === c.id).length
+      `| ${i + 1} | ${categoryNameMap[c]} | ${
+        tools.filter((t) => t.category === c).length
       } |`
   )
   .join("\n")}
 
-**Total**: ${tools.length} tools across ${categories.length} categories.
+**Total**: ${tools.length} tools across ${catOrder.length} categories.
 
 `;
 
-const body = categories
-  .map((c) => renderCategory(c.id, categoryNameMap[c.id] || c.name))
+const body = catOrder
+  .map((c) => renderCategory(c, categoryNameMap[c]))
   .join("\n\n");
 
 const footer = `---
@@ -344,8 +375,7 @@ const sizeKb = (fs.statSync(outPath).size / 1024).toFixed(1);
 console.log(`✓ Written ${outPath}`);
 console.log(`  Size: ${sizeKb} KB`);
 console.log(`  Tools: ${tools.length}`);
-console.log(`  Categories: ${categories.length}`);
-for (const c of categories) {
-  const count = tools.filter((t) => t.category === c.id).length;
-  console.log(`    - ${categoryNameMap[c.id]}: ${count}`);
+for (const c of catOrder) {
+  const count = tools.filter((t) => t.category === c).length;
+  console.log(`    - ${categoryNameMap[c]}: ${count}`);
 }
