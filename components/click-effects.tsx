@@ -39,9 +39,9 @@ interface Rocket {
 
 /* ──────────────────────────── Constants ──────────────────────────── */
 
-// Slow & wide — realistic feel
-const GRAVITY = 0.012;       // Half the previous value
-const TRAIL_LENGTH = 16;     // Longer trails
+// Wide & slow — bigger explosions, slower pacing
+const GRAVITY = 0.018;        // Natural gravity (particles arc down beautifully)
+const TRAIL_LENGTH = 18;      // Long elegant trails
 
 const FIREWORK_TYPES = [
   { type: "burst", weight: 3 },
@@ -132,7 +132,7 @@ export function ClickEffects() {
         }
       ) => {
         const o = opts ?? {};
-        const maxLife = o.life ?? 240 + Math.random() * 120;  // Double life
+        const maxLife = o.life ?? 260 + Math.random() * 120;  // Long life = slow fade
         const pSize = o.size ?? 1.5 + Math.random() * 2;
         const hue = palette[Math.floor(Math.random() * palette.length)] + (Math.random() - 0.5) * 25;
         const offX = o.offset ? (Math.random() - 0.5) * o.offset : 0;
@@ -151,7 +151,7 @@ export function ClickEffects() {
           lightness: 55 + Math.random() * 25,
           trail: [],
           sparkle: Math.random() < 0.28,
-          drag: o.drag ?? 0.982 + Math.random() * 0.01,  // Higher drag = slower decel
+          drag: o.drag ?? 0.991 + Math.random() * 0.006,  // Near 1.0 = barely decelerates = slow & wide
           gravity: o.gravity ?? GRAVITY * (0.8 + Math.random() * 0.4),
           wind: o.wind ?? rocket.windX + (Math.random() - 0.5) * 0.015,
           canBurst: o.canBurst ?? false,
@@ -166,16 +166,16 @@ export function ClickEffects() {
         const coreCount = 20 + Math.floor(Math.random() * 15);
         for (let i = 0; i < coreCount; i++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = (2 + Math.random() * 3) * (0.8 + Math.random() * 0.4);  // 2x wider
+          const speed = (3 + Math.random() * 4) * (0.8 + Math.random() * 0.4);
           pushParticle(angle, speed, { life: 160 + Math.random() * 80, size: 1.2 + Math.random() * 1.5 });
         }
-        // Outer spray — 2x wider range
+        // Outer spray
         const outerCount = 35 + Math.floor(Math.random() * 20);
         for (let i = 0; i < outerCount; i++) {
           const baseAngle = Math.random() * Math.PI * 2;
           const spread = 0.4 + Math.random() * 0.8;
           const angle = baseAngle + (Math.random() - 0.5) * spread;
-          const speed = 4 + Math.random() * 3.5 + Math.random() * Math.random() * 3;  // Much wider
+          const speed = 6 + Math.random() * 5 + Math.random() * Math.random() * 4;
           pushParticle(angle, speed, {
             life: 280 + Math.random() * 120,
             size: 1.8 + Math.random() * 2.5,
@@ -185,7 +185,7 @@ export function ClickEffects() {
         // Sparse stragglers
         for (let i = 0; i < 8; i++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = 1 + Math.random() * 2;  // Wider
+          const speed = 1.5 + Math.random() * 3;
           pushParticle(angle, speed, { life: 200 + Math.random() * 80, size: 3 + Math.random() * 2 });
         }
       }
@@ -195,10 +195,9 @@ export function ClickEffects() {
         for (let i = 0; i < count; i++) {
           const angle = Math.random() * Math.PI * 2;
           const speedRand = Math.random();
-          // 2x wider speed range
-          const speed = (3.5 + speedRand * speedRand * speedRand * 4) * (0.9 + Math.random() * 0.2);
+          const speed = (5 + speedRand * speedRand * speedRand * 5) * (0.9 + Math.random() * 0.2);
           pushParticle(angle, speed, {
-            life: 240 + Math.random() * 120,
+            life: 260 + Math.random() * 120,
             canBurst: Math.random() < 0.05,
           });
         }
@@ -208,10 +207,10 @@ export function ClickEffects() {
         const count = 45 + Math.floor(Math.random() * 15);
         for (let i = 0; i < count; i++) {
           const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.1;
-          const speed = 3 + Math.random() * 3;  // Wider
+          const speed = 4 + Math.random() * 5;
           pushParticle(angle, speed, {
-            life: 300 + Math.random() * 120,
-            drag: 0.988 + Math.random() * 0.008,
+            life: 320 + Math.random() * 120,
+            drag: 0.993 + Math.random() * 0.005,
             gravity: GRAVITY * (1.5 + Math.random() * 0.6),
             size: 1.2 + Math.random() * 1.5,
           });
@@ -222,11 +221,11 @@ export function ClickEffects() {
         const count = 40 + Math.floor(Math.random() * 15);
         for (let i = 0; i < count; i++) {
           const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.2;
-          const speed = 5 + Math.random() * 3;  // Wider
+          const speed = 7 + Math.random() * 5;
           pushParticle(angle, speed, {
-            life: 280 + Math.random() * 100,
+            life: 300 + Math.random() * 100,
             gravity: GRAVITY * 1.3,
-            drag: 0.978,
+            drag: 0.988,
           });
         }
       }
@@ -239,9 +238,9 @@ export function ClickEffects() {
           const armAngle = armOffset + (Math.PI * 2 * a) / arms;
           for (let i = 0; i < perArm; i++) {
             const angle = armAngle + (Math.random() - 0.5) * 0.25;
-            const speed = 4 + Math.random() * 2.5;  // Wider
+            const speed = 6 + Math.random() * 4;
             pushParticle(angle, speed, {
-              life: 200 + Math.random() * 60,
+              life: 220 + Math.random() * 80,
               canBurst: true,
               size: 2 + Math.random() * 1.5,
             });
@@ -251,7 +250,7 @@ export function ClickEffects() {
 
       else if (t === "ring") {
         const count = 45 + Math.floor(Math.random() * 10);
-        const baseSpeed = 5.5 + Math.random() * 1;  // Much wider ring
+        const baseSpeed = 8 + Math.random() * 2;
         const ellipticalBias = (Math.random() - 0.5) * 0.4;
         const tilt = Math.random() * Math.PI;
         for (let i = 0; i < count; i++) {
@@ -259,7 +258,7 @@ export function ClickEffects() {
           const speed = baseSpeed * (0.85 + Math.random() * 0.3);
           const stretchedAngle = angle + Math.sin(angle) * ellipticalBias;
           pushParticle(stretchedAngle, speed, {
-            life: 260 + Math.random() * 80,
+            life: 280 + Math.random() * 80,
             canBurst: Math.random() < 0.06,
           });
         }
