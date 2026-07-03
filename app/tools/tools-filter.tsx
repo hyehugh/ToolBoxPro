@@ -5,12 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { type Tool, type Category } from "@/lib/tools/data";
 import { useLocale } from "@/lib/i18n/context";
-import dynamic from "next/dynamic";
-
-const ToolCard = dynamic(
-  () => import("@/components/tool-card").then((m) => m.ToolCard),
-  { ssr: false }
-);
+import { ToolCard } from "@/components/tool-card";
 
 interface Props {
   tools: Tool[];

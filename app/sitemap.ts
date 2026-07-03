@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { tools } from "@/lib/tools/data";
+import { tools, categories } from "@/lib/tools/data";
 import { blogPosts } from "@/lib/blog/data";
 
 const baseUrl = "https://trytoolboxpro.com";
