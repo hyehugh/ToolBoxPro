@@ -10,19 +10,13 @@ import { PopularTools } from "./popular-tools";
 import { useLocale } from "@/lib/i18n/context";
 import { useRecentTools } from "@/lib/hooks/use-recent-tools";
 import { useFavorites } from "@/lib/hooks/use-favorites";
+import { ToolCard } from "@/components/tool-card";
+import { CategoryCard } from "@/components/category-card";
 import dynamic from "next/dynamic";
 
 const AdUnit = dynamic(
   () => import("@/components/ads/ad-unit").then((m) => m.AdUnit),
   { ssr: false }
-);
-
-const ToolCard = dynamic(
-  () => import("@/components/tool-card").then((m) => m.ToolCard)
-);
-
-const CategoryCard = dynamic(
-  () => import("@/components/category-card").then((m) => m.CategoryCard)
 );
 
 export default function HomePage() {
