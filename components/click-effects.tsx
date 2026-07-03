@@ -2,7 +2,31 @@
 
 import { useEffect, useRef } from "react";
 
-/* ──────────────────────────── Types ──────────────────────────── */
+/* ================================================================
+ *  Realistic Firework Particle System — First Principles
+ * ================================================================
+ *
+ *  Physics:
+ *  1. Instantaneous burst from a single point
+ *  2. Quadratic air drag (F ∝ v²) — fast decel at high speed, drift at low speed
+ *  3. Each particle sheds micro-sparks continuously (sparkler effect)
+ *  4. Color temperature: white-hot → target hue → dim orange as it dies
+ *  5. Large-scale: initial speed 12-22 px/frame → fills the screen
+ *
+ *  Timing @ 60fps:
+ *  - Launch: ~1.5s (90 frames)
+ *  - Burst phase: 0.1s (instant)
+ *  - Spread + drift: 4-6s (240-360 frames)
+ *  - Fade: last 20% of life
+ *
+ *  Types (all real, no novelty shapes):
+ *  - Peony: random sphere, uneven density (most common)
+ *  - Chrysanthemum: dense radial with trailing sparks
+ *  - Willow: slow upward then heavy drooping fall
+ *  - Palm: narrow fan upward then gravity arc
+ *  - Crossette: arms that secondary-burst mid-flight
+ *  - Ring: imperfect circle with elliptical stretch
+ * ================================================================ */
 
 interface Particle {
   x: number;
@@ -15,13 +39,24 @@ interface Particle {
   hue: number;
   saturation: number;
   lightness: number;
-  trail: { x: number; y: number }[];
+  // Sparkler: emit small sparks every few frames
+  sparkTimer: number;
   sparkle: boolean;
-  drag: number;
   gravity: number;
   wind: number;
   canBurst: boolean;
   burst: boolean;
+}
+
+interface MicroSpark {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  life: number;
+  maxLife: number;
+  hue: number;
+  size: number;
 }
 
 interface Rocket {
@@ -29,23 +64,20 @@ interface Rocket {
   y: number;
   vx: number;
   vy: number;
-  trail: { x: number; y: number }[];
   hue: number;
   hue2: number;
   targetY: number;
   type: string;
   windX: number;
+  sparkTimer: number;
 }
 
-/* ──────────────────────────── Constants ──────────────────────────── */
+const G = 0.015; // Gravity — gentle arc
+const TRAIL_LEN = 14;
 
-// Wide & slow — bigger explosions, slower pacing
-const GRAVITY = 0.018;        // Natural gravity (particles arc down beautifully)
-const TRAIL_LENGTH = 18;      // Long elegant trails
-
-const FIREWORK_TYPES = [
-  { type: "burst", weight: 3 },
-  { type: "peony", weight: 3 },
+const TYPES: { type: string; weight: number }[] = [
+  { type: "peony", weight: 4 },
+  { type: "chrysanthemum", weight: 3 },
   { type: "willow", weight: 2 },
   { type: "palm", weight: 2 },
   { type: "crossette", weight: 1 },
@@ -53,29 +85,28 @@ const FIREWORK_TYPES = [
 ];
 
 const PALETTES: number[][] = [
-  [0, 30, 60],
-  [120, 150, 180],
-  [200, 220, 260],
-  [280, 310, 340],
-  [45, 270, 340],
-  [160, 200, 50],
+  [0, 30, 50],       // Red-orange-gold
+  [45, 90, 140],     // Gold-green
+  [180, 210, 250],   // Cyan-blue
+  [280, 320, 350],   // Purple-pink
+  [40, 200, 280],    // Gold-cyan-purple
+  [0, 60, 300],      // Red-gold-magenta
 ];
 
 function pickType(): string {
-  const total = FIREWORK_TYPES.reduce((s, t) => s + t.weight, 0);
+  const total = TYPES.reduce((s, t) => s + t.weight, 0);
   let r = Math.random() * total;
-  for (const t of FIREWORK_TYPES) {
+  for (const t of TYPES) {
     r -= t.weight;
     if (r <= 0) return t.type;
   }
-  return "burst";
+  return "peony";
 }
-
-/* ──────────────────────────── Component ──────────────────────────── */
 
 export function ClickEffects() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
+  const sparksRef = useRef<MicroSpark[]>([]);
   const rocketsRef = useRef<Rocket[]>([]);
   const rafRef = useRef(0);
 
@@ -92,197 +123,175 @@ export function ClickEffects() {
     resize();
     window.addEventListener("resize", resize);
 
-    /* ─── Click → launch rocket ─── */
-    const handleClick = (e: MouseEvent) => {
-      const palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
-      const hue = palette[Math.floor(Math.random() * palette.length)];
-      const hue2 = palette[Math.floor(Math.random() * palette.length)];
-      const type = pickType();
-      const windX = (Math.random() - 0.5) * 0.04;
-
-      rocketsRef.current.push({
-        x: e.clientX + (Math.random() - 0.5) * 15,
-        y: e.clientY + 20,
-        vx: (Math.random() - 0.5) * 0.8,
-        vy: -3.5 - Math.random() * 1.5,  // Much slower rise
-        trail: [],
-        hue,
-        hue2,
-        targetY: e.clientY - 15 - Math.random() * 40,
-        type,
-        windX,
+    /* ─── Emit micro-spark (sparkler trail) ─── */
+    const emitSpark = (p: Particle) => {
+      sparksRef.current.push({
+        x: p.x + (Math.random() - 0.5) * 2,
+        y: p.y + (Math.random() - 0.5) * 2,
+        vx: p.vx * 0.1 + (Math.random() - 0.5) * 0.5,
+        vy: p.vy * 0.1 + (Math.random() - 0.5) * 0.5,
+        life: 15 + Math.random() * 15,
+        maxLife: 30,
+        hue: p.hue,
+        size: 0.5 + Math.random() * 0.8,
       });
     };
 
-    /* ─── Explode rocket ─── */
-    const explode = (rocket: Rocket) => {
-      const palette = [rocket.hue, rocket.hue2];
+    /* ─── Click → Launch ─── */
+    const handleClick = (e: MouseEvent) => {
+      const pal = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+      rocketsRef.current.push({
+        x: e.clientX + (Math.random() - 0.5) * 10,
+        y: e.clientY + 15,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: -4.5 - Math.random() * 1.5,
+        hue: pal[Math.floor(Math.random() * pal.length)],
+        hue2: pal[Math.floor(Math.random() * pal.length)],
+        targetY: e.clientY - 20 - Math.random() * 50,
+        type: pickType(),
+        windX: (Math.random() - 0.5) * 0.03,
+        sparkTimer: 0,
+      });
+    };
 
-      const pushParticle = (
+    /* ─── Explode ─── */
+    const explode = (r: Rocket) => {
+      const pal = [r.hue, r.hue2];
+
+      const add = (
         angle: number,
         speed: number,
         opts?: {
           life?: number;
           size?: number;
-          drag?: number;
           gravity?: number;
-          wind?: number;
           canBurst?: boolean;
-          offset?: number;
         }
       ) => {
         const o = opts ?? {};
-        const maxLife = o.life ?? 260 + Math.random() * 120;  // Long life = slow fade
-        const pSize = o.size ?? 1.5 + Math.random() * 2;
-        const hue = palette[Math.floor(Math.random() * palette.length)] + (Math.random() - 0.5) * 25;
-        const offX = o.offset ? (Math.random() - 0.5) * o.offset : 0;
-        const offY = o.offset ? (Math.random() - 0.5) * o.offset : 0;
-
+        const ml = o.life ?? 280 + Math.random() * 140;
+        const hue = pal[Math.floor(Math.random() * pal.length)] + (Math.random() - 0.5) * 20;
         particlesRef.current.push({
-          x: rocket.x + offX,
-          y: rocket.y + offY,
+          x: r.x,
+          y: r.y,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          life: maxLife,
-          maxLife,
-          size: pSize,
+          life: ml,
+          maxLife: ml,
+          size: o.size ?? 1.8 + Math.random() * 2.2,
           hue: ((hue % 360) + 360) % 360,
-          saturation: 80 + Math.random() * 20,
-          lightness: 55 + Math.random() * 25,
-          trail: [],
-          sparkle: Math.random() < 0.28,
-          drag: o.drag ?? 0.991 + Math.random() * 0.006,  // Near 1.0 = barely decelerates = slow & wide
-          gravity: o.gravity ?? GRAVITY * (0.8 + Math.random() * 0.4),
-          wind: o.wind ?? rocket.windX + (Math.random() - 0.5) * 0.015,
+          saturation: 85 + Math.random() * 15,
+          lightness: 60 + Math.random() * 20,
+          sparkTimer: Math.floor(Math.random() * 3),
+          sparkle: Math.random() < 0.3,
+          gravity: o.gravity ?? G * (0.7 + Math.random() * 0.6),
+          wind: r.windX + (Math.random() - 0.5) * 0.01,
           canBurst: o.canBurst ?? false,
           burst: false,
         });
       };
 
-      const t = rocket.type;
+      const t = r.type;
 
-      if (t === "burst") {
-        // Dense core
-        const coreCount = 20 + Math.floor(Math.random() * 15);
-        for (let i = 0; i < coreCount; i++) {
+      if (t === "peony") {
+        // Random sphere with Gaussian-ish speed clustering
+        const n = 55 + Math.floor(Math.random() * 25);
+        for (let i = 0; i < n; i++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = (3 + Math.random() * 4) * (0.8 + Math.random() * 0.4);
-          pushParticle(angle, speed, { life: 160 + Math.random() * 80, size: 1.2 + Math.random() * 1.5 });
-        }
-        // Outer spray
-        const outerCount = 35 + Math.floor(Math.random() * 20);
-        for (let i = 0; i < outerCount; i++) {
-          const baseAngle = Math.random() * Math.PI * 2;
-          const spread = 0.4 + Math.random() * 0.8;
-          const angle = baseAngle + (Math.random() - 0.5) * spread;
-          const speed = 6 + Math.random() * 5 + Math.random() * Math.random() * 4;
-          pushParticle(angle, speed, {
-            life: 280 + Math.random() * 120,
-            size: 1.8 + Math.random() * 2.5,
-            canBurst: Math.random() < 0.08,
-          });
-        }
-        // Sparse stragglers
-        for (let i = 0; i < 8; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const speed = 1.5 + Math.random() * 3;
-          pushParticle(angle, speed, { life: 200 + Math.random() * 80, size: 3 + Math.random() * 2 });
+          const sr = Math.random();
+          // Wide range: 8 to 18 px/frame
+          const speed = 8 + sr * sr * sr * 10 + Math.random() * 2;
+          add(angle, speed, { canBurst: Math.random() < 0.05 });
         }
       }
 
-      else if (t === "peony") {
-        const count = 50 + Math.floor(Math.random() * 30);
-        for (let i = 0; i < count; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const speedRand = Math.random();
-          const speed = (5 + speedRand * speedRand * speedRand * 5) * (0.9 + Math.random() * 0.2);
-          pushParticle(angle, speed, {
-            life: 260 + Math.random() * 120,
-            canBurst: Math.random() < 0.05,
-          });
+      else if (t === "chrysanthemum") {
+        // Dense radial — lots of particles, trailing sparks
+        const n = 70 + Math.floor(Math.random() * 20);
+        for (let i = 0; i < n; i++) {
+          const angle = (Math.PI * 2 * i) / n + (Math.random() - 0.5) * 0.12;
+          const speed = 10 + Math.random() * 8;
+          add(angle, speed, { size: 2 + Math.random() * 2 });
         }
       }
 
       else if (t === "willow") {
-        const count = 45 + Math.floor(Math.random() * 15);
-        for (let i = 0; i < count; i++) {
-          const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.1;
-          const speed = 4 + Math.random() * 5;
-          pushParticle(angle, speed, {
-            life: 320 + Math.random() * 120,
-            drag: 0.993 + Math.random() * 0.005,
-            gravity: GRAVITY * (1.5 + Math.random() * 0.6),
-            size: 1.2 + Math.random() * 1.5,
+        // Upward burst then heavy droop
+        const n = 50 + Math.floor(Math.random() * 15);
+        for (let i = 0; i < n; i++) {
+          const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.0;
+          const speed = 7 + Math.random() * 8;
+          add(angle, speed, {
+            life: 350 + Math.random() * 120,
+            gravity: G * (1.6 + Math.random() * 0.5),
+            size: 1.5 + Math.random() * 1.5,
           });
         }
       }
 
       else if (t === "palm") {
-        const count = 40 + Math.floor(Math.random() * 15);
-        for (let i = 0; i < count; i++) {
-          const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.2;
-          const speed = 7 + Math.random() * 5;
-          pushParticle(angle, speed, {
-            life: 300 + Math.random() * 100,
-            gravity: GRAVITY * 1.3,
-            drag: 0.988,
+        // Narrow upward fan
+        const n = 45 + Math.floor(Math.random() * 15);
+        for (let i = 0; i < n; i++) {
+          const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.0;
+          const speed = 10 + Math.random() * 8;
+          add(angle, speed, {
+            life: 320 + Math.random() * 100,
+            gravity: G * 1.2,
           });
         }
       }
 
       else if (t === "crossette") {
+        // Arms that burst again
         const arms = 4 + Math.floor(Math.random() * 3);
-        const perArm = 8 + Math.floor(Math.random() * 5);
-        const armOffset = Math.random() * Math.PI;
+        const perArm = 10 + Math.floor(Math.random() * 5);
+        const offset = Math.random() * Math.PI;
         for (let a = 0; a < arms; a++) {
-          const armAngle = armOffset + (Math.PI * 2 * a) / arms;
+          const armAngle = offset + (Math.PI * 2 * a) / arms;
           for (let i = 0; i < perArm; i++) {
-            const angle = armAngle + (Math.random() - 0.5) * 0.25;
-            const speed = 6 + Math.random() * 4;
-            pushParticle(angle, speed, {
-              life: 220 + Math.random() * 80,
+            const angle = armAngle + (Math.random() - 0.5) * 0.2;
+            const speed = 9 + Math.random() * 6;
+            add(angle, speed, {
               canBurst: true,
-              size: 2 + Math.random() * 1.5,
+              size: 2.2 + Math.random() * 1.5,
             });
           }
         }
       }
 
       else if (t === "ring") {
-        const count = 45 + Math.floor(Math.random() * 10);
-        const baseSpeed = 8 + Math.random() * 2;
-        const ellipticalBias = (Math.random() - 0.5) * 0.4;
+        // Imperfect ring — wide
+        const n = 50 + Math.floor(Math.random() * 10);
+        const base = 14 + Math.random() * 3; // Very wide ring
+        const stretch = (Math.random() - 0.5) * 0.35;
         const tilt = Math.random() * Math.PI;
-        for (let i = 0; i < count; i++) {
-          const angle = (Math.PI * 2 * i) / count + tilt;
-          const speed = baseSpeed * (0.85 + Math.random() * 0.3);
-          const stretchedAngle = angle + Math.sin(angle) * ellipticalBias;
-          pushParticle(stretchedAngle, speed, {
-            life: 280 + Math.random() * 80,
-            canBurst: Math.random() < 0.06,
-          });
+        for (let i = 0; i < n; i++) {
+          const angle = (Math.PI * 2 * i) / n + tilt;
+          const speed = base * (0.9 + Math.random() * 0.2);
+          const sa = angle + Math.sin(angle) * stretch;
+          add(sa, speed, { canBurst: Math.random() < 0.06 });
         }
       }
 
-      /* ── Central flash ── */
-      const flashCount = 6 + Math.floor(Math.random() * 4);
-      for (let i = 0; i < flashCount; i++) {
+      // Central white-hot flash
+      const flashN = 8 + Math.floor(Math.random() * 4);
+      for (let i = 0; i < flashN; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = 0.3 + Math.random() * 1.8;
+        const speed = 0.5 + Math.random() * 2.5;
         particlesRef.current.push({
-          x: rocket.x,
-          y: rocket.y,
+          x: r.x,
+          y: r.y,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          life: 24 + Math.random() * 16,  // Longer flash
+          life: 25 + Math.random() * 15,
           maxLife: 40,
-          size: 4 + Math.random() * 4,
-          hue: rocket.hue,
-          saturation: 20 + Math.random() * 30,
-          lightness: 90,
-          trail: [],
+          size: 5 + Math.random() * 5,
+          hue: r.hue,
+          saturation: 15,
+          lightness: 95,
+          sparkTimer: 0,
           sparkle: true,
-          drag: 0.88,
           gravity: 0,
           wind: 0,
           canBurst: false,
@@ -294,26 +303,25 @@ export function ClickEffects() {
     /* ─── Secondary burst ─── */
     const secondaryBurst = (p: Particle) => {
       p.burst = true;
-      p.life = Math.min(p.life, 30);  // Slower fade
-      const count = 4 + Math.floor(Math.random() * 4);
-      for (let i = 0; i < count; i++) {
+      p.life = Math.min(p.life, 25);
+      const n = 5 + Math.floor(Math.random() * 4);
+      for (let i = 0; i < n; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = 1.5 + Math.random() * 2;  // Wider
+        const speed = 3 + Math.random() * 4;
         particlesRef.current.push({
           x: p.x,
           y: p.y,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          life: 80 + Math.random() * 50,  // Longer
-          maxLife: 130,
-          size: 1 + Math.random() * 1.5,
-          hue: p.hue + (Math.random() - 0.5) * 30,
+          life: 100 + Math.random() * 60,
+          maxLife: 160,
+          size: 1.2 + Math.random() * 1.5,
+          hue: p.hue + (Math.random() - 0.5) * 25,
           saturation: p.saturation,
           lightness: p.lightness,
-          trail: [],
+          sparkTimer: 0,
           sparkle: Math.random() < 0.3,
-          drag: 0.975,
-          gravity: GRAVITY * 1.2,
+          gravity: G * 1.1,
           wind: p.wind,
           canBurst: false,
           burst: false,
@@ -323,112 +331,157 @@ export function ClickEffects() {
 
     /* ─── Animation loop ─── */
     const animate = () => {
-      // Clear completely every frame — no ghost trails / residue
+      // Clear completely — NO residue
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       ctx.globalCompositeOperation = "lighter";
 
       /* --- Rockets --- */
       rocketsRef.current = rocketsRef.current.filter((r) => {
-        r.trail.push({ x: r.x, y: r.y });
-        if (r.trail.length > 16) r.trail.shift();  // Longer rocket trail
-
-        for (let i = 0; i < r.trail.length; i++) {
-          const tp = r.trail[i];
-          const a = (i / r.trail.length) * 0.6;
-          ctx.beginPath();
-          ctx.arc(tp.x, tp.y, 1.2 + i * 0.06, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${r.hue}, 60%, 70%, ${a})`;
-          ctx.fill();
+        // Emit rocket trail sparks
+        r.sparkTimer++;
+        if (r.sparkTimer >= 2) {
+          r.sparkTimer = 0;
+          sparksRef.current.push({
+            x: r.x + (Math.random() - 0.5) * 2,
+            y: r.y + (Math.random() - 0.5) * 2,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: 0.5 + Math.random() * 0.8,
+            life: 15 + Math.random() * 10,
+            maxLife: 25,
+            hue: r.hue,
+            size: 0.8 + Math.random() * 0.6,
+          });
         }
 
         r.x += r.vx;
         r.y += r.vy;
-        r.vy += 0.04;  // Slower rocket deceleration
-        r.vx *= 0.995;
+        r.vy += 0.035; // Rocket decelerates as it rises
+        r.vx *= 0.998;
 
-        // Rocket head
+        // Bright rocket head
         ctx.beginPath();
-        ctx.arc(r.x, r.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${r.hue}, 90%, 85%, 1)`;
+        ctx.arc(r.x, r.y, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${r.hue}, 90%, 88%, 1)`;
         ctx.fill();
         ctx.beginPath();
-        ctx.arc(r.x, r.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${r.hue}, 50%, 98%, 1)`;
+        ctx.arc(r.x, r.y, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${r.hue}, 40%, 98%, 1)`;
         ctx.fill();
 
-        if (r.vy >= -0.3 || r.y <= r.targetY) {  // Slower apex detection
+        if (r.vy >= -0.2 || r.y <= r.targetY) {
           explode(r);
           return false;
         }
         return true;
       });
 
-      /* --- Particles --- */
+      /* --- Main particles --- */
       particlesRef.current = particlesRef.current.filter((p) => {
-        p.life -= 1;
+        p.life--;
         if (p.life <= 0) return false;
 
-        if (p.canBurst && !p.burst && p.life < p.maxLife * 0.5 && Math.random() < 0.03) {
+        // Secondary burst
+        if (p.canBurst && !p.burst && p.life < p.maxLife * 0.55 && Math.random() < 0.025) {
           secondaryBurst(p);
         }
 
-        p.trail.push({ x: p.x, y: p.y });
-        if (p.trail.length > TRAIL_LENGTH) p.trail.shift();
+        // QUADRATIC DRAG — the key to realism
+        // At high speed, drag is strong (fast decel); at low speed, barely any (slow drift)
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (speed > 0.01) {
+          const dragForce = 0.008 * speed; // Quadratic: F ∝ v
+          const dragRatio = Math.max(0, 1 - dragForce);
+          p.vx *= dragRatio;
+          p.vy *= dragRatio;
+        }
 
         p.x += p.vx;
         p.y += p.vy;
-        p.vx *= p.drag;
-        p.vy *= p.drag;
         p.vy += p.gravity;
         p.vx += p.wind;
 
-        const lifeRatio = p.life / p.maxLife;
-        const coolHue = p.hue + (1 - lifeRatio) * 15;
-        let lightness = p.lightness * lifeRatio;
-        let alpha = lifeRatio;
-
-        if (p.sparkle && Math.random() < 0.3) {
-          lightness = Math.min(100, lightness + 30);
-          alpha = Math.min(1, alpha + 0.3);
+        // Emit micro-sparks (sparkler trail)
+        p.sparkTimer++;
+        if (p.sparkTimer >= 3 && p.life > 20) {
+          p.sparkTimer = 0;
+          emitSpark(p);
         }
 
-        const size = p.size * (0.15 + lifeRatio * 0.85);
+        // Color temperature evolution
+        const lr = p.life / p.maxLife;
+        let hue: number;
+        let lightness: number;
+        let alpha: number;
 
-        // Trail — drawn explicitly, no canvas residue
-        for (let i = 0; i < p.trail.length - 1; i++) {
-          const tp = p.trail[i];
-          const next = p.trail[i + 1];
-          const ta = (i / p.trail.length) * alpha * 0.3;
-          const ts = size * (i / p.trail.length);
-          ctx.beginPath();
-          ctx.moveTo(tp.x, tp.y);
-          ctx.lineTo(next.x, next.y);
-          ctx.strokeStyle = `hsla(${coolHue}, ${p.saturation}%, ${lightness}%, ${ta})`;
-          ctx.lineWidth = ts;
-          ctx.lineCap = "round";
-          ctx.stroke();
+        if (lr > 0.8) {
+          // White-hot phase (first 20% of life)
+          hue = p.hue;
+          lightness = 92;
+          alpha = 1;
+        } else if (lr > 0.25) {
+          // Target color phase
+          const blend = (lr - 0.25) / 0.55; // 0→1
+          hue = p.hue;
+          lightness = p.lightness + blend * 15;
+          alpha = 0.4 + lr * 0.6;
+        } else {
+          // Dying ember phase (last 25%)
+          hue = p.hue + (1 - lr / 0.25) * 20; // Shift toward orange
+          lightness = p.lightness * (lr / 0.25) * 0.7;
+          alpha = lr / 0.25 * 0.6;
         }
 
-        // Particle body
+        // Sparkle flicker
+        if (p.sparkle && Math.random() < 0.25) {
+          lightness = Math.min(100, lightness + 25);
+          alpha = Math.min(1, alpha + 0.2);
+        }
+
+        const size = p.size * (0.3 + lr * 0.7);
+
+        // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${coolHue}, ${p.saturation}%, ${lightness}%, ${alpha})`;
+        ctx.fillStyle = `hsla(${hue}, ${p.saturation}%, ${lightness}%, ${alpha})`;
         ctx.fill();
 
-        // Inner core
-        if (size > 1) {
+        // Bright inner core
+        if (size > 1.2) {
           ctx.beginPath();
-          ctx.arc(p.x, p.y, size * 0.4, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${coolHue}, 50%, 95%, ${alpha * 0.8})`;
+          ctx.arc(p.x, p.y, size * 0.35, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${hue}, 40%, 97%, ${alpha * 0.85})`;
           ctx.fill();
         }
 
         return true;
       });
 
-      if (particlesRef.current.length > 2000) {
-        particlesRef.current = particlesRef.current.slice(-2000);
+      /* --- Micro-sparks (sparkler trails) --- */
+      sparksRef.current = sparksRef.current.filter((s) => {
+        s.life--;
+        if (s.life <= 0) return false;
+
+        s.x += s.vx;
+        s.y += s.vy;
+        s.vy += 0.02; // Very gentle gravity on sparks
+        s.vx *= 0.97;
+        s.vy *= 0.97;
+
+        const sa = (s.life / s.maxLife) * 0.5;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${s.hue}, 80%, 75%, ${sa})`;
+        ctx.fill();
+
+        return true;
+      });
+
+      // Cap for performance
+      if (particlesRef.current.length > 1500) {
+        particlesRef.current = particlesRef.current.slice(-1500);
+      }
+      if (sparksRef.current.length > 2000) {
+        sparksRef.current = sparksRef.current.slice(-2000);
       }
 
       rafRef.current = requestAnimationFrame(animate);
