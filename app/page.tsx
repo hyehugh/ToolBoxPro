@@ -18,13 +18,11 @@ const AdUnit = dynamic(
 );
 
 const ToolCard = dynamic(
-  () => import("@/components/tool-card").then((m) => m.ToolCard),
-  { ssr: false }
+  () => import("@/components/tool-card").then((m) => m.ToolCard)
 );
 
 const CategoryCard = dynamic(
-  () => import("@/components/category-card").then((m) => m.CategoryCard),
-  { ssr: false }
+  () => import("@/components/category-card").then((m) => m.CategoryCard)
 );
 
 export default function HomePage() {

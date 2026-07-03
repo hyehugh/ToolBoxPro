@@ -1,0 +1,158 @@
+# ToolboxPro
+
+> 100+ free online tools that run entirely in your browser. No signup, no file uploads, no usage limits. All processing happens client-side for maximum privacy.
+
+ToolboxPro offers free online utilities for developers, designers, writers, and everyday users. Every tool processes data locally in the browser — files never leave the user's device. The site is ad-supported and requires no account.
+
+## Key Differentiators
+- **Privacy-first**: All processing is client-side (JavaScript, Canvas, WebAssembly). No file uploads.
+- **No signup**: No account, email, or personal data required for any tool.
+- **No limits**: No daily quotas, no watermarks, no premium tiers.
+- **Open access**: Free for personal and commercial use.
+
+## Developer Tools
+
+- [JSON Formatter & Validator](https://trytoolboxpro.com/tools/json-formatter): Format, validate, and beautify JSON data instantly. Fix syntax errors and make your JSON readable with intelligent auto-formatting and tree view.
+- [Base64 Encoder/Decoder](https://trytoolboxpro.com/tools/base64-encode-decode): Encode text, files, or images to Base64 format and decode them back. Perfect for inline data URIs and API testing workflows.
+- [Regex Tester](https://trytoolboxpro.com/tools/regex-tester): Test regular expressions with real-time highlighting
+- [Color Converter](https://trytoolboxpro.com/tools/color-converter): Convert colors between HEX, RGB, HSL, CMYK, and HSV formats instantly. Preview colors, get hex codes, and generate harmonious palettes.
+- [URL Encoder/Decoder](https://trytoolboxpro.com/tools/url-encoder-decoder): Encode and decode URL components, query strings, and full URLs. Fix broken links and prepare URLs for API requests safely.
+- [UUID Generator](https://trytoolboxpro.com/tools/uuid-generator): Generate random UUID v4 identifiers instantly. Bulk generate unique IDs for databases, APIs, distributed systems, and test data.
+- [Hash Generator](https://trytoolboxpro.com/tools/hash-generator): Generate SHA-256, SHA-384, SHA-512 hashes for any text or file. Compare checksums and verify data integrity with multiple hash algorithms.
+- [Timestamp Converter](https://trytoolboxpro.com/tools/timestamp-converter): Convert between Unix timestamps and human-readable dates
+- [Number Base Converter](https://trytoolboxpro.com/tools/number-base-converter): Convert between binary, octal, decimal, and hexadecimal
+- [CSS Minifier](https://trytoolboxpro.com/tools/css-minifier): Minify and compress CSS code to reduce file size and improve page load speed. Remove whitespace, comments, and redundant rules safely.
+- [SQL Formatter](https://trytoolboxpro.com/tools/sql-formatter): Format and beautify SQL queries for better readability
+- [JSON to YAML Converter](https://trytoolboxpro.com/tools/json-to-yaml): Convert JSON data to clean YAML format and vice versa. Preserve nested structures, arrays, and data types during conversion.
+- [String Escaper/Unescaper](https://trytoolboxpro.com/tools/string-escaper): Escape and unescape special characters in strings for JSON, HTML, URLs, SQL, and JavaScript. Handle all common escaping formats.
+- [HTML Tag Stripper](https://trytoolboxpro.com/tools/html-tag-stripper): Remove all HTML tags from text, keeping only content
+- [JWT Decoder](https://trytoolboxpro.com/tools/jwt-decoder): Decode JWT tokens and inspect header, payload, and signature
+- [Cron Expression Parser](https://trytoolboxpro.com/tools/cron-parser): Parse cron expressions and get human-readable schedules
+- [HTML Preview](https://trytoolboxpro.com/tools/html-preview): Write and preview HTML code in real-time in a sandbox
+- [CSV Viewer & Formatter](https://trytoolboxpro.com/tools/csv-viewer): View CSV data in a formatted table with auto-detection
+- [IP Subnet Calculator](https://trytoolboxpro.com/tools/ip-calculator): Calculate network subnet, CIDR, broadcast, and host range
+- [JWT Generator](https://trytoolboxpro.com/tools/jwt-generator): Generate JWT tokens with custom header and payload
+- [JSON Diff](https://trytoolboxpro.com/tools/json-diff): Compare two JSON objects and highlight differences
+- [HTTP Status Codes](https://trytoolboxpro.com/tools/http-status-codes): Browse and search all HTTP status codes with descriptions
+- [Markdown to HTML](https://trytoolboxpro.com/tools/markdown-to-html): Convert Markdown text to formatted HTML in real-time
+- [CSS Gradient Generator](https://trytoolboxpro.com/tools/css-gradient): Create beautiful linear and radial CSS gradients visually. Copy the generated CSS code for backgrounds, buttons, and UI elements.
+- [CSS Box Shadow Generator](https://trytoolboxpro.com/tools/css-shadow): Design and preview custom CSS box shadows visually
+- [JSON to TypeScript](https://trytoolboxpro.com/tools/json-to-typescript): Convert JSON data to TypeScript interfaces automatically. Generate type definitions from any JSON object or API response.
+- [HTML to JSX Converter](https://trytoolboxpro.com/tools/html-to-jsx): Convert HTML markup to JSX syntax for React components
+- [DNS Lookup](https://trytoolboxpro.com/tools/dns-lookup): Query DNS records for any domain
+- [Whois Lookup](https://trytoolboxpro.com/tools/whois-lookup): Look up domain registration info
+
+## Text Tools
+
+- [Word & Character Counter](https://trytoolboxpro.com/tools/word-counter): Count words, characters, sentences, and reading time
+- [Text Case Converter](https://trytoolboxpro.com/tools/case-converter): Convert text between UPPER, lower, Title, camelCase and more
+- [Lorem Ipsum Generator](https://trytoolboxpro.com/tools/lorem-ipsum-generator): Generate placeholder text for design mockups, website wireframes, and print layouts. Customize paragraph count, word length, and format.
+- [Text Diff Checker](https://trytoolboxpro.com/tools/text-diff-checker): Compare two blocks of text side by side and highlight every difference. Perfect for code reviews, document revisions, and plagiarism checks.
+- [Text Repeater](https://trytoolboxpro.com/tools/text-repeater): Repeat any text multiple times with custom separators, line breaks, or prefixes. Generate test data, patterns, and repeated strings instantly.
+- [Text to Binary Converter](https://trytoolboxpro.com/tools/text-to-binary): Convert text to binary code and binary back to text
+- [Text to URL Slug](https://trytoolboxpro.com/tools/text-to-slug): Convert any text into clean, SEO-friendly URL slugs. Remove special characters, normalize spaces, and generate optimized permalinks.
+- [Text Sorter](https://trytoolboxpro.com/tools/text-sorter): Sort text lines alphabetically (A-Z or Z-A), by line length, or in reverse order. Remove duplicates and organize lists instantly.
+- [Line Deduplicator](https://trytoolboxpro.com/tools/text-deduplicator): Remove duplicate lines from text while preserving order
+- [Text Reverser](https://trytoolboxpro.com/tools/text-reverser): Reverse text, words, sentences, or entire lines instantly. Useful for creating mirrored text, solving puzzles, or formatting data.
+- [Random String Generator](https://trytoolboxpro.com/tools/random-string-generator): Generate random strings with custom characters and length
+- [Palindrome Checker](https://trytoolboxpro.com/tools/palindrome-checker): Check if text reads the same forwards and backwards
+- [Morse Code Converter](https://trytoolboxpro.com/tools/morse-code-converter): Convert text to Morse code and decode Morse code back to readable text. Learn Morse alphabet with visual audio playback support.
+- [Emoji Remover](https://trytoolboxpro.com/tools/emoji-remover): Remove all emoji characters from text while keeping words
+- [Unicode Character Detector](https://trytoolboxpro.com/tools/unicode-detector): Inspect Unicode characters with codepoint and category info
+- [Caesar Cipher](https://trytoolboxpro.com/tools/caesar-cipher): Encode and decode text using the classic Caesar shift cipher. Choose shift values, try brute force decoding, and learn cryptography basics.
+- [Binary to Text](https://trytoolboxpro.com/tools/binary-to-text): Convert binary code to text and text back to binary
+- [Online Notepad](https://trytoolboxpro.com/tools/online-notepad): Quick notepad with auto-save
+- [Text Statistics Analyzer](https://trytoolboxpro.com/tools/text-statistics): Analyze text for word count, character count, sentence count, paragraph count, reading time, and keyword density
+
+## Image Tools
+
+- [Image Compressor](https://trytoolboxpro.com/tools/image-compressor): Compress JPEG, PNG, WebP images without losing visible quality. Reduce file sizes by up to 80% for faster website loading.
+- [Image Format Converter](https://trytoolboxpro.com/tools/image-converter): Convert images between JPG, PNG, WebP, AVIF, GIF, and BMP formats. Batch convert with custom quality and dimension settings.
+- [Image to Base64](https://trytoolboxpro.com/tools/image-to-base64): Convert images to Base64 data URI for inline embedding
+- [Image Cropper](https://trytoolboxpro.com/tools/image-cropper): Crop images by dragging a selection area on canvas
+- [Image Resizer](https://trytoolboxpro.com/tools/image-resizer): Resize images to exact dimensions with aspect ratio lock
+- [Image Filters](https://trytoolboxpro.com/tools/image-filters): Apply grayscale, sepia, blur, brightness, and contrast filters
+- [Color Picker from Image](https://trytoolboxpro.com/tools/color-picker): Pick colors from uploaded images or use the color selector
+- [GIF Maker](https://trytoolboxpro.com/tools/gif-maker): Create animated GIFs from multiple images or video clips. Set frame delay, resize output, and optimize for web or social media.
+- [Image Watermark](https://trytoolboxpro.com/tools/image-watermark): Add text watermark to images with position and opacity control
+- [Image Merger](https://trytoolboxpro.com/tools/image-merge): Combine multiple images into one side by side or grid
+- [Image Splitter](https://trytoolboxpro.com/tools/image-splitter): Split a single image into multiple tiles by rows and columns. Perfect for creating sprite sheets, grid layouts, and image segments.
+- [Image Flip & Rotate](https://trytoolboxpro.com/tools/image-flip): Flip images horizontally or vertically and rotate by 90-degree increments. Mirror selfies, correct orientation, and transform photos instantly.
+- [Image Border](https://trytoolboxpro.com/tools/image-border): Add customizable borders, frames, and padding to images. Choose colors, widths, corner radius, and shadow effects for polished photos.
+- [Meme Generator](https://trytoolboxpro.com/tools/meme-generator): Create memes by adding top and bottom text to images
+- [Image to Sketch](https://trytoolboxpro.com/tools/image-to-sketch): Convert photos into pencil sketch drawings and line art. Apply artistic filters to create realistic hand-drawn effects from your images.
+- [Image Invert](https://trytoolboxpro.com/tools/image-invert): Invert or negate colors in any image instantly. Create negative effects, X-ray looks, and artistic color reversals with one click.
+- [Photo Collage Maker](https://trytoolboxpro.com/tools/image-collage): Combine multiple photos into a beautiful collage grid. Choose layouts, spacing, background colors, and export in high resolution.
+- [Color Palette Generator](https://trytoolboxpro.com/tools/color-palette): Generate harmonious color palettes from a base color
+- [Color Blindness Simulator](https://trytoolboxpro.com/tools/color-blindness-simulator): Simulate how images appear to users with protanopia, deuteranopia, and tritanopia
+
+## PDF Tools
+
+- [PDF Merger](https://trytoolboxpro.com/tools/pdf-merger): Merge multiple PDF files into a single document instantly. Combine pages, reorder, and create unified PDFs without installing software.
+- [Image to PDF](https://trytoolboxpro.com/tools/image-to-pdf): Convert images (JPG, PNG) into a single PDF document
+- [PDF Splitter](https://trytoolboxpro.com/tools/pdf-splitter): Split PDF by page ranges or extract specific pages
+- [PDF Rotator](https://trytoolboxpro.com/tools/pdf-rotator): Rotate PDF pages by 90, 180, or 270 degrees. Fix scanned documents, correct page orientation, and rearrange your PDF layouts.
+- [PDF Page Remover](https://trytoolboxpro.com/tools/pdf-page-remover): Remove unwanted pages from your PDF documents quickly. Extract specific pages, delete blank sheets, and trim bulky files.
+
+## Audio Tools
+
+- [Audio Cutter](https://trytoolboxpro.com/tools/audio-cutter): Trim and cut audio files with an interactive waveform preview. Extract clips from MP3, WAV, and other formats right in your browser.
+- [Audio Merger](https://trytoolboxpro.com/tools/audio-merger): Combine multiple audio files into one seamless track. Merge songs, recordings, or voice clips in any order with crossfade support.
+- [Audio Converter](https://trytoolboxpro.com/tools/audio-converter): Convert audio between WAV formats and sample rates
+
+## Network Tools
+
+- [DNS Lookup](https://trytoolboxpro.com/tools/dns-lookup): Query DNS records for any domain
+- [Whois Lookup](https://trytoolboxpro.com/tools/whois-lookup): Look up domain registration info
+
+## Converters
+
+- [HTML Entity Converter](https://trytoolboxpro.com/tools/html-entity-converter): Encode and decode HTML entities like &amp; and &lt;
+- [Temperature Converter](https://trytoolboxpro.com/tools/temperature-converter): Convert temperatures between Celsius, Fahrenheit, and Kelvin scales instantly. Perfect for cooking, science, weather, and travel calculations.
+- [Weight Converter](https://trytoolboxpro.com/tools/weight-converter): Convert between kilograms, pounds, ounces, and more
+- [Length Converter](https://trytoolboxpro.com/tools/length-converter): Convert between meters, feet, inches, kilometers, and miles
+- [Data Size Converter](https://trytoolboxpro.com/tools/data-size-converter): Convert between bytes, kilobytes, megabytes, gigabytes, terabytes and more. Compare file sizes, storage capacity, and data transfer amounts.
+- [Speed Converter](https://trytoolboxpro.com/tools/speed-converter): Convert speed between km/h, mph, knots, m/s, and mach. Useful for driving, aviation, marine navigation, and physics calculations.
+- [Area Converter](https://trytoolboxpro.com/tools/area-converter): Convert between square meters, acres, hectares, sq ft
+- [SVG to PNG Converter](https://trytoolboxpro.com/tools/svg-to-png): Convert SVG vector code or files into PNG images with custom dimensions, background colors, and scaling options for any use case.
+- [Barcode & QR Code Generator](https://trytoolboxpro.com/tools/barcode-generator): Generate barcodes in Code128, EAN-13, Code39 formats
+- [QR Code Reader](https://trytoolboxpro.com/tools/qr-reader): Decode QR codes from uploaded images instantly. Scan any QR code image to reveal the embedded URL, text, or contact information.
+
+## Utilities
+
+- [Password Generator](https://trytoolboxpro.com/tools/password-generator): Create strong, secure passwords with custom options
+- [Random Number Generator](https://trytoolboxpro.com/tools/random-number-generator): Generate random numbers within a custom range. Perfect for lotteries, giveaways, statistical sampling, and game development.
+- [Time Zone Converter](https://trytoolboxpro.com/tools/timezone-converter): Convert time between different world time zones instantly. Schedule meetings across time zones and compare clocks worldwide.
+- [Password Strength Checker](https://trytoolboxpro.com/tools/password-strength): Test password strength and get improvement suggestions
+- [Countdown Timer](https://trytoolboxpro.com/tools/countdown-timer): Create countdown timers for events
+- [Tip Calculator](https://trytoolboxpro.com/tools/tip-calculator): Calculate tips and split bills
+- [BMI Calculator](https://trytoolboxpro.com/tools/bmi-calculator): Calculate Body Mass Index
+- [Percentage Calculator](https://trytoolboxpro.com/tools/percentage-calculator): Calculate percentages, discounts, and more
+- [Age Calculator](https://trytoolboxpro.com/tools/age-calculator): Calculate exact age in years, months, and days
+- [Days Between Dates](https://trytoolboxpro.com/tools/days-between): Calculate the number of days between two dates
+- [Roman Numeral Converter](https://trytoolboxpro.com/tools/roman-numeral-converter): Convert between Roman numerals and decimal numbers
+- [Decision Maker](https://trytoolboxpro.com/tools/decision-maker): Let randomness decide for you
+- [Dice Roller](https://trytoolboxpro.com/tools/dice-roller): Roll virtual dice with customizable sides and count
+
+## Guides & Comparisons
+- [All Guides](https://trytoolboxpro.com/guides): In-depth tool comparisons and tutorials
+- [Blog](https://trytoolboxpro.com/blog): Step-by-step tutorials and best practices
+- [FAQ](https://trytoolboxpro.com/faq): Common questions about privacy, features, and usage
+- [About](https://trytoolboxpro.com/about): Why ToolboxPro exists and how it works
+
+## Popular Searches
+- Free online JSON formatter
+- Base64 encoder decoder online
+- Regex tester online free
+- Image compressor without quality loss
+- PDF merger no signup
+- QR code generator free
+- Password generator strong
+- Color converter hex to rgb
+- Word counter online
+- URL encoder decoder
+
+## Links
+- [Website](https://trytoolboxpro.com)
+- [All Tools](https://trytoolboxpro.com/tools)
+- [Contact](https://trytoolboxpro.com/contact)

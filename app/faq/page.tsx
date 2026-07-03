@@ -61,47 +61,66 @@ const faqs = [
   },
 ];
 
+const faqPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
+
 export default function FAQPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
-      <div className="mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
-          Frequently Asked Questions
-        </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl">
-          Answers to common questions about ToolboxPro — our free online tools, privacy
-          approach, and how everything works.
-        </p>
-      </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
+      />
+      <div className="mx-auto max-w-3xl px-4 py-12">
+        <div className="mb-10">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+            Frequently Asked Questions
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            Answers to common questions about ToolboxPro — our free online tools, privacy
+            approach, and how everything works.
+          </p>
+        </div>
 
-      <div className="space-y-4">
-        {faqs.map((faq, i) => (
-          <details
-            key={i}
-            className="group rounded-xl border bg-card p-5 [&_summary]:cursor-pointer [&_summary]:font-medium [&_summary]:flex [&_summary]:items-center [&_summary]:justify-between [&_summary]:gap-4"
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <details
+              key={i}
+              className="group rounded-xl border bg-card p-5 [&_summary]:cursor-pointer [&_summary]:font-medium [&_summary]:flex [&_summary]:items-center [&_summary]:justify-between [&_summary]:gap-4"
+            >
+              <summary className="list-none">
+                <span>{faq.q}</span>
+                <span className="flex-shrink-0 transition-transform group-open:rotate-180 text-muted-foreground">
+                  ▼
+                </span>
+              </summary>
+              <p className="mt-3 text-muted-foreground leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <div className="mt-12 p-6 rounded-xl border bg-card/50 text-center">
+          <p className="text-muted-foreground mb-4">
+            Still have questions? We&apos;re here to help.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
           >
-            <summary className="list-none">
-              <span>{faq.q}</span>
-              <span className="flex-shrink-0 transition-transform group-open:rotate-180 text-muted-foreground">
-                ▼
-              </span>
-            </summary>
-            <p className="mt-3 text-muted-foreground leading-relaxed">{faq.a}</p>
-          </details>
-        ))}
+            Contact Us
+          </Link>
+        </div>
       </div>
-
-      <div className="mt-12 p-6 rounded-xl border bg-card/50 text-center">
-        <p className="text-muted-foreground mb-4">
-          Still have questions? We&apos;re here to help.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
-        >
-          Contact Us
-        </Link>
-      </div>
-    </div>
+    </>
   );
 }

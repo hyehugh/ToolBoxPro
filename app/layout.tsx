@@ -63,8 +63,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://trytoolboxpro.com",
     languages: {
-      en: "https://trytoolboxpro.com",
-      zh: "https://trytoolboxpro.com",
+      "en": "https://trytoolboxpro.com",
+      "zh": "https://trytoolboxpro.com",
+      "x-default": "https://trytoolboxpro.com",
     },
   },
 };

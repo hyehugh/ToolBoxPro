@@ -31,7 +31,7 @@ export function ToolPageContent({ slug }: { slug: string }) {
   const ToolComponent = toolComponents[slug];
   const related = tools
     .filter((rt) => rt.category === tool.category && rt.slug !== tool.slug)
-    .slice(0, 4);
+    .slice(0, 8);
   const relatedPosts = blogPosts.filter((p) => p.toolSlug === slug).slice(0, 3);
 
   return (

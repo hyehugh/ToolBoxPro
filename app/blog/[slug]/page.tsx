@@ -1,4 +1,5 @@
 import { getBlogPostWithContent, getAllBlogPosts } from "@/lib/blog/loader";
+import { getBlogImage } from "@/lib/blog/images";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { BlogPostContent } from "./blog-post-content";
@@ -27,16 +28,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       url: `https://trytoolboxpro.com/blog/${slug}`,
       publishedTime: post.date,
-      images: post.toolSlug
-        ? [
+      images: (() => {
+        const blogImg = getBlogImage(slug);
+        if (blogImg) {
+          return [
             {
-              url: `/api/og-image?slug=${post.toolSlug}`,
+              url: blogImg,
               width: 1200,
               height: 630,
               alt: post.title,
             },
-          ]
-        : undefined,
+          ];
+        }
+        return [
+          {
+            url: "/og-default.png",
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          },
+        ];
+      })(),
     },
     twitter: {
       card: "summary_large_image",
