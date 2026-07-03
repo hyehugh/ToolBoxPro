@@ -312,30 +312,6 @@ export function ClickEffects() {
         });
       }
 
-      /* ── Smoke / dust particles (very slow, faint) ── */
-      for (let i = 0; i < 8; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 0.2 + Math.random() * 0.6;
-        particlesRef.current.push({
-          x: rocket.x,
-          y: rocket.y,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          life: 200 + Math.random() * 80,
-          maxLife: 280,
-          size: 5 + Math.random() * 4,
-          hue: rocket.hue,
-          saturation: 10,
-          lightness: 40,
-          trail: [],
-          sparkle: false,
-          drag: 0.95,
-          gravity: GRAVITY * 0.3,
-          wind: rocket.windX * 2,
-          canBurst: false,
-          burst: false,
-        });
-      }
     };
 
     /* ─── Secondary burst (crossette / burst particles) ─── */
