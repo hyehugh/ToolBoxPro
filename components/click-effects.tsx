@@ -268,7 +268,6 @@ export function ClickEffects() {
       for (let i = 0; i < n; i++) {
         const angle = Math.random() * Math.PI * 2;
         const speed = 4 + Math.random() * 5;
-        const h = Math.random() * 360;
         particlesRef.current.push({
           x: p.x,
           y: p.y,
