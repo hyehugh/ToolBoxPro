@@ -103,7 +103,7 @@ export function ClickEffects() {
     resize();
     addEventListener("resize", resize);
 
-    const TRAIL_LEN = 8;
+    const TRAIL_LEN = 20;  // Longer trail = more visible streak
 
     const addStar = (x: number, y: number, color: string, angle: number, speed: number, life: number, size = 2.5): Star => {
       const s: Star = {
@@ -281,13 +281,13 @@ export function ClickEffects() {
           }
         }
 
-        // Draw trail from history positions
+        // Draw trail from history positions — bright gradient streak
         const alpha = Math.min(1, burn * 1.4);
         for (let j = 0; j < s.trail.length - 1; j++) {
-          const tRatio = j / s.trail.length;
+          const tRatio = (j + 1) / s.trail.length;  // 0→1, newer = brighter
           ctx.strokeStyle = s.color;
-          ctx.globalAlpha = alpha * tRatio * 0.6;
-          ctx.lineWidth = Math.max(0.5, s.size * burn * tRatio);
+          ctx.globalAlpha = alpha * tRatio * 0.9;   // Brighter trail
+          ctx.lineWidth = Math.max(0.5, s.size * burn * tRatio * 1.2);
           ctx.beginPath();
           ctx.moveTo(s.trail[j].x, s.trail[j].y);
           ctx.lineTo(s.trail[j + 1].x, s.trail[j + 1].y);
