@@ -209,9 +209,10 @@ export function ClickEffects() {
 
     // ─── Animation loop ───
     const animate = () => {
-      // ── Trail canvas: fade slowly (creates beautiful streaks), then draw particle trails ──
-      trailCtx.globalCompositeOperation = "source-over";
-      trailCtx.fillStyle = "rgba(0, 0, 0, 0.08)";  // Slow fade = long trails
+      // ── Trail canvas: fade existing pixels to transparent (NOT black overlay) ──
+      // destination-out reduces alpha of already-drawn pixels → they become transparent, not gray
+      trailCtx.globalCompositeOperation = "destination-out";
+      trailCtx.fillStyle = "rgba(0, 0, 0, 0.06)";  // 6% of pixels become transparent per frame
       trailCtx.fillRect(0, 0, trailCanvas.width, trailCanvas.height);
       trailCtx.globalCompositeOperation = "lighter";
 
