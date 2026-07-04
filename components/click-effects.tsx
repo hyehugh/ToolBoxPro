@@ -195,8 +195,9 @@ export function ClickEffects() {
 
     // ─── Animation loop ───
     const animate = () => {
-      // Trail fade — slow for long persistence
-      ctx.globalCompositeOperation = "source-over";
+      // Fade trail by reducing alpha (not darkening with black overlay)
+      // destination-out makes pixels more transparent over time → no gray residue
+      ctx.globalCompositeOperation = "destination-out";
       ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
