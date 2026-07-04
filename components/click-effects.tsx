@@ -2,71 +2,77 @@
 
 import { useEffect, useRef } from "react";
 
-/* ──────────────────────────── Types ──────────────────────────── */
+/* ================================================================
+ * Firework System — Adapted from NianBroken/Firework_Simulator
+ * Source: https://github.com/NianBroken/Firework_Simulator (Apache-2.0)
+ *
+ * Core technique from original:
+ * - Single canvas with slow fade for motion-blur trails
+ * - Star = line from prevPos→currentPos (natural trail)
+ * - Spark = tiny line, shed by stars (glitter effect)
+ * - BurstFlash = radial gradient white-hot flash at explosion
+ * - createBurst = cosine-weighted spherical ring distribution
+ * ================================================================ */
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  life: number;
-  maxLife: number;
-  size: number;
-  hue: number;
-  saturation: number;
-  lightness: number;
-  /** Trail positions for motion blur */
-  trail: { x: number; y: number }[];
-  /** Whether this particle sparkles */
-  sparkle: boolean;
-  /** Drag coefficient — willow particles fall faster */
-  drag: number;
-  /** Gravity multiplier */
-  gravity: number;
+interface Star {
+  x: number; y: number;
+  prevX: number; prevY: number;
+  speedX: number; speedY: number;
+  life: number; fullLife: number;
+  color: string; size: number;
+  sparkFreq: number; sparkTimer: number;
+  sparkSpeed: number; sparkLife: number;
+  sparkColor: string;
+  onDeath?: (s: Star) => void;
+  dead: boolean;
 }
 
-interface Rocket {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  trail: { x: number; y: number; alpha: number }[];
-  hue: number;
-  /** Target explosion height */
-  targetY: number;
-  /** Firework type */
-  type: FireworkType;
-  /** Secondary hue for two-color fireworks */
-  hue2: number;
+interface Spark {
+  x: number; y: number;
+  prevX: number; prevY: void;
+  speedX: number; speedY: number;
+  life: number; color: string;
 }
 
-type FireworkType = "peony" | "chrysanthemum" | "willow" | "ring" | "heart";
+interface Flash { x: number; y: number; radius: number; }
 
-/* ──────────────────────────── Constants ──────────────────────────── */
+const AIR_DRAG = 0.98;
+const SPARK_DRAG = 0.9;
+const GRAVITY = 0.15;
+const PI2 = Math.PI * 2;
 
-const GRAVITY = 0.06;
-const TRAIL_LENGTH = 8;
-
-const FIREWORK_TYPES: FireworkType[] = [
-  "peony", "chrysanthemum", "willow", "ring", "heart",
+const COLORS = [
+  "#ff3860", "#ff7060", "#ffdd57", "#ffdd00",
+  "#23d160", "#00d1b2", "#3273dc", "#00d4ff",
+  "#54a0ff", "#5e72e4", "#8b57d9", "#e056fd",
+  "#ff6bdf", "#ffffff",
 ];
 
-/** Festive color palettes — each explosion picks one */
-const PALETTES: number[][] = [
-  [0, 30, 60],        // Warm: red, orange, yellow
-  [120, 150, 180],    // Green-teal range
-  [200, 220, 260],    // Blue-purple range
-  [280, 310, 340],    // Pink-magenta range
-  [45, 270, 340],     // Gold + purple + pink (mixed)
-  [160, 200, 50],     // Teal + blue + gold (mixed)
-];
+const rc = () => COLORS[(Math.random() * COLORS.length) | 0];
 
-/* ──────────────────────────── Component ──────────────────────────── */
+// Cosine-weighted spherical distribution (from original createBurst)
+function createBurst(count: number, fn: (angle: number, speedMult: number) => void) {
+  const radius = 0.5 * Math.sqrt(count / Math.PI);
+  const circ = 2 * radius * Math.PI;
+  const halfC = circ / 2;
+  for (let ring = 0; ring <= halfC; ring++) {
+    const ringAngle = (ring / halfC) * (Math.PI / 2);
+    const ringSize = Math.cos(ringAngle);
+    const perRing = circ * ringSize;
+    const inc = PI2 / perRing;
+    const off = Math.random() * inc;
+    const jitter = inc * 0.33;
+    for (let i = 0; i < perRing; i++) {
+      fn(inc * i + off + Math.random() * jitter, ringSize);
+    }
+  }
+}
 
 export function ClickEffects() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particlesRef = useRef<Particle[]>([]);
-  const rocketsRef = useRef<Rocket[]>([]);
+  const starsRef = useRef<Star[]>([]);
+  const sparksRef = useRef<Spark[]>([]);
+  const flashesRef = useRef<Flash[]>([]);
   const rafRef = useRef(0);
 
   useEffect(() => {
@@ -75,266 +81,171 @@ export function ClickEffects() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
+    const resize = () => { canvas.width = innerWidth; canvas.height = innerHeight; };
     resize();
-    window.addEventListener("resize", resize);
+    addEventListener("resize", resize);
 
-    /* ─── Launch a rocket on click ─── */
-    const handleClick = (e: MouseEvent) => {
-      const startX = e.clientX + (Math.random() - 0.5) * 20;
-      const startY = e.clientY + 20; // Start slightly below click point
+    // ─── Particle factories ───
+    const addStar = (x: number, y: number, color: string, angle: number, speed: number, life: number, size = 2.5): Star => {
+      const s: Star = {
+        x, y, prevX: x, prevY: y,
+        speedX: Math.sin(angle) * speed, speedY: Math.cos(angle) * speed,
+        life, fullLife: life, color, size,
+        sparkFreq: 0, sparkTimer: 0, sparkSpeed: 1, sparkLife: 500, sparkColor: color,
+        dead: false,
+      };
+      starsRef.current.push(s);
+      return s;
+    };
 
-      // Pick a random palette and type
-      const palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
-      const hue = palette[Math.floor(Math.random() * palette.length)];
-      const hue2 = palette[Math.floor(Math.random() * palette.length)];
-      const type = FIREWORK_TYPES[Math.floor(Math.random() * FIREWORK_TYPES.length)];
-
-      // Rocket goes up and explodes slightly above the click point
-      const targetY = e.clientY - 20 - Math.random() * 30;
-
-      rocketsRef.current.push({
-        x: startX,
-        y: startY,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: -8 - Math.random() * 3, // Strong upward velocity
-        trail: [],
-        hue,
-        hue2,
-        targetY,
-        type,
+    const addSpark = (x: number, y: number, color: string, angle: number, speed: number, life: number) => {
+      sparksRef.current.push({
+        x, y, prevX: x, prevY: undefined as never,
+        speedX: Math.sin(angle) * speed, speedY: Math.cos(angle) * speed,
+        life, color,
       });
     };
 
-    /* ─── Explode a rocket into particles ─── */
-    const explode = (rocket: Rocket) => {
-      const palette = [rocket.hue, rocket.hue2];
-      let count: number;
-      let baseSpeed: number;
+    // ─── Burst at apex (click position) ───
+    const burst = (cx: number, cy: number) => {
+      const baseColor = rc();
+      const speed = 4.5 + Math.random() * 3;
+      const starCount = 55 + ((Math.random() * 35) | 0);
+      const starLife = 1100 + Math.random() * 600;
+      const type = Math.random();
 
-      switch (rocket.type) {
-        case "ring":
-          count = 50;
-          baseSpeed = 4.5;
-          break;
-        case "chrysanthemum":
-          count = 70;
-          baseSpeed = 5;
-          break;
-        case "willow":
-          count = 55;
-          baseSpeed = 3.5;
-          break;
-        case "heart":
-          count = 60;
-          baseSpeed = 4;
-          break;
-        default: // peony
-          count = 60 + Math.floor(Math.random() * 20);
-          baseSpeed = 4 + Math.random() * 2;
-      }
-
-      for (let i = 0; i < count; i++) {
-        let angle: number;
-        let speed: number;
-        let drag = 0.97;
-        let gravity = GRAVITY;
-
-        switch (rocket.type) {
-          case "ring": {
-            // Perfect ring — uniform angle, same speed
-            angle = (Math.PI * 2 * i) / count;
-            speed = baseSpeed;
-            break;
-          }
-          case "chrysanthemum": {
-            // Dense burst with slight randomness
-            angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.15;
-            speed = baseSpeed * (0.8 + Math.random() * 0.4);
-            break;
-          }
-          case "willow": {
-            // Drooping — low drag, higher gravity, slower
-            angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.3;
-            speed = baseSpeed * (0.6 + Math.random() * 0.6);
-            drag = 0.985; // Less drag = falls further
-            gravity = GRAVITY * 1.8;
-            break;
-          }
-          case "heart": {
-            // Heart shape parametric
-            const t = (Math.PI * 2 * i) / count;
-            const hx = 16 * Math.pow(Math.sin(t), 3);
-            const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-            angle = Math.atan2(hy, hx);
-            speed = baseSpeed * Math.sqrt(hx * hx + hy * hy) / 16;
-            break;
-          }
-          default: { // peony
-            angle = Math.random() * Math.PI * 2;
-            speed = baseSpeed * (0.5 + Math.random() * 0.8);
-          }
-        }
-
-        const hue = palette[Math.floor(Math.random() * palette.length)] + (Math.random() - 0.5) * 20;
-        const maxLife = 50 + Math.random() * 30;
-
-        particlesRef.current.push({
-          x: rocket.x,
-          y: rocket.y,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          life: maxLife,
-          maxLife,
-          size: 1.5 + Math.random() * 2,
-          hue: ((hue % 360) + 360) % 360,
-          saturation: 85 + Math.random() * 15,
-          lightness: 55 + Math.random() * 20,
-          trail: [],
-          sparkle: Math.random() < 0.25, // 25% of particles sparkle
-          drag,
-          gravity,
+      if (type < 0.25) {
+        // ── Chrysanthemum: sphere + light glitter ──
+        createBurst(starCount, (a, sm) => {
+          const s = addStar(cx, cy, rc(), a, sm * speed, starLife);
+          s.sparkFreq = 250; s.sparkSpeed = 0.35; s.sparkLife = 400;
+          s.sparkColor = rc();
         });
+      } else if (type < 0.45) {
+        // ── Ring + pistil ──
+        const n = 48, rs = speed * 1.3, tilt = Math.random() * PI2;
+        for (let i = 0; i < n; i++) addStar(cx, cy, baseColor, (PI2 * i) / n + tilt, rs, starLife);
+        createBurst(starCount * 0.3, (a, sm) => addStar(cx, cy, rc(), a, sm * speed * 0.4, starLife * 0.7, 2));
+      } else if (type < 0.6) {
+        // ── Willow: long life, heavy droop, gold sparks ──
+        createBurst(starCount * 0.7, (a, sm) => {
+          const s = addStar(cx, cy, baseColor, a, sm * speed * 0.85, starLife * 1.6);
+          s.sparkFreq = 70; s.sparkSpeed = 0.28; s.sparkLife = 900;
+          s.sparkColor = "#ffdd00";
+        });
+      } else if (type < 0.75) {
+        // ── Crossette: secondary burst on death ──
+        createBurst(starCount * 0.6, (a, sm) => {
+          const s = addStar(cx, cy, baseColor, a, sm * speed * 1.1, starLife * 0.75);
+          s.onDeath = (self) => {
+            for (let i = 0; i < 4; i++) addStar(self.x, self.y, rc(), Math.random() * PI2, 0.6 + Math.random() * 0.7, 450);
+          };
+        });
+      } else {
+        // ── Peony: pure random sphere, multi-color ──
+        createBurst(starCount, (a, sm) => addStar(cx, cy, rc(), a, sm * speed, starLife));
       }
 
-      // Central flash burst — a few very bright, short-lived particles
-      for (let i = 0; i < 5; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 0.5 + Math.random() * 1.5;
-        particlesRef.current.push({
-          x: rocket.x,
-          y: rocket.y,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          life: 15,
-          maxLife: 15,
-          size: 4 + Math.random() * 3,
-          hue: rocket.hue,
-          saturation: 30,
-          lightness: 90, // Near-white flash
-          trail: [],
-          sparkle: true,
-          drag: 0.9,
-          gravity: 0,
-        });
-      }
+      // Burst flash — white-hot radial gradient
+      flashesRef.current.push({ x: cx, y: cy, radius: 75 + Math.random() * 40 });
     };
 
-    /* ─── Main animation loop ─── */
+    const handleClick = (e: MouseEvent) => burst(e.clientX, e.clientY);
+
+    // ─── Animation loop ───
     const animate = () => {
-      // Fade the canvas instead of clearing — creates natural motion-blur trails
+      // Fade trail layer (motion blur). Use additive (lighten) for glow.
       ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.14)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Use additive blending for all particles — creates realistic glow
-      ctx.globalCompositeOperation = "lighter";
+      ctx.globalCompositeOperation = "lighten";
 
-      /* --- Update rockets --- */
-      rocketsRef.current = rocketsRef.current.filter((r) => {
-        // Store trail position
-        r.trail.push({ x: r.x, y: r.y, alpha: 1 });
-        if (r.trail.length > 10) r.trail.shift();
+      // ── Burst flashes ──
+      while (flashesRef.current.length) {
+        const f = flashesRef.current.pop()!;
+        const g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.radius);
+        g.addColorStop(0.025, "rgba(255,255,255,1)");
+        g.addColorStop(0.125, "rgba(255,160,20,0.2)");
+        g.addColorStop(0.32, "rgba(255,140,20,0.11)");
+        g.addColorStop(1, "rgba(255,120,20,0)");
+        ctx.fillStyle = g;
+        ctx.fillRect(f.x - f.radius, f.y - f.radius, f.radius * 2, f.radius * 2);
+      }
 
-        // Draw rocket trail (fading)
-        for (let i = 0; i < r.trail.length; i++) {
-          const t = r.trail[i];
-          const tAlpha = (i / r.trail.length) * 0.6;
-          ctx.beginPath();
-          ctx.arc(t.x, t.y, 1.5, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${r.hue}, 60%, 70%, ${tAlpha})`;
-          ctx.fill();
+      // ── Stars ──
+      ctx.lineCap = "round";
+      for (let i = starsRef.current.length - 1; i >= 0; i--) {
+        const s = starsRef.current[i];
+        s.life -= 16;
+        if (s.life <= 0) {
+          if (s.onDeath && !s.dead) { s.dead = true; s.onDeath(s); }
+          starsRef.current.splice(i, 1);
+          continue;
+        }
+        const burn = Math.pow(s.life / s.fullLife, 0.5);
+
+        s.prevX = s.x; s.prevY = s.y;
+        s.x += s.speedX; s.y += s.speedY;
+        s.speedX *= AIR_DRAG; s.speedY *= AIR_DRAG;
+        s.speedY += GRAVITY;
+
+        // Emit sparks
+        if (s.sparkFreq > 0) {
+          s.sparkTimer -= 16;
+          while (s.sparkTimer < 0) {
+            s.sparkTimer += s.sparkFreq * (0.75 + (1 - burn) * 4);
+            addSpark(s.x, s.y, s.sparkColor, Math.random() * PI2,
+              Math.random() * s.sparkSpeed * burn, s.sparkLife * 0.8 + Math.random() * s.sparkLife * 0.25);
+          }
         }
 
-        // Move rocket
-        r.x += r.vx;
-        r.y += r.vy;
-        r.vy += 0.08; // Gravity on rocket
-        r.vx *= 0.99;
-
-        // Draw rocket head (bright dot)
+        // Draw star as line (motion blur trail)
+        const alpha = Math.min(1, burn * 1.4);
+        ctx.strokeStyle = s.color;
+        ctx.globalAlpha = alpha;
+        ctx.lineWidth = s.size * burn;
         ctx.beginPath();
-        ctx.arc(r.x, r.y, 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${r.hue}, 80%, 80%, 1)`;
-        ctx.fill();
+        ctx.moveTo(s.prevX, s.prevY);
+        ctx.lineTo(s.x, s.y);
+        ctx.stroke();
 
-        // Check if rocket reached apex (vy ~ 0 or reached target height)
-        if (r.vy >= -0.5 || r.y <= r.targetY) {
-          explode(r);
-          return false; // Remove rocket
-        }
-        return true;
-      });
-
-      /* --- Update explosion particles --- */
-      particlesRef.current = particlesRef.current.filter((p) => {
-        p.life -= 1;
-        if (p.life <= 0) return false;
-
-        // Store trail
-        p.trail.push({ x: p.x, y: p.y });
-        if (p.trail.length > TRAIL_LENGTH) p.trail.shift();
-
-        // Physics
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vx *= p.drag;
-        p.vy *= p.drag;
-        p.vy += p.gravity;
-
-        // Color cools as it ages — hue shifts, lightness drops
-        const lifeRatio = p.life / p.maxLife;
-        const coolHue = p.hue + (1 - lifeRatio) * 15;
-        let lightness = p.lightness * lifeRatio;
-        let alpha = lifeRatio;
-
-        // Sparkle: random brightness pulses
-        if (p.sparkle && Math.random() < 0.4) {
-          lightness = Math.min(100, lightness + 30);
-          alpha = Math.min(1, alpha + 0.3);
-        }
-
-        const size = p.size * (0.3 + lifeRatio * 0.7);
-
-        // Draw trail
-        for (let i = 0; i < p.trail.length - 1; i++) {
-          const t = p.trail[i];
-          const next = p.trail[i + 1];
-          const trailAlpha = (i / p.trail.length) * alpha * 0.4;
-          const trailSize = size * (i / p.trail.length);
+        // White-hot core when young
+        if (burn > 0.65) {
+          ctx.strokeStyle = "rgba(255,255,255,0.8)";
+          ctx.lineWidth = s.size * burn * 0.35;
           ctx.beginPath();
-          ctx.moveTo(t.x, t.y);
-          ctx.lineTo(next.x, next.y);
-          ctx.strokeStyle = `hsla(${coolHue}, ${p.saturation}%, ${lightness}%, ${trailAlpha})`;
-          ctx.lineWidth = trailSize;
-          ctx.lineCap = "round";
+          ctx.moveTo(s.prevX, s.prevY);
+          ctx.lineTo(s.x, s.y);
           ctx.stroke();
         }
-
-        // Draw particle with glow
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${coolHue}, ${p.saturation}%, ${lightness}%, ${alpha})`;
-        ctx.fill();
-
-        // Inner bright core for glow effect
-        if (size > 1) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, size * 0.4, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${coolHue}, 50%, 95%, ${alpha * 0.8})`;
-          ctx.fill();
-        }
-
-        return true;
-      });
-
-      // Cap particles to prevent performance issues
-      if (particlesRef.current.length > 800) {
-        particlesRef.current = particlesRef.current.slice(-800);
       }
+      ctx.globalAlpha = 1;
+
+      // ── Sparks ──
+      ctx.lineCap = "butt";
+      ctx.lineWidth = 1;
+      for (let i = sparksRef.current.length - 1; i >= 0; i--) {
+        const sp = sparksRef.current[i];
+        sp.life -= 16;
+        if (sp.life <= 0) { sparksRef.current.splice(i, 1); continue; }
+
+        const px = sp.x, py = sp.y;
+        sp.x += sp.speedX; sp.y += sp.speedY;
+        sp.speedX *= SPARK_DRAG; sp.speedY *= SPARK_DRAG;
+        sp.speedY += GRAVITY * 0.5;
+
+        ctx.strokeStyle = sp.color;
+        ctx.globalAlpha = Math.min(1, sp.life / 300);
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(sp.x, sp.y);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      if (starsRef.current.length > 700) starsRef.current = starsRef.current.slice(-700);
+      if (sparksRef.current.length > 1000) sparksRef.current = sparksRef.current.slice(-1000);
 
       rafRef.current = requestAnimationFrame(animate);
     };
@@ -343,7 +254,7 @@ export function ClickEffects() {
     rafRef.current = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      removeEventListener("resize", resize);
       document.removeEventListener("click", handleClick);
       cancelAnimationFrame(rafRef.current);
     };
