@@ -40,6 +40,18 @@ interface Spark {
 
 interface Flash { x: number; y: number; radius: number; }
 
+interface Rocket {
+  x: number; y: number;
+  speedX: number; speedY: number;
+  prevX: number; prevY: number;
+  color: string;
+  targetX: number;
+  targetY: number;
+  sparkTimer: number;
+  sparkColor: string;
+  burstFn: () => void;
+}
+
 const AIR_DRAG = 0.985;
 const SPARK_DRAG = 0.92;
 const GRAVITY = 0.06;
@@ -77,6 +89,7 @@ export function ClickEffects() {
   const starsRef = useRef<Star[]>([]);
   const sparksRef = useRef<Spark[]>([]);
   const flashesRef = useRef<Flash[]>([]);
+  const rocketsRef = useRef<Rocket[]>([]);
   const rafRef = useRef(0);
 
   useEffect(() => {
@@ -111,57 +124,74 @@ export function ClickEffects() {
       });
     };
 
-    // ─── Burst at click point (the apex) ───
-    const burst = (cx: number, cy: number) => {
+    // ─── Pre-compute burst function for this click (passed to rocket) ───
+    const makeBurstFn = (cx: number, cy: number) => {
       const baseColor = rc();
-      const speed = 4 + Math.random() * 2;       // 4-6 px/frame — big explosion
+      const speed = 4 + Math.random() * 2;
       const starCount = 55 + ((Math.random() * 35) | 0);
-      const starLife = 260 + (Math.random() * 120 | 0); // 260-380 frames = 4.3-6.3 seconds
+      const starLife = 260 + (Math.random() * 120 | 0);
       const type = Math.random();
 
-      if (type < 0.25) {
-        // Chrysanthemum: sphere + light glitter
-        createBurst(starCount, (a, sm) => {
-          const s = addStar(cx, cy, rc(), a, sm * speed, starLife);
-          s.sparkFreq = 5;        // Emit spark every 5 frames
-          s.sparkSpeed = 0.4;
-          s.sparkLife = 30;
-          s.sparkColor = rc();
-        });
-      } else if (type < 0.45) {
-        // Ring + pistil
-        const n = 48;
-        const rs = speed * 1.3;
-        const tilt = Math.random() * PI2;
-        for (let i = 0; i < n; i++) addStar(cx, cy, baseColor, (PI2 * i) / n + tilt, rs, starLife);
-        createBurst(starCount * 0.3, (a, sm) => addStar(cx, cy, rc(), a, sm * speed * 0.4, starLife * 0.7, 2));
-      } else if (type < 0.6) {
-        // Willow: long life, heavy droop, gold sparks
-        createBurst(starCount * 0.7, (a, sm) => {
-          const s = addStar(cx, cy, baseColor, a, sm * speed * 0.85, starLife * 1.5);
-          s.sparkFreq = 3;
-          s.sparkSpeed = 0.3;
-          s.sparkLife = 50;
-          s.sparkColor = "#ffdd00";
-        });
-      } else if (type < 0.75) {
-        // Crossette: secondary burst on death
-        createBurst(starCount * 0.6, (a, sm) => {
-          const s = addStar(cx, cy, baseColor, a, sm * speed * 1.1, starLife * 0.75);
-          s.onDeath = (self) => {
-            for (let i = 0; i < 4; i++) addStar(self.x, self.y, rc(), Math.random() * PI2, 0.8 + Math.random() * 0.8, 100);
-          };
-        });
-      } else {
-        // Peony: pure random sphere, multi-color
-        createBurst(starCount, (a, sm) => addStar(cx, cy, rc(), a, sm * speed, starLife));
-      }
-
-      // Burst flash
-      flashesRef.current.push({ x: cx, y: cy, radius: 100 + Math.random() * 50 });
+      return () => {
+        if (type < 0.25) {
+          createBurst(starCount, (a, sm) => {
+            const s = addStar(cx, cy, rc(), a, sm * speed, starLife);
+            s.sparkFreq = 5; s.sparkSpeed = 0.4; s.sparkLife = 30; s.sparkColor = rc();
+          });
+        } else if (type < 0.45) {
+          const n = 48, rs = speed * 1.3, tilt = Math.random() * PI2;
+          for (let i = 0; i < n; i++) addStar(cx, cy, baseColor, (PI2 * i) / n + tilt, rs, starLife);
+          createBurst(starCount * 0.3, (a, sm) => addStar(cx, cy, rc(), a, sm * speed * 0.4, starLife * 0.7, 2));
+        } else if (type < 0.6) {
+          createBurst(starCount * 0.7, (a, sm) => {
+            const s = addStar(cx, cy, baseColor, a, sm * speed * 0.85, starLife * 1.5);
+            s.sparkFreq = 3; s.sparkSpeed = 0.3; s.sparkLife = 50; s.sparkColor = "#ffdd00";
+          });
+        } else if (type < 0.75) {
+          createBurst(starCount * 0.6, (a, sm) => {
+            const s = addStar(cx, cy, baseColor, a, sm * speed * 1.1, starLife * 0.75);
+            s.onDeath = (self) => {
+              for (let i = 0; i < 4; i++) addStar(self.x, self.y, rc(), Math.random() * PI2, 0.8 + Math.random() * 0.8, 100);
+            };
+          });
+        } else {
+          createBurst(starCount, (a, sm) => addStar(cx, cy, rc(), a, sm * speed, starLife));
+        }
+        flashesRef.current.push({ x: cx, y: cy, radius: 100 + Math.random() * 50 });
+      };
     };
 
-    const handleClick = (e: MouseEvent) => burst(e.clientX, e.clientY);
+    // ─── Click → Launch rocket from bottom of screen ───
+    const handleClick = (e: MouseEvent) => {
+      const targetX = e.clientX;
+      const targetY = e.clientY;
+      const launchX = targetX + (Math.random() - 0.5) * 40;
+      const launchY = canvas.height;  // Bottom of screen
+      const color = rc();
+
+      // Calculate launch velocity to reach target (projectile motion)
+      const dx = targetX - launchX;
+      const dy = targetY - launchY;   // Negative (going up)
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      // Speed proportional to distance, clamped
+      const speed = Math.min(16, Math.max(8, dist * 0.04));
+      const angle = Math.atan2(dy, dx);
+
+      rocketsRef.current.push({
+        x: launchX,
+        y: launchY,
+        speedX: Math.cos(angle) * speed,
+        speedY: Math.sin(angle) * speed,
+        prevX: launchX,
+        prevY: launchY,
+        color: "#ffffff",
+        targetX,
+        targetY,
+        sparkTimer: 0,
+        sparkColor: color,
+        burstFn: makeBurstFn(targetX, targetY),
+      });
+    };
 
     // ─── Animation loop ───
     const animate = () => {
@@ -171,6 +201,40 @@ export function ClickEffects() {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.globalCompositeOperation = "lighten";
+
+      // ── Rockets (ascending with spark trail) ──
+      ctx.lineCap = "round";
+      for (let i = rocketsRef.current.length - 1; i >= 0; i--) {
+        const r = rocketsRef.current[i];
+        r.prevX = r.x; r.prevY = r.y;
+        r.x += r.speedX; r.y += r.speedY;
+        r.speedY += 0.08;  // Gravity slows the rocket as it ascends
+        r.speedX *= 0.998;
+
+        // Emit falling sparks (rocket trail)
+        r.sparkTimer -= 1;
+        if (r.sparkTimer <= 0) {
+          r.sparkTimer = 1;  // Spark every frame for dense trail
+          addSpark(r.x, r.y, r.sparkColor,
+            Math.PI / 2 + (Math.random() - 0.5) * 0.5,  // Mostly downward
+            0.3 + Math.random() * 0.4,
+            15 + (Math.random() * 10 | 0));
+        }
+
+        // Draw rocket head — bright white with glow
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(r.prevX, r.prevY);
+        ctx.lineTo(r.x, r.y);
+        ctx.stroke();
+
+        // Check if reached apex (speedY near 0 or reached target)
+        if (r.speedY >= -0.5 || r.y <= r.targetY) {
+          r.burstFn();
+          rocketsRef.current.splice(i, 1);
+        }
+      }
 
       // ── Burst flashes ──
       while (flashesRef.current.length) {
