@@ -28,6 +28,7 @@ interface Star {
   sparkColor: string;
   onDeath?: (s: Star) => void;
   dead: boolean;
+  trail: { x: number; y: number }[];  // History positions for trail
 }
 
 interface Spark {
@@ -102,6 +103,8 @@ export function ClickEffects() {
     resize();
     addEventListener("resize", resize);
 
+    const TRAIL_LEN = 8;
+
     const addStar = (x: number, y: number, color: string, angle: number, speed: number, life: number, size = 2.5): Star => {
       const s: Star = {
         x, y, prevX: x, prevY: y,
@@ -110,6 +113,7 @@ export function ClickEffects() {
         life, fullLife: life, color, size,
         sparkFreq: 0, sparkTimer: 0, sparkSpeed: 1, sparkLife: 60, sparkColor: color,
         dead: false,
+        trail: [],
       };
       starsRef.current.push(s);
       return s;
@@ -195,15 +199,11 @@ export function ClickEffects() {
 
     // ─── Animation loop ───
     const animate = () => {
-      // Fade trail by reducing alpha (not darkening with black overlay)
-      // destination-out makes pixels more transparent over time → no gray residue
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Clear completely every frame — NO residue, NO gray fog
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = "lighter";
 
-      ctx.globalCompositeOperation = "lighten";
-
-      // ── Rockets (ascending with spark trail) ──
+      // ── Burst flashes ──
       ctx.lineCap = "round";
       for (let i = rocketsRef.current.length - 1; i >= 0; i--) {
         const r = rocketsRef.current[i];
@@ -266,6 +266,10 @@ export function ClickEffects() {
         s.speedX *= AIR_DRAG; s.speedY *= AIR_DRAG;
         s.speedY += GRAVITY;
 
+        // Store trail history
+        s.trail.push({ x: s.x, y: s.y });
+        if (s.trail.length > TRAIL_LEN) s.trail.shift();
+
         // Emit sparks
         if (s.sparkFreq > 0) {
           s.sparkTimer -= 1;
@@ -277,8 +281,20 @@ export function ClickEffects() {
           }
         }
 
-        // Draw star as line (motion blur trail)
+        // Draw trail from history positions
         const alpha = Math.min(1, burn * 1.4);
+        for (let j = 0; j < s.trail.length - 1; j++) {
+          const tRatio = j / s.trail.length;
+          ctx.strokeStyle = s.color;
+          ctx.globalAlpha = alpha * tRatio * 0.6;
+          ctx.lineWidth = Math.max(0.5, s.size * burn * tRatio);
+          ctx.beginPath();
+          ctx.moveTo(s.trail[j].x, s.trail[j].y);
+          ctx.lineTo(s.trail[j + 1].x, s.trail[j + 1].y);
+          ctx.stroke();
+        }
+
+        // Draw star head (current position, full brightness)
         ctx.strokeStyle = s.color;
         ctx.globalAlpha = alpha;
         ctx.lineWidth = Math.max(0.5, s.size * burn);
@@ -341,7 +357,6 @@ export function ClickEffects() {
     <canvas
       ref={canvasRef}
       className="pointer-events-none fixed inset-0 z-50"
-      style={{ mixBlendMode: "screen" }}
     />
   );
 }
