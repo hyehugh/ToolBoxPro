@@ -99,11 +99,21 @@ export function ClickEffects() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const resize = () => { canvas.width = innerWidth; canvas.height = innerHeight; };
+    // Offscreen trail canvas — particles draw lines here, it fades slowly
+    const trailCanvas = document.createElement("canvas");
+    const trailCtx = trailCanvas.getContext("2d");
+    if (!trailCtx) return;
+
+    const resize = () => {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+      trailCanvas.width = innerWidth;
+      trailCanvas.height = innerHeight;
+    };
     resize();
     addEventListener("resize", resize);
 
-    const TRAIL_LEN = 20;  // Longer trail = more visible streak
+    // (TRAIL_LEN no longer needed — trail persistence handled by trail canvas fade)
 
     const addStar = (x: number, y: number, color: string, angle: number, speed: number, life: number, size = 2.5): Star => {
       const s: Star = {
@@ -199,58 +209,57 @@ export function ClickEffects() {
 
     // ─── Animation loop ───
     const animate = () => {
-      // Clear completely every frame — NO residue, NO gray fog
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.globalCompositeOperation = "lighter";
+      // ── Trail canvas: fade slowly (creates beautiful streaks), then draw particle trails ──
+      trailCtx.globalCompositeOperation = "source-over";
+      trailCtx.fillStyle = "rgba(0, 0, 0, 0.08)";  // Slow fade = long trails
+      trailCtx.fillRect(0, 0, trailCanvas.width, trailCanvas.height);
+      trailCtx.globalCompositeOperation = "lighter";
 
-      // ── Burst flashes ──
-      ctx.lineCap = "round";
+      // ── Rockets on trail canvas ──
+      trailCtx.lineCap = "round";
       for (let i = rocketsRef.current.length - 1; i >= 0; i--) {
         const r = rocketsRef.current[i];
         r.prevX = r.x; r.prevY = r.y;
         r.x += r.speedX; r.y += r.speedY;
-        r.speedY += 0.08;  // Gravity slows the rocket as it ascends
+        r.speedY += 0.08;
         r.speedX *= 0.998;
 
-        // Emit falling sparks (rocket trail)
         r.sparkTimer -= 1;
         if (r.sparkTimer <= 0) {
-          r.sparkTimer = 1;  // Spark every frame for dense trail
+          r.sparkTimer = 1;
           addSpark(r.x, r.y, r.sparkColor,
-            Math.PI / 2 + (Math.random() - 0.5) * 0.5,  // Mostly downward
+            Math.PI / 2 + (Math.random() - 0.5) * 0.5,
             0.3 + Math.random() * 0.4,
             15 + (Math.random() * 10 | 0));
         }
 
-        // Draw rocket head — bright white with glow
-        ctx.strokeStyle = "#ffffff";
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        ctx.moveTo(r.prevX, r.prevY);
-        ctx.lineTo(r.x, r.y);
-        ctx.stroke();
+        // Draw rocket on trail canvas (persistent streak)
+        trailCtx.strokeStyle = "#ffffff";
+        trailCtx.lineWidth = 2.5;
+        trailCtx.beginPath();
+        trailCtx.moveTo(r.prevX, r.prevY);
+        trailCtx.lineTo(r.x, r.y);
+        trailCtx.stroke();
 
-        // Check if reached apex (speedY near 0 or reached target)
         if (r.speedY >= -0.5 || r.y <= r.targetY) {
           r.burstFn();
           rocketsRef.current.splice(i, 1);
         }
       }
 
-      // ── Burst flashes ──
+      // ── Burst flashes on trail canvas ──
       while (flashesRef.current.length) {
         const f = flashesRef.current.pop()!;
-        const g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.radius);
+        const g = trailCtx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.radius);
         g.addColorStop(0.025, "rgba(255,255,255,1)");
         g.addColorStop(0.125, "rgba(255,160,20,0.2)");
         g.addColorStop(0.32, "rgba(255,140,20,0.11)");
         g.addColorStop(1, "rgba(255,120,20,0)");
-        ctx.fillStyle = g;
-        ctx.fillRect(f.x - f.radius, f.y - f.radius, f.radius * 2, f.radius * 2);
+        trailCtx.fillStyle = g;
+        trailCtx.fillRect(f.x - f.radius, f.y - f.radius, f.radius * 2, f.radius * 2);
       }
 
-      // ── Stars ──
-      ctx.lineCap = "round";
+      // ── Stars: draw trail lines on trail canvas, bright head on main canvas ──
       for (let i = starsRef.current.length - 1; i >= 0; i--) {
         const s = starsRef.current[i];
         s.life -= 1;
@@ -266,10 +275,6 @@ export function ClickEffects() {
         s.speedX *= AIR_DRAG; s.speedY *= AIR_DRAG;
         s.speedY += GRAVITY;
 
-        // Store trail history
-        s.trail.push({ x: s.x, y: s.y });
-        if (s.trail.length > TRAIL_LEN) s.trail.shift();
-
         // Emit sparks
         if (s.sparkFreq > 0) {
           s.sparkTimer -= 1;
@@ -281,43 +286,32 @@ export function ClickEffects() {
           }
         }
 
-        // Draw trail from history positions — bright gradient streak
         const alpha = Math.min(1, burn * 1.4);
-        for (let j = 0; j < s.trail.length - 1; j++) {
-          const tRatio = (j + 1) / s.trail.length;  // 0→1, newer = brighter
-          ctx.strokeStyle = s.color;
-          ctx.globalAlpha = alpha * tRatio * 0.9;   // Brighter trail
-          ctx.lineWidth = Math.max(0.5, s.size * burn * tRatio * 1.2);
-          ctx.beginPath();
-          ctx.moveTo(s.trail[j].x, s.trail[j].y);
-          ctx.lineTo(s.trail[j + 1].x, s.trail[j + 1].y);
-          ctx.stroke();
-        }
 
-        // Draw star head (current position, full brightness)
-        ctx.strokeStyle = s.color;
-        ctx.globalAlpha = alpha;
-        ctx.lineWidth = Math.max(0.5, s.size * burn);
-        ctx.beginPath();
-        ctx.moveTo(s.prevX, s.prevY);
-        ctx.lineTo(s.x, s.y);
-        ctx.stroke();
+        // Draw star line on TRAIL canvas (will persist and fade slowly)
+        trailCtx.strokeStyle = s.color;
+        trailCtx.globalAlpha = alpha;
+        trailCtx.lineWidth = Math.max(0.5, s.size * burn);
+        trailCtx.beginPath();
+        trailCtx.moveTo(s.prevX, s.prevY);
+        trailCtx.lineTo(s.x, s.y);
+        trailCtx.stroke();
 
-        // White-hot core when young
+        // White-hot core on trail canvas when young
         if (burn > 0.65) {
-          ctx.strokeStyle = "rgba(255,255,255,0.8)";
-          ctx.lineWidth = Math.max(0.3, s.size * burn * 0.35);
-          ctx.beginPath();
-          ctx.moveTo(s.prevX, s.prevY);
-          ctx.lineTo(s.x, s.y);
-          ctx.stroke();
+          trailCtx.strokeStyle = "rgba(255,255,255,0.8)";
+          trailCtx.lineWidth = Math.max(0.3, s.size * burn * 0.35);
+          trailCtx.beginPath();
+          trailCtx.moveTo(s.prevX, s.prevY);
+          trailCtx.lineTo(s.x, s.y);
+          trailCtx.stroke();
         }
       }
-      ctx.globalAlpha = 1;
+      trailCtx.globalAlpha = 1;
 
-      // ── Sparks ──
-      ctx.lineCap = "butt";
-      ctx.lineWidth = 1;
+      // ── Sparks on trail canvas ──
+      trailCtx.lineCap = "butt";
+      trailCtx.lineWidth = 1;
       for (let i = sparksRef.current.length - 1; i >= 0; i--) {
         const sp = sparksRef.current[i];
         sp.life -= 1;
@@ -328,14 +322,19 @@ export function ClickEffects() {
         sp.speedX *= SPARK_DRAG; sp.speedY *= SPARK_DRAG;
         sp.speedY += GRAVITY * 0.5;
 
-        ctx.strokeStyle = sp.color;
-        ctx.globalAlpha = Math.min(1, sp.life / 30);
-        ctx.beginPath();
-        ctx.moveTo(sp.prevX, sp.prevY);
-        ctx.lineTo(sp.x, sp.y);
-        ctx.stroke();
+        trailCtx.strokeStyle = sp.color;
+        trailCtx.globalAlpha = Math.min(1, sp.life / 30);
+        trailCtx.beginPath();
+        trailCtx.moveTo(sp.prevX, sp.prevY);
+        trailCtx.lineTo(sp.x, sp.y);
+        trailCtx.stroke();
       }
-      ctx.globalAlpha = 1;
+      trailCtx.globalAlpha = 1;
+
+      // ── Main canvas: clear completely, then composite trail canvas ──
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = "source-over";
+      ctx.drawImage(trailCanvas, 0, 0);
 
       if (starsRef.current.length > 700) starsRef.current = starsRef.current.slice(-700);
       if (sparksRef.current.length > 1000) sparksRef.current = sparksRef.current.slice(-1000);
