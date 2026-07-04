@@ -38,7 +38,7 @@ interface Flash { x: number; y: number; radius: number; }
 
 const AIR_DRAG = 0.98;
 const SPARK_DRAG = 0.9;
-const GRAVITY = 0.15;
+const GRAVITY = 0.05;   // ÷3 from 0.15
 const PI2 = Math.PI * 2;
 
 const COLORS = [
@@ -109,7 +109,7 @@ export function ClickEffects() {
     // ─── Burst at apex (click position) ───
     const burst = (cx: number, cy: number) => {
       const baseColor = rc();
-      const speed = 4.5 + Math.random() * 3;
+      const speed = 1.5 + Math.random() * 1;   // ÷3 from 4.5+3
       const starCount = 55 + ((Math.random() * 35) | 0);
       const starLife = 1100 + Math.random() * 600;
       const type = Math.random();
@@ -156,7 +156,7 @@ export function ClickEffects() {
     const animate = () => {
       // Fade trail layer (motion blur). Use additive (lighten) for glow.
       ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "rgba(0, 0, 0, 0.14)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.06)";  // Slower fade = longer trails
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.globalCompositeOperation = "lighten";
