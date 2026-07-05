@@ -193,7 +193,7 @@ function ToolGuideSection({ slug, locale }: { slug: string; locale: string }) {
 function ToolWidgetWithTooltip({ Component }: { Component: React.ComponentType }) {
   const { locale } = useLocale();
   return (
-    <div className="tooltip-trigger relative">
+    <div className="tooltip-trigger relative pr-10">
       <Component />
       <div className="absolute top-2 right-2 z-10">
         <span className="tooltip-trigger inline-flex items-center justify-center w-6 h-6 rounded-full bg-muted text-muted-foreground text-xs cursor-help" role="tooltip">
