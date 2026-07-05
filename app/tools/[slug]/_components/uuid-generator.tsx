@@ -14,12 +14,18 @@ export function UuidGeneratorTool() {
     const result: string[] = [];
     for (let i = 0; i < count; i++) {
       const hex = "0123456789abcdef";
+      // Cryptographically secure randomness (RFC 4122 v4 requirement).
       const s = (n: number) => {
-        let s = "";
-        for (let j = 0; j < n; j++) s += hex[Math.floor(Math.random() * 16)];
-        return s;
+        const buf = new Uint8Array(n);
+        crypto.getRandomValues(buf);
+        let out = "";
+        for (let j = 0; j < n; j++) out += hex[buf[j] % 16];
+        return out;
       };
-      let uuid = `${s(8)}-${s(4)}-4${s(3)}-${(8 + Math.floor(Math.random() * 4)).toString(16)}${s(3)}-${s(12)}`;
+      // RFC 4122 §4.4: set version (4) and variant (8/9/a/b) bits.
+      const variantBuf = new Uint8Array(1);
+      crypto.getRandomValues(variantBuf);
+      let uuid = `${s(8)}-${s(4)}-4${s(3)}-${(8 + (variantBuf[0] % 4)).toString(16)}${s(3)}-${s(12)}`;
       if (uppercase) uuid = uuid.toUpperCase();
       result.push(uuid);
     }

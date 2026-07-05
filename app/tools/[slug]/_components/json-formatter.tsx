@@ -9,7 +9,6 @@ export function JsonFormatterTool() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
-  const [treeView, setTreeView] = useState(false);
 
   const format = () => {
     setError("");
@@ -58,9 +57,6 @@ export function JsonFormatterTool() {
         <Button onClick={format}>{t('common.format')}</Button>
         <Button variant="secondary" onClick={validate}>{t('common.validate')}</Button>
         <Button variant="outline" onClick={minify}>{t('common.minify')}</Button>
-        <Button variant="ghost" size="sm" onClick={() => setTreeView(!treeView)}>
-          {treeView ? t('toolCommon.json.rawView') : t('toolCommon.json.treeView')}
-        </Button>
       </div>
       {error && (
         <p className="text-sm text-destructive bg-destructive/10 p-3 rounded-md font-mono">

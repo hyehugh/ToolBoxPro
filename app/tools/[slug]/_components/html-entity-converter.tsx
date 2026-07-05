@@ -30,14 +30,24 @@ export function HtmlEntityConverterTool() {
   }, []);
 
   const decode = useCallback((text: string) => {
-    let result = text;
-    for (const [entity, char] of Object.entries(ENTITIES)) {
-      result = result.replace(new RegExp(entity, "g"), char);
-    }
-    // Handle numeric entities
-    result = result.replace(/&#(\d+);/g, (_, num) => String.fromCharCode(+num));
-    result = result.replace(/&#x([\da-f]+);/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
-    return result;
+    // Decode in a single left-to-right pass so that entities are never
+    // re-decoded by a later rule (e.g. "&amp;lt;" must yield "&lt;", not "<").
+    // We recognize named entities, decimal numeric (&#nnn;), and hex numeric
+    // (&#xHHH;). The `&` of a valid entity is consumed; a bare `&` that is not
+    // part of a known entity is left untouched.
+    const entityRegex = /&(?:#[0-9]+;|#x[0-9a-fA-F]+;|[a-zA-Z][a-zA-Z0-9]*;)/g;
+    return text.replace(entityRegex, (entity) => {
+      // Named
+      if (ENTITIES[entity]) return ENTITIES[entity];
+      // Decimal numeric
+      const dec = entity.match(/^&#(\d+);$/);
+      if (dec) return String.fromCodePoint(parseInt(dec[1], 10));
+      // Hex numeric
+      const hex = entity.match(/^&#x([\da-fA-F]+);$/i);
+      if (hex) return String.fromCodePoint(parseInt(hex[1], 16));
+      // Unknown entity — leave as-is.
+      return entity;
+    });
   }, []);
 
   const process = () => {

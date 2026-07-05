@@ -13,13 +13,17 @@ export function MemeGeneratorTool() {
   const [textColor, setTextColor] = useState("#ffffff");
   const [resultUrl, setResultUrl] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { t, locale } = useLocale();
   const isZh = locale === "zh";
 
   const handleFile = (file: File) => {
+    setImageUrl((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return URL.createObjectURL(file);
+    });
     setImageFile(file);
-    setImageUrl(URL.createObjectURL(file));
     setResultUrl("");
   };
 
@@ -27,82 +31,95 @@ export function MemeGeneratorTool() {
     if (!imageUrl) return;
     setLoading(true);
     setResultUrl("");
+    setError("");
 
-    const img = new Image();
-    img.src = imageUrl;
-    await new Promise((r) => (img.onload = r));
+    try {
+      const img = new Image();
+      img.src = imageUrl;
+      // Reject on decode failure so loading state is always cleared.
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve();
+        img.onerror = () => reject(new Error("Failed to load image"));
+      });
 
-    const canvas = canvasRef.current!;
-    canvas.width = img.width;
-    canvas.height = img.height;
-    const ctx = canvas.getContext("2d")!;
+      const canvas = canvasRef.current!;
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d")!;
 
-    // Draw the image
-    ctx.drawImage(img, 0, 0);
+      // Draw the image
+      ctx.drawImage(img, 0, 0);
 
-    // Text settings
-    const baseSize = Math.max(fontSize, 16);
-    const calculatedSize = Math.min(baseSize, img.width / 12);
-    ctx.font = `bold ${calculatedSize}px Impact, Arial Black, sans-serif`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "top";
-
-    const drawText = (text: string, y: number, isTop: boolean) => {
-      if (!text.trim()) return;
-      ctx.textBaseline = isTop ? "top" : "bottom";
-
-      // Calculate responsive font size based on text width
-      let fs = calculatedSize;
-      ctx.font = `bold ${fs}px Impact, Arial Black, sans-serif`;
-      let metrics = ctx.measureText(text);
-      const maxWidth = img.width * 0.9;
-      if (metrics.width > maxWidth) {
-        fs = (maxWidth / metrics.width) * fs;
-        ctx.font = `bold ${fs}px Impact, Arial Black, sans-serif`;
-        metrics = ctx.measureText(text);
-      }
-
-      const x = canvas.width / 2;
-      const padding = 8;
-      const textHeight = fs + padding * 2;
-
-      // Draw background for readability
-      ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-      const textWidth = metrics.width + padding * 2;
-      const bgX = x - textWidth / 2;
-      const bgY = isTop ? y : y - textHeight;
-      ctx.beginPath();
-      ctx.roundRect(bgX, bgY, textWidth, textHeight, 4);
-      ctx.fill();
-
-      // Draw text with outline
+      // Text settings
+      const baseSize = Math.max(fontSize, 16);
+      const calculatedSize = Math.min(baseSize, img.width / 12);
+      ctx.font = `bold ${calculatedSize}px Impact, Arial Black, sans-serif`;
       ctx.textAlign = "center";
-      ctx.textBaseline = isTop ? "top" : "bottom";
-      const textY = isTop ? y + padding : y - padding;
+      ctx.textBaseline = "top";
 
-      // Stroke/outline
-      ctx.strokeStyle = "black";
-      ctx.lineWidth = Math.max(2, fs / 16);
-      ctx.strokeText(text, x, textY);
+      const drawText = (text: string, y: number, isTop: boolean) => {
+        if (!text.trim()) return;
+        ctx.textBaseline = isTop ? "top" : "bottom";
 
-      // Fill
-      ctx.fillStyle = textColor;
-      ctx.fillText(text, x, textY);
-    };
+        // Calculate responsive font size based on text width
+        let fs = calculatedSize;
+        ctx.font = `bold ${fs}px Impact, Arial Black, sans-serif`;
+        let metrics = ctx.measureText(text);
+        const maxWidth = img.width * 0.9;
+        if (metrics.width > maxWidth) {
+          fs = (maxWidth / metrics.width) * fs;
+          ctx.font = `bold ${fs}px Impact, Arial Black, sans-serif`;
+          metrics = ctx.measureText(text);
+        }
 
-    if (topText.trim()) {
-      drawText(topText, 20, true);
-    }
-    if (bottomText.trim()) {
-      drawText(bottomText, canvas.height - 20, false);
-    }
+        const x = canvas.width / 2;
+        const padding = 8;
+        const textHeight = fs + padding * 2;
 
-    canvas.toBlob((blob) => {
-      if (blob) {
-        setResultUrl(URL.createObjectURL(blob));
+        // Draw background for readability
+        ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+        const textWidth = metrics.width + padding * 2;
+        const bgX = x - textWidth / 2;
+        const bgY = isTop ? y : y - textHeight;
+        ctx.beginPath();
+        ctx.roundRect(bgX, bgY, textWidth, textHeight, 4);
+        ctx.fill();
+
+        // Draw text with outline
+        ctx.textAlign = "center";
+        ctx.textBaseline = isTop ? "top" : "bottom";
+        const textY = isTop ? y + padding : y - padding;
+
+        // Stroke/outline
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = Math.max(2, fs / 16);
+        ctx.strokeText(text, x, textY);
+
+        // Fill
+        ctx.fillStyle = textColor;
+        ctx.fillText(text, x, textY);
+      };
+
+      if (topText.trim()) {
+        drawText(topText, 20, true);
       }
+      if (bottomText.trim()) {
+        drawText(bottomText, canvas.height - 20, false);
+      }
+
+      await new Promise<void>((resolve) => {
+        canvas.toBlob((blob) => {
+          if (blob) {
+            setResultUrl(URL.createObjectURL(blob));
+          }
+          resolve();
+        }, "image/png");
+      });
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to generate meme");
+    } finally {
       setLoading(false);
-    }, "image/png");
+    }
   };
 
   return (
@@ -186,6 +203,10 @@ export function MemeGeneratorTool() {
           <Button onClick={generate} disabled={loading}>
             {loading ? t('common.loading') : t('toolCommon.meme.generate')}
           </Button>
+
+          {error && (
+            <p className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">{error}</p>
+          )}
 
           {resultUrl && (
             <div className="space-y-2">

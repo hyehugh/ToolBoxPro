@@ -29,8 +29,10 @@ export function RandomStringGeneratorTool() {
     }
 
     let result = '';
+    const buf = new Uint32Array(length);
+    crypto.getRandomValues(buf);
     for (let i = 0; i < length; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
+      result += chars.charAt(buf[i] % chars.length);
     }
     setOutput(result);
   }, [length, includeLetters, includeNumbers, includeSymbols]);

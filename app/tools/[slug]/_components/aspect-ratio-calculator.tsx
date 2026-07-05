@@ -209,9 +209,9 @@ export function AspectRatioCalculatorTool() {
           <div className="text-center text-xs text-muted-foreground">
             {t('common.result')}: {resultWidth} × {resultHeight} = {(resultWidth * resultHeight).toLocaleString()} px²
             {resultWidth >= 3840 && resultHeight >= 2160 && ' (4K)'}
-            {resultWidth >= 1920 && resultHeight >= 1080 && resultWidth < 3840 && ' (Full HD)'}
-            {resultWidth >= 1280 && resultHeight >= 720 && resultWidth < 1920 && ' (HD)'}
             {resultWidth >= 2560 && resultHeight >= 1440 && resultWidth < 3840 && ' (2K/QHD)'}
+            {resultWidth >= 1920 && resultHeight >= 1080 && resultWidth < 2560 && ' (Full HD)'}
+            {resultWidth >= 1280 && resultHeight >= 720 && resultWidth < 1920 && ' (HD)'}
           </div>
         </div>
       )}

@@ -43,7 +43,12 @@ export function OcrTextRecognitionTool() {
       setError(l("Please select an image file", "请选择图片文件"));
       return;
     }
-    setImageUrl(URL.createObjectURL(file));
+    // Revoke the previous object URL to avoid leaking blob URLs when the
+    // user processes several images in one session.
+    setImageUrl((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return URL.createObjectURL(file);
+    });
     setFileName(file.name);
     setExtractedText("");
     setError("");

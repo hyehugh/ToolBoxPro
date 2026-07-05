@@ -10,6 +10,7 @@ export function GifMakerTool() {
   const [delay, setDelay] = useState(500);
   const [resultUrl, setResultUrl] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const offscreenRef = useRef<HTMLCanvasElement>(null);
   const previewTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [previewIndex, setPreviewIndex] = useState(0);
@@ -26,6 +27,8 @@ export function GifMakerTool() {
 
   const removeFrame = (index: number) => {
     setFrames((prev) => {
+      // Revoke the blob URL of the removed frame to free its memory.
+      if (prev[index]) URL.revokeObjectURL(prev[index].url);
       const updated = prev.filter((_, i) => i !== index);
       return updated;
     });
@@ -65,72 +68,66 @@ export function GifMakerTool() {
     if (frames.length < 2) return;
     setLoading(true);
     setResultUrl("");
+    setError("");
 
-    // Load all images to get dimensions
-    const loadedImages = await Promise.all(
-      frames.map((f) => {
-        return new Promise<HTMLImageElement>((r) => {
-          const img = new Image();
-          img.src = f.url;
-          img.onload = () => r(img);
+    try {
+      // Load all images to get dimensions. Reject on decode error so a single
+      // broken frame doesn't leave the spinner spinning forever.
+      const loadedImages = await Promise.all(
+        frames.map((f) => {
+          return new Promise<HTMLImageElement>((resolve, reject) => {
+            const img = new Image();
+            img.src = f.url;
+            img.onload = () => resolve(img);
+            img.onerror = () => reject(new Error(`Failed to load image: ${f.file.name || f.url}`));
+          });
+        })
+      );
+
+      const maxW = Math.max(...loadedImages.map((img) => img.width));
+      const maxH = Math.max(...loadedImages.map((img) => img.height));
+
+      const offscreen = offscreenRef.current!;
+      const ctx = offscreen.getContext("2d")!;
+
+      // Load gif.js from CDN dynamically.
+      const GifModule: any = await new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.js";
+        script.onload = () => resolve((window as any).GIF);
+        script.onerror = () => reject(new Error("Failed to load gif.js from CDN"));
+        document.head.appendChild(script);
+      });
+
+      const gif = new GifModule({
+        workers: 2,
+        quality: 10,
+        width: maxW,
+        height: maxH,
+        workerURL: "https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.worker.js",
+      });
+
+      for (const img of loadedImages) {
+        offscreen.width = maxW;
+        offscreen.height = maxH;
+        ctx.clearRect(0, 0, maxW, maxH);
+        ctx.drawImage(img, 0, 0);
+        gif.addFrame(ctx, { copy: true, delay });
+      }
+
+      await new Promise<void>((resolve, reject) => {
+        gif.on("finished", (blob: Blob) => {
+          setResultUrl(URL.createObjectURL(blob));
+          resolve();
         });
-      })
-    );
-
-    const maxW = Math.max(...loadedImages.map((img) => img.width));
-    const maxH = Math.max(...loadedImages.map((img) => img.height));
-
-    const offscreen = offscreenRef.current!;
-    const ctx = offscreen.getContext("2d")!;
-
-    // Use canvas.captureStream or encode as APNG-style frames
-    // For a simple approach, we'll use gif.js if available in CDN, or encode via frame blobs
-    // Simpler: build an animated canvas export using multiple encoded frames
-
-    // We'll use a workaround: encode frames as a base64 data URI GIF using a simple encoder
-    // Since we can't use gif.js CDN directly, we'll create individual frame PNGs and
-    // offer them as a download approach, OR use the built-in GIF encoder approach
-
-    // Load gif.js from CDN dynamically
-    const GifModule: any = await new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.js";
-      script.onload = () => resolve((window as any).GIF);
-      script.onerror = reject;
-      document.head.appendChild(script);
-    });
-
-    if (!GifModule) {
+        gif.on("abort", () => reject(new Error("GIF rendering aborted")));
+        gif.render();
+      });
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to generate GIF");
+    } finally {
       setLoading(false);
-      return;
     }
-
-    const gif = new GifModule({
-      workers: 2,
-      quality: 10,
-      width: maxW,
-      height: maxH,
-      workerURL: "https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.worker.js",
-    });
-
-    for (const img of loadedImages) {
-      offscreen.width = maxW;
-      offscreen.height = maxH;
-      ctx.clearRect(0, 0, maxW, maxH);
-      ctx.drawImage(img, 0, 0);
-      gif.addFrame(ctx, { copy: true, delay });
-    }
-
-    gif.on("progress", () => {
-      // could show progress
-    });
-
-    gif.on("finished", (blob: Blob) => {
-      setResultUrl(URL.createObjectURL(blob));
-      setLoading(false);
-    });
-
-    gif.render();
   };
 
   return (
@@ -261,6 +258,10 @@ export function GifMakerTool() {
               {loading ? t('common.processing') : t('toolCommon.gifMaker.create')}
             </Button>
           </div>
+
+          {error && (
+            <p className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">{error}</p>
+          )}
 
           {resultUrl && (
             <div className="space-y-2">

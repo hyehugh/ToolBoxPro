@@ -12,7 +12,23 @@ interface ParsedData {
 }
 
 /* ---------- CSV parser (no external deps) ---------- */
-function parseCSV(text: string): string[][] {
+// Detect the most likely delimiter from the first non-empty line by picking
+// whichever of `,` `;` `\t` occurs most. Mixing delimiters in a single parse
+// would split cells that merely contain the "wrong" character.
+function detectDelimiter(text: string): string {
+  const firstLine = text.split(/\r?\n/).find((l) => l.trim() !== "") ?? "";
+  const counts: Record<string, number> = { ",": 0, ";": 0, "\t": 0 };
+  let inQuotes = false;
+  for (let i = 0; i < firstLine.length; i++) {
+    const c = firstLine[i];
+    if (c === '"') inQuotes = !inQuotes;
+    else if (!inQuotes && c in counts) counts[c]++;
+  }
+  const best = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+  return best && best[1] > 0 ? best[0] : ",";
+}
+
+function parseCSV(text: string, delimiter = ","): string[][] {
   const rows: string[][] = [];
   let currentRow: string[] = [];
   let currentField = "";
@@ -34,7 +50,7 @@ function parseCSV(text: string): string[][] {
     } else {
       if (char === '"') {
         inQuotes = true;
-      } else if (char === "," || char === ";" || char === "\t") {
+      } else if (char === delimiter) {
         currentRow.push(currentField.trim());
         currentField = "";
       } else if (char === "\n" || (char === "\r" && nextChar === "\n")) {
@@ -105,7 +121,7 @@ export function CsvVisualizerTool() {
       return;
     }
     try {
-      const rows = parseCSV(input);
+      const rows = parseCSV(input, detectDelimiter(input));
       if (rows.length === 0) {
         setError(isZh ? "未找到数据。" : "No data found.");
         setData(null);
@@ -162,7 +178,6 @@ Jun,8400,3500`);
 
     const xLabels = data.rows.map((r) => r[xCol] ?? "");
     const yValues = data.rows.map((r) => toNumber(r[yCol] ?? "0"));
-    const yMax = Math.max(...yValues, 1); void yMax;
     const yMin = Math.min(...yValues, 0);
 
     ctx.font = "12px sans-serif";
@@ -339,10 +354,15 @@ function drawBar(
   H: number,
   yLabel: string,
 ) {
-  const max = Math.max(...yValues, 1);
+  // Account for negative values: scale across [min, max] and draw a zero baseline.
+  const max = Math.max(...yValues, 0);
+  const min = Math.min(...yValues, 0);
+  const range = max - min || 1;
   const barCount = yValues.length;
   const barWidth = (cw / barCount) * 0.7;
   const gap = (cw / barCount) * 0.3;
+  // Y coordinate of the zero line within the chart area.
+  const zeroY = pad.top + ch - ((0 - min) / range) * ch;
 
   // axes
   ctx.strokeStyle = "#94a3b8";
@@ -353,13 +373,13 @@ function drawBar(
   ctx.lineTo(pad.left + cw, pad.top + ch);
   ctx.stroke();
 
-  // y-axis grid + labels
+  // y-axis grid + labels (span the full [min, max] range)
   ctx.fillStyle = "#64748b";
   ctx.textAlign = "right";
   const ticks = 5;
   for (let i = 0; i <= ticks; i++) {
-    const val = (max / ticks) * i;
-    const y = pad.top + ch - (val / max) * ch;
+    const val = min + (range / ticks) * i;
+    const y = pad.top + ch - ((val - min) / range) * ch;
     ctx.fillText(formatNum(val), pad.left - 8, y + 4);
     ctx.strokeStyle = "#e2e8f0";
     ctx.beginPath();
@@ -368,11 +388,21 @@ function drawBar(
     ctx.stroke();
   }
 
-  // bars
+  // Zero baseline (emphasised) so negative bars read correctly.
+  if (min < 0 && max > 0) {
+    ctx.strokeStyle = "#94a3b8";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, zeroY);
+    ctx.lineTo(pad.left + cw, zeroY);
+    ctx.stroke();
+  }
+
+  // bars — positive grow up from zeroY, negative grow down.
   yValues.forEach((val, i) => {
     const x = pad.left + i * (barWidth + gap) + gap / 2;
-    const h = (val / max) * ch;
-    const y = pad.top + ch - h;
+    const h = Math.abs(val) / range * ch;
+    const y = val >= 0 ? zeroY - h : zeroY;
     ctx.fillStyle = PALETTE[i % PALETTE.length];
     ctx.fillRect(x, y, barWidth, h);
 

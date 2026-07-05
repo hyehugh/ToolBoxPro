@@ -143,13 +143,6 @@ export function JsonDiffTool() {
               </tr>
             </thead>
             <tbody>
-              {diffs.length === 0 && (
-                <tr>
-                  <td className="border p-2 text-green-600 font-medium" colSpan={4}>
-                    ✓ {t('toolCommon.jsonDiff.noDifferences')}
-                  </td>
-                </tr>
-              )}
               {diffs.map((d, i) => (
                 <tr
                   key={i}

@@ -21,6 +21,12 @@ export function UnicodeDetectorTool() {
     for (const ch of Array.from(input)) {
       const code = ch.codePointAt(0)!;
       const cat = (() => {
+        // Whitespace / control chars first so they aren't swallowed by the
+        // Basic Latin range below (0x20 space used to be unreachable).
+        if (code === 0x20) return "Space";
+        if (code === 0x09) return "Tab";
+        if (code === 0x0A) return "Line Feed";
+        if (code === 0x0D) return "Carriage Return";
         if (code >= 0x4E00 && code <= 0x9FFF) return "CJK Ideograph";
         if (code >= 0x3040 && code <= 0x309F) return "Hiragana";
         if (code >= 0x30A0 && code <= 0x30FF) return "Katakana";
@@ -43,10 +49,6 @@ export function UnicodeDetectorTool() {
         if (code >= 0x00D8 && code <= 0x00F6) return "Latin (accented)";
         if (code >= 0x00F8 && code <= 0x00FF) return "Latin (accented)";
         if (code >= 0x20 && code <= 0x7E) return "Basic Latin (ASCII)";
-        if (code === 0x20) return "Space";
-        if (code === 0x09) return "Tab";
-        if (code === 0x0A) return "Line Feed";
-        if (code === 0x0D) return "Carriage Return";
         return "Other";
       })();
       results.push({

@@ -23,9 +23,13 @@ function parseColor(input: string): { r: number; g: number; b: number } | null {
     };
   }
 
-  // RGB
+  // RGB (clamped to 0–255; out-of-range values like rgb(300,0,0) would
+  // otherwise overflow the 24-bit hex packing and distort HSL/contrast).
   const rgb = input.match(/rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i);
-  if (rgb) return { r: +rgb[1], g: +rgb[2], b: +rgb[3] };
+  if (rgb) {
+    const clamp = (n: number) => Math.max(0, Math.min(255, n));
+    return { r: clamp(+rgb[1]), g: clamp(+rgb[2]), b: clamp(+rgb[3]) };
+  }
 
   // HSL
   const hsl = input.match(/hsl\s*\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i);

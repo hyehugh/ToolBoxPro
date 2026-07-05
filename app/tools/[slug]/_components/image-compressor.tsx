@@ -46,42 +46,44 @@ export function ImageCompressorTool() {
       URL.revokeObjectURL(resultUrl);
     }
 
-    const img = new Image();
-    img.src = URL.createObjectURL(file);
-    await new Promise<void>((resolve, reject) => {
-      img.onload = () => resolve();
-      img.onerror = () => {
-        setLoading(false);
-        reject(new Error(t('toolCommon.image.loadFailed')));
-      };
-    }).catch(() => {
-      setLoading(false);
-      return;
-    });
+    try {
+      const img = new Image();
+      const objectUrl = URL.createObjectURL(file);
+      img.src = objectUrl;
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve();
+        img.onerror = () => reject(new Error(t('toolCommon.image.loadFailed')));
+      });
 
-    if (!canvasRef.current) {
-      setLoading(false);
-      return;
-    }
-
-    const canvas = canvasRef.current;
-    canvas.width = img.width;
-    canvas.height = img.height;
-    const ctx = canvas.getContext("2d")!;
-    ctx.drawImage(img, 0, 0);
-
-    const mime = file.type === "image/png" ? "image/png" :
-                 file.type === "image/webp" ? "image/webp" :
-                 file.type === "image/avif" ? "image/avif" : "image/jpeg";
-
-    canvas.toBlob((blob) => {
-      if (blob) {
-        URL.revokeObjectURL(img.src);
-        setResultUrl(URL.createObjectURL(blob));
-        setCompressedSize(blob.size);
+      if (!canvasRef.current) {
+        return;
       }
+
+      const canvas = canvasRef.current;
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d")!;
+      ctx.drawImage(img, 0, 0);
+
+      const mime = file.type === "image/png" ? "image/png" :
+                   file.type === "image/webp" ? "image/webp" :
+                   file.type === "image/avif" ? "image/avif" : "image/jpeg";
+
+      await new Promise<void>((resolve) => {
+        canvas.toBlob((blob) => {
+          if (blob) {
+            URL.revokeObjectURL(objectUrl);
+            setResultUrl(URL.createObjectURL(blob));
+            setCompressedSize(blob.size);
+          }
+          resolve();
+        }, mime, quality / 100);
+      });
+    } catch (e) {
+      console.error("Compression failed:", e);
+    } finally {
       setLoading(false);
-    }, mime, quality / 100);
+    }
   };
 
   return (

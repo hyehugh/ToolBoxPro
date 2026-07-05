@@ -20,8 +20,60 @@ export function SqlFormatterTool() {
   ];
 
   const format = () => {
-    const upper = input.replace(/\b\w+\b/g, (word) => {
-      return keywords.includes(word.toUpperCase()) ? word.toUpperCase() : word;
+    // Tokenize so that string literals ('...'), double-quoted identifiers
+    // ("..."), line comments (-- ...), and block comments (/* ... */) are
+    // preserved verbatim and NOT keyword-uppercased. Only bare identifiers
+    // are candidates for keyword replacement.
+    type Token = { type: "code" | "string" | "comment"; text: string };
+    const tokens: Token[] = [];
+    let i = 0;
+    let codeBuf = "";
+    const flushCode = () => {
+      if (codeBuf) { tokens.push({ type: "code", text: codeBuf }); codeBuf = ""; }
+    };
+    while (i < input.length) {
+      const ch = input[i];
+      const two = input.slice(i, i + 2);
+      if (ch === "'" || ch === '"') {
+        flushCode();
+        const quote = ch;
+        let j = i + 1;
+        while (j < input.length) {
+          if (input[j] === quote) {
+            // handle escaped quote (doubled) for single quotes
+            if (quote === "'" && input[j + 1] === "'") { j += 2; continue; }
+            if (quote === '"' && input[j + 1] === '"') { j += 2; continue; }
+            j++; break;
+          }
+          j++;
+        }
+        tokens.push({ type: "string", text: input.slice(i, j) });
+        i = j;
+      } else if (two === "--") {
+        flushCode();
+        let j = input.indexOf("\n", i);
+        if (j === -1) j = input.length;
+        tokens.push({ type: "comment", text: input.slice(i, j) });
+        i = j;
+      } else if (two === "/*") {
+        flushCode();
+        let j = input.indexOf("*/", i);
+        if (j === -1) j = input.length; else j += 2;
+        tokens.push({ type: "comment", text: input.slice(i, j) });
+        i = j;
+      } else {
+        codeBuf += ch;
+        i++;
+      }
+    }
+    flushCode();
+
+    // Uppercase keywords only inside "code" tokens.
+    const uppercased = tokens.map((tok) => {
+      if (tok.type !== "code") return tok.text;
+      return tok.text.replace(/\b\w+\b/g, (word) =>
+        keywords.includes(word.toUpperCase()) ? word.toUpperCase() : word
+      );
     });
 
     const clauseKeywords = [
@@ -32,15 +84,27 @@ export function SqlFormatterTool() {
       "JOIN", "ON", "UNION", "UNION ALL",
     ];
 
-    let formatted = upper;
-    for (const kw of clauseKeywords) {
-      const regex = new RegExp(`\\b${kw}\\b`, "gi");
-      formatted = formatted.replace(regex, `\n${kw}`);
+    // Re-join, then apply newline-before-clause only on code regions.
+    // To keep it simple and safe, we re-run clause replacement but skip
+    // matches that fall inside string/comment tokens. Since tokens are now
+    // uppercased and concatenated, we operate per-token again.
+    const formattedParts: string[] = [];
+    for (let idx = 0; idx < uppercased.length; idx++) {
+      const part = uppercased[idx];
+      const isCode = tokens[idx].type === "code";
+      if (!isCode) { formattedParts.push(part); continue; }
+      let p = part;
+      for (const kw of clauseKeywords) {
+        const regex = new RegExp(`\\b${kw}\\b`, "gi");
+        p = p.replace(regex, `\n${kw}`);
+      }
+      formattedParts.push(p);
     }
 
-    formatted = formatted
-      .replace(/\n\s*\n/g, "\n") // Remove empty lines
-      .replace(/^\n/, "") // Remove leading newline
+    const formatted = formattedParts
+      .join("")
+      .replace(/\n\s*\n/g, "\n")
+      .replace(/^\n/, "")
       .trim();
 
     setOutput(formatted);
