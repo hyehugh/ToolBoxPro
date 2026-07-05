@@ -8,99 +8,75 @@ export function WordCounterTool() {
   const [text, setText] = useState("");
 
   const stats = useMemo(() => {
-    const trimmed = text.trim();
+    const raw = text;
+    if (!raw.trim()) return null;
 
-    // Detect CJK characters
-    const cjkRegex = /[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/g;
-    const cjkChars = (text.match(cjkRegex) || []).length;
-    const hasCJK = cjkChars > 0;
+    const chars = raw.length;
+    const charsNoSpaces = raw.replace(/\s/g, "").length;
+    const cjkChars = (raw.match(/[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]/g) || []).length;
+    const latinWords = raw.split(/[\s]+/).filter(w => /[a-zA-Z]/.test(w));
+    const words = cjkChars + latinWords.length;
 
-    // Word count: CJK chars counted individually + Latin words
-    let words = 0;
-    if (trimmed) {
-      if (hasCJK) {
-        words += cjkChars;
-        const latinWords = trimmed.replace(cjkRegex, " ").trim().split(/\s+/).filter((w) => w.length > 0);
-        words += latinWords.length;
-      } else {
-        words = trimmed.split(/\s+/).length;
-      }
-    }
+    const sentences = raw.split(/[.!?。！？；;\n]+/).filter(s => s.trim()).length || (text.trim() ? 1 : 0);
+    const paragraphs = raw.split(/\n\n+/).filter(p => p.trim()).length || (text.trim() ? 1 : 0);
+    const readingTime = Math.max(1, Math.ceil(words / 200));
+    const speakingTime = Math.max(1, Math.ceil(words / 150));
+    const topKeywords = getTopKeywords(raw, 5);
+    const latinAll = [...raw.matchAll(/[a-zA-Z]+/g)].map(m => m[0]);
+    const longestWord = latinAll.length ? latinAll.sort((a, b) => b.length - a.length)[0] : "-";
+    const shortestWord = latinAll.length ? latinAll.sort((a, b) => a.length - b.length)[0] : "-";
+    const avgWordLength = latinAll.length ? Math.round(latinAll.reduce((sum, w) => sum + w.length, 0) / latinAll.length) : 0;
 
-    const chars = text.length;
-    const charsNoSpace = text.replace(/\s/g, "").length;
-
-    // Sentence detection: both Western and CJK punctuation
-    const sentences = text.split(/[.!?。！？；;]+/).filter((s) => s.trim().length > 0).length;
-    const paragraphs = text.split(/\n\s*\n/).filter((s) => s.trim().length > 0).length;
-
-    // Reading time: CJK ~300 chars/min, English ~200 words/min
-    const readSpeed = hasCJK ? 300 : 200;
-    const readUnits = hasCJK ? cjkChars + (words - cjkChars) : words;
-    const readingTime = readUnits > 0 ? Math.max(1, Math.round(readUnits / readSpeed)) : 0;
-    const speakingTime = readUnits > 0 ? Math.max(1, Math.round(readUnits / (readSpeed * 0.6))) : 0;
-
-    // Keyword frequency — CJK bigrams + Latin words
-    const freq: Record<string, number> = {};
-    if (hasCJK) {
-      const cjkText = text.replace(/[^\u4e00-\u9fff\u3400-\u4dbf]/g, "");
-      for (let i = 0; i < cjkText.length - 1; i++) {
-        const bigram = cjkText.substring(i, i + 2);
-        freq[bigram] = (freq[bigram] || 0) + 1;
-      }
-    }
-    text.toLowerCase().match(/\b[a-z]{3,}\b/g)?.forEach((w) => {
-      freq[w] = (freq[w] || 0) + 1;
-    });
-    text.match(/\b\d+\b/g)?.forEach((n) => {
-      freq[n] = (freq[n] || 0) + 1;
-    });
-    const topKeywords = Object.entries(freq)
-      .filter(([, count]) => count >= 2)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 10);
-
-    return { words, chars, charsNoSpace, sentences, paragraphs, readingTime, speakingTime, topKeywords };
+    return { chars, charsNoSpaces, cjkChars, words, sentences, paragraphs, readingTime, speakingTime, topKeywords, longestWord, shortestWord, avgWordLength };
   }, [text]);
 
-  const minuteLabel = t('toolCommon.wordCounter.minute') || "min";
+  function getTopKeywords(text: string, count: number) {
+    const words: Record<string, number> = {};
+    const cjk = text.match(/[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]+/g) || [];
+    cjk.forEach(segment => {
+      for (let i = 0; i < segment.length - 1; i++) {
+        const bigram = segment.substr(i, 2);
+        words[bigram] = (words[bigram] || 0) + 1;
+      }
+    });
+    const latin = text.match(/[a-zA-Z]{3,}/g) || [];
+    latin.forEach(w => { words[w.toLowerCase()] = (words[w.toLowerCase()] || 0) + 1; });
+    return Object.entries(words).sort((a, b) => b[1] - a[1]).slice(0, count).map(([word, count]) => `${word} (${count})`);
+  }
 
   return (
-    <div className="space-y-4">
-      <textarea
-        placeholder={t('toolCommon.wordCounter.placeholder') || "Type or paste your text here..."}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        className="w-full h-48 p-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-      />
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {[
-          { label: t('toolCommon.wordCounter.words'), value: stats.words },
-          { label: t('toolCommon.wordCounter.characters'), value: stats.chars },
-          { label: t('toolCommon.wordCounter.charactersNoSpaces'), value: stats.charsNoSpace },
-          { label: t('toolCommon.wordCounter.sentences'), value: stats.sentences },
-          { label: t('toolCommon.wordCounter.paragraphs'), value: stats.paragraphs },
-          { label: t('toolCommon.wordCounter.readingTime'), value: `${stats.readingTime} ${minuteLabel}` },
-          { label: t('toolCommon.wordCounter.speakingTime'), value: `${stats.speakingTime} ${minuteLabel}` },
-        ].map(({ label, value }) => (
-          <div key={label} className="p-3 rounded-md border bg-card text-center">
-            <p className="text-2xl font-bold">{value}</p>
-            <p className="text-xs text-muted-foreground">{label}</p>
-          </div>
-        ))}
+    <div className="space-y-6">
+      <div>
+        <label className="text-sm font-medium block mb-2">{t("toolCommon.wordCounter.inputLabel")}</label>
+        <textarea
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder={t("toolCommon.wordCounter.placeholder")}
+          className="w-full h-40 p-4 border border-input rounded-lg bg-background text-sm resize-none"
+        />
       </div>
-      {stats.topKeywords.length > 0 && (
-        <div>
-          <p className="text-sm text-muted-foreground mb-2">{t('toolCommon.wordCounter.topKeywords') || "Top keywords"}:</p>
-          <div className="flex flex-wrap gap-1.5">
-            {stats.topKeywords.map(([word, count]) => (
-              <span key={word} className="px-2 py-0.5 rounded-full bg-secondary text-xs">
-                {word} ({count})
-              </span>
-            ))}
-          </div>
+
+      {stats && (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <StatCard label={t("toolCommon.wordCounter.words")} value={stats.words} />
+          <StatCard label={t("toolCommon.wordCounter.characters")} value={stats.chars} />
+          <StatCard label={t("toolCommon.wordCounter.sentences")} value={stats.sentences} />
+          <StatCard label={t("toolCommon.wordCounter.paragraphs")} value={stats.paragraphs} />
+          <StatCard label={t("toolCommon.wordCounter.cjkChars")} value={stats.cjkChars} />
+          <StatCard label={t("toolCommon.wordCounter.readingTime")} value={`${stats.readingTime} ${t("toolCommon.wordCounter.min")}`} />
+          <StatCard label={t("toolCommon.wordCounter.speakingTime")} value={`${stats.speakingTime} ${t("toolCommon.wordCounter.min")}`} />
+          <StatCard label={t("toolCommon.wordCounter.topKeywords")} value={stats.topKeywords[0] || "-"} />
         </div>
       )}
+    </div>
+  );
+}
+
+function StatCard({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="p-4 bg-card rounded-lg border border-border">
+      <div className="text-xs text-muted-foreground mb-1">{label}</div>
+      <div className="text-xl font-semibold">{value}</div>
     </div>
   );
 }
