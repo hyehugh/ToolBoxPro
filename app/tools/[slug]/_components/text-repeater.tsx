@@ -36,11 +36,11 @@ export function TextRepeaterTool() {
           onChange={(e) => setSeparator(e.target.value)}
           className="h-9 px-2 rounded-md border border-input bg-background text-sm"
         >
-          <option value="\n">New line</option>
-          <option value=",">Comma (,)</option>
-          <option value=", ">Comma + space</option>
-          <option value=" ">Space</option>
-          <option value="">None</option>
+          <option value="\n">{t('toolCommon.textRepeater.newLine')}</option>
+          <option value=",">{t('toolCommon.textRepeater.comma')}</option>
+          <option value=", ">{t('toolCommon.textRepeater.commaSpace')}</option>
+          <option value=" ">{t('toolCommon.textRepeater.space')}</option>
+          <option value="">{t('toolCommon.textRepeater.none')}</option>
         </select>
         <Button onClick={repeat}>{t('toolCommon.textRepeater.repeat')}</Button>
       </div>

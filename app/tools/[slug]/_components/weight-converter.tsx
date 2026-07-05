@@ -4,14 +4,14 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/lib/i18n/context";
 
-const UNITS: { key: string; label: string; toKg: (v: number) => number; fromKg: (v: number) => number }[] = [
-  { key: "kg", label: "Kilogram (kg)", toKg: (v) => v, fromKg: (v) => v },
-  { key: "g", label: "Gram (g)", toKg: (v) => v / 1000, fromKg: (v) => v * 1000 },
-  { key: "mg", label: "Milligram (mg)", toKg: (v) => v / 1000000, fromKg: (v) => v * 1000000 },
-  { key: "ton", label: "Metric Ton", toKg: (v) => v * 1000, fromKg: (v) => v / 1000 },
-  { key: "oz", label: "Ounce (oz)", toKg: (v) => v * 0.0283495, fromKg: (v) => v / 0.0283495 },
-  { key: "lb", label: "Pound (lb)", toKg: (v) => v * 0.453592, fromKg: (v) => v / 0.453592 },
-  { key: "stone", label: "Stone", toKg: (v) => v * 6.35029, fromKg: (v) => v / 6.35029 },
+const UNITS: { key: string; labelKey: string; toKg: (v: number) => number; fromKg: (v: number) => number }[] = [
+  { key: "kg", labelKey: "toolCommon.weight.kg", toKg: (v) => v, fromKg: (v) => v },
+  { key: "g", labelKey: "toolCommon.weight.g", toKg: (v) => v / 1000, fromKg: (v) => v * 1000 },
+  { key: "mg", labelKey: "toolCommon.weight.mg", toKg: (v) => v / 1000000, fromKg: (v) => v * 1000000 },
+  { key: "ton", labelKey: "toolCommon.weight.ton", toKg: (v) => v * 1000, fromKg: (v) => v / 1000 },
+  { key: "oz", labelKey: "toolCommon.weight.oz", toKg: (v) => v * 0.0283495, fromKg: (v) => v / 0.0283495 },
+  { key: "lb", labelKey: "toolCommon.weight.lb", toKg: (v) => v * 0.453592, fromKg: (v) => v / 0.453592 },
+  { key: "stone", labelKey: "toolCommon.weight.stone", toKg: (v) => v * 6.35029, fromKg: (v) => v / 6.35029 },
 ];
 
 export function WeightConverterTool() {
@@ -28,7 +28,7 @@ export function WeightConverterTool() {
     setResults(
       UNITS.filter((u) => u.key !== fromUnit).map((u) => ({
         key: u.key,
-        label: u.label,
+        label: t(u.labelKey),
         value: u.fromKg(kgValue).toFixed(4),
       }))
     );
@@ -50,7 +50,7 @@ export function WeightConverterTool() {
           className="h-10 px-3 rounded-md border border-input bg-background text-sm"
         >
           {UNITS.map((u) => (
-            <option key={u.key} value={u.key}>{u.label}</option>
+            <option key={u.key} value={u.key}>{t(u.labelKey)}</option>
           ))}
         </select>
         <Button onClick={convert}>{t('common.convert')}</Button>

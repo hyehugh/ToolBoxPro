@@ -508,6 +508,8 @@ export const en: Record<string, any> = {
       currentTime: "Current Time",
       utcOffset: "UTC Offset",
       dst: "Daylight Saving Time",
+      title: "Timezone Converter",
+      description: "Convert from the current time to another.",
     },
     // HTML entities
     htmlEntities: {
@@ -604,6 +606,7 @@ export const en: Record<string, any> = {
       mergeOrder: "Merge Order",
       minFiles: "Minimum {count} files required",
       moveDown: "Move Down",
+      sampleRate: "Sample Rate (Hz)",
       moveUp: "Move Up",
       tracks: "Tracks",
     },
@@ -1057,6 +1060,11 @@ export const en: Record<string, any> = {
       repeatCount: "Repeat Count",
       repeat: "Repeat Text",
       separator: "Separator",
+      newLine: "New line",
+      comma: "Comma (,)",
+      commaSpace: "Comma + space",
+      space: "Space",
+      none: "None",
     },
     // Binary to Text
     binaryToText: {

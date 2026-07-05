@@ -4,11 +4,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/lib/i18n/context";
 
-const UNITS: { key: string; label: string; toSqm: (v: number) => number; fromSqm: (v: number) => number }[] = [
-  { key: "sqm", label: "Square Meter (m²)", toSqm: (v) => v, fromSqm: (v) => v },
-  { key: "sqft", label: "Square Foot (ft²)", toSqm: (v) => v * 0.092903, fromSqm: (v) => v / 0.092903 },
-  { key: "acre", label: "Acre", toSqm: (v) => v * 4046.86, fromSqm: (v) => v / 4046.86 },
-  { key: "hectare", label: "Hectare", toSqm: (v) => v * 10000, fromSqm: (v) => v / 10000 },
+const UNITS: { key: string; labelKey: string; toSqm: (v: number) => number; fromSqm: (v: number) => number }[] = [
+  { key: "sqm", labelKey: "toolCommon.area.sqm", toSqm: (v) => v, fromSqm: (v) => v },
+  { key: "sqft", labelKey: "toolCommon.area.sqft", toSqm: (v) => v * 0.092903, fromSqm: (v) => v / 0.092903 },
+  { key: "acre", labelKey: "toolCommon.area.acres", toSqm: (v) => v * 4046.86, fromSqm: (v) => v / 4046.86 },
+  { key: "hectare", labelKey: "toolCommon.area.hectares", toSqm: (v) => v * 10000, fromSqm: (v) => v / 10000 },
 ];
 
 export function AreaConverterTool() {
@@ -25,7 +25,7 @@ export function AreaConverterTool() {
     setResults(
       UNITS.filter((u) => u.key !== fromUnit).map((u) => ({
         key: u.key,
-        label: u.label,
+        label: t(u.labelKey),
         value: u.fromSqm(sqmValue).toFixed(4),
       }))
     );
@@ -47,7 +47,7 @@ export function AreaConverterTool() {
           className="h-10 px-3 rounded-md border border-input bg-background text-sm"
         >
           {UNITS.map((u) => (
-            <option key={u.key} value={u.key}>{u.label}</option>
+            <option key={u.key} value={u.key}>{t(u.labelKey)}</option>
           ))}
         </select>
         <Button onClick={convert}>{t('common.convert')}</Button>

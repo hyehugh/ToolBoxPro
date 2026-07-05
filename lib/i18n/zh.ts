@@ -469,6 +469,8 @@ export const zh: Record<string, any> = {
       currentTime: "当前时间",
       utcOffset: "UTC 偏移",
       dst: "夏令时",
+      title: "时区转换器",
+      description: "将当前时间转换到其他时区。",
     },
     htmlEntities: {
       encode: "编码 HTML",
@@ -555,6 +557,7 @@ export const zh: Record<string, any> = {
       mergeOrder: "合并顺序",
       minFiles: "至少需要 {count} 个文件",
       moveDown: "下移",
+      sampleRate: "采样率 (Hz)",
       moveUp: "上移",
       tracks: "音轨",
     },
@@ -956,6 +959,11 @@ export const zh: Record<string, any> = {
       repeatCount: "重复次数",
       repeat: "重复文本",
       separator: "分隔符",
+      newLine: "换行",
+      comma: "逗号 (,)",
+      commaSpace: "逗号 + 空格",
+      space: "空格",
+      none: "无",
     },
     binaryToText: {
       decode: "二进制转文本",

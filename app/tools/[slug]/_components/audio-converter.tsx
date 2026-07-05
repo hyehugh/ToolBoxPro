@@ -212,7 +212,7 @@ export function AudioConverterTool() {
               </select>
             </div>
             <div className="space-y-1">
-              <label className="text-xs text-muted-foreground">Sample Rate (Hz)</label>
+              <label className="text-xs text-muted-foreground">{t('toolCommon.audio.sampleRate')}</label>
               <select
                 value={sampleRate}
                 onChange={(e) => setSampleRate(Number(e.target.value))}

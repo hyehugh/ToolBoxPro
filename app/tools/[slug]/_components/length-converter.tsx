@@ -4,13 +4,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/lib/i18n/context";
 
-const UNITS: { key: string; label: string; toM: (v: number) => number; fromM: (v: number) => number }[] = [
-  { key: "m", label: "Meter (m)", toM: (v) => v, fromM: (v) => v },
-  { key: "cm", label: "Centimeter (cm)", toM: (v) => v / 100, fromM: (v) => v * 100 },
-  { key: "in", label: "Inch (in)", toM: (v) => v * 0.0254, fromM: (v) => v / 0.0254 },
-  { key: "ft", label: "Foot (ft)", toM: (v) => v * 0.3048, fromM: (v) => v / 0.3048 },
-  { key: "km", label: "Kilometer (km)", toM: (v) => v * 1000, fromM: (v) => v / 1000 },
-  { key: "mi", label: "Mile (mi)", toM: (v) => v * 1609.344, fromM: (v) => v / 1609.344 },
+const UNITS: { key: string; labelKey: string; toM: (v: number) => number; fromM: (v: number) => number }[] = [
+  { key: "m", labelKey: "toolCommon.length.m", toM: (v) => v, fromM: (v) => v },
+  { key: "cm", labelKey: "toolCommon.length.cm", toM: (v) => v / 100, fromM: (v) => v * 100 },
+  { key: "in", labelKey: "toolCommon.length.inches", toM: (v) => v * 0.0254, fromM: (v) => v / 0.0254 },
+  { key: "ft", labelKey: "toolCommon.length.feet", toM: (v) => v * 0.3048, fromM: (v) => v / 0.3048 },
+  { key: "km", labelKey: "toolCommon.length.km", toM: (v) => v * 1000, fromM: (v) => v / 1000 },
+  { key: "mi", labelKey: "toolCommon.length.miles", toM: (v) => v * 1609.344, fromM: (v) => v / 1609.344 },
 ];
 
 export function LengthConverterTool() {
@@ -27,7 +27,7 @@ export function LengthConverterTool() {
     setResults(
       UNITS.filter((u) => u.key !== fromUnit).map((u) => ({
         key: u.key,
-        label: u.label,
+        label: t(u.labelKey),
         value: u.fromM(mValue).toFixed(4),
       }))
     );
@@ -49,7 +49,7 @@ export function LengthConverterTool() {
           className="h-10 px-3 rounded-md border border-input bg-background text-sm"
         >
           {UNITS.map((u) => (
-            <option key={u.key} value={u.key}>{u.label}</option>
+            <option key={u.key} value={u.key}>{t(u.labelKey)}</option>
           ))}
         </select>
         <Button onClick={convert}>{t('common.convert')}</Button>

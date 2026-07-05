@@ -4,11 +4,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/lib/i18n/context";
 
-const UNITS: { key: string; label: string; toKmh: (v: number) => number; fromKmh: (v: number) => number }[] = [
-  { key: "kmh", label: "Kilometers/hour (km/h)", toKmh: (v) => v, fromKmh: (v) => v },
-  { key: "mph", label: "Miles/hour (mph)", toKmh: (v) => v * 1.60934, fromKmh: (v) => v / 1.60934 },
-  { key: "knots", label: "Knots", toKmh: (v) => v * 1.852, fromKmh: (v) => v / 1.852 },
-  { key: "mps", label: "Meters/second (m/s)", toKmh: (v) => v * 3.6, fromKmh: (v) => v / 3.6 },
+const UNITS: { key: string; labelKey: string; toKmh: (v: number) => number; fromKmh: (v: number) => number }[] = [
+  { key: "kmh", labelKey: "toolCommon.speed.kmh", toKmh: (v) => v, fromKmh: (v) => v },
+  { key: "mph", labelKey: "toolCommon.speed.mph", toKmh: (v) => v * 1.60934, fromKmh: (v) => v / 1.60934 },
+  { key: "knots", labelKey: "toolCommon.speed.knots", toKmh: (v) => v * 1.852, fromKmh: (v) => v / 1.852 },
+  { key: "mps", labelKey: "toolCommon.speed.ms", toKmh: (v) => v * 3.6, fromKmh: (v) => v / 3.6 },
 ];
 
 export function SpeedConverterTool() {
@@ -25,7 +25,7 @@ export function SpeedConverterTool() {
     setResults(
       UNITS.filter((u) => u.key !== fromUnit).map((u) => ({
         key: u.key,
-        label: u.label,
+        label: t(u.labelKey),
         value: u.fromKmh(kmhValue).toFixed(4),
       }))
     );
@@ -47,7 +47,7 @@ export function SpeedConverterTool() {
           className="h-10 px-3 rounded-md border border-input bg-background text-sm"
         >
           {UNITS.map((u) => (
-            <option key={u.key} value={u.key}>{u.label}</option>
+            <option key={u.key} value={u.key}>{t(u.labelKey)}</option>
           ))}
         </select>
         <Button onClick={convert}>{t('common.convert')}</Button>

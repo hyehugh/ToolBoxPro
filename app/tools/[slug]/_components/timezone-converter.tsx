@@ -188,9 +188,9 @@ export function TimezoneConverterTool() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Timezone Converter</h2>
+      <h2 className="text-xl font-semibold">{t('toolCommon.timezone.title')}</h2>
       <p className="text-sm text-muted-foreground">
-        Convert {t('common.from')} {t('toolCommon.timezone.currentTime')} {t('common.to')} another.
+        {t('toolCommon.timezone.description')}
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
