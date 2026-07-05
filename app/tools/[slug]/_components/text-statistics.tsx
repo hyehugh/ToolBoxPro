@@ -6,6 +6,7 @@ import { useLocale } from '@/lib/i18n/context';
 interface TextStats {
   totalChars: number;
   charsNoSpaces: number;
+  cjkChars: number;
   letters: number;
   digits: number;
   specialChars: number;
@@ -15,71 +16,90 @@ interface TextStats {
   words: number;
   uniqueWords: number;
   avgWordLength: number;
-  longestWord: string;
-  shortestWord: string;
-  mostCommonLetter: { letter: string; count: number };
   sentences: number;
   paragraphs: number;
   lines: number;
+  topBigrams: { word: string; count: number }[];
 }
 
 function analyzeText(text: string): TextStats {
   const totalChars = text.length;
   const charsNoSpaces = text.replace(/\s/g, '').length;
+  const cjkRegex = /[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/g;
+  const cjkChars = (text.match(cjkRegex) || []).length;
   const letters = (text.match(/[a-zA-Z]/g) || []).length;
   const digits = (text.match(/[0-9]/g) || []).length;
-  const specialChars = (text.match(/[^a-zA-Z0-9\s]/g) || []).length;
   const spaces = (text.match(/\s/g) || []).length;
+  const specialChars = totalChars - letters - digits - spaces - cjkChars;
   const vowels = (text.match(/[aeiouAEIOU]/g) || []).length;
   const consonants = (text.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g) || []).length;
 
-  const words = text.trim()
-    ? text.trim().split(/\s+/).filter((w) => w.length > 0)
-    : [];
-  const wordCount = words.length;
-  const uniqueWords = new Set(words.map((w) => w.toLowerCase())).size;
-  const avgWordLength = wordCount > 0
-    ? words.reduce((sum, w) => sum + w.length, 0) / wordCount
+  // Word count: CJK chars counted individually + Latin words
+  let words = 0;
+  const trimmed = text.trim();
+  if (trimmed) {
+    if (cjkChars > 0) {
+      words += cjkChars;
+      const latinWords = trimmed.replace(cjkRegex, ' ').trim().split(/\s+/).filter((w) => w.length > 0);
+      words += latinWords.length;
+    } else {
+      words = trimmed.split(/\s+/).filter((w) => w.length > 0).length;
+    }
+  }
+
+  const allWords = cjkChars > 0
+    ? [...(trimmed.replace(cjkRegex, ' ').trim().split(/\s+/).filter((w) => w.length > 0))]
+    : (trimmed ? trimmed.split(/\s+/).filter((w) => w.length > 0) : []);
+  const uniqueWords = new Set(allWords.map((w) => w.toLowerCase())).size;
+  const avgWordLength = allWords.length > 0
+    ? allWords.reduce((sum, w) => sum + w.length, 0) / allWords.length
     : 0;
 
-  const longestWord = wordCount > 0
-    ? words.reduce((a, b) => (a.length >= b.length ? a : b), '')
-    : '';
-  const shortestWord = wordCount > 0
-    ? words.reduce((a, b) => (a.length <= b.length && a.length > 0 ? a : b), '')
-    : '';
-
-  // Most common letter
-  const letterCounts: Record<string, number> = {};
-  for (const ch of text) {
-    if (/[a-zA-Z]/.test(ch)) {
-      const lower = ch.toLowerCase();
-      letterCounts[lower] = (letterCounts[lower] || 0) + 1;
-    }
-  }
-  let mostCommonLetter = { letter: '', count: 0 };
-  for (const [letter, count] of Object.entries(letterCounts)) {
-    if (count > mostCommonLetter.count) {
-      mostCommonLetter = { letter, count };
-    }
-  }
-
-  const sentences = (text.match(/[.!?]+/g) || []).filter(Boolean).length || (wordCount > 0 ? 1 : 0);
-  const paragraphs = text.split(/\n\s*\n/).filter((p) => p.trim().length > 0).length || 0;
+  // Sentences: include CJK punctuation
+  const sentences = text.split(/[.!?。！？；;]+/).filter((s) => s.trim().length > 0).length;
+  const paragraphs = text.split(/\n\s*\n/).filter((p) => p.trim().length > 0).length;
   const lines = text.split('\n').length;
 
+  // Top CJK bigrams (if CJK present)
+  const topBigrams: { word: string; count: number }[] = [];
+  if (cjkChars > 4) {
+    const cjkText = text.replace(/[^\u4e00-\u9fff\u3400-\u4dbf]/g, '');
+    const bigramFreq: Record<string, number> = {};
+    for (let i = 0; i < cjkText.length - 1; i++) {
+      const bg = cjkText.substring(i, i + 2);
+      bigramFreq[bg] = (bigramFreq[bg] || 0) + 1;
+    }
+    topBigrams.push(...Object.entries(bigramFreq)
+      .filter(([, c]) => c >= 2)
+      .map(([word, count]) => ({ word, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 5));
+  }
+
   return {
-    totalChars, charsNoSpaces, letters, digits, specialChars, spaces,
-    vowels, consonants, words: wordCount, uniqueWords, avgWordLength,
-    longestWord, shortestWord, mostCommonLetter, sentences, paragraphs, lines,
+    totalChars, charsNoSpaces, cjkChars, letters, digits, specialChars, spaces,
+    vowels, consonants, words, uniqueWords, avgWordLength,
+    sentences, paragraphs, lines, topBigrams,
   };
 }
 
+function StatCard({ label, value }: { label: string; value: string | number }) {
+  const displayValue = typeof value === 'number' ? value.toLocaleString() : value;
+  return (
+    <div className="rounded-md border bg-card p-3">
+      <div className="text-xs text-muted-foreground">{label}</div>
+      <div className="text-xl font-mono font-bold">{displayValue}</div>
+    </div>
+  );
+}
+
 export function TextStatisticsTool() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === 'zh';
   const [text, setText] = useState('');
 
   const stats = useMemo(() => analyzeText(text), [text]);
+  const hasCJK = stats.cjkChars > 0;
 
   return (
     <div className="space-y-4">
@@ -88,111 +108,94 @@ export function TextStatisticsTool() {
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder="Paste or type your text here..."
+          placeholder={isZh ? '在此输入或粘贴文字...' : 'Paste or type your text here...'}
           className="w-full h-48 p-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
         />
       </div>
 
       {text && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="space-y-6">
           {/* Character stats */}
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">{t('common.text')}</div>
-            <div className="text-xl font-mono font-bold">{stats.totalChars.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">{t('toolCommon.wordCounter.charactersNoSpaces')}</div>
-            <div className="text-xl font-mono font-bold">{stats.charsNoSpaces.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">{t('common.text')} {t('common.length')}</div>
-            <div className="text-xl font-mono font-bold">{stats.letters.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">{t('toolCommon.textStats.stats')}</div>
-            <div className="text-xl font-mono font-bold">{stats.digits.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Special Characters</div>
-            <div className="text-xl font-mono font-bold">{stats.specialChars.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Spaces</div>
-            <div className="text-xl font-mono font-bold">{stats.spaces.toLocaleString()}</div>
-          </div>
-
-          {/* Vowel/Consonant */}
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Vowels</div>
-            <div className="text-xl font-mono font-bold">{stats.vowels.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Consonants</div>
-            <div className="text-xl font-mono font-bold">{stats.consonants.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Vowel/Consonant Ratio</div>
-            <div className="text-xl font-mono font-bold">
-              {stats.consonants > 0 ? (stats.vowels / stats.consonants).toFixed(2) : 'N/A'}
+          <div>
+            <h3 className="text-sm font-medium mb-2 text-muted-foreground">
+              {isZh ? '字符统计' : 'Characters'}
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <StatCard label={isZh ? '总字符数' : 'Total'} value={stats.totalChars} />
+              <StatCard label={isZh ? '不含空格' : 'No Spaces'} value={stats.charsNoSpaces} />
+              {hasCJK && <StatCard label={isZh ? '中日韩字符' : 'CJK Chars'} value={stats.cjkChars} />}
+              <StatCard label={isZh ? '字母' : 'Letters'} value={stats.letters} />
+              <StatCard label={isZh ? '数字' : 'Digits'} value={stats.digits} />
+              <StatCard label={isZh ? '特殊字符' : 'Special'} value={stats.specialChars} />
+              <StatCard label={isZh ? '空格' : 'Spaces'} value={stats.spaces} />
             </div>
           </div>
+
+          {/* English-specific stats (only show if letters > 0) */}
+          {stats.letters > 0 && (
+            <div>
+              <h3 className="text-sm font-medium mb-2 text-muted-foreground">
+                {isZh ? '英文字母' : 'Letters'}
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <StatCard label={isZh ? '元音' : 'Vowels'} value={stats.vowels} />
+                <StatCard label={isZh ? '辅音' : 'Consonants'} value={stats.consonants} />
+                <StatCard
+                  label={isZh ? '元辅比' : 'V/C Ratio'}
+                  value={stats.consonants > 0 ? (stats.vowels / stats.consonants).toFixed(2) : 'N/A'}
+                 
+                />
+              </div>
+            </div>
+          )}
 
           {/* Word stats */}
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Total Words</div>
-            <div className="text-xl font-mono font-bold">{stats.words.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Unique Words</div>
-            <div className="text-xl font-mono font-bold">{stats.uniqueWords.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">{t('toolCommon.textStats.averageWordLength')}</div>
-            <div className="text-xl font-mono font-bold">{stats.avgWordLength.toFixed(1)}</div>
+          <div>
+            <h3 className="text-sm font-medium mb-2 text-muted-foreground">
+              {isZh ? '词数统计' : 'Words'}
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <StatCard label={isZh ? '总词数' : 'Total'} value={stats.words} />
+              <StatCard label={isZh ? '去重词数' : 'Unique'} value={stats.uniqueWords} />
+              {stats.avgWordLength > 0 && (
+                <StatCard label={isZh ? '平均词长' : 'Avg Length'} value={stats.avgWordLength.toFixed(1)} />
+              )}
+            </div>
           </div>
 
-          {/* Longest/Shortest */}
-          <div className="rounded-md border bg-card p-3 col-span-1">
-            <div className="text-xs text-muted-foreground">{t('toolCommon.textStats.longestWord')}</div>
-            <div className="text-sm font-mono font-bold truncate" title={stats.longestWord}>
-              {stats.longestWord || 'N/A'}
+          {/* CJK bigrams (only if CJK) */}
+          {hasCJK && stats.topBigrams.length > 0 && (
+            <div>
+              <h3 className="text-sm font-medium mb-2 text-muted-foreground">
+                {isZh ? '高频词' : 'Top Words (CJK)'}
+              </h3>
+              <div className="flex flex-wrap gap-1.5">
+                {stats.topBigrams.map((bg) => (
+                  <span key={bg.word} className="px-2 py-0.5 rounded-full bg-secondary text-xs">
+                    {bg.word} ({bg.count})
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="text-xs text-muted-foreground mt-1">{stats.longestWord.length} chars</div>
-          </div>
-          <div className="rounded-md border bg-card p-3 col-span-1">
-            <div className="text-xs text-muted-foreground">{t('toolCommon.textStats.shortestWord')}</div>
-            <div className="text-sm font-mono font-bold">{stats.shortestWord || 'N/A'}</div>
-            <div className="text-xs text-muted-foreground mt-1">{stats.shortestWord.length} chars</div>
-          </div>
-          <div className="rounded-md border bg-card p-3 col-span-1">
-            <div className="text-xs text-muted-foreground">Most Common Letter</div>
-            <div className="text-xl font-mono font-bold">
-              &ldquo;{stats.mostCommonLetter.letter || 'N/A'}&rdquo;
-            </div>
-            <div className="text-xs text-muted-foreground mt-1">
-              {stats.mostCommonLetter.count.toLocaleString()} occurrences
-            </div>
-          </div>
+          )}
 
           {/* Structure */}
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">{t('toolCommon.wordCounter.sentences')}</div>
-            <div className="text-xl font-mono font-bold">{stats.sentences.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">{t('toolCommon.wordCounter.paragraphs')}</div>
-            <div className="text-xl font-mono font-bold">{stats.paragraphs.toLocaleString()}</div>
-          </div>
-          <div className="rounded-md border bg-card p-3">
-            <div className="text-xs text-muted-foreground">Lines</div>
-            <div className="text-xl font-mono font-bold">{stats.lines.toLocaleString()}</div>
+          <div>
+            <h3 className="text-sm font-medium mb-2 text-muted-foreground">
+              {isZh ? '结构统计' : 'Structure'}
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <StatCard label={isZh ? '句子数' : 'Sentences'} value={stats.sentences} />
+              <StatCard label={isZh ? '段落数' : 'Paragraphs'} value={stats.paragraphs} />
+              <StatCard label={isZh ? '行数' : 'Lines'} value={stats.lines} />
+            </div>
           </div>
         </div>
       )}
 
       {!text && (
         <div className="text-center text-sm text-muted-foreground py-8">
-          {t('toolCommon.textStats.analyze')}
+          {isZh ? '输入文字开始分析' : t('toolCommon.textStats.analyze')}
         </div>
       )}
     </div>
