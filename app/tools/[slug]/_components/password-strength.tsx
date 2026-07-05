@@ -106,7 +106,8 @@ function analyzePassword(password: string): StrengthResult {
 export function PasswordStrengthTool() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
+  const isZh = locale === "zh";
 
   const result = useMemo(() => analyzePassword(password), [password]);
 

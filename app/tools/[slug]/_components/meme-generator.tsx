@@ -15,7 +15,8 @@ export function MemeGeneratorTool() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
+  const isZh = locale === "zh";
 
   const handleFile = (file: File) => {
     setImageUrl((prev) => {
