@@ -12,35 +12,37 @@ import { useLocale } from "@/lib/i18n/context";
  *             Image Descriptor, LZW-compressed image data, Trailer.
  * ========================================================================= */
 
-function rgbToRGB5(r: number, g: number, b: number): number {
-  // Reduce 24-bit RGB to a representative 8-bit value using 3-3-2 quantization.
+function rgbToIndex(r: number, g: number, b: number): number {
+  // Reduce 24-bit RGB to an 8-bit bucket index using 3-3-2 quantization
+  // (3 bits red, 3 bits green, 2 bits blue → 8*8*4 = 256 buckets).
   return ((r >> 5) << 5) | ((g >> 5) << 2) | (b >> 6);
 }
 
 /**
  * Build a global color table by sampling pixel data and producing up to 256
- * colors via median-cut-ish bucketing on an RGB5 space (fast, good enough for
- * short clips; not a perceptual best-quality quantizer but zero-dependency).
+ * colors via histogram bucketing on a 3-3-2 quantized space (fast, good
+ * enough for short clips; not a perceptual best-quality quantizer but
+ * zero-dependency).
  */
 function buildColorTable(frames: ImageData[], width: number, height: number): {
   palette: Uint8Array; // (colors*3) bytes
   colorCount: number;  // power-of-two number of colors (2..256)
 } {
-  // Accumulate histogram in 8-bit RGB5 (32*32*16 = 16384 buckets)
-  const hist = new Uint32Array(32768);
+  // Accumulate histogram in a 3-3-2 bucket space (256 buckets total).
+  const hist = new Uint32Array(256);
   // sample stride to keep histogram fast on large frames
   const stride = Math.max(1, Math.floor((width * height) / 100000));
   for (const frame of frames) {
     const d = frame.data;
     for (let i = 0; i < d.length; i += 4 * stride) {
-      const idx = rgbToRGB5(d[i], d[i + 1], d[i + 2]);
+      const idx = rgbToIndex(d[i], d[i + 1], d[i + 2]);
       hist[idx]++;
     }
   }
 
   // Pick the most-populated buckets up to 256
   const entries: { idx: number; count: number }[] = [];
-  for (let i = 0; i < 32768; i++) {
+  for (let i = 0; i < 256; i++) {
     if (hist[i] > 0) entries.push({ idx: i, count: hist[i] });
   }
   entries.sort((a, b) => b.count - a.count);
@@ -53,32 +55,20 @@ function buildColorTable(frames: ImageData[], width: number, height: number): {
   if (colorCount < 2) colorCount = 2;
 
   const palette = new Uint8Array(colorCount * 3);
-  const lut = new Uint8Array(32768); // map RGB5 bucket -> palette index, 255 = unmapped
 
-  // Fill palette slots with averaged representative colors
+  // Fill palette slots with representative colors reconstructed from each
+  // bucket's 3-3-2 bits (mid-point of each quantization step).
   const chosenBuckets = entries.slice(0, colorCount);
   for (let c = 0; c < chosenBuckets.length; c++) {
     const bucket = chosenBuckets[c].idx;
-    const r5 = (bucket >> 5) & 0x07;
-    const g5 = (bucket >> 2) & 0x07;
-    const b5 = bucket & 0x03;
-    // Reconstruct approximate RGB at the middle of each bucket
-    palette[c * 3] = (r5 << 5) | 0x10;
-    palette[c * 3 + 1] = (g5 << 5) | 0x10;
-    palette[c * 3 + 2] = (b5 << 6) | 0x20;
-    lut[bucket] = c;
+    const r3 = (bucket >> 5) & 0x07;
+    const g3 = (bucket >> 2) & 0x07;
+    const b2 = bucket & 0x03;
+    palette[c * 3] = (r3 << 5) | 0x10;
+    palette[c * 3 + 1] = (g3 << 5) | 0x10;
+    palette[c * 3 + 2] = (b2 << 6) | 0x20;
   }
 
-  // Map remaining (un-chosen) buckets to nearest chosen bucket by index distance.
-  // For simplicity, just assign them to the last palette index (rare outliers).
-  for (let i = 0; i < 32768; i++) {
-    if (hist[i] > 0 && lut[i] === 0 && !chosenBuckets.some(e => e.idx === i)) {
-      // leave as 0 — they collapse onto index 0 (a common color), acceptable
-      // for a lightweight encoder.
-    }
-  }
-
-  // Attach the lut + colorCount to palette via closure-return for indexing step
   return { palette, colorCount };
 }
 
@@ -89,26 +79,24 @@ function indexFrameToPalette(
   width: number,
   height: number
 ): Uint8Array {
-  // Build a quick reverse lookup from RGB -> palette index using a map keyed
-  // on the exact RGB triples in the palette (we quantize input to palette).
+  // Build a quick reverse lookup from RGB -> palette index using a 3-3-2
+  // bucket LUT (256 entries). Reconstruct representative RGB for each index.
   const indexed = new Uint8Array(width * height);
-  // For speed, build a 32768-entry LUT mapping each RGB5 bucket to the nearest
-  // palette color. Reconstruct representative RGB for each palette index.
-  const bucketToIndex = new Uint8Array(32768);
-  const bucketFilled = new Uint8Array(32768);
+  const bucketToIndex = new Uint8Array(256);
+  const bucketFilled = new Uint8Array(256);
   for (let c = 0; c < colorCount; c++) {
     const r = palette[c * 3];
     const g = palette[c * 3 + 1];
     const b = palette[c * 3 + 2];
-    const bucket = rgbToRGB5(r, g, b);
+    const bucket = rgbToIndex(r, g, b);
     bucketToIndex[bucket] = c;
     bucketFilled[bucket] = 1;
   }
-  // Pre-quantize: snap input pixel to RGB5 then look up; for unfilled buckets,
-  // find nearest of the filled ones (do this lazily via a small cache).
+  // Pre-quantize: snap input pixel to a 3-3-2 bucket then look up; for
+  // unfilled buckets, find nearest of the filled ones (cached per bucket).
   const fallbackCache = new Map<number, number>();
   for (let i = 0, p = 0; i < data.length; i += 4, p++) {
-    const bucket = rgbToRGB5(data[i], data[i + 1], data[i + 2]);
+    const bucket = rgbToIndex(data[i], data[i + 1], data[i + 2]);
     if (bucketFilled[bucket]) {
       indexed[p] = bucketToIndex[bucket];
     } else {

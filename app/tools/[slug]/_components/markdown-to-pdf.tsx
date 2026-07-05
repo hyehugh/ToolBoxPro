@@ -324,20 +324,21 @@ ${html}
 </body>
 </html>`);
     win.document.close();
-    // Wait for content/images to render before printing
-    win.onload = () => {
-      setTimeout(() => {
-        win.focus();
-        win.print();
-      }, 300);
-    };
-    // Fallback in case onload already fired or doesn't fire
-    setTimeout(() => {
+    // Wait for content/images to render before printing. The load event is
+    // unreliable when assigned after document.close(), so we use a single
+    // guarded timer to avoid triggering the print dialog twice.
+    let printed = false;
+    const doPrint = () => {
+      if (printed) return;
+      printed = true;
       try {
         win.focus();
         win.print();
-      } catch { /* already printing */ }
-    }, 800);
+      } catch { /* window closed before print */ }
+    };
+    win.onload = () => setTimeout(doPrint, 300);
+    // Fallback in case onload never fires.
+    setTimeout(doPrint, 800);
   }, [html, locale]);
 
   const handleDownloadHtml = useCallback(() => {

@@ -11,21 +11,39 @@ export function TextDiffCheckerTool() {
   const diff = useMemo(() => {
     const linesA = textA.split("\n");
     const linesB = textB.split("\n");
-    const maxLen = Math.max(linesA.length, linesB.length);
-    const result: { type: "same" | "added" | "removed"; content: string }[] = [];
+    const n = linesA.length;
+    const m = linesB.length;
 
-    for (let i = 0; i < maxLen; i++) {
-      if (i >= linesA.length) {
-        result.push({ type: "added", content: linesB[i] });
-      } else if (i >= linesB.length) {
-        result.push({ type: "removed", content: linesA[i] });
-      } else if (linesA[i] === linesB[i]) {
-        result.push({ type: "same", content: linesA[i] });
-      } else {
-        result.push({ type: "removed", content: linesA[i] });
-        result.push({ type: "added", content: linesB[i] });
+    // Build the LCS length table. dp[i][j] = LCS length of linesA[0..i-1]
+    // and linesB[0..j-1]. O(n*m) space; fine for typical text input sizes.
+    const dp: number[][] = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+    for (let i = 1; i <= n; i++) {
+      for (let j = 1; j <= m; j++) {
+        if (linesA[i - 1] === linesB[j - 1]) {
+          dp[i][j] = dp[i - 1][j - 1] + 1;
+        } else {
+          dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+        }
       }
     }
+
+    // Backtrack to produce the diff sequence. Inserting a single line in the
+    // middle no longer marks every subsequent line as changed.
+    const result: { type: "same" | "added" | "removed"; content: string }[] = [];
+    let i = n, j = m;
+    while (i > 0 || j > 0) {
+      if (i > 0 && j > 0 && linesA[i - 1] === linesB[j - 1]) {
+        result.push({ type: "same", content: linesA[i - 1] });
+        i--; j--;
+      } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+        result.push({ type: "added", content: linesB[j - 1] });
+        j--;
+      } else {
+        result.push({ type: "removed", content: linesA[i - 1] });
+        i--;
+      }
+    }
+    result.reverse();
     return result;
   }, [textA, textB]);
 

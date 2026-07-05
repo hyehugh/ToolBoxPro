@@ -58,10 +58,8 @@ export function ImageBorderTool() {
       ctx.setLineDash([]);
     }
 
-    // Inner border line
-    ctx.strokeRect(bw / 2, bw / 2, img.width + bw, img.height + bw);
-
-    // Outer border line
+    // Border frame (single stroke; the previous code called strokeRect twice
+    // with identical arguments, which just re-painted the same rectangle).
     ctx.strokeRect(bw / 2, bw / 2, img.width + bw, img.height + bw);
 
     // Reset

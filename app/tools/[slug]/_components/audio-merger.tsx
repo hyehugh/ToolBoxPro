@@ -117,43 +117,31 @@ export function AudioMergerTool() {
     setError('');
 
     try {
-      // Use the sample rate of the first track
+      // Use the sample rate of the first track as the output sample rate.
       const sampleRate = entries[0].decoded.sampleRate;
+      // Compute total duration in the OUTPUT sample rate. Each track's length
+      // must be converted via its own sample rate — summing raw sample counts
+      // (the previous approach) truncates tracks when rates differ.
       let totalSamples = 0;
       for (const entry of entries) {
-        totalSamples += entry.decoded.getChannelData(0).length;
+        const durSec = entry.decoded.getChannelData(0).length / entry.decoded.sampleRate;
+        totalSamples += Math.ceil(durSec * sampleRate);
       }
+      // Guard against a zero-length render (OfflineAudioContext requires >= 1).
+      totalSamples = Math.max(1, totalSamples);
 
       const offlineCtx = new OfflineAudioContext(1, totalSamples, sampleRate);
       let offset = 0;
 
       for (const entry of entries) {
         const source = offlineCtx.createBufferSource();
-        const channelData = entry.decoded.getChannelData(0);
-
-        // Resample if needed
-        if (entry.decoded.sampleRate !== sampleRate) {
-          const ratio = sampleRate / entry.decoded.sampleRate;
-          const newLength = Math.floor(channelData.length * ratio);
-          const resampledBuffer = offlineCtx.createBuffer(1, newLength, sampleRate);
-          const resampledData = resampledBuffer.getChannelData(0);
-          for (let i = 0; i < newLength; i++) {
-            const origIdx = i / ratio;
-            const idx1 = Math.floor(origIdx);
-            const idx2 = Math.min(idx1 + 1, channelData.length - 1);
-            const frac = origIdx - idx1;
-            resampledData[i] = channelData[idx1] * (1 - frac) + channelData[idx2] * frac;
-          }
-          source.buffer = resampledBuffer;
-        } else {
-          const buf = offlineCtx.createBuffer(1, channelData.length, sampleRate);
-          buf.getChannelData(0).set(channelData);
-          source.buffer = buf;
-        }
-
+        // Hand the buffer to the source at its ORIGINAL sample rate and let the
+        // OfflineAudioContext resample during rendering (higher quality than
+        // the previous hand-rolled linear interpolation).
+        source.buffer = entry.decoded;
         source.connect(offlineCtx.destination);
         source.start(offset);
-        offset += source.buffer!.length / sampleRate;
+        offset += entry.decoded.duration;
       }
 
       const rendered = await offlineCtx.startRendering();

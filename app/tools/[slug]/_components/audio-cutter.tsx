@@ -158,6 +158,7 @@ export function AudioCutterTool() {
     const startSample = Math.floor(startTime * sampleRate);
     const endSample = Math.floor(endTime * sampleRate);
     const length = endSample - startSample;
+    const trimDuration = endTime - startTime;
 
     const ctx = audioContextRef.current;
     const source = ctx.createBufferSource();
@@ -171,16 +172,24 @@ export function AudioCutterTool() {
     source.buffer = trimmedBuffer;
     source.connect(ctx.destination);
     source.start();
+    // Snapshot the AudioContext clock at playback start so the playhead can
+    // be computed as ctx.currentTime - playbackStart (in real seconds), then
+    // mapped onto the [startTime, endTime] region of the waveform.
+    const playbackStart = ctx.currentTime;
+    (source as unknown as { _playbackStart?: number })._playbackStart = playbackStart;
+    (source as unknown as { _trimDuration?: number })._trimDuration = trimDuration;
     source.onended = () => setIsPlaying(false);
     sourceRef.current = source;
     setIsPlaying(true);
 
-    // Animate playhead
-    let startOffset = 0;
+    // Drive redraws via requestAnimationFrame; the playhead is derived from
+    // the AudioContext clock in the draw callback, so we only need to keep
+    // the canvas repainting while playing.
     const animate = () => {
-      if (!ctx) return;
-      startOffset += 0.05;
-      if (startOffset > duration) {
+      const s = sourceRef.current as (AudioBufferSourceNode & { _playbackStart?: number; _trimDuration?: number }) | null;
+      if (!s) return;
+      const elapsed = ctx.currentTime - (s._playbackStart ?? ctx.currentTime);
+      if (elapsed >= (s._trimDuration ?? trimDuration)) {
         setIsPlaying(false);
         return;
       }
@@ -275,11 +284,14 @@ export function AudioCutterTool() {
       ctx.fillRect(x + 1, y, Math.max(1, barWidth - 2), barHeight);
     }
 
-    // Playhead indicator if playing
+    // Playhead indicator if playing. The preview plays the trimmed region
+    // [startTime, endTime], so map playback elapsed-time back onto that span.
     if (isPlaying && sourceRef.current && audioContextRef.current) {
-      const elapsed = audioContextRef.current.currentTime - (sourceRef.current as any)._startOffset || 0;
-      if (elapsed > 0 && elapsed < duration) {
-        const playheadX = (elapsed / duration) * w;
+      const s = sourceRef.current as AudioBufferSourceNode & { _playbackStart?: number };
+      const elapsed = audioContextRef.current.currentTime - (s._playbackStart ?? audioContextRef.current.currentTime);
+      const playTime = startTime + Math.max(0, elapsed);
+      if (playTime >= startTime && playTime <= endTime) {
+        const playheadX = (playTime / duration) * w;
         ctx.strokeStyle = '#ef4444';
         ctx.lineWidth = 2;
         ctx.beginPath();
