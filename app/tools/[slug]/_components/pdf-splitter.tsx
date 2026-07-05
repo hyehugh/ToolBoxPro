@@ -9,7 +9,8 @@ export function PdfSplitterTool() {
   const [ranges, setRanges] = useState("");
   const [loading, setLoading] = useState(false);
   const [pageCount, setPageCount] = useState(0);
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === "zh";
 
   const loadFile = async (f: File) => {
     setFile(f);
@@ -72,7 +73,7 @@ export function PdfSplitterTool() {
           <p className="text-muted-foreground">{file.name} ({pageCount} pages)</p>
         ) : (
           <>
-            <p className="text-muted-foreground">Drop a PDF here or click to upload</p>
+            <p className="text-muted-foreground">{isZh ? "拖拽PDF到此处或点击上传" : "Drop a PDF here or click to upload"}</p>
             <p className="text-xs text-muted-foreground mt-1">Click to select a file</p>
           </>
         )}

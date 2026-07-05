@@ -9,7 +9,8 @@ export function PdfPageRemoverTool() {
   const [pageCount, setPageCount] = useState(0);
   const [pagesToRemove, setPagesToRemove] = useState<number[]>([]);
   const [loading, setLoading] = useState(false);
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === "zh";
 
   const loadFile = async (f: File) => {
     setFile(f);
@@ -66,7 +67,7 @@ export function PdfPageRemoverTool() {
         {file ? (
           <p className="text-muted-foreground">{file.name} ({t('toolCommon.pdfPageRemover.totalPages')}: {pageCount})</p>
         ) : (
-          <p className="text-muted-foreground">Drop a PDF here or click to upload</p>
+          <p className="text-muted-foreground">{isZh ? "拖拽PDF到此处或点击上传" : "Drop a PDF here or click to upload"}</p>
         )}
       </div>
 

@@ -17,7 +17,8 @@ export function PdfMergerTool() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [dragIndex, setDragIndex] = useState<number | null>(null);
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === "zh";
 
   const addFiles = (files: FileList) => {
     const newPdfs = Array.from(files)
@@ -86,7 +87,7 @@ export function PdfMergerTool() {
           input.click();
         }}
       >
-        <p className="text-muted-foreground">Drop PDFs here or click to upload</p>
+        <p className="text-muted-foreground">{isZh ? "拖拽PDF文件到此处或点击上传" : "Drop PDFs here or click to upload"}</p>
         <p className="text-xs text-muted-foreground mt-1">Up to 10 PDFs. Drag to reorder.</p>
       </div>
 

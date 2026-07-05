@@ -16,7 +16,8 @@ export function ColorPickerTool() {
   const [colorHistory, setColorHistory] = useState<ColorInfo[]>([]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === "zh";
 
   const handleFile = (file: File) => {
     setImageUrl(URL.createObjectURL(file));
@@ -127,7 +128,7 @@ export function ColorPickerTool() {
               input.click();
             }}
           >
-            <p className="text-muted-foreground">{t('common.selectFile') || 'Drop an image here or click to upload'}</p>
+            <p className="text-muted-foreground">{isZh ? "拖拽图片到此处或点击上传" : "Drop an image here or click to upload"}</p>
             <p className="text-xs text-muted-foreground mt-1">
               {t('toolCommon.colorPicker.pickColor')}
             </p>

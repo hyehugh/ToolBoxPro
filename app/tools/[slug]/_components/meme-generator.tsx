@@ -14,7 +14,8 @@ export function MemeGeneratorTool() {
   const [resultUrl, setResultUrl] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === "zh";
 
   const handleFile = (file: File) => {
     setImageFile(file);
@@ -120,7 +121,7 @@ export function MemeGeneratorTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop an image here or click to upload</p>
+          <p className="text-muted-foreground">{isZh ? "拖拽图片到此处或点击上传" : "Drop an image here or click to upload"}</p>
           <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
         </div>
       ) : (

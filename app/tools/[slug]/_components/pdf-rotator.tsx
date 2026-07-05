@@ -8,7 +8,8 @@ export function PdfRotatorTool() {
   const [file, setFile] = useState<File | null>(null);
   const [rotation, setRotation] = useState(90);
   const [loading, setLoading] = useState(false);
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === "zh";
 
   const rotate = async () => {
     if (!file) return;
@@ -50,7 +51,7 @@ export function PdfRotatorTool() {
           <p className="text-muted-foreground">{file.name}</p>
         ) : (
           <>
-            <p className="text-muted-foreground">Drop a PDF here or click to upload</p>
+            <p className="text-muted-foreground">{isZh ? "拖拽PDF到此处或点击上传" : "Drop a PDF here or click to upload"}</p>
           </>
         )}
       </div>

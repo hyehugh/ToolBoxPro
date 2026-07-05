@@ -10,7 +10,8 @@ export function RandomStringGeneratorTool() {
   const [includeNumbers, setIncludeNumbers] = useState(true);
   const [includeSymbols, setIncludeSymbols] = useState(false);
   const [output, setOutput] = useState('');
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === "zh";
 
   const generate = useCallback(() => {
     const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -23,7 +24,7 @@ export function RandomStringGeneratorTool() {
     if (includeSymbols) chars += symbols;
 
     if (!chars) {
-      setOutput('Select at least one character type');
+      setOutput(isZh ? "请至少选择一种字符类型" : 'Select at least one character type');
       return;
     }
 
