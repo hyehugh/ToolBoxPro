@@ -49,6 +49,7 @@ export const toolComponents: Record<string, React.ComponentType> = {
   "markdown-to-html":         tool("markdown-to-html",         () => import("@/app/tools/[slug]/_components/markdown-to-html").then(m => m.MarkdownToHtmlTool)),
   "string-escaper":           tool("string-escaper",           () => import("@/app/tools/[slug]/_components/string-escaper").then(m => m.StringEscaperTool)),
   "csv-viewer":               tool("csv-viewer",               () => import("@/app/tools/[slug]/_components/csv-viewer").then(m => m.CsvViewerTool)),
+  "csv-visualizer":           tool("csv-visualizer",           () => import("@/app/tools/[slug]/_components/csv-visualizer").then(m => m.CsvVisualizerTool)),
   "svg-to-png":               tool("svg-to-png",               () => import("@/app/tools/[slug]/_components/svg-to-png").then(m => m.SvgToPngTool)),
 
   // === Text Tools ===
@@ -75,6 +76,7 @@ export const toolComponents: Record<string, React.ComponentType> = {
   "online-notepad":           tool("online-notepad",           () => import("@/app/tools/[slug]/_components/online-notepad").then(m => m.OnlineNotepadTool)),
   "days-between":             tool("days-between",             () => import("@/app/tools/[slug]/_components/days-between").then(m => m.DaysBetweenTool)),
   "aspect-ratio-calculator":  tool("aspect-ratio-calculator",  () => import("@/app/tools/[slug]/_components/aspect-ratio-calculator").then(m => m.AspectRatioCalculatorTool)),
+  "markdown-to-pdf":           tool("markdown-to-pdf",           () => import("@/app/tools/[slug]/_components/markdown-to-pdf").then(m => m.MarkdownToPdfTool)),
 
   // === Image Tools ===
   "image-compressor":         tool("image-compressor",         () => import("@/app/tools/[slug]/_components/image-compressor").then(m => m.ImageCompressorTool)),
@@ -96,8 +98,10 @@ export const toolComponents: Record<string, React.ComponentType> = {
   "color-picker":             tool("color-picker",             () => import("@/app/tools/[slug]/_components/color-picker").then(m => m.ColorPickerTool)),
   "color-palette":            tool("color-palette",            () => import("@/app/tools/[slug]/_components/color-palette").then(m => m.ColorPaletteTool)),
   "color-blindness-simulator":tool("color-blindness-simulator",() => import("@/app/tools/[slug]/_components/color-blindness-simulator").then(m => m.ColorBlindnessSimulatorTool)),
+  "watermark-remover":        tool("watermark-remover",        () => import("@/app/tools/[slug]/_components/watermark-remover").then(m => m.WatermarkRemoverTool)),
   "barcode-generator":        tool("barcode-generator",        () => import("@/app/tools/[slug]/_components/barcode-generator").then(m => m.BarcodeGeneratorTool)),
   "qr-reader":                tool("qr-reader",                () => import("@/app/tools/[slug]/_components/qr-reader").then(m => m.QrReaderTool)),
+  "ocr-text-recognition":    tool("ocr-text-recognition",    () => import("@/app/tools/[slug]/_components/ocr-text-recognition").then(m => m.OcrTextRecognitionTool)),
 
   // === PDF Tools ===
   "pdf-merger":               tool("pdf-merger",               () => import("@/app/tools/[slug]/_components/pdf-merger").then(m => m.PdfMergerTool)),
@@ -118,6 +122,7 @@ export const toolComponents: Record<string, React.ComponentType> = {
   "age-calculator":           tool("age-calculator",           () => import("@/app/tools/[slug]/_components/age-calculator").then(m => m.AgeCalculatorTool)),
   "bmi-calculator":           tool("bmi-calculator",           () => import("@/app/tools/[slug]/_components/bmi-calculator").then(m => m.BmiCalculatorTool)),
   "timezone-converter":       tool("timezone-converter",       () => import("@/app/tools/[slug]/_components/timezone-converter").then(m => m.TimezoneConverterTool)),
+  "video-to-gif":             tool("video-to-gif",             () => import("@/app/tools/[slug]/_components/video-to-gif").then(m => m.VideoToGifTool)),
 
   // === Audio Tools ===
   "audio-cutter":             tool("audio-cutter",             () => import("@/app/tools/[slug]/_components/audio-cutter").then(m => m.AudioCutterTool)),

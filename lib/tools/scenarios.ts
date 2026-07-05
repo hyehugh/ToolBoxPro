@@ -114,6 +114,11 @@ export const toolScenarios: Record<string, ToolScenario[]> = {
     { title: "Edit Photos Quickly", titleZh: "快速修图", icon: "🎨", description: "Crop, filter, and enhance images without installing photo editing software.", descriptionZh: "无需安装修图软件即可裁剪、滤镜和增强图片。" },
     { title: "Create Visual Content", titleZh: "创建视觉内容", icon: "🖼️", description: "Build collages, add watermarks, or generate graphics for social media.", descriptionZh: "制作拼贴图、添加水印或生成社交媒体图形。" },
   ],
+  "watermark-remover": [
+    { title: "Clean Up Stock Photos", titleZh: "清理素材图片", icon: "🧹", description: "Remove corner watermarks or logos from stock images before using them in designs and presentations.", descriptionZh: "在设计和演示中使用素材图片前，去除角落的水印或标志。" },
+    { title: "Erase Unwanted Objects", titleZh: "擦除多余物体", icon: "✨", description: "Select and remove timestamps, date stamps, photobombers, or stray objects from your photos.", descriptionZh: "框选并去除照片上的时间戳、日期戳、乱入路人不想要的物体。" },
+    { title: "Restore Old Scans", titleZh: "修复旧扫描件", icon: "📄", description: "Clean up scanned documents by erasing stains, fold marks, stamps, or annotation overlays.", descriptionZh: "去除扫描文件上的污渍、折痕、印章或批注覆盖，让文档更干净。" },
+  ],
   "color-palette": [
     { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
     { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
@@ -153,6 +158,11 @@ export const toolScenarios: Record<string, ToolScenario[]> = {
     { title: "Debug During Development", titleZh: "开发调试", icon: "🔍", description: "Quickly format, validate, or transform data without leaving your browser.", descriptionZh: "无需离开浏览器即可快速格式化、验证或转换数据。" },
     { title: "Prepare Data for APIs", titleZh: "准备 API 数据", icon: "📡", description: "Convert between formats and validate structures before sending requests.", descriptionZh: "在发送请求前转换格式并验证结构。" },
     { title: "Learn and Experiment", titleZh: "学习实验", icon: "🎓", description: "Test patterns, explore outputs, and understand transformations interactively.", descriptionZh: "交互式测试模式、探索输出并理解转换过程。" },
+  ],
+  "csv-visualizer": [
+    { title: "Visualize Business Metrics", titleZh: "可视化业务指标", icon: "📈", description: "Turn monthly sales or revenue CSV exports into bar and line charts for quick trend analysis.", descriptionZh: "将月度销售或收入的 CSV 导出转为柱状图和折线图，快速分析趋势。" },
+    { title: "Explore Scientific Data", titleZh: "探索科研数据", icon: "🔬", description: "Plot scatter graphs from experiment results to spot correlations between two numeric variables.", descriptionZh: "从实验结果绘制散点图，发现两个数值变量间的相关性。" },
+    { title: "Build Reports and Slides", titleZh: "制作报告与幻灯片", icon: "📊", description: "Generate clean pie charts from category data and download as PNG for presentations.", descriptionZh: "从分类数据生成清晰的饼图，下载为 PNG 用于演示文稿。" },
   ],
   "data-size-converter": [
     { title: "Convert for Recipes", titleZh: "烹饪换算", icon: "🍳", description: "Switch between metric and imperial units when following international recipes.", descriptionZh: "按国际食谱时在公制和英制单位之间切换。" },
@@ -503,6 +513,21 @@ export const toolScenarios: Record<string, ToolScenario[]> = {
     { title: "Troubleshoot DNS", titleZh: "排查 DNS", icon: "🌐", description: "Look up DNS records and diagnose domain resolution issues.", descriptionZh: "查询 DNS 记录并诊断域名解析问题。" },
     { title: "Plan Network Architecture", titleZh: "规划网络架构", icon: "🏗️", description: "Calculate subnets, CIDR blocks, and IP ranges for network design.", descriptionZh: "计算子网、CIDR 块和 IP 范围用于网络设计。" },
     { title: "Verify Domain Ownership", titleZh: "验证域名所有权", icon: "✅", description: "Check WHOIS records and RDAP data to confirm domain registration details.", descriptionZh: "检查 WHOIS 记录和 RDAP 数据以确认域名注册详情。" },
+  ],
+  "markdown-to-pdf": [
+    { title: "Export Documentation", titleZh: "导出文档", icon: "📘", description: "Convert project README files and technical docs into printable PDF documents.", descriptionZh: "将项目 README 和技术文档转换为可打印的 PDF 文档。" },
+    { title: "Create Reports", titleZh: "创建报告", icon: "📊", description: "Turn Markdown notes and meeting summaries into professional PDF reports.", descriptionZh: "将 Markdown 笔记和会议纪要转换为专业 PDF 报告。" },
+    { title: "Share Content", titleZh: "分享内容", icon: "📤", description: "Generate PDF versions of articles and blog posts for offline reading and distribution.", descriptionZh: "将文章和博文生成 PDF 版本，便于离线阅读和分发。" },
+  ],
+  "video-to-gif": [
+    { title: "Create Social Media GIFs", titleZh: "制作社交媒体 GIF", icon: "📱", description: "Convert video highlights into looping GIFs for Twitter, Reddit, and messaging apps.", descriptionZh: "将视频精华转换为循环 GIF，用于 Twitter、Reddit 和聊天应用。" },
+    { title: "Document Bugs and Demos", titleZh: "记录 Bug 和演示", icon: "🐛", description: "Capture screen recordings as GIF embeds for GitHub issues and README files.", descriptionZh: "将录屏捕获为 GIF，嵌入 GitHub issue 和 README 文件。" },
+    { title: "Optimize for Web", titleZh: "网页优化", icon: "⚡", description: "Downscale and trim video clips into lightweight GIFs for email and chat embeds.", descriptionZh: "缩小并裁剪视频片段为轻量 GIF，用于邮件和聊天嵌入。" },
+  ],
+  "ocr-text-recognition": [
+    { title: "Extract Text from Screenshots", titleZh: "从截图中提取文字", icon: "📸", description: "Pull editable text from screenshots of code, error messages, or UI labels without retyping.", descriptionZh: "从代码、错误信息或界面标签截图中提取可编辑文字，无需手动重打。" },
+    { title: "Digitize Scanned Documents", titleZh: "数字化扫描文档", icon: "📄", description: "Convert scanned receipts, contracts, and printed pages into searchable, editable text.", descriptionZh: "将扫描的收据、合同和打印页面转换为可搜索、可编辑的文字。" },
+    { title: "Read Foreign Language Signs", titleZh: "读取外语标识", icon: "🌍", description: "Snap a photo of a menu, sign, or label in another language and extract the text instantly.", descriptionZh: "拍摄外语菜单、标识或标签照片，即时提取其中的文字。" },
   ],
 };
 

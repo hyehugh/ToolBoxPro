@@ -256,6 +256,14 @@ export const tools: Tool[] = [
     searchKeywords: "csv viewer csv formatter csv table online",
   },
   {
+    slug: "csv-visualizer",
+    name: "CSV Data Visualizer",
+    description: "Upload CSV or Excel data and instantly generate charts and graphs. Bar charts, line charts, pie charts, and scatter plots — all rendered in your browser with zero upload.",
+    category: "developer",
+    icon: "📊",
+    searchKeywords: "csv visualizer excel chart graph data visualization plot",
+  },
+  {
     slug: "ip-calculator",
     name: "IP Subnet Calculator",
     description: "Calculate network subnet, CIDR, broadcast, and host range",
@@ -376,6 +384,14 @@ export const tools: Tool[] = [
     category: "conversion",
     icon: "▣",
     searchKeywords: "area converter square meters to acres hectares online",
+  },
+  {
+    slug: "video-to-gif",
+    name: "Video to GIF Converter",
+    description: "Convert video clips (MP4, WebM) to animated GIFs entirely in your browser. Set start time, duration, frame rate, and dimensions. No upload required.",
+    category: "conversion",
+    icon: "🎬",
+    searchKeywords: "video to gif convert mp4 to gif animated gif maker",
   },
   // === ADDITIONAL Image Tools (2) ===
   {
@@ -815,6 +831,22 @@ export const tools: Tool[] = [
     searchKeywords: "color blindness simulator protanopia deuteranopia online",
   },
   {
+    slug: "ocr-text-recognition",
+    name: "OCR Text Recognition",
+    description: "Extract text from images, screenshots, and scanned documents. Supports 100+ languages including Chinese, English, Japanese, and Korean. All processing runs in your browser.",
+    category: "image",
+    icon: "📝",
+    searchKeywords: "ocr text recognition image to text extract text from image",
+  },
+  {
+    slug: "watermark-remover",
+    name: "Watermark Remover",
+    description: "Remove watermarks, logos, and unwanted objects from images using content-aware fill. Select the watermark area and let the algorithm reconstruct the background automatically.",
+    category: "image",
+    icon: "🚿",
+    searchKeywords: "watermark remover remove logo stamp inpainting",
+  },
+  {
     slug: "online-notepad",
     name: "Online Notepad",
     description: "A clean, distraction-free browser-based notepad with auto-save. Write notes, code snippets, and lists that persist in your browser storage.",
@@ -829,6 +861,14 @@ export const tools: Tool[] = [
     category: "text",
     icon: "📊",
     searchKeywords: "text statistics analysis letter frequency word count online",
+  },
+  {
+    slug: "markdown-to-pdf",
+    name: "Markdown to PDF Converter",
+    description: "Convert Markdown to beautifully formatted PDF documents. Supports headings, lists, code blocks, tables, and images. All rendering happens in your browser.",
+    category: "text",
+    icon: "📄",
+    searchKeywords: "markdown to pdf md to pdf convert markdown document",
   },
 ];
 

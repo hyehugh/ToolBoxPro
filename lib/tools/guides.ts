@@ -421,6 +421,22 @@ The parser handles RFC 4180 compliant CSV including quoted fields containing com
 Features include: click any column header to sort, search across all cells, toggle between table view and raw text view, and export as clean CSV or convert to JSON. Useful for inspecting data exports or quickly scanning large CSV files without Excel.`,
     zh: `CSV 查看器和格式化工具，将 CSV 数据渲染为可排序的交互式表格。支持 RFC 4180 标准、多种分隔符和编码自动检测。`,
   },
+  "csv-visualizer": {
+    en: `A free in-browser CSV and Excel data visualizer that turns raw tabular data into clean, publication-ready charts without uploading a single byte. Paste CSV text directly into the editor or drag in a .csv file — the parser auto-detects headers, infers column types, and lets you pick an X-axis column and one or more Y-value columns before rendering.
+
+Four chart types cover the most common visualization needs. Bar charts are ideal for comparing categorical quantities — sales by region, bugs by severity, votes by option. Line charts reveal trends across an ordered axis such as time series, session numbers, or sequential experiment IDs. Pie charts show part-to-whole proportions for a single snapshot — market share, budget allocation, traffic sources. Scatter plots expose correlations between two numeric variables — height vs weight, price vs rating, study time vs score.
+
+Every chart is drawn from scratch using the HTML5 Canvas API — no Chart.js, D3, or external libraries are loaded, so the page stays lightweight and your data never leaves the browser. After rendering you can download the chart as a transparent-background PNG at full resolution for slides, reports, or documentation.
+
+Workflow: 1) Paste CSV or upload a file. 2) Confirm the detected header row. 3) Pick a chart type. 4) Select X and Y columns. 5) Download the PNG or tweak and re-render. The tool handles quoted fields, commas inside quotes, semicolons and tabs as delimiters, and skips malformed rows gracefully so a single bad line never blocks the whole dataset.`,
+    zh: `一款免费的浏览器内 CSV/Excel 数据可视化工具，将原始表格数据转换为清晰、可直接用于报告的图表，且全程不上传任何数据。直接将 CSV 文本粘贴到编辑器，或拖入 .csv 文件 —— 解析器会自动识别表头、推断列类型，让你选择 X 轴列和一个或多个 Y 值列后再渲染图表。
+
+四种图表类型覆盖最常见的可视化场景。柱状图适合比较分类数量 —— 各区域销售额、按严重程度的 Bug 数、各选项得票。折线图揭示沿有序轴（时间序列、会话编号、实验序号）的趋势。饼图展示单一快照下的占比关系 —— 市场份额、预算分配、流量来源。散点图暴露两个数值变量之间的相关性 —— 身高与体重、价格与评分、学习时长与分数。
+
+每张图都使用 HTML5 Canvas API 从零绘制 —— 不加载 Chart.js、D3 或任何外部图表库，页面保持轻量，数据绝不离开浏览器。渲染完成后可下载全分辨率、透明背景的 PNG，用于幻灯片、报告或文档。
+
+工作流：1）粘贴 CSV 或上传文件；2）确认识别到的表头行；3）选择图表类型；4）选择 X 和 Y 列；5）下载 PNG 或微调后重新渲染。工具支持带引号字段、引号内逗号、分号和制表符分隔符，并会优雅跳过格式错误的行，单行坏数据不会阻塞整个数据集。`,
+  },
   "ip-calculator": {
     en: `An IP subnet calculator that computes network parameters from CIDR notation (e.g., 192.168.1.0/24). Enter an IP address with subnet mask and the tool calculates: network address, broadcast address, usable host range, total host count, wildcard mask, and binary representation.
 
@@ -1617,6 +1633,22 @@ Color-matrix transformations for each deficiency type are applied to pixel data 
 
 上传您的 图片——拖拽到工具区域或点击上传按钮. 通过可用的控制选项（质量滑块、尺寸输入、格式选择等）调整设置。 实时预览效果，满意后点击下载按钮保存处理后的图片。 批量操作时，选择多个文件即可一次性应用相同设置。所有图片处理 全部在浏览器中使用 Canvas API 和 JavaScript 完成。 你的图片永远不会上传到任何服务器，确保完全隐私。 这对于敏感照片、商业文件或个人图片尤为重要。无需注册——打开即用，处理完即可下载。`,
   },
+  "watermark-remover": {
+    en: `A free browser-based image tool that removes watermarks, logos, text overlays, and unwanted objects from images using content-aware fill. Everything runs locally in your browser — no upload, no server, full privacy.
+
+Removing a watermark from a photo used to require expensive desktop software like Photoshop with its Content-Aware Fill or Clone Stamp tools. For many users that is overkill: you just want to erase a corner logo from a stock photo, clean up a timestamp on a screenshot, or remove a brand stamp before reusing an image. This tool brings lightweight inpainting to the browser so you can do exactly that in seconds, for free, without installing anything.
+
+Upload an image and drag your cursor over the watermark, logo, or object you want removed. A blue selection rectangle marks the target area. Click "Remove Selection" and the tool analyses the pixels surrounding your selection, then fills the masked region with content-aware colour sampled from the edges inward across multiple passes. A final blur pass softens any seams so the repaired area blends naturally into the background. You can remove multiple regions one after another, reset to the original at any time, and download the result as a PNG.
+
+Because every pixel operation happens through the Canvas API inside your browser, the image never leaves your device. This makes the tool safe for cleaning up confidential documents, client photography, or any image you don't want to send to a third-party server. There are no accounts, no limits, and no watermarks added to your output.`,
+    zh: `去水印 是一款免费在线图片工具，利用内容感知填充技术去除图片上的水印、标志、文字覆盖和不想要的物体。所有处理都在浏览器本地完成——不上传、不经过服务器，完全保护隐私。
+
+过去，要从照片上去除水印，通常需要 Photoshop 等昂贵的桌面软件，配合"内容感知填充"或"仿制图章"工具。对大多数用户来说这太复杂了：你可能只是想去掉一张素材图片角落的 logo、清除截图上的时间戳，或者在复用图片前抹掉品牌印章。这款工具将轻量级的图像修复能力带入了浏览器，让你在几秒钟内免费完成这些操作，无需安装任何软件。
+
+上传一张图片，然后用鼠标在要去除的水印、标志或物体上拖动画框。蓝色选区标记出目标区域。点击"去除选区"，工具会分析选区周围的像素，然后通过多次迭代，从边缘向内用感知周围颜色的方式填充被遮盖的区域。最后一步模糊处理会柔化接缝，让修复区域自然融入背景。你可以连续去除多个区域，随时重置到原始图片，并将结果下载为 PNG。
+
+由于每一个像素操作都通过浏览器中的 Canvas API 完成，图片永远不会离开你的设备。这让该工具非常适合处理机密文件、客户照片或任何你不想发送到第三方服务器的图片。无需注册、无使用限制，输出的图片也不会添加任何额外水印。`,
+  },
   "online-notepad": {
     en: `A free online text processing tool that a clean, distraction-免费的浏览器记事本，支持自动保存. write notes, code snippets, 和列表持久保存在浏览器存储中. Transform, analyze, and manipulate text instantly in your browser.
 
@@ -1656,6 +1688,54 @@ All analysis happens locally in your browser. Your text is never uploaded — sa
 粘贴或输入文本，工具显示详细分析：字母总数、元音、辅音、音节、独特单词、词频和平均词长——全部实时更新。
 
 所有分析在浏览器本地完成，文本不会上传，适合分析论文、报告和机密文档。`,
+  },
+  "ocr-text-recognition": {
+    en: `OCR Text Recognition extracts editable, searchable text from images, screenshots, and scanned documents directly in your browser. Powered by Tesseract.js — a WebAssembly port of the industry-standard Tesseract OCR engine — the tool recognizes printed text in over 100 languages including English, Simplified and Traditional Chinese, Japanese, Korean, Arabic, Hindi, and major European languages, all without sending a single pixel to a remote server.
+
+The workflow is deliberately simple. Drop an image (JPG, PNG, WebP, BMP, or GIF) onto the upload area, pick the source language from the dropdown, and click Extract Text. The engine downloads a compact language data file on first use — typically 2 to 15 MB depending on the script — then runs the full recognition pipeline locally. A live progress bar reports each phase: loading the engine, initializing the language model, and recognizing characters. Once finished, the extracted text appears in an editable textarea where you can correct any recognition errors inline before copying or downloading the result as a .txt file.
+
+Accuracy depends on image quality. For best results, use high-resolution, high-contrast images with clean backgrounds. Screenshots of code, typed documents, receipts, and printed labels recognize near-perfectly. Handwriting, skewed text, and low-light photos produce lower accuracy. For multi-language documents, select the dominant script — CJK characters and Latin letters can coexist within the same recognition pass.
+
+Because every computation happens client-side through WebAssembly workers, this tool is ideal for confidential material: contracts, ID cards, medical records, and internal documents that must never leave your machine. No registration, no upload, no tracking — open the page and start extracting.`,
+    zh: `OCR 文字识别工具可直接在浏览器中从图片、截图和扫描文档中提取可编辑、可搜索的文字。基于 Tesseract.js —— 工业级 Tesseract OCR 引擎的 WebAssembly 移植版 —— 该工具能识别 100 多种语言的印刷文字，包括英语、简体中文、繁体中文、日语、韩语、阿拉伯语、印地语和主要欧洲语言，全程不会向远程服务器发送任何像素数据。
+
+操作流程刻意保持简单。将图片（JPG、PNG、WebP、BMP 或 GIF）拖入上传区域，从下拉菜单选择源语言，点击"提取文字"即可。引擎在首次使用时会下载一个紧凑的语言数据文件（通常 2-15 MB，取决于文字体系），然后在本地完成完整的识别流程。实时进度条会报告每个阶段：加载引擎、初始化语言模型、识别字符。完成后，提取的文字会显示在可编辑的文本框中，你可以在复制或下载为 .txt 文件之前，直接在框内修正任何识别错误。
+
+识别准确率取决于图片质量。为获得最佳效果，请使用高分辨率、高对比度且背景干净的图片。代码截图、打印文档、收据和印刷标签的识别率近乎完美。手写文字、倾斜文字和弱光照片的准确率较低。对于多语言文档，请选择主要文字体系 —— 中日韩字符和拉丁字母可以在同一次识别中共存。
+
+由于所有计算都通过 WebAssembly Worker 在客户端完成，该工具非常适合处理机密材料：合同、身份证、医疗记录和绝不能离开本机的内部文档。无需注册、无需上传、无追踪 —— 打开页面即可开始提取。`,
+  },
+  "video-to-gif": {
+    en: `Video to GIF Converter turns any MP4 or WebM clip into an animated GIF entirely inside your browser — no upload, no server roundtrip, no account. Load a video, pick a start point, set how many seconds to capture, choose a frame rate (5–30 fps), and optionally downscale the output width to keep the file size reasonable. The tool seeks through the video frame by frame, draws each frame onto a canvas, and encodes the sequence into a standards-compliant GIF89a file you can download instantly.
+
+Converting video to GIF is something content creators, developers, and marketers reach for constantly. A 3-second reaction clip for a Slack message, a looping product demo for a README or landing page, a bug reproduction for a GitHub issue, or a highlight from a screen recording for social media — GIFs embed everywhere without a player and autoplay silently, which is why they remain the lingua franca of short visual communication on the web.
+
+Controls give you precise trimming: set the start time in seconds, the clip duration, and the frame rate independently. Lowering the output width (e.g., 480px) dramatically reduces file size, which matters for email attachments and chat embeds with strict size limits. A live preview shows the first extracted frame so you can confirm the start point before encoding the full sequence.
+
+Every byte of decoding, frame extraction, and GIF encoding runs through the browser's native HTML5 video decoder, Canvas API, and a self-contained JavaScript LZW encoder. The video file never leaves your device, which matters for confidential screen recordings or unreleased product footage.`,
+    zh: `视频转 GIF 工具将任意 MP4 或 WebM 视频片段转换为动态 GIF，全部在浏览器中完成——无需上传、无需服务器往返、无需注册。加载视频后，选择起始时间点，设置截取时长，选择帧率（5–30 fps），可选缩小输出宽度以控制文件大小。工具逐帧 seek 视频，将每帧绘制到 canvas，并将序列编码为符合 GIF89a 标准的文件，即刻下载。
+
+视频转 GIF 是内容创作者、开发者和营销人员常用的功能。Slack 消息里的 3 秒反应片段、README 或落地页中的循环产品演示、GitHub issue 中的 bug 复现、社交媒体上的录屏精华——GIF 可嵌入任何地方，无需播放器即可静音自动播放，这也是它始终是短视觉通用语言的原因。
+
+控制选项提供精确裁剪：独立设置起始时间（秒）、片段时长和帧率。降低输出宽度（如 480px）可显著减小文件大小，这对有严格大小限制的邮件附件和聊天嵌入尤为重要。实时预览显示提取的第一帧，方便在编码完整序列前确认起始点。
+
+所有解码、帧提取和 GIF 编码均通过浏览器原生 HTML5 video 解码器、Canvas API 和自包含的 JavaScript LZW 编码器完成。视频文件从不离开设备，适用于机密录屏或未发布产品素材。`,
+  },
+  "markdown-to-pdf": {
+    en: `Markdown to PDF Converter transforms plain Markdown text into polished, print-ready PDF documents — entirely in your browser. Paste a README, a technical spec, or meeting notes, watch the formatted preview update in real time, then click one button to open your system print dialog where "Save as PDF" produces the final file.
+
+The built-in parser handles the Markdown elements you use every day: six levels of headings, ordered and unordered lists, fenced code blocks with syntax-highlighted styling, blockquotes, horizontal rules, inline code, bold and italic emphasis, and hyperlinks. Tables render with proper borders and padding. The parser is written from scratch — no external libraries — so it loads instantly and works offline.
+
+Writers convert blog drafts into shareable PDFs; developers export project documentation for stakeholders who prefer documents over repos; students turn lecture notes into clean handouts. Because the tool uses the browser's native print pipeline, the output respects your chosen paper size (A4, Letter, Legal), margins, and orientation — giving you the same control as a desktop word processor without the install.
+
+Everything runs client-side. Your Markdown never travels to a server, which matters when you're formatting confidential specs or internal documentation. Open the print dialog, choose "Save as PDF" as the destination, and download the result.`,
+    zh: `Markdown 转 PDF 工具将纯 Markdown 文本转换为精美、可打印的 PDF 文档——全部在浏览器中完成。粘贴 README、技术规格或会议纪要，实时预览格式化效果，点击一个按钮即可打开系统打印对话框，选择"另存为 PDF"即生成最终文件。
+
+内置解析器支持日常使用的 Markdown 元素：六级标题、有序和无序列表、带语法高亮样式的代码围栏块、引用块、水平分割线、行内代码、粗体和斜体强调、超链接。表格带正确边框和内边距渲染。解析器从零编写，无外部依赖，即时加载且离线可用。
+
+写作者将博客草稿转为可分享 PDF；开发者将项目文档导出给偏好文档而非仓库的利益相关方；学生将课堂笔记转为整洁讲义。工具使用浏览器原生打印通道，输出遵循所选纸张尺寸（A4、Letter、Legal）、边距和方向，提供与桌面文字处理器相同的控制力，无需安装。
+
+全部在客户端运行。Markdown 不会传输到服务器，处理机密规格或内部文档时更安全。打开打印对话框，选择"另存为 PDF"作为目标，即可下载结果。`,
   },
 };
 
