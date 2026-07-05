@@ -51,7 +51,7 @@ export function TextReverserTool() {
           className="w-full min-h-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter text..."
+          placeholder={t('toolCommon.textReverse.placeholder')}
         />
       </div>
       <div className="flex flex-wrap gap-2">

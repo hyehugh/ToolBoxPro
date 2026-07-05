@@ -312,7 +312,8 @@ export const zh: Record<string, any> = {
       numbers: "数字 (0-9)",
       symbols: "符号 (!@#)",
       strength: "强度",
-      generatePassword: "生成密码",
+      generatePassword: "生成密码",      placeholder: "输入密码...",
+
     },
     json: {
       placeholder: "在此粘贴 JSON...",
@@ -377,7 +378,8 @@ export const zh: Record<string, any> = {
       utcDate: "UTC 日期",
       localeDate: "本地日期",
       toDate: "转换为日期",
-      toTimestamp: "转换为时间戳",
+      toTimestamp: "转换为时间戳",      placeholder: "输入Unix时间戳（如1716364800）",
+
     },
     color: {
       hex: "十六进制",
@@ -433,7 +435,8 @@ export const zh: Record<string, any> = {
       decimal: "十进制",
       binary: "二进制",
       octal: "八进制",
-      hexadecimal: "十六进制",
+      hexadecimal: "十六进制",      placeholder: "输入一个数字...",
+
     },
     loremIpsum: {
       generate: "生成 Lorem Ipsum",
@@ -450,16 +453,19 @@ export const zh: Record<string, any> = {
     },
     url: {
       encode: "编码 URL",
-      decode: "解码 URL",
+      decode: "解码 URL",      placeholder: "输入要编码/解码的文字...",
+
     },
     textReverse: {
       reverseText: "反转文本",
-      reverseWords: "反转单词顺序",
+      reverseWords: "反转单词顺序",      placeholder: "输入文字...",
+
     },
     textSort: {
       sortAsc: "升序排序",
       sortDesc: "降序排序",
-      removeDuplicates: "去重",
+      removeDuplicates: "去重",      placeholder: "每行输入一项...",
+
     },
     wordCount: {
       countWords: "统计字数",
@@ -623,7 +629,8 @@ export const zh: Record<string, any> = {
     temperature: {
       celsius: "摄氏度",
       fahrenheit: "华氏度",
-      kelvin: "开尔文",
+      kelvin: "开尔文",      placeholder: "开尔文",
+
     },
     dataSize: {
       bits: "位",
@@ -774,7 +781,9 @@ export const zh: Record<string, any> = {
     meme: {
       topText: "顶部文字",
       bottomText: "底部文字",
-      generate: "生成表情包",
+      generate: "生成表情包",      topTextPlaceholder: "输入顶部文字...",
+      bottomTextPlaceholder: "输入底部文字...",
+
     },
     audioCutter: {
       upload: "上传音频",
@@ -895,7 +904,8 @@ export const zh: Record<string, any> = {
       kmh: "公里/小时",
       mph: "英里/小时",
       knots: "节",
-      ms: "米/秒",
+      ms: "米/秒",      placeholder: "输入一个值...",
+
     },
     area: {
       sqm: "平方米",
@@ -923,7 +933,8 @@ export const zh: Record<string, any> = {
       ton: "公吨",
       oz: "盎司",
       lb: "磅",
-      stone: "英石",
+      stone: "英石",      placeholder: "输入一个值...",
+
     },
     randomNumber: {
       generate: "生成随机数",
@@ -942,7 +953,8 @@ export const zh: Record<string, any> = {
       detect: "检测 Unicode 字符",
       codepoint: "码点",
       character: "字符",
-      category: "类别",
+      category: "类别",      placeholder: "在此粘贴或输入文字...",
+
     },
     notepad: {
       title: "在线记事本",

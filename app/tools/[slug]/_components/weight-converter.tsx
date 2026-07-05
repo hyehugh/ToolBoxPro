@@ -39,7 +39,7 @@ export function WeightConverterTool() {
       <div className="flex gap-2">
         <input
           type="number"
-          placeholder="Enter a value..."
+          placeholder={t('toolCommon.weight.placeholder')}
           value={input}
           onChange={(e) => { setInput(e.target.value); setResults([]); }}
           className="flex-1 h-10 px-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"

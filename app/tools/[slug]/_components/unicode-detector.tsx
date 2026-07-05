@@ -69,7 +69,7 @@ export function UnicodeDetectorTool() {
       </p>
       <textarea
         className="w-full h-32 p-3 border rounded-md resize-y font-mono text-sm"
-        placeholder="Paste or type text here..."
+        placeholder={t('toolCommon.unicode.placeholder')}
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />

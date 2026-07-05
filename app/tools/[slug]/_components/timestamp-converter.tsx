@@ -36,7 +36,7 @@ export function TimestampConverterTool() {
         <h3 className="font-semibold">{t('toolCommon.timestamp.toDate')}</h3>
         <div className="flex gap-2">
           <input
-            placeholder="Enter Unix timestamp (e.g. 1716364800)"
+            placeholder={t('toolCommon.timestamp.placeholder')}
             value={unixInput}
             onChange={(e) => setUnixInput(e.target.value)}
             className="flex-1 h-10 px-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"

@@ -113,13 +113,13 @@ export function PasswordStrengthTool() {
   return (
     <div className="space-y-4">
       <div className="space-y-1">
-        <label className="text-xs text-muted-foreground">Enter password to analyze</label>
+        <label className="text-xs text-muted-foreground">{isZh ? "输入密码以分析强度" : "Enter password to analyze"}</label>
         <div className="relative">
           <input
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Type a password..."
+            placeholder={t('toolCommon.password.placeholder')}
             className="w-full h-10 px-3 pr-10 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
           />
           <button

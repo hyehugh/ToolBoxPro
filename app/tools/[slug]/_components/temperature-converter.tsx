@@ -74,7 +74,7 @@ export function TemperatureConverterTool() {
           <label className="w-24 text-sm font-medium">{t('toolCommon.temperature.kelvin')}</label>
           <input
             type="number"
-            placeholder="K"
+            placeholder={t('toolCommon.temperature.placeholder')}
             value={kelvin}
             onChange={(e) => updateFromKelvin(e.target.value)}
             className="flex-1 h-10 px-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"

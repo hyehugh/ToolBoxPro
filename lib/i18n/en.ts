@@ -329,7 +329,8 @@ export const en: Record<string, any> = {
       numbers: "Numbers (0-9)",
       symbols: "Symbols (!@#)",
       strength: "Strength",
-      generatePassword: "Generate Password",
+      generatePassword: "Generate Password",      placeholder: "Type a password...",
+
     },
     // JSON tools
     json: {
@@ -402,7 +403,8 @@ export const en: Record<string, any> = {
       utcDate: "UTC Date",
       localeDate: "Locale Date",
       toDate: "Convert to Date",
-      toTimestamp: "Convert to Timestamp",
+      toTimestamp: "Convert to Timestamp",      placeholder: "Enter Unix timestamp (e.g. 1716364800)",
+
     },
     // Color
     color: {
@@ -465,7 +467,8 @@ export const en: Record<string, any> = {
       decimal: "Decimal",
       binary: "Binary",
       octal: "Octal",
-      hexadecimal: "Hexadecimal",
+      hexadecimal: "Hexadecimal",      placeholder: "Enter a number...",
+
     },
     // Lorem Ipsum
     loremIpsum: {
@@ -485,18 +488,21 @@ export const en: Record<string, any> = {
     // URL Encode
     url: {
       encode: "Encode URL",
-      decode: "Decode URL",
+      decode: "Decode URL",      placeholder: "Enter text to encode/decode...",
+
     },
     // Text Reverse
     textReverse: {
       reverseText: "Reverse Text",
-      reverseWords: "Reverse Words",
+      reverseWords: "Reverse Words",      placeholder: "Enter text...",
+
     },
     // Text Sort
     textSort: {
       sortAsc: "Sort A-Z",
       sortDesc: "Sort Z-A",
-      removeDuplicates: "Remove Duplicates",
+      removeDuplicates: "Remove Duplicates",      placeholder: "Enter one item per line...",
+
     },
     // Word Counter
     wordCount: {
@@ -681,7 +687,8 @@ export const en: Record<string, any> = {
     temperature: {
       celsius: "Celsius",
       fahrenheit: "Fahrenheit",
-      kelvin: "Kelvin",
+      kelvin: "Kelvin",      placeholder: "K",
+
     },
     // Data Size
     dataSize: {
@@ -848,7 +855,9 @@ export const en: Record<string, any> = {
     meme: {
       topText: "Top Text",
       bottomText: "Bottom Text",
-      generate: "Generate Meme",
+      generate: "Generate Meme",      topTextPlaceholder: "Enter top text...",
+      bottomTextPlaceholder: "Enter bottom text...",
+
     },
     // Audio Cutter
     audioCutter: {
@@ -986,7 +995,8 @@ export const en: Record<string, any> = {
       kmh: "km/h",
       mph: "mph",
       knots: "Knots",
-      ms: "m/s",
+      ms: "m/s",      placeholder: "Enter a value...",
+
     },
     // Area Converter
     area: {
@@ -1017,7 +1027,8 @@ export const en: Record<string, any> = {
       ton: "Metric Tons",
       oz: "Ounces",
       lb: "Pounds",
-      stone: "Stones",
+      stone: "Stones",      placeholder: "Enter a value...",
+
     },
     // Random Number
     randomNumber: {
@@ -1040,7 +1051,8 @@ export const en: Record<string, any> = {
       detect: "Detect Unicode Characters",
       codepoint: "Code Point",
       character: "Character",
-      category: "Category",
+      category: "Category",      placeholder: "Paste or type text here...",
+
     },
     // Online Notepad
     notepad: {

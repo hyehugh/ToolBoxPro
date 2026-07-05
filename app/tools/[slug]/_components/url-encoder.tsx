@@ -38,7 +38,7 @@ export function UrlEncoderTool() {
         ))}
       </div>
       <textarea
-        placeholder="Enter text to encode/decode..."
+        placeholder={t('toolCommon.url.placeholder')}
         value={input}
         onChange={(e) => setInput(e.target.value)}
         className="w-full h-32 p-3 rounded-md border border-input bg-background font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"

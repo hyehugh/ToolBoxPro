@@ -15,8 +15,7 @@ export function MemeGeneratorTool() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { t, locale } = useLocale();
-  const isZh = locale === "zh";
+  const { t } = useLocale();
 
   const handleFile = (file: File) => {
     setImageUrl((prev) => {
@@ -162,7 +161,7 @@ export function MemeGeneratorTool() {
                 type="text"
                 value={topText}
                 onChange={(e) => setTopText(e.target.value)}
-                placeholder="Top text..."
+                placeholder={t('toolCommon.meme.topTextPlaceholder')}
                 className="w-full px-3 py-2 border border-input rounded-md bg-background text-sm"
               />
             </div>
@@ -172,7 +171,7 @@ export function MemeGeneratorTool() {
                 type="text"
                 value={bottomText}
                 onChange={(e) => setBottomText(e.target.value)}
-                placeholder="Bottom text..."
+                placeholder={t('toolCommon.meme.bottomTextPlaceholder')}
                 className="w-full px-3 py-2 border border-input rounded-md bg-background text-sm"
               />
             </div>
