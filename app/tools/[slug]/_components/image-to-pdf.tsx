@@ -2,8 +2,11 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function ImageToPdfTool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [images, setImages] = useState<{ file: File; url: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -65,13 +68,13 @@ export function ImageToPdfTool() {
           input.click();
         }}
       >
-        <p className="text-muted-foreground">Drop images here or click to upload</p>
-        <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP</p>
+        <p className="text-muted-foreground">{isZh ? "拖放图片到此处或点击上传" : "Drop images here or click to upload"}</p>
+        <p className="text-xs text-muted-foreground mt-1">{isZh ? "支持 JPG、PNG、WebP" : "Supports JPG, PNG, WebP"}</p>
       </div>
 
       {images.length > 0 && (
         <div className="space-y-3">
-          <p className="text-sm text-muted-foreground">{images.length} image{images.length > 1 ? "s" : ""}</p>
+          <p className="text-sm text-muted-foreground">{isZh ? `${images.length} 张图片` : `${images.length} image${images.length > 1 ? "s" : ""}`}</p>
           <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto">
             {images.map((img, i) => (
               <div key={i} className="relative group">
@@ -85,7 +88,7 @@ export function ImageToPdfTool() {
             ))}
           </div>
           <Button onClick={generate} disabled={loading}>
-            {loading ? "Generating..." : `Convert to PDF (${images.length} pages)`}
+            {loading ? (isZh ? "生成中..." : "Generating...") : (isZh ? `转换为 PDF（${images.length} 页）` : `Convert to PDF (${images.length} pages)`)}
           </Button>
         </div>
       )}

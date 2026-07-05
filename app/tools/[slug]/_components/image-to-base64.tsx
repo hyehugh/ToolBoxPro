@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function ImageToBase64Tool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [base64, setBase64] = useState("");
   const [preview, setPreview] = useState("");
   const [fileName, setFileName] = useState("");
@@ -51,10 +54,10 @@ export function ImageToBase64Tool() {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs text-muted-foreground">
-                Base64 string ({Math.ceil(base64.length / 1024)} KB)
+                {isZh ? `Base64 字符串 (${Math.ceil(base64.length / 1024)} KB)` : `Base64 string (${Math.ceil(base64.length / 1024)} KB)`}
               </span>
               <Button variant="outline" size="sm" onClick={copyBase64}>
-                {copied ? "Copied!" : "Copy Base64"}
+                {copied ? (isZh ? "已复制！" : "Copied!") : (isZh ? "复制 Base64" : "Copy Base64")}
               </Button>
             </div>
             <div className="p-3 rounded-md border bg-card text-xs font-mono break-all max-h-48 overflow-y-auto">

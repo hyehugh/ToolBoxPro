@@ -2,8 +2,11 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function ImageCropperTool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [croppedUrl, setCroppedUrl] = useState<string>("");
@@ -107,24 +110,24 @@ export function ImageCropperTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop an image here or click to upload</p>
-          <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
+          <p className="text-muted-foreground">{isZh ? "拖放图片到此处或点击上传" : "Drop an image here or click to upload"}</p>
+          <p className="text-xs text-muted-foreground mt-1">{isZh ? "支持 JPG、PNG、WebP、GIF" : "Supports JPG, PNG, WebP, GIF"}</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
-              Drag on the image to select a crop area
+              {isZh ? "在图片上拖动以选择裁剪区域" : "Drag on the image to select a crop area"}
             </p>
             <div className="flex gap-2">
               <Button variant="outline" size="sm" onClick={() => {
                 setImageUrl(""); setImageFile(null); setCroppedUrl(""); setHasSelection(false);
               }}>
-                New Image
+                {isZh ? "新图片" : "New Image"}
               </Button>
               {hasSelection && (
                 <Button size="sm" onClick={crop} disabled={loading}>
-                  {loading ? "Cropping..." : "Crop"}
+                  {loading ? (isZh ? "裁剪中..." : "Cropping...") : (isZh ? "裁剪" : "Crop")}
                 </Button>
               )}
             </div>
@@ -156,7 +159,7 @@ export function ImageCropperTool() {
 
           {croppedUrl && (
             <div className="space-y-2">
-              <p className="text-sm font-medium">Cropped Result</p>
+              <p className="text-sm font-medium">{isZh ? "裁剪结果" : "Cropped Result"}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={croppedUrl} alt="Cropped" className="rounded-lg border max-w-full max-h-48 object-contain" />
               <Button onClick={() => {
@@ -165,7 +168,7 @@ export function ImageCropperTool() {
                 a.download = imageFile ? imageFile.name.replace(/\.[^.]+$/, "") + "_cropped.png" : "cropped.png";
                 a.click();
               }}>
-                Download Cropped
+                {isZh ? "下载裁剪图片" : "Download Cropped"}
               </Button>
             </div>
           )}

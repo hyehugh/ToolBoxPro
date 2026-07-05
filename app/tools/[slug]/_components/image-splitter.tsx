@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 function createZip(files: { name: string; data: Uint8Array }[]): Blob {
   // Simple ZIP creator using STORE (no compression)
@@ -108,6 +109,8 @@ function createZip(files: { name: string; data: Uint8Array }[]): Blob {
 }
 
 export function ImageSplitterTool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [rows, setRows] = useState(2);
@@ -201,19 +204,19 @@ export function ImageSplitterTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop an image here or click to upload</p>
-          <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
+          <p className="text-muted-foreground">{isZh ? "拖放图片到此处或点击上传" : "Drop an image here or click to upload"}</p>
+          <p className="text-xs text-muted-foreground mt-1">{isZh ? "支持 JPG、PNG、WebP、GIF" : "Supports JPG, PNG, WebP, GIF"}</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
-              {imageSize.w > 0 ? `${imageSize.w} × ${imageSize.h} px` : "Image loaded"}
+              {imageSize.w > 0 ? `${imageSize.w} × ${imageSize.h} px` : (isZh ? "图片已加载" : "Image loaded")}
             </p>
             <Button variant="outline" size="sm" onClick={() => {
               setImageUrl(""); setImageFile(null); setTiles([]);
             }}>
-              New Image
+              {isZh ? "重新上传" : "New Image"}
             </Button>
           </div>
 
@@ -222,7 +225,7 @@ export function ImageSplitterTool() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-sm font-medium block mb-1">Rows: {rows}</label>
+              <label className="text-sm font-medium block mb-1">{isZh ? `行数: ${rows}` : `Rows: ${rows}`}</label>
               <input
                 type="range"
                 min={2}
@@ -233,7 +236,7 @@ export function ImageSplitterTool() {
               />
             </div>
             <div>
-              <label className="text-sm font-medium block mb-1">Columns: {cols}</label>
+              <label className="text-sm font-medium block mb-1">{isZh ? `列数: ${cols}` : `Columns: ${cols}`}</label>
               <input
                 type="range"
                 min={2}
@@ -246,17 +249,17 @@ export function ImageSplitterTool() {
           </div>
 
           <Button onClick={split} disabled={loading}>
-            {loading ? "Splitting..." : "Split Image"}
+            {loading ? (isZh ? "分割中…" : "Splitting...") : (isZh ? "分割图片" : "Split Image")}
           </Button>
 
           {tiles.length > 0 && (
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium">
-                  Tiles ({tiles.length})
+                  {isZh ? `切片 (${tiles.length})` : `Tiles (${tiles.length})`}
                 </p>
                 <Button variant="outline" size="sm" onClick={downloadAll}>
-                  Download All as ZIP
+                  {isZh ? "下载全部 ZIP" : "Download All as ZIP"}
                 </Button>
               </div>
               <div
@@ -282,7 +285,7 @@ export function ImageSplitterTool() {
                         a.click();
                       }}
                     >
-                      Download #{tile.index + 1}
+                      {isZh ? `下载 #${tile.index + 1}` : `Download #${tile.index + 1}`}
                     </Button>
                   </div>
                 ))}

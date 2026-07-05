@@ -2,10 +2,13 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 type MergeLayout = "horizontal" | "vertical" | "grid";
 
 export function ImageMergeTool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [images, setImages] = useState<{ file: File; url: string }[]>([]);
   const [layout, setLayout] = useState<MergeLayout>("horizontal");
   const [resultUrl, setResultUrl] = useState<string>("");
@@ -111,20 +114,20 @@ export function ImageMergeTool() {
           input.click();
         }}
       >
-        <p className="text-muted-foreground">Drop images here or click to upload (2+)</p>
-        <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
+        <p className="text-muted-foreground">{isZh ? "拖放图片到此处或点击上传（2张以上）" : "Drop images here or click to upload (2+)"}</p>
+        <p className="text-xs text-muted-foreground mt-1">{isZh ? "支持 JPG、PNG、WebP、GIF" : "Supports JPG, PNG, WebP, GIF"}</p>
       </div>
 
       {images.length > 0 && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">{images.length} image(s) loaded</p>
+            <p className="text-sm text-muted-foreground">{isZh ? `已加载 ${images.length} 张图片` : `${images.length} image(s) loaded`}</p>
             <Button variant="outline" size="sm" onClick={() => {
               images.forEach((img) => URL.revokeObjectURL(img.url));
               setImages([]);
               setResultUrl("");
             }}>
-              Clear All
+              {isZh ? "全部清除" : "Clear All"}
             </Button>
           </div>
 
@@ -145,7 +148,7 @@ export function ImageMergeTool() {
           </div>
 
           <div>
-            <label className="text-sm font-medium block mb-1">Layout</label>
+            <label className="text-sm font-medium block mb-1">{isZh ? "布局" : "Layout"}</label>
             <div className="flex gap-2">
               {(["horizontal", "vertical", "grid"] as MergeLayout[]).map((l) => (
                 <Button
@@ -154,19 +157,19 @@ export function ImageMergeTool() {
                   size="sm"
                   onClick={() => setLayout(l)}
                 >
-                  {l.charAt(0).toUpperCase() + l.slice(1)}
+                  {isZh ? (l === "horizontal" ? "水平" : l === "vertical" ? "垂直" : "网格") : l.charAt(0).toUpperCase() + l.slice(1)}
                 </Button>
               ))}
             </div>
           </div>
 
           <Button onClick={merge} disabled={loading || images.length < 2}>
-            {loading ? "Merging..." : "Merge Images"}
+            {loading ? (isZh ? "合并中…" : "Merging...") : (isZh ? "合并图片" : "Merge Images")}
           </Button>
 
           {resultUrl && (
             <div className="space-y-2">
-              <p className="text-sm font-medium">Merged Result</p>
+              <p className="text-sm font-medium">{isZh ? "合并结果" : "Merged Result"}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={resultUrl} alt="Merged" className="rounded-lg border max-w-full max-h-64 object-contain" />
               <Button onClick={() => {
@@ -175,7 +178,7 @@ export function ImageMergeTool() {
                 a.download = "merged_image.png";
                 a.click();
               }}>
-                Download Merged
+                {isZh ? "下载合并图片" : "Download Merged"}
               </Button>
             </div>
           )}

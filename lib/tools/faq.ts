@@ -791,6 +791,46 @@ const toolFaqs: ToolFaq[] = [
       { question: "What's the maximum image size I can resize?", questionZh: "可以调整的最大图片尺寸是多少？", answer: "Images up to 50MB and 10000×10000 pixels are supported. All processing happens in your browser via Canvas API — no upload to any server required.", answerZh: "支持最大 50MB 和 10000×10000 像素的图片。所有处理通过 Canvas API 在浏览器中完成——无需上传到任何服务器。" },
     ],
   },
+  {
+    slug: "watermark-remover",
+    faqs: [
+      { question: "How does the watermark remover work?", questionZh: "去水印工具是如何工作的？", answer: "The tool uses content-aware inpainting algorithms running entirely in your browser via Canvas and WebGL. It analyzes the surrounding pixels around the selected watermark area and intelligently fills in the region to produce a clean, natural-looking result without requiring any server-side processing.", answerZh: "该工具通过 Canvas 和 WebGL 在浏览器中完全运行内容感知修复算法。它分析选定水印区域周围的像素，智能填充该区域，生成干净自然的效果，无需任何服务器端处理。" },
+      { question: "Will removing a watermark reduce image quality?", questionZh: "去除水印会降低图片质量吗？", answer: "The removal is applied only to the selected watermark region. The rest of your image remains at full original resolution and quality. For large or complex watermarks over detailed backgrounds, some minor artifacts may appear, but overall image integrity is preserved.", answerZh: "去除操作仅应用于选定的水印区域。图片其余部分保持完整的原始分辨率和质量。对于覆盖复杂背景的大型水印，可能会出现少量轻微瑕疵，但整体图片完整性得到保留。" },
+      { question: "Can I remove watermarks from any image format?", questionZh: "可以从任何图片格式中去除水印吗？", answer: "Yes. The tool supports JPG, PNG, WebP, BMP, and GIF formats. Simply upload your image, select the watermark area with the brush tool, and click remove. The processed image can be downloaded in your preferred format with adjustable quality settings.", answerZh: "可以。该工具支持 JPG、PNG、WebP、BMP 和 GIF 格式。只需上传图片，用画笔工具选择水印区域，然后点击去除即可。处理后的图片可以按您偏好的格式下载，并可调整质量设置。" },
+    ],
+  },
+  {
+    slug: "ocr-text-recognition",
+    faqs: [
+      { question: "How accurate is the OCR text recognition?", questionZh: "OCR 文字识别的准确度如何？", answer: "The tool uses Tesseract.js, an industry-leading OCR engine running entirely in your browser. It achieves 95-99% accuracy on clear printed text. Accuracy may decrease with handwritten text, low-resolution images, or unusual fonts, but the engine supports 100+ languages including Chinese, English, Japanese, and Korean.", answerZh: "该工具使用 Tesseract.js，这是一个完全在浏览器中运行的业界领先 OCR 引擎。对清晰的印刷文字准确率可达 95-99%。手写文字、低分辨率图片或特殊字体可能会降低准确率，但引擎支持包括中文、英文、日语和韩语在内的 100 多种语言。" },
+      { question: "What languages does the OCR tool support?", questionZh: "OCR 工具支持哪些语言？", answer: "The tool supports over 100 languages including English, Simplified Chinese, Traditional Chinese, Japanese, Korean, Arabic, Spanish, French, German, Russian, and many more. You can select multiple languages simultaneously to recognize mixed-language documents for maximum accuracy.", answerZh: "该工具支持 100 多种语言，包括英语、简体中文、繁体中文、日语、韩语、阿拉伯语、西班牙语、法语、德语、俄语等。您可以同时选择多种语言来识别混合语言文档，以获得最高准确率。" },
+      { question: "Are my uploaded images sent to a server?", questionZh: "我上传的图片会发送到服务器吗？", answer: "No. All OCR processing happens entirely in your browser using WebAssembly. Your images and the recognized text never leave your device, ensuring complete privacy for sensitive documents like invoices, contracts, or personal records.", answerZh: "不会。所有 OCR 处理都通过 WebAssembly 完全在您的浏览器中进行。您的图片和识别出的文本永远不会离开您的设备，确保发票、合同或个人记录等敏感文档的完全隐私。" },
+    ],
+  },
+  {
+    slug: "csv-visualizer",
+    faqs: [
+      { question: "What types of charts can I create from CSV data?", questionZh: "可以从 CSV 数据创建哪些类型的图表？", answer: "The tool supports bar charts, line charts, pie charts, scatter plots, area charts, and doughnut charts. Simply upload your CSV file, select the columns for the X and Y axes, and the tool instantly generates an interactive chart with zooming, hovering tooltips, and exportable rendering.", answerZh: "该工具支持柱状图、折线图、饼图、散点图、面积图和环形图。只需上传 CSV 文件，选择 X 轴和 Y 轴对应的列，工具即可即时生成支持缩放、悬停提示和导出功能的交互式图表。" },
+      { question: "How large a CSV file can I visualize?", questionZh: "可以可视化多大的 CSV 文件？", answer: "The tool handles CSV files up to 50MB in size with tens of thousands of rows. It uses efficient streaming parsers and virtualized rendering to keep the browser responsive. All parsing and visualization happen client-side, so there are no upload limits or server round-trips.", answerZh: "该工具可处理最大 50MB、包含数万行数据的 CSV 文件。它使用高效的流式解析和虚拟化渲染来保持浏览器响应速度。所有解析和可视化均在客户端完成，因此没有上传限制或服务器往返延迟。" },
+      { question: "Can I customize the chart appearance?", questionZh: "可以自定义图表外观吗？", answer: "Yes. You can customize chart colors, titles, axis labels, legends, grid lines, and animations. The tool also supports multiple data series on a single chart, trend lines, and data point labels. Export your final chart as PNG, SVG, or shareable interactive HTML.", answerZh: "可以。您可以自定义图表颜色、标题、轴标签、图例、网格线和动画。该工具还支持在单个图表上显示多个数据系列、趋势线和数据点标签。最终图表可导出为 PNG、SVG 或可共享的交互式 HTML。" },
+    ],
+  },
+  {
+    slug: "video-to-gif",
+    faqs: [
+      { question: "What video formats can I convert to GIF?", questionZh: "可以将哪些视频格式转换为 GIF？", answer: "The tool supports MP4, WebM, MOV, AVI, and MKV input formats. Video processing happens entirely in your browser using the WebCodecs API and FFmpeg.wasm. You can trim the video to select the exact segment you want before conversion, and the output GIF is generated without any server upload.", answerZh: "该工具支持 MP4、WebM、MOV、AVI 和 MKV 输入格式。视频处理完全通过 WebCodecs API 和 FFmpeg.wasm 在您的浏览器中进行。您可以在转换前修剪视频以选择精确的片段，生成的 GIF 输出无需任何服务器上传。" },
+      { question: "How do I control the GIF quality and file size?", questionZh: "如何控制 GIF 质量和文件大小？", answer: "You can adjust frame rate (FPS), output resolution, and color palette to balance quality and file size. Lower frame rates and smaller dimensions produce smaller files. The tool also offers an optimized palette option that reduces file size by 40-60% while maintaining visual quality for web and social media use.", answerZh: "您可以调整帧率（FPS）、输出分辨率和调色板来平衡质量和文件大小。较低的帧率和较小的尺寸会生成更小的文件。该工具还提供优化的调色板选项，可将文件大小减少 40-60%，同时保持适合网页和社交媒体使用的视觉质量。" },
+      { question: "Is there a video length limit for conversion?", questionZh: "转换视频有长度限制吗？", answer: "The tool can handle videos up to 100MB in size. For best results with GIF output, we recommend trimming videos to 10-30 seconds, as longer segments produce very large GIF files. The built-in timeline editor lets you precisely select start and end points before generating the GIF.", answerZh: "该工具可处理最大 100MB 的视频。为获得最佳的 GIF 输出效果，建议将视频修剪至 10-30 秒，因为较长的片段会生成非常大的 GIF 文件。内置的时间轴编辑器让您可以在生成 GIF 前精确选择起始和结束点。" },
+    ],
+  },
+  {
+    slug: "markdown-to-pdf",
+    faqs: [
+      { question: "What Markdown features are supported in the PDF export?", questionZh: "PDF 导出支持哪些 Markdown 功能？", answer: "The tool supports full GitHub Flavored Markdown including headings, bold, italic, code blocks with syntax highlighting, tables, blockquotes, ordered and unordered lists, images, links, horizontal rules, and task lists. Math equations via LaTeX and mermaid diagrams are also rendered in the exported PDF.", answerZh: "该工具支持完整的 GitHub 风格 Markdown，包括标题、粗体、斜体、带语法高亮的代码块、表格、引用、有序和无序列表、图片、链接、水平线和任务列表。通过 LaTeX 编写的数学公式和 Mermaid 图表也会在导出的 PDF 中渲染。" },
+      { question: "Can I customize the PDF page layout and styling?", questionZh: "可以自定义 PDF 页面布局和样式吗？", answer: "Yes. You can choose page size (A4, Letter, Legal), orientation (portrait or landscape), margins, font family, font size, and line spacing. The tool also offers multiple pre-built themes including academic, technical documentation, and modern minimalist styles for professional-looking documents.", answerZh: "可以。您可以选择页面尺寸（A4、Letter、Legal）、方向（纵向或横向）、页边距、字体、字号和行距。该工具还提供多种预构建主题，包括学术、技术文档和现代简约风格，生成专业美观的文档。" },
+      { question: "Does the conversion preserve images and code highlighting?", questionZh: "转换会保留图片和代码高亮吗？", answer: "Yes. Images embedded in your Markdown are rendered directly in the PDF. Code blocks are highlighted with syntax-aware coloring for 180+ programming languages. All rendering happens in your browser — your Markdown content and any embedded images never leave your device during conversion.", answerZh: "会。Markdown 中嵌入的图片会直接在 PDF 中渲染。代码块会根据 180 多种编程语言的语法进行高亮着色。所有渲染都在您的浏览器中完成——在转换过程中，您的 Markdown 内容和任何嵌入的图片都不会离开您的设备。" },
+    ],
+  },
 ];
 
 export function getToolFaqs(slug: string): FaqItem[] {

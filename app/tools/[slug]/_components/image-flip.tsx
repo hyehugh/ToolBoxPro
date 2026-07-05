@@ -2,8 +2,11 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function ImageFlipTool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [resultUrl, setResultUrl] = useState<string>("");
@@ -112,17 +115,17 @@ export function ImageFlipTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop an image here or click to upload</p>
-          <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
+          <p className="text-muted-foreground">{isZh ? "拖放图片到此处或点击上传" : "Drop an image here or click to upload"}</p>
+          <p className="text-xs text-muted-foreground mt-1">{isZh ? "支持 JPG、PNG、WebP、GIF" : "Supports JPG, PNG, WebP, GIF"}</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">Flip or rotate your image</p>
+            <p className="text-sm text-muted-foreground">{isZh ? "翻转或旋转你的图片" : "Flip or rotate your image"}</p>
             <Button variant="outline" size="sm" onClick={() => {
               setImageUrl(""); setImageFile(null); setResultUrl("");
             }}>
-              New Image
+              {isZh ? "重新上传" : "New Image"}
             </Button>
           </div>
 
@@ -135,16 +138,16 @@ export function ImageFlipTool() {
 
           <div className="flex flex-wrap gap-2">
             <Button onClick={flipHorizontal} disabled={loading}>
-              Flip Horizontal
+              {isZh ? "水平翻转" : "Flip Horizontal"}
             </Button>
             <Button onClick={flipVertical} disabled={loading}>
-              Flip Vertical
+              {isZh ? "垂直翻转" : "Flip Vertical"}
             </Button>
             <Button onClick={rotateCW} disabled={loading}>
-              Rotate 90° CW
+              {isZh ? "顺时针旋转 90°" : "Rotate 90° CW"}
             </Button>
             <Button onClick={rotateCCW} disabled={loading}>
-              Rotate 90° CCW
+              {isZh ? "逆时针旋转 90°" : "Rotate 90° CCW"}
             </Button>
           </div>
 
@@ -158,7 +161,7 @@ export function ImageFlipTool() {
                   : "transformed.png";
                 a.click();
               }}>
-                Download
+                {isZh ? "下载" : "Download"}
               </Button>
             </div>
           )}

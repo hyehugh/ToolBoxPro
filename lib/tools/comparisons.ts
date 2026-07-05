@@ -1096,6 +1096,46 @@ const comparisons: Record<string, ToolComparison> = {
     ],
     toolboxProAdvantages: ["100% client-side — your data never leaves your browser", "No registration or signup required", "No file size limits beyond your browser's memory"],
   },
+  "watermark-remover": {
+    toolName: "Watermark Remover",
+    competitors: [
+      { name: "Inpaint", url: "https://theinpaint.com", pros: ["Good quality results", "Multiple removal modes"], cons: ["Uploads images to server", "Free tier adds watermark", "Limited free uses per month"] },
+      { name: "Apowersoft Watermark Remover", url: "https://apowersoft.com", pros: ["Batch processing", "Desktop app available"], cons: ["Requires installation", "Paid software", "Server-side processing"] },
+    ],
+    toolboxProAdvantages: ["100% free — no premium paywall", "Files never leave your browser (complete privacy)", "Bilingual interface (English & Chinese)"],
+  },
+  "ocr-text-recognition": {
+    toolName: "OCR Text Recognition",
+    competitors: [
+      { name: "OnlineOCR.net", url: "https://onlineocr.net", pros: ["Multiple languages", "Batch upload"], cons: ["Uploads files to server", "Registration required for large files", "Privacy concerns"] },
+      { name: "Google Drive OCR", url: "https://drive.google.com", pros: ["High accuracy", "Cloud storage integration"], cons: ["Requires Google account", "Uploads to Google servers", "No language selection control"] },
+    ],
+    toolboxProAdvantages: ["100% client-side — documents never leave your device", "Completely free with no usage limits", "Bilingual interface supporting Chinese and English recognition"],
+  },
+  "csv-visualizer": {
+    toolName: "CSV Data Visualizer",
+    competitors: [
+      { name: "RAWGraphs", url: "https://rawgraphs.io", pros: ["Many chart types", "Open source"], cons: ["Uploads data to server", "Steep learning curve", "No Chinese language support"] },
+      { name: "Datawrapper", url: "https://datawrapper.de", pros: ["Professional charts", "Publish-ready output"], cons: ["Free tier limited to 10 charts", "Requires account", "Server-side processing"] },
+    ],
+    toolboxProAdvantages: ["Free with no chart limits", "Data stays on your device — no uploads", "Bilingual interface (English & Chinese) with instant rendering"],
+  },
+  "video-to-gif": {
+    toolName: "Video to GIF Converter",
+    competitors: [
+      { name: "EZGIF", url: "https://ezgif.com", pros: ["Popular", "Many editing tools"], cons: ["Uploads video to server", "50MB file limit", "Ad-heavy interface"] },
+      { name: "Giphy", url: "https://giphy.com", pros: ["Social sharing", "Large library"], cons: ["Requires account", "Uploads to public platform", "Privacy concerns"] },
+    ],
+    toolboxProAdvantages: ["Completely free with no file size paywall", "Videos never leave your browser", "Bilingual interface with precise timeline editing"],
+  },
+  "markdown-to-pdf": {
+    toolName: "Markdown to PDF Converter",
+    competitors: [
+      { name: "Dillinger", url: "https://dillinger.io", pros: ["Clean interface", "Cloud sync"], cons: ["Uploads content to server", "Limited export formats on free tier", "Requires account for PDF export"] },
+      { name: "MDtoPDF", url: "https://mdtopdf.up.railway.app", pros: ["Simple to use", "Fast conversion"], cons: ["Server-side processing", "Privacy concerns", "Limited customization options"] },
+    ],
+    toolboxProAdvantages: ["100% free PDF export — no premium tiers", "Documents never leave your browser", "Bilingual support with customizable professional themes"],
+  },
 };
 
 export function getToolComparison(slug: string): ToolComparison | undefined {

@@ -2,18 +2,21 @@
 
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 type Layout = "2-grid" | "3-grid" | "4-grid";
 
-const LAYOUTS: { key: Layout; label: string; cols: number; rows: number }[] = [
-  { key: "2-grid", label: "2 Grid (1×2)", cols: 2, rows: 1 },
-  { key: "3-grid", label: "3 Grid (1×3)", cols: 3, rows: 1 },
-  { key: "4-grid", label: "4 Grid (2×2)", cols: 2, rows: 2 },
+const LAYOUTS: { key: Layout; label: string; zhLabel: string; cols: number; rows: number }[] = [
+  { key: "2-grid", label: "2 Grid (1×2)", zhLabel: "2宫格 (1×2)", cols: 2, rows: 1 },
+  { key: "3-grid", label: "3 Grid (1×3)", zhLabel: "3宫格 (1×3)", cols: 3, rows: 1 },
+  { key: "4-grid", label: "4 Grid (2×2)", zhLabel: "4宫格 (2×2)", cols: 2, rows: 2 },
 ];
 
 const MAX_IMAGES = 4;
 
 export function ImageCollageTool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [images, setImages] = useState<(string | null)[]>(
     Array(MAX_IMAGES).fill(null)
   );
@@ -132,7 +135,7 @@ export function ImageCollageTool() {
       {/* Layout selector */}
       <div className="flex flex-wrap gap-2">
         <span className="text-sm text-muted-foreground self-center mr-1">
-          Layout:
+          {isZh ? "布局：" : "Layout:"}
         </span>
         {LAYOUTS.map((l) => (
           <Button
@@ -144,7 +147,7 @@ export function ImageCollageTool() {
               setResultUrl("");
             }}
           >
-            {l.label}
+            {isZh ? l.zhLabel : l.label}
           </Button>
         ))}
       </div>
@@ -173,7 +176,7 @@ export function ImageCollageTool() {
                   ✕
                 </Button>
                 <p className="text-xs text-center text-muted-foreground py-1">
-                  Image {idx + 1}
+                  {isZh ? `图片 ${idx + 1}` : `Image ${idx + 1}`}
                 </p>
               </div>
             ) : (
@@ -189,7 +192,7 @@ export function ImageCollageTool() {
                 }}
               >
                 <p className="text-xs text-muted-foreground">
-                  + Add Image {idx + 1}
+                  {isZh ? `+ 添加图片 ${idx + 1}` : `+ Add Image ${idx + 1}`}
                 </p>
               </div>
             )}
@@ -204,15 +207,17 @@ export function ImageCollageTool() {
         className="w-full"
       >
         {loading
-          ? "Generating..."
-          : `Generate Collage (${images.filter(Boolean).length}/${requiredImages})`}
+          ? (isZh ? "生成中…" : "Generating...")
+          : isZh
+            ? `生成拼图 (${images.filter(Boolean).length}/${requiredImages})`
+            : `Generate Collage (${images.filter(Boolean).length}/${requiredImages})`}
       </Button>
 
       {/* Result */}
       {resultUrl && (
         <div className="space-y-2">
           <p className="text-sm font-medium text-green-600">
-            Collage Generated!
+            {isZh ? "拼图已生成！" : "Collage Generated!"}
           </p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -230,10 +235,10 @@ export function ImageCollageTool() {
               }}
               className="flex-1"
             >
-              Download
+              {isZh ? "下载" : "Download"}
             </Button>
             <Button variant="outline" onClick={resetAll} className="flex-1">
-              New Collage
+              {isZh ? "新建拼图" : "New Collage"}
             </Button>
           </div>
         </div>

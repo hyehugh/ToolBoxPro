@@ -2,10 +2,13 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 const FORMATS = ["JPG", "PNG", "WebP", "AVIF", "GIF"];
 
 export function ImageConverterTool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [files, setFiles] = useState<File[]>([]);
   const [outputFormat, setOutputFormat] = useState("WebP");
   const [converted, setConverted] = useState<{ url: string; name: string }[]>([]);
@@ -67,25 +70,25 @@ export function ImageConverterTool() {
           input.click();
         }}
       >
-        <p className="text-muted-foreground">Drop images here or click to upload</p>
-        <p className="text-xs text-muted-foreground mt-1">Multiple files supported</p>
+        <p className="text-muted-foreground">{isZh ? "拖放图片到此处或点击上传" : "Drop images here or click to upload"}</p>
+        <p className="text-xs text-muted-foreground mt-1">{isZh ? "支持多文件" : "Multiple files supported"}</p>
       </div>
 
       {files.length > 0 && (
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="text-sm text-muted-foreground">
-              {files.length} file{files.length !== 1 ? "s" : ""}
+              {isZh ? `${files.length} 个文件` : `${files.length} file${files.length !== 1 ? "s" : ""}`}
             </span>
             <select
               value={outputFormat}
               onChange={(e) => setOutputFormat(e.target.value)}
               className="px-3 h-10 rounded-md border border-input bg-background text-sm"
             >
-              {FORMATS.map((f) => <option key={f} value={f}>Convert to {f}</option>)}
+              {FORMATS.map((f) => <option key={f} value={f}>{isZh ? `转换为 ${f}` : `Convert to ${f}`}</option>)}
             </select>
             <Button onClick={convert} disabled={loading}>
-              {loading ? "Converting..." : "Convert All"}
+              {loading ? (isZh ? "转换中..." : "Converting...") : (isZh ? "全部转换" : "Convert All")}
             </Button>
           </div>
 
@@ -98,7 +101,7 @@ export function ImageConverterTool() {
                     const a = document.createElement("a");
                     a.href = item.url; a.download = item.name; a.click();
                   }}>
-                    Download
+                    {isZh ? "下载" : "Download"}
                   </Button>
                 </div>
               ))}
@@ -109,7 +112,7 @@ export function ImageConverterTool() {
                     a.href = item.url; a.download = item.name; a.click();
                   });
                 }}>
-                  Download All
+                  {isZh ? "全部下载" : "Download All"}
                 </Button>
               )}
             </div>

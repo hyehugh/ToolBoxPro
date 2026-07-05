@@ -2,8 +2,11 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function ImageInvertTool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [resultUrl, setResultUrl] = useState<string>("");
@@ -79,20 +82,20 @@ export function ImageInvertTool() {
           }}
         >
           <p className="text-muted-foreground">
-            Drop an image here or click to upload
+            {isZh ? "拖放图片到此处或点击上传" : "Drop an image here or click to upload"}
           </p>
           <p className="text-xs text-muted-foreground mt-1">
-            Supports JPG, PNG, WebP, GIF
+            {isZh ? "支持 JPG、PNG、WebP、GIF" : "Supports JPG, PNG, WebP, GIF"}
           </p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
-              Click Invert to invert the colors of your image
+              {isZh ? "点击反色按钮来反转图片颜色" : "Click Invert to invert the colors of your image"}
             </p>
             <Button variant="outline" size="sm" onClick={reset}>
-              New Image
+              {isZh ? "重新上传" : "New Image"}
             </Button>
           </div>
 
@@ -106,13 +109,13 @@ export function ImageInvertTool() {
 
           {!resultUrl && (
             <Button onClick={invertImage} disabled={loading} className="w-full">
-              {loading ? "Inverting..." : "Invert Colors"}
+              {loading ? (isZh ? "反色中…" : "Inverting...") : (isZh ? "反色" : "Invert Colors")}
             </Button>
           )}
 
           {resultUrl && (
             <div className="space-y-2">
-              <p className="text-sm font-medium text-green-600">Inverted Successfully!</p>
+              <p className="text-sm font-medium text-green-600">{isZh ? "反色成功！" : "Inverted Successfully!"}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={resultUrl}
@@ -130,14 +133,14 @@ export function ImageInvertTool() {
                 }}
                 className="w-full"
               >
-                Download Inverted Image
+                {isZh ? "下载反色图片" : "Download Inverted Image"}
               </Button>
               <Button
                 variant="outline"
                 onClick={() => setResultUrl("")}
                 className="w-full"
               >
-                Re-invert
+                {isZh ? "重新反色" : "Re-invert"}
               </Button>
             </div>
           )}

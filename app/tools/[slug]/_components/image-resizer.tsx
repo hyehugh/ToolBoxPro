@@ -2,8 +2,11 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/lib/i18n/context";
 
 export function ImageResizerTool() {
+  const { locale } = useLocale();
+  const isZh = locale === "zh";
   const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [originalWidth, setOriginalWidth] = useState(0);
@@ -87,19 +90,19 @@ export function ImageResizerTool() {
             input.click();
           }}
         >
-          <p className="text-muted-foreground">Drop an image here or click to upload</p>
-          <p className="text-xs text-muted-foreground mt-1">Supports JPG, PNG, WebP, GIF</p>
+          <p className="text-muted-foreground">{isZh ? "拖放图片到此处或点击上传" : "Drop an image here or click to upload"}</p>
+          <p className="text-xs text-muted-foreground mt-1">{isZh ? "支持 JPG、PNG、WebP、GIF" : "Supports JPG, PNG, WebP, GIF"}</p>
         </div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
-              Original: {originalWidth} &times; {originalHeight} px
+              {isZh ? `原始尺寸：${originalWidth} × ${originalHeight} px` : `Original: ${originalWidth} × ${originalHeight} px`}
             </p>
             <Button variant="outline" size="sm" onClick={() => {
               setImageUrl(""); setImageFile(null); setResultUrl("");
             }}>
-              New Image
+              {isZh ? "新图片" : "New Image"}
             </Button>
           </div>
 
@@ -108,7 +111,7 @@ export function ImageResizerTool() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-sm block mb-1">Width (px)</label>
+              <label className="text-sm block mb-1">{isZh ? "宽度 (px)" : "Width (px)"}</label>
               <input
                 type="number" min="1" value={width}
                 onChange={(e) => handleWidthChange(+e.target.value)}
@@ -116,7 +119,7 @@ export function ImageResizerTool() {
               />
             </div>
             <div>
-              <label className="text-sm block mb-1">Height (px)</label>
+              <label className="text-sm block mb-1">{isZh ? "高度 (px)" : "Height (px)"}</label>
               <input
                 type="number" min="1" value={height}
                 onChange={(e) => handleHeightChange(+e.target.value)}
@@ -131,16 +134,16 @@ export function ImageResizerTool() {
               onChange={(e) => setLockAspect(e.target.checked)}
               className="rounded"
             />
-            Lock aspect ratio
+            {isZh ? "锁定宽高比" : "Lock aspect ratio"}
           </label>
 
           <Button onClick={resize} disabled={loading || width < 1 || height < 1}>
-            {loading ? "Resizing..." : "Resize"}
+            {loading ? (isZh ? "调整中..." : "Resizing...") : (isZh ? "调整大小" : "Resize")}
           </Button>
 
           {resultUrl && (
             <div className="space-y-2">
-              <p className="text-sm font-medium">Result</p>
+              <p className="text-sm font-medium">{isZh ? "结果" : "Result"}</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={resultUrl} alt="Result" className="rounded-lg border max-w-full max-h-48 object-contain" />
               <p className="text-xs text-muted-foreground">
@@ -152,7 +155,7 @@ export function ImageResizerTool() {
                 a.download = imageFile ? imageFile.name.replace(/\.[^.]+$/, "") + "_resized.png" : "resized.png";
                 a.click();
               }}>
-                Download Resized
+                {isZh ? "下载调整后图片" : "Download Resized"}
               </Button>
             </div>
           )}
