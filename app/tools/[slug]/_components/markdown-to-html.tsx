@@ -133,21 +133,22 @@ function processInline(text: string): string {
   // Inline code: `text`
   result = result.replace(/`([^`]+)`/g, '<code>$1</code>');
 
+  // Images MUST be processed before links, otherwise the link rule matches the
+  // [alt](url) portion of ![alt](url) first and leaves a stray "!" behind.
+  result = result.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    (_, alt, url) => {
+      const safeUrl = sanitizeUrl(url);
+      return `<img src="${safeUrl}" alt="${alt}" />`;
+    }
+  );
+
   // Links: [text](url) — only allow safe protocols
   result = result.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
     (_, text, url) => {
       const safeUrl = sanitizeUrl(url);
       return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${text}</a>`;
-    }
-  );
-
-  // Images: ![alt](url) — only allow safe protocols
-  result = result.replace(
-    /!\[([^\]]*)\]\(([^)]+)\)/g,
-    (_, alt, url) => {
-      const safeUrl = sanitizeUrl(url);
-      return `<img src="${safeUrl}" alt="${alt}" />`;
     }
   );
 

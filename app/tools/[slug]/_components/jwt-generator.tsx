@@ -12,12 +12,31 @@ export function JwtGeneratorTool() {
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
 
+  // Base64Url-encode a UTF-8 string (safe for JSON containing non-ASCII chars)
   const base64UrlEncode = (str: string): string => {
-    const base64 = btoa(str);
-    return base64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+    const bytes = new TextEncoder().encode(str);
+    let binary = "";
+    for (const b of bytes) binary += String.fromCharCode(b);
+    return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
   };
 
-  const generate = () => {
+  // Real HMAC-SHA256 signature using the Web Crypto API
+  const signHs256 = async (unsignedToken: string, secret: string): Promise<string> => {
+    const encoder = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+      "raw",
+      encoder.encode(secret),
+      { name: "HMAC", hash: "SHA-256" },
+      false,
+      ["sign"]
+    );
+    const sig = new Uint8Array(await crypto.subtle.sign("HMAC", key, encoder.encode(unsignedToken)));
+    let binary = "";
+    for (const b of sig) binary += String.fromCharCode(b);
+    return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  };
+
+  const generate = async () => {
     setError("");
     setOutput("");
 
@@ -25,30 +44,20 @@ export function JwtGeneratorTool() {
       const header = JSON.parse(headerJson);
       const payload = JSON.parse(payloadJson);
 
-      if (typeof header !== "object" || Array.isArray(header)) {
+      if (typeof header !== "object" || header === null || Array.isArray(header)) {
         throw new Error("Header must be a JSON object");
       }
-      if (typeof payload !== "object" || Array.isArray(payload)) {
+      if (typeof payload !== "object" || payload === null || Array.isArray(payload)) {
         throw new Error("Payload must be a JSON object");
       }
 
       const headerStr = JSON.stringify(header);
       const payloadStr = JSON.stringify(payload);
 
-      const headerEncoded = base64UrlEncode(headerStr);
-      const payloadEncoded = base64UrlEncode(payloadStr);
+      const unsignedToken = `${base64UrlEncode(headerStr)}.${base64UrlEncode(payloadStr)}`;
+      const signature = await signHs256(unsignedToken, secret);
 
-      // Build unsigned token with placeholder signature
-      const unsignedToken = `${headerEncoded}.${payloadEncoded}`;
-
-      // Simple HMAC-SHA256 simulation for the signature placeholder
-      // In production, use the Web Crypto API
-      const signatureInput = `${unsignedToken}.${secret}`;
-      const sigHash = base64UrlEncode(signatureInput).slice(0, 43);
-
-      const jwt = `${unsignedToken}.${sigHash}`;
-
-      setOutput(jwt);
+      setOutput(`${unsignedToken}.${signature}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : t('toolCommon.jwt.generatorInvalidJson'));
     }

@@ -37,19 +37,19 @@ function analyzeText(text: string): TextStats {
   // Word count: CJK chars counted individually + Latin words
   let words = 0;
   const trimmed = text.trim();
+  const allWords: string[] = [];
   if (trimmed) {
     if (cjkChars > 0) {
       words += cjkChars;
-      const latinWords = trimmed.replace(cjkRegex, ' ').trim().split(/\s+/).filter((w) => w.length > 0);
-      words += latinWords.length;
+      const latinParts = trimmed.replace(cjkRegex, ' ').trim().split(/\s+/).filter((w) => w.length > 0);
+      allWords.push(...latinParts);
+      words += latinParts.length;
     } else {
-      words = trimmed.split(/\s+/).filter((w) => w.length > 0).length;
+      const latinParts = trimmed.split(/\s+/).filter((w) => w.length > 0);
+      allWords.push(...latinParts);
+      words = latinParts.length;
     }
   }
-
-  const allWords = cjkChars > 0
-    ? [...(trimmed.replace(cjkRegex, ' ').trim().split(/\s+/).filter((w) => w.length > 0))]
-    : (trimmed ? trimmed.split(/\s+/).filter((w) => w.length > 0) : []);
   const uniqueWords = new Set(allWords.map((w) => w.toLowerCase())).size;
   const avgWordLength = allWords.length > 0
     ? allWords.reduce((sum, w) => sum + w.length, 0) / allWords.length
@@ -60,7 +60,7 @@ function analyzeText(text: string): TextStats {
   const paragraphs = text.split(/\n\s*\n/).filter((p) => p.trim().length > 0).length;
   const lines = text.split('\n').length;
 
-  // Top CJK bigrams (if CJK present)
+  // Top CJK bigrams
   const topBigrams: { word: string; count: number }[] = [];
   if (cjkChars > 4) {
     const cjkText = text.replace(/[^\u4e00-\u9fff\u3400-\u4dbf]/g, '');
@@ -83,23 +83,13 @@ function analyzeText(text: string): TextStats {
   };
 }
 
-function StatCard({ label, value }: { label: string; value: string | number }) {
-  const displayValue = typeof value === 'number' ? value.toLocaleString() : value;
-  return (
-    <div className="rounded-md border bg-card p-3">
-      <div className="text-xs text-muted-foreground">{label}</div>
-      <div className="text-xl font-mono font-bold">{displayValue}</div>
-    </div>
-  );
-}
-
 export function TextStatisticsTool() {
-  const { t, locale } = useLocale();
-  const isZh = locale === 'zh';
+  const { t } = useLocale();
   const [text, setText] = useState('');
 
   const stats = useMemo(() => analyzeText(text), [text]);
   const hasCJK = stats.cjkChars > 0;
+  const S = (key: string) => t(`toolCommon.textStats.${key}`);
 
   return (
     <div className="space-y-4">
@@ -108,72 +98,56 @@ export function TextStatisticsTool() {
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder={isZh ? '在此输入或粘贴文字...' : 'Paste or type your text here...'}
+          placeholder={S('placeholder') || 'Paste or type your text here...'}
           className="w-full h-48 p-3 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
         />
       </div>
 
-      {text && (
+      {text ? (
         <div className="space-y-6">
           {/* Character stats */}
           <div>
-            <h3 className="text-sm font-medium mb-2 text-muted-foreground">
-              {isZh ? '字符统计' : 'Characters'}
-            </h3>
+            <h3 className="text-sm font-medium mb-2 text-muted-foreground">{S('characters')}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <StatCard label={isZh ? '总字符数' : 'Total'} value={stats.totalChars} />
-              <StatCard label={isZh ? '不含空格' : 'No Spaces'} value={stats.charsNoSpaces} />
-              {hasCJK && <StatCard label={isZh ? '中日韩字符' : 'CJK Chars'} value={stats.cjkChars} />}
-              <StatCard label={isZh ? '字母' : 'Letters'} value={stats.letters} />
-              <StatCard label={isZh ? '数字' : 'Digits'} value={stats.digits} />
-              <StatCard label={isZh ? '特殊字符' : 'Special'} value={stats.specialChars} />
-              <StatCard label={isZh ? '空格' : 'Spaces'} value={stats.spaces} />
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('characters')}</div><div className="text-xl font-mono font-bold">{stats.totalChars.toLocaleString()}</div></div>
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('noSpaces')}</div><div className="text-xl font-mono font-bold">{stats.charsNoSpaces.toLocaleString()}</div></div>
+              {hasCJK && <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('cjkChars')}</div><div className="text-xl font-mono font-bold">{stats.cjkChars.toLocaleString()}</div></div>}
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('letters')}</div><div className="text-xl font-mono font-bold">{stats.letters.toLocaleString()}</div></div>
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('digits')}</div><div className="text-xl font-mono font-bold">{stats.digits.toLocaleString()}</div></div>
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('specialChars')}</div><div className="text-xl font-mono font-bold">{stats.specialChars.toLocaleString()}</div></div>
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('spaces')}</div><div className="text-xl font-mono font-bold">{stats.spaces.toLocaleString()}</div></div>
             </div>
           </div>
 
-          {/* English-specific stats (only show if letters > 0) */}
+          {/* English letters (only if Latin text present) */}
           {stats.letters > 0 && (
             <div>
-              <h3 className="text-sm font-medium mb-2 text-muted-foreground">
-                {isZh ? '英文字母' : 'Letters'}
-              </h3>
+              <h3 className="text-sm font-medium mb-2 text-muted-foreground">{S('letters')}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <StatCard label={isZh ? '元音' : 'Vowels'} value={stats.vowels} />
-                <StatCard label={isZh ? '辅音' : 'Consonants'} value={stats.consonants} />
-                <StatCard
-                  label={isZh ? '元辅比' : 'V/C Ratio'}
-                  value={stats.consonants > 0 ? (stats.vowels / stats.consonants).toFixed(2) : 'N/A'}
-                 
-                />
+                <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('vowels')}</div><div className="text-xl font-mono font-bold">{stats.vowels.toLocaleString()}</div></div>
+                <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('consonants')}</div><div className="text-xl font-mono font-bold">{stats.consonants.toLocaleString()}</div></div>
+                <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('vcRatio')}</div><div className="text-xl font-mono font-bold">{stats.consonants > 0 ? (stats.vowels / stats.consonants).toFixed(2) : 'N/A'}</div></div>
               </div>
             </div>
           )}
 
           {/* Word stats */}
           <div>
-            <h3 className="text-sm font-medium mb-2 text-muted-foreground">
-              {isZh ? '词数统计' : 'Words'}
-            </h3>
+            <h3 className="text-sm font-medium mb-2 text-muted-foreground">{S('totalWords')}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <StatCard label={isZh ? '总词数' : 'Total'} value={stats.words} />
-              <StatCard label={isZh ? '去重词数' : 'Unique'} value={stats.uniqueWords} />
-              {stats.avgWordLength > 0 && (
-                <StatCard label={isZh ? '平均词长' : 'Avg Length'} value={stats.avgWordLength.toFixed(1)} />
-              )}
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('totalWords')}</div><div className="text-xl font-mono font-bold">{stats.words.toLocaleString()}</div></div>
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('uniqueWords')}</div><div className="text-xl font-mono font-bold">{stats.uniqueWords.toLocaleString()}</div></div>
+              {stats.avgWordLength > 0 && <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('avgLength')}</div><div className="text-xl font-mono font-bold">{stats.avgWordLength.toFixed(1)}</div></div>}
             </div>
           </div>
 
-          {/* CJK bigrams (only if CJK) */}
+          {/* CJK bigrams */}
           {hasCJK && stats.topBigrams.length > 0 && (
             <div>
-              <h3 className="text-sm font-medium mb-2 text-muted-foreground">
-                {isZh ? '高频词' : 'Top Words (CJK)'}
-              </h3>
+              <h3 className="text-sm font-medium mb-2 text-muted-foreground">{S('topWordsCJK')}</h3>
               <div className="flex flex-wrap gap-1.5">
                 {stats.topBigrams.map((bg) => (
-                  <span key={bg.word} className="px-2 py-0.5 rounded-full bg-secondary text-xs">
-                    {bg.word} ({bg.count})
-                  </span>
+                  <span key={bg.word} className="px-2 py-0.5 rounded-full bg-secondary text-xs">{bg.word} ({bg.count})</span>
                 ))}
               </div>
             </div>
@@ -181,22 +155,16 @@ export function TextStatisticsTool() {
 
           {/* Structure */}
           <div>
-            <h3 className="text-sm font-medium mb-2 text-muted-foreground">
-              {isZh ? '结构统计' : 'Structure'}
-            </h3>
+            <h3 className="text-sm font-medium mb-2 text-muted-foreground">{S('structure')}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <StatCard label={isZh ? '句子数' : 'Sentences'} value={stats.sentences} />
-              <StatCard label={isZh ? '段落数' : 'Paragraphs'} value={stats.paragraphs} />
-              <StatCard label={isZh ? '行数' : 'Lines'} value={stats.lines} />
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('sentences')}</div><div className="text-xl font-mono font-bold">{stats.sentences.toLocaleString()}</div></div>
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('paragraphs')}</div><div className="text-xl font-mono font-bold">{stats.paragraphs.toLocaleString()}</div></div>
+              <div className="rounded-md border bg-card p-3"><div className="text-xs text-muted-foreground">{S('lines')}</div><div className="text-xl font-mono font-bold">{stats.lines.toLocaleString()}</div></div>
             </div>
           </div>
         </div>
-      )}
-
-      {!text && (
-        <div className="text-center text-sm text-muted-foreground py-8">
-          {isZh ? '输入文字开始分析' : t('toolCommon.textStats.analyze')}
-        </div>
+      ) : (
+        <div className="text-center text-sm text-muted-foreground py-8">{S('enterToAnalyze') || S('analyze')}</div>
       )}
     </div>
   );

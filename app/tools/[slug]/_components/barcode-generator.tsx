@@ -72,7 +72,7 @@ function generateCode128(text: string): number[] {
     codes.push(code);
   }
   // Checksum (Code 128): Start value counts at weight 1, first data char at weight 1,
-  // incrementing. Verified against the canonical "PJJ123C" → check digit 54 example.
+  // incrementing. Verified against the canonical "PJJ123C" → check digit 55 example.
   let checksum = CODE128_START;
   for (let i = 1; i < codes.length; i++) {
     checksum += codes[i] * i;
@@ -237,7 +237,12 @@ export function BarcodeGeneratorTool() {
     } else if (type === 'code39') {
       const pattern = generateCode39(text);
       if (!pattern) { setError(t('toolCommon.barcode.errorCode39')); return; }
-      bars = pattern.split('').map(Number);
+      // Code 39 patterns are run-length bit strings (narrow=1 module, wide=2
+      // modules); collapse runs into [bar,space,...] widths via bitsToBars,
+      // the same transform EAN-13/UPC-A use. Splitting into individual bits
+      // (the previous approach) merged adjacent same-color modules and made
+      // the resulting barcode unscannable.
+      bars = bitsToBars(pattern);
     } else if (type === 'ean13') {
       bars = generateEAN13(text);
       if (bars.length === 0) {

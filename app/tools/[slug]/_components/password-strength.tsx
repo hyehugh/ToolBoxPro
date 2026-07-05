@@ -71,7 +71,7 @@ function analyzePassword(password: string): StrengthResult {
     color = 'text-yellow-500';
     bgColor = 'bg-yellow-500';
   } else {
-    label = 'veryWeak';
+    label = 'veryStrong';
     color = 'text-green-500';
     bgColor = 'bg-green-500';
   }

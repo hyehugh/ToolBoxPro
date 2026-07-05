@@ -12,72 +12,157 @@ export function JsonToYamlTool() {
   const [yamlOutput, setYamlOutput] = useState("");
   const [mode, setMode] = useState<"toYaml" | "toJson">("toYaml");
 
+  // Format a scalar value for YAML output (strings may need quoting).
+  const formatScalar = (v: unknown): string => {
+    if (v === null || v === undefined) return "null";
+    if (typeof v === "boolean") return v ? "true" : "false";
+    if (typeof v === "number") return String(v);
+    // string
+    const s = v as string;
+    if (s === "" || /[:#\-?,[\]{}&*!|>'"%@`]/.test(s) || /^\s|\s$/.test(s) || s === "null" || s === "true" || s === "false" || !isNaN(Number(s))) {
+      return `"${s.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+    }
+    return s;
+  };
+
   const jsonToYaml = (obj: unknown, indent = 0): string => {
     const pad = "  ".repeat(indent);
+
     if (obj === null || obj === undefined) return "null";
-    if (typeof obj === "string") {
-      if (obj.includes(":") || obj.includes("#") || obj.includes("\n") || obj === "") {
-        return `"${obj.replace(/"/g, '\\"')}"`;
-      }
-      return obj;
-    }
-    if (typeof obj === "number" || typeof obj === "boolean") return String(obj);
+    if (typeof obj !== "object") return formatScalar(obj);
+
     if (Array.isArray(obj)) {
       if (obj.length === 0) return "[]";
       return obj
-        .map((item) => `${pad}- ${jsonToYaml(item, indent + 1).trimStart()}`)
+        .map((item) => {
+          if (item !== null && typeof item === "object") {
+            // Nested complex value: put "- " then first key on same line, rest indented.
+            const block = jsonToYaml(item, indent + 1);
+            // The first line of `block` already has indent+1 padding; we replace it
+            // with `- ` + its content (stripping the leading pad) so the dash stays
+            // aligned with the parent indent.
+            const lines = block.split("\n");
+            const firstLineContent = lines[0].replace(/^\s+/, "");
+            const restLines = lines.slice(1);
+            return `${pad}- ${firstLineContent}${restLines.length ? "\n" + restLines.join("\n") : ""}`;
+          }
+          return `${pad}- ${formatScalar(item)}`;
+        })
         .join("\n");
     }
-    if (typeof obj === "object") {
-      const keys = Object.keys(obj as Record<string, unknown>);
-      if (keys.length === 0) return "{}";
-      return keys
-        .map((key) => `${pad}${key}: ${jsonToYaml((obj as Record<string, unknown>)[key], indent + 1).trimStart()}`)
-        .join("\n");
+
+    const entries = Object.entries(obj as Record<string, unknown>);
+    if (entries.length === 0) return "{}";
+    return entries
+      .map(([key, value]) => {
+        if (value !== null && typeof value === "object") {
+          const block = jsonToYaml(value, indent + 1);
+          return `${pad}${key}:\n${block}`;
+        }
+        return `${pad}${key}: ${formatScalar(value)}`;
+      })
+      .join("\n");
+  };
+
+  // Minimal YAML parser supporting nested maps, arrays, scalars, and inline
+  // quoted strings — enough to round-trip the YAML produced above.
+  const parseScalar = (raw: string): unknown => {
+    const v = raw.trim();
+    if (v === "") return null;
+    if (v === "null" || v === "~") return null;
+    if (v === "true") return true;
+    if (v === "false") return false;
+    if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
+      const inner = v.slice(1, -1);
+      return v.startsWith('"') ? inner.replace(/\\"/g, '"').replace(/\\\\/g, "\\") : inner;
     }
-    return String(obj);
+    const num = Number(v);
+    return isNaN(num) ? v : num;
   };
 
   const yamlToJson = (yaml: string): string => {
-    const lines = yaml.split("\n");
-    const result: Record<string, unknown> = {};
-    const path: (string | number)[] = [];
-    const stack: unknown[] = [result];
+    const lines = yaml.split("\n").filter((l) => l.trim() !== "" && !l.trim().startsWith("#"));
+    if (lines.length === 0) return "{}";
 
-    for (const line of lines) {
-      if (line.trim() === "" || line.trim().startsWith("#")) continue;
-      const indent = line.search(/\S/);
-      const content = line.trim();
+    const peekIndent = (i: number) => lines[i].search(/\S/);
 
-      while (path.length > 0 && indent <= (path[path.length - 1] as unknown as { indent: number }).indent) {
-        path.pop();
-        stack.pop();
+    // If the first non-blank line is an array item, the root is an array; otherwise an object.
+    const build = (startIdx: number, indent: number): { value: unknown; next: number } => {
+      let i = startIdx;
+      if (lines[i].trim().startsWith("- ")) {
+        const arr: unknown[] = [];
+        while (i < lines.length && peekIndent(i) === indent && lines[i].trim().startsWith("- ")) {
+          const content = lines[i].trim().slice(2);
+          const childIndent = lines[i].indexOf("-") + 1;
+          if (content.includes(":") && !content.startsWith('"') && !content.startsWith("'")) {
+            // "- key: value" or "- key:" with a nested block
+            const colonIdx = content.indexOf(":");
+            const key = content.slice(0, colonIdx).trim();
+            const rest = content.slice(colonIdx + 1).trim();
+            const obj: Record<string, unknown> = {};
+            if (rest === "") {
+              const child = build(i + 1, childIndent + 1 > peekIndent(i + 1) ? peekIndent(i + 1) : childIndent + 1);
+              obj[key] = child.value;
+              i = child.next;
+            } else {
+              obj[key] = parseScalar(rest);
+              i += 1;
+            }
+            // Continue consuming further keys at childIndent+1 indent belonging to the same array item
+            while (i < lines.length && peekIndent(i) > indent && !lines[i].trim().startsWith("- ")) {
+              const line2 = lines[i].trim();
+              const colonIdx2 = line2.indexOf(":");
+              if (colonIdx2 === -1) break;
+              const k2 = line2.slice(0, colonIdx2).trim();
+              const rest2 = line2.slice(colonIdx2 + 1).trim();
+              if (rest2 === "") {
+                const child = build(i + 1, peekIndent(i + 1));
+                obj[k2] = child.value;
+                i = child.next;
+              } else {
+                obj[k2] = parseScalar(rest2);
+                i += 1;
+              }
+            }
+            arr.push(obj);
+          } else {
+            arr.push(parseScalar(content));
+            i += 1;
+          }
+        }
+        return { value: arr, next: i };
       }
 
-      if (content.startsWith("- ")) {
-        const val = content.slice(2).trim();
-        const parent = stack[stack.length - 1] as unknown[];
-        const parsed = isNaN(Number(val)) ? (val === "null" ? null : val === "true" ? true : val === "false" ? false : val) : Number(val);
-        parent.push(parsed);
-      } else if (content.includes(":")) {
-        const colonIdx = content.indexOf(":");
-        const key = content.slice(0, colonIdx).trim();
-        let val: unknown = content.slice(colonIdx + 1).trim();
-
-        if (val === "") {
-          const newObj: Record<string, unknown> = {};
-          const parent = stack[stack.length - 1] as Record<string, unknown>;
-          parent[key] = newObj;
-          stack.push(newObj);
-          path.push({ indent, key } as unknown as never);
+      // Object block
+      const obj: Record<string, unknown> = {};
+      while (i < lines.length && peekIndent(i) === indent && !lines[i].trim().startsWith("- ")) {
+        const line = lines[i].trim();
+        const colonIdx = line.indexOf(":");
+        if (colonIdx === -1) {
+          i += 1;
+          continue;
+        }
+        const key = line.slice(0, colonIdx).trim();
+        const rest = line.slice(colonIdx + 1).trim();
+        if (rest === "") {
+          // nested block at deeper indent
+          if (i + 1 < lines.length && peekIndent(i + 1) > indent) {
+            const child = build(i + 1, peekIndent(i + 1));
+            obj[key] = child.value;
+            i = child.next;
+          } else {
+            obj[key] = null;
+            i += 1;
+          }
         } else {
-          val = isNaN(Number(val)) ? (val === "null" ? null : val === "true" ? true : val === "false" ? false : val) : Number(val);
-          const parent = stack[stack.length - 1] as Record<string, unknown>;
-          parent[key] = val;
+          obj[key] = parseScalar(rest);
+          i += 1;
         }
       }
-    }
+      return { value: obj, next: i };
+    };
 
+    const result = build(0, peekIndent(0)).value;
     return JSON.stringify(result, null, 2);
   };
 

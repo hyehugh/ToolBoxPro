@@ -29,7 +29,7 @@ export function JsonToTypescriptTool() {
     }
 
     try {
-      const result = convertToInterface(parsed, t('toolCommon.jsonToTs.rootName'));
+      const result = buildOutput(parsed, t('toolCommon.jsonToTs.rootName'));
       setOutput(result);
     } catch (e: any) {
       setError(e.message || t('toolCommon.jsonToTs.failed'));
@@ -105,7 +105,7 @@ function getTsType(value: unknown, key: string): string {
   if (value === null) return "any";
   if (typeof value === "string") return "string";
   if (typeof value === "number") {
-    return Number.isInteger(value) ? "number" : "number";
+    return "number";
   }
   if (typeof value === "boolean") return "boolean";
   if (Array.isArray(value)) {
@@ -120,9 +120,13 @@ function getTsType(value: unknown, key: string): string {
   return "any";
 }
 
-function convertToInterface(obj: unknown, name: string, depth = 0): string {
+// Returns [interfaceBlock, subInterfaceBlocks]. The caller is responsible for
+// concatenating sub-interfaces so that *every* level of nesting emits its
+// referenced interfaces (the previous code only attached depth===0 subs,
+// which left deeply-nested interfaces undefined in the output).
+function convertToInterface(obj: unknown, name: string, depth = 0): [string, string[]] {
   if (typeof obj !== "object" || obj === null || Array.isArray(obj)) {
-    return `type ${name} = ${getTsType(obj, name)};`;
+    return [`type ${name} = ${getTsType(obj, name)};`, []];
   }
 
   const childIndent = "  ".repeat(depth + 1);
@@ -130,7 +134,7 @@ function convertToInterface(obj: unknown, name: string, depth = 0): string {
 
   const entries = Object.entries(obj as Record<string, unknown>);
   const lines: string[] = [];
-  const subInterfaces: string[] = [];
+  const allSubs: string[] = [];
 
   lines.push(`export interface ${name} {`);
 
@@ -146,7 +150,8 @@ function convertToInterface(obj: unknown, name: string, depth = 0): string {
       !Array.isArray(value)
     ) {
       const subName = toPascalCase(key);
-      subInterfaces.push(convertToInterface(value, subName, depth + 1));
+      const [block, subs] = convertToInterface(value, subName, depth + 1);
+      allSubs.push(block, ...subs);
       lines.push(`${childIndent}${safeKey}: ${subName};`);
     } else if (Array.isArray(value) && value.length > 0) {
       const first = value[0];
@@ -155,7 +160,8 @@ function convertToInterface(obj: unknown, name: string, depth = 0): string {
         const elemName = arrName.endsWith("s")
           ? arrName.slice(0, -1)
           : arrName + "Item";
-        subInterfaces.push(convertToInterface(first, elemName, depth + 1));
+        const [block, subs] = convertToInterface(first, elemName, depth + 1);
+        allSubs.push(block, ...subs);
         lines.push(`${childIndent}${safeKey}: ${elemName}[];`);
       } else {
         lines.push(`${childIndent}${safeKey}: ${tsType};`);
@@ -167,10 +173,15 @@ function convertToInterface(obj: unknown, name: string, depth = 0): string {
 
   lines.push(`${closingIndent}}`);
 
-  if (depth === 0 && subInterfaces.length > 0) {
-    lines.push("");
-    lines.push(...subInterfaces);
+  // Sub-interfaces first (so each is defined before it's referenced), then this one.
+  if (allSubs.length > 0) {
+    return [lines.join("\n"), allSubs];
   }
+  return [lines.join("\n"), []];
+}
 
-  return lines.join("\n");
+// Wrapper used by the UI: emit sub-interfaces first, then the root interface.
+function buildOutput(obj: unknown, name: string): string {
+  const [rootBlock, subs] = convertToInterface(obj, name, 0);
+  return subs.length > 0 ? `${subs.join("\n\n")}\n\n${rootBlock}` : rootBlock;
 }

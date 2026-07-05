@@ -11,18 +11,24 @@ export function TextToBinaryTool() {
   const [mode, setMode] = useState<"toBinary" | "toText">("toBinary");
 
   const textToBinary = (text: string) => {
-    return text
-      .split("")
-      .map((char) => char.charCodeAt(0).toString(2).padStart(8, "0"))
+    // Encode as UTF-8 bytes so multi-byte chars (中文, emoji) survive the round-trip.
+    const bytes = new TextEncoder().encode(text);
+    return Array.from(bytes)
+      .map((b) => b.toString(2).padStart(8, "0"))
       .join(" ");
   };
 
   const binaryToText = (binary: string) => {
-    const cleaned = binary.replace(/\s+/g, " ");
-    const bytes = cleaned.split(" ");
-    return bytes
-      .map((byte) => String.fromCharCode(parseInt(byte, 2)))
-      .join("");
+    const cleaned = binary.replace(/\s+/g, " ").trim();
+    if (!cleaned) return "";
+    const bytes = cleaned.split(" ").map((byte) => {
+      const num = parseInt(byte, 2);
+      if (!/^[01]+$/.test(byte)) {
+        throw new Error(`Invalid binary: "${byte}" — only 0 and 1 allowed`);
+      }
+      return num;
+    });
+    return new TextDecoder().decode(new Uint8Array(bytes));
   };
 
   const handleConvert = () => {

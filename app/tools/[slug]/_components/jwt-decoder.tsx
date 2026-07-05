@@ -16,7 +16,12 @@ export function JwtDecoderTool() {
       // Replace URL-safe chars and pad
       const base64 = str.replace(/-/g, "+").replace(/_/g, "/");
       const padded = base64.padEnd(base64.length + ((4 - (base64.length % 4)) % 4), "=");
-      return atob(padded);
+      // atob returns a Latin-1 string (one char per byte). Reinterpret as UTF-8
+      // so that payloads containing non-ASCII (e.g. Chinese, emoji) decode correctly.
+      const binary = atob(padded);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      return new TextDecoder().decode(bytes);
     } catch {
       return null;
     }

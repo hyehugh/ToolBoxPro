@@ -6,9 +6,10 @@ import { useLocale } from '@/lib/i18n/context';
 
 const SIDE_OPTIONS = [4, 6, 8, 10, 12, 20];
 
+// Standard die pip layouts on a 3×3 grid.
 const DOT_PATTERNS: Record<number, number[][]> = {
-  1: [[0, 1, 0], [0, 1, 0], [0, 1, 0]],
-  2: [[1, 0, 0], [0, 1, 0], [0, 0, 1]],
+  1: [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+  2: [[1, 0, 0], [0, 0, 0], [0, 0, 1]],
   3: [[1, 0, 0], [0, 1, 0], [0, 0, 1]],
   4: [[1, 0, 1], [0, 0, 0], [1, 0, 1]],
   5: [[1, 0, 1], [0, 1, 0], [1, 0, 1]],
@@ -24,8 +25,7 @@ function DiceFace({ value, sides }: { value: number; sides: number }) {
     );
   }
 
-  const isD6 = sides === 6;
-  const displayValue = isD6 ? value : value > 6 ? value : value;
+  const displayValue = value;
   const dots = DOT_PATTERNS[displayValue as keyof typeof DOT_PATTERNS];
 
   if (!dots) {

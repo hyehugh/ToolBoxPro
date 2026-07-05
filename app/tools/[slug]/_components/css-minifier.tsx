@@ -11,8 +11,9 @@ export function CssMinifierTool() {
 
   const minify = () => {
     const minified = input
+      // Only /* */ comments are valid CSS — `//` line comments are NOT and
+      // stripping them would corrupt protocol-relative URLs like url(//cdn.x/a.png).
       .replace(/\/\*[\s\S]*?\*\//g, "")
-      .replace(/\/\/.*$/gm, "")
       .replace(/\s*([{}:;,])\s*/g, "$1")
       .replace(/;}/g, "}")
       .replace(/\s+/g, " ")

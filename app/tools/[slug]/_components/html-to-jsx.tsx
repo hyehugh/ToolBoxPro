@@ -15,8 +15,9 @@ export function HtmlToJsxTool() {
       .replace(/\bclass=/g, "className=")
       // Convert for to htmlFor
       .replace(/\bfor=/g, "htmlFor=")
-      // Self-closing tags
-      .replace(/<(input|br|hr|img|meta|link|area|base|col|embed|source|track|wbr)([^>]*)>/gi, "<$1$2 />")
+      // Self-closing tags: skip those that are already self-closed (end with `/`)
+      // so we don't turn <br/> into the invalid <br/ />.
+      .replace(/<(input|br|hr|img|meta|link|area|base|col|embed|source|track|wbr)((?:[^>]*?[^/>])?)>/gi, "<$1$2 />")
       // Remove style tags content (simplified)
       .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
       // Tabindex -> tabIndex
