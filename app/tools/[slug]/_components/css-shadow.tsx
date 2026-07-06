@@ -20,7 +20,7 @@ export function CssShadowTool() {
   const previewCardStyle: React.CSSProperties = {
     width: "100%",
     maxWidth: 360,
-    height: 225,
+    height: 150,
     borderRadius: "0.5rem",
     background: "#ffffff",
     border: "1px solid #e5e7eb",
@@ -61,7 +61,7 @@ export function CssShadowTool() {
         </label>
         <div
           className="rounded-lg border bg-muted/60"
-          style={{ padding: "1.25rem", overflow: "visible" }}
+          style={{ padding: "2.5rem 1.25rem", overflow: "visible" }}
         >
           <div style={previewCardStyle}>{t("toolCommon.color.preview")}</div>
         </div>
