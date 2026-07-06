@@ -17,8 +17,9 @@ export function CssShadowTool() {
 
   const cssCode = `box-shadow: ${offsetX}px ${offsetY}px ${blur}px ${spread}px ${rgbaColor};`;
 
-  const previewStyle: React.CSSProperties = {
+  const previewCardStyle: React.CSSProperties = {
     width: "100%",
+    maxWidth: 360,
     height: 150,
     borderRadius: "0.5rem",
     background: "#ffffff",
@@ -29,6 +30,7 @@ export function CssShadowTool() {
     justifyContent: "center",
     fontSize: "0.875rem",
     color: "#6b7280",
+    margin: "0 auto",
   };
 
   const [copied, setCopied] = useState(false);
@@ -55,35 +57,40 @@ export function CssShadowTool() {
       {/* Live preview */}
       <div>
         <label className="text-sm text-muted-foreground block mb-1">
-          {t('toolCommon.color.preview')}
+          {t("toolCommon.color.preview")}
         </label>
-        <div style={previewStyle}>{t('toolCommon.color.preview')}</div>
+        <div
+          className="rounded-lg border bg-muted/60"
+          style={{ padding: "1.25rem", overflow: "visible" }}
+        >
+          <div style={previewCardStyle}>{t("toolCommon.color.preview")}</div>
+        </div>
       </div>
 
       {/* Sliders */}
       <SliderControl
-        label={t('toolCommon.css.shadowOffsetX') || "Offset X"}
+        label={t("toolCommon.css.shadowOffsetX") || "Offset X"}
         value={offsetX}
         min={-50}
         max={50}
         onChange={setOffsetX}
       />
       <SliderControl
-        label={t('toolCommon.css.shadowOffsetY') || "Offset Y"}
+        label={t("toolCommon.css.shadowOffsetY") || "Offset Y"}
         value={offsetY}
         min={-50}
         max={50}
         onChange={setOffsetY}
       />
       <SliderControl
-        label={t('toolCommon.css.shadowBlur') || "Blur"}
+        label={t("toolCommon.css.shadowBlur") || "Blur"}
         value={blur}
         min={0}
         max={100}
         onChange={setBlur}
       />
       <SliderControl
-        label={t('toolCommon.css.shadowSpread') || "Spread"}
+        label={t("toolCommon.css.shadowSpread") || "Spread"}
         value={spread}
         min={-50}
         max={50}
@@ -93,7 +100,7 @@ export function CssShadowTool() {
       {/* Color picker */}
       <div>
         <label className="text-sm text-muted-foreground block mb-1">
-          {t('toolCommon.color.hex')}
+          {t("toolCommon.color.hex")}
         </label>
         <input
           type="color"
@@ -105,7 +112,7 @@ export function CssShadowTool() {
 
       {/* Opacity slider */}
       <SliderControl
-        label={`${t('common.strength')} (${Math.round(opacity * 100)}%)`}
+        label={`${t("common.strength")} (${Math.round(opacity * 100)}%)`}
         value={opacity}
         min={0}
         max={1}
@@ -115,12 +122,14 @@ export function CssShadowTool() {
 
       {/* CSS code */}
       <div className="space-y-2">
-        <label className="text-sm text-muted-foreground block">{t('common.result')}</label>
+        <label className="text-sm text-muted-foreground block">
+          {t("common.result")}
+        </label>
         <pre className="bg-muted p-3 rounded-lg text-sm overflow-x-auto">
           <code>{cssCode}</code>
         </pre>
         <Button onClick={handleCopy} className="w-full">
-          {copied ? t('common.copied') || "Copied!" : t('common.copy')}
+          {copied ? t("common.copied") || "Copied!" : t("common.copy")}
         </Button>
       </div>
     </div>
