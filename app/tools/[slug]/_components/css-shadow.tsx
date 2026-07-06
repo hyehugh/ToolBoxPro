@@ -20,7 +20,7 @@ export function CssShadowTool() {
   const previewCardStyle: React.CSSProperties = {
     width: "100%",
     maxWidth: 360,
-    height: 150,
+    height: 225,
     borderRadius: "0.5rem",
     background: "#ffffff",
     border: "1px solid #e5e7eb",
